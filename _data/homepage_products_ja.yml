@@ -13,3 +13,10 @@ products:
   group: Fire Devices
   shortname: fireappbuilder_ja
   owner: tomjoht
+
+
+## Other
+
+ - shortname: appstore
+ - shortname: in_app_purchasing
+ - shortname: devicemessaging
