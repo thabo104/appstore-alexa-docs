@@ -1,8 +1,8 @@
 ---
 title: Specifying Your App's Installation Location on Fire TV
-permalink: fire-tv-installation-location.html
+permalink: specifying-installation-location.html
 sidebar: firetv
-hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-installation-location
+hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/specifying-installation-location
 product: Fire TV
 toc: false
 github: true

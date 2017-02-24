@@ -205,9 +205,9 @@ folders:
     ref: notifications-for-amazon-fire-tv
 
   - title: App Installation Location
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-installation-location
-    jurl: /fire-tv-installation-location.html
-    ref: fire-tv-installation-location
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/specifying-installation-location
+    jurl: /specifying-installation-location.html
+    ref: specifying-installation-location
 
   - title: Advertising ID
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-os-advertising-id

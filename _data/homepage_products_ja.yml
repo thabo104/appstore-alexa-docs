@@ -16,7 +16,6 @@ products:
 
 
 ## Other
-
- - shortname: appstore
- - shortname: in_app_purchasing
- - shortname: devicemessaging
+- shortname: appstore
+- shortname: in_app_purchasing
+- shortname: devicemessaging

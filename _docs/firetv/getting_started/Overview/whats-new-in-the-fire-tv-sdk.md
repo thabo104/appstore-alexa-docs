@@ -12,7 +12,7 @@ github: true
 
 ### Fire TV User Interface Update
 
-Fire TV Gen 2 devices received an update to the interface. The update provides a more cinematic experience that 
+Fire TV Gen 2 devices received an update to the interface. The update provides a more cinematic experience that
 offers video trailers and content screenshots to help customers access the content they want more quickly. Third-party apps are also more visible on the homepage in recommended rows. Accessibility improvements were included that allow customers to use Fire TV and any compatible apps with the VoiceView screen reader. (See the [original announcement](http://phx.corporate-ir.net/phoenix.zhtml?c=176060&p=irol-newsArticle&ID=2206525).)
 
 To upload the new Fire TV assets required for the new UI, see the instruction in [Image Asset Guidelines for Appstore Submission](/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets). The user interface update will be applied to generation 1 devices in a later phase.
@@ -35,7 +35,7 @@ The following updates have been made to the Fire TV documentation:
 | Jan 20, 2016 | [System X-Ray Overview][fire-tv-system-xray], [Developer Tool Options][fire-tv-system-xray-developer-tools], [Customize System X-Ray][fire-tv-system-xray-customized-metrics] | Updated details about System X-Ray and the Developer Tools Options menu. |
 | Dec. 14, 2016 | [Amazon Fire TV Development Framework Comparison][fire-tv-development-framework-comparison] | Detailed comparison between Web App Starter Kit for Fire TV (WASK) and Fire App Builder. |
 | Nov 29, 2016 | [Notifications for Amazon Fire TV][notifications-for-amazon-fire-tv] | Updated to explain upcoming the Notification Center functionality that will be included in the Fire TV UI refresh release. |
-| Nov 23, 2016 | [Specifying Your App's Installation Location][fire-tv-installation-location] | Update with emphasis on preferring external storage on app install. Also includes details for app installs across platforms. |
+| Nov 23, 2016 | [Specifying Your App's Installation Location][specifying-installation-location] | Update with emphasis on preferring external storage on app install. Also includes details for app installs across platforms. |
 | Oct 25, 2016 | [Image Asset Guidelines for Appstore Submission](/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets) | Updated graphics and instruction for the Fire TV Assets section. Instead of generic diagrams, the graphics include real samples with more gradations shown in the content safe areas. |
 | Oct 20, 2016 | [Getting Started Developing Apps and Games for Amazon Fire TV][getting-started-developing-apps-and-games-for-amazon-fire-tv]  | New sidebar navigation on the right with expandable/collapsible sections |
 | Oct 2, 2016 | [Fire App Builder: A Starter Kit for Java-based Amazon Fire TV and Android Apps][fire-app-builder-overview] | Extensive documentation (more than 30 pages) about how to use Fire App Builder to create Java-based Android TV apps for Fire TV. |

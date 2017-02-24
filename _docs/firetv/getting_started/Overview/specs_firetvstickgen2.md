@@ -194,7 +194,7 @@
     </tr>
     <tr>
       <td>Expandable Storage</td>
-      <td markdown="span">No  <br/>(See [Specifying Your App's Installation Location][fire-tv-installation-location] for best practices on manifest settings related to storage.)</td>
+      <td markdown="span">No  <br/>(See [Specifying Your App's Installation Location][specifying-installation-location] for best practices on manifest settings related to storage.)</td>
     </tr>
     <tr>
       <td>Device OS/Platform software</td>
