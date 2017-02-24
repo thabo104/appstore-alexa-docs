@@ -30,7 +30,7 @@ owner: tomjoht
 
 
 folders:
-- title: Introduction
+- title: はじめに
   folderitems:
 
   - title: "Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプリ向けスターターキット"
@@ -56,7 +56,7 @@ folders:
     ref: fire-app-builder-questions-and-answers
     bookmarks: [translator]
 
-- title: 1. Get Set Up
+- title: 1. セットアップする
   folderitems:
 
   - title: Fire App Builderをダウンロードして、アプリをビルドする
@@ -75,7 +75,7 @@ folders:
     jurl: /fire-app-builder-app-tour.html
     ref: fire-app-builder-app-tour
 
-- title: 2. Configure Your Feed
+- title: 2. フィードを構成する
   folderitems:
   - title: メディアフィードをロードする
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-load-media-feed
@@ -115,7 +115,7 @@ folders:
     ref: fire-app-builder-configure-navigator-open-feeds
     bookmarks: [hardcodingcategories]
 
-- title: 3. Customize the Appearance
+- title: 3.外観をカスタマイズする
   folderitems:
 
   - title: アプリのルックアンドフィールをカスタマイズする
@@ -124,7 +124,7 @@ folders:
     ref: fire-app-builder-customize-look-and-feel
     bookmarks: [recommendations]
 
-- title: 4. Add Components
+- title: 4.コンポーネントを追加する
   folderitems:
 
   - title: コンポーネントの概要
@@ -145,7 +145,7 @@ folders:
     ref: fire-app-builder-create-a-new-component
 
     subfolders:
-    - title: Ads components
+    - title: 広告コンポーネント
       subfolderitems:
 
       - title: Freewheel広告コンポーネント
@@ -158,7 +158,7 @@ folders:
         jurl: /fire-app-builder-vast-ads-component.html
         ref: fire-app-builder-vast-ads-component
 
-    - title: Analytics components
+    - title: 分析コンポーネント
       subfolderitems:
 
       - title: Crashlyticsコンポーネント
@@ -181,7 +181,7 @@ folders:
         jurl: /fire-app-builder-omniture-analytics-component.html
         ref: fire-app-builder-omniture-analytics-component
 
-    - title: Authorization components
+    - title: 認証コンポーネント
       subfolderitems:
 
       - title: Adobe Pass認証コンポーネント
@@ -199,7 +199,7 @@ folders:
         jurl: /fire-app-builder-login-with-amazon-component.html
         ref: fire-app-builder-login-with-amazon-component
 
-    - title: Purchasing components
+    - title: 課金コンポーネント
       subfolderitems:
 
       - title: Amazonアプリ内課金のコンポーネント
@@ -207,7 +207,7 @@ folders:
         jurl: /fire-app-builder-amazon-in-app-purchase-component.html
         ref: fire-app-builder-amazon-in-app-purchase-component
 
-    - title: Media components
+    - title: メディアコンポーネント
       subfolderitems:
 
       - title: Amazon Media Playerコンポーネント
@@ -215,7 +215,7 @@ folders:
         jurl: /fire-app-builder-amazon-media-player-component.html
         ref: fire-app-builder-amazon-media-player-component
 
-- title: Other Development Topics
+- title: 開発に関するその他のトピック
   folderitems:
 
   - title: Githubから更新データをプルする
@@ -265,6 +265,13 @@ related_resources_list:
   hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv
   jurl: /getting-started-developing-apps-and-games-for-amazon-fire-tv.html
 
+- title: Fire TVカタログ統合
+  hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/overview/integrating-your-catalog-with-fire-tv
+  jurl: integrating-your-catalog-with-fire-tv
+
+- title: 日本語版ナレッジベース
+  hurl: https://forums.developer.amazon.com/spaces/121/index.html
+
 forum:
-  forum_name: Fire TV Forum
-  forum_link: https://forums.developer.amazon.com/spaces/43/index.html
+  forum_name: 日本語版ナレッジベース
+  forum_link: https://forums.developer.amazon.com/spaces/121/index.html

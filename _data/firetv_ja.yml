@@ -30,7 +30,7 @@ owner: tomjoht
 
 
 folders:
-- title: Overview
+- title: 概要
   folderitems:
 
   - title: Amazon Fire TV用アプリとゲームを開発するための準備
@@ -78,7 +78,7 @@ folders:
     jurl: /submitting-your-fire-tv-app-to-the-amazon-appstore.html
     ref: submitting-your-fire-tv-app-to-the-amazon-appstore
 
-- title: Set Up Your Development Environment
+- title: 開発環境のセットアップ
   folderitems:
 
   - title: 開発環境のセットアップ
@@ -97,7 +97,7 @@ folders:
     jurl: /installing-and-running-your-app.html
     ref: installing-and-running-your-app
 
-- title: Controllers in Android Apps
+- title: Androidアプリのコントローラ
   folderitems:
   - title: コントローラの概要
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/supporting-controllers-on-amazon-fire-tv
@@ -134,7 +134,7 @@ folders:
     jurl: /controller-image-assets.html
     ref: controller-image-assets
 
-#- title: Development Best Practices
+#- title: 開発に関するベストプラクティス
 #  folderitems:
 #  - title: Mouse Pointers
 #    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/customizing-mouse-pointer
@@ -219,7 +219,7 @@ folders:
 #    jurl: /07-resources-for-international-locales.html
 #    ref: 07-resources-for-international-locales
 #
-#- title: Developer Tools on Fire TV
+#- title: 開発者ツールを使用したFire TVに関する問題のトラブルシューティング
 #  folderitems:
 #
 #  - title: Developer Tool Options
@@ -237,7 +237,7 @@ folders:
 #    jurl: /fire-tv-system-xray-customized-metrics.html
 #    ref: fire-tv-system-xray-customized-metrics
 #
-#- title: Accessibility
+#- title: >ユーザー補助機能
 #  folderitems:
 #
 #  - title: Understanding Assistive Technologies for Fire OS
@@ -256,7 +256,7 @@ folders:
 #    ref: implementing-future-voiceview-accessibility-features
 
 
-#- title: Recommendations
+#- title: 推奨事項
 #  folderitems:
 #  - title: Recommendations Overview
 #    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-recommended-by-your-apps
@@ -278,7 +278,7 @@ folders:
 #    jurl: /fire-tv-recommendations-best-practices.html
 #    ref: fire-tv-recommendations-best-practices
 
-#- title: Build Webapps for Fire TV
+#- title: Fire TVに対応したウェブアプリの開発
 #  folderitems:
 #  - title: Get Started with Web Apps
 #    hurl: https://developer.amazon.com/public/ja/solutions/platforms/webapps/docs/getting-started-with-web-apps-for-fire-tv
@@ -324,6 +324,13 @@ related_resources_list:
 - title: Fire App Builder
   hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-overview
   jurl: /fire-app-builder-overview.html
+
+- title: Fire TVカタログ統合
+  hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/overview/integrating-your-catalog-with-fire-tv
+  jurl: integrating-your-catalog-with-fire-tv
+
+- title: 日本語版ナレッジベース
+  hurl: https://forums.developer.amazon.com/spaces/121/index.html
 
 ###########################
 

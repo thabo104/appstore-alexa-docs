@@ -14,6 +14,11 @@ products:
   shortname: fireappbuilder_ja
   owner: tomjoht
 
+- title: Fire TVカタログ統合
+  link: integrating-your-catalog-with-fire-tv.html
+  group: Fire Devices
+  shortname: catalog_ja
+  owner: tomjoht
 
 ## Other
 - shortname: appstore
