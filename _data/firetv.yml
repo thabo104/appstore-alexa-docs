@@ -255,6 +255,29 @@ folders:
     jurl: /fire-tv-preview-future-voiceview-accessibility-features.html
     ref: fire-tv-preview-future-voiceview-accessibility-features
 
+- title: Recommendations
+  folderitems:
+  - title: Recommendations Overview
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommended-by-your-apps
+    jurl: /fire-tv-recommendations-overview.html
+    ref: fire-tv-recommendations-overview
+
+  - title: Send Recommmendations that Include Amazon Enhancements
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommended-by-your-apps
+    jurl: /fire-tv-recommendations-send-recommendations.html
+    ref: fire-tv-recommendations-send-recommendations
+    bookmarks: [amazon-enhancements]
+
+  - title: Test Your Recommendations
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-testing
+    jurl: /fire-tv-recommendations-testing.html
+    ref: fire-tv-recommendations-testing
+    
+  - title: Best Practices with Recommendations
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-best-practices
+    jurl: /fire-tv-recommendations-best-practices.html
+    ref: fire-tv-recommendations-best-practices
+
 - title: Build Webapps for Fire TV
   folderitems:
   - title: Get Started with Web Apps
