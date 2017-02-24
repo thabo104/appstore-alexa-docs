@@ -32,6 +32,10 @@ Here’s a screenshot of a simple layout:
 
 {% include image.html file="firetv/getting_started/images/wask_simple_layout" type="png" %}
 
+For a video tutorial on creating a WASK app from a YouTube feed, see the following video:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/LJw0B_l_rso" frameborder="0" allowfullscreen></iframe>
+
 While customizing or extending the basic WASK template, you can test your app using the [Amazon Web App Tester](https://developer.amazon.com/public/solutions/platforms/webapps/docs/tester.html). This is a Fire TV app used to test web apps on an actual device. The Web App Tester uses the same native app wrapper and web engine that will be used when the app is published, giving you an accurate preview of your app during development.
 
 When your app is ready, you can use the Amazon Developer Portal to submit your app to the Amazon Appstore and have it published within minutes, with no native coding needed.

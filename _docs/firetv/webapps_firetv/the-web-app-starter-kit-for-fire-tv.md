@@ -14,6 +14,12 @@ The Web App Starter Kit for Fire TV, available on Github at [github.com/amzn/web
 * TOC
 {:toc}
 
+## Video Tutorial
+
+For a video tutorial on creating a WASK app from a YouTube feed, see the following webinar recording:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/LJw0B_l_rso" frameborder="0" allowfullscreen></iframe>
+
 ## Working with WASK
 
 You can easily create your own app by replacing sections of code in the template with your code, making the tweaks your app requires, and using your own data sources.
