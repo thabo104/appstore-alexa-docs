@@ -32,8 +32,10 @@ Before diving into code examples, let's look at a sample recommendation card. Th
 {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} [setTitle][setTitle]. Sets the title for the recommendation. (Android API)<br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} [setText][setText]. Sets the description for the recommendation. (Android API)<br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} [setContentImage][setContentImage]. Sets the image used for the recommendation. (Android API)<br/>
-{% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} Sets an abbreviated name for the app, which is used in the launch menu. This is set by one of the Amazon `extra` fields: `com.amazon.extra.DISPLAY_NAME", "displayName"`.
+{% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} Sets an abbreviated name for your app, which is used in the launch menu. This is set by one of the Amazon `extra` fields: `com.amazon.extra.DISPLAY_NAME", "displayName"`.
 </div>
+
+For example, if your app has a long name, such as "World Premier Association Videos," this long title will be truncated in the launch menu. Instead of accepting the default truncation, you can specify the shortened name for your app through the Amazon extras (in this case, the `DISPLAY_NAME`).
 
 ## Code Example for a Recommendation
 

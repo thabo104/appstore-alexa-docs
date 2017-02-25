@@ -69,10 +69,9 @@ The attributes are as follows:
 
 ## Requirements for Recommendations to Appear
 
-The recommendations row also has some unique requirements to show recommendations:
+The following two requirements must be met for recommendations to appear:
 
-* At least 2 separate apps must send recommendations.
-* There must be at least 5 recommendations in total sent from all apps. (This minimum may be lowered to 3 in a future update.)
+* There must be at least 3 recommendations in total sent from all apps.
 * The user can't have any viewing restrictions set under Settings > Preferences > Parental Controls.
 
 Note that Android limits the number of notifications to 50. This limit includes both [standard notifications][notifications-for-amazon-fire-tv] and recommendations combined.
@@ -87,7 +86,7 @@ Recommendations should show content that is **relevant** to the user. For exampl
 
 You will need to create the logic that determines which recommendations are shown to which users.
 
-Avoid sending too many recommendations, because this may make the user feel annoyed. Also, try to make your recommended content free to watch. Free content is usually welcomed by users. After the user enters your app, you can then pitch more paid content. See [Best Practices for Recommendations][fire-tv-recommendations-best-practices] for more details.
+Make sure the content you recommend is appropriate for the audience. See [Best Practices for Recommendations][fire-tv-recommendations-best-practices] for more details.
 
 ## Send Recommendations
 
