@@ -7,7 +7,7 @@ toc: false
 github: true
 ---
 
-Login with Amazonコンポーネントを使用すると、ユーザーがメディアの視聴などの特定のアクションを行う前に、Amazonアカウントの認証情報を使ってAmazon Fire TVアプリにログインするよう求めることができます。詳細については、「[Login with Amazon](https://developer.amazon.com/ja/login-with-amazon)」を参照してください。
+Login with Amazonコンポーネントを使用すると、ユーザーがメディアの視聴などの特定のアクションを行う前に、Amazonアカウントの認証情報を使ってAmazon Fire TV対応アプリにログインするよう求めることができます。詳細については、「[Login with Amazon](https://developer.amazon.com/ja/login-with-amazon)」を参照してください。
 
 Amazon Fire TVでは、Fire TVのセットアップおよび登録時に、すでにユーザーに対するAmazonアカウントでのログイン要求が行われているため、このコンポーネントの実際のメリットは、ユーザーがAmazonアカウントでログインできるという点ではありません。このコンポーネントのメリットは、ユーザーに対して、アプリとのAmazonユーザー名とEメールアドレスの共有に同意を求めることができる点です。これにより、ユーザー情報をより詳しく把握できるようになります。
 
@@ -54,9 +54,9 @@ Login with Amazonコンポーネントを構成するには:
 
 1.  他のコンポーネントと同様に、[アプリにコンポーネントをロードする][fire-app-builder-load-a-component]ための通常の手順に従います。
 2.  アプリにロードされている他の認証コンポーネント (AdobepassAuthComponentやFacebookAuthComponentなど) があれば削除します。詳細については、「[コンポーネントを削除する][fire-app-builder-load-a-component#removeacomponent]」を参照してください。
-    
+
     {% include_relative componentnote_authentication.html %}
-    
+
 2.  アプリで**Navigator.json**ファイル (**app > assets**にあります) を開きます。
 3.  ユーザーにログインを求める画面に対して`verifyScreenAccess`値を`true`に設定します。たとえば、ユーザーがメディアを再生する前にログインを求める場合は、次のように`PlaybackActivity`で画面へのアクセスを検証します。
 
@@ -68,7 +68,7 @@ Login with Amazonコンポーネントを構成するには:
     }
     ```
 
-4.  Login with Amazon画面 (図 1) に表示されるテキストを変更するには、**LoginWithAmazonComponent > res > values > strings.xml**の順に移動します。文字列をアプリの**custom.xml**ファイル (res > valuesにあります) にコピーし、文字列値をカスタマイズします。 
+4.  Login with Amazon画面 (図 1) に表示されるテキストを変更するには、**LoginWithAmazonComponent > res > values > strings.xml**の順に移動します。文字列をアプリの**custom.xml**ファイル (res > valuesにあります) にコピーし、文字列値をカスタマイズします。
 
 コンポーネントを詳細に構成するには、Login with AmazonサービスのAPIキーを挿入する必要があります。次のセクションでは、このAPIキーの取得方法について説明します。
 
@@ -111,21 +111,21 @@ Developer Consoleでセキュリティプロフィールを作成した後は、
        ```
        echo 'export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/bin' >> ~/.bash_profile
        ```
-        
+
         Windowsユーザーの場合は、WindowsでPATHにツールを追加する手順に従ってください。
-        
+
 2.  keytoolをPATHに追加したら、debug.keystoreの保存先フォルダーに移動します。このパスは次のようになります。
 
     ````
-    /Users/<your username>/.android/debug.keystore
+    /Users/<ユーザー名>/.android/debug.keystore
     ```
 
-    `<your username>` は自分のユーザー名に置き換えてください。
+    `<ユーザー名>` は自分のユーザー名に置き換えてください。
 
-3.  次のkeytoolコマンドを実行します。その際、`<alias>` は**androiddebugkey**、`<keystore.filename>` は**debug.keystore**に置き換えてください。
+3.  次のkeytoolコマンドを実行します。その際、`<エイリアス>` は**androiddebugkey**、`<キーストアのファイル名>` は**debug.keystore**に置き換えてください。
 
     ````
-    keytool -list -v -alias <alias> -keystore <keystore.filename>
+    keytool -list -v -alias <エイリアス> -keystore <キーストアのファイル名>
     ````
 
     パスワードは**android**です。

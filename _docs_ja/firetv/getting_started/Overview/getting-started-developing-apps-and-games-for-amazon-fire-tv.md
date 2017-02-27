@@ -9,8 +9,7 @@ github: true
 
 Fire TV向けのアプリを開発する際は、まず、Androidアプリとウェブアプリのどちらを作成するのかを決めます。
 
-*  **Androidアプリ**: Android Java開発者は、既存のツール (Android Studioなど) とフレームワーク (Unityなど) を使用して、10 フィートエクスペリエンス向けのアプリやゲームを開発できます。アプリの開発に役立つサンプルコード、ドキュメント、ガイドラインが用意されています。ストリーミングメディアアプリを開発する場合、[Fire App Builder][fire-app-builder-overview] (JavaベースのAndroidスターターキット) を使用して効率的にアプリを作成することができます。
-*  **ウェブアプリ**: HTML5 ウェブ開発者は、Amazon WebViewを利用してアプリやゲームを開発できます。開発の成果物として、[HTML5 ウェブアプリ](https://developer.amazon.com/public/solutions/platforms/webapps)、Fire OSポートを使用する[Cordovaアプリ](https://developer.amazon.com/public/solutions/platforms/cross-platform)、[ハイブリッドアプリ](https://developer.amazon.com/public/solutions/platforms/android-fireos/docs/building-and-testing-your-hybrid-app)のいずれかを選択できます。ストリーミングメディアアプリを開発する場合、[Fire TV向けウェブアプリスターターキット][the-web-app-starter-kit-for-fire-tv]を使用して効率的にアプリを作成することができます。
+*  **Androidアプリ**: Android Java開発者は、既存のツール (Android Studioなど) とフレームワーク (Unityなど) を使用して、10 フィートエクスペリエンス向けのアプリやゲームを開発できます。アプリの開発に役立つサンプルコード、ドキュメント、ガイドラインが用意されています。ストリーミングメディアアプリを開発する場合、[Fire App Builder][fire-app-builder-overview] (JavaベースのAndroidスターターキット) を使用して効率的にアプリを作成することができます。*  **ウェブアプリ**: HTML5 ウェブ開発者は、Amazon WebViewを利用してアプリやゲームを開発できます。開発の成果物として、[HTML5 ウェブアプリ](https://developer.amazon.com/public/solutions/platforms/webapps)、Fire OSポートを使用する[Cordovaアプリ](https://developer.amazon.com/public/solutions/platforms/cross-platform)、[ハイブリッドアプリ](https://developer.amazon.com/public/solutions/platforms/android-fireos/docs/building-and-testing-your-hybrid-app)のいずれかを選択できます。ストリーミングメディアアプリを開発する場合、[Fire TV向けウェブアプリスターターキット][the-web-app-starter-kit-for-fire-tv]を使用して効率的にアプリを作成することができます。
 
 {% include tip.html content="Fire TV向けウェブアプリスターターキット (WASK) とFire App Builderの詳しい比較については、「[Fire TV開発フレームワークの比較][fire-tv-development-framework-comparison]」を参照してください。" %}
 
@@ -21,7 +20,7 @@ Fire TV向けのアプリを開発する際は、まず、Androidアプリとウ
 
 ## Fire TV向けAndroidアプリ開発
 
-JavaでAndroid開発を行っている方のために、Fire TVでも、Android開発で使われているのと同じツール、IDE、APIが使用されています。まずは、「[Fire App Builder][fire-app-builder-overview]」を参照してください。Amazon Fire TVアプリやAndroidアプリをJavaで開発する方法が、初めての方にもわかりやすく説明されています。Fire App Builderは、(ゲームではなく) ストリーミングメディアTVアプリを意図した設計になっています。
+JavaでAndroid開発を行っている方のために、Fire TVでも、Android開発で使われているのと同じツール、IDE、APIが使用されています。まずは、「[Fire App Builder][fire-app-builder-overview]」を参照してください。Amazon Fire TV対応アプリやAndroidアプリをJavaで開発する方法が、初めての方にもわかりやすく説明されています。Fire App Builderは、(ゲームではなく) ストリーミングメディアTVアプリを意図した設計になっています。
 
 独自のアプリをゼロから開発する場合は、次のトピックを参照してください。
 
@@ -37,9 +36,9 @@ Android開発の経験が豊富にある方は、[Fire OSを対象とする開�
 
 HTML5 のウェブアプリをゼロから開発する場合は、「[Fire TV用ウェブアプリの準備][getting-started-with-web-apps-for-fire-tv]」を参照してください。
 
-## Fire TVアプリに使用されるAPI
+## Fire TV対応アプリに使用されるAPI
 
-Fire TVアプリを作成する際、堅牢性を高めるために他のAmazon APIを実装することもできます。
+Fire TV対応アプリを作成する際、堅牢性を高めるために他のAmazon APIを実装することもできます。
 
 *  [アプリ内課金API](https://developer.amazon.com/public/apis/earn/in-app-purchasing): Fire TV端末を購入し、Amazonアカウントに登録すると、自動的にAmazon支払いプロファイルが設定され、その他の設定をすることなく、アプリまたはアプリ内アイテムを購入できるようになります。Amazon Fire TVとFire TV Stickは、Amazonアプリ内課金のAPIをサポートしているため、消費可能アイテムや消費不可アイテムのほか、定期購入もアプリ内で販売することができます。
 *  [Amazon Fling SDK](/apis/experience/fling/docs/understanding-the-amazon-fling-service): Amazon Fling SDKを使用すると、スマートフォンやタブレットに表示される画面を直接テレビに転送することができます。アプリを 2 画面に拡張することにより、複数のユーザーでアプリを利用することができます。

@@ -3,24 +3,26 @@ title: "Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプ�
 permalink: fire-app-builder-overview.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
+github: true
+toc: false
 ---
 
-Fire App Builderに用意されているJavaベースのフレームワークを使用すると、Amazon Fire TV向けのストリーミングメディアAndroidアプリを短時間で簡単に開発できます。 
+Fire App Builderに用意されているJavaベースのフレームワークを使用すると、Amazon Fire TV向けのストリーミングメディアAndroidアプリを短時間で簡単に開発できます。
 
-Fire App Builderでは、ベストプラクティスや各種テクニックをもとにして、Fire TVでの魅力的かつ高品質なメディア体験を構築できるため、すべてのコードを自分で開発する必要はありません。Fire App BuilderのコードはJavaをベースにしており、Android StudioやGradleなど、Androidアプリの開発に広く使用されているツールが使用できます。 
+Fire App Builderでは、ベストプラクティスや各種テクニックをもとにして、Fire TVでの魅力的かつ高品質なメディア体験を構築できるため、すべてのコードを自分で開発する必要はありません。Fire App BuilderのコードはJavaをベースにしており、Android StudioやGradleなど、Androidアプリの開発に広く使用されているツールが使用できます。
 
 Fire App Builderは、Apache 2.0 ライセンスに基づくオープンソースプロジェクトとして、Github ([github.com/amzn/fire-app-builder](https://github.com/amzn/fire-app-builder)) でリリースされています。
 
 * TOC
 {:toc}
 
-## Fire App Builderの操作方法
+## Fire App Builderの利用方法
 
 Fire App Builderでアプリを作成する場合は、複数のJSONファイルを通じてデータフィード、画面レイアウト、および各機能の設定を構成します。また、メディアフィードからカテゴリとコンテンツを取得するクエリ構文の作成も行います。
 
-認証、広告、分析、またはアプリ内課金用に、インターフェースを実装するさまざまなコンポーネントをプラグインとして使用できます。フォント、色、ロゴ、レイアウト、その他の詳細など、アプリのルックアンドフィールをカスタマイズする際は、(Javaで直接コーディングするのではなく) XMLファイルかJSONファイルの一部の値を更新するだけで済みます。 
+認証、広告、分析、またはアプリ内課金用に、インターフェースを実装するさまざまなコンポーネントをプラグインとして使用できます。フォント、色、ロゴ、レイアウト、その他の詳細など、アプリのルックアンドフィールをカスタマイズする際は、(Javaで直接コーディングするのではなく) XMLファイルかJSONファイルの一部の値を更新するだけで済みます。
 
-このように、Fire App Builderでは、Javaプログラミングを行わずに高品質なアプリを短時間で開発できます。Fire App Builderのコンポーネントの大部分はモジュール形式であるため、より高度な機能でFire App Builderを拡張したい場合は、Fire App Builderを基礎フレームワークとして使用し、その上に高度な機能を構築することができます。 
+このように、Fire App Builderでは、Javaプログラミングを行わずに高品質なアプリを短時間で開発できます。Fire App Builderのコンポーネントの大部分はモジュール形式であるため、より高度な機能でFire App Builderを拡張したい場合は、Fire App Builderを基礎フレームワークとして使用し、その上に高度な機能を構築することができます。
 
 ## Fire App Builderのサンプルアプリ
 
@@ -32,13 +34,13 @@ Fire App Builderのサンプルアプリには、Lightcastによる汎用のビ�
 
 ## Fire App Builderの対象者
 
-Fire App Builderは、NetflixやHuluのようにストリーミングメディアアセットを保有し、自社のコンテンツをFire TVやその他のAndroid TVプラットフォームを通じてオンラインで提供したいと考えている企業向けに設計されています。メディアアセット (映画やテレビ番組などのビデオコンテンツ) を公開するためのビデオフィードがある場合には最適な開発ツールです。 
+Fire App Builderは、NetflixやHuluのようにストリーミングメディアアセットを保有し、自社のコンテンツをFire TVやその他のAndroid TVプラットフォームを通じてオンラインで提供したいと考えている企業向けに設計されています。メディアアセット (映画やテレビ番組などのビデオコンテンツ) を公開するためのビデオフィードがある場合には最適な開発ツールです。
 
-メディアフィードにはJSONまたはXMLを使用できますが、YoutubeチャネルやVimeoチャネルではなく独自のフィードを用意する必要があります(XMLの場合は、iTunesに送信するようなメディアRSSフィードを使用できます)。フィードはどのような構造でもかまいません。フィードからカテゴリとコンテンツを選択するにはクエリ構文を使用します。 
+メディアフィードにはJSONまたはXMLを使用できますが、YoutubeチャネルやVimeoチャネルではなく独自のフィードを用意する必要があります(XMLの場合は、iTunesに送信するようなメディアRSSフィードを使用できます)。フィードはどのような構造でもかまいません。フィードからカテゴリとコンテンツを選択するにはクエリ構文を使用します。
 
 また、Fire App BuilderではAndroid Studioを使用してファイルを構成する必要があるため、(HTML5 ウェブテクノロジーではなく) JavaベースのAndroidを使用したアプリ制作を好むような開発者が対象となります。Fire App Builderのフレームワークを基盤として、より高性能のアプリを作成することもできます。Fire App Builderは、本質的にはAndroid Java開発者向けのFire TV SDKです。
- 
-コーディングではなくコンテンツ制作を担当している場合や、自分のYoutubeビデオ用のFire TVアプリを構築したい場合、またはAndroid Studioでのコーディングに慣れていない場合 (プログラミングスキルは不要ですが) は、代わりに[Fire TV用ウェブアプリスターターキット](the-web-app-starter-kit-for-fire-tv)の使用を検討してください。
+
+コーディングではなくコンテンツ制作を担当している場合や、自分のYoutubeビデオ用のFire TV対応アプリを構築したい場合、またはAndroid Studioでのコーディングに慣れていない場合 (プログラミングスキルは不要ですが) は、代わりに[Fire TV用ウェブアプリスターターキット](the-web-app-starter-kit-for-fire-tv)の使用を検討してください。
 
 ## Fire App Builderの使用条件 {#requirements}
 
@@ -62,13 +64,13 @@ Fire App Builderは以下の機能を備えています。
 
 ## Fire TVの用語と端末
 
-"[Fire TV](https://www.amazon.com/dp/B00U3FPN4U)" はFire TVボックスを表し、"[Fire TV Stick](https://www.amazon.com/dp/B00ZV9RDKK)" はスティックバージョンのFire TVを表します。 
+"[Fire TV](https://www.amazon.com/dp/B00U3FPN4U)" はFire TVボックスを表し、"[Fire TV Stick](https://www.amazon.com/dp/B00ZV9RDKK)" はスティックバージョンのFire TVを表します。
 
-「[端末およびプラットフォームの仕様][device-and-platform-specifications]」で各端末の仕様を比較できます。処理能力と処理速度はFire TVの方が優れていますが、2 つの端末はどちらも同じFire OSを搭載しており、エンドユーザーの観点ではほとんど差がありません。各端末には 2 つの世代があり、第 2 世代が最新です。 
+「[Fire TV端末の仕様][device-and-platform-specifications]」で各端末の仕様を比較できます。処理能力と処理速度はFire TVの方が優れていますが、2 つの端末はどちらも同じFire OSを搭載しており、エンドユーザーの観点ではほとんど差がありません。各端末には 2 つの世代があり、第 2 世代が最新です。
 
-Fire TVは、[Gaming Edition](https://www.amazon.com/Amazon-Fire-TV-Gaming-Edition-Streaming-Media-Player/dp/B00XNQECFM)も提供されています。また、専用の[ゲームコントローラ](https://www.amazon.com/Amazon-Fire-Game-Controller-Alexa/dp/B00NO8LX7E)を購入してFire TV Stickとともに使用することもできます。Fire TV Stick (第 2 世代) にはデフォルトでVoice Remoteが付属していますが、Fire TV Stick (第 1 世代) ではVoice Remoteがオプションとして提供されます。
+Fire TVは、[Gaming Edition](https://www.amazon.com/Amazon-Fire-TV-Gaming-Edition-Streaming-Media-Player/dp/B00XNQECFM)も提供されています。また、専用の[ゲームコントローラー](https://www.amazon.com/Amazon-Fire-Game-Controller-Alexa/dp/B00NO8LX7E)を購入してFire TV Stickとともに使用することもできます。Fire TV Stick (第 2 世代) にはデフォルトでVoice Remoteが付属していますが、Fire TV Stick (第 1 世代) ではVoice Remoteがオプションとして提供されます。
 
-## 始めるにあたって開始
+## 始めるにあたって
 
 Fire App Builderを使用してアプリ開発を始めるには、Fire App Builderによるアプリ開発に必要な手順がまとめられている「[アプリを作成するための一連のプロセス][fire-app-builder-end-to-end-process]」を参照してください。
 

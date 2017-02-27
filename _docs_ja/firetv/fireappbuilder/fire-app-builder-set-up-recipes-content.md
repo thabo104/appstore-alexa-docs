@@ -7,7 +7,7 @@ toc: false
 github: true
 ---
 
-[カテゴリの構成][fire-app-builder-set-up-recipes-categories]では、メディアの一般的なグループを構成しました。この手順では、フィードのコンテンツ (タイトル、説明、画像、ビデオURLなど) をFire App Builderのコンテンツモデルにマップします。レシピ構成の概要については、「[レシピ構成の概要][fire-app-builder-set-up-recipes-overview]」を参照してください。
+[カテゴリの構成][fire-app-builder-set-up-recipes-categories]では、メディアの一般的なグループを構成しました。この手順では、フィードのコンテンツ (タイトル、説明、画像、ビデオURLなど) をFire App Builderのコンテンツモデルにマップします。レシピ構成の概要については、「[レシピの構成について][fire-app-builder-set-up-recipes-overview]」を参照してください。
 
 * TOC
 {:toc}
@@ -16,8 +16,8 @@ github: true
 
 1.  **LightCastContentsRecipe.json**ファイル (**app** > **assets** > **recipes**にあります) を開きます。
 2.  次の表の説明に従って、ファイルの値を構成します。パラメータの詳細な説明が必要な場合は、表の下の各セクションを参照してください。
-    
-    <table class="grid">
+
+    <table>
     <colgroup>
     <col width="20%" />
     <col width="80%" />
@@ -53,28 +53,28 @@ github: true
     <td markdown="1">データのコンテンツモデルを指定します。コンテンツモデルは、コンテンツの構造を指定し、それをFire App Builder UIにマップするためのものです。これは、デフォルトの`com.amazon.android.model.content.Content`のままにしてください。
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`modelType`
     </td>
     <td markdown="1">{% include_relative recipe_modeltype.md %}
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`query`
     </td>
-    <td markdown="1">{% include_relative recipe_query.md type="content" %} 
+    <td markdown="1">{% include_relative recipe_query.md type="content" %}
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`queryResultType`
     </td>
     <td markdown="1">{% include_relative recipe_queryresulttype.md %}
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`matchList`
     </td>
@@ -95,7 +95,7 @@ JSONフィードの構文は、XMLフィードとはかなり異なります。�
 
 #### JSONフィード {#queryjson}
 
-Fire App Builderのサンプルアプリでは、`query`の値は`$[?(@.categories[0] in [$$par0$$])]`になっています。カテゴリレシピの`query`パラメータと同様、これは (大部分が) [Jayway JsonPath](https://github.com/jayway/JsonPath)構文です。この構文では、[Jayway JsonPathフィルター演算子](https://github.com/jayway/JsonPath#filter-operators)を使用して、位置 0 に 1 つ以上のアイテムがある`categories`配列内のアイテムを選択します。 
+Fire App Builderのサンプルアプリでは、`query`の値は`$[?(@.categories[0] in [$$par0$$])]`になっています。カテゴリレシピの`query`パラメータと同様、これは (大部分が) [Jayway JsonPath](https://github.com/jayway/JsonPath)構文です。この構文では、[Jayway JsonPathフィルター演算子](https://github.com/jayway/JsonPath#filter-operators)を使用して、位置 0 に 1 つ以上のアイテムがある`categories`配列内のアイテムを選択します。
 
 このクエリは、使用するフィード構文に合わせてカスタマイズする必要があります。そのため、前の手順に戻って、この構文についてもう少し詳しく見てみましょう。サンプルの[Lightcastフィード](http://www.lightcast.com/api/firetv/channels.php?app_id=263&app_key=4rghy65dcsqa&action=channels_videos) (Fire App Builderのサンプルアプリで使用されるフィード) は、次のような構造になっています。
 
@@ -266,11 +266,11 @@ Jayway JsonPath Evaluatorでは「in `[$$par0$$]`」を追加しても解釈さ�
 $.assets[?(@.type == 'movie.Container' && @.assetId in $$par0$$)]
 ```
 
-このクエリでは、ルート (`$`) で開始し、1 つ目のディレクトリレベル (`.`) で`assets`という名前のオブジェクトを検索し、配列をフィルタリングして、`movie.Container`と等しく`assetId`要素が含まれた`type`オブジェクトを取得するように指定されています。 
+このクエリでは、ルート (`$`) で開始し、1 つ目のディレクトリレベル (`.`) で`assets`という名前のオブジェクトを検索し、配列をフィルタリングして、`movie.Container`と等しく`assetId`要素が含まれた`type`オブジェクトを取得するように指定されています。
 
 #### XMLフィード {#queryxml}
 
-フィードがXMLの場合は、Jayway JsonPathを使用する代わりに、[XPath式](http://www.w3schools.com/xsl/xpath_syntax.asp)を使用して、フィードの各要素をターゲットにする必要があります。XPathでは、XML文書が "ノード" と呼ばれるさまざまなアイテムを用いた構造に変換されます。XPath構文は各ノードの位置を特定するための構文です。 
+フィードがXMLの場合は、Jayway JsonPathを使用する代わりに、[XPath式](http://www.w3schools.com/xsl/xpath_syntax.asp)を使用して、フィードの各要素をターゲットにする必要があります。XPathでは、XML文書が "ノード" と呼ばれるさまざまなアイテムを用いた構造に変換されます。XPath構文は各ノードの位置を特定するための構文です。
 
 Jayway JsonPath構文とは異なり、XMLフィードの構文は、はるかにシンプルです。
 
@@ -286,7 +286,7 @@ Jayway JsonPath構文とは異なり、XMLフィードの構文は、はるか�
         <author>Sample Author name</author>
         <category>Gadgets</category>
         </item>
-        
+
         <item>
         <title>Sample Title 2</title>
         <pubDate>Mon, 24 Oct 2016 09:24:12 PDT</pubDate>
@@ -310,7 +310,7 @@ XPathクエリの作成方法の詳細については、「[XMLでクエリを�
 
 ### matchListパラメータ {#matchlistparameter}
 
-`matchList`パラメータは、クエリの結果から特定のプロパティを選択して、Fire App Builderのコンテンツモデルにマップします。`matchList`で使用される構文は、特定の要素をターゲットにするカスタムのFire App Builder構文です。 
+`matchList`パラメータは、クエリの結果から特定のプロパティを選択して、Fire App Builderのコンテンツモデルにマップします。`matchList`で使用される構文は、特定の要素をターゲットにするカスタムのFire App Builder構文です。
 
 Fire App Builderのサンプルアプリの場合、コンテンツレシピの値は、タイトル、ID、説明、メディア、および画像をFire App Builderのコンテンツモデルにマップするプロパティマッピングの配列です。サンプルアプリの`matchlist`パラメータの記述内容を次に示します。
 
@@ -329,7 +329,7 @@ Fire App Builderのサンプルアプリの場合、コンテンツレシピの�
 
 次の表は、フィードのプロパティまたは要素をマップできるFire App Builderの要素を示しています。
 
-<table class="grid">
+<table>
 <colgroup>
 <col width="20%" />
 <col width="60%" />
@@ -415,7 +415,7 @@ Fire App Builderのサンプルアプリの場合、コンテンツレシピの�
 <tr>
 <td markdown="1">`tags`
 </td>
-<td markdown="1">お勧めのコンテンツを関連付けるために使用されます。詳細については、「[お勧めのコンテンツ (タグを使用)](#tags)」を参照してください。
+<td markdown="1">おすすめコンテンツを関連付けるために使用されます。詳細については、「[おすすめコンテンツ (タグを使用)](#tags)」を参照してください。
 </td>
 <td markdown="1">
 省略可能
@@ -530,7 +530,7 @@ XMLを使用する例を見てみましょう。XMLフィードの内容が次�
     <description>Screenfeed Content Server</description>
     <lastBuildDate>Mon, 08 Dec 2014 22:55:16 GMT</lastBuildDate>
 <ttl>5</ttl>
- 
+
     <item>
       <title>John Anderson ……</title>
       <guid isPermaLink="false">1</guid>
@@ -542,7 +542,7 @@ XMLを使用する例を見てみましょう。XMLフィードの内容が次�
         <media:thumbnail url="http://samples.screenfeed.com/public/us-news-in-pictures/1080x1920/h9xnRIN9CUGiTWNQBBrjOw-1080x1920h-1.jpg" />
       </media:content>
 </item>
- 
+
 ...
 
   </channel>
@@ -586,7 +586,7 @@ XMLを使用する例を見てみましょう。XMLフィードの内容が次�
         <category>Technology</category>
         <category>Gadgets</category>
         </item>
-        
+
         <item>
         <title>Sample Title 2</title>
         <pubDate>Wed, 23 Oct 2016 08:33:12 PDT</pubDate>
@@ -613,7 +613,7 @@ XMLを使用する例を見てみましょう。XMLフィードの内容が次�
 
 #### 画像の解像度 {#imageresolution}
 
-アプリのメディアには、画像カードと背景画像という 2 つの画像を使用できます。この 2 種類の画像は異なる場所で使用され、各画像が使用されるコンテナも少し異なります。 
+アプリのメディアには、画像カードと背景画像という 2 つの画像を使用できます。この 2 種類の画像は異なる場所で使用され、各画像が使用されるコンテナも少し異なります。
 
 次のスクリーンショットは、[Content Home] 画面における 2 つの画像の違いを示しています。
 
@@ -630,13 +630,13 @@ XMLを使用する例を見てみましょう。XMLフィードの内容が次�
 
 Fire App Builderによって画像がトリミングされる場合は、アスペクト比を維持するために、画像の両端がトリミングされます (中心がフォーカスされます)。
 
-#### お勧めのコンテンツ (タグを使用) {#tags}
+#### おすすめコンテンツ (タグを使用) {#tags}
 
-ビデオの下には [Recommended Content] セクションがあり、同じタグを持つ他のビデオが表示されます。
+ビデオの下には [おすすめコンテンツ] セクションがあり、同じタグを持つ他のビデオが表示されます。
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="png" alt="お勧めのコンテンツ" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="png" alt="おすすめコンテンツ" %}
 
-[アプリの [Recommended Content] セクション][fire-app-builder-customize-look-and-feel#recommendations]にコンテンツを追加するには、`matchList`パラメータでタグを対応させる必要があります。たとえば、次のように指定します。
+[アプリの [おすすめコンテンツ] セクション][fire-app-builder-customize-look-and-feel#recommendations]にコンテンツを追加するには、`matchList`パラメータでタグを対応させる必要があります。たとえば、次のように指定します。
 
 ```json
 common/tags@tags
@@ -644,7 +644,7 @@ common/tags@tags
 
 ここでは、`tags`要素が`common`要素の内部にあります。この構文によって`common/tags`が`tags`に変換されます。これにより、Fire App Builderは`tags`を読み取って、関連するメディアオブジェクトを表示できます。
 
-Fire App BuilderのサンプルアプリのLightCastフィードには、タグが含まれていないことに注意してください。お勧めのコンテンツを表示したいが、フィードにタグが含まれていない場合は、フォールバックパラメータを`true`に設定してください。
+Fire App BuilderのサンプルアプリのLightCastフィードには、タグが含まれていないことに注意してください。おすすめコンテンツを表示したいが、フィードにタグが含まれていない場合は、フォールバックパラメータを`true`に設定してください。
 
 (アプリの**assets**フォルダーにある) Navigator.jsonファイルには、`config`オブジェクトに`categoryDefaultRecommendation`という名前のプロパティが含まれています。
 
@@ -656,14 +656,14 @@ Fire App BuilderのサンプルアプリのLightCastフィードには、タグ�
   }
 </pre>
 
-この`categoryDefaultRecommendation`を`true`に設定すると、Fire App Builderでは、(同じタグを持つコンテンツを取得する代わりに) 同じカテゴリの他のメディアアセットをお勧めのコンテンツとして使用します。
+この`categoryDefaultRecommendation`を`true`に設定すると、Fire App Builderでは、(同じタグを持つコンテンツを取得する代わりに) 同じカテゴリの他のメディアアセットをおすすめコンテンツとして使用します。
 
-{% include note.html content="現時点では、多くのアイテムに同じタグが付けられている場合、(フィードのタグに基づいて行われる) お勧めコンテンツのマッチングにおいて、コンテンツが無制限にマッチングされます。これは既知の制限/バグです。"%}
+{% include note.html content="現時点では、多くのアイテムに同じタグが付けられている場合、(フィードのタグに基づいて行われる) おすすめコンテンツのマッチングにおいて、コンテンツが無制限にマッチングされます。これは既知の制限/バグです。"%}
 
-[Recommended Content] セクションを非表示にするには、Navigator.jsonで`showRecommendedContent`をfalseに設定します。
+[おすすめコンテンツ] セクションを非表示にするには、Navigator.jsonで`showRecommendedContent`をfalseに設定します。
 
 ## 次のステップ
 
-アプリのメディアフィードのカテゴリとコンテンツを構成できたところで、続いては、フィードをアプリのUIに関連付ける必要があります。「[Navigatorの構成の概要][fire-app-builder-configure-navigator]」を参照してください。
+アプリのメディアフィードのカテゴリとコンテンツを構成できたところで、続いては、フィードをアプリのUIに関連付ける必要があります。「[Navigatorの構成について][fire-app-builder-configure-navigator]」を参照してください。
 
 {% include links.html %}

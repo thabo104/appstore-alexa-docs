@@ -1,5 +1,5 @@
 ---
-title: Navigatorの構成の概要
+title: Navigatorの構成について
 permalink: fire-app-builder-configure-navigator.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder

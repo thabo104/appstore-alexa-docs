@@ -3,10 +3,12 @@ title: よくある質問
 permalink: fire-app-builder-questions-and-answers.html
 toc: false
 github: true
+---
 sidebar: fireappbuilder_ja
 product: Fire App Builder
 toc: false
 github: true
+---
 ---
 
 Fire App Builderに関する一般的な質問を以下に示します。 
@@ -26,7 +28,7 @@ Google Adsを実装するにはどうすればよいですか。
 Fire App Builderはライブフィードをサポートしていますか。
 :   はい。フィードから、どのようなメディアでも表示することができます。フィード内に有効なメディア (ライブまたは録画済みメディア) があれば、Fire App Builderで作成されたアプリで再生できます。詳細については、「[ライブストリーミングを構成する][fire-app-builder-live-stream-configuration]」を参照してください。
 
-アプリを開発するためには、実際のFire TVデバイスが必要ですか。
+アプリを開発するためには、実際のFire TV端末が必要ですか。
 :   開発とテストでは実際のデバイスを使用することを強く推奨しますが、[エミュレーターを使用する][fire-app-builder-use-an-android-tv-emulator]こともできます (一部制限あり)。
 
 Fire App Builderとウェブアプリケーションスターターキット (WASK) の違いは何ですか。

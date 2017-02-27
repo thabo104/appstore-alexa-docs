@@ -87,7 +87,7 @@ Element='<p pid="1">My category</p>'
       <image>https://raw.githubusercontent.com/amzn/web-app-starter-kit-for-fire-tv/master/src/common/assets/images/l3.jpg</image>
       <category>Sports</category>
     </item>
- 
+
   </channel>
 </rss>
 
@@ -114,7 +114,7 @@ Text='Sports'
     <description>Screenfeed Content Server</description>
     <lastBuildDate>Mon, 08 Dec 2014 22:55:16 GMT</lastBuildDate>
 <ttl>5</ttl>
- 
+
     <item>
       <title>Taylor Swift</title>
       <guid isPermaLink="false">1</guid>
@@ -126,7 +126,7 @@ Text='Sports'
         <media:thumbnail url="http://samples.screenfeed.com/public/us-news-in-pictures/1080x1920/h9xnRIN9CUGiTWNQBBrjOw-1080x1920h-1.jpg" />
       </media:content>
     </item>
-    
+
     <item>
       <title>Melanie Martinez</title>
       <guid isPermaLink="false">1</guid>
@@ -141,7 +141,7 @@ Text='Sports'
   </channel>
 </rss>
 ```
- 
+
 `rss/channel/item/category/text()` のクエリの結果は次のようになります。
 
 ```xml
@@ -176,5 +176,5 @@ Element='<item>
   </media:content>
 </item>'
 ```
- 
+
 {% include links.html %}

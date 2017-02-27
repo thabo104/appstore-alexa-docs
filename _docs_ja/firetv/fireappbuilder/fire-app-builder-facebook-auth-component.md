@@ -58,9 +58,9 @@ Facebookアプリを作成するには:
 8. 左側のサイドバーの [**PRODUCTS**] の下で、[**+Add Product**] をクリックします。
 9.  [**Facebook Login**] の横にある、[**Get Started**] をクリックします。
 10.  [**Client OAuth Settings**] セクションで、[**Login from Devices**] を有効にします。
-    
+
     {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_fbloginsetting" type="png" caption="Facebookアプリ向けのクライアントOAuth設定" %}
-    
+
 11. [**Save Changes**] をクリックします。
 12. 左側のサイドバーで、[**Settings**] > [**Basic**] の順にクリックします。**アプリのID**を便利な場所にコピーします。
 13. 左側のサイドバーで、[**Settings**] > [**Advanced**] の順にクリックします。**クライアントトークン**を便利な場所にコピーします。
@@ -71,7 +71,7 @@ Fire App BuilderのサンプルアプリではFacebook認証コンポーネン�
 
 1.  Fire App Builderに組み込まれたサンプルアプリではFacebook認証コンポーネントがすでにロードされています。更新を行ったためにロードされていない場合は、「[アプリにコンポーネントをロードする][fire-app-builder-load-a-component]」を参照してください。
 2.  アプリにロードされている他の認証コンポーネント (AdobepassAuthComponentやLoginWithAmazonComponentなど) があれば削除します。詳細については、「[コンポーネントを削除する][fire-app-builder-load-a-component#removeacomponent]」を参照してください。
-    
+
     {% include_relative componentnote_authentication.html %}
 
 ## 手順 3. FacebookアプリIDとトークン値を暗号化する {#step3}
@@ -80,11 +80,11 @@ Fire App BuilderのサンプルアプリではFacebook認証コンポーネン�
 
 1.  **FacebookAuthComponent > res > values**フォルダーを展開し、**strings.xml**ファイルを開きます。
 2.  次の文字列をコピーして、アプリの**custom.xml**ファイルに貼り付けます。
-    
+
     ```xml
     <string name="encrypted_fb_client_token">YOUR_ENCRYPTED_FB_APP_CLIENT_TOKEN</string>
     <string name="encrypted_fb_app_id">YOUR_ENCRYPTED_FB_APP_ID</string>
-    
+
     <string name="fb_key_1">fb_random_key_1</string>
     <string name="fb_key_2">fb_random_key_2</string>
     <string name="fb_key_3">fb_random_key_3</string>
@@ -92,13 +92,13 @@ Fire App BuilderのサンプルアプリではFacebook認証コンポーネン�
     <string name="fb_key_5">fb_random_key_5</string>
     <string name="fb_key_6">fb_random_key_6</string>
     ```
-     
+
      {% include tip.html content="今後の更新を組み込む際のベストプラクティスとして、このコンポーネントのXMLファイルからアプリのcustom.xmlファイルに値をコピーします。アプリのXML値によって、コンポーネントのXMLファイルのすべての値が上書きされます。" %}
-      
+
      `encrypted_authentication_client_token`は、Facebookアプリの作成時に生成した、暗号化されたクライアントトークンです。`encrypted_authentication_app_id`は、暗号化されたFacebookアプリIDです。これらの値の暗号化は、この後の手順で行います。暗号の作成にはランダムなキーを使用します。
-    
+
 3.  これらの`fb_key_[#]` 値ごとにランダムな英数字の文字列を入力します。例:
-    
+
     ```xml
     <string name="fb_key_1">odysseusgrEEk2000bc</string>
     <string name="fb_key_2">helengreekFAce5000ships</string>
@@ -107,12 +107,12 @@ Fire App BuilderのサンプルアプリではFacebook認証コンポーネン�
     <string name="fb_key_5">calypsoIslandShipBLLd99</string>
     <string name="fb_key_6">athenazeusEPICodysseY77</string>
     ```
-    
+
 4.  Androidビューで、**Utils > java > com > amazon > utils > security**フォルダーを展開し、**ResourceObfuscationStandaloneUtility**クラスを開きます。
-5.  `getRandomStringsForKey()` メソッドで、`fb_key_1`、`fb_key_2`、`fb_key_3` に対して使用した値をそれぞれ入力します。 
-    
+5.  `getRandomStringsForKey()` メソッドで、`fb_key_1`、`fb_key_2`、`fb_key_3` に対して使用した値をそれぞれ入力します。
+
     たとえば、上記のうち最初の 3 つのキーが前述のコードサンプルに表示されている場合は、次のように入力します。
-        
+
     ```java
     private static String[] getRandomStringsForKey() {
 
@@ -123,18 +123,18 @@ Fire App BuilderのサンプルアプリではFacebook認証コンポーネン�
         };
     }
     ```
-    
+
     この例の各値は次のとおりです。
-     
+
     *  `odysseusgrEEk2000bc`は、`fb_key_1` に使用されている値です。
     *  `helengreekFAce5000ships`は、`fb_key_2` に使用されている値です。
     *  `homer@1storyTllr20` は、`fb_key_3` に使用されている値です。
-    
+
 6.  `getRandomStringsForIv()` メソッドで、`fb_key_4`、`random_key_5`、`random_key_6` に対して使用した値をそれぞれ入力します。例:
-    
+
     ```java
         private static String[] getRandomStringsForIv() {
-    
+
             return new String[]{
                     "latinusOdysseusson332",
                     "calypsoIslandShipBLLd99",
@@ -143,46 +143,46 @@ Fire App BuilderのサンプルアプリではFacebook認証コンポーネン�
         }
     }
     ```
-    
+
     この例の各値は次のとおりです。
-     
+
     *  `latinusOdysseusson332` は、`fb_key_4` に使用されている値です。
     *  `calypsoIslandShipBLLd99` は、`fb_key_5` に使用されている値です。
 *  `athenazeusEPICodysseY77` は、`fb_key_6` の値です。
-    
+
 7.  `getPlainTextToEncrypt()` メソッドで、`Encrypt_this_text`の代わりに、次のようにFacebookクライアントトークンを挿入します。
-    
+
     ```java
      private static String getPlainTextToEncrypt() {
             return "Encrypt_this_text";
         }
     ```
-    
+
 8.  **ResourceObfuscationStandaloneUtility.java**ファイルを右クリックして、**Run 'ResourceObfusc...main()** を選択します。
-    
- 
+
+
 9.  暗号化された結果がコンソールに出力されていることを確認します。この結果は次のようになります。
 
     ```
     Encrypted version of plain text 123456789 is mTWxLhZeHslQFwpN3irjfQ==
     ```
-    
+
 10.  アプリの**custom.xml**ファイルにある`encrypted_fb_client_token`文字列の値に、暗号化されたアプリのIDをコピーして貼り付けます。例:
-                                                                                        
+
     ```xml
     <string name="encrypted_fb_client_token">rneiu89EIxnk9489faoPoaQ</string>
     <string name="encrypted_fb_app_id">YOUR_ENCRYPTED_FB_APP_ID</string>
     ```
-    
+
 11. FacebookアプリIDを`getPlainTextToEncrypt()` メソッドに挿入し、(同じランダムな文字列を使用して) もう一度スクリプトを実行します。アプリの**custom.xml**ファイルの`encrypted_fb_app_id`文字列値に、暗号化されたキーをコピーします。例:
-    
+
     ```xml
     <string name="encrypted_adobe_pass_public_key">gnobHJEIxnkBMobJk7mBaQ==</string>
     <string name="encrypted_adobe_pass_private_key">AQ/9Qtc26GzLVSHRe1ftPw==</string>
     ```
-    
+
     {% include tip.html content="ランダムなキーは会社のWikiなど安全な場所に保存し、いつでも簡単に取得するできるようにします。これらのキーは値の暗号化解除に必要です。" %}
-      
+
 ## 手順 4. ユーザーにログインを求めるタイミングを決定する{#step4}
 
 Facebookにログインするようユーザーに求める画面を構成できます。
@@ -197,7 +197,7 @@ Facebookにログインするようユーザーに求める画面を構成でき
       "onAction": "CONTENT_RENDERER_SCREEN"
     }
     ```
-    
+
     これで、ユーザーはアプリを起動してメディアを視聴しようとすると、ログインするよう求められます。
 
 ## 手順 5.UIテキストをカスタマイズする{#step5}
@@ -214,19 +214,19 @@ Facebookにログインするようユーザーに求める画面を構成でき
     <string name="later">Later</string>
     ```
 3.  文字列値をカスタマイズします。
-    
+
 ## ユーザーがログインを延期できないようにする
-    
+
 デフォルトでは、ユーザーはFacebookへのログインを延期できます。現在、ユーザーがこの画面で [**Later**] をクリックしても、実際には後でログインを求められることがありません。これはバグです。ユーザーがFacebookへのログインを延期できないようにするには:
 
 1.  **FacebookAuthComponent > res > values**フォルダーを展開して、**custom.xml**ファイルを開きます。
 2.  アプリの**custom.xml**ファイル (res > valuesにあります) に次の文字列をコピーします。
-    
+
     ```xml
     <bool name="is_authentication_can_be_done_later">true</bool>
     ```
-    
-3.  文字列の値を`false`に変更します。 
+
+3.  文字列の値を`false`に変更します。
 
 ## Facebook認証コンポーネントのアクションをログで確認する
 

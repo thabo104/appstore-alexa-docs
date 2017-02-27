@@ -1,7 +1,6 @@
 ---
 title: Fire TV端末の仕様
 permalink: device-and-platform-specifications.html
-toc: false
 navtabs: true
 sidebar: firetv_ja
 product: Fire TV
@@ -10,10 +9,10 @@ github: true
 ---
 
 {% if site.target == "hippo" %}
-<style> 
-ul#profileTabs.nav.nav-tabs li { 
-    margin: 5px; 
-} 
+<style>
+ul#profileTabs.nav.nav-tabs li {
+    margin: 5px;
+}
 
 ul#profileTabs.nav:after, ul#profileTabs.nav:before {
     display: inline-table !important;
@@ -23,8 +22,8 @@ ul#profileTabs.nav:after, ul#profileTabs.nav:before {
 ul#profileTabs.nav-tabs>li.active>a, ul#profileTabs.nav-tabs>li.active>a:focus, ul#profileTabs.nav-tabs>li.active>a:hover {
 font-weight: bold;
 }
-    
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) 
+
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
 { @media {
 ul#profileTabs.nav.nav:after, ul#profileTabs.nav.nav:before {
     display: inline-table !important;
@@ -60,9 +59,9 @@ margin-bottom: 30px;
 
 <ul id="profileTabs" class="nav nav-tabs">
    <li class="active"><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick (第 2 世代)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV (Gen. 2)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV (第 2 世代)</a></li>
     <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick (第 1 世代)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV (Gen. 1)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV (第 1 世代)</a></li>
 </ul>
 
   <div class="tab-content">
@@ -71,7 +70,7 @@ margin-bottom: 30px;
 
 {% include_relative specs_firetvstickgen2.md %}
 </div>
-  
+
 <div role="tabpanel" class="tab-pane" id="firetvgen2">
 {% include_relative specs_firetvgen2.md %}
 </div>
@@ -88,7 +87,7 @@ margin-bottom: 30px;
 
 ## すべてのFire TV端末
 
-### リモコンとゲームコントローラ
+### リモコンとゲームコントローラー
 
 {% include_relative specs_remotes.md %}
 

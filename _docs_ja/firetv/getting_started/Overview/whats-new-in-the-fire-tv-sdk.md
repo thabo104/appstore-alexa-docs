@@ -12,7 +12,7 @@ github: true
 
 ### Fire TVのユーザーインターフェースの更新
 
-Fire TV第 2 世代端末のインターフェースが更新されました。ビデオのトレーラーやコンテンツのスクリーンショットが表示され、視聴者は観たい内容にすばやくアクセスできるようになり、これまで以上に魅力的な映画体験が得られます。ホームページのお勧めコンテンツ行にサードパーティ製のアプリを表示することもできます。ユーザー補助機能は、VoiceViewスクリーンリーダーを使ってFire TVや対応アプリを利用できるように強化されています([プレスリリース](http://phx.corporate-ir.net/phoenix.zhtml?c=176060&p=irol-newsArticle&ID=2206525)を参照)。
+Fire TV第 2 世代端末のインターフェースが更新されました。ビデオのトレーラーやコンテンツのスクリーンショットが表示され、視聴者は観たい内容にすばやくアクセスできるようになり、これまで以上に魅力的な映画体験が得られます。ホームページのおすすめコンテンツ行にサードパーティ製のアプリを表示することもできます。ユーザー補助機能は、VoiceViewスクリーンリーダーを使ってFire TVや対応アプリを利用できるように強化されています([プレスリリース](http://phx.corporate-ir.net/phoenix.zhtml?c=176060&p=irol-newsArticle&ID=2206525)を参照)。
 
 最新のUIに必要な新しいFire TVアセットをアップロードする方法については、「[Image Guidelines for App Submission](/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets)」を参照してください。第 1 世代の端末には、このユーザーインターフェースの更新が少し遅れて適用されます。
 

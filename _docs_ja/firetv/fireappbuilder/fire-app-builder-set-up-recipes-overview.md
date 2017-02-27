@@ -1,5 +1,5 @@
 ---
-title: レシピ構成の概要
+title: レシピの構成について
 permalink: fire-app-builder-set-up-recipes-overview.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
@@ -16,11 +16,11 @@ github: true
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_home" type="png" alt="ホーム画面の代替" caption="メディアをグループ化するカテゴリ。" %}
 
-通常は、メディアフィードごとに構造が異なります (たとえば、"categories" の代わりに "channels" 、"image" の代わりに "img" が使用されていることもあれば、階層や構造が異なっている場合もあります)。そのため、使用するフィードのカテゴリとコンテンツをターゲットにするクエリ構文を作成する必要があります。 
+通常は、メディアフィードごとに構造が異なります (たとえば、"categories" の代わりに "channels" 、"image" の代わりに "img" が使用されていることもあれば、階層や構造が異なっている場合もあります)。そのため、使用するフィードのカテゴリとコンテンツをターゲットにするクエリ構文を作成する必要があります。
 
 フィードがJSONの場合は、[Jayway JsonPath構文](https://github.com/jayway/JsonPath)を使用してクエリを作成します。フィードがXMLの場合は、[XPath構文](http://www.w3schools.com/xsl/xpath_syntax.asp)を使用してクエリを作成します。
 
-カテゴリとコンテンツに対してクエリを実行した後、セレクターを適用して、結果からカテゴリまたはコンテンツのテキストを取得します。このセレクターは、`matchList`というFire App Builderのカスタム構文で、Jayway JsonPath式やXPath式は使用されません。 
+カテゴリとコンテンツに対してクエリを実行した後、セレクターを適用して、結果からカテゴリまたはコンテンツのテキストを取得します。このセレクターは、`matchList`というFire App Builderのカスタム構文で、Jayway JsonPath式やXPath式は使用されません。
 
 ## 次のステップ
 

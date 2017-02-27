@@ -1,5 +1,5 @@
 ---
-タイトル: アプリの概要
+タイトル: アプリの概要を確認する
 permalink: fire-app-builder-app-tour.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
@@ -42,15 +42,15 @@ github: true
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_contentrenderer" type="jpg" alt="[Renderer]" caption="[<b>Renderer</b>]。この画面は、メディアを再生すると表示されます。" %}
 
-ビデオにコントロールが表示されると、その下にお勧めのコンテンツが薄くオーバーレイとして表示されます。リモコンで下矢印をクリックすると、薄いオーバーレイが消え、コンテンツがはっきりと表示されます。
+ビデオにコントロールが表示されると、その下におすすめコンテンツが薄くオーバーレイとして表示されます。リモコンで下矢印をクリックすると、薄いオーバーレイが消え、コンテンツがはっきりと表示されます。
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_contentrecexpanded" type="jpg" alt="お勧めのコンテンツ" caption="お勧めのコンテンツを選択して表示する" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_contentrecexpanded" type="jpg" alt="おすすめコンテンツ" caption="おすすめコンテンツを選択して表示する" %}
 
 メディアを再生した後でコンテンツの詳細を表示すると、ビデオの下に複数のコントロールが表示されます。
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_resumeplayback" type="jpg" alt="再生を再開する。" caption="<b>[Details] で再生を再開する</b>。ビデオの視聴を途中で停止した場合は、[WATCH NOW] ボタンの代わりに、[RESUME PLAYBACK] ボタンと [WATCH FROM BEGINNING] ボタンが表示されます。" %}
 
-ビデオを検索するには、ホーム画面で検索ボタンを選択します。検索ボタンを選択すると、[Search] 画面が表示され、キーワードを入力できるようになります。検索では、キーワードがタイトル要素および説明要素と照合されます。
+ビデオを検索するには、ホーム画面で検索ボタンを選択します。検索ボタンを選択すると、[検索] 画面が表示され、キーワードを入力できるようになります。検索では、キーワードがタイトル要素および説明要素と照合されます。
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_search" type="jpg" alt="[Search]" caption="[<b>Search</b>]。この画面でメディアを検索できます。" %}
 
@@ -71,7 +71,7 @@ github: true
 
 (ホーム画面では、`ContentBrowseActivity`と`FullContentBrowseActivity`を使用できます。)
 
-Fire App Builderでは、アクティビティごとに異なる画面が使用されます。各アクティビティで使用される画面は、(**app** > **assets**にある) Navigator.jsonファイルによって構成されます。Navigator.jsonの`graph`オブジェクト (下記参照) にはキーと値のペアが含まれており、このペアを使用してアクティビティが画面や他のプロパティに関連付けられています。
+Fire App Builderでは、アクティビティごとに異なる画面が使用されます。各アクティビティで使用される画面は、(**app > assets**にある) Navigator.jsonファイルによって構成されます。Navigator.jsonの`graph`オブジェクト (下記参照) にはキーと値のペアが含まれており、このペアを使用してアクティビティが画面や他のプロパティに関連付けられています。
 
 ```json
 "graph": {
@@ -144,7 +144,7 @@ AndroidManifest.xmlファイルは、アプリの起動時に`SplashActivity`ア
 
 
 
-<table class="grid">
+<table>
 <colgroup>
 <col width="40%" />
 <col width="60%" />
@@ -178,7 +178,7 @@ AndroidManifest.xmlファイルは、アプリの起動時に`SplashActivity`ア
     </tr>
     <tr>
       <td>ContentBrowser</td>
-      <td>アプリ内のコンテンツをユーザーが参照できるようにする (<a href="https://ja.wikipedia.org/wiki/Model_View_Controller">Model View Controller</a>アーキテクチャパターンの) コントローラ。フィードを取得し、フロー、レシピ、および構成を制御します。</td>
+      <td>アプリ内のコンテンツをユーザーが参照できるようにする (<a href="https://ja.wikipedia.org/wiki/Model_View_Controller">Model View Controller</a>アーキテクチャパターンの) コントローラー。フィードを取得し、フロー、レシピ、および構成を制御します。</td>
     </tr>
     <tr>
       <td>ContentModel</td>
@@ -230,14 +230,14 @@ AndroidManifest.xmlファイルは、アプリの起動時に`SplashActivity`ア
     </tr>
   </tbody>
 </table>
- 
+
 {% include note.html content="Fire App BuilderをAndroid Studioで開いた場合、このアプリが作業アプリとなるため、\"Android\" ビューではフォルダーが \"app\" と表示されます。\"Project\" ビューに切り替えると、appフォルダーの実際の名前が [Application] であることがわかります。" %}
 
 ## サブフォルダーの内容
 
 通常、Fire App Builderの各フォルダーには、同じパターンのサブフォルダーがあります。次の表で、各サブフォルダーについて説明します。
 
-<table class="grid">
+<table>
 <colgroup>
 <col width="40%" />
 <col width="60%" />
@@ -276,7 +276,7 @@ AndroidManifest.xmlファイルは、アプリの起動時に`SplashActivity`ア
 
 Fire App Builderの基本的なアプリでは、Javaのコーディングはほとんど不要です。代わりに、単純なキーと値のペアが含まれた各種JSONファイルを使用してアプリを構成します。アプリで必要なオプションは、このペアを使用して指定します。構成可能なJSONファイルを次に示します。
 
-<table class="grid">
+<table>
 <colgroup>
 <col width="40%" />
 <col width="60%" />

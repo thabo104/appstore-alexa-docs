@@ -16,7 +16,7 @@ Omnitureでは、(APIキーを使用する代わりに) アプリに組み込ん
 1.  Omniture Analyticsコンポーネントをアプリにロードします。コンポーネントをアプリにロードする方法の詳細については、「[アプリにコンポーネントをロードする][fire-app-builder-load-a-component]」を参照してください。2. アプリにロードされている他の分析コンポーネント (FlurryAnalyticsComponent、CrashlyticsComponent、LoggerAnalyticsComponentなど) があれば削除します。詳細については、「[コンポーネントを削除する][fire-app-builder-load-a-component#removeacomponent]」を参照してください。    
 
     {% include_relative componentnote_analytics.html %}
-    
+
 2.  アプリのフォルダー内に**AdobeMobileLibrary**というフォルダーを作成します。
 3.  この新しい**AdobeMobileLibrary**フォルダー内に、Adobeから提供されたJARファイルを置きます。
 

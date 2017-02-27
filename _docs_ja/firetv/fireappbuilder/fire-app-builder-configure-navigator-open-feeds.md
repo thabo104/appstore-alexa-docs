@@ -7,14 +7,14 @@ toc: false
 github: true
 ---
 
-オープンにアクセスできる (つまり、トークンが必要ない) フィードの場合は、以下のセクションの手順に従ってください。一方、トークンが必要なフィードの場合は、「[Navigatorの構成 -- トークンベースフィード][fire-app-builder-configure-navigator-token-feeds]」を参照してください。Navigatorの構成の概要については、「[Navigatorの構成の概要][fire-app-builder-configure-navigator]」を参照してください。
+オープンにアクセスできる (つまり、トークンが必要ない) フィードの場合は、以下のセクションの手順に従ってください。一方、トークンが必要なフィードの場合は、「[Navigatorの構成 -- トークンベースフィード][fire-app-builder-configure-navigator-token-feeds]」を参照してください。Navigator構成の概要については、「[Navigatorの構成について][fire-app-builder-configure-navigator]」を参照してください。
 
 * TOC
 {:toc}
 
 ## 非トークンベースフィードのNavigator.jsonの構成 {#filebasednavigator}
 
-メディアにアクセスするのにトークンが必要ないフィードの場合は、この方法を使用します。 
+メディアにアクセスするのにトークンが必要ないフィードの場合は、この方法を使用します。
 
 1.  **Navigator.json**ファイル (**app > assets**にあります) を開きます。
 2.  `globalRecipes`オブジェクトを探します。
@@ -43,11 +43,11 @@ github: true
         }
     ]
     ```
-    
+
 3.  `categories`オブジェクトと`contents`オブジェクトの数をURLファイル内のメディアURLの数と一致させます。たとえば、メディアURLが 4 つある場合は、`categories`オブジェクトと`contents`オブジェクトのセットが 4 つと、それぞれに異なるDataLoaderRecipeが必要です。
-    
+
     このシナリオでは、(「[メディアフィードをロードする][fire-app-builder-load-media-feed]」で構成した) URLファイルは次のようになっています。
-    
+
     ```json
     {
       "urls": [
@@ -58,10 +58,10 @@ github: true
       ]
     }
     ```
-    
+
     その結果、Navigator.json内の`globalRecipes`オブジェクトは次のようになります。
-    
-    
+
+
     ```json
     "globalRecipes": [
         {
@@ -106,17 +106,17 @@ github: true
         }
     ]
     ```
-     
+
      {% include note.html content="Fire App Builderに用意されたサンプルアプリでは、URLファイルに 4 つのメディアURLが含まれていますが、DataLoaderRecipeファイルは 2 つしかありません。これは、すでに十分な数のビデオがあり、実際には 4 つあるメディアURLのうちの 2 つしか使用されないためです。" %}
 
 5.  まだURLファイル内のメディアの行に合わせてDataLoaderRecipeファイルの番号を増分させていない場合は、増分させます。4 つのメディアURLがある場合は、DataLoaderRecipeの番号を 1 ずつ増分させます (LightCastDataLoaderRecipe1.json、LightCastDataLoaderRecipe2.json、LightCastDataLoaderRecipe3.json、LightCastDataLoaderRecipe4.json)。
 
     {% include note.html content="必要に応じて、ファイル名をアプリを反映させた名前に変更することも、LightCastのままにしておくこともできます。" %}
-        
+
 6.  必要に応じて、追加のDataLoaderRecipeファイルを作成します。そのためには、**LightCastDataLoaderRecipe1.json**ファイルを複製し、各ファイルのインデックス番号を増分させます。
-    
+
     LightCastDataLoaderRecipe1.jsonは次のようになります。
-    
+
     ```
     {
       "task": "load_data",
@@ -125,9 +125,9 @@ github: true
       }
     }
     ```
-    
+
     LightCastDataLoaderRecipe2.jsonは次のようになります。
-    
+
     ```
     {
       "task": "load_data",
@@ -136,9 +136,9 @@ github: true
       }
     }
     ```
-    
+
     LightCastDataLoaderRecipe3.jsonは次のようになります。
-    
+
     ```
     {
       "task": "load_data",
@@ -147,9 +147,9 @@ github: true
       }
     }
     ```
-    
+
     LightCastDataLoaderRecipe4.jsonは次のようになります。
-    
+
     ```
     {
       "task": "load_data",
@@ -158,9 +158,9 @@ github: true
       }
     }
     ```
-    
+
     これらの各DataLoaderRecipeファイルは、URLファイル (urlFile.json) の各行からデータをロードします。
-    
+
     ```json
     {
       "urls": [

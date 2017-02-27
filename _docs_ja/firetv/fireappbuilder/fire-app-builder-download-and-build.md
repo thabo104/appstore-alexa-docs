@@ -28,9 +28,9 @@ Fire App Builderは、Githubリポジトリ ([https://github.com/amzn/fire-app-b
     {% include note.html content="Windowsでは、gitのシンボリックリンクが`true`に構成されていない状態でリポジトリのクローンを作成した場合、Fire App Builderではビルドされません。" %}
 
 3.  [https://github.com/amzn/fire-app-builder](https://github.com/amzn/fire-app-builder)にアクセスします。
-4.  [**Clone or Download**] をクリックし、クローンのURL `https://github.com/amzn/fire-app-builder.git`をコピーします。
-5.  コマンドラインを開き、プロジェクトに便利なディレクトリを参照します。
-6.  次のようにプロジェクトのクローンを作成します。
+4.  [**Clone or download**] をクリックし、クローンのURL `https://github.com/amzn/fire-app-builder.git`をコピーします。
+5.  コマンドラインを開き、プロジェクトで使いやすいディレクトリを参照します。
+6.  次の方法で、プロジェクトのクローンを作成します。
 
     ```
     git clone https://github.com/amzn/fire-app-builder.git
@@ -110,7 +110,7 @@ Fire App Builderプロジェクトでは、特定のSDKツールとAPIをAndroid
 
     Gradleによってプロジェクトのインポートとビルドが開始されます。
 
-    {% include note.html content="初めてプロジェクトを開くと、Gradleがプロジェクトをビルドするまでに **20~40 分**程度かかる場合があります。これは、Gradleがダウンロードする必要があるアセットと、ネットワークやプロセッサの速度によって異なります。その後は、1 分もかからなくなります。待っている間、アプリについてよく知るために[アプリの概要を確認すること][fire-app-builder-app-tour]を検討してください。さらに、Fire TV端末の [Settings] オプションを確認することも検討してください。" %}
+    {% include note.html content="初めてプロジェクトを開くと、Gradleがプロジェクトをビルドするまでに **20~40 分**程度かかる場合があります。これは、Gradleがダウンロードする必要があるアセットと、ネットワークやプロセッサの速度によって異なります。その後は、1 分もかからなくなります。待っている間、アプリについてよく知るために[アプリの概要を確認すること][fire-app-builder-app-tour]を検討してください。さらに、Fire TV端末の [設定] オプションを確認することも検討してください。" %}
 
 4.  Gradleによるビルドの進捗状況を監視できるように、右下隅にある [**Gradle Console**] をクリックしてGradle Consoleを開きます。これにより、ビルドが成功したかどうか、またはAndroid Studioで他のダウンロードが必要かどうかがわかります。Gradleによるビルドが完了するまで待ちます。
 
@@ -128,17 +128,17 @@ Fire App Builderプロジェクトでは、特定のSDKツールとAPIをAndroid
 6.  [**Run 'app'**] ボタン {% include inline_image.html alt="[Run 'app'] ボタン" file="firetv/fireappbuilder/images/fireappbuilder_runappbutton" type="png" %} をクリックします。
 7.  [Select Deployment Target] ダイアログボックスで、[**Amazon**] を選択し、[**OK**] をクリックします。
 
-    {% include image.html max-width="75%" alt="エミュレーターまたは端末の選択" file="firetv/fireappbuilder/images/fireappbuilder_aftsoptions" type="png" %}
+    {% include image.html max-width="75%" alt="エミュレーターまたは端末の選択" file="fireappbuilder/fireappbuilder_aftsoptions" type="png" %}
 
     [Select Deployment Target] ダイアログボックスのAFTSはAmazon Fire TV (第 2 世代) を表しています。Fire TV Stickの場合は、AFTT (第 2 世代) またはAFTM (第 1 世代) と表示されます。
 
     {% include tip.html content="Amazonのオプションが表示されない場合は、[コンピューターがADBを使用してFire TV端末に接続][fire-app-builder-connecting-adb-to-fire-tv]されていません。Fire TVがない場合は、[エミュレーターの使用][fire-app-builder-use-an-android-tv-emulator]についてサポートが制限されます。" %}
 
-    アプリが正常にビルドされると、Fire TV端末にそのアプリがロードされます。アプリの各画面の説明については、「[アプリの概要][fire-app-builder-app-tour]」を参照してください。
+    アプリが正常にビルドされると、Fire TV端末にそのアプリがロードされます。アプリの各画面の説明については、「[アプリの概要を確認する][fire-app-builder-app-tour]」を参照してください。
 
     ビルドエラーが発生した場合は、プロジェクトをクリーンし、再ビルドしてみることができます ([**Build**] > [**Clean Project or Build**] > [**Rebuild Project**])。
 
-    Fire TVでアプリを閉じる場合は、リモコンを使用して [**Settings**] > [**Applications**] > [**Manage Installed Applications**] > [**Fire App Builder**] の順に移動すると、Fire TVのUIを使用して再起動できます。
+    Fire TVでアプリを閉じる場合は、リモコンを使用して [**設定**] > [**アプリケーション**] > [**インストール済みアプリケーションを管理**] > [**Fire App Builder**] の順に移動すると、Fire TVのUIを使用して再起動できます。
 
     ADBは、接続された端末の*一時*フォルダーでアプリをビルドします。端末の接続を切断すると、アプリはFire TVで使用できなくなります。Fire TVにアプリを永続的にインストールする場合は、端末にアプリをサイドロードする必要があります。「[アプリのインストールと実行][installing-and-running-your-app]」を参照してください。  
 
@@ -151,20 +151,18 @@ Fire App Builderプロジェクトでは、特定のSDKツールとAPIをAndroid
 
 Applicationフォルダーをカスタマイズするには:
 
-1.  Android Studioで、[**File**] > [**Close Project**] の順に移動して、Fire App Builderプロジェクトを閉じます。
-2.  Finder (Mac) またはエクスプローラー (Windows) を使用して、Fire App Builderをダウンロードしたディレクトリを参照します。次のいずれかの操作を行います。
+1.  Android Studioで、[**File**] > [**Close Project**] の順に移動して、Fire App Builderプロジェクトを閉じます。2.  Finder (Mac) またはエクスプローラー (Windows) を使用して、Fire App Builderをダウンロードしたディレクトリを参照します。次のいずれかの操作を行います。
      * Applicationフォルダーをコピーします (オプション 1)。次に、そのコピーの名前を変更します (「Gizmoapp」など)。
      * Applicationフォルダーの名前を直接変更します (オプション 2)(「Gizmoapp」など)。
 3.  カスタマイズしたApplicationフォルダー ("Gizmoapp") 内で、(生成されたアプリが保存される) **build**フォルダーを削除します。
 4.  Android Studioで、表示されたようこそ画面の [**Open an existing Android Studio project**] をクリックします。Fire App Builderフォルダーで、カスタマイズしたApplicationフォルダー ("Gizmoapp") を選択し、[**OK**] をクリックします。
-5.  Gradleプラグイン設定のアップグレードに関する画面が表示されたら、[**Don't remind me again for this project**] をクリックします。
-6.  左上隅にある [**Project**] ペイン (Projectビューではありません) を展開して、ファイルを表示します。
-7.  **app**フォルダーで、**res** > **values**の順に展開し、**strings.xml**ファイルを開きます。
+5.  Gradleプラグイン設定のアップグレードに関する画面が表示されたら、[**Don't remind me again for this project**] をクリックします。6.  左上隅にある [**Project**] ペイン (Projectビューではありません) を展開して、ファイルを表示します。
+7.  **app**フォルダーで、**res > values**の順に展開し、**strings.xml**ファイルを開きます。
 8.  **app_name**の文字列に、アプリの名前を入力します。
 
-    AndroidManifest.xmlファイル (**app** > **manifests**にあります) は、編集した文字列からアプリケーションの名前を読み取ります (Androidマニフェストで、この文字列を参照するコードは`android:label="@string/app_name"`です。このようにして、Fire App Builderの大部分が設定されます。カスタマイズするコードはXMLファイルに抽出されるため、Javaを直接編集する必要はありません)。
+    AndroidManifest.xmlファイル (**app > manifests**にあります) は、編集した文字列からアプリケーションの名前を読み取ります (Androidマニフェストで、この文字列を参照するコードは`android:label="@string/app_name"`です。このようにして、Fire App Builderの大部分が設定されます。カスタマイズするコードはXMLファイルに抽出されるため、Javaを直接編集する必要はありません)。
 
-9.  アプリの**AndroidManifest.xml**ファイル (**app** > **manifests**にあります) を開き、**com.amazon.android.calypso**というパッケージ名を、アプリの新しい名前を反映させたパッケージ名に更新します。たとえば、アプリの名前が "Gizmoapp" となった場合、次のように変更できます。
+9.  アプリの**AndroidManifest.xml**ファイル (**app > manifests**にあります) を開き、**com.amazon.android.calypso**というパッケージ名を、アプリの新しい名前を反映させたパッケージ名に更新します。たとえば、アプリの名前が "Gizmoapp" となった場合、次のように変更できます。
 
     ```xml
     <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -178,6 +176,6 @@ Applicationフォルダーをカスタマイズするには:
 
 ## 次のステップ
 
-Fire App Builderでデフォルトのアプリをビルドしてカスタマイズしたところで、「[アプリの概要][fire-app-builder-app-tour]」を参照して、Fire App Builderの機能について理解を深めてください。
+Fire App Builderでデフォルトのアプリをビルドしてカスタマイズしたところで、「[アプリの概要を確認する][fire-app-builder-app-tour]」を参照して、Fire App Builderの機能について理解を深めてください。
 
 {% include links.html %}
