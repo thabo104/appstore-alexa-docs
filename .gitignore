@@ -6,7 +6,7 @@ _output_ja
 _output_de
 _site
 **/.DS_Store
-sapp/
+sapp
 Config*
 _s3_deploy
 node_modules

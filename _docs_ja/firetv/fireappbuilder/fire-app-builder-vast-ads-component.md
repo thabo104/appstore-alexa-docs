@@ -1,9 +1,10 @@
 ---
 title: VAST広告コンポーネント
 permalink: fire-app-builder-vast-ads-component.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
 toc: false
+github: true
 ---
 
 <style>
@@ -132,15 +133,15 @@ VAST広告を構成するには:
 
 1.  VASTコンポーネントをアプリにロードします。アプリにコンポーネントをロードする方法の詳細については、「[アプリにコンポーネントをロードする][fire-app-builder-load-a-component]」を参照してください。
 2.  アプリにロードされている他の広告コンポーネント (FreeWheelAdsCompnentやPassThroughAdsComponentなど) があれば削除します。詳細については、「[コンポーネントを削除する][fire-app-builder-load-a-component#removeacomponent]」を参照してください。
-    
+
     {% include_relative componentnote_ads.html %}
-    
+
 2.  **VastAdsComponent > res > values**に移動し、**strings.xml**を開きます。`vast_preroll_tag`文字列をコピーし、アプリの**custom.xml**ファイル (res > valuesにあります) にコピーします。
-    
+
     ```xml
     <string name="vast_preroll_tag">"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&amp;iu=/124319096/external/single_ad_samples&amp;ciu_szs=300x250&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vast&amp;unviewed_position_start=1&amp;cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&amp;correlator="</string>
     ```
-    
+
 3.  独自のVAST広告タグを使用して`vast_preroll_tag`文字列の値をカスタマイズします。
 
     使用するVASTタグ内では、以下の文字をエンコードする必要があることに注意してください。
@@ -177,4 +178,3 @@ VAST広告を構成するには:
     </table>
 
 {% include links.html %}
-

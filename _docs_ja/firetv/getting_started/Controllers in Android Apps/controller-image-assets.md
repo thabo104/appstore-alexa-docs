@@ -1,9 +1,10 @@
 ---
 title: コントローラー画像アセット
 permalink: controller-image-assets.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc: false
+github: true
 ---
 
 アプリまたはゲームでコントローラーの使用方法に関する説明やヘルプ画面を提供する場合は、このページのコントローラー画像やボタンヒントをアプリで自由に使用できます。

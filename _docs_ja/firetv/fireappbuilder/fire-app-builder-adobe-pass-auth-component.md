@@ -1,9 +1,10 @@
 ---
 title: Adobe Primetime認証コンポーネント
 permalink: fire-app-builder-adobe-pass-auth-component.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
 toc: false
+github: true
 ---
 
 Adobe Primetime (旧称Adobe Pass) は、メディアを表示する前にユーザーにログインを求める認証メカニズムを提供します。ユーザーは各自のISPまたはコンテンツプロバイダーにサインインし、その認証情報に基づいてアプリで認証されます。Adobe Primetimeの詳細については、[こちら](http://www.adobe.com/marketing-cloud/primetime-tv-platform.html)を参照してください。

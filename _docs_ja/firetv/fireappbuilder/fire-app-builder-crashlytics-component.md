@@ -1,9 +1,10 @@
 ---
 title: Crashlyticsコンポーネント
 permalink: fire-app-builder-crashlytics-component.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
 toc: false
+github: true
 ---
 
 (Fabricを使用した) [Crashlytics](http://try.crashlytics.com/)では、アプリのクラッシュを中心とした分析が提供されます。Crashlyticsによると、次のように言われています。

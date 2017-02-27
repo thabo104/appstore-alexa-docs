@@ -1,9 +1,10 @@
 ---
 title:  Freewheel広告コンポーネント
 permalink: fire-app-builder-freewheel-ads-component.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
 toc: false
+github: true
 ---
 
 Fire App BuilderでビルドするアプリにFreeWheelのビデオ広告を実装できます。Freewheelの詳細については、[Freewheel.tv](http://freewheel.tv/)を参照してください。Fire App Builderでは、プレロール広告とミッドロール広告の両方がサポートされています。
@@ -24,9 +25,9 @@ Fire App BuilderでビルドするアプリにFreeWheelのビデオ広告を実�
 1.  Freewheelコンポーネントをアプリにロードします。コンポーネントをアプリにロードする方法の詳細については、「[アプリにコンポーネントをロードする][fire-app-builder-load-a-component]」を参照してください。
 
 2.  アプリにロードされている他の広告コンポーネント (VastAdsComponentやPassThroughAdsComponentなど) を削除します。詳細については、「[コンポーネントを削除する][fire-app-builder-load-a-component#removeacomponent]」を参照してください。    
-    
+
     {% include_relative componentnote_ads.html %}
-    
+
 2.  **FreeWheelAdsComponent** > **java** > **com.amazon.ads.android.freewheel**の順に移動し、**FreeWheelAds.java**ファイルを開きます。
 
     {% include note.html content="他のコンポーネントとは異なり、FreeWheelAdsComponentでカスタマイズする必要がある値はXMLファイルに抽出されません (抽出は今後のリリースで可能になる予定です)。"%}

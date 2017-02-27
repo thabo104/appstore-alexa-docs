@@ -1,9 +1,10 @@
 ---
 title: Fire TV開発とAndroid TV開発の違い
 permalink: amazon-fire-tv-differences-from-android-tv-development.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc: false
+github: true
 ---
 
 Fire TVとAndroid TVは、どちらもAndroidが使用されているため、開発したAndroidアプリをAmazonアプリストアとGoogle Playストアの両方で配信することができます。AmazonストアとGoogleストアの両方で配信することによって、アプリの知名度とダウンロード件数を大幅に向上させることができます。
@@ -34,21 +35,21 @@ Fire TVでは、AndroidのLeanback Support Libraryが一部サポートされて
 
 ### 音声検索
 
-音声検索に関しては、Android TVではLeanback APIを利用した*アプリコントロール*が使用されています ([SearchFragment](https://developer.android.com/reference/android/support/v17/leanback/app/SearchFragment.html)による音声認識など)。一方、Fire TVでの音声検索には、Amazon独自の*システムコントロール*が使用されています。 
+音声検索に関しては、Android TVではLeanback APIを利用した*アプリコントロール*が使用されています ([SearchFragment](https://developer.android.com/reference/android/support/v17/leanback/app/SearchFragment.html)による音声認識など)。一方、Fire TVでの音声検索には、Amazon独自の*システムコントロール*が使用されています。
 
 ユーザーはFire TV上の任意の操作画面 (ランチャー、アプリ内など) で、音声対応リモコンの [マイク] ボタンを押し、目的のテレビ番組やAlexaアクションを声に出して言うと、そのアクションによって*グローバル検索*が開始されます。このときに使用されるのはAlexaクラウドサービスであり、Leanbackライブラリの音声認識APIは使用されません。音声によるメディアリクエストでは、常にFire TVカタログからコンテンツが返されます。詳細については、「[Implementing Search in Fire TV](implementing-search-fire-tv)」を参照してください。
 
 ### グローバル検索
 
-Android TVでは、目的のコンテンツをグローバル検索に統合したい場合、検索結果のContentProviderをアプリから使用してローカルに実現できます。 
+Android TVでは、目的のコンテンツをグローバル検索に統合したい場合、検索結果のContentProviderをアプリから使用してローカルに実現できます。
 
 一方、Fire TVでグローバル検索の結果にコンテンツを表示させるには、[メディアのコンテンツをFire TVカタログに統合][integrating-your-catalog-with-fire-tv]する必要があります。カタログへの送信は、(アプリ内からローカルにではなく) クラウドベースモデルで実現されます。
 
 ### 早送りボタン、早戻しボタン、メニューボタン
 
-Android TVとFire TVにはどちらも、4 方向のD-pad (ナビゲーション)、D-padの選択ボタン、バックボタン、再生/一時停止ボタンが備わっています。ただし、Fire TVにはさらに、早戻しボタン、早送りボタン、メニューボタンが備わっています。 
+Android TVとFire TVにはどちらも、4 方向のD-pad (ナビゲーション)、D-padの選択ボタン、バックボタン、再生/一時停止ボタンが備わっています。ただし、Fire TVにはさらに、早戻しボタン、早送りボタン、メニューボタンが備わっています。
 
-Fire TVの [メニュー] ボタンを押すと、Androidのコンテキストメニューが起動し、画面の中央にメニューアイテムのリストが表示されます。[メニュー] ボタンをオーバーライドして、独自のカスタムメニューユーザーインターフェースを提供するなどの目的に使用できます。 
+Fire TVの [メニュー] ボタンを押すと、Androidのコンテキストメニューが起動し、画面の中央にメニューアイテムのリストが表示されます。[メニュー] ボタンをオーバーライドして、独自のカスタムメニューユーザーインターフェースを提供するなどの目的に使用できます。
 
 メニューアイテムが 1 つだけ必要な場合は、単純な切り替えスイッチ (たとえば、クローズドキャプションのオン/オフ) として [メニュー] ボタンを使用し、この機能をユーザーに知らせるためにヒントを画面に表示することもできます。
 
@@ -66,7 +67,7 @@ Android TVでは、分析ソリューションとしてFirebaseが使用され�
 
 ### SDKレベル
 
-Android TVでは最新のSDK (Nougat) が使用できるのに対し、Fire TVではLollipopのみが最小SDKレベルとして使用されます(特定のアプリをサポートするために、Fire OSにはMarshmallowの一部のAPIがバックポートされています)。 
+Android TVでは最新のSDK (Nougat) が使用できるのに対し、Fire TVではLollipopのみが最小SDKレベルとして使用されます(特定のアプリをサポートするために、Fire OSにはMarshmallowの一部のAPIがバックポートされています)。
 
 ### おすすめの表示
 
@@ -83,11 +84,11 @@ Fire TV対応アプリで通知を作成するには、標準の[Android通知AP
 ### ユーザー補助
 
 Fire TVには[VoiceView](https://www.amazon.com/b?node=14100715011)が備わっており、目の不自由な方でも利用しやすいようにアプリを開発することができます。VoiceViewとユーザー補助の詳細については、次のページを参照してください。
- 
+
 *  [Understanding Assistive Technologies for Fire OS](https://developer.amazon.com/appsandservices/solutions/platforms/fire-os/docs/implementing-accessibility-in-fireos)
 *  [Implementing Accessibility in Fire OS](https://developer.amazon.com/appsandservices/solutions/platforms/fire-os/docs/implementing-accessibility-in-fireos)
 
-### アプリストア 
+### アプリストア
 
 Android TV端末では、Google Playストアが使用されます。これに対してFire TVでは、Amazonアプリストアが使用されます。Google Playストアへのリンクはすべて、Amazonアプリストアへのリンクに変更する必要があります。
 

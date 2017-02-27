@@ -1,9 +1,10 @@
 ---
 title: Amazon Fire TVのよくある質問 (FAQ)
 permalink: amazon-fire-tv-sdk-frequently-asked-questions.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc: false
+github: true
 ---
 
 ## 全般 {#general}
@@ -32,7 +33,7 @@ Q: 開発者向けにAmazon Fire TVのテスト端末は提供されていま�
 Q: Amazon Fire TVプラットフォームでは、具体的にどのような機能がサポートされていますか?
 :   端末と機能の仕様について詳しくは、[Fire TV端末の仕様](/solutions/devices/fire-tv/docs/device-and-platform-specifications)および「[Fireタブレット](https://developer.amazon.com/public/solutions/devices/fire-tablets "https://developer.amazon.com/sdk/fire.html")」を参照してください。
 
-Q: 自分が作ったアプリをAmazon Fire TVプラットフォームで宣伝してもらうにはどうすればよいでしょうか? 
+Q: 自分が作ったアプリをAmazon Fire TVプラットフォームで宣伝してもらうにはどうすればよいでしょうか?
 :   「[アプリのマーケティング](https://developer.amazon.com/public/jp/resources/marketing-tools/marketing-your-app "アプリのマーケティング")」を参照してください。
 
 Q: Amazon Fire TVプラットフォームに関する情報はどのようにして入手できますか?
@@ -105,7 +106,7 @@ Q: Fire TVでは、どのようなサードパーティ製のメディアプレ�
 :   A: Androidメディア再生APIおよび暗号化APIを実装しているメディアプレーヤーSDKであれば、Amazon Fire TVプラットフォームで機能します。  そのようなSDKの例として、[Amazon Port of the ExoPlayer](https://github.com/amzn/exoplayer-amazon-port)、[Android MediaPlayer](https://developer.android.com/reference/android/media/MediaPlayer.html)、[VisualOn OnStream MediaPlayer+ SDK](http://visualon.com/onstream-mediaplayer/)、[NexStreaming NexPlayer SDK](http://www.nexstreaming.com/index.php)があります。詳細については、「[Media Players for Amazon Fire TV][fire-tv-media-players]」を参照してください。
 
 {% comment %}
-Q:  無料のVisualOnライセンスをAmazonから入手できますか? 
+Q:  無料のVisualOnライセンスをAmazonから入手できますか?
 :   A: 現在Amazonからは、[VisualOn OnStream Mediaplayer](http://visualon.com/onstream-mediaplayer)用の無料ライセンスは提供されていません。過去にAmazonから提供されたライセンスを使用してVisualOnプレーヤーをFire TV対応アプリに統合した場合、2017 年 1 月 1 日以降は、既存のライセンスの有効期限が切れた時点でライセンスをご購入いただく必要があります。VisualOnライセンスの購入を希望されない場合は、ExoplayerのAmazon向けポートの使用をお勧めします。詳細については、「[Media Players][fire-tv-media-players]」を参照してください。
 {% endcomment %}
 
@@ -169,7 +170,7 @@ Q: バックグラウンドで音楽を再生するアプリを作成しまし�
 
     *  [Managing Audio Focus][managing-audio-focus] (Fire TV関連ドキュメント)
     *  [Managing Audio Focus](http://developer.android.com/training/managing-audio/audio-focus.html) (Android関連ドキュメント)
-    *  [Allowing applications to play nice(r) with each other: Handling remote control buttons](http://android-developers.blogspot.com/2010/06/allowing-applications-to-play-nicer.html) 
+    *  [Allowing applications to play nice(r) with each other: Handling remote control buttons](http://android-developers.blogspot.com/2010/06/allowing-applications-to-play-nicer.html)
 
 Q:  音楽アプリをバックグラウンドで実行して音楽を再生しているときに、不規則に停止するのはなぜでしょうか?
 :   A: 音楽再生アプリをフォアグラウンドサービスとして実行してください。バックグラウンドサービス (デフォルト) は、リソースが少なくなると、システムによって自動的にシャットダウンされます。詳細については、Androidガイド (「[Media Playback](http://developer.android.com/guide/topics/media/mediaplayer.html)」と[Service](http://developer.android.com/reference/android/app/Service.html)クラスの[`startForeground()`](http://developer.android.com/reference/android/app/Service.html#startForeground(int,%20android.app.Notification)) メソッド) を参照してください。
@@ -201,7 +202,7 @@ Q:  端末がスリープモード (スクリーンセーバーがオン) に遷
 
     この問題によって、アプリのユーザーエクスペリエンスとナビゲーションが不安定になることがあります。端末でメディアを再生する方法としては、サードパーティ製のメディアプレーヤーSDKの使用が推奨されます。
 
-Q:  アプリで 4K Ultra HDビデオを再生できますか? 
+Q:  アプリで 4K Ultra HDビデオを再生できますか?
 
 :   はい。Fire TV (第 2 世代) が 4K対応TVに接続されていれば、4K Ultra HDビデオを再生できます。Fire TV (第 1 世代) とFire TV Stickでは、4Kビデオが再生されません。
 

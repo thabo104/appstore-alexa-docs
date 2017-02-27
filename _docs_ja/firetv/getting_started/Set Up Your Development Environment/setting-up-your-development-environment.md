@@ -1,9 +1,10 @@
 ---
 title: 開発環境のセットアップ
 permalink: setting-up-your-development-environment.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc: false
+github: true
 ---
 
 Amazon Fire TVプラットフォームを対象にAndroidベースのFire TV対応アプリ開発を行うには、あらかじめ開発環境をセットアップしておく必要があります。
@@ -13,7 +14,7 @@ Amazon Fire TVプラットフォームを対象にAndroidベースのFire TV対�
 
 ## JDKのセットアップ
 
-ご使用のコンピューターでJavaアプリをコンパイルするには、Oracleから提供されているJava Development Kit (JDK) が必要です。 
+ご使用のコンピューターでJavaアプリをコンパイルするには、Oracleから提供されているJava Development Kit (JDK) が必要です。
 
 まず、JDKがすでにインストールされているかどうかを確認します。ターミナルまたはコマンドプロンプトを開いて「`java -version`」と入力します。JDKがインストールされている場合、次のようなメッセージが返されます。
 
@@ -23,7 +24,7 @@ Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
 ```
 
-JDKがインストールされていない場合は、ご使用のコンピューターに合ったバージョンのJDKインストーラを[Java SE Development Kit Downloads](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からダウンロードして実行してください。 
+JDKがインストールされていない場合は、ご使用のコンピューターに合ったバージョンのJDKインストーラを[Java SE Development Kit Downloads](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からダウンロードして実行してください。
 
 詳細については、以下のページを参照してください。
 

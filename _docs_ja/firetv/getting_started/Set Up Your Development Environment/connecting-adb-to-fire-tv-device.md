@@ -1,9 +1,10 @@
 ---
 title: ADBを使用してFire TVに接続する
 permalink: connecting-adb-to-fire-tv-device.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc: false
+github: true
 ---
 
 {% include content/{{site.language}}/adb.md %}

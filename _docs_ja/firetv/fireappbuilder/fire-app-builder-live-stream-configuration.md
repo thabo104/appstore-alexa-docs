@@ -1,9 +1,10 @@
 ---
 title: ライブストリーミングを構成する
 permalink: fire-app-builder-live-stream-configuration.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
 toc: false
+github: true
 ---
 
 ユーザーがライブコンテンツを視聴してからコンテンツの詳細ページに戻ると、次のように [Watch Now] と [Watch from Beginning] という 2 つのボタンが表示されます。
@@ -26,7 +27,7 @@ toc: false
 
 1.  **Navigator.json**ファイル (app > assetsにあります) を開きます。
 2.  ライブフィードのレシピが含まれている`categories`オブジェクト内に`recipeConfig`オブジェクトを追加し、`liveContent`パラメータを`true`に設定します。以下に、前後関係を表した例を示します。
-    
+
     <pre>
         {
           "categories": {
@@ -54,7 +55,7 @@ toc: false
 
 ### 方法 2: フィード内の値を照合してボタンを削除する {#feed}
 
-メディアをライブコンテンツとして識別するためのタグがメディアフィードに含まれている場合は、[コンテンツレシピを構成する][fire-app-builder-set-up-recipes-content]ときに、これらのタグを識別するように`matchList`パラメータを構成できます。 
+メディアをライブコンテンツとして識別するためのタグがメディアフィードに含まれている場合は、[コンテンツレシピを構成する][fire-app-builder-set-up-recipes-content]ときに、これらのタグを識別するように`matchList`パラメータを構成できます。
 
 たとえば、フィード内のアイテムが、`<live>true</live>` タグを含む次のような内容だとします。
 
