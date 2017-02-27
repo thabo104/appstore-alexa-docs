@@ -21,7 +21,7 @@ Amazonアプリ内課金コンポーネントでは、Amazonの[アプリ内課�
 
 Amazonアプリ内課金コンポーネントをアプリに実装すると、ユーザーには [Content Details] 画面に ([Watch Now] ボタンの代わりに) [Daily Pass] ボタンと [Go Premium] ボタンが表示されます。  
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_iapprompt" type="png" caption="<b>図 1.</b>" [Content Details] 画面に、定期購読するか 1 日限りのパスを購入するかを選択するボタンが表示されます。%}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_iapprompt" type="png" caption="<b>図 1.</b> [Content Details] 画面に、定期購読するか 1 日限りのパスを購入するかを選択するボタンが表示されます。" %}
 
 ユーザーが [Go Premium] ボタンか [Daily Pass] ボタンをクリックすると、Fire TVアカウントを使用して購入するための画面が表示されます。たとえば、ユーザーが [Go Premium] をクリックすると、次の画面が表示されます。
 
