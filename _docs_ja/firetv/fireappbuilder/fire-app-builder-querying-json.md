@@ -1,10 +1,9 @@
 ---
 title: JSONでクエリを実行する
 permalink: fire-app-builder-querying-json.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 [レシピのセットアップ][fire-app-builder-set-up-recipes-overview]では、`query`パラメータにJayway JsonPath構文を使用しました。JSONクエリ構文の詳細については、[Jayway JsonPath](https://github.com/jayway/JsonPath)を参照してください。

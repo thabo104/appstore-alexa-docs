@@ -1,10 +1,9 @@
 ---
 title:  Omniture Analyticsコンポーネント
 permalink: fire-app-builder-omniture-analytics-component.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 Omnitureでは、(APIキーを使用する代わりに) アプリに組み込んで使用するJARファイルが提供されています。JARファイルには、セキュリティキーなどの構成情報が格納されています。

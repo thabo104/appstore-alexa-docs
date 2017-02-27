@@ -1,7 +1,7 @@
 ---
 title: "Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプリ向けスターターキット"
 permalink: fire-app-builder-overview.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 ---
 
@@ -14,7 +14,7 @@ Fire App Builderは、Apache 2.0 ライセンスに基づくオープンソー�
 * TOC
 {:toc}
 
-## Fire App Builderの操作方法
+## Fire App Builderの利用方法
 
 Fire App Builderでアプリを作成する場合は、複数のJSONファイルを通じてデータフィード、画面レイアウト、および各機能の設定を構成します。また、メディアフィードからカテゴリとコンテンツを取得するクエリ構文の作成も行います。
 
@@ -38,7 +38,7 @@ Fire App Builderは、NetflixやHuluのようにストリーミングメディ�
 
 また、Fire App BuilderではAndroid Studioを使用してファイルを構成する必要があるため、(HTML5 ウェブテクノロジーではなく) JavaベースのAndroidを使用したアプリ制作を好むような開発者が対象となります。Fire App Builderのフレームワークを基盤として、より高性能のアプリを作成することもできます。Fire App Builderは、本質的にはAndroid Java開発者向けのFire TV SDKです。
  
-コーディングではなくコンテンツ制作を担当している場合や、自分のYoutubeビデオ用のFire TVアプリを構築したい場合、またはAndroid Studioでのコーディングに慣れていない場合 (プログラミングスキルは不要ですが) は、代わりに[Fire TV用ウェブアプリスターターキット](the-web-app-starter-kit-for-fire-tv)の使用を検討してください。
+コーディングではなくコンテンツ制作を担当している場合や、自分のYoutubeビデオ用のFire TV対応アプリを構築したい場合、またはAndroid Studioでのコーディングに慣れていない場合 (プログラミングスキルは不要ですが) は、代わりに[Fire TV用ウェブアプリスターターキット](the-web-app-starter-kit-for-fire-tv)の使用を検討してください。
 
 ## Fire App Builderの使用条件 {#requirements}
 
@@ -64,11 +64,11 @@ Fire App Builderは以下の機能を備えています。
 
 "[Fire TV](https://www.amazon.com/dp/B00U3FPN4U)" はFire TVボックスを表し、"[Fire TV Stick](https://www.amazon.com/dp/B00ZV9RDKK)" はスティックバージョンのFire TVを表します。 
 
-「[端末およびプラットフォームの仕様][device-and-platform-specifications]」で各端末の仕様を比較できます。処理能力と処理速度はFire TVの方が優れていますが、2 つの端末はどちらも同じFire OSを搭載しており、エンドユーザーの観点ではほとんど差がありません。各端末には 2 つの世代があり、第 2 世代が最新です。 
+「[Fire TV端末の仕様][device-and-platform-specifications]」で各端末の仕様を比較できます。処理能力と処理速度はFire TVの方が優れていますが、2 つの端末はどちらも同じFire OSを搭載しており、エンドユーザーの観点ではほとんど差がありません。各端末には 2 つの世代があり、第 2 世代が最新です。 
 
-Fire TVは、[Gaming Edition](https://www.amazon.com/Amazon-Fire-TV-Gaming-Edition-Streaming-Media-Player/dp/B00XNQECFM)も提供されています。また、専用の[ゲームコントローラ](https://www.amazon.com/Amazon-Fire-Game-Controller-Alexa/dp/B00NO8LX7E)を購入してFire TV Stickとともに使用することもできます。Fire TV Stick (第 2 世代) にはデフォルトでVoice Remoteが付属していますが、Fire TV Stick (第 1 世代) ではVoice Remoteがオプションとして提供されます。
+Fire TVは、[Gaming Edition](https://www.amazon.com/Amazon-Fire-TV-Gaming-Edition-Streaming-Media-Player/dp/B00XNQECFM)も提供されています。また、専用の[ゲームコントローラー](https://www.amazon.com/Amazon-Fire-Game-Controller-Alexa/dp/B00NO8LX7E)を購入してFire TV Stickとともに使用することもできます。Fire TV Stick (第 2 世代) にはデフォルトでVoice Remoteが付属していますが、Fire TV Stick (第 1 世代) ではVoice Remoteがオプションとして提供されます。
 
-## 始めるにあたって開始
+## 始めるにあたって
 
 Fire App Builderを使用してアプリ開発を始めるには、Fire App Builderによるアプリ開発に必要な手順がまとめられている「[アプリを作成するための一連のプロセス][fire-app-builder-end-to-end-process]」を参照してください。
 

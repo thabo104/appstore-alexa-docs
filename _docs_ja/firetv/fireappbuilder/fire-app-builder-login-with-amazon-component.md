@@ -1,13 +1,12 @@
 ---
 title:  Login with Amazonコンポーネント
 permalink: fire-app-builder-login-with-amazon-component.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
-Login with Amazonコンポーネントを使用すると、ユーザーがメディアの視聴などの特定のアクションを行う前に、Amazonアカウントの認証情報を使ってAmazon Fire TVアプリにログインするよう求めることができます。詳細については、「[Login with Amazon](https://developer.amazon.com/ja/login-with-amazon)」を参照してください。
+Login with Amazonコンポーネントを使用すると、ユーザーがメディアの視聴などの特定のアクションを行う前に、Amazonアカウントの認証情報を使ってAmazon Fire TV対応アプリにログインするよう求めることができます。詳細については、「[Login with Amazon](https://developer.amazon.com/ja/login-with-amazon)」を参照してください。
 
 Amazon Fire TVでは、Fire TVのセットアップおよび登録時に、すでにユーザーに対するAmazonアカウントでのログイン要求が行われているため、このコンポーネントの実際のメリットは、ユーザーがAmazonアカウントでログインできるという点ではありません。このコンポーネントのメリットは、ユーザーに対して、アプリとのAmazonユーザー名とEメールアドレスの共有に同意を求めることができる点です。これにより、ユーザー情報をより詳しく把握できるようになります。
 
@@ -117,15 +116,15 @@ Developer Consoleでセキュリティプロフィールを作成した後は、
 2.  keytoolをPATHに追加したら、debug.keystoreの保存先フォルダーに移動します。このパスは次のようになります。
 
     ````
-    /Users/<your username>/.android/debug.keystore
+    /Users/<ユーザー名>/.android/debug.keystore
     ```
 
-    `<your username>` は自分のユーザー名に置き換えてください。
+    `<ユーザー名>` は自分のユーザー名に置き換えてください。
 
-3.  次のkeytoolコマンドを実行します。その際、`<alias>` は**androiddebugkey**、`<keystore.filename>` は**debug.keystore**に置き換えてください。
+3.  次のkeytoolコマンドを実行します。その際、`<エイリアス>` は**androiddebugkey**、`<キーストアのファイル名>` は**debug.keystore**に置き換えてください。
 
     ````
-    keytool -list -v -alias <alias> -keystore <keystore.filename>
+    keytool -list -v -alias <エイリアス> -keystore <キーストアのファイル名>
     ````
 
     パスワードは**android**です。

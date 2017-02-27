@@ -1,10 +1,9 @@
 ---
-title: Adobe Pass認証コンポーネント
+title: Adobe Primetime認証コンポーネント
 permalink: fire-app-builder-adobe-pass-auth-component.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 Adobe Primetime (旧称Adobe Pass) は、メディアを表示する前にユーザーにログインを求める認証メカニズムを提供します。ユーザーは各自のISPまたはコンテンツプロバイダーにサインインし、その認証情報に基づいてアプリで認証されます。Adobe Primetimeの詳細については、[こちら](http://www.adobe.com/marketing-cloud/primetime-tv-platform.html)を参照してください。
@@ -14,9 +13,9 @@ Adobe Primetime (旧称Adobe Pass) は、メディアを表示する前にユー
 * TOC
 {:toc}
 
-## Adobe Passを使用した場合のユーザーエクスペリエンス
+## Adobe Primetimeを使用した場合のユーザーエクスペリエンス
 
-サンプルアプリでのAdobe Pass/Primetimeの構成例を次に示します。
+サンプルアプリでのAdobe Pass/Adobe Primetimeの構成例を次に示します。
 
 ユーザーが [Content Details] 画面で [Watch Now] ボタンをクリックすると、Adobe Primetimeのログインプロンプトが表示されます。
 
@@ -24,7 +23,7 @@ Adobe Primetime (旧称Adobe Pass) は、メディアを表示する前にユー
 
 ユーザーはコンピューターでブラウザを開き、指定されたURL (この例では、www.example.com/amazon/firetv) にアクセスし、登録コードを入力します。ケーブルプロバイダーにもサインインします。
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_adobepassbrowserlogin" type="png" caption="Adobe Passを使用した認証では、ユーザーがケーブルプロバイダーにサインインする必要があります。" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_adobepassbrowserlogin" type="png" caption="Adobe Primetimeを使用した認証では、ユーザーがケーブルプロバイダーにサインインする必要があります。" %}
 
 ユーザーが登録コードとケーブルプロバイダーの認証情報を入力して、ログインすると、ログインに成功したことを示す次のような画面が表示されます(これらのURLと画面は、Adobe Primetimeアカウントを使用して構成します)。
 
@@ -36,26 +35,26 @@ Adobe Primetime (旧称Adobe Pass) は、メディアを表示する前にユー
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_adobepasserror" type="png" caption="Adobe Primetimeのログイン試行に失敗した場合に表示されることがあるエラーメッセージ画面。" %}
 
-## Adobe Pass認証コンポーネントを構成する
+## Adobe Primetime認証コンポーネントを構成する
 
-Adobe Passコンポーネントを構成するには、次の 5 つの手順を実行します。
+Adobe Primetimeコンポーネントを構成するには、次の 5 つの手順を実行します。
 
-*  [手順 1. アプリでAdobe Pass認証コンポーネントを構成する](#configurecomponent)
-*  [手順 2. Adobe Passの鍵を暗号化する](#generatingyourkeys)
-*  [手順 3. Adobe Passのログインプロンプトの文字列を構成する](#configurestrings)
-*  [手順 4. Adobe Passの画面のスタイルをカスタマイズする](#customizestyles)
+*  [手順 1. アプリでAdobe Primetime認証コンポーネントを構成する](#configurecomponent)
+*  [手順 2. Adobe Primetimeの鍵を暗号化する](#generatingyourkeys)
+*  [手順 3. Adobe Primetimeのログインプロンプトの文字列を構成する](#configurestrings)
+*  [手順 4. Adobe Primetimeの画面のスタイルをカスタマイズする](#customizestyles)
 *  [手順 5. ユーザーにログインを求める画面を構成する](#configurescreens)
 
-## 手順 1. アプリでAdobe Pass認証コンポーネントを構成する {#configurecomponent}
+## 手順 1. アプリでAdobe Primetime認証コンポーネントを構成する {#configurecomponent}
 
-Adobe Pass認証コンポーネントには、カスタマイズ可能な 3 つの独立したファイルグループがあります。それらのファイルを使って、Adobe Passの情報と、ユーザーに表示するFire TVユーザーインターフェースを構成します。
+Adobe Primetime認証コンポーネントには、カスタマイズ可能な 3 つの独立したファイルグループがあります。それらのファイルを使って、Adobe Primetimeの情報と、ユーザーに表示するFire TVユーザーインターフェースを構成します。
 
-Adobe Pass認証コンポーネントを構成するには:
+Adobe Primetime認証コンポーネントを構成するには:
 
-1.  Adobe Pass認証コンポーネントをアプリにロードします。コンポーネントをアプリにロードする方法の詳細については、「[アプリにコンポーネントをロードする][fire-app-builder-load-a-component]」を参照してください。
+1.  Adobe Primetime認証コンポーネントをアプリにロードします。コンポーネントをアプリにロードする方法の詳細については、「[アプリにコンポーネントをロードする][fire-app-builder-load-a-component]」を参照してください。
 2.  アプリにロードされている他の認証コンポーネント (FacebookAuthComponentやLoginWithAmazonComponentなど) があれば削除します。詳細については、「[コンポーネントを削除する][fire-app-builder-load-a-component#removeacomponent]」を参照してください。
 
-    {% include note.html content="インターフェース 1 つにつきロードできるコンポーネントは *1 つ*だけです。たとえば、Adobe Pass認証コンポーネントとパススルーログインコンポーネントは同じ`IAuthentication`インターフェースを使用しているため、*両方*をロードすることはできません。インターフェースごとのコンポーネントのリストについては、「[コンポーネントの概要][fire-app-builder-interfaces-and-components]」を参照してください。" %}
+    {% include note.html content="インターフェース 1 つにつきロードできるコンポーネントは *1 つ*だけです。たとえば、Adobe Primetime認証コンポーネントとパススルーログインコンポーネントは同じ`IAuthentication`インターフェースを使用しているため、*両方*をロードすることはできません。インターフェースごとのコンポーネントのリストについては、「[コンポーネントの概要][fire-app-builder-interfaces-and-components]」を参照してください。" %}
 
 3.  **AdobePassAuthComponent > res > values**に移動し、**custom.xml**ファイルを開きます。
 4.  次の値をコピーしてアプリの**custom.xml**ファイルに貼り付けます。
@@ -85,7 +84,7 @@ Adobe Pass認証コンポーネントを構成するには:
 
 5.  次の表の説明に従って、各プロパティの値をカスタマイズします。
 
-    <table class="grid">
+    <table>
     <colgroup>
     <col width="40%" />
     <col width="60%" />
@@ -142,7 +141,7 @@ Adobe Pass認証コンポーネントを構成するには:
 
 ## 手順 2. Adobe Primetimeの鍵を暗号化する {#generatingyourkeys}
 
-Adobe Primetimeアカウントをセットアップすると、公開鍵と秘密鍵が提供されます。これらの値を安全に保持するために、Fire App BuilderのAdobe Passコンポーネントでは、セキュリティアルゴリズムを使用して鍵を暗号化します。このアルゴリズムは、アプリのUtilsフォルダーにある`ResourceObfuscator`クラスと`ResourceObfuscationStandaloneUtility`クラスを使用して実装されます。
+Adobe Primetimeアカウントをセットアップすると、公開鍵と秘密鍵が提供されます。これらの値を安全に保持するために、Fire App BuilderのAdobe Primetimeコンポーネントでは、セキュリティアルゴリズムを使用して鍵を暗号化します。このアルゴリズムは、アプリのUtilsフォルダーにある`ResourceObfuscator`クラスと`ResourceObfuscationStandaloneUtility`クラスを使用して実装されます。
 
 Adobe Primetimeの公開鍵と秘密鍵を暗号化するには:
 
@@ -194,7 +193,7 @@ Adobe Primetimeの公開鍵と秘密鍵を暗号化するには:
     *  `dadadadadappppp`は`random_key_2` に使用した値です。
     *  `more_random_stuff`は`random_key_3` に使用した値です(前述と同じです)。
 
-5.  `getPlainTextToEncrypt()` メソッドで、`Encrypt_this_text`の代わりにAdobe Passの公開鍵を挿入します。
+5.  `getPlainTextToEncrypt()` メソッドで、`Encrypt_this_text`の代わりにAdobe Primetimeの公開鍵を挿入します。
 
     ```java
      private static String getPlainTextToEncrypt() {
@@ -218,7 +217,7 @@ Adobe Primetimeの公開鍵と秘密鍵を暗号化するには:
     <string name="encrypted_adobe_pass_private_key">YOUR ENCRYPTED PRIVATE KEY</string>
     ```
 
-9.  Adobe Passの*秘密*鍵を`getPlainTextToEncrypt()` メソッドに挿入し、(同じランダム文字列を使用して) スクリプトを再実行します。暗号化された鍵をコピーして、アプリの**custom.xml**ファイルの`encrypted_adobe_pass_private_key`の文字列値に貼り付けます。次に例を示します。
+9.  Adobe Primetimeの*秘密*鍵を`getPlainTextToEncrypt()` メソッドに挿入し、(同じランダム文字列を使用して) スクリプトを再実行します。暗号化された鍵をコピーして、アプリの**custom.xml**ファイルの`encrypted_adobe_pass_private_key`の文字列値に貼り付けます。次に例を示します。
 
     ```xml
     <string name="encrypted_adobe_pass_public_key">gnobHJEIxnkBMobJk7mBaQ==</string>
@@ -231,7 +230,7 @@ Adobe Primetimeの公開鍵と秘密鍵を暗号化するには:
 
 暗号化ユーティリティは、Adobe Primetimeの鍵だけでなく、アプリ内で暗号化するどの鍵にも使用できます。`ResourceObfuscatorStandaloneUitility`クラスを使用して鍵を暗号化し、`ResourceObfuscator`クラスを使用して鍵の暗号化を解除することができます。
 
-Adobe Passコンポーネントでは、鍵の暗号化解除に`ResourceObfuscator`クラスが使用されています。(コンポーネントのcustom.xmlファイルに) 入力したランダムな文字列は、暗号化を行う`ResourceObfuscator`クラスに渡されます。Adobe Pass認証コンポーネントのAdobepassRestClient.javaクラスは、この`ResourceObfuscator`クラスをインスタンス化し、ランダムな文字列を渡します。
+Adobe Primetimeコンポーネントでは、鍵の暗号化解除に`ResourceObfuscator`クラスが使用されています。(コンポーネントのcustom.xmlファイルに) 入力したランダムな文字列は、暗号化を行う`ResourceObfuscator`クラスに渡されます。Adobe Primetime認証コンポーネントのAdobepassRestClient.javaクラスは、この`ResourceObfuscator`クラスをインスタンス化し、ランダムな文字列を渡します。
 
 ```java
   ResourceObfuscator obfuscator = new ResourceObfuscator();
@@ -252,7 +251,7 @@ Adobe Primetimeのログインプロンプト画面に表示される文字列�
 
 ログインに失敗した場合にエラーメッセージ画面に表示されるテキストを制御することもできます。
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_adobepasserror" type="png" caption="Adobe Passのエラーメッセージ" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_adobepasserror" type="png" caption="Adobe Primetimeのエラーメッセージ" %}
 
 これらの画面に表示されるテキストをカスタマイズするには:
 
@@ -273,7 +272,7 @@ Adobe Primetimeのログインプロンプト画面に表示される文字列�
        <string name="adobe_pass_no_authorization_message">Your subscription package does not include this video.
     ```
 
-## 手順 4. Adobe Passの画面のスタイルをカスタマイズする {#customizestyles}
+## 手順 4. Adobe Primetimeの画面のスタイルをカスタマイズする {#customizestyles}
 
 アプリ内のAdobe Primetimeのログインユーザーインターフェースのロゴと色をカスタマイズできます。
 

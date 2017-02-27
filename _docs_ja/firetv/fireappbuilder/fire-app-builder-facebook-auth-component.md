@@ -1,10 +1,9 @@
 ---
 title: Facebook認証コンポーネント
 permalink: fire-app-builder-facebook-auth-component.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 Facebook認証コンポーネントを使用すると、ユーザーがメディアを視聴する (または他のアクションを実行する) 前に、Facebookを使用してログインするようユーザーに求めることができます。

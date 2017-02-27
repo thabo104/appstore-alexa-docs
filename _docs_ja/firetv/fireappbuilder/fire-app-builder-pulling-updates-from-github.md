@@ -1,10 +1,9 @@
 ---
 title: Githubから更新データをプルする
 permalink: fire-app-builder-pulling-updates-from-github.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 Githubでプロジェクトをwatchおよびstarすることで、Fire App Builderへの最新のコミットに関する更新情報を随時受け取ることができます。また、ドキュメントの「[リリースノート][fire-app-builder-release-notes]」ページを定期的に確認することもできます。

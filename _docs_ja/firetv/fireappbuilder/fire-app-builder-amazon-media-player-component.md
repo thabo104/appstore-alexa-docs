@@ -1,10 +1,9 @@
 ---
 title: Amazon Media Playerコンポーネント
 permalink: fire-app-builder-amazon-media-player-component.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 Amazon Media Playerは、GoogleがAndroid向けに開発したオープンソースの[ExoPlayer](http://google.github.io/ExoPlayer/)を基盤としています。ExoPlayerをベースに構築されたAmazon Media Playerは、Fire TV端末と互換性のある堅牢で安定性に優れたメディアプレーヤーです。

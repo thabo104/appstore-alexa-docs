@@ -1,10 +1,9 @@
 ---
 title: Amazonアプリ内課金のコンポーネント
 permalink: fire-app-builder-amazon-in-app-purchase-component.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 Amazonアプリ内課金コンポーネントでは、Amazonの[アプリ内課金](https://developer.amazon.com/public/apis/earn/in-app-purchasing) (IAP) APIを使用して、アプリに次の 2 つの購入オプションを組み込みます。
@@ -22,7 +21,7 @@ Amazonアプリ内課金コンポーネントでは、Amazonの[アプリ内課�
 
 Amazonアプリ内課金コンポーネントをアプリに実装すると、ユーザーには [Content Details] 画面に ([Watch Now] ボタンの代わりに) [Daily Pass] ボタンと [Go Premium] ボタンが表示されます。  
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_iapprompt" type="png" caption="<b>図 1.</b> [Content Details] 画面に、定期購読するか 1 日限りのパスを購入するかを選択するボタンが表示されます。" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_iapprompt" type="png" caption="<b>図 1.</b> [Content Details] 画面に、定期購読するか 1 日限りのパスを購入するかを選択するボタンが表示されます。%}
 
 ユーザーが [Go Premium] ボタンか [Daily Pass] ボタンをクリックすると、Fire TVアカウントを使用して購入するための画面が表示されます。たとえば、ユーザーが [Go Premium] をクリックすると、次の画面が表示されます。
 
@@ -50,7 +49,7 @@ Amazonアプリ内課金コンポーネントをアプリに実装すると、�
 *  1 つのメディアに対して複数の定期購読タイプを提供することはできません。たとえば、コンテンツの再生にSDとHDのオプションを提供したり、月間購読と年間購読を提供したりすることはできません。
 *  Daily Passは購入操作を行った端末でのみ使用できます。別のFire TV端末にログインしても、購入済みのDaily Passは機能しません。
 *  Go Premium定期購読はすべての端末で機能します (あるFire TV端末で購入した定期購読を別のFire TV端末で利用できます)。ただし、別の端末にログインしたユーザーは、アプリを再起動して定期購読を有効にする必要があります。
-*  Daily Passを購入したユーザーのFire TVアプリに障害が発生し、データが失われた場合、ユーザーはそのアプリからDaily Passにアクセスできなくなります。ただし、Go Premium (定期購読) では、障害が発生した後にアプリを再起動すれば引き続きアクセスできます。
+*  Daily Passを購入したユーザーのFire TV対応アプリに障害が発生し、データが失われた場合、ユーザーはそのアプリからDaily Passにアクセスできなくなります。ただし、Go Premium (定期購読) では、障害が発生した後にアプリを再起動すれば引き続きアクセスできます。
 *  ユーザーがコンテンツを定期購読した後で [Back] ボタンをクリックすると、[Go Premium] ボタンが再び表示されます。ただし、ユーザーがもう一度定期購読しようとすると、アプリによってユーザーがすでに定期購読をしていることが認識され、メディアへのアクセスが提供されます。
 
 ## Amazonアプリ内課金コンポーネントのワークフロー
@@ -96,7 +95,7 @@ Amazonアプリ内課金コンポーネントでは、IAP APIのラッパーが�
 すでにアプリを作成済みの場合は、このセクションをスキップして[次へ](#creategopassitem)進んでください。
 
 1.  開発者ポータルにログインします。
-2.  [**新しいアプリを追加する**] をクリックし、[Choose a Platform] ダイアログボックスで [**Android**] を選択します。[**Next**] をクリックします。
+2.  [**新しいアプリを追加する**] をクリックし、[Choose a Platform] ダイアログボックスで [**Android**] を選択します。[**次へ**] をクリックします。
 3.  基本的なフィールドにアプリの情報を入力します。
 
     *  **アプリのタイトル**: アプリの名前。
@@ -114,7 +113,7 @@ Amazonアプリ内課金コンポーネントでは、IAP APIのラッパーが�
 
 5.  次の表に定義されているフィールドに値を入力します。
 
-    <table class="grid">
+    <table>
       <thead>
         <tr>
           <th>フィールド</th>
@@ -143,7 +142,7 @@ Amazonアプリ内課金コンポーネントでは、IAP APIのラッパーが�
 
 7.  [**配信地域・価格等**] タブをクリックし、次の表に示す詳細情報を入力します。
 
-    <table class="grid">
+    <table>
       <thead>
         <tr>
           <th>フィールド</th>
@@ -183,7 +182,7 @@ Amazonアプリ内課金コンポーネントでは、IAP APIのラッパーが�
 2.  アプリの [**アプリ内アイテム**] タブをクリックします。
 4.  [**Add a Subscription**] ボタン (Go Premium用) をクリックします("Subscriptions are not supported by Amazon Underground" というメッセージが表示された場合は、[**Add a Subscription**] ボタンをもう一度クリックしてください)。5.  次の表に定義されているフィールドに値を入力します。
 
-    <table class="grid">
+    <table>
       <thead>
         <tr>
           <th>フィールド</th>
@@ -212,7 +211,7 @@ Amazonアプリ内課金コンポーネントでは、IAP APIのラッパーが�
 
 7.  [**購読期間**] タブをクリックし、次の表に示すフィールドに値を入力します。
 
-     <table class="grid">
+     <table>
       <thead>
         <tr>
           <th>フィールド</th>
@@ -424,7 +423,7 @@ App Testerを設定するには:
 
 機能のテスト時に、次の手順に従ってDaily PassやGo Premiumの購入情報をリセットできます。
 
-1.  [**設定**] > [**アプリ**] > [**インストールしたアプリの管理**] > [**Amazon App Tester**] に移動します。
+1.  [**設定**] > [**アプリケーション**] > [**インストール済みアプリケーションを管理**] > [**Amazon App Tester**] に移動します。
 2.  [**Clear data**] および [**Clear cache**] を選択します。
 
 ## Receipt Verification Serviceを使用したセキュリティの強化 {#additionalsecurity}
