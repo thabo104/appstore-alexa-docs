@@ -1,11 +1,11 @@
 ---
-title: AmazonアプリストアへのFire TVアプリの申請
+title: AmazonアプリストアへのFire TV対応アプリの申請
 permalink: submitting-your-fire-tv-app-to-the-amazon-appstore.html
-sidebar: firetv_ja
+sidebar: firetv
 product: Fire TV
 toc: false
-github: true
 ---
+
 
 アプリの開発とテストが終了したら、次のリソースを使用して、アプリをAmazonアプリストアに申請するための準備を行います。
 

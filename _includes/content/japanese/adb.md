@@ -11,14 +11,14 @@ ADBでFire TVまたはFire TV Stickに接続する際は、あらかじめ以下
 
 Fire TV端末に接続するには、端末でADBとデバッグの両方を有効にする必要があります。
 
-1.  Fire TVのメイン画面で [**Settings**] を選択します。
-2.  [**Device**] > [**Developer Options**] の順に選択します。
-3.  [**ADB Debugging**] を有効にします。
-4.  (省略可能) USBケーブルを使用してコンピューターをFire TV端末に接続する場合は、[**USB Debugging**] をオンにします。
+1.  Fire TVのメイン画面で [**設定**] を選択します。
+2.  [**端末 (古いバージョンではシステム)**] > [**開発者オプション**] の順に選択します。
+3.  [**ADBデバッグ**] を有効にします。
+4.  (省略可能) USBケーブルを使用してコンピューターをFire TV端末に接続する場合は、[**USBデバッグ**] をオンにします。
     
     {% include note.html content="USBデバッグが有効になっているときは、USBポートを他の用途 (外部ストレージ、入力端末など) に使用することはできません。USBポートを再度有効にするには、USBデバッグをオフにしてください。"%}
     
-5.  [**Apps from Unknown Sources**] を有効にします。
+5.  [**不明ソースからのアプリ**] を有効にします。
 
 ## 手順 2. Android Debug Bridgeを設定する {#setupadb}
 
@@ -50,7 +50,7 @@ Macで環境変数PATHにADBを追加するには:
 
     1.  Android Studioを起動して [**SDK Manager**] ボタン {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_androidsdkmanagericon" type="png" %} をクリックします。
     
-        上部の [**Android SDK Location**] の横にAndroid SDKの場所が表示されます(例: `/Users/<your username>/Library/Android/sdk`)。
+        上部の [**Android SDK Location**] の横にAndroid SDKの場所が表示されます(例: `/Users/<ユーザー名>/Library/Android/sdk`)。
     
         Android Studioを初めて起動する場合は、[SDK Manager] ボタンが表示されません。[Welcome to Android Studio] というプロンプトで、[**Configure**] > [**SDK Manager**] の順にクリックし、Android SDKの場所を指定してください。
     
@@ -58,15 +58,15 @@ Macで環境変数PATHにADBを追加するには:
     3.  直前の手順でコピーしたパスの末尾に**/platform-tools**を追加します。"platform-tools" は`adb`実行ファイルが格納されているディレクトリです。
     4.  フルパスをクリップボードにコピーします。 
     
-2.  以下のコマンドを使用してadbを**.bash_profile**に追加します。`/Users/<your username>/Library/Android/sdk/platform-tools/` の部分は、Android SDKの実際のパスに置き換えてください。  
+2.  以下のコマンドを使用してadbを**.bash_profile**に追加します。`/Users/<ユーザー名>/Library/Android/sdk/platform-tools/` の部分は、Android SDKの実際のパスに置き換えてください。  
 
     ```bash
-    echo 'export PATH=$PATH:/Users/<your username>/Library/Android/sdk/platform-tools/' >> ~/.bash_profile
+    echo 'export PATH=$PATH:/Users/<ユーザー名>/Library/Android/sdk/platform-tools/' >> ~/.bash_profile
     ```
     
     .bash_profileファイルは通常、ユーザーディレクトリにあります。ユーザーディレクトリは、「`cd ~`」(change directory) と入力して確認できます。次に、「`ls -a`」(list all) と入力して、非表示のファイルも含めたすべてのファイルを表示します。 
        
-    .bash_profileファイルが存在しない場合は、新規に作成します。そのうえで「`open .bash_profile`」と入力すると、パスが一覧表示されます。各行は、`export PATH=$PATH:/Users/<your username>/Library/Android/sdk/platform-tools/` のようになっています。
+    .bash_profileファイルが存在しない場合は、新規に作成します。そのうえで「`open .bash_profile`」と入力すると、パスが一覧表示されます。各行は、`export PATH=$PATH:/Users/<ユーザー名>/Library/Android/sdk/platform-tools/` のようになっています。
 
 3.  ターミナルセッションを再起動して「**adb**」と入力します。PATHにADBが正しく追加されると、ADBのヘルプ情報が表示されます。正しく追加されていないと、"command not found." と表示されます。
 
@@ -79,7 +79,7 @@ Windowsで環境変数PATHにADBを追加するには:
 
     1.  Android Studioを起動して [**SDK Manager**] ボタン {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_androidsdkmanagericon" type="png" %} をクリックします。
 
-        上部の [**Android SDK Location**] の横にAndroid SDKの場所が表示されます(例: `C:\Users\<your user name>\AppData\Local\Android\Sdk\platform-tools`)。
+        上部の [**Android SDK Location**] の横にAndroid SDKの場所が表示されます(例: `C:\Users\<ユーザー名>\AppData\Local\Android\Sdk\platform-tools`)。
 
         Android Studioを初めて起動する場合は、[SDK Manager] ボタンが表示されません。[Welcome to Android Studio] というプロンプトで、[**Configure**] > [**SDK Manager**] の順にクリックし、Android SDKの場所を指定してください。
 
@@ -91,7 +91,7 @@ Windowsで環境変数PATHにADBを追加するには:
 5.  [*システム環境変数*] (下のペイン) で [**Path**] を選択し、[**編集**] をクリックします。
 6.  次のいずれかの作業を行います。
     
-    * *Windows 7 または 8* の場合: カーソルを右端に移動し、「`;`」と入力して**Ctrl+V**キーを押し、先ほどコピーしたSDKのパスを挿入します(例: `;C:\Users\<your user name>\AppData\Local\Android\Sdk\platform-tools`)。開いている 3 つのダイアログボックスをそれぞれ [**OK**] ボタンで閉じます。
+    * *Windows 7 または 8* の場合: カーソルを右端に移動し、「`;`」と入力して**Ctrl+V**キーを押し、先ほどコピーしたSDKのパスを挿入します(例: `;C:\Users\<ユーザー名>\AppData\Local\Android\Sdk\platform-tools`)。開いている 3 つのダイアログボックスをそれぞれ [**OK**] ボタンで閉じます。
     * *Windows 10* の場合: [**新規**] ボタンをクリックしてこの場所を追加します。  
     
 8.  ターミナルセッションを再起動して「**adb**」と入力します。PATHにADBが正しく追加されると、ADBのヘルプ情報が表示されます。正しく追加されていないと、"command not found." と表示されます。
@@ -108,8 +108,8 @@ ADBを使用してFire TVまたはFire TV Stickをコンピューターに接続
 
 Fire TV端末にADBを接続するには、ネットワークにあるFire TV端末のIPアドレスが必要となります。
 
-1.  まだ接続していない場合は、Fire TV端末をネットワークに接続します (対象のコンピューターと同じネットワークに接続すること)。Fire TVのホーム画面で [**Settings**] > [**Network**] の順に選択して目的のネットワークを選択してください。2.  Fire TVのホーム画面で [**Settings**] を選択します。
-3.  [**Device**] > [**About**] > [**Network**] の順に移動します。画面に表示されるIPアドレスをメモします。
+1.  まだ接続していない場合は、Fire TV端末をネットワークに接続します (対象のコンピューターと同じネットワークに接続すること)。Fire TVのホーム画面で [**設定**] > [**ネットワーク**] の順に選択して目的のネットワークを選択してください。2.  Fire TVのホーム画面で [**設定**] を選択します。
+3.  [**端末 (古いバージョンではシステム)**] > [**バージョン情報**] > [**ネットワーク**] の順に移動します。画面に表示されるIPアドレスをメモします。
     
     {% include tip.html content="日常的にネットワーク経由で接続する場合は、いつでも確認できるようにこのIPアドレスをコピーしておいてください。" %}
     
@@ -118,12 +118,12 @@ Fire TV端末にADBを接続するには、ネットワークにあるFire TV端
     Macの場合、ターミナルを開くには、**Cmd + Spaceキー**を押して「**Terminal**」と入力します。Windowsの場合は、通常、プログラムの検索画面で「**cmd**」と入力してコマンドプロンプトを開きます(厳密な手順は、Windowsのバージョンによって異なります)。
     
 5.  Fire TV端末とコンピューターが同じネットワーク上にあることを確認します。WiFiネットワークと有線ネットワークのどちらも使用できます。
-6.  次のコマンドを実行します。`<ipaddress>` の部分には、前のセクションでメモしたFire TV端末のIPアドレスを指定してください。
+6.  次のコマンドを実行します。`<IPアドレス>` の部分には、前のセクションでメモしたFire TV端末のIPアドレスを指定してください。
 
     ```
     adb kill-server
     adb start-server
-    adb connect <ipaddress>
+    adb connect <IPアドレス>
     ```
 
     {% include note.html content="ADBが環境変数PATHに追加されていることを確認してください (「[環境変数パスにAndroid Debug Bridgeを追加する](#addadbpath)」を参照)。追加されていない場合は、「`cd`」 (change directories) でplatform-toolsディレクトリに移動してから、「`./adb`」 (Macの場合) または「`adb`」 (Windowsの場合) を使用して`adb`のコマンドを実行する必要があります。"%}
@@ -131,7 +131,7 @@ Fire TV端末にADBを接続するには、ネットワークにあるFire TV端
     接続に成功すると、ADBから次のようなメッセージが返されます。
 
     ```
-    connected to <ipaddress>:5555
+    connected to <IPアドレス>:5555
     ```
 
 7.  次のコマンドを実行して、端末のリストにFire TV端末が表示されることを確認します。
@@ -144,12 +144,12 @@ Fire TV端末にADBを接続するには、ネットワークにあるFire TV端
 
     ```
     List of devices attached
-    <ipaddress>:5555  device
+    <IPアドレス>:5555  device
     ````
 
 `adb devices`を実行してもシリアル番号が表示されない場合は、[ADBを更新](#updateadb)してから、再度この手順を実行してください。
 
-{% include tip.html content="必ずしもADBサーバーを停止 (kill) して起動 (start) する必要はありません。通常は単に`adb connect <ipaddress>`コマンドを実行してください。"%}
+{% include tip.html content="必ずしもADBサーバーを停止 (kill) して起動 (start) する必要はありません。通常は単に`adb connect <IPアドレス>`コマンドを実行してください。"%}
 
 ### USB経由でADBを接続する {#usbconnect}
 
@@ -165,11 +165,11 @@ Fire TV端末にADBを接続するには、ネットワークにあるFire TV端
     adb devices
     ```
 
-最後のコマンドを入力すると、ADBから次のメッセージが返されます。`<serialno>` は端末のシリアル番号です。
+最後のコマンドを入力すると、ADBから次のメッセージが返されます。`<シリアル番号>` には、端末のシリアル番号が入ります。
 
 ```bash
 List of devices attached
-<serialno> device
+<シリアル番号> device
 ```
 
 `adb devices`を実行してもシリアル番号が表示されない場合は、[ADBを更新](#updateadb)してから、再度この手順を実行してください。

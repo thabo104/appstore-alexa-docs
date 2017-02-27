@@ -32,6 +32,7 @@
          <td class="white">最大 1080p、30fps、20 Mbps、アドバンスドシンプルプロファイル (レベル 5)</td>
       </tr>
    <tr>
+
       <td class="gray" rowspan="12"><b>オーディオ</b></td>
       <td class="gray">AAC-LC</td>
       <td class="gray">audio/mp4a-latm</td>
@@ -204,7 +205,7 @@
       <td>なし</td>
     </tr>
     <tr>
-      <td>マイクロホン</td>
+      <td>マイク</td>
       <td>なし</td>
     </tr>
     <tr>

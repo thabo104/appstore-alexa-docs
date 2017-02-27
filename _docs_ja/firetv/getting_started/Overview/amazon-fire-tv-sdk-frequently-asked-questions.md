@@ -1,10 +1,9 @@
 ---
 title: Amazon Fire TVのよくある質問 (FAQ)
 permalink: amazon-fire-tv-sdk-frequently-asked-questions.html
-sidebar: firetv_ja
+sidebar: firetv
 product: Fire TV
 toc: false
-github: true
 ---
 
 ## 全般 {#general}
@@ -15,7 +14,7 @@ Q: Amazon Fire TVプラットフォーム向けに開発したアプリを申請
     すでにAmazonでアプリを公開済みである場合は、Amazon Fire TV用に別のバイナリAPKを追加してアプリを更新してください。 詳細については、「[Device Targetingの使用](https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/using-device-targetng)」を参照してください。
 
 Q: 私が開発したアプリは、Amazon Fire TVプラットフォームで動作するでしょうか?
-:   開発したアプリが、Amazon Fire TV端末の仕様に適合している必要があります。端末と機能の仕様について詳しくは、[端末の仕様](/solutions/devices/fire-tv/docs/device-and-platform-specifications)を参照してください。
+:   開発したアプリが、Amazon Fire TV端末の仕様に適合している必要があります。端末と機能の仕様について詳しくは、[Fire TV端末の仕様](/solutions/devices/fire-tv/docs/device-and-platform-specifications)を参照してください。
 
     [Amazonアプリストアコンテンツポリシー要件](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-content-policy)にアプリが準拠していることが必要です。またアプリをご自身でテストし、問題が見つかった場合はアップデートを申請することをお勧めします。
 
@@ -31,7 +30,7 @@ Q: 開発者向けにAmazon Fire TVのテスト端末は提供されていま�
     Amazon Fire TV端末は、[米国](http://www.amazon.com/Fire-TV-streaming-media-player/dp/B00CX5P8FC)、[英国](http://www.amazon.co.uk/dp/B00KQEJBSW)、[ドイツ](http://www.amazon.de/dp/B00KQEIMY6)のAmazonリテールサイトで販売されています。国ごとの販売状況については、商品詳細ページを参照してください。
 
 Q: Amazon Fire TVプラットフォームでは、具体的にどのような機能がサポートされていますか?
-:   端末と機能の仕様について詳しくは、[端末の仕様](/solutions/devices/fire-tv/docs/device-and-platform-specifications)および「[Fireタブレット](https://developer.amazon.com/public/solutions/devices/fire-tablets "https://developer.amazon.com/sdk/fire.html")」を参照してください。
+:   端末と機能の仕様について詳しくは、[Fire TV端末の仕様](/solutions/devices/fire-tv/docs/device-and-platform-specifications)および「[Fireタブレット](https://developer.amazon.com/public/solutions/devices/fire-tablets "https://developer.amazon.com/sdk/fire.html")」を参照してください。
 
 Q: 自分が作ったアプリをAmazon Fire TVプラットフォームで宣伝してもらうにはどうすればよいでしょうか? 
 :   「[アプリのマーケティング](https://developer.amazon.com/public/jp/resources/marketing-tools/marketing-your-app "アプリのマーケティング")」を参照してください。
@@ -40,7 +39,7 @@ Q: Amazon Fire TVプラットフォームに関する情報はどのように�
 :   [お問い合わせ](https://developer.amazon.com/public/support/contact/contact-us "お問い合わせ")フォームでご質問をお寄せください。
 
 Q:  アプリはどのような状況で一時停止しますか? また、一時停止の動作をどのように実装すればよいですか?
-:   A: アプリが一時停止するのは、Fire TVのリモコンまたはAmazon Fireゲームコントローラの [Microphone] (音声検索)、[Home]、[GameCircle] のいずれかのボタンが押されたときです。[Back] ボタンが押されたときも、現在のアクティビティが一時停止します。この場合、スタック上の前のアクティビティが再開されます。再開されるアクティビティは、一時停止されたアプリのものではないことがあります。
+:   A: アプリが一時停止するのは、Fire TVリモコンまたはAmazon Fireゲームコントローラーのマイク (音声認識ボタン)、[ホーム]、[GameCircle] のいずれかのボタンが押されたときです。[バック] ボタンが押されたときも、現在のアクティビティが一時停止します。この場合、スタック上の前のアクティビティが再開されます。再開されるアクティビティは、一時停止されたアプリのものではないことがあります。
 
     一時停止の動作を処理するには、他のAndroidアプリと同様に、アクティビティに`onPause()` メソッドを実装します。`onPause()` メソッドでは、ユーザーの状態または場所を保存して、アプリが再開したときにユーザーを一時停止前と同じ位置に置く必要があります。
 
@@ -50,23 +49,23 @@ Q:  アプリはどのような状況で一時停止しますか? また、一�
     * オーディオを再生するアプリは、一時停止しても再生を継続することは許可されますが、他のアプリによって要求された場合は、オーディオフォーカスを放棄する必要があります。詳細については、「[Managing Audio Focus](http://developer.android.com/training/managing-audio/audio-focus.html)」を参照してください。
 
 Q:  デフォルトのウェブブラウザで広告を開くことはできますか?
-:   A: Amazon Fire TVにはブラウザアプリは含まれていないため、URL (広告など) は一切機能しません。アプリにウェブページへのリンクを含める必要がある場合は、Androidの[WebView](http://developer.android.com/reference/android/webkit/WebView.html)を使用できます。ただし、AndroidのWebViewを使用する場合は、コントローラからの入力イベントを処理するために、アプリで独自のCookieや認証を管理する必要があります(AndroidのWebViewはD-Padナビゲーションをサポートしますが、レイアウトとナビゲーションの見直しが必要になることがあります)。
+:   A: Amazon Fire TVにはブラウザアプリは含まれていないため、URL (広告など) は一切機能しません。アプリにウェブページへのリンクを含める必要がある場合は、Androidの[WebView](http://developer.android.com/reference/android/webkit/WebView.html)を使用できます。ただし、AndroidのWebViewを使用する場合は、コントローラーからの入力イベントを処理するために、アプリで独自のCookieや認証を管理する必要があります(AndroidのWebViewはD-padナビゲーションをサポートしますが、レイアウトとナビゲーションの見直しが必要になることがあります)。
 
     AndroidのWebViewを実装する際のヒントについては、ブログ投稿「[Using WebViews on Tablets with HD Screens](https://developer.amazon.com/post/Tx3BY931C53CRLA/Using-WebViews-on-Tablets-with-HD-Screens)」を参照してください。この投稿はタブレットに関するものですが、アドバイスはテレビにも適用できます。
 
-Q:  Amazonアプリ内課金APIをFire TVアプリで使用できますか?:   A: はい。Amazonの[アプリ内課金 (IAP)](https://developer.amazon.com/public/apis/earn/in-app-purchasing) APIは、すべてのFire TV端末およびFire TVのリモコンとゲームコントローラで機能します。トランザクションをプレビューするには、[App Tester](https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/testing-iap-2.0)を使用します。
+Q:  Amazonアプリ内課金APIをFire TV対応アプリで使用できますか?:   A: はい。Amazonの[アプリ内課金 (IAP)](https://developer.amazon.com/public/apis/earn/in-app-purchasing) APIは、すべてのFire TV端末およびFire TVリモコンとゲームコントローラーで機能します。トランザクションをプレビューするには、[App Tester](https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/testing-iap-2.0)を使用します。
 
-Q:  Amazon Device Messaging (ADM) をFire TVアプリで使用できますか?
+Q:  Amazon Device Messaging (ADM) をFire TV対応アプリで使用できますか?
 :   A: [Amazon Device Messaging](https://developer.amazon.com/device-messaging)を使用して、プッシュメッセージや他のデータを受け取ることができます。
 
-Q:  Amazon Maps APIをFire TVアプリで使用できますか?
+Q:  Amazon Maps APIをFire TV対応アプリで使用できますか?
 :   A: Amazon Fire TVには位置情報サービスはないので、現時点で[Amazon Maps API](https://developer.amazon.com/maps)はサポートされていません。
 
-Q:  Amazon Mobile Ads APIをFire TVアプリで使用できますか? 
+Q:  Amazon Mobile Ads APIをFire TV対応アプリで使用できますか? 
 :   A: 現時点では、[Amazon Mobile Ads API](https://developer.amazon.com/public/apis/earn/mobile-ads)はFire TVでサポートされていません。
 
 Q:  Amazonアプリストアに存在するアプリの詳細ページにリンクできますか?
-:   A: はい。Amazonアプリストアのディープリンクは、他のアプリと同様にFire TVアプリでも機能します。ディープリンクの詳細については、「[Amazonアプリストアアプリへのリンク](https://developer.amazon.com/public/ja/apis/earn/in-app-purchasing/docs/deeplink)」を参照してください。ただし、アプリを評価する機能は、現在、Amazon Fire TVでサポートされません。アプリでは、ユーザーに評価を依頼しないでください。
+:   A: はい。Amazonアプリストアのディープリンクは、他のアプリと同様にFire TV対応アプリでも機能します。ディープリンクの詳細については、「[Amazonアプリストアアプリへのリンク](https://developer.amazon.com/public/ja/apis/earn/in-app-purchasing/docs/deeplink)」を参照してください。ただし、アプリを評価する機能は、現在、Amazon Fire TVでサポートされません。アプリでは、ユーザーに評価を依頼しないでください。
 
 Q:  オンスクリーンキーボードをテンキーパッドに変更するにはどうすればよいですか?
 :   A: 標準のAndroidメカニズムを使用することにより、すべての[EditText](http://developer.android.com/reference/android/widget/EditText.html)ウィジェットに対してIME (入力方式エディター) を構成できます。In XML, use `android:inputType="number"`:
@@ -93,7 +92,7 @@ Q: Googleのアプリ内課金テクノロジーを使用しているのです�
 :   いいえ。Googleのアプリ内課金APIなどのサービスは、Google Mobile Servicesにアクセスする必要があり、Amazon Fire TVプラットフォームでは動作しません。アプリ内課金に関して、Amazonでは独自のアプリ内課金APIを提供しています。開発者の皆さまが開発するアプリでは、このAPIを通じてデジタルコンテンツやサブスクリプションを簡単に提供することができます。
 
 Q: Amazon Fire TVまたはFire TV Stick用のアプリをドイツやオーストリアで配布する場合、他に基準はありますか?
-:   はい。Amazonではでは、Amazon Fire TVやFire TV Stickのアプリのうち、Amazon Fire TVやFire TV Stick端末、SDメモリカード、接続されている外部ストレージ (該当する場合) に対して何らかのビデオコンテンツやオーディオコンテンツを格納 (複製、録音、ダウンロード、保存など) する機能が備わっているアプリをドイツやオーストリアで配布することを禁止しています。そのような機能が含まれているとAmazonが判断したアプリは、ドイツやオーストリアでは公開されません。    
+:   はい。Amazonでは、Amazon Fire TVやFire TV Stickのアプリのうち、Amazon Fire TVやFire TV Stick端末、SDメモリカード、接続されている外部ストレージ (該当する場合) に対して何らかのビデオコンテンツやオーディオコンテンツを格納 (複製、録音、ダウンロード、保存など) する機能が備わっているアプリをドイツやオーストリアで配布することを禁止しています。そのような機能が含まれているとAmazonが判断したアプリは、ドイツやオーストリアでは公開されません。    
 
 ## Fire OS 5 (Android Lollipop) {#fireos}
 
@@ -103,11 +102,11 @@ Q: Fire OS 5 では、Android TVとv17 Leanback Libraryがサポートされま�
 ## メディアとDRM {#mediaanddrm}
 
 Q: Fire TVでは、どのようなサードパーティ製のメディアプレーヤーSDKがサポートされますか?
-:   A: Androidメディア再生APIおよび暗号化APIを実装しているメディアプレーヤーSDKであれば、Amazon Fire TVプラットフォームで機能します。  そのようなSDKの例として、[Amazon Port of the ExoPlayer](https://github.com/amzn/exoplayer-amazon-port)、[Android MediaPlayer](https://developer.android.com/reference/android/media/MediaPlayer.html)、[VisualOn OnStream MediaPlayer+ SDK](http://visualon.com/onstream-mediaplayer/)、[NexStreaming NexPlayer SDK](http://www.nexstreaming.com/index.php)があります。詳細については、「[Media Players][fire-tv-media-players]」を参照してください。
+:   A: Androidメディア再生APIおよび暗号化APIを実装しているメディアプレーヤーSDKであれば、Amazon Fire TVプラットフォームで機能します。  そのようなSDKの例として、[Amazon Port of the ExoPlayer](https://github.com/amzn/exoplayer-amazon-port)、[Android MediaPlayer](https://developer.android.com/reference/android/media/MediaPlayer.html)、[VisualOn OnStream MediaPlayer+ SDK](http://visualon.com/onstream-mediaplayer/)、[NexStreaming NexPlayer SDK](http://www.nexstreaming.com/index.php)があります。詳細については、「[Media Players for Amazon Fire TV][fire-tv-media-players]」を参照してください。
 
 {% comment %}
 Q:  無料のVisualOnライセンスをAmazonから入手できますか? 
-:   A: 現在Amazonからは、[VisualOn OnStream Mediaplayer](http://visualon.com/onstream-mediaplayer)用の無料ライセンスは提供されていません。過去にAmazonから提供されたライセンスを使用してVisualOnプレーヤーをFire TVアプリに統合した場合、2017 年 1 月 1 日以降は、既存のライセンスの有効期限が切れた時点でライセンスをご購入いただく必要があります。VisualOnライセンスの購入を希望されない場合は、ExoplayerのAmazon向けポートの使用をお勧めします。詳細については、「[Media Players][fire-tv-media-players]」を参照してください。
+:   A: 現在Amazonからは、[VisualOn OnStream Mediaplayer](http://visualon.com/onstream-mediaplayer)用の無料ライセンスは提供されていません。過去にAmazonから提供されたライセンスを使用してVisualOnプレーヤーをFire TV対応アプリに統合した場合、2017 年 1 月 1 日以降は、既存のライセンスの有効期限が切れた時点でライセンスをご購入いただく必要があります。VisualOnライセンスの購入を希望されない場合は、ExoplayerのAmazon向けポートの使用をお勧めします。詳細については、「[Media Players][fire-tv-media-players]」を参照してください。
 {% endcomment %}
 
 Q:  Microsoft PlayReady DRMで暗号化されたメディアを再生する機能を実装する場合、どのようなオプションがありますか?
@@ -211,27 +210,27 @@ Q:  アプリで 4K Ultra HDビデオを再生できますか?
     Ultra HDビデオに対応したアプリは、必要なユーザーエクスペリエンスを確実に満たすために、Amazonによって認定されます。通常、認定は数週間以内に完了します。詳細については、「[Playing 4K Ultra HD Videos][fire-tv-4k-ultra-hd]」を参照してください。
 
 
-## コントローラ {#controllers}
+## コントローラー {#controllers}
 
-Q:  Amazon Fire TVゲームコントローラに、以前のバージョンにはあったメディアボタンがありません。メディアを再生するにはどうすればよいですか?
-:   A: Amazon Fire TVでは、アナログスティック ([Play/Pause]) を押したとき、および左側のショルダー ([Rewind]) ボタン (L1) や右側のショルダー ([Fast Forward]) ボタン (R1) を押したときに、メディア入力イベントが生成されます。これらのボタンを使用しないアプリまたはゲームでは、ユーザーがメディアの再生をバックグラウンドでコントロールできるように、これらのボタンイベントをアプリでキャプチャや破棄などの処理の対象にしないでください。
+Q:  Amazon Fire TVゲームコントローラーに、以前のバージョンにはあったメディアボタンがありません。メディアを再生するにはどうすればよいですか?
+:   A: Amazon Fire TVでは、アナログスティック ([再生/一時停止]) を押したとき、およびL1ショルダー ([早戻し]) ボタン やR1ショルダー ([早送り]) ボタンを押したときに、メディア入力イベントが生成されます。これらのボタンを使用しないアプリまたはゲームでは、ユーザーがメディアの再生をバックグラウンドでコントロールできるように、これらのボタンイベントをアプリでキャプチャや破棄などの処理の対象にしないでください。
 
-    Amazon Fireゲームコントローラのメディアボタンをアプリで他の目的に転用している場合、新しいAmazon Fire TVゲームコントローラのユーザーは、ボタンがなければその機能を使用できません。両方のゲームコントローラに共通するボタンを使用するようにアプリを更新することや、画面上に表示されるヒントを更新することを検討してください。
+    Amazon Fireゲームコントローラーのメディアボタンをアプリで他の目的に転用している場合、新しいAmazon Fire TVゲームコントローラーのユーザーは、ボタンがなければその機能を使用できません。両方のゲームコントローラーに共通するボタンを使用するようにアプリを更新することや、画面上に表示されるヒントを更新することを検討してください。
 
-Q: Amazon Fire TVゲームコントローラから音量制御を行うには、どうすればよいですか?
-:   A: Amazon Fire TVでは、オーディオをAmazon Fire TVゲームコントローラのヘッドホンジャックにストリーミングできます (現行世代の端末のみ)。音量制御には、左側/右側のトリガーボタン (L2/R2) ボタンを使用します。
+Q: Amazon Fire TVゲームコントローラーから音量制御を行うには、どうすればよいですか?
+:   A: Amazon Fire TVでは、オーディオをAmazon Fire TVゲームコントローラーのヘッドホンジャックにストリーミングできます (現行世代の端末のみ)。音量制御には、左側/右側のトリガーボタン (L2/R2) ボタンを使用します。
 
     音量制御はシステム機能であり、アプリの他のボタンにマップできません。トリガーボタンを使用しないアプリまたはゲームでは、ユーザーがメディアの再生をバックグラウンドでコントロールできるように、これらのボタンイベントをアプリでキャプチャや破棄などの処理の対象にしないでください。これらのボタンをアプリまたはゲームで他の目的に転用している場合、GameCircle画面またはシステムランチャーから音量を制御できることを、画面上に表示されるヒントで知らせることを検討してください。
 
-Q:  アプリでFire TV Voice Remoteの [Microphone] ボタンをオーバーライドできますか?
-:   A: [Microphone] ボタンは、**一時的オーディオフォーカス**を要求してシステム全体の音声機能を起動するもので、オーバーライドすることはできません。開発するアプリケーションは、このオーディオフォーカス変更イベント (`AUDIOFOCUS_LOSS_TRANSIENT`) に加え、他のオーディオフォーカス変更イベント (`AUDIOFOCUS_LOSS`、`AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK`など) も処理する必要があります。各種オーディオフォーカス要求は、音声に限らず、あらゆるアプリケーションによって行われることが考えられるためです。つまり、すべてのオーディオフォーカスのユースケースが適切に処理される必要があります。詳細については、「[Handling Audio Focus with Voice Search][managing-audio-focus#audiofocusvoice]」を参照してください。
+Q:  アプリでFire TV音声認識リモコンの [マイク] ボタンをオーバーライドできますか?
+:   A: [マイク] ボタンは、**一時的オーディオフォーカス**を要求してシステム全体の音声機能を起動するもので、オーバーライドすることはできません。開発するアプリケーションは、このオーディオフォーカス変更イベント (`AUDIOFOCUS_LOSS_TRANSIENT`) に加え、他のオーディオフォーカス変更イベント (`AUDIOFOCUS_LOSS`、`AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK`など) も処理する必要があります。各種オーディオフォーカス要求は、音声に限らず、あらゆるアプリケーションによって行われることが考えられるためです。つまり、すべてのオーディオフォーカスのユースケースが適切に処理される必要があります。詳細については、「[Handling Audio Focus with Voice Search][managing-audio-focus#audiofocusvoice]」を参照してください。
 
-Q:  [Menu] ボタンにはどのような機能がありますか? また、アプリ内でオーバーライドできますか?
-:   A: デフォルトでは、[Menu] ボタンはAndroidコンテキストメニューを起動し、画面の中央にメニューアイテムのリストを表示します。[Menu] ボタンをオーバーライドして、独自のカスタムメニューユーザーインターフェースを提供するなどの目的に使用できます。
+Q:  [メニュー] ボタンにはどのような機能がありますか? また、アプリ内でオーバーライドできますか?
+:   A: デフォルトでは、[メニュー] ボタンはAndroidコンテキストメニューを起動し、画面の中央にメニューアイテムのリストを表示します。[メニュー] ボタンをオーバーライドして、独自のカスタムメニューユーザーインターフェースを提供するなどの目的に使用できます。
 
-    メニューアイテムが 1 つだけ必要な場合は、単純な切り替えスイッチ (たとえば、クローズドキャプションのオン/オフ) として [Menu] ボタンを使用し、この機能をユーザーに知らせるためにヒントを画面に表示することもできます。
+    メニューアイテムが 1 つだけ必要な場合は、単純な切り替えスイッチ (たとえば、クローズドキャプションのオン/オフ) として [メニュー] ボタンを使用し、この機能をユーザーに知らせるためにヒントを画面に表示することもできます。
 
-Q:  Fireゲームコントローラの [GameCircle] ボタンを押しても、ゲームのGameCircleオーバーレイが表示されないのはなぜですか?
+Q:  Fireゲームコントローラーの [GameCircle] ボタンを押しても、ゲームのGameCircleオーバーレイが表示されないのはなぜですか?
 :   A: GameCircleオーバーレイは、次の条件が満たされる場合にだけ表示されます。
 
     * ゲームにGameCircle APIが実装されている。
@@ -243,7 +242,7 @@ Q:  Fireゲームコントローラの [GameCircle] ボタンを押しても、�
 
     GameCircleオーバーレイは、いずれのリーダーボードまたはアチーブメントも公開しておらず、しかもテストアカウントを使用していない場合にも表示されないことがあります。このシナリオでは、1 つ以上のアチーブメントまたはリーダーボードをAmazon Developer Consoleで公開するか、またはテストアカウントを (Amazon Developer Consoleで) セットアップし、そのアカウントを使用して暫定のアチーブメントおよびリーダーボードをGameCircleオーバーレイで表示します。
 
-Q:  コントローラを接続、切断、またはスリープ状態にすると、アクティビティが初めから再起動するのはなぜですか?
+Q:  コントローラーを接続、切断、またはスリープ状態にすると、アクティビティが初めから再起動するのはなぜですか?
 :   A: これらのイベントは、Androidによって実行時設定変更として処理されます。これらのイベントをアプリで無視するには、`AndroidManifest.xml`を変更して`android:configChanges`属性を追加し、この属性に`keyboard`、`keyboardHidden`、`navigation`の各キーを含めます。
 
     ```java
@@ -253,8 +252,8 @@ Q:  コントローラを接続、切断、またはスリープ状態にする�
 
     `configChanges`属性について、および必要に応じて設定変更を処理する方法の詳細については、Androidガイド「[実行時の変更の処理](http://developer.android.com/guide/topics/resources/runtime-changes.html)」を参照してください。
 
-Q:  ゲームコントローラの切断をアプリまたはゲームでどのように処理すればよいですか?
-:   A: Amazon Fire TVゲームコントローラは、5 分を超えてアイドルであるかスティックが同じ角度に保持されていると、バッテリー残量を維持するためにシステムから切断される可能性があります。他のコントローラも、アイドルであるか、バッテリー残量が無くなると切断される可能性があります。コントローラ切断イベントを処理するには、Android [`OnInputDeviceRemoved`](http://developer.android.com/reference/android/hardware/input/InputManager.InputDeviceListener.html#onInputDeviceRemoved(int)) リスナーを使用します。コントローラが利用できないことをユーザーに知らせるために、ゲームを一時停止するか、またはダイアログを表示することを検討してください。
+Q:  ゲームコントローラーの切断をアプリまたはゲームでどのように処理すればよいですか?
+:   A: Amazon Fire TVゲームコントローラーは、5 分を超えてアイドルであるかスティックが同じ角度に保持されていると、バッテリー残量を維持するためにシステムから切断される可能性があります。他のコントローラーも、アイドルであるか、バッテリー残量が無くなると切断される可能性があります。コントローラー切断イベントを処理するには、Android [`OnInputDeviceRemoved`](http://developer.android.com/reference/android/hardware/input/InputManager.InputDeviceListener.html#onInputDeviceRemoved(int)) リスナーを使用します。コントローラーが利用できないことをユーザーに知らせるために、ゲームを一時停止するか、またはダイアログを表示することを検討してください。
 
 ## Amazon Fire TV Stick {#amazonfiretvstick}
 
@@ -262,7 +261,7 @@ Q:  Amazon Fire TVとFire TV Stickの違いは何ですか?
 :   A: [Fire TV端末の仕様][device-and-platform-specifications]に、すべてのFire TV端末の仕様が記載されています。
 
 
-Q:  Amazon Fire TVアプリをAmazon Fire TV Stickに適応させるにはどうすればよいですか?
+Q:  Amazon Fire TV対応アプリをAmazon Fire TV Stickに適応させるにはどうすればよいですか?
 :   A: Amazon Fire TVとFire TV Stickは両方とも、同じプラットフォームソフトウェアを実行します。ただし、Fire TV Stickではハードウェアの条件が厳しいので、パフォーマンスと安定性に関してアプリを最適化する必要があります。ハードウェアアクセラレーションとパフォーマンスに関するAndroidの[ベストプラクティス](http://developer.android.com/training/best-performance.html)に従うことが重要です。特に、OpenGLとテクスチャについては注意が必要です。Fire TV StickのGPUは`MAX_TEXTURE_SIZE`が 2048 x 2048 のOpenGL 2.0 をサポートします。
 
 Q:  Fire TV Stick端末の識別方法は?

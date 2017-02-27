@@ -1,13 +1,12 @@
 ---
 title: Amazon Fire TV開発フレームワークの比較
-sidebar: firetv_ja
+sidebar: firetv
 product: Fire TV
 permalink: fire-tv-development-framework-comparison.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-development-framework-comparison
 reviewers: Russell Beattie, Mihir Choudhary, Jonathan Richardson, Pete Schwab, Mary Galvin, Chris DeNamur, Mario Mancia, Luca Sale, Stephen Whitney, Alexander Budyszewick
 last_updated: 12-13-2016
 toc: false
-github: true
 ---
 
 Amazon Fire TVを対象としたメディアベースのアプリ開発を検討している方のために、Amazonでは、アプリ開発を強力に支援する 2 つのフレームワークを用意しています。それぞれのフレームワークは、特定のスキルを持った開発者が対象となっています。
