@@ -1,13 +1,12 @@
 ---
 タイトル: カテゴリレシピをセットアップする
 permalink: fire-app-builder-set-up-recipes-categories.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
-ここでは、フィードにカテゴリを問い合わせる手順を説明します。カテゴリを使用すると、メディアをさまざまなコレクションやチャネルにグループ化できます。カテゴリでメディアを整理すれば、すべてのビデオを 1 つの長いリストで保持せずに済みます。レシピ構成の全般的な概要については、「[レシピ構成の概要][fire-app-builder-set-up-recipes-overview]」を参照してください。
+ここでは、フィードにカテゴリを問い合わせる手順を説明します。カテゴリを使用すると、メディアをさまざまなコレクションやチャネルにグループ化できます。カテゴリでメディアを整理すれば、すべてのビデオを 1 つの長いリストで保持せずに済みます。レシピ構成の全般的な概要については、「[レシピの構成について][fire-app-builder-set-up-recipes-overview]」を参照してください。
 
 * TOC
 {:toc}
@@ -17,7 +16,7 @@ github: true
 1.  **LightCastCategoriesRecipe.json**ファイル (**app > assets > recipes**にあります) を開きます。
 2.  次の表の説明に従って、ファイルの値を構成します。パラメータの詳細な説明が必要な場合は、表の下の各セクションを参照してください。
 
-    <table class="grid">
+    <table>
     <colgroup>
     <col width="20%" />
     <col width="80%" />

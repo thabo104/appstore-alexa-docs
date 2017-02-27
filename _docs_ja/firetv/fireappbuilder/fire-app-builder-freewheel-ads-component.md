@@ -1,10 +1,9 @@
 ---
 title:  Freewheel広告コンポーネント
 permalink: fire-app-builder-freewheel-ads-component.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 Fire App BuilderでビルドするアプリにFreeWheelのビデオ広告を実装できます。Freewheelの詳細については、[Freewheel.tv](http://freewheel.tv/)を参照してください。Fire App Builderでは、プレロール広告とミッドロール広告の両方がサポートされています。
@@ -16,7 +15,7 @@ Fire App BuilderでビルドするアプリにFreeWheelのビデオ広告を実�
 
 [Content Renderer] 画面でメディアの再生が開始される前に、Freewheelのビデオ広告が再生されます。
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_freewheeladdisplay" type="png" caption="FreeWheelの広告が表示されます (このスクリーンショットでは、フィラー広告トラックが表示されています)。" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_freewheeladdisplay" type="png" caption="FreeWheelの広告が表示されます (このスクリーンショットでは、フィラー広告トラックが表示されています)。%}
 
 ビデオ広告が終了すると、ユーザーが選択したメディアの再生が開始されます。
 

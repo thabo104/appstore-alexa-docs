@@ -1,13 +1,12 @@
 ---
 title: コンテンツレシピをセットアップする
 permalink: fire-app-builder-set-up-recipes-content.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
-[カテゴリの構成][fire-app-builder-set-up-recipes-categories]では、メディアの一般的なグループを構成しました。この手順では、フィードのコンテンツ (タイトル、説明、画像、ビデオURLなど) をFire App Builderのコンテンツモデルにマップします。レシピ構成の概要については、「[レシピ構成の概要][fire-app-builder-set-up-recipes-overview]」を参照してください。
+[カテゴリの構成][fire-app-builder-set-up-recipes-categories]では、メディアの一般的なグループを構成しました。この手順では、フィードのコンテンツ (タイトル、説明、画像、ビデオURLなど) をFire App Builderのコンテンツモデルにマップします。レシピ構成の概要については、「[レシピの構成について][fire-app-builder-set-up-recipes-overview]」を参照してください。
 
 * TOC
 {:toc}
@@ -17,7 +16,7 @@ github: true
 1.  **LightCastContentsRecipe.json**ファイル (**app** > **assets** > **recipes**にあります) を開きます。
 2.  次の表の説明に従って、ファイルの値を構成します。パラメータの詳細な説明が必要な場合は、表の下の各セクションを参照してください。
     
-    <table class="grid">
+    <table>
     <colgroup>
     <col width="20%" />
     <col width="80%" />
@@ -329,7 +328,7 @@ Fire App Builderのサンプルアプリの場合、コンテンツレシピの�
 
 次の表は、フィードのプロパティまたは要素をマップできるFire App Builderの要素を示しています。
 
-<table class="grid">
+<table>
 <colgroup>
 <col width="20%" />
 <col width="60%" />
@@ -415,7 +414,7 @@ Fire App Builderのサンプルアプリの場合、コンテンツレシピの�
 <tr>
 <td markdown="1">`tags`
 </td>
-<td markdown="1">お勧めのコンテンツを関連付けるために使用されます。詳細については、「[お勧めのコンテンツ (タグを使用)](#tags)」を参照してください。
+<td markdown="1">おすすめコンテンツを関連付けるために使用されます。詳細については、「[おすすめコンテンツ (タグを使用)](#tags)」を参照してください。
 </td>
 <td markdown="1">
 省略可能
@@ -630,13 +629,13 @@ XMLを使用する例を見てみましょう。XMLフィードの内容が次�
 
 Fire App Builderによって画像がトリミングされる場合は、アスペクト比を維持するために、画像の両端がトリミングされます (中心がフォーカスされます)。
 
-#### お勧めのコンテンツ (タグを使用) {#tags}
+#### おすすめコンテンツ (タグを使用) {#tags}
 
-ビデオの下には [Recommended Content] セクションがあり、同じタグを持つ他のビデオが表示されます。
+ビデオの下には [おすすめコンテンツ] セクションがあり、同じタグを持つ他のビデオが表示されます。
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="png" alt="お勧めのコンテンツ" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="png" alt="おすすめコンテンツ" %}
 
-[アプリの [Recommended Content] セクション][fire-app-builder-customize-look-and-feel#recommendations]にコンテンツを追加するには、`matchList`パラメータでタグを対応させる必要があります。たとえば、次のように指定します。
+[アプリの [おすすめコンテンツ] セクション][fire-app-builder-customize-look-and-feel#recommendations]にコンテンツを追加するには、`matchList`パラメータでタグを対応させる必要があります。たとえば、次のように指定します。
 
 ```json
 common/tags@tags
@@ -644,7 +643,7 @@ common/tags@tags
 
 ここでは、`tags`要素が`common`要素の内部にあります。この構文によって`common/tags`が`tags`に変換されます。これにより、Fire App Builderは`tags`を読み取って、関連するメディアオブジェクトを表示できます。
 
-Fire App BuilderのサンプルアプリのLightCastフィードには、タグが含まれていないことに注意してください。お勧めのコンテンツを表示したいが、フィードにタグが含まれていない場合は、フォールバックパラメータを`true`に設定してください。
+Fire App BuilderのサンプルアプリのLightCastフィードには、タグが含まれていないことに注意してください。おすすめコンテンツを表示したいが、フィードにタグが含まれていない場合は、フォールバックパラメータを`true`に設定してください。
 
 (アプリの**assets**フォルダーにある) Navigator.jsonファイルには、`config`オブジェクトに`categoryDefaultRecommendation`という名前のプロパティが含まれています。
 
@@ -656,14 +655,14 @@ Fire App BuilderのサンプルアプリのLightCastフィードには、タグ�
   }
 </pre>
 
-この`categoryDefaultRecommendation`を`true`に設定すると、Fire App Builderでは、(同じタグを持つコンテンツを取得する代わりに) 同じカテゴリの他のメディアアセットをお勧めのコンテンツとして使用します。
+この`categoryDefaultRecommendation`を`true`に設定すると、Fire App Builderでは、(同じタグを持つコンテンツを取得する代わりに) 同じカテゴリの他のメディアアセットをおすすめコンテンツとして使用します。
 
-{% include note.html content="現時点では、多くのアイテムに同じタグが付けられている場合、(フィードのタグに基づいて行われる) お勧めコンテンツのマッチングにおいて、コンテンツが無制限にマッチングされます。これは既知の制限/バグです。"%}
+{% include note.html content="現時点では、多くのアイテムに同じタグが付けられている場合、(フィードのタグに基づいて行われる) おすすめコンテンツのマッチングにおいて、コンテンツが無制限にマッチングされます。これは既知の制限/バグです。"%}
 
-[Recommended Content] セクションを非表示にするには、Navigator.jsonで`showRecommendedContent`をfalseに設定します。
+[おすすめコンテンツ] セクションを非表示にするには、Navigator.jsonで`showRecommendedContent`をfalseに設定します。
 
 ## 次のステップ
 
-アプリのメディアフィードのカテゴリとコンテンツを構成できたところで、続いては、フィードをアプリのUIに関連付ける必要があります。「[Navigatorの構成の概要][fire-app-builder-configure-navigator]」を参照してください。
+アプリのメディアフィードのカテゴリとコンテンツを構成できたところで、続いては、フィードをアプリのUIに関連付ける必要があります。「[Navigatorの構成について][fire-app-builder-configure-navigator]」を参照してください。
 
 {% include links.html %}

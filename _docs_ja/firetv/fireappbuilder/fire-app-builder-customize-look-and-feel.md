@@ -1,17 +1,16 @@
 ---
 title: アプリのルックアンドフィールをカスタマイズする
 permalink: fire-app-builder-customize-look-and-feel.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 アプリのcustom.xmlファイル (**res > values**にあります) とnavigator.json (**app > assets**にあります) を使用して、アプリのルックアンドフィールのほとんどをカスタマイズできます。簡単に変更できるアプリの要素を次に示します。
 
 * フォント
 * スプラッシュ画面
-* お勧めのコンテンツ
+* おすすめコンテンツ
 * 背景色
 * コンテンツカード
 * ボタン
@@ -125,13 +124,13 @@ Droid Sans Mono、Kindle Symbol、MotoyaLMaru W3 mono、MT Chinese Surrogates、
 <string name="copyright">Copyright 2016. All Rights Reserved.</string>
 ```
 
-## [Recommended Content] セクションをカスタマイズする {#recommendations}
+## [おすすめコンテンツ] セクションをカスタマイズする {#recommendations}
 
-[Content Details] 画面では、コンテンツのプレビューの下に "お勧めのコンテンツ" の一覧が表示されます。
+[Content Details] 画面では、コンテンツのプレビューの下に "おすすめコンテンツ" の一覧が表示されます。
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="svg" alt="[Recommended Content]" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="svg" alt="[おすすめコンテンツ]" %}
 
-[Recommended Content] の設定方法の詳細については、「コンテンツレシピをセットアップする」の「["お勧めのコンテンツ (タグを使用)"][fire-app-builder-set-up-recipes-content#tags]」を参照してください。
+[Recommended Content] の設定方法の詳細については、「コンテンツレシピをセットアップする」の「["おすすめコンテンツ (タグを使用)"][fire-app-builder-set-up-recipes-content#tags]」を参照してください。
 
 ## ホームページのレイアウトをカスタマイズする
 
@@ -200,7 +199,7 @@ Droid Sans Mono、Kindle Symbol、MotoyaLMaru W3 mono、MT Chinese Surrogates、
 ```
 {% include note.html content="上記のアプリケーションのcustom.xmlファイルでは、Browse Customizationセクション内のコメントは無視してください。一部のコメントは古く、一部の要素は適切に設定されていません。各要素の働きを理解するには、次の表を参照してください。" %}
 
-<table class="grid">
+<table>
    <colgroup>
       <col width="40%" />
       <col width="60%" />

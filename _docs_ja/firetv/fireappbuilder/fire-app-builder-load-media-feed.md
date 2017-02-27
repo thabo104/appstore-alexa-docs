@@ -1,10 +1,9 @@
 ---
 title: メディアフィードをロードする
 permalink: fire-app-builder-load-media-feed.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 メディアフィードはアプリの核となる部分です。このフィードは、各メディアオブジェクトのタイトル、説明、サムネイル、その他の詳細情報が含まれたビデオコンテンツで構成されています。 
@@ -116,7 +115,7 @@ github: true
 
 ## ライブフィード
 
-ライブテレビフィードのロードに特別な操作は必要ありません。他のメディアと同じ方法でロードすることができます。ただし、Navigator.jsonでオプションを設定する場合は、Fire App Builderにライブストリーミングの [Watch from Beginning] ボタンを削除するよう指示するパラメータを追加できます。また、コンテンツレシピの設定時には、タグを使用してライブメディアを特定することもできます。詳細については、「[Navigatorの構成の概要][fire-app-builder-configure-navigator]」を参照してください。
+ライブテレビフィードのロードに特別な操作は必要ありません。他のメディアと同じ方法でロードすることができます。ただし、Navigator.jsonでオプションを設定する場合は、Fire App Builderにライブストリーミングの [Watch from Beginning] ボタンを削除するよう指示するパラメータを追加できます。また、コンテンツレシピの設定時には、タグを使用してライブメディアを特定することもできます。詳細については、「[Navigatorの構成について][fire-app-builder-configure-navigator]」を参照してください。
 
 ## アプリにパッケージ化された静的フィードをロードする
 
@@ -139,6 +138,6 @@ github: true
 
 ## 次のステップ
 
-フィードのロードは最初のステップにすぎません。Fire App Builderでフィード内のカテゴリとコンテンツを特定できるようにする必要があります。詳細については、「[レシピ構成の概要][fire-app-builder-set-up-recipes-overview]」を参照してください。
+フィードのロードは最初のステップにすぎません。Fire App Builderでフィード内のカテゴリとコンテンツを特定できるようにする必要があります。詳細については、「[レシピの構成について][fire-app-builder-set-up-recipes-overview]」を参照してください。
 
 {% include links.html %}

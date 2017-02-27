@@ -1,10 +1,9 @@
 ---
 title: VAST広告コンポーネント
 permalink: fire-app-builder-vast-ads-component.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 <style>
@@ -44,7 +43,7 @@ Fire App BuilderのVAST統合機能では、VASTの仕様全体がサポート�
 
 コンポーネントによる各イベントのサポート状況を以下の表に示します。
 
-<table class="grid">
+<table>
   <thead>
     <tr>
       <th>トラッキングイベント</th>

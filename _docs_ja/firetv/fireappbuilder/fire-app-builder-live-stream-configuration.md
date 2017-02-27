@@ -1,10 +1,9 @@
 ---
 title: ライブストリーミングを構成する
 permalink: fire-app-builder-live-stream-configuration.html
-sidebar: fireappbuilder_ja
+sidebar: fireappbuilder
 product: Fire App Builder
 toc: false
-github: true
 ---
 
 ユーザーがライブコンテンツを視聴してからコンテンツの詳細ページに戻ると、次のように [Watch Now] と [Watch from Beginning] という 2 つのボタンが表示されます。
