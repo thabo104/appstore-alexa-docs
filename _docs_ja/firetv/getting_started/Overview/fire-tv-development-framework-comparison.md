@@ -230,7 +230,7 @@ Fire App Builderでは、メディアフィードとして、JSONまたはXMLを
 </tr>
 <tr>
   <td class="white"><b>グローバルカタログ検索</b></td>
-  <td class="white" markdown="span">[Fire TVカタログ][integrating-your-catalog-with-fire-tv]統合によるグローバル音声検索</td>
+  <td class="white" markdown="span">[Fire TVカタログ][integrating-your-catalog-with-fire-tv] 統合によるグローバル音声検索</td>
   <td class="white">{{site.data.code.check}}</td>
   <td class="white"></td>
 </tr>
