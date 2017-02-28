@@ -88,7 +88,7 @@ Amazon Fire TVプラットフォーム向けのアプリを開発する際、各
 <col width="15%" />
 <col width="15%" />
 <col width="40%" />
-<colgroup>
+</colgroup>
   <thead>
     <tr>
       <th>アクション</th>
