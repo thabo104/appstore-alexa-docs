@@ -48,7 +48,7 @@ audio_path: https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/
 # Japanese
 alerts:
   note: 注意
-  tip: 先端
+  tip: Tips
   warning: 警告
   important: 重要
 
