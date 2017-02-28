@@ -34,7 +34,7 @@ Q: Amazon Fire TVプラットフォームでは、具体的にどのような�
 :   端末と機能の仕様について詳しくは、[Fire TV端末の仕様](/solutions/devices/fire-tv/docs/device-and-platform-specifications)および「[Fireタブレット](https://developer.amazon.com/public/solutions/devices/fire-tablets "https://developer.amazon.com/sdk/fire.html")」を参照してください。
 
 Q: 自分が作ったアプリをAmazon Fire TVプラットフォームで宣伝してもらうにはどうすればよいでしょうか?
-:   「[アプリのマーケティング](https://developer.amazon.com/public/jp/resources/marketing-tools/marketing-your-app "アプリのマーケティング")」を参照してください。
+:   「[アプリのマーケティング](https://developer.amazon.com/public/ja/resources/marketing-tools/marketing-your-app "アプリのマーケティング")」を参照してください。
 
 Q: Amazon Fire TVプラットフォームに関する情報はどのようにして入手できますか?
 :   [お問い合わせ](https://developer.amazon.com/public/support/contact/contact-us "お問い合わせ")フォームでご質問をお寄せください。
