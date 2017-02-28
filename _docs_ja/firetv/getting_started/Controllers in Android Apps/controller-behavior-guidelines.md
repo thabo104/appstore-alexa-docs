@@ -139,7 +139,7 @@ Amazon Fire TVプラットフォーム向けのアプリを開発する際、各
 <col width="15%" />
 <col width="15%" />
 <col width="25%" />
-<colgroup>
+</colgroup>
   <thead>
     <tr>
       <th>アクション</th>
@@ -177,7 +177,6 @@ Amazon Fire TVプラットフォーム向けのアプリを開発する際、各
     </tr>
   </tbody>
 </table>
-
 
 ## 音量制御
 
