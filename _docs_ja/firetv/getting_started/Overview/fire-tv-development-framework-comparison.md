@@ -38,7 +38,7 @@ WASKテンプレートには、アプリ申請プロセスでAmazonアプリス�
 
 申請したアプリはその後、Amazonのインジェストサービスを経ることになります。アプリが公開されると申請者に通知が送られます。
 
-詳細については、「[Fire TV用ウェブアプリスターターキット][the-web-app-starter-kit-for-fire-tv]」を参照してください。WASKを使って作成されたFire TV対応アプリの例としては、[Acorn TV][acorn-tv]、[Urban Movie Channel][urban-movie-channel]、[Euronews][euronews]があります。
+詳細については、「[Fire TV用ウェブアプリスターターキット](https://developer.amazon.com/public/ja/solutions/platforms/webapps/docs/the-web-app-starter-kit-for-fire-tv)」を参照してください。WASKを使って作成されたFire TV対応アプリの例としては、[Acorn TV][acorn-tv]、[Urban Movie Channel][urban-movie-channel]、[Euronews][euronews]があります。
 
 ## Fire App Builder {#fab}
 
