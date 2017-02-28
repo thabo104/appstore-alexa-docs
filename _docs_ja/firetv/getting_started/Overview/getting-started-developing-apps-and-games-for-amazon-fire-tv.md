@@ -58,7 +58,7 @@ Fire TVのドキュメントは、次のグループに分かれています。
 *  [Fire App Builder][fire-app-builder-overview]
 *  [ウェブアプリ](https://developer.amazon.com/public/ja/solutions/platforms/webapps/docs/getting-started-with-web-apps-for-fire-tv)
 *  [カタログの統合][integrating-your-catalog-with-fire-tv]
-*  [Fling SDK][understanding-the-amazon-fling-service]
+*  [Fling SDK](https://developer.amazon.com/public/ja/apis/engage/fling/docs/integrating-amazon-fling-into-your-fire-tv-app)
 *  [アプリストアへの公開][appstore-understanding-submission]
 
 
