@@ -24,11 +24,11 @@ Note the difference between [notifications][notifications-for-amazon-fire-tv] an
 
 Recommendations are most effective when you personalize them based on user profiles. The best recommendations look at your users' interests, profile, and recent activity to come up with the recommendation. Personalizing recommendations leads to greater engagement and interest in your app.
 
-## Remove stale cards
+## Delete stale cards
 
-Keep your recommendations relevant by removing old or stale cards. Additionally, avoid creating new instances of cards that are already stale.
+Keep your recommendations relevant by deleting old or stale cards. Additionally, avoid creating new instances of cards that are already stale.
 
-Track what content has been shown and visited before so you can remove it later. For example, if the user finishes watching the recommended content, remove it from the recommendation row.
+Track what content has been shown and visited before so you can delete it later. For example, if the user finishes watching the recommended content, delete it from the recommendation row.
 
 If you continue to send stale recommendations, users might turn off your recommendations or uninstall your app.
 
@@ -60,7 +60,9 @@ When users press the **Back** button, your app should self-destroy and return to
 
 ## Provide free, friendly content
 
-As a best practice, send free content to the recommendations row. Your app should not harass, hard sell, or recommend inappropriate content. Doing so will result in potential blacklisting of your app. After the user opens your app, then you can push more premium/paid content.
+As a best practice, consider sending free content to the recommendations row. After the user opens your app, then you can push more premium/paid content.
+
+Your app should not harass, hard sell, or recommend inappropriate content. Doing so will result in potential blacklisting of your app.
 
 
 ## Next steps

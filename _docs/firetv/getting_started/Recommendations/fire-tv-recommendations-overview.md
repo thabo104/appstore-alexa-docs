@@ -8,22 +8,20 @@ toc: false
 github: true
 ---
 
-{% comment %} Feature to turn on/off recommendations is on our roadmap. {% endcomment %}
-
-{% include note.html content="Recommendations (from 3rd-party apps) is a feature in development. This functionality will roll out in a future release. You can prepare for the release by incorporating recommendations into your app now." %}
+{% include note.html content="Recommendations from 3rd-party apps is a feature in development. This functionality will roll out in a future release. You can prepare for the release by incorporating recommendations into your app now." %}
 
 You can send recommendations to users about the content (movies, shows, music, games) you want them to watch. Recommendations appear on a "Recommended By Your Apps" row on the Fire TV home screen.
 
 Recommendations encourage users to engage with your app. By appearing on the Fire TV home screen, recommendations are visible within the user's regular view. The recommendation cards entice users back into your app with minimal effort.
 
-For more information about recommendations, see [Recommending TV Content](https://developer.android.com/training/tv/discovery/recommendations.html) in the Android documentation.
+For more information about recommendations, see [Recommending TV Content](https://developer.android.com/training/tv/discovery/recommendations.html) in the Android documentation. The [Android TV Leanback Support Library app](https://github.com/googlesamples/androidtv-Leanback) also contains sample code for sending recommendations.
 
 * TOC
 {:toc}
 
 ## Where Recommendations Appear
 
-On the Fire TV home screen, the "Recommended By Your Apps" row shows all recommendations from apps the user has currently installed and opened at least once.
+On the Fire TV home screen, the "Recommended By Your Apps" row shows all recommendations from apps the user has currently installed (and opened at least once).
 
 All recommendations from third-party apps appear as visually attractive cards in this row. You control the look and appearance of the recommendation cards.
 
@@ -48,6 +46,8 @@ The text shown in the launch menu &mdash; \"Watch\" &mdash; might differ across 
 *  Open
 
 If a user selects "Open TED TV" instead of "Watch," the TED TV app will launch (instead of the selected content). Selecting this option is the same as launching an app the normal way on Fire TV.
+
+Additionally, you can control your app's name in this launch menu by setting the value for `DISPLAY_NAME`, which is an [Amazon extra][fire-tv-recommendations-send-recommendations#amazon-enhancements] in your recommendation.
 
 ## Recommendations Attributes
 
@@ -105,7 +105,7 @@ For more details on creating recommendations, see [Send Recommendations that Inc
 
 ## Amazon's Extensions to Android Recommendations
 
-Amazon [extends the Android recommendations API][fire-tv-recommendations-send-recommendations#amazon-enhancements] to provide deeper integration with Fire TV. Note that using Amazon's extensions is optional. If you don't use the extras, your recommendations will still work on Fire TV. However, you will lose out on some FireTV-specific features.
+Amazon [extends the Android recommendations API][fire-tv-recommendations-send-recommendations#amazon-enhancements] to provide deeper integration with Fire TV. Note that using Amazon's extras is optional. If you don't use the extras, your recommendations will still work on Fire TV. However, you will lose out on some FireTV-specific features.
 
 The Amazon extensions won't affect the display of your recommendations on other Android TV platforms.
 
@@ -115,7 +115,9 @@ Can I view metrics to see clicks on recommendations from the Fire TV home screen
 :  You can add an extra to the pending intent. This will allow you to capture the origin of where the link was clicked.
 
 Can users turn recommendations off?
-:  No. Although users can turn notifications off for specific apps, they cannot (currently) turn recommendations off.
+:  No. Although users can turn notifications off for specific apps, they cannot turn recommendations off.
+
+For more background reading on recommendations, see [Android TV Recommendations: What's in it for my app or game?][6] from NVIDIA.
 
 ## Next steps
 
@@ -125,10 +127,12 @@ To learn more, see the following:
 * [Send Recommendations that Include Amazon Extras][fire-tv-recommendations-send-recommendations]
 * [Best Practices for Recommendations][fire-tv-recommendations-send-recommendations]
 
+
 [1]: https://developer.android.com/reference/android/app/Notification.html#CATEGORY_RECOMMENDATION
 [2]: https://developer.android.com/training/tv/discovery/recommendations.html
 [3]: http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.html
 [4]: https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html#setGroup(java.lang.String)
 [5]: https://www.google.com/design/spec-tv/system-overview/recommendation-row.html
+[6]: https://developer.nvidia.com/content/android-tv-recommendations
 
 {% include links.html %}

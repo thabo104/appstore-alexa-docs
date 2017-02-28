@@ -33,7 +33,7 @@ You can test your recommendations through options on the Developer Options Menu.
 
 It takes some time for the Fire TV home screen to refresh and pick up the recommendations. After streaming content from the apps, wait about 5 minutes. Then navigate around a bit -- go from the home screen to **Settings**, wait a few seconds, then go back to **Settings**.
 
-Soon you will see a new row appear on the home screen called "Recommendation Testing Row." This row will appear below Netflix or HBO Go rows, if you have the Netflix or HBO Go apps. (Otherwise it appears directly below "Featured Apps & Games" row.)
+Soon you will see a new row appear on the home screen called "Recommendation Testing Row." This row will appear below Netflix or HBO Go rows, if you have the Netflix or HBO Go apps. (Otherwise, it appears directly below the "Featured Apps & Games" row.)
 
 {% include image.html file="firetv/getting_started/images/recommendationrowappears" type="png" %}
 
