@@ -9,7 +9,8 @@ github: true
 
 Fire TV向けのアプリを開発する際は、まず、Androidアプリとウェブアプリのどちらを作成するのかを決めます。
 
-*  **Androidアプリ**: Android Java開発者は、既存のツール (Android Studioなど) とフレームワーク (Unityなど) を使用して、10 フィートエクスペリエンス向けのアプリやゲームを開発できます。アプリの開発に役立つサンプルコード、ドキュメント、ガイドラインが用意されています。ストリーミングメディアアプリを開発する場合、[Fire App Builder][fire-app-builder-overview] (JavaベースのAndroidスターターキット) を使用して効率的にアプリを作成することができます。*  **ウェブアプリ**: HTML5 ウェブ開発者は、Amazon WebViewを利用してアプリやゲームを開発できます。開発の成果物として、[HTML5 ウェブアプリ](https://developer.amazon.com/public/solutions/platforms/webapps)、Fire OSポートを使用する[Cordovaアプリ](https://developer.amazon.com/public/solutions/platforms/cross-platform)、[ハイブリッドアプリ](https://developer.amazon.com/public/solutions/platforms/android-fireos/docs/building-and-testing-your-hybrid-app)のいずれかを選択できます。ストリーミングメディアアプリを開発する場合、[Fire TV向けウェブアプリスターターキット][the-web-app-starter-kit-for-fire-tv]を使用して効率的にアプリを作成することができます。
+*  **Androidアプリ**: Android Java開発者は、既存のツール (Android Studioなど) とフレームワーク (Unityなど) を使用して、10 フィートエクスペリエンス向けのアプリやゲームを開発できます。アプリの開発に役立つサンプルコード、ドキュメント、ガイドラインが用意されています。ストリーミングメディアアプリを開発する場合、[Fire App Builder][fire-app-builder-overview] (JavaベースのAndroidスターターキット) を使用して効率的にアプリを作成することができます。
+*  **ウェブアプリ**: HTML5 ウェブ開発者は、Amazon WebViewを利用してアプリやゲームを開発できます。開発の成果物として、[HTML5 ウェブアプリ](https://developer.amazon.com/public/solutions/platforms/webapps)、Fire OSポートを使用する[Cordovaアプリ](https://developer.amazon.com/public/solutions/platforms/cross-platform)、[ハイブリッドアプリ](https://developer.amazon.com/public/solutions/platforms/android-fireos/docs/building-and-testing-your-hybrid-app)のいずれかを選択できます。ストリーミングメディアアプリを開発する場合、[Fire TV向けウェブアプリスターターキット][the-web-app-starter-kit-for-fire-tv]を使用して効率的にアプリを作成することができます。
 
 {% include tip.html content="Fire TV向けウェブアプリスターターキット (WASK) とFire App Builderの詳しい比較については、「[Fire TV開発フレームワークの比較][fire-tv-development-framework-comparison]」を参照してください。" %}
 
@@ -32,7 +33,7 @@ Android開発の経験が豊富にある方は、[Fire OSを対象とする開�
 
 ## Fire TV向けのHTML5 ウェブアプリ開発
 
-日頃、HTML5 を使ったウェブアプリ開発でストリーミングメディアアプリを作成している方は、[Fire TV用ウェブアプリスターターキット][the-web-app-starter-kit-for-fire-tv] (WASK) をご使用ください。WASKは、Fire TV向けに簡単なメディア指向アプリを短時間で作成できるよう支援することを目的としたオープンソースプロジェクトです。このスターターキットには、10 フィートエクスペリエンスに適したユーザーインターフェース設計の例や、Fire TVリモコンのサポートが含まれています。サンプルコンポーネントも用意されており、それを基に独自のメディアアプリを作成してカスタマイズすることができます。
+日頃、HTML5 を使ったウェブアプリ開発でストリーミングメディアアプリを作成している方は、[Fire TV用ウェブアプリスターターキット][the-web-app-starter-kit-for-fire-tv] （WASK） をご使用ください。WASKは、Fire TV向けに簡単なメディア指向アプリを短時間で作成できるよう支援することを目的としたオープンソースプロジェクトです。このスターターキットには、10 フィートエクスペリエンスに適したユーザーインターフェース設計の例や、Fire TVリモコンのサポートが含まれています。サンプルコンポーネントも用意されており、それを基に独自のメディアアプリを作成してカスタマイズすることができます。
 
 HTML5 のウェブアプリをゼロから開発する場合は、「[Fire TV用ウェブアプリの準備][getting-started-with-web-apps-for-fire-tv]」を参照してください。
 
