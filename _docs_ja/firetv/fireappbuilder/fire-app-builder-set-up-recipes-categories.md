@@ -89,7 +89,7 @@ github: true
     </tbody>
     </table>
 
-### queryパラメータ{#queryparameter}
+### queryパラメータ {#queryparameter}
 
 使用する構文は、JSONとXMLで異なります。実際のフィードに該当するセクションを参照してください。
 
@@ -162,7 +162,7 @@ Fire App Builderは、オブジェクトの配列を取得してハッシュマ�
 
 Jayway JsonPathクエリの作成方法の詳細については、「[JSONでクエリを実行する][fire-app-builder-querying-json]」を参照してください。また、Jayway JsonPath全般の詳細については、「[Jayway JsonPath](https://github.com/jayway/JsonPath)」を参照してください。
 
-#### XMLフィード{#categoryxml}
+#### XMLフィード {#categoryxml}
 
 フィードがXMLの場合は、Jayway JsonPathを使用する代わりに、[XPath式](http://www.w3schools.com/xsl/xpath_syntax.asp)を使用して、フィードの各要素をターゲットに指定する必要があります。XPathでは、XML文書が "ノード" と呼ばれるさまざまなアイテムを用いた構造に変換されます。XPath構文は各ノードの位置を指定するための構文です。
 
