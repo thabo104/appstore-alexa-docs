@@ -42,7 +42,7 @@ HTML5 のウェブアプリをゼロから開発する場合は、「[Fire TV用
 Fire TV対応アプリを作成する際、堅牢性を高めるために他のAmazon APIを実装することもできます。
 
 *  [アプリ内課金API](https://developer.amazon.com/public/apis/earn/in-app-purchasing): Fire TV端末を購入し、Amazonアカウントに登録すると、自動的にAmazon支払いプロファイルが設定され、その他の設定をすることなく、アプリまたはアプリ内アイテムを購入できるようになります。Amazon Fire TVとFire TV Stickは、Amazonアプリ内課金のAPIをサポートしているため、消費可能アイテムや消費不可アイテムのほか、定期購入もアプリ内で販売することができます。
-*  [Amazon Fling SDK](/apis/experience/fling/docs/understanding-the-amazon-fling-service): Amazon Fling SDKを使用すると、スマートフォンやタブレットに表示される画面を直接テレビに転送することができます。アプリを 2 画面に拡張することにより、複数のユーザーでアプリを利用することができます。
+*  [Amazon Fling SDK](https://developer.amazon.com/public/ja/apis/engage/fling/docs/understanding-the-amazon-fling-service): Amazon Fling SDKを使用すると、スマートフォンやタブレットに表示される画面を直接テレビに転送することができます。アプリを 2 画面に拡張することにより、複数のユーザーでアプリを利用することができます。
 
 その他のFire TV APIとSDKについては、「[アプリおよびゲームサービスSDK](/resources/development-tools/sdk)」を参照してください。
 
