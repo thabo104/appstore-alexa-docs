@@ -49,11 +49,12 @@ mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATI
 int notifyID = int_value;
 
 ContentRecommendation rec = new ContentRecommendation.Builder()
-        .setContentImage(myBitmap)//From API 23 this method also accepts Icon as argument.
+        .setContentImage(myBitmap) // From API 23 this method also accepts Icon as argument.
         .setBackgroundImageUri(myBackgroundImageUri)
-        .setContentIntentData(ContentRecommendation.INTENT_TYPE_..., mIntent, mRequestCode, mBundle)
+        .setContentIntentData(ContentRecommendation.INTENT_TYPE_***, mIntent, mRequestCode, mBundle)
         .setText(mText)
         .setTitle(mTitle)
+        .setBadgeIcon(R.drawable.<app_icon>)
         .setGenres(mGenres)
         .setContentTypes(mTypes)
         .setProgress(mMaxLength,mProgress)
@@ -68,16 +69,13 @@ Notification notification = rec.getNotificationObject(mContext);
 notification.extras.putString("com.amazon.extra.DISPLAY_NAME", mDisplayName);
 
 //Assign a Maturity rating to this recommendation
-notification.extras.putstring("com.amazon.extra.MATURITY_RATING", mMaturityRating);
+notification.extras.putString("com.amazon.extra.MATURITY_RATING", mMaturityRating);
 
 //Specifies how recommendations from one app is ordered.
 notification.extras.putInt("com.amazon.extra.RANK", mRank);
 
 //Assign a long description to this recommendation
 notification.extras.putString("com.amazon.extra.LONG_DESCRIPTION", mLongDescription);
-
-//Assign a recommendation type to this recommendation
-notification.extras.putString("com.amazon.extra.RECOMMENDATION_TYPE", mRecommendationType);
 
 //Assign a last watched time to this recommendation
 notification.extras.putLong("com.amazon.extra.LAST_WATCHED_DATETIME", mLastWatchedTime);
@@ -87,6 +85,8 @@ notification.extras.putString("com.amazon.extra.PREVIEW_URL", mPreviewUrl);
 
 mNotificationManager.notify(notifyID, notification);
 ```
+
+{% include tip.html content="For more information on `setContentIntentData()`, see [`ContentRecommendation`](https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.html)." %}
 
 The Amazon extras are added to the notification object. More information for using the Android recommendations API and Amazon extras are provided in the following sections.
 
@@ -118,7 +118,7 @@ Follow these guidelines when using the [ContentRecommendation.Builder](https://d
       <tr>
           <td><a href="http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setText(java.lang.String)"><code>setText</code></a>(java.lang.String)</td>
           <td>Sets the description text for the recommendation. The length limit is 125 characters. Additional text is truncated.</td>
-          <td>No</td>
+          <td>Yes</td>
       </tr>
       <tr>
           <td><a href="http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setContentImage%28android.graphics.Bitmap%29"><code>setContentImage</code></a>(<a href="http://developer.android.com/reference/android/graphics/Bitmap.html">Bitmap image</a>)</td>
@@ -141,6 +141,11 @@ Follow these guidelines when using the [ContentRecommendation.Builder](https://d
           <td>Yes</td>
       </tr>
       <tr>
+        <td><code><a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBadgeIcon(int)">setBadgeIcon</a>(int iconResourceId)</code></td>
+        <td>Sets the resource ID for the recommendation badging icon. <p>The resource id represents the icon resource in the source application package. If not set, or an invalid resource ID is specified, the application icon retrieved from its package will be used by default.</p></td>
+        </tr>
+        <td>Yes</td>
+      <tr>
           <td><a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setGenres(java.lang.String[])"><code>setGenres</code></a>(String[] <a href="https://developer.android.com/reference/android/media/tv/TvContract.Programs.Genres.html">genres</a>) </td>
           <td>Sets the content genres for the recommendation. These genres may be used for content ranking. Genres are open ended String tags. Use the standard Android genres.</td>
           <td>No</td>
@@ -158,7 +163,7 @@ Follow these guidelines when using the [ContentRecommendation.Builder](https://d
       <tr>
            <td><a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBackgroundImageUri%28java.lang.String%29"><code>setBackgroundImageUri</code></a>(String imageUri) </td>
            <td>Sets the Content URI that will be used to retrieve the background image for the recommendation. 1080P / 16:9 image is recommended.</td>
-           <td>No</td>
+           <td>Yes</td>
        </tr>
 </tbody>
 </table>
@@ -276,6 +281,21 @@ The following table lists extras that you can add to your notification objects.
              <li>1: Text embedded</li>
         </ul>{% comment %} what does FTV do differently depending on this value?{% endcomment %}
         </td>
+      </tr>
+      <tr>
+        <td><code>com.amazon.extra.LONG_DESCRIPTION</code></td>
+        <td>String</td>
+        <td>Long description of a recommendation. Length is limited to 512 characters.</td>
+      </tr>
+      <tr>
+        <td><code>com.amazon.extra.LAST_WATCHED_DATETIME</code></td>
+        <td>long</td>
+        <td>Last watched time of the recommended content in milliseconds (EPOCH).</td>
+      </tr>
+      <tr>
+        <td><code>com.amazon.extra.PREVIEW_URL</code></td>
+        <td>String</td>
+        <td>Preview video or image URL for the recommendation.</td>
       </tr>
    </tbody>
 </table>

@@ -7,200 +7,166 @@ toc: false
 github: true
 ---
 
+This page provides an end-to-end walkthrough of the process for creating the catalog file required for Fire TV integration, submitting the file to Amazon, and making the required changes to your app for catalog integration.
 
-<h2>はじめに</h2>
-<p>このページでは、Fire TV 統合に必要なカタログファイルを作成し、Amazon にファイルを提出して、カタログ統合に必要な変更をアプリに加えるためのプロセスについて詳しく説明します。このプロセスを開始する前に、「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/understanding-fire-tv-catalog-integration" rel="nofollow">Fire TV カタログ統合について</a>」に説明されている Fire TV カタログ統合の基本概念について十分に理解してください。
-</p>
-<p>注意: 現時点ではAmazonインスタントビデオに存在するタイトルのみがカタログ統合への対象となります。今後この制限は緩和する予定です。</p>
+* TOC
+{:toc}
 
+## Before You Begin {#beforeyoubegin}
 
-<a class="anchor" name="開始前の確認"></a>
+If you aren't familiar with the basic concepts of Fire TV Catalog Integration, see [Understanding Fire TV Catalog Integration][understanding-fire-tv-catalog-integration].
 
-<h2>開始前の確認</h2>
-<p>カタログ統合プロセスを開始する前に、以下の要件を満たしている、または簡単に満たせることを確認してください。</p>
-<ul>
-<li><strong>アプリのメタデータへの容易なアクセス</strong>: ほとんどのアプリでは、データベースからメタデータをエクスポートする必要があり、それができない場合は手動でカタログファイルを作成することが必要になります。</li>
-<li><strong>アマゾン ウェブ サービス（AWS）アカウント</strong>: 組織内の誰かが AWS アカウントを持ち、AWS S3 ツールに習熟しているか習熟する意欲がある必要があります。Fire TV が開発者様のカタログを取得して統合できるように、コマンドラインインターフェイス（CLI）を使用して複数の AWS コマンドを実行し、カタログファイルを AWS にアップロードする必要があります。Amazon では、AWS SDK を使用してこのプロセスを自動化することを推奨しています。</li>
-<li><strong>アプリのソースコードへのアクセス</strong>: アプリとそのコンテンツを Fire TV ホーム画面ランチャーに統合するには、アプリのソースコードに多少の変更を加える必要があります。アプリのソースコードに変更を加える担当者は、Android 開発の基本的な理解が必要になります。</li>
-</ul>
-<p>このページで説明する手順は、開発者または IT プロフェッショナルを対象としています。確かな技術的経験をお持ちでない場合、Amazon では、カタログ統合プロセスの完了と自動化をサポートできる人に協力を求めることを推奨しています。</p>
+Before starting the Catalog Integration process, make sure that you have or can easily obtain the following requirements:
 
+*   **Easy access to your app's metadata**: Most apps have someone export their metadata from a database; if you cannot export your metadata from a database, you will need to manually create your catalog file by hand.
+*   **An Amazon Web Services (AWS) account**: You or someone in your organization will need an [AWS account](https://developer.amazon.com/public/solutions/devices/fire-tv/docs/catalog/setting-up-your-aws-account-for-fire-tv-catalog-integration) and familiarity with the AWS S3 tools or a willingness to learn about the AWS S3 tools. You will need to execute several AWS commands using the Command Line Interface (CLI) to upload your catalog file to AWS, so that Fire TV can obtain your catalog for integration. Amazon recommends using the AWS SDK to automate this process.
+*   **Access to your app's source code**: You will need to make a few small changes to your app's source code to integrate your app and its content with the Fire TV home screen launcher. The person making the changes to your app's source code should have a basic understanding of Android development.
+*   **Onboarding process and setup**: It takes two weeks to set up our systems to provide you with a sandbox to test the catalog integration. Your Amazon business contact will also need to onboard you with the integration process. If you do not know who your Amazon business contact is, [contact us](http://www.amazon.com/gp/html-forms-controller/aftsdk-cdf-request).
+*  **Minimal fields for matching**: To provide metadata for matching, you must supply some required and additional fields. The [Title][catalog-data-format-schema-reference#Title] field is required. Additional fields (a minimum of 2 but ideally 3 or more) are also required. The additional fields can include the following:
+    *  [ReleaseYear][catalog-data-format-schema-reference#ReleaseYear]
+    *  [Credits (Actor and Director)][catalog-data-format-schema-reference#Credits]
+    *  [RuntimeMinutes][catalog-data-format-schema-reference#RuntimeMinutes]
+    *  [SeasonInShow][catalog-data-format-schema-reference#SeasonInShow] or [SeasonID][catalog-data-format-schema-reference#SeasonID] (the SeasonID must reference a valid season)
+    *  [ShowTitle][catalog-data-format-schema-reference#ShowTitle] or [ShowID][catalog-data-format-schema-reference#ShowID]
 
-<a class="anchor" name="統合プロセスの概要"></a>
+## Integration Process Overview
 
-<h2>統合プロセスの概要</h2>
-<p>カタログ統合は、主に次の 2 つの要素で構成されます。
-</p>
-<ul>
-<li>カタログの作成とアップロード</li>
-<li>アプリと Amazon Fire TV ホーム画面ランチャーの統合</li>
-</ul>
-<p>カタログの作成とアップロードは、複数のステップから成るプロセスで、自動化を利用することで単純化できます。このプロセスの自動化と単純化を行うための cron ジョブのスクリプト作成と設定に、1 名の開発者を割り当てることを検討してください。また、アプリと Amazon ホーム画面ランチャーの統合に対応するために、2 人目の開発者が必要になります。できれば Android 開発の経験のある方が推奨されます。カタログ統合を問題なく行うには、これら 2 つのプロセスの完了が必要ですが、互いに依存関係はないため、各プロセスの開発作業は並行して行うことができます。
-</p>
-<h3>カタログの作成とアップロード
-</h3>
-<p>次の図は、メディアカタログファイルを作成し、そのファイルを AWS S3 ストレージにアップロードするための大まかな手順を示しています。
-</p>
-<p><img src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/content/sdk/images/fire-tv-ci/Catalog_Process.png" />
-</p>
-<ol>
-<li>カタログメタデータ用にカタログデータ形式（CDF）で XML ファイルを作成します。</li>
-<li> <a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd" class="external-link" rel="nofollow">CDF スキーマ（xsd）</a>ファイルに対して CDF ファイルを検証します。</li>
-<li>Amazon によって開発者様用に作成されるアマゾン ウェブ サービス（AWS）S3 カタログバケットに CDF ファイルをアップロードします。</li>
-<li>Amazon で生成されるインジェストレポートで CDF ファイルが正常にインジェストされているかどうかを確認し、失敗している場合はレポートの内容に基づいてトラブルシューティングを行います。</li>
-</ol>
-<h3>Amazon Fire TV ホーム画面ランチャーとの統合
-</h3>
-<p>次の図は、アプリを Amazon Fire TV ホーム画面ランチャーに統合し、その統合をテストするための大まかな手順を示しています。
-</p>
-<p><img src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/content/sdk/images/fire-tv-ci/Launcher_Process.png" />
-</p>
-<ol>
-<li>アプリを Amazon Fire TV ホーム画面ランチャーに統合するようにアプリのコードを変更します。</li>
-<li>アプリとランチャーの統合をテストします。</li>
-</ol>
+Catalog Integration has two main components:
 
+*   Catalog creation and upload
+*   Integration of your app with the Amazon Fire TV Home Screen Launcher
 
-<a class="anchor" name="手順 1:CDF ファイルの作成"></a>
+The catalog creation and upload component is a multi-step process that can be simplified using automation. Consider allocating a developer resource to help script and set up a cron job to automate and simplify this process for your organization. You will need a second developer, preferably someone with Android development experience, to help integrate your app with the Amazon Home Screen Launcher.
 
-<h2>手順 1:CDF ファイルの作成</h2>
-<p>まず、アプリのコンテンツカタログのメタデータを記載した　カタログ定義形式（CDF）ファイルを作成する必要があります。CDF ファイルとは、Amazon の CDF スキーマで定義されている形式に準拠した XML ファイルです。</p>
-<p>カタログファイルの構造の詳細については、「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-data-format-cdf-overview" class="external-link" rel="nofollow">カタログデータ形式（CDF）について</a>」および「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-data-format-schema-reference" class="external-link" rel="nofollow">カタログデータファイルスキーマリファレンス</a>」を参照するか、<a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd" class="external-link" rel="nofollow">CDF</a> <a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd" class="external-link" rel="nofollow">XSD ファイル</a>をダウンロードしてください。</p>
-<p>このファイルは、以下の 2 つの方法のいずれかで作成できます。</p>
-<ul>
-<li>自動化されたプロセスを使用して、データベースからデータをエクスポートし、そのデータを CDF スキーマに準拠した CDF XML ファイルに変換することで、ファイルを作成する。</li>
-<li>手動で CDF ファイルを作成する。</li>
-</ul>
-<h3 id="GettingStartedwithFireTVCatalogIntegration(DRAFT)-CreatingtheCDFfileviaExportingandTransformingYourData">データのエクスポートと変換による CDF ファイルの作成</h3>
-<p>Fire TV と統合するアプリは、ほとんどの場合、自動プロセスを使用してアプリのカタログデータ用の CDF ファイルを作成できます。</p>
-<p>自動プロセスを使用して CDF ファイルを作成するには、以下の手順に従います。</p>
-<ol>
-<li>アプリのデータベースからメタデータをエクスポートします。データのエクスポートについてサポートが必要な場合は、組織内のデータベース管理者かサポート担当者に相談してください。エクスポート対象のフィールドは、CDF スキーマで定義されているフィールドとほぼ同等であることが必要です（「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-data-format-cdf-overview" class="external-link" rel="nofollow">カタログデータ形式（CDF）について</a>」および「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-data-format-schema-reference" class="external-link" rel="nofollow">カタログデータファイルスキーマリファレンス</a>」を参照）。
-</li>
-<li>CDF ドキュメントを参照し、エクスポートしたデータを CDF スキーマに準拠した XML ファイルにコピーするための XSLT 変換を記述します。サポートが必要な場合は開発者に相談してください。</li>
-</ol>
-<h3 id="GettingStartedwithFireTVCatalogIntegration(DRAFT)-ManuallyCreatingyourCDFFile">手動による CDF ファイルの作成</h3>
-<p>コンテンツカタログのメタデータがデータベースに保存されていない場合や、何らかの理由によりそのデータをエクスポートして XML ファイルに変換することができない場合は、手動で CDF ファイルを作成することが必要になります。</p>
-<p>手動で CDF ファイルを作成するには、以下の手順に従います。</p>
-<ol>
-<li>XML の扱いにまだ慣れていない場合は、XML とその概念についてよく理解します。</li>
-<li>CDF ファイルのテンプレートとして使用できる CDF スキーマ XSD ファイルをダウンロードします: <a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd" class="external-link" rel="nofollow">CDF XSD ファイルのダウンロード</a>。
-</li>
-<li>CDF ドキュメントを参照し、XML エディター（多くのエディターがさまざまな提供元からダウンロードできます）を使用して、アプリのカタログデータ用の CDF ファイルを作成します。</li>
-</ol>
+Development work on these two processes can take place in parallel. One component is not dependent on the other, although completion of both pieces is required for successful catalog integration.
 
+### Catalog Creation and Upload
 
-<a class="anchor" name="手順 2:CDF ファイルの検証"></a>
+The following diagram shows the high-level steps for creating your media catalog file and uploading that file to AWS S3 storage:
 
-<h2>手順 2:CDF ファイルの検証</h2>
-<p>Amazon では、CDF ファイルを AWS にアップロードする前に、ファイルの検証を行うことを推奨しています。ローカルでファイルを検証することで、ファイルのインジェストや Fire TV カタログへの統合に支障をきたすエラーを防ぐことができます。Amazonの CDF XSD ファイルに記載されたスキーマに対して CDF ファイルを検証してください。<a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd" class="external-link" rel="nofollow">こちらから CDF XSD ファイルをダウンロードできます。</a></p>
-<p>XML 検証ツールで確認できるのは、XML 形式が適切であり（例：タグの破損や欠落がない）、CDF スキーマに対して有効である（例：不正確な入れ子になった要素がない）ことだけです。XML 検証によって CDF ファイルの一般的なエラーは検出できますが、AWS にファイルをアップロードするまでわからないエラーが残る場合もあります。</p>
-<p>CDF ファイルの検証には、XML 検証ツールを使用してください。CDF 検証ツールは各種ソースから無料で入手できます。Amazon では提供していません。</p>
-<ul>
-<li>IDE を使って CDF ファイルを作成または編集した場合は、IDE に XML 検証ツールが含まれている可能性があります。</li>
-<li>Mac または Linux では、<a href="http://xmlsoft.org/xmllint.html" class="external-link" rel="nofollow">xmllint</a> ユーティリティを使用してください。Mac または Linux の OS には通常、このようなユーティリティが事前にインストールされています。
-</li>
-<li>Windows の場合は、各種 XML 検証ツールを無料でダウンロードすることができます。</li>
-</ul>
-<p>xmllint を使用して CDF ファイルを検証するには、以下の手順に従います。</p>
-<ol>
-<li>
-<a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd" class="external-link" rel="nofollow">CDF XSD ファイル</a>をダウンロードし、作成済みの CDF ファイルと同じディレクトリにコピーまたは移動します。
-</li>
-<li>ターミナルウィンドウ（Windows ではコマンドウィンドウ）を開き、コンピューターのコマンドラインインターフェイスにアクセスします。</li>
-<li>シェルのプロンプトが表示されたら、以下のコマンドを入力します。<br>
-<br>
-<code>$ xmllint --schema catalog.xsd --noout &lt;cdf_file_name&gt;.xml</code><br>
-<br>
-"$" はシェルプロンプトを表しています。"&lt;cdf_file_name&gt;" は実際の CDF ファイル名に置き換えてください。--noout オプションを指定すると、xmllint が XML ファイルをトラバースする際に、エクストラが出力されません。検証の終了後、ファイルにエラーがあった場合は xmllint によってレポートされます。ない場合は XML ファイルが指定のスキーマに対して有効であることがレポートされます。</li>
-</ol>
-<p><strong>注意</strong>:サンプルからコマンドをコピーして貼り付ける場合は、ダブルハイフン（"--"）がブラウザやターミナルエディターによって en ダッシュに自動修正されていないことを確認してください。</p>
+{% include image.html file="firetv/catalog/images/catalog_Process" type="png" %}
 
+The catalog creation and upload process is as follows:
 
-<a class="anchor" name="手順 3:AWS S3 への CDF ファイルのアップロード"></a>
+1.  Create an XML file in Catalog Data Format (CDF) for your catalog metadata.
+2.  Validate your CDF file against the [CDF schema (XSD)][1] file.  
+3.  Upload the CDF file to the Amazon Web Services (AWS) S3 catalog bucket that Amazon creates for you.
+4.  Review the Amazon-generated ingestion report to confirm that your CDF file was successfully ingested or to help troubleshoot an ingestion failure.
 
-<h2>手順 3:AWS S3 への CDF ファイルのアップロード</h2>
-<p>CDF ファイルが有効であることを検証したら、次のコマンドを使用して、Amazon によって開発者様のカタログ用に設定された S3 バケットに CDF ファイルをアップロードできます。 <code class="plain plain">
-<br />
-<br /> $ aws s3api put-object --body &lt;catalog_file_name.xml&gt; --bucket &lt;s3_bucket_name&gt; --key catalogs/catalog.xml --acl bucket-owner-full-control</code> <strong>
-<br />
-<br /> 注意</strong>: このコマンドをコピーしてターミナルウィンドウに貼り付ける場合、"--" が en ダッシュではなく二重ダッシュになっていることを確認してください。山かっこ（"&lt;&gt;"）内のテキストは、実際のファイル名とバケット名の値に置き換えてください。
-</p>
-<p>詳細な手順については、「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-upload" class="external-link" rel="nofollow">Amazon へのカタログのアップロード</a>」を参照してください。
-</p>
+### Integration with the Amazon Fire TV Home Screen Launcher
 
+The following diagram shows the high-level steps for integrating your app with the Amazon Fire TV Home Screen Launcher and testing that integration:
 
-<a class="anchor" name="手順 4:アップロードした CDF ファイルの検証"></a>
+{% include image.html file="firetv/catalog/images/catalog_Launcher_Process" type="png" %}
 
-<h2>手順 4:アップロードした CDF ファイルの検証</h2>
-<p>新しい CDF ファイルをアップロードするたびに、カタログデータのインポート結果について成功か失敗かを示すレポートがカタログバケットに配信されます。このレポートの詳細と、CDF のアップロードが失敗した場合のトラブルシューティングにレポートを活用する方法については、「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/receiving-and-understanding-the-catalog-ingestion-report" class="external-link" rel="nofollow">インジェストレポートの取得とその内容</a>」を参照してください。
-</p>
+1.  Modify your app's code to integrate your app with the Amazon Fire TV home screen launcher.
+2.  Test your app's integration with the launcher.
 
+## Step 1: Creating Your CDF File
 
-<a class="anchor" name="手順 5:アプリと Fire TV ホーム画面ランチャーの統合"></a>
+To start, you will need to create a Catalog Definition Format (CDF) file that contains the metadata for your app's content catalog. A CDF file is an XML file that adheres to the format defined by Amazon's CDF schema.
 
-<h2>手順 5:アプリと Fire TV ホーム画面ランチャーの統合</h2>
-<p>有効なカタログが Amazon によってインジェストされたら、Fire TV ホーム画面ランチャーと統合するために、アプリのソースコードに少し変更を加える必要があります。ホーム画面ランチャーは、以下のようなタイプの機能を扱います。</p>
-<ul>
-<li>ユーザーのサインイン</li>
-<li>ユニバーサル閲覧・検索</li>
-<li>コンテンツの再生</li>
-</ul>
-<p>ランチャー統合の詳細な手順とサンプルについては、「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/launcher-integration">ランチャー統合</a>」を参照してください。<br></p>
-<p>アプリと Fire TV ホーム画面ランチャーを統合するには、以下の手順に従います。</p>
-<ol>
-<li>アプリのソースコードで、ユーザーの登録ステータスとアプリに関するその他の情報が格納されたインテントを設定します。<br>
-<ol type="a">
-<li>アプリのソースコードで、アプリの機能をブロードキャストするために使用できる標準の Android インテントを作成します。</li>
-<li>アプリが起動したとき、Fire TV ランチャーからインテントが要求されたとき、またはユーザーの登録ステータスが変更されたときに、アプリによってインテントがブロードキャストされるようにします。</li>
-<li>アプリのコンテキストを使用してインテントを送信します。</li>
-</ol>
-</li>
-<li>コード内に、Fire TV ランチャーからの機能リクエストを受信するクラスを追加します。</li>
-<li>Fire TV ランチャーから再生インテントとサインインインテントを受信して処理するためのアクティビティをアプリに実装します。</li>
-<li>以下の各要素をアプリの Android マニフェストに追加します。
-<ul>
-<li>Fire TV ランチャーからインテントを受信するための、再生アクティビティとサインインアクティビティ用の <code>&lt;intent-filter&gt;</code> 要素。</li>
-<li><code>BroadcastReceiver</code> クラスの名前を指定する android:name 属性を持ち、<code>com.amazon.device.REQUEST_CAPABILITIES</code> アクション用の <code>&lt;intent-filter&gt;</code> を子要素として含む、<code>&lt;receiver&gt;</code> 要素。</li>
-<li>Fire TV ランチャーが確実にインテントを受け付けるようにするための <code>&lt;uses-permissions&gt;</code> 要素。</li>
-</ul>
-</li>
-</ol>
+For information about the structure of the catalog file, see [About the Catalog Data Format][about-the-cdf] the [Catalog Data Format Schema Reference][catalog-data-format-schema-reference], or download the [CDF XSD file][1].
 
+You have two options for creating this file:
 
-<a class="anchor" name="手順 6:アプリと Fire TV ホーム画面ランチャーの統合のテスト"></a>
+*   Use an automated process to create the file by exporting your data from a database, then transform that data to a compliant CDF XML file.
+*   Manually create the CDF file.
 
-<h2>手順 6:アプリと Fire TV ホーム画面ランチャーの統合のテスト</h2>
-<p>アプリと Fire TV の統合は、以下の 2 つの方法でテストできます。Fire TV とのカタログ統合が期待通りに機能するように、これらの方法によってアプリに加えた変更が正しいかを検証します。
-</p>
-<ul>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/testing-launcher-integration-with-adb" class="external-link" rel="nofollow">ADB を使用したランチャー統合テスト</a>: Android Debug Bridge（ADB）ユーティリティを使用して、アプリを Fire TV 端末にサイドロードし、サインインインテントと再生インテントにアプリが正しく応答するかどうかを検証します。この方法は、アプリの開発が完了し、再生用のランチャーインテントに応答するコードが実装済みの場合に使用してください（「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/launcher-integration" rel="nofollow">ランチャー統合</a>」を参照）。また、この方法でアプリからのコンテンツ再生を検証することもできます。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/testing-launcher-integration-with-the-test-app" class="external-link" rel="nofollow">テストアプリを使用したランチャー統合テスト</a>: Amazon が提供するテストアプリをダウンロードして使用し、アプリをテストして、サインインインテントと再生インテントにアプリが正しく応答するかどうかを検証します。この方法は、アプリの開発がまだ完了していない場合や、ランチャーからのインテントに応答するコードを実装していない場合に使用してください（「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/launcher-integration" rel="nofollow">ランチャー統合</a>」を参照）。</li>
-</ul>
+### Creating the CDF file via Exporting and Transforming Your Data
 
+Most apps that integrate with Fire TV will be able to use an automated process to create the CDF file for the app's catalog data.
 
-<a class="anchor" name="関連リソース"></a>
+To use an automated process to create your CDF file:
 
-<h2>関連リソース</h2>
-<ul>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/overview/integrating-your-catalog-with-fire-tv">カタログと Amazon Fire TV の統合</a>:Fire TV カタログ統合のランディングページ。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/understanding-fire-tv-catalog-integration">Fire TV カタログ統合について</a>:カタログ統合の概念の紹介。</li>
-<li><strong>カタログ統合の準備</strong>:カタログ統合のクイックスタートガイド。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-data-format-cdf-overview">カタログデータ形式（CDF）について</a>:カタログファイルに必要な構成方法と必須フィールドに関する説明。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/setting-up-your-aws-account-for-fire-tv-catalog-integration">Fire TV カタログ統合のための AWS アカウントのセットアップ</a>:AWS の 1 回限りのセットアップ手順。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-upload">Amazon へのカタログのアップロード</a>:CDF ファイルを Amazon S3 にアップロードする方法。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/receiving-and-understanding-the-catalog-ingestion-report">カタログインジェストレポートの取得とその内容</a>:カタログの統合ステータスに関するレポートのオプトインと使用方法について。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-data-format-ingestion-report-messages">カタログデータ形式インジェストレポートのメッセージ</a>:各インジェストレポート情報の読み方と対処方法。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/launcher-integration">ランチャー統合</a>:アプリと Fire TV ホーム画面ランチャーの統合について。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/testing-launcher-integration-with-adb">ADB を使用したランチャー統合テスト</a>:Android Debug Bridge（ADB）を使用したアプリのランチャー統合のテストについて。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/testing-launcher-integration-with-the-test-app">テストアプリを使用したランチャー統合テスト</a>:Amazon のテストアプリシミュレーターを使用したアプリのランチャー統合のテストについて。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/fire-tv-catalog-integration-faqs">Fire TV カタログ統合の FAQ</a>:カタログ統合についてのよくある質問。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/migrating-a-cdf-file-to-the-latest-version">カタログデータ形式（CDF）ファイルの最新バージョンへの移行</a>:カタログで最新バージョンの CDF スキーマが使用されるようにする方法。</li>
-<li> <a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-data-format-schema-reference">カタログデータ形式（CDF）スキーマリファレンス</a>:すべての CDF 要素の定義、要件、サンプル。</li>
-<li><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/test-cases-for-verifying-deep-links-from-your-fire-tv-catalog">Fire TV のディープリンクを確認するためのテストケース</a>: アプリのランチャー統合を確認するために実行するテストケースについて。</li>
+1.  Export your metadata from your app's database. If necessary, ask a database administrator or support person within your org for help exporting the data. The fields that you export should be roughly equivalent to those defined by the CDF schema (see the [About the CDF][about-the-cdf] and [Catalog Data Format Schema Reference][catalog-data-format-schema-reference].
+2.  Consulting the CDF documentation, write an XSLT transform to copy the exported data into an XML file that conforms to the CDF schema. Ask a developer for help, if necessary.
 
-</ul>
+### Manually Creating your CDF File
 
+If your content catalog's metadata is not stored in a database, or if for any reason, you cannot export and transform that data to an XML file, you will need to manually create your CDF file.
 
+To manually create your CDF file:
+
+1.  Familiarize yourself with XML and its concepts, if you are not already comfortable working with XML.
+2.  Download the CDF schema XSD file, which you can use as a template for your CDF file: [CDF XSD file download][1].
+3.  Consulting the CDF documentation and using an XML editor (many are available for download from various sources), compose the CDF file for your app's catalog data.
+
+## Step 2: Validating Your CDF File
+
+Amazon highly recommends validating your CDF file before uploading the file to AWS. Validating your file locally can help catch errors that would prevent the file from being successfully ingested and integrated with the Fire TV catalog. Validate your CDF file against the schema provided in Amazon's CDF XSD file: [CDF XSD file][1].
+
+Note that XML validation tools can only check that your XML is well-formed (for example, no broken or missing tags) and valid against the CDF schema (for example, no incorrectly nested elements). While XML validation should catch the most common errors in your CDF file, your CDF file could still contain errors that are not caught until the file is uploaded to AWS.
+
+Use an XML validation tool to validate your CDF file. While Amazon does not provide a CDF validation tool, you can easily obtain one at no cost from a variety of sources:
+
+*   If you created or edited your CDF file using an IDE, your IDE might have a built-in XML validation tool.
+*   On a Mac or Linux, use the [xmllint][2] utility. Your Mac or Linux computer should come with these utilities already installed as part of the OS.
+*   On Windows, a number of free XML validation tools are available for download.
+
+To use xmllint to validate your CDF file:
+
+1.  Download the [CDF XSD file][1] and copy or move this file to the same directory as the CDF file that you previously created.
+2.  Open a terminal window (or a command window in Windows) to access your computer's command line interface.
+3.  At the shell prompt, type the following command:
+
+    ```bash
+    $ xmllint --schema catalog.xsd --noout <cdf_file_name>.xml
+    ```
+
+    The `$` represents the shell prompt. Replace `<cdf_file_name>` with the actual name of your CDF file. The `--noout` option suppresses extra output as xmllint traverses your XML file. When finished, xmllint will report any errors that it found in your file or will report that your XML file is valid against the specified schema.
+
+    {% include note.html content="If you copy-and-paste any of the commands from these examples, make sure that the double hyphens (\"`--`\") are not being auto-corrected to n-dashes by your browser or terminal editor." %}
+
+## Step 3: Uploading Your CDF File to AWS S3
+
+Once you have verified that your CDF file is valid, you can upload the CDF file to the S3 bucket that Amazon set up for your catalog using the following command:
+
+```bash
+$ aws s3api put-object --body <catalog_file_name.xml> --bucket <s3_bucket_name> --key catalogs/catalog.xml --acl bucket-owner-full-control
+```
+
+{% include note.html content="Make sure that if you copy-and-paste this command into a terminal window that the \"`--`\" characters paste as double-dashes and not as an n-dash. Replace the text in angle brackets (`< >`) with the actual values for your file name and bucket." %}
+
+For detailed instructions, see [Uploading Your Catalog to Amazon][uploading-your-catalog].
+
+## Step 4: Verifying the Uploaded CDF File
+
+Amazon posts a report to your catalog bucket indicating success or failure for the import of your catalog data each time that you upload a new CDF file. To learn more about this report and how to use it to troubleshoot CDF upload failures, see [Receiving and Understanding the Catalog Ingestion Report][receiving-and-understanding-the-catalog-ingestion-report].
+
+## Step 5: Integrating Your App with the Fire TV Home Screen Launcher
+
+Once you have a valid catalog that has been ingested by Amazon, you will need to make a few changes to your app's source code to integrate your app with the Fire TV home screen launcher. The home screen launcher handles the following types of capabilities:
+
+*   User sign-in
+*   Universal browse and search
+*   Playback of content
+
+For more detailed steps and examples for launcher integration, see [Integrating Your App with the Fire TV Home Screen Launcher][launcher-integration].
+
+To integrate your app with the Fire TV home screen launcher:
+
+1.  In your app's source code, set up an Intent that contains the user's subscription status and other information about your app:
+    1.  In your app's source code, construct a standard Android Intent that your app can use to broadcast your its capabilities.
+    2.  Make sure that the app broadcasts the Intent any time that the app starts up, when the Intent is requested by the Fire TV launcher, or if your users' subscription status changes.
+    3.  Send the Intent using your app's context.
+2.  In your code, add a class to receive capability requests from the Fire TV launcher.
+3.  Implement an Activity in your app to receive and handle playback and sign-in Intents from the Fire TV launcher.
+4.  Add the following elements to your app's Android manifest:
+    *   An `<intent-filter>` element for playback and sign-in activities to recieve intents from the Fire TV launcher.
+    *   A `<receiver>` element with an android:name attribute that specifies the name of your `BroadcastReceiver` class and containing a child element of an `<intent-filter>` for the `com.amazon.device.REQUEST_CAPABILITIES` action.
+    *   A `<uses-permissions>` element to ensure that the Fire TV launcher accepts your Intents.
+
+## Step 6: Testing Your App's Integration with the Fire TV Home Screen Launcher
+
+Use the test cases described in [Test Cases for Verifying Fire TV Deep Links][test-cases-for-verifying-deep-links-from-your-fire-tv-catalog] to formulate a test plan for your integrated app. Execute these step-by-step procedures to help verify your launcher integration.
+
+You have two options to test your app's integration with Fire TV. Use these options to verify that you have made the correct changes to your app for Catalog Integration with Fire TV to function as expected:
+
+*   [Testing Launcher Integration with ADB][testing-launcher-integration-with-adb]: Use the Android Debug Bridge (ADB) utility to sideload your app onto a Fire TV device, and verify that your app responds correctly to sign-in and playback intents. Use this option when your app is fully developed and you have implemented the code to respond to launcher Intents for playback (see [Integrating Your App with the Fire TV Home Screen Launcher][launcher-integration]. You can also use this option to verify content playback from your app.
+*   [Testing Fire TV Launcher Integration with the Integration Test App][testing-launcher-integration-with-the-test-app]: Download and use the Test App provided by Amazon to test your app and verify that your app responds correctly to sign-in and playback intents. Use this option when you have not yet completed development on your app or have not yet implemented the code to respond to Intents from the launcher (see [Integrating Your App with the Fire TV Home Screen Launcher][launcher-integration]).
+
+[1]: https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd
+[2]: http://xmlsoft.org/xmllint.html
 
 {% include links.html %}
