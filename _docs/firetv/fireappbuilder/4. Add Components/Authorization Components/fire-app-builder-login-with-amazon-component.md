@@ -54,9 +54,9 @@ To configure the Login with Amazon Component:
 
 1.  As with other components, follow the general instructions to [Load a Component in Your App][fire-app-builder-load-a-component].
 2.  Remove any other authentication components that are loaded in your app (such as AdobepassAuthComponent or FacebookAuthComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
-    
+
     {% include_relative componentnote_authentication.html %}
-    
+
 2.  In your app, open the **Navigator.json** file (located in **app > assets**).
 3.  Set the `verifyScreenAccess` value to `true` for the screen where you want users to log in. For example, if you want users to log in before playing media, you would verify screen access at the `PlaybackActivity`:
 
@@ -68,7 +68,7 @@ To configure the Login with Amazon Component:
     }
     ```
 
-4.  To change the text that appears in the Login with Amazon screen (Figure 1), go to **LoginWithAmazonComponent > res > values > strings.xml**. Copy the strings into your app's **custom.xml** file (inside res > values) and customize the string values. 
+4.  To change the text that appears in the Login with Amazon screen (Figure 1), go to **LoginWithAmazonComponent > res > values > strings.xml**. Copy the strings into your app's **custom.xml** file (inside res > values) and customize the string values.
 
 To fully configure the component, you will need to insert the API key from the Login with Amazon service. The next sections explain how to get this API key.
 
@@ -95,7 +95,7 @@ After creating a security profile on the Developer Console, you must add setting
 
 ### Getting Your App's Signature {#signature}
 
-Your apps must be signed in order to interact with the Login with Amazon service. Before you release your app, your signature is stored in a debug keystore. Once you release your app, your signature is stored in a release keystore. The Login with Amazon service will use your app's signature to construct the API key that is necessary to configure the Login with Amazon Component.
+Your apps must be signed in order to interact with the Login with Amazon service. Before you release your app, your signature is stored in a debug keystore. After you release your app, your signature is stored in a release keystore. The Login with Amazon service will use your app's signature to construct the API key that is necessary to configure the Login with Amazon Component.
 
 If you're testing out your app (that is, you haven't yet released it to the Amazon Appstore), Android Studio automatically generates a signature for your APK file. While you're in the coding/testing phase, you can use this signature to test the Login with Amazon functionality. When you officially release your app, you will need to generate a new API key based on the signature from the release keystore.
 
@@ -111,12 +111,12 @@ To get the MD5 value from your signature, you use a Java utility called [keytool
        ```
        echo 'export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/bin' >> ~/.bash_profile
        ```
-        
-        For Windows users, use Windows methods for adding tools to your PATH.
-        
+
+       For Windows users, use Windows methods for adding tools to your PATH.
+
 2.  With keytool in your PATH, browse to the folder where the debug.keystore resides. This path is as follows:
 
-    ````
+    ```
     /Users/<your username>/.android/debug.keystore
     ```
 

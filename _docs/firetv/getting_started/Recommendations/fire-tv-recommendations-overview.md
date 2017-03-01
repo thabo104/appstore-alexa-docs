@@ -71,7 +71,7 @@ The attributes are as follows:
 
 The following two requirements must be met for recommendations to appear:
 
-* There must be at least 3 recommendations in total sent from all apps.
+* There must be at least 5 recommendations in total sent from all apps.
 * The user can't have any viewing restrictions set under Settings > Preferences > Parental Controls.
 
 Note that Android limits the number of notifications to 50. This limit includes both [standard notifications][notifications-for-amazon-fire-tv] and recommendations combined.

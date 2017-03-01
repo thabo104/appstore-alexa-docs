@@ -142,7 +142,7 @@ Follow these guidelines when using the [ContentRecommendation.Builder](https://d
          <td>Yes</td>
       </tr>
       <tr>
-         <td><code><a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBadgeIcon(int)">setBadgeIcon</a>(int iconResourceId)</code></td>
+         <td><a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBadgeIcon(int)"><code>setBadgeIcon</code></a>(int iconResourceId)</td>
          <td>
             Sets the resource ID for the recommendation badging icon.
             <p>The resource id represents the icon resource in the source application package. If not set, or an invalid resource ID is specified, the application icon retrieved from its package will be used by default.</p>
