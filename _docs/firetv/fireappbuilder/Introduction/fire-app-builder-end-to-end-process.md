@@ -43,6 +43,6 @@ The following steps show the beginning-to-end process for building an app with F
 | a. [Components Overview][fire-app-builder-interfaces-and-components] | Set up authentication, in-app purchasing, analytics, ads, or the media player by loading already coded components that implement interfaces in Fire App Builder. |
 
 When you finish building your app and are ready to submit it to the Amazon Appstore, see [Publishing Android Apps to 
-the Amazon Appstore][appstore-understanding-submission]. As you prepare your app for publishing, you will need to [take various screenshots](/support/submitting-your-app/tech-docs/04-taking-screenshots) and gather [Fire TV image assets][asset-guidelines-for-app-submission#firetvassets].
+the Amazon Appstore][appstore-understanding-submission]. As you prepare your app for publishing, you will need to [take various screenshots](/support/submitting-your-app/tech-docs/taking-screenshots) and gather [Fire TV image assets][asset-guidelines-for-app-submission#firetvassets].
 
 {% include links.html %}
