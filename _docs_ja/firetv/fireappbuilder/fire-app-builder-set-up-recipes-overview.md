@@ -10,7 +10,7 @@ github: true
 [メディアフィードをロード][fire-app-builder-load-media-feed]したら、フィードからメディアのカテゴリとコンテンツを取得する際に使用される 2 つのレシピを構成する必要があります。"レシピ" とは、アプリの作成時にFire App Builderで使用される設定が (キーと値の形式で) 記述されたシンプルなファイルです。構成する必要のある 2 つのレシピは次のとおりです。
 
 *  **[カテゴリレシピ][fire-app-builder-set-up-recipes-categories]**: メディアをグループ化するための各種のコンテナを提供します。
-*  **[コンテンツレシピ][fire-app-builder-set-up-recipes-categories]**: メディアフィードのプロパティ (タイトル、説明、ビデオURL、画像など) をFire App Builderのコンテンツモデルにマップします。
+*  **[コンテンツレシピ][fire-app-builder-set-up-recipes-content]**: メディアフィードのプロパティ (タイトル、説明、ビデオURL、画像など) をFire App Builderのコンテンツモデルにマップします。
 
 デフォルトのLightcastフィードを使用したホーム画面を見ると、メディアが複数の行に表示されていることがわかります。デフォルトのホーム画面では、"Jamaica Attractions" や "The Country Jamaica" などのグループでメディアがグループ化されています。
 
