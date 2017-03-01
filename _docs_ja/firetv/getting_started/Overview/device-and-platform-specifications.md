@@ -150,7 +150,7 @@ margin-bottom: 30px;
   </tbody>
 </table>
 
-### 端末のリリース日
+### 端末のリリース日（米国）
 
 <table class="grid">
    <colgroup>
@@ -166,7 +166,7 @@ margin-bottom: 30px;
   <tbody>
     <tr>
       <td>Fire TV Stick (第 2 世代) </td>
-      <td>2016 年 9 月 </td>
+      <td>2016 年 9 月　※日本は2017 年4 月 </td>
     </tr>
     <tr>
       <td>Fire TV (第 2 世代)  </td>
