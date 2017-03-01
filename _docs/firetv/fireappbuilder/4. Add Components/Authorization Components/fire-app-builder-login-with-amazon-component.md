@@ -54,9 +54,9 @@ To configure the Login with Amazon Component:
 
 1.  As with other components, follow the general instructions to [Load a Component in Your App][fire-app-builder-load-a-component].
 2.  Remove any other authentication components that are loaded in your app (such as AdobepassAuthComponent or FacebookAuthComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
-    
+
     {% include_relative componentnote_authentication.html %}
-    
+
 2.  In your app, open the **Navigator.json** file (located in **app > assets**).
 3.  Set the `verifyScreenAccess` value to `true` for the screen where you want users to log in. For example, if you want users to log in before playing media, you would verify screen access at the `PlaybackActivity`:
 
@@ -68,7 +68,7 @@ To configure the Login with Amazon Component:
     }
     ```
 
-4.  To change the text that appears in the Login with Amazon screen (Figure 1), go to **LoginWithAmazonComponent > res > values > strings.xml**. Copy the strings into your app's **custom.xml** file (inside res > values) and customize the string values. 
+4.  To change the text that appears in the Login with Amazon screen (Figure 1), go to **LoginWithAmazonComponent > res > values > strings.xml**. Copy the strings into your app's **custom.xml** file (inside res > values) and customize the string values.
 
 To fully configure the component, you will need to insert the API key from the Login with Amazon service. The next sections explain how to get this API key.
 
@@ -87,7 +87,7 @@ After creating a security profile on the Developer Console, you must add setting
 1.  Complete the steps in the "Adding an Android App to a Security Profile" section on the [Register your Android app with Login with Amazon](https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/register_android.html) page. Note the following:
 
     *  For the package name, open the **AndroidManifest.xml** file (located in your **app > manifests**) in Android Studio. The package name is listed at the top. By default, the package name is **com.amazon.android.calypso**. However, you most likely changed the package name when you customized your app.
-    * To get the MD5 value for the **Signature** field, see the following section, [Getting Your App's Signature](#signature).
+    * To get the **MD5** and **SHA-256** values for the signature fields, see the following section, [Getting Your App's Signature](#signature).
 
 2.  Get your API key by following the steps in the "Retrieving an Android API Key" section on the [Register your Android app with Login with Amazon](https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/register_android.html#Android App Signatures and API Keys) page.
 
@@ -95,13 +95,13 @@ After creating a security profile on the Developer Console, you must add setting
 
 ### Getting Your App's Signature {#signature}
 
-Your apps must be signed in order to interact with the Login with Amazon service. Before you release your app, your signature is stored in a debug keystore. Once you release your app, your signature is stored in a release keystore. The Login with Amazon service will use your app's signature to construct the API key that is necessary to configure the Login with Amazon Component.
+Your apps must be signed in order to interact with the Login with Amazon service. Before you release your app, your signature is stored in a debug keystore. After you release your app, your signature is stored in a release keystore. The Login with Amazon service will use your app's signature to construct the API key that is necessary to configure the Login with Amazon Component.
 
-If you're testing out your app (that is, you haven't yet released it to the Amazon Appstore), Android Studio automatically generates a signature for your APK file. While you're in the coding/testing phase, you can use this signature to test the Login with Amazon functionality. When you officially release your app, you will need to generate a new API key based on the signature from the release keystore.
+If you're testing out your app (that is, you haven't yet released it to the Amazon Appstore), Android Studio automatically generates a signature for your APK file. While you're in the coding/testing phase, you can use this signature to test the Login with Amazon functionality. When you officially release your app, you will need to generate a new API key based on the signature from the *release* keystore.
 
 For more information about signatures, see [Android App Signatures and API Keys](https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/android_app_signatures.html). See also [Sign Your App](https://developer.android.com/studio/publish/app-signing.html) in the Android documentation.
 
-To get the MD5 value from your signature, you use a Java utility called [keytool](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html). To use keytool to get your signature's MD5 value:
+To get the MD5 and SHA-256 values from your signature, you use a Java utility called [keytool](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html). To use keytool to get these values:
 
 1. Add keytool to your PATH:
 
@@ -111,16 +111,17 @@ To get the MD5 value from your signature, you use a Java utility called [keytool
        ```
        echo 'export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/bin' >> ~/.bash_profile
        ```
-        
-        For Windows users, use Windows methods for adding tools to your PATH.
-        
-2.  With keytool in your PATH, browse to the folder where the debug.keystore resides. This path is as follows:
 
-    ````
+       For Windows users, use Windows methods for adding tools to your PATH.
+
+2.  With keytool in your PATH, browse to the folder where the `debug.keystore` resides. This path is as follows:
+
+    ```
     /Users/<your username>/.android/debug.keystore
     ```
 
     Replace `<your username>` with your username.
+
 
 3.  Run the following keytool command, replacing `<alias>` with **androiddebugkey** and `<keystore.filename>` with **debug.keystore**:
 
@@ -134,7 +135,7 @@ To get the MD5 value from your signature, you use a Java utility called [keytool
 
     The Certificate fingerprint appears and looks something like this:
 
-    ```
+    <pre>
     Alias name: androiddebugkey
     Creation date: Jun 13, 2016
     Entry type: PrivateKeyEntry
@@ -145,15 +146,16 @@ To get the MD5 value from your signature, you use a Java utility called [keytool
     Serial number: 1
     Valid from: Mon Jun 13 22:56:54 PDT 2016 until: Wed Jun 06 22:56:54 PDT 2046
     Certificate fingerprints:
-         MD5:  20:91:A5:45:ED:F7:D5:9A:03:65:33:66:AD:02:27:E8
+         <span class="red">MD5:  20:91:A5:45:ED:F7:D5:9A:03:65:33:66:AD:02:27:E8</span>
          SHA1: B7:73:5F:AF:28:68:40:AB:31:59:03:A2:46:AB:D6:44:85:2A:C1:0E
-         SHA256: 05:E3:7C:82:42:04:4A:0A:DC:98:6A:1C:B3:21:64:9F:AC:CD:3E:CD:B1:57:3F:EA:C0:35:0E:32:8D:39:D5:A6
+         <span class="red">SHA256: 05:E3:7C:82:42:04:4A:0A:DC:98:6A:1C:B3:21:64:9F:AC:CD:3E:CD:B1:57:3F:EA:C0:35:0E:32:8D:39:D5:A6</span>
          Signature algorithm name: SHA1withRSA
          Version: 1
-    ```
+    </pre>
 
-4.  Copy the value for MD5.
-5.  Enter this value in the Signature field as required in the [Get the Login with Amazon API Key](#apikey) section.
+    The MD5 and SHA256 values are highlighted in red.
+
+4.  Copy the values for **MD5** and **SHA256**. Enter these values into the corresponding fields in the Developer Console, as explained in the [Get the Login with Amazon API Key](#apikey) section above.
 
 
 {% include links.html %}
