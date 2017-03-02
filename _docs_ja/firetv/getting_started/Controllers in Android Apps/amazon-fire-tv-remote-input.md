@@ -7,7 +7,7 @@ toc: false
 github: true
 ---
 
-すべてのボタン、Androidイベント、および動作のガイドラインは、音声認識 (マイク) ボタンを除いて、すべてのリモコンで同じです。音声認識 (マイク) ボタンは一部のリモコンでしか利用できません。
+すべてのボタン、Androidイベント、および動作のガイドラインは、音声認識ボタンを除いて、すべてのリモコンで同じです。音声認識ボタンは一部のリモコンでしか利用できません。
 
 サポートされるすべてのコントローラーにおけるボタンの動作に関する推奨ガイドラインについては、「[コントローラー動作のガイドライン][controller-behavior-guidelines]」を参照してください。Amazon Fireゲームコントローラーからの入力を処理する方法の詳細については、「[Amazon Fire TVゲームコントローラー入力][amazon-fire-game-controller-input]」を参照してください。
 
@@ -81,7 +81,7 @@ return handled || super.onKeyDown(keyCode, event);
       <td>[ホーム] 画面に戻ります。これはシステムイベントで、インターセプトできません。</td>
     </tr>
     <tr>
-      <td>バック</td>
+      <td>戻る</td>
       <td><code>KEYCODE_BACK</code></td>
       <td>前の操作または画面 (アクティビティ) に戻ります。</td>
     </tr>
@@ -91,7 +91,7 @@ return handled || super.onKeyDown(keyCode, event);
       <td>Androidコンテキストメニュー (<a href="http://developer.android.com/guide/topics/ui/menus.html#options-menu">OptionsMenu</a>) が起動されます。</td>
     </tr>
     <tr>
-      <td>マイク (検索) (音声認識リモコンのみ)</td>
+      <td>音声認識ボタン (音声認識リモコンのみ)</td>
       <td>なし</td>
       <td>システムの音声検索が起動されます。これはシステムイベントで、インターセプトできません。</td>
     </tr>
