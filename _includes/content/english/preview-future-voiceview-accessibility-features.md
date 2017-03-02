@@ -102,9 +102,9 @@ To associate a piece or container of static content with an item:
 
 The following examples explain how a user would navigate static content in two different scenarios:
 
-{% include callout.html color="blue" content="**Example 1**: Consider a Fire TV movie details view where the movie title, year, duration, star ratings, etc. are all static content. The user presses **Menu** to prompt VoiceView to speak this content. The user then navigates using the **Fast Forward** and **Rewind** buttons." %}
+{% include callout.html type="info" content="**Example 1**: Consider a Fire TV movie details view where the movie title, year, duration, star ratings, etc. are all static content. The user presses **Menu** to prompt VoiceView to speak this content. The user then navigates using the **Fast Forward** and **Rewind** buttons." %}
 
-{% include callout.html color="blue" content="**Example 2**: Consider a Fire TV launcher screen that is used to navigate a movie catalogue. The text at the top of the screen updates to show the title, description, rating, and other information. Because this non-focusable content updates each time that the user selects a movie, the node containing the selected movie should be described by with the `describedBy` extra." %}
+{% include callout.html type="primary" content="**Example 2**: Consider a Fire TV launcher screen that is used to navigate a movie catalogue. The text at the top of the screen updates to show the title, description, rating, and other information. Because this non-focusable content updates each time that the user selects a movie, the node containing the selected movie should be described by with the `describedBy` extra." %}
 
 ### Implementing VoiceView for Orientation Text
 
@@ -113,7 +113,7 @@ To help new users understand how Fire TV screens are laid out, VoiceView support
 *   The first time a user encounters an `AccessibilityNodeInfo`, VoiceView reads the text.
 *   On subsequent visits, users can request context information by pressing the **Menu** button, which causes VoiceView to read the Orientation Text.
 
-{% include callout.html color="blue" content="**Example**: The first time a user lands on the main Fire TV home page, VoiceView reads, \"Launcher. Use left and right to move between items on menus. Then use up and down to move between categories such as New Releases or Action Movies. Use left and right to move between items in the category.\"" %} 
+{% include callout.html type="info" content="**Example**: The first time a user lands on the main Fire TV home page, VoiceView reads, \"Launcher. Use left and right to move between items on menus. Then use up and down to move between categories such as New Releases or Action Movies. Use left and right to move between items in the category.\"" %} 
 
 ### Implementing VoiceView for Usage Hints  
 
@@ -143,4 +143,4 @@ For users without visual impairment, the layout of a screen provides visual cues
 </tbody>
 </table>
 
-{% include callout.html color="blue" content="**Example**: Consider a screen with a multi-row grid of content, and the first of those rows is in focus, for example \"Customers Also Watched\". In this case, use `com.amazon.accessibility.usageHint.remote` with the text such as \"Press **Left** and **Right** to find an item, press **Up** and **Down** to move between collections of items.\""%}
+{% include callout.html type="info" content="**Example**: Consider a screen with a multi-row grid of content, and the first of those rows is in focus, for example \"Customers Also Watched\". In this case, use `com.amazon.accessibility.usageHint.remote` with the text such as \"Press **Left** and **Right** to find an item, press **Up** and **Down** to move between collections of items.\""%}

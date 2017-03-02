@@ -52,7 +52,7 @@ An ingestion report has three sections:
 
 Here is an example of the summary section of an ingestion report:
 
-{% include image.html caption="Example ingestion report summary section" file="catalog/catalog_IGSum" type="jpg" %}
+{% include image.html caption="Example ingestion report summary section" file="firetv/catalog/images/catalog_IGSum" type="jpg" %}
 
 The summary includes a unique ID given to each ingestion attempt, the catalog that was used, when the ingestion attempt was made, and the result. There are two possible results:
 
@@ -70,7 +70,7 @@ Clicking on any of those boxes takes you to that section of the report.
 
 This portion of the report is where you'll find the information that you'll need to fix any problems. Clicking the Details button for a section expands that section to list its individual messages. At the end of each message is the number of entries that generated it. Clicking on the plus sign next to each message displays the IDs of the works that generated the message, and, in some cases, an additional message with more details. Here is an example with two expanded errors:
 
-{% include image.html caption="Expanded errors showing details" file="catalog/catalog_IGFullyExpandedError.jpg" %}
+{% include image.html caption="Expanded errors showing details" file="firetv/catalog/images/catalog_IGFullyExpandedError" type="jpg" %}
 
 Issues found in the Errors section cause an ingestion to fail; warnings and suggestions generally do not. Therefore, a successful ingestion report can still contain plenty of warnings and suggestions that you should examine.
 
@@ -86,7 +86,7 @@ If the ingestion was successful, the Added, Removed, Updated, and Unchanged numb
 
 What you do next depends on the ingestion status.
 
-*   **Success**: As long as the counts of pages added, removed, updated, and unchanged are as you expected, there is no further action required. However, consider addressing any warnings and suggestions. See [catalog-data-format-ingestion-report-messages] for an explanation and course of action for each.
-*   **Failure**: Refer to [catalog-data-format-ingestion-report-messages] for an explanation and course of action for each entry in the Error section. If you still have trouble understanding what needs to be done or how to do it, please contact your Amazon Business Developer Manager.
+*   **Success**: As long as the counts of pages added, removed, updated, and unchanged are as you expected, there is no further action required. However, consider addressing any warnings and suggestions. See [Catalog Data Format (CDF) Ingestion Report Messages][catalog-data-format-ingestion-report-messages] for an explanation and course of action for each.
+*   **Failure**: Refer to [Catalog Data Format (CDF) Ingestion Report Messages][catalog-data-format-ingestion-report-messages] for an explanation and course of action for each entry in the Error section. If you still have trouble understanding what needs to be done or how to do it, please contact your Amazon Business Developer Manager.
 
 {% include links.html %}

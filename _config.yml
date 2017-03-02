@@ -25,6 +25,8 @@ collections:
     output: true
   search:
     output: true
+  cdf:
+    output: true
 
 sass:
     style: compressed

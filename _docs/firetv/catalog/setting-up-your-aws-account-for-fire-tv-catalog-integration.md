@@ -47,15 +47,15 @@ To find your AWS Account ID:
 
 *   For account owners (root account users), the AWS account ID is on the [Security Credentials page](https://console.aws.amazon.com/iam/home#security_credential), under the **Account Identifiers** tab.
 
-    {% include image.html file="firetv/catalog/images/catalog_AccountID_root" type="png" %}
+    {% include image.html file="firetv/catalog/images/catalog_AccountID_root" type="png"  border="true" max-width="600px" %}
 
 *   For IAM or federated users, the AWS account ID is shown in the [Support Center](https://console.aws.amazon.com/support/home#/support/home), in the upper right corner. (If you have not yet set up your IAM users, the next section describes how to do so. Note that you will need the name of the S3 bucket from your Amazon Fire TV representative to set up the security policy for your IAM users.)
 
-    {% include image.html file="firetv/catalog/images/catalog_AccountID" type="png" %}
+    {% include image.html file="firetv/catalog/images/catalog_AccountID" type="png" border="true" max-width="600px" %}
 
 Additionally, make sure to send your Canonical User ID to your Amazon Fire TV representative. This ID is located just below the AWS account ID for account owners:
 
-{% include image.html file="firetv/catalog/images/catalog_Canonical_ID" type="png" %}
+{% include image.html file="firetv/catalog/images/catalog_Canonical_ID" type="png"  border="true" max-width="600px" %}
 
 ## Step 3: Obtain the S3 bucket information for your app from your Amazon Fire TV representative
 
@@ -65,7 +65,9 @@ Once you send your AWS Account ID to your Amazon Fire TV representative, your re
 
 Configure an Identity and Access Management (IAM) AWS user with at least the "S3 PutObject" permission to all of S3 or at least your Fire TV S3 catalog bucket. This permission will allow that user to upload files to your S3 bucket.
 
-Although you can use your AWS root credentials to access Amazon S3 and your catalog bucket, the AWS best practice is to create separate Identity and Access Management (IAM) users and use those credentials to interact with AWS. For example, you can create an IAM user that has full administrator access to S3 but to no other AWS services or create a limited-access IAM user who can only upload catalog data but not access any other part of the account. Set up an IAM user for your AWS account for each person in your organization who will need access to your S3 bucket. Having separate IAM users for different members of your organization will allow you to enable only the necessary permissions for each user.
+Although you can use your AWS root credentials to access Amazon S3 and your catalog bucket, the AWS best practice is to create separate Identity and Access Management (IAM) users and use those credentials to interact with AWS.
+
+For example, you can create an IAM user that has full administrator access to S3 but to no other AWS services or create a limited-access IAM user who can only upload catalog data but not access any other part of the account. Set up an IAM user for your AWS account for each person in your organization who will need access to your S3 bucket. Having separate IAM users for different members of your organization will allow you to enable only the necessary permissions for each user.
 
 ### Creating a new IAM User
 
@@ -104,7 +106,7 @@ To give existing IAM users access to your Amazon S3 bucket:
         2.  On the Set Permissions page, select **Custom Policy**, and click **Select** to go to the Review Policy page.
         3.  On the **Review Policy** page, enter the following information:
             *   **Policy Name**: Type a unique name for the policy. This name can be anything that you choose.
-            *   **Policy Document**: Copy and paste the following line into the Policy Document field. Substitute the actual name of your S3 bucket for the &lt;Bucket_Name&gt; placeholder.
+            *   **Policy Document**: Copy and paste the following line into the Policy Document field. Substitute the actual name of your S3 bucket for the `<Bucket_Name>` placeholder.
 
             ```
             {"Statement":[{"Effect":"Allow","Action":"s3:*","Resource":"arn:aws:s3:::*<Bucket_Name>"}]}
@@ -122,7 +124,7 @@ To make sure that you have correctly set up your IAM users and their security po
 3.  On the right pane, select **S3** from the **Select Service** drop-down list.
 4.  From the **Select action** drop-down list, select **PutObject**.
 5.  Click the toggle arrow just to the left of the **Amazon S3** entry in the **Service** column to expand the simulation settings.
-6.  Copy and paste "arn:aws:s3:::<Bucket_Name>/catalogs/*" into the **ARN** field, replacing the <Bucket_Name> placeholder with the name of your S3 catalog bucket.
+6.  Copy and paste `arn:aws:s3:::<Bucket_Name>/catalogs/*` into the **ARN** field, replacing the `<Bucket_Name>` placeholder with the name of your S3 catalog bucket.
 7.  Click **Run Simulation** to run the simulation.
 
 If the policy is valid, the simulator will display an "allowed" message; otherwise, it will display "denied" with an explanation of the issue.

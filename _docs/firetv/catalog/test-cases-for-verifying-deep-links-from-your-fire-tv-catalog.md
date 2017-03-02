@@ -16,7 +16,7 @@ This page provides a list of test cases to execute for your Fire TV apps before 
 
 The following flowchart gives an overview of the recommended testing process for verifying that you have correctly integrated your app with the Fire TV Home Screen Launcher. Depending on the state (published or unpublished) and conditions of your app (login required or not, free trial or not), you will only need to perform the steps that apply to your app.
 
-{% include image.html url="firetv/TestingFlowchart" file="catalog/catalog_TestingFlowchart" type="jpg" %}
+{% include image.html url="firetv/TestingFlowchart" file="firetv/catalog/images/catalog_TestingFlowchart" type="jpg" %}
 
 Follow each set of steps below, as it pertains to your app. Use the flowchart as a guide to help you keep track of where you are in the overall testing process.
 

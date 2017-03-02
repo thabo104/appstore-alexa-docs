@@ -30,11 +30,6 @@ github: true
 <p>例に使用されている省略記号（...）は、そのテーマに関連した何らかの情報が、簡潔にわかりやすく表記する関係で省略されていることを示します。<br></p>
 <hr>
 
-
-<a class="anchor" name="エラー"></a>
-
-<a class="anchor" name="errors"></a>
-
 <h2>エラー</h2>
 <p>インジェストレポートの「エラー」セクションに 1 つでもメッセージが存在する場合、CDF ファイルは拒否されます。報告されたエラーをすべて修正して、CDF ファイルを再提出してください。</p>
 <p><strong>エラー</strong><br>
@@ -50,7 +45,7 @@ github: true
 <a href="#showid_invalid_tvepisode">TvEpisode references an invalid ShowID</a><br>
 <a href="#showid_invalid_tvspecial">TvSpecial references an invalid ShowID</a></p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
 <hr>
-<a class="anchor" id="bad_file_parse"></a>
+
 <h3>エラー: Invalid catalog file</h3>
 <p><strong>詳細メッセージ</strong>: Unable to parse provided catalog</p>
 <p><strong>問題</strong></p>
@@ -172,7 +167,7 @@ TvEpisode.SeasonID<br>
 TvEpisode.SeasonInSeries<br>
 TvEpisode.SeasonTitle</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
 <hr>
-<a class="anchor" id="showid_invalid_tvepisode"></a>
+
 <h3>エラー: TvEpisode references an invalid ShowID</h3>
 <p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em></p>
 <p><strong>例:</strong> <strong>tt123456</strong> TvEpisode references an invalid ShowID</p>
@@ -186,7 +181,7 @@ TvEpisode.SeasonTitle</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --
 TvEpisode.ShowID<br>
 TvEpisode.ShowTitle</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
 <hr>
-<a class="anchor" id="showid_invalid_tvspecial"></a>
+
 <h3>エラー: TvSpecial references an invalid ShowID</h3>
 <p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em></p>
 <p><strong>例:</strong> <strong>tt123456</strong> TvSpecial references an invalid ShowID</p>
@@ -203,9 +198,6 @@ TvSpecial.ShowTitle</p>
 <hr>
 
 
-<a class="anchor" name="警告"></a>
-
-<a class="anchor" name="warnings"></a>
 
 <h2>警告</h2>
 <p>警告が原因でカタログのインジェストに失敗することはありません（ただし、画像関連の警告は例外です。あまりに多いと失敗する可能性があります）が、リソースが許す範囲で対処してください。特に、CDF スキーマが変更されていることを示す非推奨警告は注意が必要です。従来と同じようにはデータを使用できなくなる可能性があります。
@@ -233,13 +225,13 @@ TvSpecial.ShowTitle</p>
 <br /> <a href="#tvshow_v_episodes">TvShow is not associated with any TvEpisodes or TvSpecials</a>
 <br /> <a href="#unsupported_image_link">Unsupported image type. Provided image not JPG or PNG format</a>
 </p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="bad_aspect_ratio_link_warn"></a>
+<hr />
 <h3>警告: Aspect ratio should be between %f and %f (%f to %f preferred.)
 <br />
 </h3>
 <p>「<a href="#image">画像関連のメッセージ</a>」を参照してください。このメッセージは重要度に応じて、警告として表示される場合と推奨事項として表示される場合とがあります。
 </p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="copyright"></a>
+<hr />
 <h3>警告: Copyright is optional but should not be blank if supplied
 </h3>
 <p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>

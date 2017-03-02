@@ -13,10 +13,6 @@ github: true
 <p>以下の内容を使用するには、XML に対する十分な理解が必要です。<br></p>
 
 
-<a class="anchor" name="CDF スキーマ要素一覧"></a>
-
-<a class="anchor" name="list"></a>
-
 <h2>CDF スキーマ要素一覧</h2>
 <p>このページでは、以下に示した CDF スキーマの要素について取り上げます。</p>
 <table>
