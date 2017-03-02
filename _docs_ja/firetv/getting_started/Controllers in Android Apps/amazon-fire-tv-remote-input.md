@@ -16,7 +16,7 @@ github: true
 
 ## ボタン
 
-ほとんどのAmazon Fire TVリモコンには次のボタンがあります。一部のFire TVリモコンには [マイク] ボタンまたは音声認識ボタンが付属していません。
+ほとんどのAmazon Fire TVリモコンには次のボタンがあります。一部のFire TVリモコンには音声認識ボタンが付属していません。
 
 {% include image.html file="firetv/getting_started/images/remote-callouts" type="png" alt="Remote control" caption="Remote control" %}
 
