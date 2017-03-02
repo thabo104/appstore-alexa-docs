@@ -258,12 +258,12 @@ folders:
 - title: Recommendations
   folderitems:
   - title: Recommendations Overview
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommended-by-your-apps
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-overview
     jurl: /fire-tv-recommendations-overview.html
     ref: fire-tv-recommendations-overview
 
-  - title: Send Recommmendations that Include Amazon Enhancements
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommended-by-your-apps
+  - title: Send Recommendations that Include Amazon Enhancements
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-send-recommendations
     jurl: /fire-tv-recommendations-send-recommendations.html
     ref: fire-tv-recommendations-send-recommendations
     bookmarks: [amazon-enhancements]
@@ -272,7 +272,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-testing
     jurl: /fire-tv-recommendations-testing.html
     ref: fire-tv-recommendations-testing
-    
+
   - title: Best Practices with Recommendations
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-best-practices
     jurl: /fire-tv-recommendations-best-practices.html
