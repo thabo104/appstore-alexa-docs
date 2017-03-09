@@ -8,7 +8,7 @@ toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/preview-future-voiceview-accessibility-features.md device="firetv" %}
+{% include content/{{site.language}}/fire/preview-future-voiceview-accessibility-features.md device="firetv" %}
 
 ## Related Resources
 
@@ -16,7 +16,3 @@ github: true
 *   [Implementing Accessibility in Fire OS][fire-tv-accessibility]
 
 {% include links.html %}
-
-
-
-

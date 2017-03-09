@@ -7,4 +7,4 @@ toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/advertising-id.md device="firetv" %}
+{% include content/{{site.language}}/fire/advertising-id.md device="firetv" %}

@@ -17,9 +17,9 @@ System X-Ray is available on all Amazon Fire TV and Fire TV Stick devices with F
 
 ## Enable System X-Ray
 
-{% include content/{{site.language}}/firetv-enabledevtools.md %}
+{% include content/{{site.language}}/fire/firetv-enabledevtools.md %}
 
-After the Developer Tools Menu dialog box appears, toggle System X-Ray **On**. 
+After the Developer Tools Menu dialog box appears, toggle System X-Ray **On**.
 
 {% include image.html file="firetv/getting_started/images/xray-devtooloptions" type="png" max-width="500px" %}
 
@@ -27,7 +27,7 @@ After the Developer Tools Menu dialog box appears, toggle System X-Ray **On**.
 
 {% include image.html file="firetv/getting_started/images/firetv_xrayall" type="png" %}
 
-The System X-Ray overlay remains in place as you change apps or navigate around on Fire TV. The System X-Ray overlay is divided into four sections: 
+The System X-Ray overlay remains in place as you change apps or navigate around on Fire TV. The System X-Ray overlay is divided into four sections:
 
 *  [Display (DIS)](#dis)
 *  [CPU (CPU)](#cpu)
