@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Set Up the Content Recipe | Fire App Builder</title>
+    
+    <base target="_self">
+    <meta name="description" content="When you configured your categories, you configured the general groupings for your media. In this step you will map your feed’s content (the titles, descriptions, images, video URLs, and... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/fireappbuilder/2. Configure Your Feed/fire-app-builder-set-up-recipes-content.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-overview.html">Fire App Builder Introduction</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">Release Notes</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">Beginning-to-End Process Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">Miscellaneous Questions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Download Fire App Builder and Build an App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">Connect to Fire TV Through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">Take an App Tour</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-media-feed.html">Load Your Media Feed</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">Recipe Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-categories.html">Set Up the Categories Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="fire-app-builder-set-up-recipes-content.html">Set Up the Contents Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigator Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Configure Navigator -- Token-based Feeds</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Configure Navigator -- Open Feeds</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-customize-look-and-feel.html">Customize the Look and Feel</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-interfaces-and-components.html">Components Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">Load a Component</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">Create Your Own Fire App Builder Component</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">FreeWheel Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-crashlytics-component.html">Crashlytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Google Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazon Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazon In-App Purchasing Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Player Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-brightcove-media-player-component.html">BrightCove Player Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Pull Updates from Github</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">Configure Live Streams</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Integrate Your Media into the Fire TV Catalog</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Use an Android TV Emulator to Run Your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">Querying JSON</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">Querying XML</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">Troubleshooting</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire App Builder </div>
+
+                    <h1>Set Up the Content Recipe</h1>
+
+                    <p>When you <a href="fire-app-builder-set-up-recipes-categories.html">configured your categories</a>, you configured the general groupings for your media. In this step you will map your feed’s content (the titles, descriptions, images, video URLs, and so on) to the Fire App Builder content model. For an overview to recipe configuration, see <a href="fire-app-builder-set-up-recipes-overview.html">Recipe Configuration Overview</a>.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#configure-the-content-recipe" id="markdown-toc-configure-the-content-recipe">Configure the Content Recipe</a>    <ul>
+      <li><a href="#queryparameter" id="markdown-toc-queryparameter">query Parameter</a>        <ul>
+          <li><a href="#queryjson" id="markdown-toc-queryjson">JSON Feeds</a></li>
+          <li><a href="#queryxml" id="markdown-toc-queryxml">XML Feeds</a></li>
+        </ul>
+      </li>
+      <li><a href="#matchlistparameter" id="markdown-toc-matchlistparameter">matchList Parameter</a>        <ul>
+          <li><a href="#imageresolution" id="markdown-toc-imageresolution">Image Resolutions</a></li>
+          <li><a href="#tags" id="markdown-toc-tags">Recommended Content (Through Tags)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ul>
+
+<h2 id="configure-the-content-recipe">Configure the Content Recipe</h2>
+
+<ol>
+  <li>Open the <strong>LightCastContentsRecipe.json</strong> file (located in <strong>app &gt; assets &gt; recipes</strong>).</li>
+  <li>
+    <p>Configure the file’s values as explained in the following table. If parameters need more explanation, the sections below the table provide more detail.</p>
+
+    <table class="grid">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">cooker</code></p>
+          </td>
+<td>
+            <p>Defines which utility will take the parameters defined in the recipe and execute the logic. In other words, the cooker “cooks” the recipe. Leave it at the default value: <code class="highlighter-rouge">DynamicParser</code>.</p>
+          </td>
+</tr>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">format</code></p>
+          </td>
+<td>
+            <p>Specifies the data format for the incoming data feed. Options are <code class="highlighter-rouge">json</code> or <code class="highlighter-rouge">xml</code>.</p>
+          </td>
+</tr>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">translator</code></p>
+          </td>
+<td>
+            <p>Specifies whether translation or reflection is used when converting your feed’s objects to the Fire App Builder content model. Translation is faster and recommended. To use translation, simply leave the value at the default: <code class="highlighter-rouge">ContentTranslator</code>. If you want to use reflection instead, remove the <code class="highlighter-rouge">translator</code> parameter altogether from the recipe. Also see the “How do I use reflection…” question in the <a href="fire-app-builder-questions-and-answers.html#translator">FAQ</a>, because using reflection will require a change in the names used in the <code class="highlighter-rouge">matchlist</code> parameter.</p>
+
+          </td>
+</tr>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">model</code></p>
+          </td>
+<td>
+            <p>Specifies the content model for the data. The content model provides the structure for your content and maps it into the Fire App Builder UI. Leave it at the default: <code class="highlighter-rouge">com.amazon.android.model.content.Content</code>.</p>
+          </td>
+</tr>
+
+<tr>
+<td>
+            <p><code class="highlighter-rouge">modelType</code></p>
+          </td>
+<td>
+            <p>Specifies whether the feed is an array or a single object. Available options are <code class="highlighter-rouge">array</code> or <code class="highlighter-rouge">single</code>. Almost all feeds are <code class="highlighter-rouge">array</code>. For example, if your JSON feed is enclosed within square brackets, or your XML feed has nested angle brackets, choose <code class="highlighter-rouge">array</code>. If your feed is structured as a single object, choose <code class="highlighter-rouge">single</code>.</p>
+          </td>
+</tr>
+
+<tr>
+<td>
+            <p><code class="highlighter-rouge">query</code></p>
+          </td>
+<td>
+            <p>A query used to return content from your media feed. The syntax of the query depends on the structure of your feed. You will need to construct the right query to <strong>get your content</strong>. For JSON feeds, use <a href="https://github.com/jayway/JsonPath">Jayway JsonPath syntax</a> for the query syntax. For XML feeds, use <a href="http://www.w3schools.com/xsl/xpath_syntax.asp">XPath expressions</a> for the query syntax. See <a href="#queryparameter">query Parameter</a> below for more details.</p>
+          </td>
+</tr>
+
+<tr>
+<td>
+            <p><code class="highlighter-rouge">queryResultType</code></p>
+          </td>
+<td>
+            <p>If the result from the query (a specified in the <code class="highlighter-rouge">query</code> parameter) returns a list of strings, include this <code class="highlighter-rouge">queryResultType</code> parameter and set it equal to <code class="highlighter-rouge">[]$</code>. If the query’s result is an object (a map), omit this parameter. (Fire App Builder needs to know the result type because it will needs to push an object into a Java hashmap.)</p>
+          </td>
+</tr>
+
+<tr>
+<td>
+            <p><code class="highlighter-rouge">matchList</code></p>
+          </td>
+<td>
+            <p>The query that you defined in the <code class="highlighter-rouge">query</code> parameter returns a result. This result needs to be mapped from your feed’s names to the names Fire App Builder uses in its content model. The <code class="highlighter-rouge">matchList</code> parameter maps the results from the query to the name for media categories in Fire App Builder. See <a href="#matchlistparameter">matchList Parameter</a> for more details.</p>
+          </td>
+</tr>
+</tbody>
+</table>
+  </li>
+</ol>
+
+<h3 id="queryparameter">query Parameter</h3>
+
+<p>The syntax for JSON feeds differs significantly from the syntax for XML feeds, so the two formats are treated separately in the following sections:</p>
+
+<ul>
+  <li><a href="#queryjson">JSON Feeds</a></li>
+  <li><a href="#queryxml">XML Feeds</a></li>
+</ul>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Although the <code class="highlighter-rouge">query</code> syntax in this section might seem a little complex, remember that Fire App Builder lets you use any feed structure you want, without limiting you to a specific order or specification (such as Media RSS). With this flexibility, it’s unavoidable that you’ll need to use more advanced query syntax to target the elements in your feed.</div>
+
+<h4 id="queryjson">JSON Feeds</h4>
+
+<p>In the sample app in Fire App Builder, the value for <code class="highlighter-rouge">query</code> is <code class="highlighter-rouge">$[?(@.categories[0] in [$$par0$$])]</code>. As with the <code class="highlighter-rouge">query</code> parameter in the Categories recipe, this is (mostly) <a href="https://github.com/jayway/JsonPath">Jayway JsonPath</a> syntax. This syntax uses a <a href="https://github.com/jayway/JsonPath#filter-operators">Jayway JsonPath filter operator</a> to select the items inside the <code class="highlighter-rouge">categories</code> array that have at least one item at the 0 position.</p>
+
+<p>Let’s take a step back to unpack this syntax with more clarity, because you’ll need to customize this query to fit your own feed syntax. A sample <a href="http://www.lightcast.com/api/firetv/channels.php?app_id=263&amp;app_key=4rghy65dcsqa&amp;action=channels_videos">Lightcast feed</a> (which is what the sample Fire App Builder uses) looks like this:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"136211"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Legends Beach Resort, Negril Jamaica"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Legends Beach Resort, Negril Jamaica"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"538"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"thumbURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/l3.cdn01.net\/_thumbs\/0000136\/0136211\/0136211__009f.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"imgURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/l3.cdn01.net\/_thumbs\/0000136\/0136211\/0136211__009f.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"videoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/media.cdn01.net\/802E1F\/process\/encoded\/video_1880k\/0000136\/0136211\/M3FA8J1MI.mp4?source=firetv&amp;channel_id=13671"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Jamaican Attractions"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13671"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"136216"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Falmouth Jamaica Nature's Lullaby "</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Falmouth Jamaica Nature's Lullaby"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1813"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"thumbURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/l4.cdn01.net\/_thumbs\/0000136\/0136216\/0136216__001f.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"imgURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/l4.cdn01.net\/_thumbs\/0000136\/0136216\/0136216__001f.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"videoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/media.cdn01.net\/802E1F\/process\/encoded\/video_1880k\/0000136\/0136216\/L2XGJI1LM.mp4?source=firetv&amp;channel_id=13672"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"The Country Jamaica"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13672"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"136209"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rafting on the Rio Grande River, Jamaica"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rafting on the Rio Grande River, Jamaica"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"660"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"thumbURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/l1.cdn01.net\/_thumbs\/0000136\/0136209\/0136209__010f.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"imgURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/l1.cdn01.net\/_thumbs\/0000136\/0136209\/0136209__010f.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"videoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/media.cdn01.net\/802E1F\/process\/encoded\/video_1880k\/0000136\/0136209\/I9BDFF0IM.mp4?source=firetv&amp;channel_id=13671"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Jamaican Attractions"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13671"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>(This isn’t the full feed, but it shows the repeating structure.)</p>
+
+<p>Plug this feed into the <a href="http://jsonpath.herokuapp.com/">Jayway JsonPath Evaluator</a>. Then run the following query:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$[?(@.categories in ["The Country Jamaica"]")]
+</code></pre>
+</div>
+
+<p>This query returns the following:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"136216"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Falmouth Jamaica Nature's Lullaby "</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Falmouth Jamaica Nature's Lullaby"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"duration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1813"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"thumbURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://l4.cdn01.net/_thumbs/0000136/0136216/0136216__001f.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"imgURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://l4.cdn01.net/_thumbs/0000136/0136216/0136216__001f.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"videoURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://media.cdn01.net/802E1F/process/encoded/video_1880k/0000136/0136216/L2XGJI1LM.mp4?source=firetv&amp;channel_id=13672"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"categories"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"The Country Jamaica"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"channel_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13672"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Here’s what this query syntax retrieves:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Query Syntax</th>
+      <th>What It Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$[</code></td>
+      <td>Starts at the root and selects the unnamed array.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">?(@.categories[0] in ["The Country Jamaica"]</code></td>
+      <td>Creates a filter for all <code class="highlighter-rouge">categories</code> arrays that contain <code class="highlighter-rouge">["The Country Jamaica"]</code> in the <code class="highlighter-rouge">0</code> index position.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Now there’s one difference in query syntax used in the sample Fire App Builder app. Instead of <code class="highlighter-rouge">["The Country Jamaica"]</code>, the <code class="highlighter-rouge">query</code> parameter uses <code class="highlighter-rouge">$$par0$$</code> instead:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"query": "$[?(@.categories[0] in [$$par0$$])]"
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">$$par0$$</code> is a variable defined in Fire App Builder that stores all the items retrieved by the query, and this is where the syntax differs from Jayway JsonPath. In the code, the <code class="highlighter-rouge">keyDataType</code> from the categories recipe actually populates the <code class="highlighter-rouge">$par0$$</code> variable with categories.</p>
+
+<p>Let’s go through one more example. Suppose your JSON looks like this:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"titles"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"video"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reference"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jess"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video title 1"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.95</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"history"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video title 2"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.99</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dave"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video title 3"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.99</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"science"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jess"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video title 4"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.99</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>To select all arrays containing <code class="highlighter-rouge">science</code> as category, you would use this query:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$.titles.video[?(@.category contains "science")]
+</code></pre>
+</div>
+
+<p>This returns:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[
+   {
+      "category" : "science",
+      "publisher" : "Jess",
+      "title" : "Video title 4",
+      "price" : 3.99
+   }
+]
+</code></pre>
+</div>
+
+<p>However, we need <em>all</em> items in the array that contain <code class="highlighter-rouge">category</code>, so we remove the conditions around the <code class="highlighter-rouge">@.category</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$.titles.video[?(@.category)]
+</code></pre>
+</div>
+
+<p>Now add the <code class="highlighter-rouge">in [$$par0$$]</code> variable:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$.titles.video[?(@.category in [$$par0$$])]
+</code></pre>
+</div>
+
+<p>Here’s a summary:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Query Syntax</th>
+      <th>What It Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$.titles.video[</code></td>
+      <td>Selects the <code class="highlighter-rouge">title</code> object and the <code class="highlighter-rouge">video</code> array.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">?(@.category in [$$par0$$]</code></td>
+      <td>Filters the array to match on all items that have <code class="highlighter-rouge">category</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Note that when you add in <code class="highlighter-rouge">[$$par0$$]</code> in the Jayway JsonPath Evaluator, it will not understand this syntax because it’s specific to Fire App Builder rather than being part of Jayway JsonPath.</p>
+
+<p>Your query will look different based on your feed and the syntax necessary to match the content objects. For example, here’s a more complex query:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$.assets[?(@.type == 'movie.Container' &amp;&amp; @.assetId in $$par0$$)]
+</code></pre>
+</div>
+
+<p>This query says to start at the root (<code class="highlighter-rouge">$</code>), look in the first directory level (<code class="highlighter-rouge">.</code>) to the object named <code class="highlighter-rouge">assets</code>, and filter the array to <code class="highlighter-rouge">type</code> objects that are equal to <code class="highlighter-rouge">movie.Container</code> and which contain an <code class="highlighter-rouge">assetId</code> element.</p>
+
+<h4 id="queryxml">XML Feeds</h4>
+
+<p>If your feed is XML, instead of using Jayway JsonPath you will use <a href="http://www.w3schools.com/xsl/xpath_syntax.asp">XPath expressions</a> to target the specific elements in your feed. XPath reduces your XML document into various items called “nodes.” The XPath syntax allows you to target the location of specific nodes.</p>
+
+<p>Unlike with the Jayway JsonPath syntax, the syntax for XML feeds is much simpler.</p>
+
+<p>Suppose your feed looked like this:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;rss&gt;</span>
+    <span class="nt">&lt;channel&gt;</span>
+        <span class="nt">&lt;item&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Sample Title 1<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;pubDate&gt;</span>Wed, 26 Oct 2016 20:34:22 PDT<span class="nt">&lt;/pubDate&gt;</span>
+        <span class="nt">&lt;link&gt;</span>https://example.com/myshow/episodes/110<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;author&gt;</span>Sample Author name<span class="nt">&lt;/author&gt;</span>
+        <span class="nt">&lt;category&gt;</span>Gadgets<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;/item&gt;</span>
+
+        <span class="nt">&lt;item&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Sample Title 2<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;pubDate&gt;</span>Mon, 24 Oct 2016 09:24:12 PDT<span class="nt">&lt;/pubDate&gt;</span>
+        <span class="nt">&lt;link&gt;</span>https://example.com/myshow/episodes/109<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;author&gt;</span>Sample Author name<span class="nt">&lt;/author&gt;</span>
+        <span class="nt">&lt;category&gt;</span>Technology<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;/channel&gt;</span>
+<span class="nt">&lt;/rss&gt;</span>
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">query</code> for your content would look like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//item
+</code></pre>
+</div>
+
+<p>In XPath, the <code class="highlighter-rouge">//item</code> will match any instances of the <code class="highlighter-rouge">item</code> element regardless of its position in the XML structure. (There’s no need for the <code class="highlighter-rouge">[$$par0$$]</code> with the XML.)</p>
+
+<p>See <a href="fire-app-builder-querying-xml.html">Querying XML</a> for more details about constructing XPath queries.</p>
+
+<h3 id="matchlistparameter">matchList Parameter</h3>
+
+<p>The <code class="highlighter-rouge">matchList</code> parameter selects specific properties in the query’s result and maps the properties to Fire App Builder’s content model. The syntax used by <code class="highlighter-rouge">matchList</code> is custom Fire App Builder syntax that targets specific elements.</p>
+
+<p>In the sample app in Fire App Builder, the value for the Contents recipe is an array of property mappings that maps the title, id, description, media, and images to Fire App Builder’s content model. This is what the <code class="highlighter-rouge">matchlist</code> parameter looks like in the sample app:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
+    </span><span class="s2">"title@title"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id@id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description@description"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"videoURL@url"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imgURL@cardImageUrl"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imgURL@backgroundImageUrl"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Here’s how this syntax works. On the left of the ampersand (<code class="highlighter-rouge">@</code>) you put the property you want to target in the query result (for example, <code class="highlighter-rouge">title</code>). On the right of the ampersand (<code class="highlighter-rouge">@</code>), you put the Fire App Builder element you want to map the property to (for example, <code class="highlighter-rouge">title</code>).</p>
+
+<p>The following table lists the Fire App Builder elements that you can map properties or elements of your feed to:</p>
+
+<table class="grid">
+<colgroup>
+<col width="20%" />
+<col width="60%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fire App Builder Name</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        <p><code class="highlighter-rouge">title</code></p>
+      </td>
+<td>
+        <p>Video title.</p>
+      </td>
+<td>
+        <p>Required</p>
+      </td>
+</tr>
+
+<tr>
+<td>
+        <p><code class="highlighter-rouge">id</code></p>
+      </td>
+<td>
+        <p>Video ID (string). Used to uniquely identify the media object.</p>
+      </td>
+<td>
+        <p>Required</p>
+      </td>
+</tr>
+
+<tr>
+<td>
+        <p><code class="highlighter-rouge">subtitle</code></p>
+      </td>
+<td>
+        <p>Subtitle for a video.</p>
+      </td>
+<td>
+        <p>Optional</p>
+      </td>
+</tr>
+
+<tr>
+<td>
+        <p><code class="highlighter-rouge">description</code></p>
+      </td>
+<td>
+        <p>Description of the video.</p>
+      </td>
+<td>
+        <p>Required</p>
+      </td>
+</tr>
+
+<tr>
+<td>
+        <p><code class="highlighter-rouge">url</code></p>
+      </td>
+<td>
+        <p>Link to the video.</p>
+      </td>
+<td>
+        <p>Required</p>
+      </td>
+</tr>
+
+<tr>
+<td>
+        <p><code class="highlighter-rouge">cardImageUrl</code></p>
+      </td>
+<td>
+        <p>Image thumbnail that appears on the home screen alongside other media thumbnails. The ideal size is 548px by 452px. See the following section on <a href="#imageresolution">Image Resolutions</a> for more detail.</p>
+      </td>
+<td>
+        <p>Required</p>
+      </td>
+</tr>
+
+<tr>
+<td>
+        <p><code class="highlighter-rouge">backgroundImageUrl</code></p>
+      </td>
+<td>
+        <p>Larger image that appears when media is selected. The ideal size is 1920px x 1080px. See the following section on <a href="#imageresolution">Image Resolutions</a> for more detail.</p>
+      </td>
+<td>
+        <p>Required</p>
+      </td>
+</tr>
+
+<tr>
+<td>
+        <p><code class="highlighter-rouge">tags</code></p>
+      </td>
+<td>
+        <p>Used to associate recommended content. See <a href="#tags">Recommend Content Through Tags</a> for more information.</p>
+      </td>
+<td>
+        <p>Optional</p>
+      </td>
+</tr>
+
+<tr>
+<td>
+        <p><code class="highlighter-rouge">live</code></p>
+      </td>
+<td>
+        <p>Used to identify live stream content. For live stream content, the “Watch from Beginning” button is not shown when users return to the media after having previously watching it. See <a href="fire-app-builder-live-stream-configuration.html">Configure Live Streams</a> for more information.</p>
+      </td>
+<td>
+        <p>Optional</p>
+      </td>
+</tr>
+</tbody>
+</table>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> The Fire App Builder content model <em>requires</em> you (at the very least) to map your feed’s elements to the title, ID, description, URL, card image, and background image. If you have just one image, you can map both the card and background image to the same image.</div>
+
+<p>To better understand how the <code class="highlighter-rouge">matchlist</code> parameter works, let’s step through the details in the Fire App Builder sample app. In the LightCast media feed for Fire App Builder, the selections from the <code class="highlighter-rouge">query</code> parameter returns the following:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"136211"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Legends Beach Resort, Negril Jamaica"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Legends Beach Resort, Negril Jamaica"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"duration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"538"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"thumbURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://l3.cdn01.net/_thumbs/0000136/0136211/0136211__009f.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"imgURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://l3.cdn01.net/_thumbs/0000136/0136211/0136211__009f.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"videoURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://media.cdn01.net/802E1F/process/encoded/video_1880k/0000136/0136211/M3FA8J1MI.mp4?source=firetv&amp;channel_id=13671"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"categories"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"Jamaican Attractions"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"channel_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13671"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"136216"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Falmouth Jamaica Nature's Lullaby "</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Falmouth Jamaica Nature's Lullaby"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"duration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1813"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"thumbURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://l4.cdn01.net/_thumbs/0000136/0136216/0136216__001f.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"imgURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://l4.cdn01.net/_thumbs/0000136/0136216/0136216__001f.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"videoURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://media.cdn01.net/802E1F/process/encoded/video_1880k/0000136/0136216/L2XGJI1LM.mp4?source=firetv&amp;channel_id=13672"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"categories"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"The Country Jamaica"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"channel_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13672"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"136209"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rafting on the Rio Grande River, Jamaica"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rafting on the Rio Grande River, Jamaica"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"duration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"660"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"thumbURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://l1.cdn01.net/_thumbs/0000136/0136209/0136209__010f.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"imgURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://l1.cdn01.net/_thumbs/0000136/0136209/0136209__010f.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"videoURL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://media.cdn01.net/802E1F/process/encoded/video_1880k/0000136/0136209/I9BDFF0IM.mp4?source=firetv&amp;channel_id=13671"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"categories"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"Jamaican Attractions"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"channel_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13671"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">matchList</code> parameter converts these property names in the feed to the names used in Fire App Builder’s content model:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
+    </span><span class="s2">"title@title"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id@id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description@description"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"videoURL@url"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imgURL@cardImageUrl"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imgURL@backgroundImageUrl"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">title@title</code> converts <code class="highlighter-rouge">title</code> to <code class="highlighter-rouge">title</code></li>
+  <li><code class="highlighter-rouge">id@id</code> converts <code class="highlighter-rouge">id</code> to <code class="highlighter-rouge">id</code></li>
+  <li><code class="highlighter-rouge">description@description</code> converts <code class="highlighter-rouge">description</code> to <code class="highlighter-rouge">description</code></li>
+  <li><code class="highlighter-rouge">videoURL@url</code> converts <code class="highlighter-rouge">videoURL</code> to <code class="highlighter-rouge">url</code></li>
+  <li><code class="highlighter-rouge">imgURL@cardImageUrl</code> converts <code class="highlighter-rouge">imgURL</code> to <code class="highlighter-rouge">cardImageUrl</code></li>
+  <li><code class="highlighter-rouge">imgURL@backgroundImageUrl</code> converts <code class="highlighter-rouge">imgURL</code> to <code class="highlighter-rouge">backgroundImageUrl</code></li>
+</ul>
+
+<p>(In this example, a lot of the names are the same, but in your feed, might might have terms such as <code class="highlighter-rouge">videoTitle</code>, <code class="highlighter-rouge">videoSummary</code>, and so on.)</p>
+
+<p>Customize the left side of the ampersand <code class="highlighter-rouge">@</code> to correspond with your own feed’s terminology; customize the right side of the <code class="highlighter-rouge">@</code> to correspond with Fire App Builder’s term in its content model.</p>
+
+<p>Your feed might not list each element in a simple key-value pair. If you have various levels of nesting, your <code class="highlighter-rouge">matchList</code> might look like this:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="w">    </span><span class="s2">"common/title@title"</span><span class="err">,</span><span class="w">
+    </span><span class="s2">"assetId@id"</span><span class="err">,</span><span class="w">
+    </span><span class="s2">"common/subtitle@subtitle"</span><span class="err">,</span><span class="w">
+    </span><span class="s2">"common/description@description"</span><span class="err">,</span><span class="w">
+    </span><span class="s2">"video/videoURL@url"</span><span class="err">,</span><span class="w">
+    </span><span class="s2">"imgURLs/ImageSmall@cardImageUrl"</span><span class="err">,</span><span class="w">
+    </span><span class="s2">"imgURLs/ImageLarge@backgroundImageUrl"</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>With this syntax, the forward slash (<code class="highlighter-rouge">/</code>) separates elements at each level. For example, <code class="highlighter-rouge">common/title</code> looks inside the <code class="highlighter-rouge">common</code> object to match on the <code class="highlighter-rouge">title</code> property.</p>
+
+<p>Let’s look an an example using XML. Suppose your XML feed looks like this:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;rss</span> <span class="na">version=</span><span class="s">"2.0"</span> <span class="err">…</span> <span class="err">…</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;channel&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Content Mix for US News-in-Pictures 9x16<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;description&gt;</span>Screenfeed Content Server<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;lastBuildDate&gt;</span>Mon, 08 Dec 2014 22:55:16 GMT<span class="nt">&lt;/lastBuildDate&gt;</span>
+<span class="nt">&lt;ttl&gt;</span>5<span class="nt">&lt;/ttl&gt;</span>
+
+    <span class="nt">&lt;item&gt;</span>
+      <span class="nt">&lt;title&gt;</span>John Anderson ……<span class="nt">&lt;/title&gt;</span>
+      <span class="nt">&lt;guid</span> <span class="na">isPermaLink=</span><span class="s">"false"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/guid&gt;</span>
+      <span class="nt">&lt;pubDate&gt;</span>Mon, 08 Dec 2014 22:55:16 GMT<span class="nt">&lt;/pubDate&gt;</span>
+      <span class="nt">&lt;category&gt;</span>News<span class="nt">&lt;/category&gt;</span>
+      <span class="nt">&lt;media:content</span> <span class="na">url=</span><span class="s">"http://samples.screenfeed.com/1.jpg"</span> <span class="na">type=</span><span class="s">"image/jpeg"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;media:title</span> <span class="na">type=</span><span class="s">"plain"</span><span class="nt">&gt;</span>1080x1920 - English - with caption<span class="nt">&lt;/media:title&gt;</span>
+        <span class="nt">&lt;media:credit&gt;</span>Â© 2014 News Agency<span class="nt">&lt;/media:credit&gt;</span>
+        <span class="nt">&lt;media:thumbnail</span> <span class="na">url=</span><span class="s">"http://samples.screenfeed.com/public/us-news-in-pictures/1080x1920/h9xnRIN9CUGiTWNQBBrjOw-1080x1920h-1.jpg"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/media:content&gt;</span>
+<span class="nt">&lt;/item&gt;</span>
+
+...
+
+  <span class="nt">&lt;/channel&gt;</span>
+<span class="nt">&lt;/rss&gt;</span>
+</code></pre>
+</div>
+
+<p>In order to get the contents, the query in the <code class="highlighter-rouge">matchList</code> parameter would look like this:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="w">  </span><span class="s2">"matchList"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"title/#text@title"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"guid/#text@id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"media:content/media:title/#text@description"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"media:content/#attributes/url@url"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"media:content/#attributes/url@cardImageUrl"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"media:content/#attributes/url@backgroundImageUrl"</span><span class="p">,</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>In this case, here’s how the conversions happen:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">title/#text@mTitle</code> converts <code class="highlighter-rouge">title/#text</code> to <code class="highlighter-rouge">title</code></li>
+  <li><code class="highlighter-rouge">guid/#text@mId</code> converts <code class="highlighter-rouge">guid/#text</code> to <code class="highlighter-rouge">id</code>.</li>
+  <li><code class="highlighter-rouge">media:content/media:title/#text@mDescription</code> converts <code class="highlighter-rouge">media:content/media:title/#text</code> to <code class="highlighter-rouge">description</code></li>
+  <li><code class="highlighter-rouge">media:content/#attributes/url@mUr</code> converts <code class="highlighter-rouge">media:content/#attributes/url</code> to <code class="highlighter-rouge">url</code></li>
+  <li><code class="highlighter-rouge">media:content/#attributes/url@mCardImageUrl</code> converts <code class="highlighter-rouge">media:content/#attributes/url</code> to <code class="highlighter-rouge">cardImageUrl</code></li>
+  <li><code class="highlighter-rouge">media:content/#attributes/url@mBackgroundImageUrl</code> converts <code class="highlighter-rouge">media:content/#attributes/url</code> to <code class="highlighter-rouge">backgroundImageUrl</code>.</li>
+</ul>
+
+<p>The only real difference here is the use of the <code class="highlighter-rouge">#text</code> selector, which targets the text inside an element. The <code class="highlighter-rouge">#text</code> syntax is custom Fire App Builder syntax and is equivalent to <code class="highlighter-rouge">text()</code> in XPath.</p>
+
+<p>Here’s another example. Suppose your feed looks like this:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;rss&gt;</span>
+    <span class="nt">&lt;channel&gt;</span>
+        <span class="nt">&lt;item&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Sample Title 1<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;pubDate&gt;</span>Wed, 26 Oct 2016 20:34:22 PDT<span class="nt">&lt;/pubDate&gt;</span>
+        <span class="nt">&lt;link&gt;</span>https://example.com/myshow/episodes/110<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;author&gt;</span>Sample Author name 1<span class="nt">&lt;/author&gt;</span>
+        <span class="nt">&lt;category&gt;</span>Technology<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;category&gt;</span>Gadgets<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;/item&gt;</span>
+
+        <span class="nt">&lt;item&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Sample Title 2<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;pubDate&gt;</span>Wed, 23 Oct 2016 08:33:12 PDT<span class="nt">&lt;/pubDate&gt;</span>
+        <span class="nt">&lt;link&gt;</span>https://example.com/myshow/episodes/109<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;author&gt;</span>Sample Author name 2<span class="nt">&lt;/author&gt;</span>
+        <span class="nt">&lt;category&gt;</span>News<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;/channel&gt;</span>
+<span class="nt">&lt;/rss&gt;</span>
+</code></pre>
+</div>
+
+<p>Here’s what the <code class="highlighter-rouge">matchlist</code> parameter would look like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"matchList": [
+    "title/#text@title",
+    "guid/#text@id",
+    "itunes:subtitle/#text@description",
+    "media:content/#attributes/url@url",
+    "media:content/media:thumbnail/#attributes/url@cardImageUrl",
+    "media:content/media:thumbnail/#attributes/url@backgroundImageUrl"
+]
+</code></pre>
+</div>
+
+<h4 id="imageresolution">Image Resolutions</h4>
+
+<p>You can use two images for media in your app: an image card and a background image. The two types of images get used in different places, and the containers where each image is used also varies slightly.</p>
+
+<p>The following screenshot shows the difference between the two types of images on the Content Home screen:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_home.png" alt="" /><figcaption>The image cards appear in a list of thumbnails. When you select one of the image cards, a larger background image appears in the upper-right area of the screen.</figcaption></figure>
+
+<p>The two images also appear on the Content Preview screen:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_imagesdemoscreen2.png" alt="" /><figcaption>Here the image card appears a little larger, with the background image filling the entire background of the screen. The background image has a dark gray overlay.</figcaption></figure>
+
+<p>The recommended image sizes (width x height) are as follows:</p>
+
+<ul>
+  <li><strong>Image cards</strong>: 548px by 452px. This image can be larger but will be scaled down. The image will also be cropped to fill a 320px x 240px container in some cases.</li>
+  <li><strong>Background images</strong>: 1920px x 1080px. This image can be larger but will be scaled down. The image will also be cropped to fill a 1120px x 800px container in some cases.</li>
+</ul>
+
+<p>When Fire App Builder does image cropping, it preserves the aspect ratio of the image by cropping the sides of the image (thus focusing on the center).</p>
+
+<h4 id="tags">Recommended Content (Through Tags)</h4>
+
+<p>Below the video is a Recommended Content section that shows other videos with the same tags:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram.png" alt="Recommended content" /></figure>
+
+<p>To populate the <a href="fire-app-builder-customize-look-and-feel.html#recommendations">Recommended Content section in the app</a>, you need to match on your tags in the <code class="highlighter-rouge">matchList</code> parameter. For example:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="err">common/tags@tags</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Here the <code class="highlighter-rouge">tags</code> element appears inside a <code class="highlighter-rouge">common</code> element. This syntax converts <code class="highlighter-rouge">common/tags</code> to <code class="highlighter-rouge">tags</code> so Fire App Builder can read it and display related media objects.</p>
+
+<p>Note that the LightCast feed in the Fire App Builder sample app doesn’t include tags. However, there’s a fallback parameter that you can set to <code class="highlighter-rouge">true</code> if you want to show recommended content, but you don’t have tags in your feed.</p>
+
+<p>In your Navigator.json file (located in your app’s <strong>assets</strong> folder), the <code class="highlighter-rouge">config</code> object has a property called <code class="highlighter-rouge">categoryDefaultRecommendation</code>:</p>
+
+<pre>
+  "config": {
+    <span class="red">"showRecommendedContent": true</span>,
+    "categoryDefaultRecommendation": true,
+    "searchAlgo": "basic"
+  }
+</pre>
+
+<p>If you set <code class="highlighter-rouge">categoryDefaultRecommendation</code> to <code class="highlighter-rouge">true</code>, Fire App Builder will use other media assets from the same category for the recommended content (rather than pulling content with the same tags).</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Currently, Recommended Content matches (which are based on tags in the feed) will match unlimited content if many items have the same tags. This is a known limitation/bug.</div>
+
+<p>To turn off the Recommended Content section, you can set <code class="highlighter-rouge">showRecommendedContent</code> to false in Navigator.json.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Now that you’ve configured the categories and contents for your app’s media feed, you need to associate the feed with the app’s UI. See <a href="fire-app-builder-configure-navigator.html">Navigator Configuration Overview</a>.</p>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

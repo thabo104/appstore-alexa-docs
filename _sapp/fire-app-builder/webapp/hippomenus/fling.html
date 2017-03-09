@@ -1,0 +1,319 @@
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var pgurl = window.location.href.split('?')[0];
+        pgurl = pgurl.split('#')[0];
+        //console.log("pgurl: " + pgurl);
+        $("ul#hipposidebar li a").each(function(){
+            var sidebaritem = ($(this).attr("href"));
+            if($(this).attr("href") == pgurl || $(this).attr("href") == pgurl + "/") {
+                $(this).addClass("open");
+                //console.log("sidebaritem: " + sidebaritem);
+            }
+        });
+    });
+</script>
+
+<script>$("a.open").parents('li').toggleClass("open");</script>
+
+<script>
+    // Initialize navgoco
+    $("#hipposidebar").navgoco({
+        caretHtml: '',
+        accordion: false,
+        openClass: 'open', // open
+        save: false, // leave false or nav highlighting doesn't work right
+        cookie: {
+            name: 'navgoco',
+            expires: false,
+            path: '/'
+        },
+        slide: {
+            duration: 400,
+            easing: 'swing'
+        }
+    });
+
+</script>
+
+
+
+
+<div class="hippoRight">
+    <div class="productTitle">Fling SDK</div>
+    <ul id="hipposidebar" class="hipponav">
+        
+        <li class="level1"><a href="#">Fling Overview</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/understanding-the-amazon-fling-service">Understanding the Amazon Fling Service</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/resources/development-tools/sdk">Download the Fling SDK</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/amazon-fling-frequently-asked-questions">Amazon Fling Frequently Asked Questions</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Settting Up Fling</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/setting-up-your-amazon-fling-development-environment-for-android">Setting Up Your Amazon Fling Development Environment for Android</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/setting-up-your-amazon-fling-development-environment-for-ios">Setting Up your Amazon Fling Development Environment for iOS</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Integrating Fling with Android, iOS, and Fire TV Apps</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/integrating-amazon-fling-into-your-android-app">Integrating Amazon Fling into Your Android App</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/integrating-amazon-fling-into-your-ios-app">Integrating Amazon Fling into your iOS App</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/integrating-amazon-fling-into-your-fire-tv-app">Integrating Amazon Fling SDK into your Fire TV App</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/using-amazon-fling-with-android-mediarouter">Using Amazon Fling with Android MediaRouter</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/working-with-built-in-receiver-on-fire-tv">Working with the Built-in Receiver on the Fire TV Platform</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Integrating Fling with Google Cast Apps</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/integrating-amazon-fling-with-cast">Integrating Amazon Fling with Apps that Use Google Cast</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/integrating-amazon-fling-with-an-existing-android-cast-app">Integrating Amazon Fling with an Existing Android App that Uses Google Cast</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/integrating-amazon-fling-with-an-existing-ios-cast-app">Integrating Amazon Fling with an Existing iOS App that uses Google Cast</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Fling UX</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/designing-amazon-fling-ux">Designing Amazon Fling UX</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Remote Install</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/remote-install">Remote Install</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/android-remote-install">Integrating Remote Install into Your Android App</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/ios-remote-install">Integrating Remote Install into Your iOS App</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Unity Plugins</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/unity-controller-plugin">Integrating the Amazon Fling Controller In Your Games</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/apis/experience/fling/docs/unity-player-plugin">Integrating the Amazon Fling Player In Your Games</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">API Docs</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/binaries/content/assets/javadoc/whisperplay/javadocs/reference/packages.html">Android API Documentation</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/binaries/content/assets/javadoc/whisperplay/objc-apidocs/index.html">iOS API Documentation</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+
+        </li>
+    </ul>
+
+    <hr class="resourceSeparator"></hr>
+
+    <div class="relatedResources">Related Resources</div>
+
+    <ul id="entrypages">
+        <ul>
+            
+            
+            <li><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv">Fire TV</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-overview">Fire App Builder</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-understanding-submission">Appstore Publishing</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/getting-started-with-iap">In-App Purchasing API</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/apis/experience/fling/docs/understanding-the-amazon-fling-service">Fling SDK</a></li>
+            
+            
+            
+            <li><a href="https://forums.developer.amazon.com/">Developer Portal Forums</a></li>
+            
+            
+        </ul>
+    </ul>
+</div>

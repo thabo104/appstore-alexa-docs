@@ -3,7 +3,7 @@ title: DIAL Integration
 permalink: dial-integration.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

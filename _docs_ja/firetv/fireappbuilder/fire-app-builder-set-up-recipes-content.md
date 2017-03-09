@@ -3,7 +3,7 @@ title: コンテンツレシピをセットアップする
 permalink: fire-app-builder-set-up-recipes-content.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

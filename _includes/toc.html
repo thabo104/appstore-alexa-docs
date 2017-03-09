@@ -1,9 +1,9 @@
 <div class="inner">
 
-{% unless page.toc == false %}
+{% unless page.toc-style == "kramdown" %}
 <style>
 nav#toc >ul::before {
-    content: "{{site.uistring.minitoc_title}}";
+    content: "{{site.uistring.tableofcontents}}";
 }
 </style>
 <script>

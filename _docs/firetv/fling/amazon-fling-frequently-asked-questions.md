@@ -5,7 +5,7 @@ product: Fling SDK
 permalink: amazon-fling-frequently-asked-questions.html
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 What platforms are supported by the Amazon Fling SDK? 

@@ -3,7 +3,7 @@ title: Integrating Your Catalog with Fire TV
 permalink: integrating-your-catalog-with-fire-tv.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: Submitting Your Fire TV App to the Amazon Appstore
 permalink: submitting-your-fire-tv-app-to-the-amazon-appstore.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

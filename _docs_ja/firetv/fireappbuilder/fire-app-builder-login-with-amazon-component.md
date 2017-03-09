@@ -3,7 +3,7 @@ title:  Login with Amazonコンポーネント
 permalink: fire-app-builder-login-with-amazon-component.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

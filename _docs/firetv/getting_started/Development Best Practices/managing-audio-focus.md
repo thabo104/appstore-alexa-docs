@@ -4,7 +4,7 @@ permalink: managing-audio-focus.html
 sidebar: firetv
 product: Fire TV
 reviewers: Andy Haldeman, Zsolt Matyas, Stephen Whitney
-toc: false
+toc-style: kramdown
 github: true
 ---
 

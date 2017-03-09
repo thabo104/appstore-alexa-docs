@@ -3,7 +3,7 @@ title: アプリと Fire TV ホーム画面ランチャーの統合
 permalink: launcher-integration.html
 sidebar: catalog_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

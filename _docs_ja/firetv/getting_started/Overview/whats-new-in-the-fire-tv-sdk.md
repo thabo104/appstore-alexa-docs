@@ -3,7 +3,7 @@ title: Fire TV開発における最新情報
 permalink: whats-new-in-the-fire-tv-sdk.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

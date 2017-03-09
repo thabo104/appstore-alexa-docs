@@ -1,11 +1,11 @@
 ---
 title: Fire TV Device Specifications
 permalink: device-and-platform-specifications.html
-toc: false
+toc-style: kramdown
 navtabs: true
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

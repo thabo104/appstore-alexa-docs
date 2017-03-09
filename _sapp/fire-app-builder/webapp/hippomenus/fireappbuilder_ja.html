@@ -1,0 +1,479 @@
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var pgurl = window.location.href.split('?')[0];
+        pgurl = pgurl.split('#')[0];
+        //console.log("pgurl: " + pgurl);
+        $("ul#hipposidebar li a").each(function(){
+            var sidebaritem = ($(this).attr("href"));
+            if($(this).attr("href") == pgurl || $(this).attr("href") == pgurl + "/") {
+                $(this).addClass("open");
+                //console.log("sidebaritem: " + sidebaritem);
+            }
+        });
+    });
+</script>
+
+<script>$("a.open").parents('li').toggleClass("open");</script>
+
+<script>
+    // Initialize navgoco
+    $("#hipposidebar").navgoco({
+        caretHtml: '',
+        accordion: false,
+        openClass: 'open', // open
+        save: false, // leave false or nav highlighting doesn't work right
+        cookie: {
+            name: 'navgoco',
+            expires: false,
+            path: '/'
+        },
+        slide: {
+            duration: 400,
+            easing: 'swing'
+        }
+    });
+
+</script>
+
+
+
+
+<div class="hippoRight">
+    <div class="productTitle">Fire App Builder</div>
+    <ul id="hipposidebar" class="hipponav">
+        
+        <li class="level1"><a href="#">はじめに</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-overview">Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプリ向けスターターキット</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-release-notes">リリースノート</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-end-to-end-process">アプリを作成するための一連のプロセス</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-questions-and-answers">よくある質問</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">1. セットアップする</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-download-and-build">Fire App Builderをダウンロードして、アプリをビルドする</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-connecting-adb-to-fire-tv">ADBを使用してFire TVに接続する</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-app-tour">アプリの概要</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">2. フィードを構成する</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-load-media-feed">メディアフィードをロードする</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-overview">レシピ構成の概要</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-categories">カテゴリレシピをセットアップする</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-contents">コンテンツレシピをセットアップする</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-configure-navigator">Navigatorの構成の概要</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-configure-navigator-token-feeds">Navigatorの構成 -- トークンベースフィード</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-configure-navigator-open-feeds">Navigatorの構成 -- オープンフィード</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">3.外観をカスタマイズする</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-customize-look-and-feel">アプリのルックアンドフィールをカスタマイズする</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">4.コンポーネントを追加する</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-interfaces-and-components">コンポーネントの概要</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-load-a-component">アプリにコンポーネントをロードする</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-create-a-new-component">新しいFire App Builderコンポーネントを作成する</a></li>
+                
+                
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">広告コンポーネント</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-freewheel-ads-component">Freewheel広告コンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-vast-ads-component">VAST広告コンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">分析コンポーネント</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-crashlytics-component">Crashlyticsコンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-flurry-analytics-component">Flurry Analyticsコンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-google-analytics-component">Googleアナリティクスコンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-omniture-analytics-component">Omniture Analyticsコンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">認証コンポーネント</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-adobe-pass-auth-component">Adobe Pass認証コンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-facebook-auth-component">Facebook認証コンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-login-with-amazon-component">Login with Amazonコンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">課金コンポーネント</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-amazon-in-app-purchase-component">Amazonアプリ内課金のコンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">メディアコンポーネント</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-amazon-media-player-component">Amazon Media Playerコンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-brightcove-media-player-component">BrightCove Playerコンポーネント</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">開発に関するその他のトピック</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-pulling-updates-from-github">Githubから更新データをプルする</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-live-stream-configuration">ライブストリーミングを構成する</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-catalog-integration">Fire TVカタログにメディアを組み込む</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-use-an-android-tv-emulator">Android TVエミュレーターを使用してアプリを実行する</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-querying-json">JSONでクエリを実行する</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-querying-xml">XMLでクエリを実行する</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-troubleshooting">トラブルシューティング</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+
+        </li>
+    </ul>
+
+    <hr class="resourceSeparator"></hr>
+
+    <div class="relatedResources">その他のリソース</div>
+
+    <ul id="entrypages">
+        <ul>
+            
+            
+            <li><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv">Fire TV</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/overview/integrating-your-catalog-with-fire-tv">Fire TVカタログ統合</a></li>
+            
+            
+            
+            <li><a href="https://forums.developer.amazon.com/spaces/121/index.html">日本語版ナレッジベース</a></li>
+            
+            
+        </ul>
+    </ul>
+</div>

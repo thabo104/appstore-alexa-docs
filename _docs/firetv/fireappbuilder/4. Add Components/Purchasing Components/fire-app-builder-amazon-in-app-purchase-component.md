@@ -3,7 +3,7 @@ title: Amazon In-App Purchasing Component
 permalink: fire-app-builder-amazon-in-app-purchase-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

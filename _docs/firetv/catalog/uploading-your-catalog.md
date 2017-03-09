@@ -3,7 +3,7 @@ title: Uploading Your Catalog to Amazon
 permalink: uploading-your-catalog.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

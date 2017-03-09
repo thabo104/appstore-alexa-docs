@@ -3,7 +3,7 @@ title: Catalog Data Format (CDF) Ingestion Report Messages
 permalink: catalog-data-format-ingestion-report-messages.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

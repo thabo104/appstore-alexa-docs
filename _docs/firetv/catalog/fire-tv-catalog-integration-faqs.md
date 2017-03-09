@@ -3,7 +3,7 @@ title: Fire TV Catalog Integration Frequently Asked Questions (FAQs)
 permalink: fire-tv-catalog-integration-faqs.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

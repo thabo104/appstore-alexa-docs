@@ -3,7 +3,7 @@ title: 統合テストアプリを使用した Fire TV ランチャー統合テ�
 permalink: testing-launcher-integration-with-the-test-app.html
 sidebar: catalog_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

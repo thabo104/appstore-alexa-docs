@@ -3,7 +3,7 @@ title: Fire TV カタログ統合の準備
 permalink: getting-started-catalog-integration.html
 sidebar: catalog_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

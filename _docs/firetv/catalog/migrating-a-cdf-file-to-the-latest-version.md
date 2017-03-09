@@ -3,7 +3,7 @@ title: Migrating a Catalog Data Format (CDF) File to the Latest Version
 permalink: migrating-a-cdf-file-to-the-latest-version.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

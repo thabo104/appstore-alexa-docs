@@ -3,7 +3,7 @@ title: Crashlytics Component
 permalink: fire-app-builder-crashlytics-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

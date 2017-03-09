@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Integrating Amazon Fling into Your Android App | Fling SDK</title>
+    
+    <base target="_self">
+    <meta name="description" content="To enable this feature in your mobile app for Fire OS or Android, implement the API and add permissions to your Android manifest. This document describes both these steps. See... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/fling/integrating-amazon-fling-into-your-android-app.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/66/index.html" class="editButton noCrossRef">Fling SDK Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-fling.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fling SDK</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Fling Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="understanding-the-amazon-fling-service.html">Understanding the Amazon Fling Service</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://developer.amazon.com/public/resources/development-tools/sdk">Download the Fling SDK</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fling-frequently-asked-questions.html">Amazon Fling Frequently Asked Questions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Settting Up Fling</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-amazon-fling-development-environment-for-android.html">Setting Up Your Amazon Fling Development Environment for Android</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-amazon-fling-development-environment-for-ios.html">Setting Up your Amazon Fling Development Environment for iOS</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Integrating Fling with Android, iOS, and Fire TV Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="integrating-amazon-fling-into-your-android-app.html">Integrating Amazon Fling into Your Android App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-into-your-ios-app.html">Integrating Amazon Fling into your iOS App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-into-your-fire-tv-app.html">Integrating Amazon Fling SDK into your Fire TV App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="using-amazon-fling-with-android-mediarouter.html">Using Amazon Fling with Android MediaRouter</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="working-with-built-in-receiver-on-fire-tv.html">Working with the Built-in Receiver on the Fire TV Platform</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Integrating Fling with Google Cast Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-with-cast.html">Integrating Amazon Fling with Apps that Use Google Cast</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-with-an-existing-android-cast-app.html">Integrating Amazon Fling with an Existing Android App that Uses Google Cast</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-with-an-existing-ios-cast-app.html">Integrating Amazon Fling with an Existing iOS App that uses Google Cast</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Fling UX</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="designing-amazon-fling-ux.html">Designing Amazon Fling UX</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Remote Install</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="remote-install.html">Remote Install</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="android-remote-install.html">Integrating Remote Install into Your Android App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="ios-remote-install.html">Integrating Remote Install into Your iOS App</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Unity Plugins</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="unity-controller-plugin.html">Integrating the Amazon Fling Controller In Your Games</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="unity-player-plugin.html">Integrating the Amazon Fling Player In Your Games</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">API Docs</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://developer.amazon.com/public/binaries/content/assets/javadoc/whisperplay/javadocs/reference/packages.html">Android API Documentation</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://developer.amazon.com/public/binaries/content/assets/javadoc/whisperplay/objc-apidocs/index.html">iOS API Documentation</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fling SDK </div>
+
+                    <h1>Integrating Amazon Fling into Your Android App</h1>
+
+                    <p>To enable this feature in your mobile app for Fire OS or Android, implement the API and add permissions to your Android manifest. This document describes both these steps. See <a href="understanding-the-amazon-fling-service.html">Understanding the Amazon Fling Service</a> for a high-level overview of the features and functions our SDK provides. See also the controller sample app, which is part of the SDK, for details on your controller implementation.</p>
+
+<p>Before you start, make sure you’ve set up your development environment. See <a href="setting-up-your-amazon-fling-development-environment-for-android.html">Setting Up Your Amazon Fling Development Environment for Android</a> for more details.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#integration-overview" id="markdown-toc-integration-overview">Integration Overview</a></li>
+  <li><a href="#modifying-the-android-manifest" id="markdown-toc-modifying-the-android-manifest">Modifying the Android Manifest</a>    <ul>
+      <li><a href="#fire-os-devices" id="markdown-toc-fire-os-devices">Fire OS Devices</a></li>
+      <li><a href="#non-fire-os-android-devices" id="markdown-toc-non-fire-os-android-devices">Non-Fire OS Android Devices</a></li>
+    </ul>
+  </li>
+  <li><a href="#initializing-underlying-framework-and-discovering-amazon-fire-tv" id="markdown-toc-initializing-underlying-framework-and-discovering-amazon-fire-tv">Initializing Underlying Framework and Discovering Amazon Fire TV</a></li>
+  <li><a href="#flinging-content-with-remotemediaplayer" id="markdown-toc-flinging-content-with-remotemediaplayer">Flinging Content with RemoteMediaPlayer</a></li>
+  <li><a href="#monitoring-remote-player-status-with-mediaplayerstatus" id="markdown-toc-monitoring-remote-player-status-with-mediaplayerstatus">Monitoring Remote Player Status with MediaPlayerStatus</a></li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ul>
+
+<h2 id="integration-overview">Integration Overview</h2>
+
+<p>There are four steps for creating or modifying your controller mobile app to support our SDK:</p>
+
+<ol>
+  <li>Modifying your Android manifest to include network permissions.</li>
+  <li>Initializing underlying framework and discovering available players on Fire TV devices.</li>
+  <li>Flinging content and controlling that content.</li>
+  <li>Monitoring the status of that content.</li>
+</ol>
+
+<h2 id="modifying-the-android-manifest">Modifying the Android Manifest</h2>
+
+<p>The API requires some permissions to be added to your Android manifest (<code class="highlighter-rouge">AndroidManifest.xml</code>). Specifically, the API needs these permissions to communicate over networks:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">android.permission.INTERNET</code>: Allows applications to open network sockets.</li>
+  <li><code class="highlighter-rouge">android.permission.ACCESS_WIFI_STATE</code>: Allows applications to access information about Wi-Fi networks.</li>
+  <li><code class="highlighter-rouge">android.permission.ACCESS_NETWORK_STATE</code>: Allows applications to access information about networks.</li>
+  <li><code class="highlighter-rouge">android.permission.CHANGE_WIFI_MULTICAST_STATE</code>: Allows applications to enter Wi-Fi Multicast mode. (Android (non-Fire OS) only)</li>
+</ul>
+
+<p>In addition, Fire OS devices require a <code class="highlighter-rouge">uses-library</code> element to refer to the WhisperPlay shared library. Non-Fire OS Android devices should not include this tag.</p>
+
+<h3 id="fire-os-devices">Fire OS Devices</h3>
+
+<p>Add the <code class="highlighter-rouge">uses-permission</code> and <code class="highlighter-rouge">uses-library</code> elements as in the following example:  </p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">manifest</span> <span class="nl">xmlns:</span><span class="n">android</span><span class="o">=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="kn">package</span><span class="o">=</span><span class="s">"[YOUR PACKAGE NAME]"</span>
+    <span class="nl">android:</span><span class="n">versioncode</span><span class="o">=</span><span class="s">"1"</span>
+    <span class="nl">android:</span><span class="n">versionname</span><span class="o">=</span><span class="s">"1.0"</span><span class="o">&gt;</span>
+    <span class="o">&lt;!--</span> <span class="n">Android</span> <span class="n">Network</span> <span class="n">Access</span> <span class="n">Permissions</span> <span class="o">--&gt;</span>
+    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.INTERNET"</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.ACCESS_WIFI_STATE"</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.ACCESS_NETWORK_STATE"</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">application</span><span class="o">&gt;</span>
+        <span class="o">...</span>
+        <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">library</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"com.amazon.whisperplay.contracts"</span> <span class="nl">android:</span><span class="n">required</span><span class="o">=</span><span class="s">"true"</span> <span class="o">/&gt;</span>
+        <span class="o">...</span>
+        <span class="o">&lt;/</span><span class="n">application</span><span class="o">&gt;</span>
+    <span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">manifest</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="non-fire-os-android-devices">Non-Fire OS Android Devices</h3>
+
+<p>Add the <code class="highlighter-rouge">uses-permission</code> elements as in the following example. Do not include the <code class="highlighter-rouge">uses-library</code> element for the WhisperPlay shared library.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">manifest</span> <span class="nl">xmlns:</span><span class="n">android</span><span class="o">=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="kn">package</span><span class="o">=</span><span class="s">"[YOUR PACKAGE NAME]"</span>
+    <span class="nl">android:</span><span class="n">versioncode</span><span class="o">=</span><span class="s">"1"</span>
+    <span class="nl">android:</span><span class="n">versionname</span><span class="o">=</span><span class="s">"1.0"</span><span class="o">&gt;</span>
+    <span class="o">&lt;!--</span> <span class="n">Android</span> <span class="n">Network</span> <span class="n">Access</span> <span class="n">Permissions</span> <span class="o">--&gt;</span>
+    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.INTERNET"</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.ACCESS_WIFI_STATE"</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.ACCESS_NETWORK_STATE"</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.CHANGE_WIFI_MULTICAST_STATE"</span><span class="o">/&gt;</span>
+    <span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">manifest</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="initializing-underlying-framework-and-discovering-amazon-fire-tv">Initializing Underlying Framework and Discovering Amazon Fire TV</h2>
+
+<p>Use the <code class="highlighter-rouge">DiscoveryController</code> class to create a controller and to discover and connect to Amazon Fire TV over the network. Get an instance of <code class="highlighter-rouge">DiscoveryController</code> in your <code class="highlighter-rouge">onCreate()</code> method:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+    <span class="o">...</span>
+    <span class="n">mController</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DiscoveryController</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">IDiscoveryListener</code> interface allows you to receive updates when a player on an Amazon Fire TV device (<code class="highlighter-rouge">RemoteMediaPlayer</code>) is discovered, updated, or no longer reachable by your app. Implement this interface to add behavior such as adding or removing a device to your list of discovered devices, or updating your user interface. The callback methods are called from worker thread and user interface elements shouldn’t be updated inside of calling.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="n">DiscoveryController</span><span class="o">.</span><span class="na">IDiscoveryListener</span> <span class="n">mDiscovery</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DiscoveryController</span><span class="o">.</span><span class="na">IDiscoveryListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playerDiscovered</span><span class="o">(</span><span class="n">RemoteMediaPlayer</span> <span class="n">player</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//add media player to the application’s player list.</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playerLost</span><span class="o">(</span><span class="n">RemoteMediaPlayer</span> <span class="n">player</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//remove media player from the application’s player list.</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">discoveryFailure</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">};</span>
+</code></pre>
+</div>
+
+<p>Call the <code class="highlighter-rouge">start()</code> method in your <code class="highlighter-rouge">onResume()</code> method, and the <code class="highlighter-rouge">stop()</code> method in onPause(). The <code class="highlighter-rouge">start()</code> method takes two arguments: a player service identifier or SID (defined by your custom player app on Fire TV), and an object that implements <code class="highlighter-rouge">IDiscoveryListener</code>. The service identifier (SID) must match the target player. For more information on creating the player app on Fire TV, see <a href="integrating-amazon-fling-into-your-fire-tv-app.html">Integrating Amazon Fling into your Fire TV Application</a>.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+    <span class="err">…</span>
+   <span class="n">mController</span><span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="s">"YourReceiverServiceID"</span><span class="o">,</span> <span class="n">mDiscovery</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+    <span class="err">…</span>
+   <span class="n">mController</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="flinging-content-with-remotemediaplayer">Flinging Content with RemoteMediaPlayer</h2>
+
+<p>The <code class="highlighter-rouge">RemoteMediaPlayer</code> interface represents a player running on a remote Fire TV device. Once your controller app discovers target devices for flinging, your controller app gets an object that implements this interface. Use that <code class="highlighter-rouge">RemoteMediaPlayer</code> object to fling media from your app to the player application on the target device.</p>
+
+<p>The <code class="highlighter-rouge">RemoteMediaPlayer.AsyncFuture</code> interface allows your <code class="highlighter-rouge">getAsync()</code> method to add a completion listener (<code class="highlighter-rouge">RemoteMediaPlayer.FutureListener</code>). The <code class="highlighter-rouge">AsyncFuture</code> interface implements <code class="highlighter-rouge">java.util.concurrent.Future</code>, which means you can also check to see if the computation is complete, to wait for its completion, and to retrieve the result of that computation.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="n">StatusListener</span> <span class="n">mListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Monitor</span><span class="o">();</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">MONITOR_INTERVAL</span> <span class="o">=</span> <span class="mi">1000L</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">fling</span><span class="o">(</span><span class="kd">final</span> <span class="n">RemoteMediaPlayer</span> <span class="n">target</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">title</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mCurrentDevice</span> <span class="o">=</span> <span class="n">target</span><span class="o">;</span>
+    <span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">addStatusListener</span><span class="o">(</span><span class="n">mListener</span><span class="o">).</span><span class="na">getAsync</span><span class="o">(</span><span class="k">new</span> <span class="n">ErrorResultHandler</span><span class="o">(</span><span class="s">"Cannot set status listener"</span><span class="o">));</span>
+    <span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">setPositionUpdateInterval</span><span class="o">(</span><span class="n">MONITOR_INTERVAL</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">getAsync</span><span class="o">(</span><span class="k">new</span> <span class="n">ErrorResultHandler</span><span class="o">(</span><span class="s">"Error attempting set update interval, ignoring"</span><span class="o">));</span>
+    <span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">setMediaSource</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="kc">false</span><span class="o">).</span><span class="na">getAsync</span><span class="o">(</span><span class="k">new</span> <span class="n">ErrorResultHandler</span><span class="o">(</span><span class="s">"Error attempting to Play"</span><span class="o">));</span>
+<span class="o">}</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">doStop</span><span class="o">()</span> <span class="o">{</span>
+     <span class="k">if</span> <span class="o">(</span><span class="n">mCurrentDevice</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">stop</span><span class="o">().</span><span class="na">getAsync</span><span class="o">(</span><span class="k">new</span> <span class="n">FutureListener</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;()</span> <span class="o">{</span>
+             <span class="nd">@Override</span>
+              <span class="kd">public</span> <span class="kt">void</span> <span class="nf">futureIsNow</span><span class="o">(</span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+                  <span class="k">try</span> <span class="o">{</span>
+                      <span class="n">result</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+                  <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">ExecutionException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                      <span class="c1">//handleFailure</span>
+                  <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                      <span class="c1">//handleFailure</span>
+                  <span class="o">}</span>
+              <span class="o">}</span>
+         <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">private</span> <span class="kd">class</span> <span class="nc">ErrorResultHandler</span> <span class="kd">implements</span> <span class="n">FutureListener</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="n">ErrorResultHandler</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+     <span class="o">}</span>
+    <span class="nd">@Override</span>
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">futureIsNow</span><span class="o">(</span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">try</span> <span class="o">{</span>
+             <span class="n">result</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+          <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">ExecutionException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="c1">//handleFailure</span>
+          <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="c1">//handleFailure</span>
+          <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="monitoring-remote-player-status-with-mediaplayerstatus">Monitoring Remote Player Status with MediaPlayerStatus</h2>
+
+<p>Implement the <code class="highlighter-rouge">CustomMediaPlayer.StatusListener</code> in your controller app to monitor the status, condition, and position of the flung content on the remote Fire TV player app.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Status</span> <span class="n">mStatus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Status</span><span class="o">();</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Status</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">long</span> <span class="n">mPosition</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">MediaState</span> <span class="n">mState</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">MediaCondition</span> <span class="n">mCond</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kd">class</span> <span class="nc">Monitor</span> <span class="kd">implements</span> <span class="n">StatusListener</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStatusChange</span><span class="o">(</span><span class="n">MediaPlayerStatus</span> <span class="n">status</span><span class="o">,</span> <span class="kt">long</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="n">mStatus</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">mStatus</span><span class="o">.</span><span class="na">mState</span>  <span class="o">=</span> <span class="n">status</span><span class="o">.</span><span class="na">getState</span><span class="o">();</span>
+            <span class="n">mStatus</span><span class="o">.</span><span class="na">mCond</span> <span class="o">=</span> <span class="n">status</span><span class="o">.</span><span class="na">getCondition</span><span class="o">();</span>
+            <span class="n">mStatus</span><span class="o">.</span><span class="na">mPosition</span> <span class="o">=</span> <span class="n">position</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The player app on Fire TV uses the <code class="highlighter-rouge">MediaPlayerStatus</code> class to set the content state (<code class="highlighter-rouge">MediaPlayerStatus.MediaState</code>) and condition (<code class="highlighter-rouge">MediaPlayerStatus.MediaCondition</code>). Your controller app can get this status with a state and condition through the <code class="highlighter-rouge">StatusListener</code>, and use this information to control the behavior of your app.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="n">MediaState</span> <span class="o">{</span>
+    <span class="n">NoSource</span><span class="o">,</span> <span class="n">PreparingMedia</span><span class="o">,</span> <span class="n">ReadyToPlay</span><span class="o">,</span> <span class="n">Playing</span><span class="o">,</span> <span class="n">Paused</span><span class="o">,</span> <span class="n">Seeking</span><span class="o">,</span> <span class="n">Finished</span><span class="o">,</span> <span class="n">Error</span>
+<span class="o">};</span>
+<span class="kd">public</span> <span class="kd">enum</span> <span class="n">MediaCondition</span> <span class="o">{</span>
+    <span class="n">Good</span><span class="o">,</span> <span class="n">WarningContent</span><span class="o">,</span> <span class="n">WarningBandwidth</span><span class="o">,</span> <span class="n">ErrorContent</span><span class="o">,</span> <span class="n">ErrorChannel</span><span class="o">,</span> <span class="n">ErrorUnknown</span>
+<span class="o">};</span>
+<span class="kd">public</span> <span class="n">MediaState</span> <span class="nf">getState</span><span class="o">();</span>
+<span class="kd">public</span> <span class="n">MediaCondition</span> <span class="nf">getCondition</span><span class="o">();</span>
+</code></pre>
+</div>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>To create a custom Fling player for Fire TV, see <a href="integrating-amazon-fling-into-your-fire-tv-app.html">Integrating Amazon Fling into your Fire TV Application</a>.</p>
+
+<p>If you are modifying an existing Google Cast app to support Amazon Fling, see <a href="integrating-amazon-fling-with-an-existing-android-cast-app.html">Integrating Amazon Fling with an Existing Android Cast App</a>.</p>
+
+<p>If you use Android’s MediaRouter in your app, see <a href="using-amazon-fling-with-android-mediarouter.html">Using Amazon Fling with Android MediaRouter</a>.</p>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,249 @@
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var pgurl = window.location.href.split('?')[0];
+        pgurl = pgurl.split('#')[0];
+        //console.log("pgurl: " + pgurl);
+        $("ul#hipposidebar li a").each(function(){
+            var sidebaritem = ($(this).attr("href"));
+            if($(this).attr("href") == pgurl || $(this).attr("href") == pgurl + "/") {
+                $(this).addClass("open");
+                //console.log("sidebaritem: " + sidebaritem);
+            }
+        });
+    });
+</script>
+
+<script>$("a.open").parents('li').toggleClass("open");</script>
+
+<script>
+    // Initialize navgoco
+    $("#hipposidebar").navgoco({
+        caretHtml: '',
+        accordion: false,
+        openClass: 'open', // open
+        save: false, // leave false or nav highlighting doesn't work right
+        cookie: {
+            name: 'navgoco',
+            expires: false,
+            path: '/'
+        },
+        slide: {
+            duration: 400,
+            easing: 'swing'
+        }
+    });
+
+</script>
+
+
+
+<div class="hippoRight">
+    <div class="productTitle">Fire TV</div>
+    <ul id="hipposidebar" class="hipponav">
+        
+        <li class="level1"><a href="#">概要</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv">Amazon Fire TV用アプリとゲームを開発するための準備</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/device-and-platform-specifications">Fire TV端末の仕様</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-development-framework-comparison">Amazon Fire TV開発フレームワークの比較</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/amazon-fire-tv-differences-from-android-tv-development">Fire TV開発とAndroid TV開発の違い</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/design-and-user-experience-guidelines">TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/whats-new-in-the-fire-tv-sdk">Fire TV開発における最新情報</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/amazon-fire-tv-sdk-frequently-asked-questions">Amazon Fire TVのよくある質問 (FAQ)</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/submitting-your-fire-tv-app-to-the-amazon-appstore">AmazonアプリストアへのFire TVアプリの申請</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">開発環境のセットアップ</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/setting-up-your-development-environment">開発環境のセットアップ</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/connecting-adb-to-fire-tv-device">ADBを使用してFire TVに接続する</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/installing-and-running-your-app">アプリのインストールと実行</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Androidアプリのコントローラ</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/supporting-controllers-on-amazon-fire-tv">コントローラの概要</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/amazon-fire-tv-remote-input">リモート入力</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/amazon-fire-game-controller-input">ゲームコントローラ入力</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/controller-input-with-unity">Unityによるコントローラ入力</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/identifying-controllers">コントローラの識別</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/controller-behavior-guidelines">コントローラ動作のガイドライン</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/controller-image-assets">コントローラ画像アセット</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+
+        </li>
+    </ul>
+
+    <hr class="resourceSeparator"></hr>
+
+    <div class="relatedResources">その他のリソース</div>
+
+    <ul id="entrypages">
+        <ul>
+            
+            
+            <li><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv">Fire TV</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/overview/integrating-your-catalog-with-fire-tv">Fire TVカタログ統合</a></li>
+            
+            
+            
+            <li><a href="https://forums.developer.amazon.com/spaces/121/index.html">日本語版ナレッジベース</a></li>
+            
+            
+        </ul>
+    </ul>
+</div>

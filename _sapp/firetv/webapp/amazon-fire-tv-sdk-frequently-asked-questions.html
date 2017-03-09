@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Amazon Fire TV Frequently Asked Questions (FAQs) | Fire TV</title>
+    
+    <base target="_self">
+    <meta name="description" content="General  Q: How do I submit my app for the Amazon Fire TV platform? To submit your app for an Amazon Fire TV device, create an account on the... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/getting_started/Overview/amazon-fire-tv-sdk-frequently-asked-questions.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Get Started Developing Apps and Games for Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV Device Specifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Fire TV Development Frameworks: WASK and FireBuilder</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">How Fire TV Development Differs from Android TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TV App Design UX Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-fire-os-overview.html">What Is Fire OS?</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">What's New in Fire TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Fire TV FAQs</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">Submitting Your Fire TV App to the Appstore</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">Set Up Your Development Environment</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">Connect to Fire TV through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">Install and Run Your Fire TV App</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">Controllers Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">Remote Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">Game Controller Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Controller Input with Unity</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">Identifying Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">Controller Behavior Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">Controller Image Assets</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Development Best Practices</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-mouse-pointer.html">Mouse Pointers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="display-and-layout.html">Display and Layout</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-agent-strings.html">User Agent Strings</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="managing-audio-focus.html">Managing Audio Focus</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-media-players.html">Media Players</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-dolby-integration-guidelines.html">Dolby Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-amazon-fire-tv-devices.html">Identifying Fire TV Devices</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-handling-hdmi-events.html">HDMI Events</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-4k-ultra-hd.html">4K Ultra HD Videos</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-interface.html">Android Menu and ActionBar widgets</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dial-integration.html">DIAL Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="implementing-search-fire-tv.html">Search</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="notifications-for-amazon-fire-tv.html">Notifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="specifying-installation-location.html">App Installation Location</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-advertising-id.html">Advertising ID</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-international-locales.html">Resources for International Locales</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Troubleshooting Fire TV Issues with Developer Tools</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-developer-tools.html">Developer Tool Options</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray.html">System X-Ray</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-customized-metrics.html">Customize System X-Ray</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Accessibility</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-assistive-technologies.html">Understanding Assistive Technologies for Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-accessibility.html">Implementing Accessibility in Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-preview-future-voiceview-accessibility-features.html">PREVIEW: Implementing Future VoiceView Accessibility Features</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Build Webapps for Fire TV</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-with-web-apps-for-fire-tv.html">Get Started with Web Apps</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-in-web-apps.html">Web App Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="the-web-app-starter-kit-for-fire-tv.html">Web App Starter Kit</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-your-fire-tv-web-app.html">Customize your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="migrating-your-web-app-to-fire-tv.html">Migrate Your App to Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-web-app-faq.html">Web App FAQ</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire TV </div>
+
+                    <h1>Amazon Fire TV Frequently Asked Questions (FAQs)</h1>
+
+                    <h2 id="general">General</h2>
+
+<dl>
+  <dt>Q: How do I submit my app for the Amazon Fire TV platform?</dt>
+  <dd>To submit your app for an Amazon Fire TV device, create an account on the <a href="https://developer.amazon.com/appsandservices">Amazon Apps &amp; Games Developer Portal</a> and submit your app through the portal.
+
+    <p>If you already have an app published at Amazon, update that app to include a separate binary APK for Amazon Fire TV. See <a href="https://developer.amazon.com/public/support/submitting-your-app/tech-docs/getting-started-with-device-targeting">Using Device Targeting</a> for more information.</p>
+  </dd>
+  <dt>Q: Will my app work on the Amazon Fire TV platform?</dt>
+  <dd>Your app must be compatible with the specifications for Amazon Fire TV devices. See <a href="device-and-platform-specifications.html">Device Specifications</a> for detailed device and feature specifications.
+
+    <p>Your app must comply the <a href="https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-content-policy">Amazon Appstore Content Policy Requirements</a>. Amazon also recommends that you test your app on your own and submit an update if you discover any problems.</p>
+  </dd>
+  <dt>Q:  How can I identify whether my app is running on an Amazon Fire TV device?</dt>
+  <dd>A: You can check for the feature <code class="highlighter-rouge">amazon.hardware.fire_tv</code>. If you absolutely must look for the Fire TV Gen 1 or Fire TV Gen 2 device, you can check for the MODEL <code class="highlighter-rouge">AFTB</code> or <code class="highlighter-rouge">AFTS</code> respectively, but always include a fallback for the feature. See <a href="identifying-amazon-fire-tv-devices.html">Identifying Amazon Fire TV Devices</a> for more information.</dd>
+  <dt>Q: Can I sideload my app onto Amazon Fire TV for testing?</dt>
+  <dd>Yes, with the Android Debug Bridge (ADB).  See <a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Getting Started Developing Apps and Games for Fire TV</a> for more information. </dd>
+  <dt>Q: Are Amazon Fire TV test devices available for developers?</dt>
+  <dd>Amazon does not provide test devices for developers.
+
+    <p>Amazon Fire TV devices are available for purchase on Amazon retail sites in the <a href="http://www.amazon.com/Fire-TV-streaming-media-player/dp/B00CX5P8FC">US</a>, <a href="http://www.amazon.co.uk/dp/B00KQEJBSW">UK</a>, and <a href="http://www.amazon.de/dp/B00KQEIMY6">Germany</a>. Check the product detail pages for country-specific availability.</p>
+  </dd>
+  <dt>Q: What specific features does the Amazon Fire TV platform support?</dt>
+  <dd>See <a href="/solutions/devices/fire-tv/docs/device-and-platform-specifications">Device Specifications</a>, <a href="https://developer.amazon.com/public/solutions/devices/fire-tablets" title="https://developer.amazon.com/sdk/fire.html">Fire tablets</a> for detailed device and feature specifications.</dd>
+  <dt>Q: How do I get my app marketed on the Amazon Fire TV platform?</dt>
+  <dd>See <a href="https://developer.amazon.com/public/resources/marketing-tools/marketing-your-app" title="Marketing Opportunities">Marketing Your App</a>.</dd>
+  <dt>Q: How can I get more information about the Amazon Fire TV platform?</dt>
+  <dd>Please use the <a href="https://developer.amazon.com/public/support/contact/contact-us" title="Contact Us">Contact Us</a> form to send us your questions.</dd>
+  <dt>Q:  Under what circumstances should my app pause, and how do I implement pause behavior?</dt>
+  <dd>A: Your app pauses when the Microphone (voice search), Home, or GameCircle buttons are pressed on one of the Fire TV remotes or on the Amazon Fire Game Controller. The Back button also pauses the current activity and resumes the previous activity on the stack, which may or may not be your app.
+
+    <p>To handle pause behavior, implement the <code class="highlighter-rouge">onPause()</code> method in your activity as you would in any other Android app. In your <code class="highlighter-rouge">onPause()</code> method, ensure that you save the user’s state or position, so that when your app resumes the user is in the same place that they were before the pause.</p>
+
+    <p>In addition, the following requirements apply to media apps:</p>
+
+    <ul>
+      <li>Apps that play video should pause playback, and <b>must release all media resources such as decoders immediately on pause</b>, as these limited resources are hardware-based and memory-constrained. See <a href="https://developer.android.com/guide/topics/media/mediaplayer.html#releaseplayer">Releasing the Media Player</a> and <a href="https://developer.android.com/reference/android/media/MediaPlayer.html#release()&quot;&gt;"><code class="highlighter-rouge">MediaPlayer.release()</code></a> for details.</li>
+      <li>Apps that play audio may continue playing after a pause, but must relinquish audio focus if requested by another app. See <a href="http://developer.android.com/training/managing-audio/audio-focus.html">Managing Audio Focus</a> for details.</li>
+    </ul>
+  </dd>
+  <dt>Q:  Can I open an advertisement in the default web browser?</dt>
+  <dd>A: Amazon Fire TV does not include a browser app, so links to all URLs (advertisements or otherwise) do not work. You can use the Android <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a> if you need to include a link to a web page in your app. Note, however, that the Android WebView requires you to manage your own cookies and authentication, as well as handle input events from controllers. (WebView in Android does support D-Pad navigation, but layout and navigation may need review.)
+
+    <p>See the blog post <a href="https://developer.amazon.com/post/Tx3BY931C53CRLA/Using-WebViews-on-Tablets-with-HD-Screens">Using WebViews on Tablets with HD Screens</a> for tips on implementing an Android WebView. Although this post is specific to tablets, the advice can also be applied to TV.</p>
+  </dd>
+  <dt>Q:  Can I use the Amazon In-App Purchasing API in my Fire TV app?</dt>
+  <dd>A: Yes, Amazon’s <a href="getting-started-with-iap.html">In-App Purchasing (IAP)</a> API works on all Fire TV devices and with the Fire TV remotes and game controllers. Use <a href="testing-iap.html">App Tester</a> to preview your transactions.</dd>
+  <dt>Q:  Can I use Amazon Device Messaging (ADM) in my Fire TV app?</dt>
+  <dd>A: You can use <a href="adm-understanding.html">Amazon Device Messaging</a> to receive push messages and other data.</dd>
+  <dt>Q:  Can I use the Amazon Maps API in my Fire TV app?</dt>
+  <dd>A: There are no location services in Amazon Fire TV, so the <a href="https://developer.amazon.com/maps">Amazon Maps API</a> is not supported at this time.</dd>
+  <dt>Q:  Can I use the Amazon Mobile Ads API in my Fire TV app? </dt>
+  <dd>A: The <a href="https://developer.amazon.com/public/apis/earn/mobile-ads">Amazon Mobile Ads API</a> is not supported on Fire TV at this time.</dd>
+  <dt>Q:  Can I link to my app’s details page in the Amazon Appstore?</dt>
+  <dd>A: Yes, Amazon Appstore deep links work as they do for other apps. See <a href="https://developer.amazon.com/appsandservices/apis/earn/in-app-purchasing/docs/deeplink">Linking to the Amazon Client</a> for more information on deep linking. Note, however, that the ability to rate apps is not currently supported by Amazon Fire TV. Your app should not prompt the user for a rating.</dd>
+  <dt>Q:  How do I change the onscreen keyboard to a numeric keypad?</dt>
+  <dd>A: You can use the standard Android mechanisms for configuring the IME (input method editor) for any <a href="http://developer.android.com/reference/android/widget/EditText.html">EditText</a> widget. In XML, use <code class="highlighter-rouge">android:inputType="number"</code>:
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>&lt;EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/edittext"
+android:inputType="number"/&gt;
+</code></pre>
+    </div>
+  </dd>
+  <dt>Q:  How do I take screen shots on Amazon Fire TV?</dt>
+  <dd>A: To take screen shots, connect to the device with <code class="highlighter-rouge">adb</code> and use these commands. Substitute the name of your screen shot for <code class="highlighter-rouge">filename.png</code> and the directory on your development computer where you want to put the screen shot for <code class="highlighter-rouge">/tmp</code>:
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>adb shell screencap -p /sdcard/filename.png
+adb pull /sdcard/filename.png /tmp
+adb shell rm /sdcard/filename.png
+</code></pre>
+    </div>
+    <p>See <a href="/support/submitting-your-app/tech-docs/04-taking-screenshots#firetv">Taking Screenshots of your Fire TV App</a> for more details.</p>
+  </dd>
+  <dt>Q: My app uses Google’s in-app purchasing technology. Will it work on the Amazon Fire TV platform?</dt>
+  <dd>No. Services such as Google’s in-app purchasing API require access to Google Mobile Services, which do not work on the Amazon Fire TV platform. For in-app purchasing, Amazon offers an In-App Purchasing API that makes it easy for you to offer digital content and subscriptions in your apps.</dd>
+  <dt>Q: Are there any other criteria for distributing apps for Amazon Fire TV or Fire TV Stick in Germany and/or Austria?</dt>
+  <dd>Yes. We do not permit apps to be distributed on Amazon Fire TV or on Fire TV Stick in Germany and/or Austria, if the apps enable copying, recording, downloading, storing, or similar actions of any type of video or audio content onto the Amazon Fire TV or Fire TV Stick device, any SD memory card or any connected external storage (where applicable). If we determine that an app contains this functionality, we will not make it available in Germany and/or Austria.</dd>
+</dl>
+
+<h2 id="fireos">Fire OS 5 (Android Lollipop)</h2>
+
+<dl>
+  <dt>Q: Does Fire OS 5 support Android TV and the v17 Leanback Library?</dt>
+  <dd>A: Fire OS 5 includes both support for Android TV functionality and the Leanback Library. However, speech recognition with the Leanback library’s <a href="(http://developer.android.com/reference/android/support/v17/leanback/app/SearchFragment.html)"><code class="highlighter-rouge">SearchFragment</code></a> class is currently unsupported. See <a href="implementing-search-fire-tv.html">Implementing Search in Fire TV</a> for more details.</dd>
+</dl>
+
+<h2 id="mediaanddrm">Media and DRM</h2>
+
+<dl>
+  <dt>Q: What third-party media player SDKs are supported by Fire TV?</dt>
+  <dd>A: Any media player SDKs that implement the Android media playback and encryption APIs work on the Amazon Fire TV platform.  Examples of these SDKs include the <a href="https://github.com/amzn/exoplayer-amazon-port">Amazon Port of the ExoPlayer</a>, the <a href="https://developer.android.com/reference/android/media/MediaPlayer.html">Android MediaPlayer</a>, the <a href="http://visualon.com/onstream-mediaplayer/">VisualOn OnStream MediaPlayer+ SDK</a>, and the <a href="http://www.nexstreaming.com/index.php">NexStreaming NexPlayer SDK</a>. See <a href="fire-tv-media-players.html">Media Players</a> for more details.</dd>
+  <dt>Q:  What are my options for implementing playback of media encrypted with Microsoft PlayReady DRM?</dt>
+  <dd>A: The Amazon Fire TV platform includes support for the Android <code class="highlighter-rouge">MediaCrypto</code> class for playing protected media, or you can use a third-party media player SDK that supports PlayReady. Amazon Fire TV supports PlayReady version 2.5 only. (Fire TV devices cannot support PlayReady Security Level 3000 (SL3000) because this was introduced in PlayReady 3.0, and Amazon Fire TV devices support version 2.5 only.)</dd>
+  <dt>Q:  Does Amazon Fire TV support PlayReady content that uses encrypted audio?</dt>
+  <dd>A: PlayReady content with encrypted video and clear (non-encrypted) audio is supported on Fire TV. Widevine DRM is also supported. See the <a href="device-and-platform-specifications.html">DRM section on the Fire TV Device Specifications page</a> for more details. If you need to play content with both encrypted audio and video, please <a href="https://developer.amazon.com/public/support/contact/contact-us">contact us</a> for further information.</dd>
+  <dt>Q:  How do I decode Dolby Digital audio on Fire TV devices?</dt>
+  <dd>A: Both Fire TV and Fire TV Stick contain decoders for Dolby Digital (AC3) and Dolby Digital Plus (eAC3). You should be able to play these formats with the standard Android media player libraries. Note that the DolbyAudioProcessing SDK for Amazon Fire tablets is not supported (or required) for Fire TV devices. For more information about playing Dolby, see <a href="amazon-fire-tv-dolby-integration-guidelines.html">Dolby Integration Guidelines</a>.</dd>
+  <dt>Q:  Does the device support Secure Boot to verify firmware and OS?</dt>
+  <dd>A: Yes.</dd>
+  <dt>Q:  Does the OS enforce signature checking of apps?</dt>
+  <dd>A: Yes.</dd>
+  <dt>Q:  Is output HDCP protected though a secure channel over HDMI?</dt>
+  <dd>A: Yes.</dd>
+  <dt>Q: Does Amazon Fire TV support customizable closed captioning (CEA-708)?</dt>
+  <dd>A: Fire TV has limited platform-level closed captioning support at this time. Media apps are responsible for and must implement a UI that enables viewers to customize  captions through a third-party media playback SDK or their own implementation.</dd>
+  <dt>Q: What fonts are available on Amazon Fire TV for use with closed captions?</dt>
+  <dd>A: Amazon Fire TV includes limited platform fonts. You must license and embed your own font files for each of the style categories defined by CEA-708.</dd>
+</dl>
+
+<h2 id="mediaplayback">Media Playback</h2>
+
+<dl>
+  <dt>Q:  What are best practices with media playback to preserve resources and memory?</dt>
+  <dd>
+    <p>A: Because the media playback resources in Amazon Fire TV are hardware-based and memory constrained, your app must be well-behaved and release the media resources when you are done with them.</p>
+
+    <p>Specifically, apps that play video should pause playback and must release all media resources such as decoders immediately in your <code class="highlighter-rouge">onPause()</code> method. See <a href="https://developer.android.com/guide/topics/media/mediaplayer.html#releaseplayer">Releasing the Media Player</a> and <a href="https://developer.android.com/reference/android/media/MediaPlayer.html#release()"><code>MediaPlayer.release()</code></a> for details.</p>
+
+    <p>If your app plays video through an Android <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a> (with the <code class="highlighter-rouge">&lt;video&gt;</code> HTML tag), hardware media resources are not currently released by the system when your app pauses or stops. To work around this issue, explicitly release these resources by killing the processes when you implement your <code class="highlighter-rouge">onPause()</code> and <code class="highlighter-rouge">onStop()</code> methods:</p>
+
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStop</span><span class="o">()</span> <span class="o">{</span>
+   <span class="kd">super</span><span class="o">.</span><span class="na">onStop</span><span class="o">();</span>
+   <span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Process</span><span class="o">.</span><span class="na">killProcess</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Process</span><span class="o">.</span><span class="na">myPid</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre>
+    </div>
+  </dd>
+  <dt>Q: My app plays music in the background. When my app pauses, why does the audio stop playing? OR when my app starts, why does audio from another app keep playing?</dt>
+  <dd>A: Your app is not correctly managing audio focus. When your app begins playing it should both request audio focus and register for media button events. When your app relinquishes audio focus (because you’re done playing or because another app has requested it), it should also unregister from media button events. Specifically:
+
+    <ul>
+      <li>When your app begins playing, request audio focus with <a href="http://developer.android.com/reference/android/media/AudioManager.html#requestAudioFocus(android.media.AudioManager.OnAudioFocusChangeListener,%20int,%20int)"><code class="highlighter-rouge">AudioManager.requestAudioFocus()</code></a></li>
+      <li>If audio focus was granted, register a media button receiver with <a href="http://developer.android.com/reference/android/media/AudioManager.html#registerMediaButtonEventReceiver(android.content.ComponentName)"><code class="highlighter-rouge">AudioManager.registerMediaButtonEventReceiver()</code></a></li>
+      <li>Listen for the loss of audio focus with <a href="http://developer.android.com/reference/android/media/AudioManager.OnAudioFocusChangeListener.html"><code class="highlighter-rouge">AudioManager.onAudioFocusChangeListener()</code></a></li>
+      <li>If your app loses audio focus, stop playback and unregister the media buttons with <a href="http://developer.android.com/reference/android/media/AudioManager.html#unregisterMediaButtonEventReceiver(android.content.ComponentName)"><code class="highlighter-rouge">AudioManager.unregisterMediaButtonEventReceiver()</code></a></li>
+    </ul>
+
+    <p>See the following for more details:</p>
+
+    <ul>
+      <li><a href="managing-audio-focus.html">Managing Audio Focus</a> (Fire TV docs)</li>
+      <li><a href="http://developer.android.com/training/managing-audio/audio-focus.html">Managing Audio Focus</a> (Android docs)</li>
+      <li><a href="http://android-developers.blogspot.com/2010/06/allowing-applications-to-play-nicer.html">Allowing applications to play nice(r) with each other: Handling remote control buttons</a></li>
+    </ul>
+  </dd>
+  <dt>Q:  Why does my music app keep getting randomly killed when it’s playing in the background?</dt>
+  <dd>A: Make sure you are running your music playback app as a foreground service. Background services (the default) are automatically shut down by the system when resources are low. See the Android guide for <a href="http://developer.android.com/guide/topics/media/mediaplayer.html">Media Playback</a> and the <a href="http://developer.android.com/reference/android/app/Service.html#startForeground(int,%20android.app.Notification)"><code class="highlighter-rouge">startForeground()</code></a> method in the <a href="http://developer.android.com/reference/android/app/Service.html">Service</a> class for details.</dd>
+  <dt>Q:  How should I handle the TV being turned off/disconnected with the HDMI cable?</dt>
+  <dd>A: The expected behavior for an HDMI disconnect is different for audio and video. See <a href="fire-tv-handling-hdmi-events.html">Handling HDMI Events</a> for details.</dd>
+  <dt>Q:  During media playback, how do I prevent the device from entering standby or daydream mode (screen saver)?</dt>
+  <dd>A: To keep both Amazon Fire TV and the television awake during media playback, set the <a href="http://developer.android.com/reference/android/view/View.html#KEEP_SCREEN_ON"><code class="highlighter-rouge">KEEP_SCREEN_ON</code></a> flag for your activity, or acquire a wake lock from the power manager. Your app must release all wake locks when it is not actively playing audio or video so that both the device and the television can sleep and preserve power. See the <a href="http://developer.android.com/reference/android/os/PowerManager.html"><code class="highlighter-rouge">PowerManager</code></a> and <a href="http://developer.android.com/reference/android/os/PowerManager.WakeLock.html"><code class="highlighter-rouge">PowerManager.WakeLock</code></a> classes for details on using wake locks.
+
+    <p>Note that if your app plays audio and you set a partial wake lock for your app <a href="http://developer.android.com/reference/android/os/PowerManager.html#PARTIAL_WAKE_LOCK"><code class="highlighter-rouge">PARTIAL_WAKE_LOCK</code></a>, the television remains on and when idle the device enters daydream mode (displays the screen saver). This is different behavior from a partial wake lock on a mobile device (where it keeps the CPU on, but turns the screen off), as audio playback over HDMI requires the television to be on. Again, make sure you release the wake lock when your app stops actively playing audio so that the television can sleep.</p>
+
+    <p>Setting the <a href="http://developer.android.com/reference/android/os/PowerManager.html#SCREEN_BRIGHT_WAKE_LOCK"><code class="highlighter-rouge">SCREEN_BRIGHT_WAKE_LOCK</code></a> or <a href="http://developer.android.com/reference/android/os/PowerManager.html#SCREEN_DIM_WAKE_LOCK"><code class="highlighter-rouge">SCREEN_DIM_WAKE_LOCK</code></a> flags has no effect on the behavior of the device.</p>
+  </dd>
+  <dt>Q:  How can I detect when the device has entered daydream mode (the screen saver is on)?</dt>
+  <dd>A: Daydream mode is an Android function. When Amazon Fire TV enters daydream mode it displays the screen saver if the TV is on. Register for <code class="highlighter-rouge">Intent.ACTION_DREAMING_STARTED</code> and <code class="highlighter-rouge">Intent.ACTION_DREAMING_STOPPED</code> to detect when the device enters or exits daydream.
+
+    <p>Note that if your app plays audio but is not a music app, you should pause audio playback when the device enters daydream mode.</p>
+  </dd>
+  <dt>Q:  Can I use an Android <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a> and the <code class="highlighter-rouge">&lt;video&gt;</code> HTML tag for video playback?</dt>
+  <dd>A: Yes, with limitations. Hardware media resources are not currently released by the system when your app pauses or stops. To work around this issue implement your <code class="highlighter-rouge">onStop()</code> method to explicitly kill the process for your app:
+
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStop</span><span class="o">()</span> <span class="o">{</span>
+<span class="kd">super</span><span class="o">.</span><span class="na">onStop</span><span class="o">();</span>
+<span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Process</span><span class="o">.</span><span class="na">killProcess</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Process</span><span class="o">.</span><span class="na">myPid</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre>
+    </div>
+
+    <p>This issue may also cause instability in the user experience and navigation for your app. Use of a third-party media player SDK is the recommended method for media playback on the device.</p>
+  </dd>
+  <dt>Q:  Can I play 4K Ultra HD Videos in my App?</dt>
+  <dd>
+    <p>Yes, Fire TV (2nd Generation) can play 4K Ultra HD video when connected to a 4K-supported TV. Fire TV (1st Generation) and Fire TV Stick do not play 4K videos.</p>
+
+    <p>Before playing 4K content, your app needs to check whether (1) the device in a Fire TV (2nd Generation) device and (2) whether the connected TV supports 4K. An Amazon 4K Extension Library has been developed to allow you to initiate the 4K mode switch.</p>
+
+    <p>Apps that support Ultra HD video will be certified by Amazon to ensure they meet the required customer experience. Typically, certification takes a couple of weeks. See <a href="fire-tv-4k-ultra-hd.html">Playing 4K Ultra HD Videos</a> for more details.</p>
+  </dd>
+</dl>
+
+<h2 id="controllers">Controllers</h2>
+
+<dl>
+  <dt>Q:  The Amazon Fire TV Game Controller does not have media buttons like the previous version did. How do I handle media playback?</dt>
+  <dd>A: Amazon Fire TV generates media input events for the analog stick presses (Play/Pause) and for the left (Rewind) and right (Fast Forward) shoulder buttons (L1/R1). If you do not use those buttons in your app or game, make sure you do not capture or throw away those button events so the user can control media playing in the background.
+
+    <p>If you repurposed the media buttons on the Amazon Fire Game Controller for other purposes in your app, users of the new Amazon Fire TV Game Controller cannot use that functionality without the buttons. Consider updating your app to use buttons common to both game controllers, and updating your on-screen hints.</p>
+  </dd>
+  <dt>Q: How do I manage volume control from the Amazon Fire TV Game Controller?</dt>
+  <dd>A: Amazon Fire TV can stream audio to the headphone jack on the Amazon Fire TV Game Controller (current generation devices only). The left and right trigger buttons (L2/R2) are used to control the volume.
+
+    <p>Volume control is a system function and cannot be mapped to other buttons in your app. However, if you do not use the trigger buttons in your app or game, make sure you do not capture or throw away those button events so the user can control media playing in the background. If you do use these buttons for other purposes in your app or game, consider providing an on-screen hint that the user can control the volume from the GameCircle screen or the system launcher.</p>
+  </dd>
+  <dt>Q:  Can I override the Microphone button on the Fire TV Voice Remote in my app?</dt>
+  <dd>A: The Microphone button launches system-wide voice capabilities (requesting a <strong>transient audio focus</strong>) and cannot be overridden. Your application should handle this audio focus change event (<code class="highlighter-rouge">AUDIOFOCUS_LOSS_TRANSIENT</code>) as well as other audio focus change events too (<code class="highlighter-rouge">AUDIOFOCUS_LOSS</code> and <code class="highlighter-rouge">AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK</code>), since any application (not just voice) might request any kind of audio focus. In short, all audio focus use cases should be handled appropriately. See <a href="managing-audio-focus.html#audiofocusvoice">Handling Audio Focus with Voice Search</a> for more details.</dd>
+  <dt>Q:  What does the Menu button do, and can I override it in my app?</dt>
+  <dd>A: By default, the Menu button invokes the Android context menu, which appears as a list of menu items centered on the screen. You can override the menu button to provide your own custom menu user interface, or for any other purpose.
+
+    <p>If you only have one menu item, consider using the Menu button as a simple toggle (for example, to turn closed captions on or off), and provide an onscreen hint to expose that feature to your users.</p>
+  </dd>
+  <dt>Q:  Why doesn’t the GameCircle overlay for my game appear when I press the GameCircle button on the Fire Game Controller?</dt>
+  <dd>A: The GameCircle overlay appears only if:
+
+    <ul>
+      <li>Your game has implemented the GameCircle API.</li>
+      <li>Your game has been submitted to the Amazon Appstore, and is categorized as a game.</li>
+      <li>Your game has been installed on to a Fire TV device from the Amazon Appstore.</li>
+    </ul>
+
+    <p>The GameCircle overlay does not appear if you have sideloaded your game onto a Fire TV device for testing. You can test your GameCircle implementation in your app before submitting it with <a href="https://developer.amazon.com/public/resources/development-tools/live-app-testing">Live App Testing</a>.</p>
+
+    <p>The GameCircle overlay may also not appear if you have not yet published any leaderboards or achievements AND you’re not using a test account. In this scenario either publish at least one achievement or leaderboard in the Amazon Developer Console, or set up a test account (also in the Developer Console), and use that account to view draft achievements and leaderboards in the GameCircle overlay.</p>
+  </dd>
+  <dt>Q:  Why is my activity restarted from scratch when a controller is connected, disconnected or sleeps?</dt>
+  <dd>A: These events are handled as runtime configuration changes by Android. To ignore these events in your app, modify your <code class="highlighter-rouge">AndroidManifest.xml</code> to include the <code class="highlighter-rouge">android:configChanges</code> attribute, and include keys for <code class="highlighter-rouge">keyboard</code>, <code class="highlighter-rouge">keyboardHidden</code>, and <code class="highlighter-rouge">navigation</code>:
+
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">activity</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"MyActivity"</span>
+<span class="nl">android:</span><span class="n">configChanges</span><span class="o">=</span><span class="s">"keyboard|keyboardHidden|navigation"</span><span class="o">&gt;</span>
+</code></pre>
+    </div>
+
+    <p>See the Android Guide <a href="http://developer.android.com/guide/topics/resources/runtime-changes.html">Handling Runtime Changes</a> for information on the <code class="highlighter-rouge">configChanges</code> attribute and how to handle configuration changes in your app, if necessary.</p>
+  </dd>
+  <dt>Q:  How do I handle game controller disconnects in my app or game?</dt>
+  <dd>A: The Amazon Fire TV Game Controller may disconnect from the system if it is idle or if either stick is held at an angle for more than five minutes (to preserve battery life). Other controllers may also disconnect when idle or when battery life runs out. Use the Android <a href="http://developer.android.com/reference/android/hardware/input/InputManager.InputDeviceListener.html#onInputDeviceRemoved(int)"><code class="highlighter-rouge">OnInputDeviceRemoved</code></a> listener to handle controller disconnection events. Consider pausing the game or displaying a dialog to let the user know the controller is no longer available.</dd>
+</dl>
+
+<h2 id="amazonfiretvstick">Amazon Fire TV Stick</h2>
+
+<dl>
+  <dt>Q:  What are the differences between Amazon Fire TV and Fire TV Stick?</dt>
+  <dd>A: <a href="device-and-platform-specifications.html">Fire TV Device Specifications</a> lists the specifications for all Fire TV devices.</dd>
+  <dt>Q:  How do I adapt my Amazon Fire TV app to Amazon Fire TV Stick?</dt>
+  <dd>A: Both Amazon Fire TV and Fire TV Stick run the same platform software. However, because of the more limited hardware on the Fire TV Stick, optimizing your app for performance and stability are critical. Make sure you follow Android best practices for hardware acceleration and <a href="http://developer.android.com/training/best-performance.html">performance</a>. Watch out in particular for OpenGL and textures; the Fire TV Stick’s GPU supports OpenGL 2.0 with a <code class="highlighter-rouge">MAX_TEXTURE_SIZE</code> of 2048x2048.</dd>
+  <dt>Q:  How can I identify a Fire TV Stick device?</dt>
+  <dd>A: You can check for the feature <code class="highlighter-rouge">amazon.hardware.fire_tv</code>. If you absolutely must look for the Fire TV Stick, you can check for the MODEL <code class="highlighter-rouge">AFTM</code>. See <a href="identifying-amazon-fire-tv-devices.html">Identifying Amazon Fire TV Devices</a> for more information.</dd>
+  <dt>Q:  Some of the images/backgrounds in my app are not appearing, or I’m getting grey boxes for those images.</dt>
+  <dd>A: This is usually a result of bitmap images or textures that are too large. Fire TV Stick supports textures up to 2048x2048. You may see an error in the logs like this if your app has this problem:
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>W/OpenGLRenderer( 8941): Bitmap too large to be uploaded in a texture (3840x2160, max=2048x2048)
+</code></pre>
+    </div>
+
+    <p>Also, make sure your images for Fire TV are in the <code class="highlighter-rouge">drawables-xhdpi/</code> folder and not in <code class="highlighter-rouge">drawables/</code>. Platform scaling of the default drawables may result in large images that exceed the texture limit.</p>
+  </dd>
+</dl>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

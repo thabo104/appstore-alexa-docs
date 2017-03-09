@@ -3,7 +3,7 @@ title: Fire TV Catalog Data Format (CDF) Schema
 permalink: catalog-data-format-schema-reference.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

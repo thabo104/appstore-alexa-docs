@@ -3,7 +3,7 @@ title: Understanding Fire TV Catalog Integration
 permalink: understanding-fire-tv-catalog-integration.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

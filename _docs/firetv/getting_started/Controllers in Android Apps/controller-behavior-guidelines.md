@@ -3,7 +3,7 @@ title: Controller Behavior Guidelines
 permalink: controller-behavior-guidelines.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

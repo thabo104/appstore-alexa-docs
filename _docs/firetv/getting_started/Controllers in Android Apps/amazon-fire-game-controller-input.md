@@ -3,7 +3,7 @@ title: Game Controller Input
 permalink: amazon-fire-game-controller-input.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

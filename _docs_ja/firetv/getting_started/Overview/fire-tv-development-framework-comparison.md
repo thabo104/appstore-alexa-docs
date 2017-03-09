@@ -4,7 +4,7 @@ sidebar: firetv_ja
 product: Fire TV
 permalink: fire-tv-development-framework-comparison.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-development-framework-comparison
-toc: false
+toc-style: kramdown
 github: true
 ---
 

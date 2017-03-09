@@ -3,7 +3,7 @@ title: Fire TV カタログインジェストレポートの取得とその内�
 permalink: receiving-and-understanding-the-catalog-ingestion-report.html
 sidebar: catalog_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: Adobe Pass Authorization Component
 permalink: fire-app-builder-adobe-pass-auth-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

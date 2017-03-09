@@ -3,7 +3,7 @@ title: Flurry Analytics Component
 permalink: fire-app-builder-flurry-analytics-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

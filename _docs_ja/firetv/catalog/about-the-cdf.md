@@ -3,7 +3,7 @@ title: カタログデータ形式（CDF）について
 permalink: about-the-cdf.html
 sidebar: catalog_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

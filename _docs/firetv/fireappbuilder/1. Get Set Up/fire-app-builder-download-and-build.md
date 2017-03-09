@@ -3,7 +3,7 @@ title: Download Fire App Builder and Build an App
 permalink: fire-app-builder-download-and-build.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Managing Audio Focus on Fire TV | Fire TV</title>
+    
+    <base target="_self">
+    <meta name="description" content="Audio playback on Amazon Fire TV is a shared resource. Although apps such as music players can play audio when they are not in the foreground, only one app should... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/getting_started/Development Best Practices/managing-audio-focus.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Get Started Developing Apps and Games for Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV Device Specifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Fire TV Development Frameworks: WASK and FireBuilder</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">How Fire TV Development Differs from Android TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TV App Design UX Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-fire-os-overview.html">What Is Fire OS?</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">What's New in Fire TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Fire TV FAQs</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">Submitting Your Fire TV App to the Appstore</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">Set Up Your Development Environment</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">Connect to Fire TV through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">Install and Run Your Fire TV App</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">Controllers Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">Remote Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">Game Controller Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Controller Input with Unity</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">Identifying Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">Controller Behavior Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">Controller Image Assets</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Development Best Practices</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-mouse-pointer.html">Mouse Pointers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="display-and-layout.html">Display and Layout</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-agent-strings.html">User Agent Strings</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="managing-audio-focus.html">Managing Audio Focus</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-media-players.html">Media Players</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-dolby-integration-guidelines.html">Dolby Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-amazon-fire-tv-devices.html">Identifying Fire TV Devices</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-handling-hdmi-events.html">HDMI Events</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-4k-ultra-hd.html">4K Ultra HD Videos</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-interface.html">Android Menu and ActionBar widgets</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dial-integration.html">DIAL Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="implementing-search-fire-tv.html">Search</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="notifications-for-amazon-fire-tv.html">Notifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="specifying-installation-location.html">App Installation Location</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-advertising-id.html">Advertising ID</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-international-locales.html">Resources for International Locales</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Troubleshooting Fire TV Issues with Developer Tools</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-developer-tools.html">Developer Tool Options</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray.html">System X-Ray</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-customized-metrics.html">Customize System X-Ray</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Accessibility</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-assistive-technologies.html">Understanding Assistive Technologies for Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-accessibility.html">Implementing Accessibility in Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-preview-future-voiceview-accessibility-features.html">PREVIEW: Implementing Future VoiceView Accessibility Features</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Build Webapps for Fire TV</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-with-web-apps-for-fire-tv.html">Get Started with Web Apps</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-in-web-apps.html">Web App Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="the-web-app-starter-kit-for-fire-tv.html">Web App Starter Kit</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-your-fire-tv-web-app.html">Customize your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="migrating-your-web-app-to-fire-tv.html">Migrate Your App to Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-web-app-faq.html">Web App FAQ</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire TV </div>
+
+                    <h1>Managing Audio Focus on Fire TV</h1>
+
+                    <p>Audio playback on Amazon Fire TV is a shared resource. Although apps such as music players can play audio when they are not in the foreground, only one app should be playing audio at once.</p>
+
+<p>To manage audio playback across apps, Android provides the concept of audio focus via the <a href="https://developer.android.com/reference/android/media/AudioManager.html">AudioManager</a> APIs. This document outlines how to manage audio focus on the Fire TV platform.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#general-best-practices-for-managing-audio-focus" id="markdown-toc-general-best-practices-for-managing-audio-focus">General Best Practices for Managing Audio Focus</a>    <ul>
+      <li><a href="#foreground-service" id="markdown-toc-foreground-service">Run Your App as a Foreground Service</a></li>
+      <li><a href="#audio-focus" id="markdown-toc-audio-focus">Request Audio Focus</a></li>
+      <li><a href="#media-button-events" id="markdown-toc-media-button-events">Register to Receive Media Button Events</a></li>
+      <li><a href="#focus-change-listener" id="markdown-toc-focus-change-listener">Create a Focus Change Listener</a></li>
+    </ul>
+  </li>
+  <li><a href="#handling-audio-focus-with-voice-interactions" id="markdown-toc-handling-audio-focus-with-voice-interactions">Handling Audio Focus with Voice Interactions</a></li>
+  <li><a href="#code-samples-for-handling-audio-focus" id="markdown-toc-code-samples-for-handling-audio-focus">Code Samples for Handling Audio Focus</a></li>
+  <li><a href="#best-practices-for-audio-only-applications" id="markdown-toc-best-practices-for-audio-only-applications">Best Practices for Audio-only Applications</a></li>
+</ul>
+
+<h2 id="general-best-practices-for-managing-audio-focus">General Best Practices for Managing Audio Focus</h2>
+
+<p>For the best user experience, do the following in your playback app:</p>
+
+<ul>
+  <li><strong><a href="#foreground-service">Run Your App as a Foreground Service</a></strong>. During playback, run your app as a foreground service to prevent it from being unexpectedly halted by the system.</li>
+  <li><strong><a href="#audio-focus">Request Audio Focus</a></strong>. At playback time, request audio focus.</li>
+  <li><strong><a href="#receiving-media-button-events">Register to Receive Media Button Events</a></strong>. When you have the audio focus, register to receive the controller. Release the media buttons if your app loses focus, or when you’re done playing.</li>
+  <li><strong><a href="#focus-change-listener">Create a Focus Change Listener</a></strong>. Listen for changes to audio focus and respond appropriately.</li>
+</ul>
+
+<p>Each of these best practices is explained in the sections below.</p>
+
+<h3 id="foreground-service">Run Your App as a Foreground Service</h3>
+
+<p>Services are used to perform operations in the background when the user may not be directly interacting with your app. Media players, especially those that play music, are ideal for services.</p>
+
+<p>However, services may be halted unexpectedly by the Fire TV platform if system resources run low. To give your playback app higher priority on the system and prevent it from unexpectedly being killed, make sure you run your app during playback as a foreground service by extending from <a href="http://developer.android.com/reference/android/app/Service.html"><code class="highlighter-rouge">Service</code></a> and using the <a href="http://developer.android.com/reference/android/app/Service.html#startForeground(int, android.app.Notification)"><code class="highlighter-rouge">Service.startForeground()</code></a> method.</p>
+
+<p>The <code class="highlighter-rouge">startForeground()</code> method requires two parameters that indicate a notification: a notification ID you define, and a Notification object. On Android devices, that notification appears in the notification drawer to indicate to the user that a high-priority service is running.</p>
+
+<p>On the Fire TV platform, heads-up notifications (high priority) display for a few seconds and fade out. You can view older notifications in the <a href="notifications-for-amazon-fire-tv.html">Notifications Center</a>. You can use the <a href="http://developer.android.com/reference/android/app/Notification.html">Android Notification API</a> to create a heads-up notification:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// define the notification</span>
+<span class="n">Notification</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Notification</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">());</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setSmallIcon</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">notification_icon</span><span class="o">);</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setContentTitle</span><span class="o">(</span><span class="n">title</span><span class="o">);</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setContentText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="n">Notification</span><span class="o">.[</span><span class="n">PRIORITY_HIGH</span><span class="o">][</span><span class="mi">4</span><span class="o">]);</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setType</span><span class="o">(</span><span class="n">Notification</span><span class="o">.</span><span class="na">Builder</span><span class="o">.</span><span class="na">TYPE_MEDIA_INFO</span><span class="o">);</span>
+<span class="n">Notification</span> <span class="n">notification</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+<span class="c1">// start</span>
+<span class="n">startForeground</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">notification</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>After you’ve stopped playing, remove your service from the foreground with <a href="http://developer.android.com/reference/android/app/Service.html#stopForeground(boolean)"><code class="highlighter-rouge">Service.stopForeground()</code></a>. The boolean parameter indicates whether to remove the associated notification.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">stopForeground</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h3 id="audio-focus">Request Audio Focus</h3>
+
+<p>Audio output is a shared resource on the Fire TV platform — only one audio stream should be playing at any one time. The Android audio manager uses the concept of audio focus to enable apps to share audio playback, and to pause, stop, or lower the volume in response to other apps needing that focus.</p>
+
+<p>An application playing back audio must first request the audio focus with appropriate flags and continue playback only if focus is granted. The app can continue to play audio in the background if and only if it still has audio focus.</p>
+
+<p>Request the audio focus with <a href="http://developer.android.com/reference/android/media/AudioManager.html#requestAudioFocus(android.media.AudioManager.OnAudioFocusChangeListener, int, int)"><em>AudioManager.requestAudioFocus()</em></a>. The request has three parameters: a focus listener (see <a href="#focus-change-listener">Creating a Focus Change Listener</a>, below), an audio stream type (such as <a href="http://developer.android.com/reference/android/media/AudioManager.html#STREAM_MUSIC">AudioManager.STREAM_MUSIC</a>), and a duration.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AudioManager</span> <span class="n">am</span> <span class="o">=</span> <span class="o">(</span><span class="n">AudioManager</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">AUDIO_SERVICE</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">am</span><span class="o">.</span><span class="na">requestAudioFocus</span><span class="o">(</span><span class="n">focusListener</span><span class="o">,</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">STREAM_MUSIC</span><span class="o">,</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">AUDIOFOCUS_GAIN</span><span class="o">);</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">AUDIOFOCUS_REQUEST_GRANTED</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">am</span><span class="o">.</span><span class="na">registerMediaButtonEventReceiver</span><span class="o">(</span><span class="n">MediaButtonReceiver</span><span class="o">);</span>
+    <span class="c1">// start playback</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The duration parameter can be one of several options:</p>
+
+<ul>
+  <li>
+    <p><a href="http://developer.android.com/reference/android/media/AudioManager.html#AUDIOFOCUS_GAIN"><code class="highlighter-rouge">AUDIOFOCUS_GAIN</code></a>
+(permanent focus): Use for when you want to hold the focus and
+continue playing audio for the foreseeable future, as with a
+music player.</p>
+  </li>
+  <li>
+    <p><a href="http://developer.android.com/reference/android/media/AudioManager.html#AUDIOFOCUS_LOSS_TRANSIENT"><code class="highlighter-rouge">AUDIOFOCUS_GAIN_TRANSIENT</code></a> (transient focus): Use for when you want to interrupt any existing
+audio playback for a short period of time, and that other playback
+should pause while you are holding the focus.</p>
+  </li>
+  <li>
+    <p><a href="http://developer.android.com/reference/android/media/AudioManager.html#AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK"><code class="highlighter-rouge">AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK</code></a> (transient with ducking): Same as transient, only the existing playback continues with the volume lowered, muted, or the playback paused.</p>
+  </li>
+  <li>
+    <p><a href="https://developer.android.com/reference/android/media/AudioManager.html#AUDIOFOCUS_GAIN_TRANSIENT_EXCLUSIVE"><code class="highlighter-rouge">AUDIOFOCUS_GAIN_TRANSIENT_EXCLUSIVE</code></a>
+(transient focus, mutes other sounds): Same as transient but mutes
+other sounds, including system sounds, in a temporary way. If you’re
+incorporating voice recognition into your app, or if you have a
+microphone input, this parameter can be useful.</p>
+  </li>
+</ul>
+
+<p>After audio focus is granted to your app, you can register the handling of media events (such as Next, Fast Forward, Previous, or Play buttons on headsets, external keyboards, or remote controls) with the <a href="http://developer.android.com/reference/android/media/AudioManager.html#registerMediaButtonEventReceiver(android.content.ComponentName)"><code class="highlighter-rouge">AudioManager.registerMediaButtonEventReceiver()</code></a> method (see the <a href="#media-button-events">next section</a>). This is only necessary for continuous audio playback — typically you don’t need to own the media buttons for transient playback.</p>
+
+<p>After you’re done playing, release the audio focus with the method and unregister the media buttons.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// playback complete, give up audio focus</span>
+<span class="n">am</span><span class="o">.</span><span class="na">abandonAudioFocus</span><span class="o">(</span><span class="n">focusListener</span><span class="o">);</span>
+
+<span class="c1">//unregister media buttons</span>
+<span class="n">am</span><span class="o">.</span><span class="na">unregisterMediaButtonEventReceiver</span><span class="o">(</span><span class="n">MediaButtonReceiver</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h3 id="media-button-events">Register to Receive Media Button Events</h3>
+
+<p>If you plan to play audio for more than a few moments (that is, you’ve requested non-transient audio focus), register a media button receiver when your audio focus request is granted.</p>
+
+<p>The media button receiver enables the user to control your media playback with the media buttons on the remote control, even if your app is not running in the foreground.</p>
+
+<p>Note that registering the media buttons just means your app receives those events before other apps – you must still handle those key events to actually control your media playback.</p>
+
+<p>Your media button receiver extends from <a href="http://developer.android.com/reference/android/content/BroadcastReceiver.html"><code class="highlighter-rouge">BroadcastReceiver</code></a> and listens for an <a href="http://developer.android.com/reference/android/content/Intent.html#ACTION_MEDIA_BUTTON"><code class="highlighter-rouge">ACTION_MEDIA_BUTTON</code></a> intent. Register your receiver in your Android manifest (in this example, the receiver class is <code class="highlighter-rouge">MediaButtonReceiver)</code>:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">receiver</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"MediaButtonReceiver"</span> <span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">action</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.intent.action.MEDIA_BUTTON"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">receiver</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<p>Implement the <a href="https://developer.android.com/reference/android/content/BroadcastReceiver.html#onReceive(android.content.Context, android.content.Intent)"><code class="highlighter-rouge">onReceive()</code></a> callback in your receiver class to receive and handle media button intents:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_MEDIA_BUTTON</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">intent</span><span class="o">.</span><span class="na">getAction</span><span class="o">()))</span> <span class="o">{</span>
+        <span class="n">KeyEvent</span> <span class="n">key</span> <span class="o">=</span> <span class="o">(</span><span class="n">KeyEvent</span><span class="o">)</span> <span class="n">intent</span><span class="o">.</span><span class="na">getParcelableExtra</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">EXTRA_KEY_EVENT</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">keycode</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="na">getKeyCode</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">keycode</span> <span class="o">==</span> <span class="n">KeyEvent</span><span class="o">.</span><span class="na">KEYCODE_MEDIA_NEXT</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// next</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">keycode</span> <span class="o">==</span> <span class="n">KeyEvent</span><span class="o">.</span><span class="na">KEYCODE_MEDIA_PREVIOUS</span><span class="o">)</span> <span class="o">{</span>
+           <span class="c1">// previous</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">keycode</span> <span class="o">==</span> <span class="n">KeyEvent</span><span class="o">.</span><span class="na">KEYCODE_MEDIA_PLAY_PAUSE</span><span class="o">)</span> <span class="o">{</span>
+           <span class="c1">// play or pause</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Once you’re done playing, or if you lose the audio focus, unregister the media buttons so that other apps can control media playback when needed.</p>
+
+<h3 id="focus-change-listener">Create a Focus Change Listener</h3>
+
+<p>Audio focus is a cooperative resource. Once you’ve been granted audio focus, it is not yours to hold until you’re done with it. If other apps request the audio focus, you must respond to those requests to pause playback or stop playing altogether. See Android’s <a href="http://developer.android.com/training/managing-audio/audio-focus.html">Managing Audio Focus</a> topic for more details.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The Fire TV platform does not support volume control from within your app. Although Android distinguishes between a transient loss of focus with or without ducking (lowering the volume), your app should pause playback for both these cases.</div>
+
+<p>Listen for audio focus changes with
+<a href="http://developer.android.com/reference/android/media/AudioManager.OnAudioFocusChangeListener.html"><code class="highlighter-rouge">AudioManager.OnAudioFocusChangeListener</code></a> and the <a href="http://developer.android.com/reference/android/media/AudioManager.OnAudioFocusChangeListener.html#onAudioFocusChange(int)"><code class="highlighter-rouge">onAudioFocusChange()</code></a> method. Create this listener as you would any listener.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">OnAudioFocusChangeListener</span> <span class="n">focusListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OnAudioFocusChangeListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAudioFocusChange</span><span class="o">(</span><span class="kt">int</span> <span class="n">focus</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">focus</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">AUDIOFOCUS_GAIN</span><span class="o">:</span>
+                <span class="c1">// continue playback and raise volume (if it was previously lowered)</span>
+                <span class="c1">// ...</span>
+                <span class="k">break</span><span class="o">;</span>
+
+            <span class="k">case</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">AUDIOFOCUS_LOSS</span><span class="o">:</span>
+                <span class="c1">// stop playback, de-register buttons, clean up</span>
+                <span class="c1">// ...</span>
+                <span class="k">break</span><span class="o">;</span>
+
+            <span class="k">case</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">AUDIOFOCUS_LOSS_TRANSIENT</span><span class="o">:</span>
+            <span class="k">case</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">AUDIOFOCUS_LOSS_TRANIENT_CAN_DUCK</span><span class="o">:</span>
+                <span class="c1">// pause playback</span>
+                <span class="c1">// ...</span>
+                <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The argument for <code class="highlighter-rouge">onAudioFocusChange()</code> is an integer that may be one of the following:</p>
+
+<ul>
+  <li>
+    <p><a href="http://developer.android.com/reference/android/media/AudioManager.html#AUDIOFOCUS_GAIN"><code class="highlighter-rouge">AUDIOFOCUS_GAIN</code></a>): Your app has gained or regained the audio focus. Continue playback or raise the volume.</p>
+  </li>
+  <li>
+    <p><a href="http://developer.android.com/reference/android/media/AudioManager.html#AUDIOFOCUS_LOSS"><code class="highlighter-rouge">AUDIOFOCUS_LOSS</code></a>: Your app has lost the audio focus (likely permanently). Halt playback and de-register the media button receiver.</p>
+  </li>
+  <li>
+    <p><a href="http://developer.android.com/reference/android/media/AudioManager.html#AUDIOFOCUS_LOSS_TRANSIENT"><code class="highlighter-rouge">AUDIOFOCUS_LOSS_TRANSIENT</code></a>: Your app has lost audio focus for a short amount of time.
+Pause playback.</p>
+  </li>
+  <li>
+    <p><a href="http://developer.android.com/reference/android/media/AudioManager.html#AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK"><code class="highlighter-rouge">AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK</code></a>: Same as transient; pause playback.</p>
+  </li>
+</ul>
+
+<h2 id="handling-audio-focus-with-voice-interactions">Handling Audio Focus with Voice Interactions</h2>
+
+<p>When users press the Microphone button, system-wide voice capabilities start and cannot be overridden. Your app should pause (implement the <code class="highlighter-rouge">OnPause()</code> method) in response to voice interactions. If you need search functionality within your app, you must implement it yourself and provide your own user interface for that function.</p>
+
+<p>For audio apps, the voice activity requests a <strong>transient audio focus</strong> (without ducking – that is, lowering the volume). As such, you should handle the <code class="highlighter-rouge">AUDIOFOCUS_LOSS_TRANSIENT</code> event to accommodate voice search.</p>
+
+<p>In addition to handling <code class="highlighter-rouge">AUDIOFOCUS_LOSS_TRANSIENT</code>, your application should handle other audio focus change events as well (<code class="highlighter-rouge">AUDIOFOCUS_LOSS</code> and <code class="highlighter-rouge">AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK</code>), since any application (not just voice search) might request any kind of audio focus. In short, all audio focus use cases should be handled appropriately.</p>
+
+<p>For backwards compatibility with older applications on the Fire TV platform, we send out both an <code class="highlighter-rouge">AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK</code> and an <code class="highlighter-rouge">AUDIOFOCUS_LOSS_TRANSIENT</code> when a voice search is initiated. Your applications should handle this use case correctly.</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> As a best practice, implement all audio focus change events in your app.</div>
+
+<p>See the Android documentation on <a href="http://developer.android.com/training/managing-audio/audio-focus.html">Managing Audio Focus</a> for details on audio focus and audio ducking. For more information about voice search and the results returned from the Fire TV catalog, see <a href="implementing-search-fire-tv.html">Implementing Search on Fire TV</a>.</p>
+
+<p>For video apps, your app should pause playback when voice capabilities are invoked (in your <code class="highlighter-rouge">OnPause()</code> method). When your app resumes, playback should remain paused until the user presses PLAY.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> If you need search functionality in your app, you must implement <strong>text search</strong> yourself and provide your own user interface for the search function.</div>
+
+<h2 id="code-samples-for-handling-audio-focus">Code Samples for Handling Audio Focus</h2>
+
+<p>Several Java code samples are available that demonstrate how to handle audio focus. The code samples are as follows:</p>
+
+<ul>
+  <li>AudioCapabilities.java</li>
+  <li>AudioDeviceEventReceiver.java</li>
+  <li>AudioEventManager.java</li>
+  <li>AudioEventManagerCallbackListener.java</li>
+</ul>
+
+<p>You can download the code samples here:
+<a href="https://s3.amazonaws.com/fire-tv-code-samples/AudioFocusHandling.zip"><strong>AudioFocusHandling.zip</strong></a>.</p>
+
+<p>These code samples are also available from the <a href="https://developer.amazon.com/public/resources/development-tools/sdk">SDK download page</a> in the “Other downloads” section.</p>
+
+<h2 id="best-practices-for-audio-only-applications">Best Practices for Audio-only Applications</h2>
+
+<p>If you have an audio-only application, such as a streaming radio player, the following table provides guidelines about how your app should respond to various events when an audio stream is playing:</p>
+
+<table class="grid">
+<colgroup>
+<col width="15%" />
+<col width="25%" />
+<col width="15%" />
+<col width="15%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr>
+<th>Event Type</th>
+<th>AUDIOFOCUS EVENT</th>
+<th>Listen to Audio Focus Events?</th>
+<th>Listen to Media Controller Events?</th>
+<th>Customer/App Experience</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home button press</td>
+<td>(none)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Audio stream continues to play. Media controller buttons (for example, play/pause) continue to work.</td>
+</tr>
+<tr>
+<td>Microphone button press</td>
+<td><code>AUDIOFOCUS_LOSS_TRANSIENT</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Audio stream pauses. When user exits the Alexa overlay, audio stream resumes. Media controller buttons continue to work.</td>
+</tr>
+<tr>
+<td>HDMI cable unplugged</td>
+<td><code>ACTION_HDMI_AUDIO_PLUG</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Audio stream pauses. When user reconnects HDMI cable, audio stream is in paused state. Media controller buttons continue to work. Audio stream resumes when Play button is pressed.</td>
+</tr>
+<tr>
+<td>HDMI input switched</td>
+<td><code>ACTION_HDMI_AUDIO_PLUG</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Audio stream pauses. When user switches HDMI input back to Fire TV, audio stream is in paused state. Media controller buttons continue to work. Audio stream resumes when Play button is pressed.</td>
+</tr>
+<tr>
+<td>New audio stream is started by different app</td>
+<td><code>AUDIOFOCUS_LOSS</code></td>
+<td>No</td>
+<td>No</td>
+<td>Audio stream stops. App stops listening to changes in audio focus and stops listening to media controller events. App cleans up resources used to listen to audio.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

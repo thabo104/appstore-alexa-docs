@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Set Up the Category Recipe | Fire App Builder</title>
+    
+    <base target="_self">
+    <meta name="description" content="In this step, you will query for the categories from your feed. Categories group your media into different collections or channels. It’s a way of organizing your media so that... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/fireappbuilder/2. Configure Your Feed/fire-app-builder-set-up-recipes-categories.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-overview.html">Fire App Builder Introduction</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">Release Notes</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">Beginning-to-End Process Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">Miscellaneous Questions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Download Fire App Builder and Build an App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">Connect to Fire TV Through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">Take an App Tour</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-media-feed.html">Load Your Media Feed</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">Recipe Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="fire-app-builder-set-up-recipes-categories.html">Set Up the Categories Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-content.html">Set Up the Contents Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigator Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Configure Navigator -- Token-based Feeds</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Configure Navigator -- Open Feeds</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-customize-look-and-feel.html">Customize the Look and Feel</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-interfaces-and-components.html">Components Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">Load a Component</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">Create Your Own Fire App Builder Component</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">FreeWheel Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-crashlytics-component.html">Crashlytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Google Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazon Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazon In-App Purchasing Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Player Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-brightcove-media-player-component.html">BrightCove Player Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Pull Updates from Github</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">Configure Live Streams</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Integrate Your Media into the Fire TV Catalog</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Use an Android TV Emulator to Run Your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">Querying JSON</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">Querying XML</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">Troubleshooting</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire App Builder </div>
+
+                    <h1>Set Up the Category Recipe</h1>
+
+                    <p>In this step, you will query for the categories from your feed. Categories group your media into different collections or channels. It’s a way of organizing your media so that all your video isn’t in one long list. For a general overview of recipe configuration, see <a href="fire-app-builder-set-up-recipes-overview.html">Recipe Configuration Overview</a>.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#configure-the-category-recipe" id="markdown-toc-configure-the-category-recipe">Configure the Category Recipe</a>    <ul>
+      <li><a href="#queryparameter" id="markdown-toc-queryparameter">query Parameter</a>        <ul>
+          <li><a href="#categoryjson" id="markdown-toc-categoryjson">JSON Feeds</a></li>
+          <li><a href="#categoryxml" id="markdown-toc-categoryxml">XML Feeds</a></li>
+        </ul>
+      </li>
+      <li><a href="#matchlistparameter" id="markdown-toc-matchlistparameter">matchList Parameter</a></li>
+      <li><a href="#keydatatypeparameter" id="markdown-toc-keydatatypeparameter">keyDataType Parameter</a></li>
+    </ul>
+  </li>
+  <li><a href="#feeds-without-categories" id="markdown-toc-feeds-without-categories">Feeds without Categories</a></li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ul>
+
+<h2 id="configure-the-category-recipe">Configure the Category Recipe</h2>
+
+<ol>
+  <li>Open the <strong>LightCastCategoriesRecipe.json</strong> file (located in <strong>app &gt; assets &gt; recipes</strong>).</li>
+  <li>
+    <p>Configure the file’s values as explained in the following table. If parameters need more explanation, the sections below the table provide more detail.</p>
+
+    <table class="grid">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">cooker</code></p>
+          </td>
+<td>
+            <p>Defines which utility will take the parameters defined in the recipe and execute the logic. In other words, the cooker “cooks” the recipe. Leave it at the default value: <code class="highlighter-rouge">DynamicParser</code>.</p>
+          </td>
+</tr>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">format</code></p>
+          </td>
+<td>
+            <p>Specifies the data format for the incoming data feed. Options are <code class="highlighter-rouge">json</code> or <code class="highlighter-rouge">xml</code>.</p>
+          </td>
+</tr>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">translator</code></p>
+          </td>
+<td>
+            <p>Specifies whether translation or reflection is used when converting your feed’s objects to the Fire App Builder content model. Translation is faster and recommended. To use translation, simply leave the value at the default: <code class="highlighter-rouge">ContentContainerTranslator</code>. If you want to use reflection instead, remove the <code class="highlighter-rouge">translator</code> parameter altogether from the recipe. Also see the “How do I use reflection…” question in the <a href="fire-app-builder-questions-and-answers.html#translator">FAQ</a>, because using reflection will require a change in the names used in the <code class="highlighter-rouge">matchlist</code> parameter.</p>
+
+          </td>
+</tr>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">model</code></p>
+          </td>
+<td>
+            <p>Specifies the content model for the data. The content model provides the structure for your content and maps it into the Fire App Builder UI. Leave it at the default: <code class="highlighter-rouge">com.amazon.android.model.content.ContentContainer</code>.</p>
+          </td>
+</tr>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">modelType</code></p>
+          </td>
+<td>
+            <p>Specifies whether the feed is an array or a single object. Available options are <code class="highlighter-rouge">array</code> or <code class="highlighter-rouge">single</code>. Almost all feeds are <code class="highlighter-rouge">array</code>. For example, if your JSON feed is enclosed within square brackets, or your XML feed has nested angle brackets, choose <code class="highlighter-rouge">array</code>. If your feed is structured as a single object, choose <code class="highlighter-rouge">single</code>.</p>
+          </td>
+</tr>
+    
+<tr>
+<td>
+            <p><code class="highlighter-rouge">query</code></p>
+          </td>
+<td>
+            <p>A query used to return categories from your media feed. The syntax of the query depends on the structure of your feed. You will need to construct the right query to <strong>get your categories</strong>. For JSON feeds, use <a href="https://github.com/jayway/JsonPath">Jayway JsonPath syntax</a> for the query syntax. For XML feeds, use <a href="https://www.w3schools.com/xml/xpath_syntax.asp">XPath expressions</a> for the query syntax. See <a href="#queryparameter">query Parameter</a> below for more details.</p>
+          </td>
+</tr>
+    
+<tr>
+<td>
+            <p><code class="highlighter-rouge">queryResultType</code></p>
+          </td>
+<td>
+            <p>If the result from the query (a specified in the <code class="highlighter-rouge">query</code> parameter) returns a list of strings, include this <code class="highlighter-rouge">queryResultType</code> parameter and set it equal to <code class="highlighter-rouge">[]$</code>. If the query’s result is an object (a map), omit this parameter. (Fire App Builder needs to know the result type because it will needs to push an object into a Java hashmap.)</p>
+          </td>
+</tr>
+    
+<tr>
+<td>
+            <p><code class="highlighter-rouge">matchList</code></p>
+          </td>
+<td>
+            <p>The query that you defined in the <code class="highlighter-rouge">query</code> parameter returns a result. This result needs to be mapped from your feed’s names to the names Fire App Builder uses in its content model. The <code class="highlighter-rouge">matchList</code> parameter maps the results from the query to the name for media categories in Fire App Builder. See <a href="#matchlistparameter">matchList Parameter</a> for more details.</p>
+          </td>
+</tr>
+<tr>
+<td>
+            <p><code class="highlighter-rouge">keyDataType</code> <br /></p>
+          </td>
+<td>
+            <p>The media objects that are related to the category. It’s essential to identify which media should be grouped into which category. Similar to <code class="highlighter-rouge">matchList</code>, you target the items on the left followed by <code class="highlighter-rouge">@</code> and then <code class="highlighter-rouge">keyDataPath</code> to map and identify these media objects to the category. For example: <code class="highlighter-rouge">StringKey@keyDataPath</code>. See <a href="#keydatatypeparameter">keyDataType Parameter</a> for more details.</p>
+          </td>
+</tr>
+</tbody>
+</table>
+  </li>
+</ol>
+
+<h3 id="queryparameter">query Parameter</h3>
+
+<p>The syntax you use differs between JSON and XML. See the section that is relevant to your feed:</p>
+
+<ul>
+  <li><a href="#categoryjson">JSON Feeds</a></li>
+  <li><a href="#categoryxml">XML Feeds</a></li>
+</ul>
+
+<h4 id="categoryjson">JSON Feeds</h4>
+
+<p>The sample app in Fire App Builder reads from a generic LightCast media feed that uses a JSON format. The Categories recipe uses the following value for the <code class="highlighter-rouge">query</code> parameter to return a list of categories from your feed: <code class="highlighter-rouge">$..categories[*]</code>. This is <a href="https://github.com/jayway/JsonPath">Jayway JsonPath</a> syntax. Here’s what this syntax means:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Query Syntax</th>
+      <th>What It Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$</code></td>
+      <td>Specifies the root directory as the beginning of the search.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">..</code></td>
+      <td>Indicates a recursive search in every directory and subdirectory of the root for matches.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">categories[]</code></td>
+      <td>Says to look for the named array called “categories”.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">*</code></td>
+      <td>Matches any contents (wildcard).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Putting it all together: <code class="highlighter-rouge">$..categories[*]</code> Starts at the root (<code class="highlighter-rouge">$</code>), looks in every directory and subdirectory recursively for matches (<code class="highlighter-rouge">..</code>), and looks to match on a named array called <code class="highlighter-rouge">categories</code>, with any contents in the array (<code class="highlighter-rouge">*</code>).</p>
+
+<p>You can test your queries using the <a href="http://jsonpath.herokuapp.com/">Jayway JsonPath Evaluator</a>.</p>
+
+<p>With the sample app in Fire App Builder, if you run this query (<code class="highlighter-rouge">$..categories[*]</code>) against one of the <a href="http://www.lightcast.com/api/firetv/channels.php?app_id=263&amp;app_key=4rghy65dcsqa&amp;action=channels_videos">LightCast feed URLs</a>, the result returns the category names as strings, like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[
+   "Jamaican Attractions",
+   "The Country Jamaica",
+   "Jamaican Attractions",
+   "The Country Jamaica",
+   "The Country Jamaica",
+   "The Country Jamaica",
+   "Jamaican Attractions",
+   "The Country Jamaica",
+   "Jamaican Attractions",
+   "The Country Jamaica",
+   "Jamaican Attractions",
+   "Jamaican History",
+   "The Country Jamaica",
+   "Jamaican Attractions",
+   "Jamaican History",
+   "Jamaican History",
+   "The Country Jamaica",
+   "Jamaican Attractions",
+   "Jamaican History",
+   "The Country Jamaica",
+   "Jamaican Attractions",
+   "Jamaican History",
+   "Jamaican History",
+   "Jamaican History",
+   "The Country Jamaica",
+   "Jamaican Wildlife",
+   "Jamaican Attractions",
+   "The Country Jamaica",
+   "Jamaican Wildlife",
+   "The Country Jamaica",
+   "Jamaican Attractions",
+   "Jamaican Wildlife",
+   "Jamaican Attractions",
+   "Jamaican Wildlife"
+]
+</code></pre>
+</div>
+
+<p>(Fire App Builder will remove duplicates from the query result.)</p>
+
+<p>Fire App Builder needs to take the array of objects and convert the array to a hashmap to process in a Java class. So the next parameter (<code class="highlighter-rouge">queryResultType</code>) is used to convert the array of strings into an array of objects.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"queryResultType": "[]$",
+</code></pre>
+</div>
+
+<p>See <a href="fire-app-builder-querying-json.html">Querying JSON</a> for more details about constructing Jayway JsonPath queries. See also <a href="https://github.com/jayway/JsonPath">Jayway JsonPath</a> for more details about Jayway JsonPath in general.</p>
+
+<h4 id="categoryxml">XML Feeds</h4>
+
+<p>If your feed is XML, instead of using Jayway JsonPath, you must use <a href="https://www.w3schools.com/xml/xpath_syntax.asp">XPath expressions</a> to target the specific elements in your feed. XPath reduces your XML document into various items called “nodes.” The XPath syntax targets the location of specific nodes.</p>
+
+<p>Suppose your XML feed contains a structure like this:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;rss&gt;</span>
+    <span class="nt">&lt;channel&gt;</span>
+        <span class="nt">&lt;item&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Sample Title<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;pubDate&gt;</span>Wed, 26 Oct 2016 20:34:22 PDT<span class="nt">&lt;/pubDate&gt;</span>
+        <span class="nt">&lt;link&gt;</span>https://example.com/myshow/episodes/110<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;author&gt;</span>Sample Author name<span class="nt">&lt;/author&gt;</span>
+        <span class="nt">&lt;category&gt;</span>Technology<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;category&gt;</span>Gadgets<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;/channel&gt;</span>
+<span class="nt">&lt;/rss&gt;</span>
+</code></pre>
+</div>
+
+<p>Here’s a sample XPath expression to get the categories in this XML feed:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//category/text()
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">//</code> looks recursively in all nodes for matches, no matter where those nodes are located in the hierarchy. <code class="highlighter-rouge">category</code> selects the category node, and <code class="highlighter-rouge">text()</code> selects the text from that node.</p>
+
+<p>You can test this out using the <a href="http://www.freeformatter.com/xpath-tester.html">XPath Tester/Evaluator</a>. The response from the expression is as follows:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Text='Technology'
+Text='Gadgets'
+</code></pre>
+</div>
+
+<p>(You can ignore the <code class="highlighter-rouge">Text=</code> part. This is just part of the XPath Tester/Evaluator’s display, not what was matched in the query.)</p>
+
+<p>Note that with iTunes feeds, there’s a general category for the feed (such as <code class="highlighter-rouge">&lt;itunes:category text="Technology"&gt;</code>) as well as categories for each item (<code class="highlighter-rouge">&lt;category&gt;Technology&lt;/category&gt;</code>). When you target categories for your recipe, you want to target the categories for each item in the feed, not the general feed categories.</p>
+
+<p>Try copying your XML feed into the <a href="http://www.freeformatter.com/xpath-tester.html">XPath Tester/Evaluator</a> and selecting the categories using a similar syntax.</p>
+
+<p>See <a href="fire-app-builder-querying-xml.html">Querying XML</a> for more examples showing XPath expressions. See also <a href="https://www.w3schools.com/xml/xpath_syntax.asp">XPath syntax</a> and the examples section on <a href="http://www.freeformatter.com/xpath-tester.html#xpath-examples">XPath Examples</a> for more details about XPath expressions in general.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> If individual items in your feed are associated with multiple categories, your app’s display will show those items in each category they’re associated with. For example, if your Cool Video appears in both Technology and Gadgets categories, this video will appear in two places in your app’s display.</div>
+
+<h3 id="matchlistparameter">matchList Parameter</h3>
+
+<p>The purpose of the <code class="highlighter-rouge">matchList</code> parameter is to select specific properties from the category query result and map them to the Fire App Builder content model.</p>
+
+<p>The syntax used by <code class="highlighter-rouge">matchList</code> is not Jayway JsonPath or XPath expressions but rather custom Fire App Builder syntax that targets specific elements in the query result. (Hence the JSON and XML instructions are combined in the same sections.)</p>
+
+<p>In the sample app in Fire App Builder, the value for the Categories recipe is <code class="highlighter-rouge">StringKey@name</code>.</p>
+
+<p>Here’s how this syntax works. On the left of the ampersand (<code class="highlighter-rouge">@</code>) you put the property you want to target in the query result (<code class="highlighter-rouge">StringKey</code> selects the list of strings). On the right of the ampersand (<code class="highlighter-rouge">@</code>), you put the Fire App Builder element you want to map the property to (<code class="highlighter-rouge">name</code>).</p>
+
+<p>For the <strong>Categories recipe</strong>, your <code class="highlighter-rouge">matchList</code> parameter should map your feed’s categories to <code class="highlighter-rouge">name</code>.</p>
+
+<p>In the Fire App Builder sample app, since the query result is a list of strings, <code class="highlighter-rouge">StringKey</code> is used to match the strings. But suppose the result set from your query contained a JSON object such as the following:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="s2">"list"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"My category title"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>To match on <code class="highlighter-rouge">My category title</code> and convert it to <code class="highlighter-rouge">name</code>, you would use the following:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>list/title@name
+</code></pre>
+</div>
+
+<p>Use the forward slash (<code class="highlighter-rouge">/</code>) to go deeper in object levels (just like with with XPath). In this case, <code class="highlighter-rouge">title</code> is one object below <code class="highlighter-rouge">list</code>, which is one object below the root. After moving past these two levels, the result is simply the category name.</p>
+
+<p>To match XML elements, you follow a similar technique. Supposing the result is a list of strings:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Text='Technology'
+Text='Gadgets'
+</code></pre>
+</div>
+
+<p>To match the text contents and map them to the category element in the Fire App Builder UI, you would use the following syntax:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>StringKey@name
+</code></pre>
+</div>
+
+<p>If your query result looked like this:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;list&gt;</span>
+<span class="nt">&lt;title&gt;</span>My category title<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/list&gt;</span>
+</code></pre>
+</div>
+
+<p>Then you would map the category title like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/list/title@name
+</code></pre>
+</div>
+
+<p>The forward slash (<code class="highlighter-rouge">/</code>) takes you one level deeper in the XML nodes.</p>
+
+<h3 id="keydatatypeparameter">keyDataType Parameter</h3>
+
+<p>Fire App Builder needs to know which media items should be grouped with the selected categories. The <code class="highlighter-rouge">keyDataType</code> parameter identifies the media items that are related to a category. This parameter is used for the Category recipe and later passed into a variable in the Contents recipe.</p>
+
+<p>The Fire App Builder query result is a list of strings, so <code class="highlighter-rouge">StringKey@keyDataPath</code> is used to target the media items and associate them with the category. If your result is also a list of strings, then you would use the default:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"keyDataType": "StringKey@keyDataPath"
+</code></pre>
+</div>
+
+<p>However, suppose your media objects were listed inside an <code class="highlighter-rouge">assets</code> node that in turn was nested inside a <code class="highlighter-rouge">container</code> node, like this:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="s2">"container"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"5825652561001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"5825652558001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"5825652569001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"5873045223001"</span><span class="p">,</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>To get the media objects, you would write the query like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>container/assets@keyDataPath
+</code></pre>
+</div>
+
+<p>Similar to the <code class="highlighter-rouge">matchList</code> parameter, the <code class="highlighter-rouge">keyDataType</code> query does not use Jayway JsonPath syntax either. Instead, you match each node by writing the node name followed by <code class="highlighter-rouge">/</code> to move into the next level. <code class="highlighter-rouge">container/assets</code> matches all the items at this level.</p>
+
+<p>On the right of the ampersand <code class="highlighter-rouge">@</code>, the <code class="highlighter-rouge">keyDataPath</code> key is how these media objects are stored and used by Fire App Builder. The <code class="highlighter-rouge">@keyDataPath</code> helps match up the items with the Fire App Builder content model.</p>
+
+<h2 id="feeds-without-categories">Feeds without Categories</h2>
+
+<p>If your feed lacks categories but you have separate feeds for each category, you can hard-code the category names when you configure Navigator.json. This will group all the videos in a particular feed with a particular category. More detail for this approach is provided in the <a href="fire-app-builder-configure-navigator-open-feeds.html#hardcodingcategories">“Hardcoding Your Categories.”</a></p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Now that you’ve configured the categories for your app’s media feed, you need to configure the contents. See <a href="fire-app-builder-set-up-recipes-content.html">Set Up your Content Recipe</a>.</p>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

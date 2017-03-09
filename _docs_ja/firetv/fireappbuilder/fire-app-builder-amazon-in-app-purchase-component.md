@@ -3,7 +3,7 @@ title: Amazonアプリ内課金のコンポーネント
 permalink: fire-app-builder-amazon-in-app-purchase-component.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

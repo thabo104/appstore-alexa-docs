@@ -3,7 +3,7 @@ title: Customize the Look and Feel of Your App
 permalink: fire-app-builder-customize-look-and-feel.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

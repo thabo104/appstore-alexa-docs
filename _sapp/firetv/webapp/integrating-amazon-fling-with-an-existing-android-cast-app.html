@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Integrating Amazon Fling with an Existing Android App that Uses Google Cast | Fling SDK</title>
+    
+    <base target="_self">
+    <meta name="description" content="Using our SDK, you can talk to Amazon Fire TV devices in a similar manner as you use Google Cast in your app to talk to Chromecast devices.  This page... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/fling/integrating-amazon-fling-with-an-existing-android-cast-app.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/66/index.html" class="editButton noCrossRef">Fling SDK Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-fling.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fling SDK</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Fling Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="understanding-the-amazon-fling-service.html">Understanding the Amazon Fling Service</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://developer.amazon.com/public/resources/development-tools/sdk">Download the Fling SDK</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fling-frequently-asked-questions.html">Amazon Fling Frequently Asked Questions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Settting Up Fling</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-amazon-fling-development-environment-for-android.html">Setting Up Your Amazon Fling Development Environment for Android</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-amazon-fling-development-environment-for-ios.html">Setting Up your Amazon Fling Development Environment for iOS</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Integrating Fling with Android, iOS, and Fire TV Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-into-your-android-app.html">Integrating Amazon Fling into Your Android App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-into-your-ios-app.html">Integrating Amazon Fling into your iOS App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-into-your-fire-tv-app.html">Integrating Amazon Fling SDK into your Fire TV App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="using-amazon-fling-with-android-mediarouter.html">Using Amazon Fling with Android MediaRouter</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="working-with-built-in-receiver-on-fire-tv.html">Working with the Built-in Receiver on the Fire TV Platform</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Integrating Fling with Google Cast Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-with-cast.html">Integrating Amazon Fling with Apps that Use Google Cast</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="integrating-amazon-fling-with-an-existing-android-cast-app.html">Integrating Amazon Fling with an Existing Android App that Uses Google Cast</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-amazon-fling-with-an-existing-ios-cast-app.html">Integrating Amazon Fling with an Existing iOS App that uses Google Cast</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Fling UX</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="designing-amazon-fling-ux.html">Designing Amazon Fling UX</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Remote Install</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="remote-install.html">Remote Install</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="android-remote-install.html">Integrating Remote Install into Your Android App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="ios-remote-install.html">Integrating Remote Install into Your iOS App</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Unity Plugins</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="unity-controller-plugin.html">Integrating the Amazon Fling Controller In Your Games</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="unity-player-plugin.html">Integrating the Amazon Fling Player In Your Games</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">API Docs</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://developer.amazon.com/public/binaries/content/assets/javadoc/whisperplay/javadocs/reference/packages.html">Android API Documentation</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://developer.amazon.com/public/binaries/content/assets/javadoc/whisperplay/objc-apidocs/index.html">iOS API Documentation</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fling SDK </div>
+
+                    <h1>Integrating Amazon Fling with an Existing Android App that Uses Google Cast</h1>
+
+                    <p>Using our SDK, you can talk to Amazon Fire TV devices in a similar manner as you use Google Cast in your app to talk to Chromecast devices.  This page outlines steps to modify an existing app that uses the Google Cast Companion Library to also fling to Amazon Fire TV.</p>
+
+<p>Before you start, make sure you follow the steps at <a href="setting-up-your-amazon-fling-development-environment-for-android.html">Setting Up your Amazon Fling Development Environment for Android</a> to include the required libraries in your project.  </p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> All the code in this document is available in the CastWithFlingExample in the samples folder of our SDK package.</div>
+
+<ul id="markdown-toc">
+  <li><a href="#modifying-the-android-manifest" id="markdown-toc-modifying-the-android-manifest">Modifying the Android Manifest</a></li>
+  <li><a href="#initializing-discoverycontroller" id="markdown-toc-initializing-discoverycontroller">Initializing DiscoveryController</a></li>
+  <li><a href="#converting-your-device-picker-to-use-remotemediaplayer" id="markdown-toc-converting-your-device-picker-to-use-remotemediaplayer">Converting Your Device Picker to use RemoteMediaPlayer</a></li>
+  <li><a href="#monitoring-the-status-of-the-player-with-statuslistener" id="markdown-toc-monitoring-the-status-of-the-player-with-statuslistener">Monitoring the Status of the Player with StatusListener</a></li>
+  <li><a href="#communicating-with-the-remote-media-player" id="markdown-toc-communicating-with-the-remote-media-player">Communicating With the Remote Media Player</a></li>
+</ul>
+
+<h2 id="modifying-the-android-manifest">Modifying the Android Manifest</h2>
+
+<p>The API included in our SDK requires some permissions to be added to your Android manifest (<code class="highlighter-rouge">AndroidManifest.xml</code>). After the <code class="highlighter-rouge">&lt;manifest&gt;</code> element, add the <code class="highlighter-rouge">&lt;uses-permission&gt;</code> elements. Some of these permissions may already be present as they may also be used by applications that use Google Cast.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">manifest</span> <span class="nl">xmlns:</span><span class="n">android</span><span class="o">=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="kn">package</span><span class="o">=</span><span class="s">"[YOUR PACKAGE NAME]"</span>
+    <span class="nl">android:</span><span class="n">versioncode</span><span class="o">=</span><span class="s">"1"</span>
+    <span class="nl">android:</span><span class="n">versionname</span><span class="o">=</span><span class="s">"1.0"</span><span class="o">&gt;</span>
+<span class="o">&lt;!--</span> <span class="n">Android</span> <span class="n">Network</span> <span class="n">Access</span> <span class="n">Permissions</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.INTERNET"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.ACCESS_WIFI_STATE"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.ACCESS_NETWORK_STATE"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.CHANGE_WIFI_MULTICAST_STATE"</span><span class="o">/&gt;</span>
+<span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">manifest</span><span class="o">&gt;</span><span class="err">```</span>
+
+<span class="n">For</span> <span class="n">Fire</span> <span class="n">OS</span> <span class="n">devices</span><span class="o">,</span> <span class="n">also</span> <span class="n">add</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">library</span><span class="o">&gt;</span> <span class="n">element</span> <span class="n">so</span> <span class="n">your</span> <span class="n">application</span> <span class="n">can</span> <span class="n">communicate</span> <span class="n">with</span> <span class="n">the</span> <span class="n">underlying</span> <span class="n">framework</span> <span class="n">on</span> <span class="n">the</span> <span class="n">device</span><span class="o">.</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="n">application</span>
+    <span class="nl">android:</span><span class="n">icon</span><span class="o">=</span><span class="s">"@drawable/ic_launcher"</span>
+    <span class="nl">android:</span><span class="n">label</span><span class="o">=</span><span class="s">"@string/app_name"</span>
+    <span class="nl">android:</span><span class="n">theme</span><span class="o">=</span><span class="s">"@style/AppTheme"</span> <span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">library</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"com.amazon.whisperplay.contracts"</span> <span class="o">/&gt;</span>
+    <span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">application</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="initializing-discoverycontroller">Initializing DiscoveryController</h2>
+
+<p>Amazon Fling service provides similar functionality to Google Cast’s <code class="highlighter-rouge">VideoCastManager</code> via different classes:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">DiscoveryController</code>, the interface used to discover remote Fire TV devices and players.</li>
+  <li><code class="highlighter-rouge">RemoteMediaPlayer</code>, the interface that represents a player running on a remote Fire TV device. Use of this interface is described below in Converting Your Device Picker to use RemoteMediaPlayer.</li>
+</ul>
+
+<p>To use <code class="highlighter-rouge">DiscoveryController</code>, initialize it in your <code class="highlighter-rouge">onCreate()</code> method. Replace <code class="highlighter-rouge">YourReceiverServiceID</code> with your Amazon Fire TV player’s system ID (SID).</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="n">DiscoveryController</span> <span class="n">mController</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">mController</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DiscoveryController</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">mController</span><span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="s">"YourReceiverServiceID"</span><span class="o">,</span> <span class="n">mDiscovery</span><span class="o">);</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">mController</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="converting-your-device-picker-to-use-remotemediaplayer">Converting Your Device Picker to use RemoteMediaPlayer</h2>
+
+<p>The device picker is the part of your app’s user interface that allows the user to view and pick available remote players. Your controller app uses the RemoteMediaPlayer interface for device discovery and selection through a custom device picker.</p>
+
+<p>Cast applications that use the <code class="highlighter-rouge">MediaRouterButton</code> class, as in the code below, must be replaced by a custom device picker.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="o">(</span><span class="n">Menu</span> <span class="n">menu</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">getMenuInflater</span><span class="o">().</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">menu</span><span class="o">.</span><span class="na">main</span><span class="o">,</span> <span class="n">menu</span><span class="o">);</span>
+        <span class="n">mCastManager</span><span class="o">.</span><span class="na">addMediaRouterButton</span><span class="o">(</span><span class="n">menu</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">media_route_menu_item</span><span class="o">);</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+<p>If your app implements a custom device picker like the code below you must modify that code to support <code class="highlighter-rouge">RemoteMediaPlayer</code>.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="n">MediaRouter</span> <span class="n">mMediaRouter</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">CastDevice</span><span class="o">&gt;</span> <span class="n">mDeviceList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">CastDevice</span><span class="o">&gt;();</span>
+    <span class="kd">private</span> <span class="n">CastDevice</span> <span class="n">mCurrentDevice</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">mMediaRouter</span> <span class="o">=</span> <span class="n">MediaRouter</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">mMediaRouter</span> <span class="o">=</span> <span class="n">MediaRouter</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="n">mMediaRouter</span><span class="o">.</span><span class="na">addCallback</span><span class="o">(</span><span class="n">mCastManager</span><span class="o">.</span><span class="na">getMediaRouteSelector</span><span class="o">(),</span> <span class="n">mCastCallback</span><span class="o">,</span>
+            <span class="n">MediaRouter</span><span class="o">.</span><span class="na">CALLBACK_FLAG_REQUEST_DISCOVERY</span><span class="o">);</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">mMediaRouter</span><span class="o">.</span><span class="na">removeCallback</span><span class="o">(</span><span class="n">mCastCallback</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">MediaRouter</span><span class="o">.</span><span class="na">Callback</span> <span class="n">mCastCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MediaRouter</span><span class="o">.</span><span class="na">Callback</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRouteAdded</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">support</span><span class="o">.</span><span class="na">v7</span><span class="o">.</span><span class="na">media</span><span class="o">.</span><span class="na">MediaRouter</span> <span class="n">router</span><span class="o">,</span>
+            <span class="n">android</span><span class="o">.</span><span class="na">support</span><span class="o">.</span><span class="na">v7</span><span class="o">.</span><span class="na">media</span><span class="o">.</span><span class="na">MediaRouter</span><span class="o">.</span><span class="na">RouteInfo</span> <span class="n">route</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">CastDevice</span> <span class="n">device</span> <span class="o">=</span> <span class="n">CastDevice</span><span class="o">.</span><span class="na">getFromBundle</span><span class="o">(</span><span class="n">route</span><span class="o">.</span><span class="na">getExtras</span><span class="o">());</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">mDeviceList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">device</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">mDeviceList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">device</span><span class="o">);</span>
+                <span class="o">...</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="o">...</span>
+            <span class="o">}</span>
+            <span class="n">mDeviceList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">device</span><span class="o">);</span>
+            <span class="n">triggerUpdate</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRouteRemoved</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">support</span><span class="o">.</span><span class="na">v7</span><span class="o">.</span><span class="na">media</span><span class="o">.</span><span class="na">MediaRouter</span> <span class="n">router</span><span class="o">,</span>
+            <span class="n">android</span><span class="o">.</span><span class="na">support</span><span class="o">.</span><span class="na">v7</span><span class="o">.</span><span class="na">media</span><span class="o">.</span><span class="na">MediaRouter</span><span class="o">.</span><span class="na">RouteInfo</span> <span class="n">route</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">CastDevice</span> <span class="n">device</span> <span class="o">=</span> <span class="n">CastDevice</span><span class="o">.</span><span class="na">getFromBundle</span><span class="o">(</span><span class="n">route</span><span class="o">.</span><span class="na">getExtras</span><span class="o">());</span>
+            <span class="k">if</span><span class="o">(</span> <span class="n">mDeviceList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">device</span><span class="o">)</span> <span class="o">)</span> <span class="o">{</span>
+                <span class="o">...</span>
+                <span class="n">mDeviceList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">device</span><span class="o">);</span>
+                <span class="n">triggerUpdate</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">};</span>
+</code></pre>
+</div>
+
+<p>This example uses a list of of <code class="highlighter-rouge">RemoteMediaPlayer</code> objects to keep track of the currently selected player device in a list view. The <code class="highlighter-rouge">IDiscoveryListener</code> interface is used to listen for when a new player device becomes available or an existing player device is no longer available. The listener is added when starting your controller app in the <code class="highlighter-rouge">onResume()</code> method.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">RemoteMediaPlayer</span><span class="o">&gt;</span> <span class="n">mDeviceList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">RemoteMediaPlayer</span><span class="o">&gt;();</span>
+    <span class="kd">private</span> <span class="n">RemoteMediaPlayer</span> <span class="n">mCurrentDevice</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="n">DiscoveryController</span><span class="o">.</span><span class="na">IDiscoveryListener</span> <span class="n">mDiscovery</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DiscoveryController</span><span class="o">.</span><span class="na">IDiscoveryListener</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playerDiscovered</span><span class="o">(</span><span class="n">RemoteMediaPlayer</span> <span class="n">device</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">mDeviceList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">device</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">mDeviceList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">device</span><span class="o">);</span>
+                <span class="o">...</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="o">...</span>
+            <span class="o">}</span>
+            <span class="n">mDeviceList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">device</span><span class="o">);</span>
+            <span class="n">triggerUpdate</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playerLost</span><span class="o">(</span><span class="n">RemoteMediaPlayer</span> <span class="n">device</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span> <span class="n">mDeviceList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">device</span><span class="o">)</span> <span class="o">)</span> <span class="o">{</span>
+                <span class="o">...</span>
+                <span class="n">mDeviceList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">device</span><span class="o">);</span>
+                <span class="n">triggerUpdate</span><span class="o">();</span>
+                <span class="o">...</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">discoveryFailure</span><span class="o">()</span> <span class="o">{</span>
+            <span class="o">...</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The device picker list is updated in the following method that handles device objects from both Google Cast and this SDK.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kt">void</span> <span class="nf">triggerUpdate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">runOnUiThread</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                <span class="kd">final</span> <span class="n">ListView</span> <span class="n">lv</span> <span class="o">=</span> <span class="o">(</span><span class="n">ListView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">listView1</span><span class="o">);</span>
+                <span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">ad</span> <span class="o">=</span> <span class="o">(</span><span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;)</span> <span class="n">lv</span><span class="o">.</span><span class="na">getAdapter</span><span class="o">();</span>
+                <span class="n">ad</span><span class="o">.</span><span class="na">notifyDataSetChanged</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="monitoring-the-status-of-the-player-with-statuslistener">Monitoring the Status of the Player with StatusListener</h2>
+
+<p>Google Cast provides callbacks to manage application status changes. The Google Cast Companion Library also keeps track of some statuses such as the current media position through the <code class="highlighter-rouge">VideoCastConsumerImpl class</code>. Our API provides the <code class="highlighter-rouge">StatusListener</code> class to receive status updates based on a given interval. The <code class="highlighter-rouge">StatusListener</code> class provides the same functionality as <code class="highlighter-rouge">VideoCastConsumerImpl</code>. Add the status listener to your controller app to receive status updates, and set the interval for updates when your status listener is successfully added.</p>
+
+<p>The <code class="highlighter-rouge">addStatusListener()</code> and <code class="highlighter-rouge">setPositionUpdateInterval()</code> methods, as with all remote methods in the API, are asynchronous calls. The API gives the result from these asynchronous calls by providing <code class="highlighter-rouge">FutureListener&lt;T&gt;</code>. Chain the <code class="highlighter-rouge">getAsync()</code> method with remote methods to get the result. Once the asynchronous task is done, the remote method call invokes the <code class="highlighter-rouge">futureIsNow()</code> method from the receiver app.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="n">StatusListener</span> <span class="n">mListener</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Status</span> <span class="n">mStatus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Status</span><span class="o">();</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">MONITOR_INTERVAL</span> <span class="o">=</span> <span class="mi">1000L</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="n">DiscoveryController</span><span class="o">.</span><span class="na">IDiscoveryListener</span> <span class="n">mDiscovery</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DiscoveryController</span><span class="o">.</span><span class="na">IDiscoveryListener</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playerLost</span><span class="o">(</span><span class="n">RemoteMediaPlayer</span> <span class="n">device</span><span class="o">)</span> <span class="o">{</span>
+            <span class="o">...</span>
+            <span class="n">device</span><span class="o">.</span><span class="na">removeStatusListener</span><span class="o">(</span><span class="n">mListener</span><span class="o">).</span><span class="na">getAsync</span><span class="o">(</span><span class="k">new</span> <span class="n">FutureListener</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">futureIsNow</span><span class="o">(</span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">voidFuture</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">//handle asynchronous task</span>
+                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+    <span class="o">};</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">mListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Monitor</span><span class="o">();</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Status</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">long</span> <span class="n">mPosition</span><span class="o">;</span>
+        <span class="kd">public</span> <span class="n">MediaState</span> <span class="n">mState</span><span class="o">;</span>
+        <span class="kd">public</span> <span class="n">MediaCondition</span> <span class="n">mCond</span><span class="o">;</span>
+        <span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">clear</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">mPosition</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1L</span><span class="o">;</span>
+            <span class="n">mState</span> <span class="o">=</span> <span class="n">MediaState</span><span class="o">.</span><span class="na">NoSource</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">Monitor</span> <span class="kd">implements</span> <span class="n">StatusListener</span> <span class="o">{</span>
+        <span class="nd">@SuppressLint</span><span class="o">(</span><span class="s">"NewApi"</span><span class="o">)</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStatusChange</span><span class="o">(</span><span class="n">AmazonMediaStatus</span> <span class="n">status</span><span class="o">,</span> <span class="kt">long</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">mCurrentDevice</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kd">synchronized</span> <span class="o">(</span><span class="n">mStatus</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">mStatus</span><span class="o">.</span><span class="na">mState</span> <span class="o">=</span> <span class="n">status</span><span class="o">.</span><span class="na">getState</span><span class="o">();</span>
+                    <span class="n">mStatus</span><span class="o">.</span><span class="na">mCond</span> <span class="o">=</span> <span class="n">status</span><span class="o">.</span><span class="na">getCondition</span><span class="o">();</span>
+                    <span class="n">mStatus</span><span class="o">.</span><span class="na">mPosition</span> <span class="o">=</span> <span class="n">position</span><span class="o">;</span>
+                    <span class="o">...</span>
+                <span class="o">}</span>
+                <span class="o">...</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="o">...</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">fling</span><span class="o">(</span><span class="kd">final</span> <span class="n">Object</span> <span class="n">target</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">title</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mCurrentDevice</span> <span class="o">=</span> <span class="n">target</span><span class="o">;</span>
+	<span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">addStatusListener</span><span class="o">(</span><span class="n">mListener</span><span class="o">).</span><span class="na">getAsync</span><span class="o">(</span><span class="k">new</span> <span class="n">ErrorResultHandler</span><span class="o">(</span><span class="s">"Cannot set status listener"</span><span class="o">));</span>
+        <span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">setPositionUpdateInterval</span><span class="o">(</span><span class="n">MONITOR_INTERVAL</span><span class="o">).</span><span class="na">getAsync</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nf">ErrorResultHandler</span><span class="o">(</span><span class="s">"Error attempting set update interval, ignoring”));
+        mCurrentDevice.setMediaSource(name, title, true, false).getAsync(new ErrorResultHandler("</span><span class="n">Error</span> <span class="n">attempting</span> <span class="n">to</span> <span class="n">Play</span><span class="err">”</span><span class="o">));</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">ErrorResultHandler</span> <span class="kd">implements</span> <span class="n">FutureListener</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span>  <span class="o">{</span>
+        <span class="n">ErrorResultHandler</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+	    <span class="k">this</span><span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">futureIsNow</span><span class="o">(</span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">result</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">ExecutionException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="c1">//handleFailure</span>
+            <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="c1">//handleFailure</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="communicating-with-the-remote-media-player">Communicating With the Remote Media Player</h2>
+
+<p>The Google Cast Companion Library provides only the callbacks in VideoCastConsumerImpl to indicate when a remote call is finished.  Some actions your application performs do not provide a direct callback once the remote player has performed the specified action:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">mCastManager</span><span class="o">.</span><span class="na">loadMedia</span><span class="o">(</span><span class="n">selectedMedia</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+<span class="n">mCastManager</span><span class="o">.</span><span class="na">play</span><span class="o">();</span>
+<span class="n">mCastManager</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
+<span class="n">mCastManager</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+<span class="n">mCastManager</span><span class="o">.</span><span class="na">seekAndPlay</span><span class="o">((</span><span class="kt">int</span><span class="o">)</span><span class="n">position</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>Our SDK provides the option to use listeners when communicating with the remote device, as in the previous section.  This allows you to monitor the result of the call and to handle failure and success situations differently, or with a common failure handler like the one in this example:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleFailure</span><span class="o">(</span> <span class="n">Throwable</span> <span class="n">throwable</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">msg</span><span class="o">,</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">extend</span> <span class="o">)</span> <span class="o">{</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="n">msg</span><span class="o">,</span> <span class="n">throwable</span><span class="o">);</span>
+    <span class="kd">final</span> <span class="n">String</span> <span class="n">exceptionMessage</span> <span class="o">=</span> <span class="n">throwable</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+
+    <span class="n">FlingActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">runOnUiThread</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">FlingActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">msg</span><span class="o">+(</span><span class="n">extend</span><span class="o">?</span><span class="nl">exceptionMessage:</span><span class="s">""</span><span class="o">),</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">});</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kd">class</span> <span class="nc">ErrorResultHandler</span>  <span class="kd">implements</span> <span class="n">FutureListener</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">mMsg</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">mExtend</span><span class="o">;</span>
+
+    <span class="n">ErrorResultHandler</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">ErrorResultHandler</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">,</span> <span class="n">Boolean</span> <span class="n">extend</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mMsg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">;</span>
+        <span class="n">mExtend</span> <span class="o">=</span> <span class="n">extend</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">futureIsNow</span><span class="o">(</span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">ExecutionException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">handleFailure</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getCause</span><span class="o">(),</span> <span class="n">mMsg</span><span class="o">,</span> <span class="n">mExtend</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">handleFailure</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="n">mMsg</span><span class="o">,</span> <span class="n">mExtend</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">...</span>
+<span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">stop</span><span class="o">(</span><span class="k">new</span> <span class="n">ErrorResultHandler</span><span class="o">(</span><span class="s">"Error Stopping"</span><span class="o">));</span>
+<span class="o">...</span>
+</code></pre>
+</div>
+
+<p>Or maybe not even handle the asynchronous result at all.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">setPositionUpdateInterval</span><span class="o">(</span><span class="n">MONITOR_INTERVAL</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">setMediaSource</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+<span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">pause</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+<span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">stop</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+<span class="n">mCurrentDevice</span><span class="o">.</span><span class="na">seek</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</code></pre>
+</div>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<h1 id="ContentRating">ContentRating</h1>
+
+<p>Contains elements that specify a rating system or organization and the rating they gave the work. When present, the optional <a href="#ContentRatings">ContentRatings</a> must contain at least one ContentRating. You can have as many ContentRating elements as you need, one for each system/rating pair.</p>
+
+<p><strong>Required if the optional ContentRatings element is present:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#ContentRatings">ContentRatings</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#System">System</a> (required), <a href="#Certification">Certification</a> (required)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ContentRatings&gt;</span>
+  <span class="nt">&lt;ContentRating&gt;</span>
+    <span class="nt">&lt;System&gt;</span>MPAA<span class="nt">&lt;/System&gt;</span>
+    <span class="nt">&lt;Certification&gt;</span>PG-13<span class="nt">&lt;/Certification&gt;</span>
+  <span class="nt">&lt;/ContentRating&gt;</span>
+<span class="nt">&lt;/ContentRatings&gt;</span>
+</code></pre>
+</div>

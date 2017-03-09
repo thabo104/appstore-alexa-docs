@@ -5,7 +5,7 @@
 <!-- Bootstrap is used under the MIT license. -->
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div class="rightMenu"> <span class="inc:https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal/menus/{{page.sidebar}}._TTH_.html"> </span></div>
-{% unless page.toc == false %}<script type="text/javascript" src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal/minitoc.min._TTH_.js"></script> {% endunless %}
+{% unless page.toc-style == "kramdown" %}<script type="text/javascript" src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal/minitoc.min._TTH_.js"></script> {% endunless %}
 <!-- AnchorJS is used under the MIT license. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -18,14 +18,15 @@
 <![endif]-->
 
 <style>
-{% unless page.toc == false %}
-    ul#markdown-toc {
-        display: none;
-    }
-{% endunless %}
 ul#markdown-toc::before  {
 content: "{{site.uistring.tableofcontents}}"
  }
+ </style>
+{% unless page.toc-style == "kramdown" %}
+<style>
+    ul#markdown-toc {
+        display: none;
+    }
 </style>
 <div id="minitoc"></div>
 

@@ -3,7 +3,7 @@ title: Android Menu and ActionBar widgets
 permalink: user-interface.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: メディアフィードをロードする
 permalink: fire-app-builder-load-media-feed.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

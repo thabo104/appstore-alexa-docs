@@ -5,7 +5,7 @@ product: Fling SDK
 permalink: understanding-the-amazon-fling-service.html
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 Amazon Fling is a second-screen service that enables your customers to send media and web content from Fire OS, iOS, and Android mobile devices to Amazon Fire TV devices for display and playback. This document contains an overview of this service and how you can integrate this functionality into your apps.

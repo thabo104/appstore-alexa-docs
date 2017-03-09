@@ -3,7 +3,7 @@ title: Amazon へのカタログのアップロード
 permalink: uploading-your-catalog.html
 sidebar: catalog_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

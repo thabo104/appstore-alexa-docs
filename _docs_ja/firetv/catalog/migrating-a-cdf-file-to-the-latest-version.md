@@ -3,7 +3,7 @@ title: カタログデータ形式（CDF）ファイルの最新バージョン�
 permalink: migrating-a-cdf-file-to-the-latest-version.html
 sidebar: catalog_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

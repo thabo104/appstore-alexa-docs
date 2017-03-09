@@ -1,0 +1,486 @@
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var pgurl = window.location.href.split('?')[0];
+        pgurl = pgurl.split('#')[0];
+        //console.log("pgurl: " + pgurl);
+        $("ul#hipposidebar li a").each(function(){
+            var sidebaritem = ($(this).attr("href"));
+            if($(this).attr("href") == pgurl || $(this).attr("href") == pgurl + "/") {
+                $(this).addClass("open");
+                //console.log("sidebaritem: " + sidebaritem);
+            }
+        });
+    });
+</script>
+
+<script>$("a.open").parents('li').toggleClass("open");</script>
+
+<script>
+    // Initialize navgoco
+    $("#hipposidebar").navgoco({
+        caretHtml: '',
+        accordion: false,
+        openClass: 'open', // open
+        save: false, // leave false or nav highlighting doesn't work right
+        cookie: {
+            name: 'navgoco',
+            expires: false,
+            path: '/'
+        },
+        slide: {
+            duration: 400,
+            easing: 'swing'
+        }
+    });
+
+</script>
+
+
+
+
+<div class="hippoRight">
+    <div class="productTitle">Fire App Builder</div>
+    <ul id="hipposidebar" class="hipponav">
+        
+        <li class="level1"><a href="#">Introduction</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-overview">Fire App Builder Introduction</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes">Release Notes</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-end-to-end-process">Beginning-to-End Process Overview</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-questions-and-answers">Miscellaneous Questions</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">1. Get Set Up</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-download-and-build">Download Fire App Builder and Build an App</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-connecting-adb-to-fire-tv">Connect to Fire TV Through ADB</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-app-tour">Take an App Tour</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">2. Configure Your Feed</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-load-media-feed">Load Your Media Feed</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-overview">Recipe Configuration Overview</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-categories">Set Up the Categories Recipe</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-contents">Set Up the Contents Recipe</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-configure-navigator">Navigator Configuration Overview</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-configure-navigator-token-feeds">Configure Navigator -- Token-based Feeds</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-configure-navigator-open-feeds">Configure Navigator -- Open Feeds</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">3. Customize the Appearance</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-customize-look-and-feel">Customize the Look and Feel</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">4. Add Components</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-interfaces-and-components">Components Overview</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-load-a-component">Load a Component</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-create-a-new-component">Create Your Own Fire App Builder Component</a></li>
+                
+                
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">Ads Components</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-freewheel-ads-component">FreeWheel Ads Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-vast-ads-component">VAST Ads Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">Analytics Components</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-crashlytics-component">Crashlytics Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-flurry-analytics-component">Flurry Analytics Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-google-analytics-component">Google Analytics Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-omniture-analytics-component">Omniture Analytics Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-adobe-pass-auth-component">Adobe Pass Authorization Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-facebook-auth-component">Facebook Authorization Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-login-with-amazon-component">Login with Amazon Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">Purchasing Components</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-amazon-in-app-purchase-component">Amazon In-App Purchasing Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+                <li class="level2"><a class="subfoldersTitle" href="#">Media Components</a>
+                    <ul>
+
+                        
+                        
+                        
+                        <li class="level2items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-amazon-media-player-component">Amazon Media Player Component</a></li>
+                        
+                        
+
+                        
+
+                        
+                    </ul>
+                </li>
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Other Development Topics</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-pulling-updates-from-github">Pull Updates from Github</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-live-stream-configuration">Configure Live Streams</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-catalog-integration">Integrate Your Media into the Fire TV Catalog</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-use-an-android-tv-emulator">Use an Android TV Emulator to Run Your App</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-querying-json">Querying JSON</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-querying-xml">Querying XML</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-troubleshooting">Troubleshooting</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+
+        </li>
+    </ul>
+
+    <hr class="resourceSeparator"></hr>
+
+    <div class="relatedResources">Related Resources</div>
+
+    <ul id="entrypages">
+        <ul>
+            
+            
+            <li><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv">Fire TV</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/catalog/integrating-your-catalog-with-fire-tv">Fire TV Catalog Integration</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-understanding-submission">Appstore Publishing</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/whats-new-in-in-app-purchasing">In-App Purchasing API</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/apis/experience/fling/docs/understanding-the-amazon-fling-service">Fling SDK</a></li>
+            
+            
+            
+            <li><a href="https://forums.developer.amazon.com/">Developer Portal Forums</a></li>
+            
+            
+        </ul>
+    </ul>
+</div>

@@ -3,7 +3,7 @@ title: Take an App Tour
 permalink: fire-app-builder-app-tour.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -230,7 +230,7 @@ The following table briefly describes each component.
     </tr>
   </tbody>
 </table>
- 
+
 {% include note.html content="When you open Fire App Builder in Android Studio, the \"Android\" view shows this folder as \"app\" because it's your working app. If you switch over to the \"Project\" view, you'll see that the app folder is actually named \"Application.\"" %}
 
 ## Subfolder Contents

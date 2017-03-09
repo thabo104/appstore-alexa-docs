@@ -3,7 +3,7 @@ title: Fire TV のディープリンクを確認するためのテストケー�
 permalink: test-cases-for-verifying-deep-links-from-your-fire-tv-catalog.html
 sidebar: catalog_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Load Your Media Feed | Fire App Builder</title>
+    
+    <base target="_self">
+    <meta name="description" content="The heart of your app is the media feed. This feed contains your video content, including titles, descriptions, thumbnails, and other details for each media object. Since different media feeds... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/fireappbuilder/2. Configure Your Feed/fire-app-builder-load-media-feed.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-overview.html">Fire App Builder Introduction</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">Release Notes</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">Beginning-to-End Process Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">Miscellaneous Questions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Download Fire App Builder and Build an App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">Connect to Fire TV Through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">Take an App Tour</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="fire-app-builder-load-media-feed.html">Load Your Media Feed</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">Recipe Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-categories.html">Set Up the Categories Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-content.html">Set Up the Contents Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigator Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Configure Navigator -- Token-based Feeds</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Configure Navigator -- Open Feeds</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-customize-look-and-feel.html">Customize the Look and Feel</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-interfaces-and-components.html">Components Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">Load a Component</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">Create Your Own Fire App Builder Component</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">FreeWheel Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-crashlytics-component.html">Crashlytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Google Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazon Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazon In-App Purchasing Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Player Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Pull Updates from Github</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">Configure Live Streams</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Integrate Your Media into the Fire TV Catalog</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Use an Android TV Emulator to Run Your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">Querying JSON</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">Querying XML</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">Troubleshooting</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire App Builder </div>
+
+                    <h1>Load Your Media Feed</h1>
+
+                    <p>The heart of your app is the media feed. This feed contains your video content, including titles, descriptions, thumbnails, and other details for each media object.</p>
+
+<p>Since different media feeds have different structures (with different terms for the various properties or elements), Fire App Builder queries your media feed for the needed components and converts the queried result to a structure and terminology that aligns with Fire App Builder’s content model. Before you write these queries (specifying them in <a href="fire-app-builder-set-up-recipes-categories.html">categories</a> and <a href="fire-app-builder-set-up-recipes-content.html">content</a> recipes), you must first load your media feed following the instructions here.</p>
+
+<p>Two Fire App Builder components are used to load and configure the media feed: DataLoader and DynamicParser. The DataLoader module loads the data feed, and DynamicParser configures the structure and key values of the feed so that Fire App Builder can read it. Rather than working in Java, you configure both of these modules through JSON files. The Java code will read from the values in various JSON files.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#types-of-feeds" id="markdown-toc-types-of-feeds">Types of Feeds</a>    <ul>
+      <li><a href="#tokenbasedconfiguration" id="markdown-toc-tokenbasedconfiguration">Load Token-based Feeds</a></li>
+      <li><a href="#filebasedconfiguration" id="markdown-toc-filebasedconfiguration">Load Open Feeds</a></li>
+    </ul>
+  </li>
+  <li><a href="#other-options-for-loading-the-feed" id="markdown-toc-other-options-for-loading-the-feed">Other Options for Loading the Feed</a></li>
+  <li><a href="#live-feeds" id="markdown-toc-live-feeds">Live Feeds</a></li>
+  <li><a href="#loading-a-static-feed-that-is-packaged-with-your-app" id="markdown-toc-loading-a-static-feed-that-is-packaged-with-your-app">Loading a Static Feed That Is Packaged with Your App</a></li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ul>
+
+<h2 id="types-of-feeds">Types of Feeds</h2>
+
+<p>You can load the following types of feeds:</p>
+
+<ul>
+  <li><a href="#tokenbasedconfiguration">Token-based Feeds</a></li>
+  <li><a href="#filebasedconfiguration">Open Feeds</a></li>
+</ul>
+
+<h3 id="tokenbasedconfiguration">Load Token-based Feeds</h3>
+
+<p>Use these instructions if you publish your media details in a web feed whose access is restricted by a token.</p>
+
+<ol>
+  <li>
+    <p>Open the <strong>DataLoadManagerConfig.json</strong> file (located in <strong>app &gt; assets &gt; configurations</strong>).</p>
+
+    <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> In Android Studio, instead of browsing folders, you can press <strong>Shift</strong> key twice and then type the file name to quickly find a file.</div>
+  </li>
+  <li>Leave the value for the <strong>data_downloader.impl</strong> option as is: <code class="highlighter-rouge">com.amazon.dataloader.datadownloader.BasicHttpBasedDataDownloader</code>.</li>
+  <li>If desired, update the options for these two properties:
+    <ul>
+      <li><code class="highlighter-rouge">is_cache_manager_enabled</code>: Whether your feed is cached in the app. Caching your feeds speeds up screen loading with the media retrieved, but the cache will not reflect the latest updates to the feed until the data loader is updated or until the feed is expired. Options are <code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code>. Usually leave this as <code class="highlighter-rouge">true</code>.</li>
+      <li><code class="highlighter-rouge">data_updater.duration</code>: The interval (in seconds) when the data loader refreshes your feed and retrieves the latest updates. When the data loader updates, the cache gets purged. The default is 2000 seconds, or 5.5 hours.</li>
+    </ul>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Each time users start the app, your app’s cache is automatically purged and the feed is refreshed.</div>
+  </li>
+  <li>
+    <p>Open the <strong>BasicHttpBasedDownloaderConfig.json</strong> file (located in <strong>app &gt; assets &gt; configurations</strong>) and change the value from <code class="highlighter-rouge">com.amazon.dataloader.datadownloader.BasicFileBasedUrlGenerator</code> to <code class="highlighter-rouge">com.amazon.dataloader.datadownloader.BasicTokenBasedUrlGenerator</code>:</p>
+
+    <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"url_generator_impl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.amazon.dataloader.datadownloader.BasicTokenBasedUrlGenerator"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Create a file inside <strong>app &gt; assets &gt; configurations</strong> called <strong>BasicTokenBasedUrlGeneratorConfig.json</strong>. Inside the file, create a JSON object that includes two key-value pairs as follows:</p>
+
+    <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"base_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://yourcompany.com/mediafeed?id=$$token$$"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token_generation_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://yourcompany.com/url_to_generate_token"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Customize the values for both <code class="highlighter-rouge">base_url</code> and <code class="highlighter-rouge">token_generation_url</code> with your company’s actual values.</p>
+
+    <p>The <code class="highlighter-rouge">base_url</code> is the URL to your media feed. The <code class="highlighter-rouge">token_generation_url</code> contains a link to a URL that generates the token to access the URL.</p>
+
+    <p>In this example, the token is inserted into the URL with <code class="highlighter-rouge">$$token$$</code>. (Your media URL may insert the token in some other way. If so, adjust the placement of the <code class="highlighter-rouge">$$token$$</code> where it should appear.)</p>
+
+    <p>The parameters from this BasicTokenBasedUrlGeneratorConfig.json file (<code class="highlighter-rouge">base_url</code> and <code class="highlighter-rouge">token_generation_url</code>) get passed to the <code class="highlighter-rouge">BasicTokenBasedUrlGenerator</code> class (located in <strong>DataLoader &gt; java &gt; com.amazon.dataloader</strong>). The <code class="highlighter-rouge">BasicTokenBasedUrlGenerator</code> class constructs a URL which is then consumed by the <code class="highlighter-rouge">BasicHttpBasedDataDownloader</code> class. The <code class="highlighter-rouge">BasicHttpBasedDataDownloader</code> class gets and retrieves the content from the URL.</p>
+  </li>
+</ol>
+
+<h3 id="filebasedconfiguration">Load Open Feeds</h3>
+
+<p>Use these instructions if you publish your media details in a web feed that is open and unrestricted, that is, no token is required to access the media.</p>
+
+<ol>
+  <li>
+    <p>Open the <strong>DataLoadManagerConfig.json</strong> file (located in <strong>app &gt; assets &gt; configurations</strong>).</p>
+
+    <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> In Android Studio, instead of browsing folders, you can press <strong>Shift</strong> key twice and then type the file name to quickly find a file.</div>
+  </li>
+  <li>
+    <p>Ensure the value for the <strong>data_downloader.impl</strong> option is <code class="highlighter-rouge">com.amazon.dataloader.datadownloader.BasicHttpBasedDataDownloader</code>:</p>
+
+    <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data_downloader.impl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.amazon.dataloader.datadownloader.BasicFileBasedDownloaderConfig"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_cache_manager_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data_updater.duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">14400</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Open the <strong>BasicHttpBasedDownloaderConfig.json</strong> file (located in <strong>app &gt; assets &gt; configurations</strong>) and ensure the value for <code class="highlighter-rouge">url_generator_impl</code> is <code class="highlighter-rouge">com.amazon.dataloader.datadownloader.BasicFileBasedUrlGenerator</code>:</p>
+
+    <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"url_generator_impl"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"com.amazon.dataloader.datadownloader.BasicFileBasedUrlGenerator"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Open the <strong>BasicFileBasedUrlGeneratorConfig.json</strong> file (located in <strong>app &gt; assets &gt; configurations</strong>) and verify the contents matches the code below. This file specifies the location of the <code class="highlighter-rouge">url_file</code> that will contain your media feed. To make things easiest, leave the file name as the default:</p>
+
+    <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"url_file"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"urlFile.json"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Open the <strong>urlFile.json</strong> (located in <strong>app &gt; assets</strong>) and list your media feed URLs.</p>
+
+    <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"http://www.lightcast.com/api/firetv/channels.php?app_id=263&amp;app_key=4rghy65dcsqa&amp;action=channels_videos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"http://www.lightcast.com/api/firetv/channels.php?app_id=249&amp;app_key=gtn89uj3dsw&amp;action=channels_videos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"http://www.lightcast.com/api/firetv/channels.php?app_id=267&amp;app_key=6tgbfr4edc2x&amp;action=channels_videos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"http://www.lightcast.com/api/firetv/channels.php?app_id=273&amp;app_key=u8jnsaq2rfgy&amp;action=channels_videos"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="other-options-for-loading-the-feed">Other Options for Loading the Feed</h2>
+
+<p>If neither of these options work for you to load your feed, you can write your own data loader by adding a class in the DataLoader folder that implements the Dataloader interface. Additionally, if your feed is generated from a REST endpoint, you will have to write your own data downloader.</p>
+
+<h2 id="live-feeds">Live Feeds</h2>
+
+<p>If you have a live TV feed, there’s nothing special you need to do to load it. You can load it the same way as your other media. However, when you configure options in Navigator.json, you can add a parameter that tells Fire App Builder to  remove the “Watch from Beginning” button for live streams. You can also identify live media through tags when the content recipe. See <a href="fire-app-builder-configure-navigator.html">Navigator Configuration Overview</a> for more details.</p>
+
+<h2 id="loading-a-static-feed-that-is-packaged-with-your-app">Loading a Static Feed That Is Packaged with Your App</h2>
+
+<p>For testing purposes, you may want to load a static feed that is packaged within your app. You wouldn’t normally do this, since you wouldn’t be able to update the feed without resubmitting a new version of your app. Hence this would be done for testing purposes only.</p>
+
+<p>To load a static feed that is packaged inside your app:</p>
+
+<ol>
+  <li>Open the <strong>DataLoadManagerConfig.json</strong> file (located in <strong>app &gt; assets &gt; configurations</strong>).</li>
+  <li>Change the value for <strong>data_downloader.impl</strong> to <code class="highlighter-rouge">com.amazon.dataloader.datadownloader.BasicFileBasedDownloaderConfig</code>.</li>
+  <li>Open the <strong>BasicFileBasedDownloaderConfig.json</strong> file (located in <strong>app &gt; assets &gt; configurations</strong>).</li>
+  <li>
+    <p>If desired, you can rename the XML file:</p>
+
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code>{
+  "data_file_path": "GenericMediaData.xml"
+}
+</code></pre>
+    </div>
+  </li>
+  <li>Place your feed file into the <strong>app &gt; assets</strong> folder.</li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Loading the feed is just the first step. You have to help Fire App Builder identify the categories and content in your feed. See <a href="fire-app-builder-set-up-recipes-overview.html">Recipe Configuration Overview</a>.</p>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

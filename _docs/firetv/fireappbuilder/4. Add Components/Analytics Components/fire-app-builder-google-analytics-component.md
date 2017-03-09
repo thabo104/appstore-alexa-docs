@@ -3,7 +3,7 @@ title: Google Analytics Component
 permalink: fire-app-builder-google-analytics-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

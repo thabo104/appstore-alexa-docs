@@ -3,7 +3,7 @@ title: Identifying Controllers
 permalink: identifying-controllers.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

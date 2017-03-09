@@ -3,7 +3,7 @@ title: Test Cases for Verifying Fire TV Deep Links
 permalink: test-cases-for-verifying-deep-links-from-your-fire-tv-catalog.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: Setting Up Your AWS Account for Fire TV Catalog Integration
 permalink: setting-up-your-aws-account-for-fire-tv-catalog-integration.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

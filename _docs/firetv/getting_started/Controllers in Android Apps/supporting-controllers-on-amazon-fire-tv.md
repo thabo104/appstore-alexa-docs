@@ -3,7 +3,7 @@ title: Controllers Overview
 permalink: supporting-controllers-on-amazon-fire-tv.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

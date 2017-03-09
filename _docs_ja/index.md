@@ -3,7 +3,7 @@ title: Amazon Developer Portalのドキュメント
 permalink: index.html
 sidebar: null
 topnav: topnav_ja
-toc: false
+toc-style: kramdown
 search: false
 layout: homepage
 type: homepage

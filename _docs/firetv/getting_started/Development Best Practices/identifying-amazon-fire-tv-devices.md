@@ -3,7 +3,7 @@ title: Identifying Amazon Fire TV Devices
 permalink: identifying-amazon-fire-tv-devices.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

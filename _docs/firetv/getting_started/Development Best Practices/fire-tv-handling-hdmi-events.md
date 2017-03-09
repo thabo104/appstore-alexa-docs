@@ -3,7 +3,7 @@ title: Handling HDMI Events
 permalink: fire-tv-handling-hdmi-events.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: カタログと Amazon Fire TV の統合
 permalink: integrating-your-catalog-with-fire-tv.html
 sidebar: catalog_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: About the Catalog Data Format (CDF)
 permalink: about-the-cdf.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

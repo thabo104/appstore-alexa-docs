@@ -3,7 +3,7 @@ title: Advertising ID on Fire TV
 permalink: fire-tv-advertising-id.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

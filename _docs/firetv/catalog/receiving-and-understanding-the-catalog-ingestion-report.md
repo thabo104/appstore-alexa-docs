@@ -3,7 +3,7 @@ title: Receiving and Understanding the Fire TV Catalog Ingestion Report
 permalink: receiving-and-understanding-the-catalog-ingestion-report.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

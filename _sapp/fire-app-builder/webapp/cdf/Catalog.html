@@ -1,0 +1,64 @@
+<h2 id="Catalog">Catalog</h2>
+
+<p>The root element of a CDF file. Each catalog file must contain a single Catalog element which contains the rest of the file.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#partner">Partner</a> (required), <a href="#works">Works</a> (required)</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>xmlns</td>
+      <td>http://www.amazon.com/ FireTv/2014-04-11/ingestion</td>
+      <td><strong>Required</strong>. The XML namespace.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>SchemaVersion</td>
+      <td>FireTv-v1.2 <br /> FireTv-v1.3</td>
+      <td><strong>Optional</strong>. Added in CDF v1.2. The version of the schema this catalog uses. Refer to the schema “id” to figure out which schema version you are using. Although this attribute is optional for compatibility reasons, we recommend that you provide the version.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;xml</span> <span class="na">version=</span><span class="s">"1.0"</span> <span class="na">encoding=</span><span class="s">"utf-8"</span> <span class="err">?</span><span class="nt">&gt;</span>
+<span class="nt">&lt;Catalog</span> <span class="na">xmlns=</span><span class="s">"http://www.amazon.com/FireTv/2014-04-11/ingestion"</span> <span class="na">version=</span><span class="s">"FireTv-v1.3"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Partner&gt;</span>Everything Ever Made Filmworks<span class="nt">&lt;/Partner&gt;</span>
+  <span class="nt">&lt;Works&gt;</span>
+    ...
+  <span class="nt">&lt;/Works&gt;</span>
+<span class="nt">&lt;Catalog&gt;</span>
+</code></pre>
+</div>

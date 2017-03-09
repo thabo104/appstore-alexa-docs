@@ -3,7 +3,7 @@ title: Setting Up Your Development Environment
 permalink: setting-up-your-development-environment.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

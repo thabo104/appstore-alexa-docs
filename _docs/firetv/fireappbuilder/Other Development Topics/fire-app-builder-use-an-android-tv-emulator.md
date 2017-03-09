@@ -3,7 +3,7 @@ title: "Use an Android TV Emulator to Run Your App"
 permalink: fire-app-builder-use-an-android-tv-emulator.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

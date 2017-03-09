@@ -5,7 +5,7 @@ product: Fling SDK
 permalink: setting-up-your-amazon-fling-development-environment-for-ios.html
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 Our SDK for iOS is distributed as an iOS framework which can be linked to your iOS controller app. This document describes how to set up your iOS projects to include these libraries.  

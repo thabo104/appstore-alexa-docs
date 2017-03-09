@@ -5,7 +5,7 @@ product: Fling SDK
 permalink: remote-install.html
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 Remote Install allows you to discover Fire TV devices on the same network. Once a Fire TV is discovered from a user’s mobile device or tablet, you can check if your application is installed on that Fire TV and prompt the user to also install the Fire TV version of your app or game.

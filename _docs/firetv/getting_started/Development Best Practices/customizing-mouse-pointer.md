@@ -3,7 +3,7 @@ title: Customizing the Mouse Pointer
 permalink: customizing-mouse-pointer.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

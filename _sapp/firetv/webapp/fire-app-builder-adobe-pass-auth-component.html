@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Adobe Pass Authorization Component | Fire App Builder</title>
+    
+    <base target="_self">
+    <meta name="description" content="Adobe Primetime (formerly Adobe Pass) provides an authentication mechanism that requires users to log in prior to viewing media. Users sign in to their ISP or content provider, and those... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/fireappbuilder/4. Add Components/Authorization Components/fire-app-builder-adobe-pass-auth-component.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-overview.html">Fire App Builder Introduction</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">Release Notes</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">Beginning-to-End Process Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">Miscellaneous Questions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Download Fire App Builder and Build an App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">Connect to Fire TV Through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">Take an App Tour</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-media-feed.html">Load Your Media Feed</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">Recipe Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-categories.html">Set Up the Categories Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-content.html">Set Up the Contents Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigator Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Configure Navigator -- Token-based Feeds</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Configure Navigator -- Open Feeds</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-customize-look-and-feel.html">Customize the Look and Feel</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-interfaces-and-components.html">Components Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">Load a Component</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">Create Your Own Fire App Builder Component</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">FreeWheel Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-crashlytics-component.html">Crashlytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Google Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items open"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazon Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazon In-App Purchasing Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Player Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Pull Updates from Github</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">Configure Live Streams</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Integrate Your Media into the Fire TV Catalog</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Use an Android TV Emulator to Run Your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">Querying JSON</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">Querying XML</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">Troubleshooting</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire App Builder </div>
+
+                    <h1>Adobe Pass Authorization Component</h1>
+
+                    <p>Adobe Primetime (formerly Adobe Pass) provides an authentication mechanism that requires users to log in prior to viewing media. Users sign in to their ISP or content provider, and those credentials then authenticate them with the app. You can learn more at <a href="http://www.adobe.com/marketing-cloud/primetime-tv-platform.html">Adobe Primetime here</a>.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Previously, when the component was coded, “Adobe Primetime” was called “Adobe Pass.” The name Adobe Pass is still used in the code, and the component’s name is AdobePassAuthComponent, so you will see the terms Adobe Pass and Adobe Primetime used somewhat interchangeably in the documentation.</div>
+
+<ul id="markdown-toc">
+  <li><a href="#the-user-experience-with-adobe-pass" id="markdown-toc-the-user-experience-with-adobe-pass">The User Experience with Adobe Pass</a></li>
+  <li><a href="#configuring-the-adobe-pass-auth-component" id="markdown-toc-configuring-the-adobe-pass-auth-component">Configuring the Adobe Pass Auth Component</a></li>
+  <li><a href="#configurecomponent" id="markdown-toc-configurecomponent">Step 1. Configure the Adobe Pass Auth Component in Your App</a></li>
+  <li><a href="#generatingyourkeys" id="markdown-toc-generatingyourkeys">Step 2. Encrypt Your Adobe Primetime Keys</a>    <ul>
+      <li><a href="#encrypting-other-values" id="markdown-toc-encrypting-other-values">Encrypting Other Values</a></li>
+    </ul>
+  </li>
+  <li><a href="#configurestrings" id="markdown-toc-configurestrings">Step 3. Configure the Strings for the Adobe Primetime Login Prompt</a></li>
+  <li><a href="#customizestyles" id="markdown-toc-customizestyles">Step 4. Customize the Styles for the Adobe Pass Screens</a></li>
+  <li><a href="#configurescreens" id="markdown-toc-configurescreens">Step 5. Configure Which Screen to Prompt Users to Log in</a></li>
+  <li><a href="#show-the-logo-of-the-logged-in-provider" id="markdown-toc-show-the-logo-of-the-logged-in-provider">Show the Logo of the Logged-in Provider</a></li>
+</ul>
+
+<h2 id="the-user-experience-with-adobe-pass">The User Experience with Adobe Pass</h2>
+
+<p>This example shows a configuration of Adobe Pass/Primetime with a sample app.</p>
+
+<p>When users click the Watch Now button on the Content Details screen, they’re greeted by an Adobe Primetime Login prompt:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_adobepassprompt.png" alt="" /><figcaption>Adobe Primetime login prompt</figcaption></figure>
+
+<p>Users open a browser on their computer and go to the indicated URL (in this example, www.example.com/amazon/firetv) to enter the registration code. The user also signs in to their cable provider.</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_adobepassbrowserlogin.png" alt="" /><figcaption>Authenticating with Adobe Pass requires users to sign in to their cable provider.</figcaption></figure>
+
+<p>After the user enters the registration code and cable provider credentials, the user is logged in and sees a success screen similar to this one. (You configure these URLs and screens through your Adobe Primetime account.)</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_adobepassloginsuccess.png" alt="" /><figcaption>Login success.</figcaption></figure>
+
+<p>Now the user turns back to the Fire TV and clicks the <strong>Submit</strong> button to log in. The app now lets the user watch media.</p>
+
+<p>If the login is unsuccessful, the user sees an error message on the screen indicating what went wrong:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_adobepasserror.png" alt="" /><figcaption>Possible error messages screen from an unsuccessful Adobe Primetime login attempt.</figcaption></figure>
+
+<h2 id="configuring-the-adobe-pass-auth-component">Configuring the Adobe Pass Auth Component</h2>
+
+<p>To configure the Adobe Pass Component, follow these five steps:</p>
+
+<ul>
+  <li><a href="#configurecomponent">Step 1. Configure the Adobe Pass Auth Component in Your App</a></li>
+  <li><a href="#generatingyourkeys">Step 2. Encrypt Your Adobe Pass Keys</a></li>
+  <li><a href="#configurestrings">Step 3. Configure the Strings for the Adobe Pass Login Prompt</a></li>
+  <li><a href="#customizestyles">Step 4. Customize the Styles for the Adobe Pass Screens</a></li>
+  <li><a href="#configurescreens">Step 5. Configure Which Screen to Prompt Users to Log in</a></li>
+</ul>
+
+<h2 id="configurecomponent">Step 1. Configure the Adobe Pass Auth Component in Your App</h2>
+
+<p>The Adobe Pass Auth Component provides three separate groups of files you can customize that configure the Adobe Pass information and the Fire TV user interface that users see.</p>
+
+<p>To configure the Adobe Pass Authorization Component:</p>
+
+<ol>
+  <li>Load the Adobe Pass Authorization component into your app. See <a href="fire-app-builder-load-a-component.html">Load a Component in Your App</a> for details about how to load a component into your app.</li>
+  <li>
+    <p>Remove any other authentication components that are loaded in your app (such as FacebookAuthComponent or LoginWithAmazonComponent). See <a href="fire-app-builder-load-a-component.html#removeacomponent">Remove a Component</a> for details.</p>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> You can load only <em>one</em> component per interface. For example, you cannot load both the Adobe Pass Auth component <em>and</em> the Pass Through Login component, because both components use the same <code class="highlighter-rouge">IAuthentication</code> interface. For a list of the components by interface, see <a href="fire-app-builder-interfaces-and-components.html">Components Overview</a>.</div>
+  </li>
+  <li>Go to <strong>AdobePassAuthComponent &gt; res &gt; values</strong> and open the <strong>custom.xml</strong> file.</li>
+  <li>
+    <p>Copy the following values and paste them into your app’s <strong>custom.xml</strong> file:</p>
+
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!--Adobe pass clientless API Requestor ID --&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobe_pass_requestor_id"</span><span class="nt">&gt;</span>YOUR REQUESTOR ID<span class="nt">&lt;/string&gt;</span>
+<span class="c">&lt;!-- Encrypted Adobe pass public key for your application, encrypt it using
+KeyEncrypterStandaloneUtility --&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"encrypted_adobe_pass_public_key"</span><span class="nt">&gt;</span>YOUR ENCRYPTED PUBLIC KEY<span class="nt">&lt;/string&gt;</span>
+<span class="c">&lt;!-- Encrypted Adobe pass secret key for your application, encrypt it using
+KeyEncrypterStandaloneUtility --&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"encrypted_adobe_pass_private_key"</span><span class="nt">&gt;</span>YOUR ENCRYPTED PRIVATE KEY<span class="nt">&lt;/string&gt;</span>
+<span class="c">&lt;!--Adobe pass clientless API registration URL for second screen login --&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobe_pass_registration_url"</span><span class="nt">&gt;</span>YOUR REGISTRATION URL<span class="nt">&lt;/string&gt;</span>
+<span class="c">&lt;!--Adobe pass clientless API time to live value for the registration token --&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobe_pass_registration_code_ttl"</span><span class="nt">&gt;</span>YOUR TIME TO LIVE VALUE<span class="nt">&lt;/string&gt;</span>
+<span class="c">&lt;!-- URL used by user to authenticate --&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobepass_login_instruction_line_2"</span><span class="nt">&gt;</span>Visit YOUR_AUTHENTICATION_URL<span class="nt">&lt;/string&gt;</span>
+<span class="c">&lt;!-- PseudoRandom strings, used to generate random key for encrypting/decrypting resources.
+These keys should always remain in sync with the keys used by encrypting utility --&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"random_key_1"</span><span class="nt">&gt;</span>random_key_1<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"random_key_2"</span><span class="nt">&gt;</span>random_key_2<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"random_key_3"</span><span class="nt">&gt;</span>random_key_3<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"random_key_4"</span><span class="nt">&gt;</span>random_key_4<span class="nt">&lt;/string&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Customize the values for each property as explained in the following table:</p>
+
+    <table class="grid">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>adobe_pass_requestor_id</code></td>
+      <td>Your Adobe Primetime requestor ID. This value is provided by Adobe.</td>
+    </tr>
+    <tr>
+      <td><code>encrypted_adobe_pass_public_key</code></td>
+      <td>Your encrypted Adobe Primetime public key (provided by Adobe). Although this key is provided to you by Adobe, you must encrypt it. See <a href="#generatingyourkeys">Encrypt Your Adobe Primetime Keys</a> for details on generating this key.</td>
+    </tr>
+    <tr>
+      <td><code>encrypted_adobe_pass_private_key</code></td>
+      <td>Your encrypted Adobe Primetime private key. Although this key is provided to you by Adobe, you must encrypt it. See <a href="#generatingyourkeys">Encrypt Your Adobe Primetime Keys</a> for details on generating this key.</td>
+    </tr>
+    <tr>
+      <td><code>adobe_pass_registration_url</code></td>
+      <td>The registration URL. This value is provided by Adobe.</td>
+    </tr>
+    <tr>
+      <td><code>adobe_pass_registration_code_ttl</code></td>
+      <td>How long until the registration code expires.</td>
+    </tr>
+    <tr>
+      <td><code>adobepass_login_instruction_line_2</code></td>
+      <td>Information about where users go to log in.</td>
+    </tr>
+    <tr>
+      <td><code>random_key_1</code></td>
+      <td>A random string used in encrypting the public and private keys. Type any alphanumeric string for the value.</td>
+    </tr>
+    <tr>
+      <td><code>random_key_2</code></td>
+      <td>A random string used in encrypting the public and private keys. Type any alphanumeric string for the value.</td>
+    </tr>
+    <tr>
+      <td><code>random_key_3</code></td>
+      <td>A random string used in encrypting the public and private keys. Type any alphanumeric string for the value.</td>
+    </tr>
+    <tr>
+      <td><code>random_key_4</code></td>
+      <td>A random string used in encrypting the public and private keys. Type any alphanumeric string for the value.</td>
+    </tr>
+  </tbody>
+</table>
+  </li>
+</ol>
+
+<h2 id="generatingyourkeys">Step 2. Encrypt Your Adobe Primetime Keys</h2>
+
+<p>When you set up an Adobe Primetime account, you’re provided with a public and private key. To keep these values secure, the Adobe Pass Component in Fire App Builder encrypts the keys with a security algorithm. The algorithm is implemented through the <code class="highlighter-rouge">ResourceObfuscator</code> and <code class="highlighter-rouge">ResourceObfuscationStandaloneUtility</code> classes in your app’s Utils folder.</p>
+
+<p>To encrypt your Adobe Primetime public and private key:</p>
+
+<ol>
+  <li>In the Android View, expand the <strong>Utils &gt; java &gt; com &gt; amazon &gt; utils &gt; security</strong> folder and open the <strong>ResourceObfuscationStandaloneUtility</strong> class.</li>
+  <li>
+    <p>In the <code class="highlighter-rouge">getRandomStringsForKey()</code> method, enter the values you used for <code class="highlighter-rouge">random_key_1</code>, <code class="highlighter-rouge">random_key_4</code>, and <code class="highlighter-rouge">random_key_3</code> (in the component’s custom.xml file) respectively.</p>
+
+    <p>For example, suppose you used the following random strings in your custom.xml file:</p>
+
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"random_key_1"</span><span class="nt">&gt;</span>calypso<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"random_key_2"</span><span class="nt">&gt;</span>dadadadadappppp<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"random_key_3"</span><span class="nt">&gt;</span>more_random_stuff<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"random_key_4"</span><span class="nt">&gt;</span>something_random<span class="nt">&lt;/string&gt;</span>
+</code></pre>
+    </div>
+    <p>You would customize the strings in the <code class="highlighter-rouge">ResourceObfuscationStandaloneUtility</code> class as follows:</p>
+
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">getRandomStringsForKey</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span>
+            <span class="s">"calypso"</span><span class="o">,</span>
+            <span class="s">"something_random"</span><span class="o">,</span>
+            <span class="s">"more_random_stuff"</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+</code></pre>
+    </div>
+
+    <p>In this example, the values are as follows:</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">calypso</code> is the value used for <code class="highlighter-rouge">random_key_1</code>.</li>
+      <li><code class="highlighter-rouge">something_random</code> is the value used for <code class="highlighter-rouge">random_key_4</code>.</li>
+      <li><code class="highlighter-rouge">more_random_stuff</code> is the value used for <code class="highlighter-rouge">random_key_3</code>.</li>
+    </ul>
+  </li>
+  <li>
+    <p>In the <code class="highlighter-rouge">getRandomStringsForIv()</code> method, enter the values you used for <code class="highlighter-rouge">random_key_2</code> and <code class="highlighter-rouge">random_key_3</code> respectively:</p>
+
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">getRandomStringsForIv</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span>
+                <span class="s">"dadadadadappppp"</span><span class="o">,</span>
+                <span class="s">"more_random_stuff"</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+    </div>
+
+    <p>In this example, the values are as follows:</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">dadadadadappppp</code> is the value used for <code class="highlighter-rouge">random_key_2</code>.</li>
+      <li><code class="highlighter-rouge">more_random_stuff</code> is the value used for <code class="highlighter-rouge">random_key_3</code>. (Same as before.)</li>
+    </ul>
+  </li>
+  <li>
+    <p>In the <code class="highlighter-rouge">getPlainTextToEncrypt()</code> method, insert your Adobe Pass public key in place of <code class="highlighter-rouge">Encrypt_this_text</code>:</p>
+
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code> <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getPlainTextToEncrypt</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Encrypt_this_text"</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Right-click the <strong>ResourceObfuscationStandaloneUtility.java</strong> file and select <strong>Run ‘ResourceObfusc…main()</strong>.</p>
+  </li>
+  <li>
+    <p>Look for the encrypted result printed to the console. It will look something like this:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>Encrypted version of plain text 123456789 is gnobHJEIxnkBMobJk7mBaQ==
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Copy your encrypted key. Paste this key into the <code class="highlighter-rouge">encrypted_adobe_pass_public_key</code> value in your app’s <strong>custom.xml</strong> file (as per the instructions in the previous section). For example:</p>
+
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"encrypted_adobe_pass_public_key"</span><span class="nt">&gt;</span>gnobHJEIxnkBMobJk7mBaQ==<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"encrypted_adobe_pass_private_key"</span><span class="nt">&gt;</span>YOUR ENCRYPTED PRIVATE KEY<span class="nt">&lt;/string&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Now insert your Adobe Pass <em>private</em> key into the <code class="highlighter-rouge">getPlainTextToEncrypt()</code> method, and run the script again (using the same random strings). Copy the encrypted key into the <code class="highlighter-rouge">encrypted_adobe_pass_private_key</code> string value in your app’s <strong>custom.xml</strong> file. For example:</p>
+
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"encrypted_adobe_pass_public_key"</span><span class="nt">&gt;</span>gnobHJEIxnkBMobJk7mBaQ==<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"encrypted_adobe_pass_private_key"</span><span class="nt">&gt;</span>bhjKDUYhdlkNNbUEYyvbn==<span class="nt">&lt;/string&gt;</span>
+</code></pre>
+    </div>
+
+    <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Save your random keys in a safe place, such as your company wiki, so that you always have an easy way to retrieve them.</div>
+  </li>
+</ol>
+
+<h3 id="encrypting-other-values">Encrypting Other Values</h3>
+
+<p>The encryption utility can be used for any keys you want to encrypt in your app, not just for Adobe Primetime keys. You can use the <code class="highlighter-rouge">ResourceObfuscatorStandaloneUitility</code> class to encrypt the keys and the <code class="highlighter-rouge">ResourceObfuscator</code> class to decrypt keys.</p>
+
+<p>The Adobe Pass Component already leverages the <code class="highlighter-rouge">ResourceObfuscator</code> class to decrypt the keys. The random strings you entered (in the custom.xml file in the component) get passed into the <code class="highlighter-rouge">ResourceObfuscator</code> class, which does the encryption. The AdobepassRestClient.java class in the Adobe Pass Auth Component instantiates this <code class="highlighter-rouge">ResourceObfuscator</code> class and passes in your random strings:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="n">ResourceObfuscator</span> <span class="n">obfuscator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ResourceObfuscator</span><span class="o">();</span>
+
+        <span class="n">String</span> <span class="n">plainKey</span> <span class="o">=</span> <span class="n">obfuscator</span><span class="o">.</span><span class="na">unobfuscate</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">getRandomStringsForKey</span><span class="o">(</span><span class="n">appContext</span><span class="o">),</span>
+                                                 <span class="n">getRandomStringsForIv</span><span class="o">(</span><span class="n">appContext</span><span class="o">));</span>
+        <span class="k">return</span> <span class="n">plainKey</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Note that this encryption technique is not hack proof. There are stronger methods of encryption. However, the algorithm does help prevent malicious users from easily finding and using your keys.</p>
+
+<h2 id="configurestrings">Step 3. Configure the Strings for the Adobe Primetime Login Prompt</h2>
+
+<p>You can configure the strings that appear in the Adobe Primetime Login prompt screen:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_adobepassprompt.png" alt="" /><figcaption>Adobe Primetime login prompt</figcaption></figure>
+
+<p>You can also control the text in the error messages screen that appears if the login fails:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_adobepasserror.png" alt="" /><figcaption>Adobe Pass error messages</figcaption></figure>
+
+<p>To customize the text on these screens:</p>
+
+<ol>
+  <li>Go to <strong>AdobepassAuthComponent &gt; res &gt; values</strong> and open the <strong>strings.xml</strong> file.</li>
+  <li>
+    <p>Customize the string values for each of the elements.</p>
+
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"app_name"</span><span class="nt">&gt;</span>AdobepassAuthComponent<span class="nt">&lt;/string&gt;</span>
+
+   <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"title_activity_adobe_authentication"</span><span class="nt">&gt;</span>Authentication<span class="nt">&lt;/string&gt;</span>
+   <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobepass_login_instruction_line_1"</span><span class="nt">&gt;</span>Go to your computer or mobile device<span class="nt">&lt;/string&gt;</span>
+   <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobepass_login_instruction_line_3"</span><span class="nt">&gt;</span>Enter the following case-sensitive code:<span class="nt">&lt;/string&gt;</span>
+   <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobepass_login_instruction_line_4"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/string&gt;</span>
+   <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"btn_submit"</span><span class="nt">&gt;</span>SUBMIT<span class="nt">&lt;/string&gt;</span>
+   <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"btn_get_new_code"</span><span class="nt">&gt;</span>GET NEW CODE<span class="nt">&lt;/string&gt;</span>
+   <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobe_pass_error_authentication_message"</span><span class="nt">&gt;</span>There was an error authenticating the account. Please try again later.<span class="nt">&lt;/string&gt;</span>
+   <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobe_pass_error_registration_message"</span><span class="nt">&gt;</span>There was an error authenticating the account. Please try again later.<span class="nt">&lt;/string&gt;</span>
+   <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"adobe_pass_no_authorization_message"</span><span class="nt">&gt;</span>Your subscription package does not include this video.
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="customizestyles">Step 4. Customize the Styles for the Adobe Pass Screens</h2>
+
+<p>You can customize the logo and colors of the Adobe Primetime login user interface in your app.</p>
+
+<p>To customize the styles:</p>
+
+<ol>
+  <li>Go to <strong>AdobepassAuthComponent &gt; res &gt; values</strong> and open the <strong>styles.xml</strong> file.</li>
+  <li>
+    <p>Customize the string values for each of the elements. See the preceding screenshots to see how the element names and text affects the display.</p>
+
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">"AppTheme"</span> <span class="na">parent=</span><span class="s">"android:Theme.Holo.Light.DarkActionBar"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/style&gt;</span>
+
+    <span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"company_logo"</span><span class="nt">&gt;</span>@drawable/logo<span class="nt">&lt;/drawable&gt;</span>
+    <span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"splash_background"</span><span class="nt">&gt;</span>@drawable/bg_generic_nopreview<span class="nt">&lt;/drawable&gt;</span>
+    <span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"action_button_focused"</span><span class="nt">&gt;</span>@drawable/btn_generic_focused<span class="nt">&lt;/drawable&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"action_button_text_color"</span><span class="nt">&gt;</span>#E6FFFFFF<span class="nt">&lt;/color&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"action_button_text_color_focused"</span><span class="nt">&gt;</span>#E6FFFFFF<span class="nt">&lt;/color&gt;</span>
+    <span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"action_button_normal"</span><span class="nt">&gt;</span>@drawable/btn_normal<span class="nt">&lt;/drawable&gt;</span>
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="configurescreens">Step 5. Configure Which Screen to Prompt Users to Log in</h2>
+
+<p>You need to configure which screens should implement the authentication. For example, you might want to require authentication only for the <code class="highlighter-rouge">PlaybackActivity</code> on the Content Renderer screens, so that unauthenticated users can be enticed by the media in your app and be motivated to sign in.</p>
+
+<p>To configure which screens require authentication:</p>
+
+<ol>
+  <li>Open the <strong>Navigator.json</strong> file (located in <strong>app &gt; assets</strong>).</li>
+  <li>
+    <p>In the <code class="highlighter-rouge">graph</code> object, locate the activity you want to restrict (such as <code class="highlighter-rouge">PlaybackActivity</code>), and change <code class="highlighter-rouge">verifyScreenAccess</code> to true. For example:</p>
+
+    <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="s2">"com.amazon.android.uamp.ui.PlaybackActivity"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"verifyScreenAccess"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"verifyNetworkConnection"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"onAction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTENT_RENDERER_SCREEN"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="show-the-logo-of-the-logged-in-provider">Show the Logo of the Logged-in Provider</h2>
+
+<p>When a user logs in to a provider through Adobe Pass, you can show the provider logo on the screen of the app. You do this by supplying an MVPD URL that contains the MVPD (multichannel video programming distributor) along with the MVPD’s logo.</p>
+
+<p>In your app’s <strong>custom.xml</strong> file, add a string called <code class="highlighter-rouge">mvpd_url</code> pointing to your MVPD data, like this:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"mvpd_url"</span><span class="nt">&gt;</span>http://somedomain.com/where/my/mvpd/details/reside<span class="nt">&lt;/string&gt;</span>
+</code></pre>
+</div>
+
+<p>The MVPD URL must include data in the following format:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"mvpdWhitelist"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"mvpd"</span><span class="p">:</span><span class="s2">"xyz123"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"loggedInImage"</span><span class="p">:</span><span class="s2">"http://www.xyz123.mysite.com/content/myimage.png"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"mvpd"</span><span class="p">:</span><span class="s2">"qrs456"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"loggedInImage"</span><span class="p">:</span><span class="s2">"http://www.qrs456.mysite.com/content/myfile.png"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Although your MVPD data will most likely contain more values, only the ones above are necessary for Fire App Builder to display the logo of the logged in provider.</p>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Customize the Look and Feel of Your App | Fire App Builder</title>
+    
+    <base target="_self">
+    <meta name="description" content="You can customize much of the app’s look and feel through your app’s custom.xml file (located in res &gt; values) as well as navigator.json (in app &gt; assets). Here’s a... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/fireappbuilder/3. Customize the Appearance/fire-app-builder-customize-look-and-feel.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-overview.html">Fire App Builder Introduction</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">Release Notes</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">Beginning-to-End Process Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">Miscellaneous Questions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Download Fire App Builder and Build an App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">Connect to Fire TV Through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">Take an App Tour</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-media-feed.html">Load Your Media Feed</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">Recipe Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-categories.html">Set Up the Categories Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-content.html">Set Up the Contents Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigator Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Configure Navigator -- Token-based Feeds</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Configure Navigator -- Open Feeds</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="fire-app-builder-customize-look-and-feel.html">Customize the Look and Feel</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-interfaces-and-components.html">Components Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">Load a Component</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">Create Your Own Fire App Builder Component</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">FreeWheel Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-crashlytics-component.html">Crashlytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Google Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazon Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazon In-App Purchasing Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Player Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Pull Updates from Github</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">Configure Live Streams</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Integrate Your Media into the Fire TV Catalog</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Use an Android TV Emulator to Run Your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">Querying JSON</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">Querying XML</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">Troubleshooting</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire App Builder </div>
+
+                    <h1>Customize the Look and Feel of Your App</h1>
+
+                    <p>You can customize much of the app’s look and feel through your app’s custom.xml file (located in <strong>res &gt; values</strong>) as well as navigator.json (in <strong>app &gt; assets</strong>). Here’s a list of what you can easily change in the app:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#change-the-font" id="markdown-toc-change-the-font">Change the Font</a></li>
+  <li><a href="#customize-the-splash-screen" id="markdown-toc-customize-the-splash-screen">Customize the Splash Screen</a></li>
+  <li><a href="#recommendations" id="markdown-toc-recommendations">Customize the Recommended Content Section</a></li>
+  <li><a href="#customize-the-homepage-layout" id="markdown-toc-customize-the-homepage-layout">Customize the Homepage Layout</a>    <ul>
+      <li><a href="#background-image-for-homepage-browse-layout" id="markdown-toc-background-image-for-homepage-browse-layout">Background Image for Homepage Browse Layout</a></li>
+    </ul>
+  </li>
+  <li><a href="#customize-the-content-cards" id="markdown-toc-customize-the-content-cards">Customize the Content Cards</a></li>
+  <li><a href="#customize-the-content-details" id="markdown-toc-customize-the-content-details">Customize the Content Details</a></li>
+  <li><a href="#customize-the-playback-overlay" id="markdown-toc-customize-the-playback-overlay">Customize the Playback Overlay</a></li>
+  <li><a href="#customize-the-search-bar" id="markdown-toc-customize-the-search-bar">Customize the Search Bar</a></li>
+  <li><a href="#customize-the-content-reload-time" id="markdown-toc-customize-the-content-reload-time">Customize the Content Reload Time</a></li>
+  <li><a href="#customize-the-app-icon" id="markdown-toc-customize-the-app-icon">Customize the App Icon</a></li>
+  <li><a href="#update-the-terms-of-use" id="markdown-toc-update-the-terms-of-use">Update the Terms of Use</a></li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ul>
+
+<h2 id="change-the-font">Change the Font</h2>
+
+<p>You can change your app’s fonts through the <code class="highlighter-rouge">branding</code> object in Navigator.json (inside <strong>app &gt; assets</strong>):</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="s2">"branding"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"globalTheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AppTheme"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lightFont"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Roboto Light"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"boldFont"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Roboto Bold"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"regularFont"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Roboto Regular"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Here’s how the fonts are used:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Where It’s Used</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">lightFont</code></td>
+      <td>Used in description and body text.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">boldFont</code></td>
+      <td>Used in titles.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">regularFont</code></td>
+      <td>Used in buttons and subtitles.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>(With the <code class="highlighter-rouge">globalTheme</code> property, there aren’t other values you can select.)</p>
+
+<p>You can assign any valid device or custom font for any of the three font options. For example, you could apply <code class="highlighter-rouge">Roboto Bold</code> to all three fonts if you want.</p>
+
+<p>You can use any of these device fonts:</p>
+
+<ul>
+  <li><strong>Amazon Ember fonts</strong>: Amazon Ember, Amazon Ember Bold, Amazon Ember Bold Italic, Amazon Ember Italic, Amazon Ember Light, Amazon Ember Light Italic, Amazon Ember Medium, Amazon Ember Medium Italic, Amazon Ember Thin, Amazon Ember Thin Italic, AndroidClock Regular, AndroidClock-Large Regular</li>
+  <li><strong>Roboto fonts</strong>: Roboto Black, Roboto Black Italic, Roboto Bold, Roboto Bold Italic, Roboto Condensed Bold, Roboto Condensed Bold Italic, Roboto Condensed Italic, Roboto Condensed Light, Roboto Condensed Light Italic, Roboto Condensed Regular, Roboto Italic, Roboto Light, Roboto Light Italic, Roboto Medium, Roboto Medium Italic, Roboto Regular, Roboto Thin, Roboto Thin Italic</li>
+  <li><strong>Verdana fonts</strong>: Verdana, Verdana Bold, Verdana Bold Italic, Verdana Italic</li>
+  <li><strong>Miscelleneous fonts</strong>: Carrois Gothic SC, Clockopia, Code2000, Coming Soon, Cutive Mono, Dancing Script, Dancing Script Bold
+Droid Sans Mono, Kindle Symbol, MotoyaLMaru W3 mono, MT Chinese Surrogates, NanumGothic, Source Code Pro Medium</li>
+</ul>
+
+<p>For example, if you wanted to use Amazon Ember fonts, you could customize the <code class="highlighter-rouge">branding</code> object like this:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="w">  </span><span class="s2">"branding"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"globalTheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AppTheme"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lightFont"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon Ember"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"boldFont"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon Ember Bold"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"regularFont"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon Ember"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>The screens would then look like this:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_fontsnewhome.png" alt="" /></figure>
+
+<p>And this:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_fontsnewdetails.png" alt="" /></figure>
+
+<p>These Amazon Ember fonts will be used in the titles, subtitles, descriptions, body, and buttons.</p>
+
+<p>Beyond using different device fonts, you can also use custom fonts. If you use a custom font, store the font in your app’s <strong>assets/fonts</strong> directory. Then provide the path to the font in the <code class="highlighter-rouge">branding</code> object, such as <code class="highlighter-rouge">fonts/Proxima-Nova-Light.tff</code> (instead of just entering <code class="highlighter-rouge">Proxima Nova Light</code>):</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="w">  </span><span class="s2">"branding"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"globalTheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AppTheme"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lightFont"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fonts/Proxima-Nova-Light.tff"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"boldFont"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fonts/Proxima-Nova-Light.tff"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"regularFont"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fonts/Proxima-Nova-Light.tff"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="customize-the-splash-screen">Customize the Splash Screen</h2>
+
+<p>By default, the sample app in Fire App Builder shows the following Splash screen:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_splashdiagram.svg" alt="Splash screen" /></figure>
+
+<p>You can adjust the Splash screen settings in the custom.xml file:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- Splash Screen Customization --&gt;</span>
+
+<span class="c">&lt;!-- Background to display on Splash Screen --&gt;</span>
+<span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"splash_background"</span><span class="nt">&gt;</span>@drawable/bg_generic_nopreview<span class="nt">&lt;/drawable&gt;</span>
+<span class="c">&lt;!-- Company logo to show on Splash Screen --&gt;</span>
+<span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"splash_logo"</span><span class="nt">&gt;</span>@drawable/fire_app_builder_white<span class="nt">&lt;/drawable&gt;</span>
+<span class="c">&lt;!-- Copyright string text color --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"copyright"</span><span class="nt">&gt;</span>#E6FFFFFF<span class="nt">&lt;/color&gt;</span>
+
+<span class="c">&lt;!-- End of Splash Screen Customization --&gt;</span>
+</code></pre>
+</div>
+
+<p>The references to <code class="highlighter-rouge">@drawable</code> refer to images in <strong>TVUIComponent &gt; res &gt; drawable</strong>. Either replace these images with your own customized images, or add unique image files and update the references in the XML to point to your images.</p>
+
+<p>The <code class="highlighter-rouge">bg_generic_nopreview</code> image is just a 1900 x 1080px black image. This same background is used for the fullbrowse homepage layout, but you can specify a different image reference here if you want.</p>
+
+<p>The <code class="highlighter-rouge">splash_logo</code> should contain your logo on a transparent background. The logo image size in the sample application is 356 x 108px, but you can use a larger image if you want. The image will be scaled down automatically.</p>
+
+<p>Your logo appears as an overlay on top of the splash screen’s background image, so if you’re customizing the images, make sure the combination looks good. A light logo on a dark background will have the necessary contrast.</p>
+
+<p>To customize the Copyright text on the Splash screen, see the <strong>strings.xml</strong> folder inside your app’s <strong>res &gt; values &gt; strings.xml</strong> folder.</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- Copyright string --&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"copyright"</span><span class="nt">&gt;</span>Copyright 2016. All Rights Reserved.<span class="nt">&lt;/string&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="recommendations">Customize the Recommended Content Section</h2>
+
+<p>On the Content Details screen, a list of “Recommended Content” appears below the content preview.</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram.svg" alt="Recommended content" /></figure>
+
+<p>For more details on configuring Recommended Content, see <a href="fire-app-builder-set-up-recipes-content.html#tags">“Recommended Content (Through Tags)”</a> in Set Up the Content Recipe.</p>
+
+<h2 id="customize-the-homepage-layout">Customize the Homepage Layout</h2>
+
+<p>The default home screen layout uses the <code class="highlighter-rouge">ContentBrowseActivity</code>. This layout is referred to as the “Homepage Browse layout.”</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_home.png" alt="Home" /><figcaption><b>Home with the <code>ContentBrowseActivity</code></b>. This view arranges the videos in various channels or groups. When you view a channel, the first video in that channel group appears as the featured background image, with its title and description in the upper-left.</figcaption></figure>
+
+<p>You can change the homepage layout to a more compressed view by using the <code class="highlighter-rouge">FullContentBrowseActivity</code> instead. This alternative homepage layout is referred to as the “Homepage Full Browse layout.”</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_fullbrowse.png" alt="Home with FullContentBrowseActivity" /><figcaption><b>Home with <code>FullContentBrowseActivity</code></b>. With this activity, all the videos appear in a more compressed grid, with the channels listed on the left. None of the videos are superimposed as large featured images in the background.</figcaption></figure>
+
+<p>The left sidebar can collapse in when the user is browsing through the video titles. This gives more space and focus to your video content.</p>
+
+<p>To change the homepage to the more compressed, Full Browse layout:</p>
+
+<ol>
+  <li>Open the <strong>Navigator.json</strong> file (located in <strong>app &gt; assets</strong>).</li>
+  <li>
+    <p>In the <code class="highlighter-rouge">graph</code> object, locate the <strong>CONTENT_HOME_SCREEN</strong>:</p>
+
+    <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="s2">"com.amazon.android.tv.tenfoot.ui.activities.ContentBrowseActivity"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"verifyScreenAccess"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"verifyNetworkConnection"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"onAction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTENT_HOME_SCREEN"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre>
+    </div>
+  </li>
+  <li>Change <code class="highlighter-rouge">ContentBrowseActivity</code> to <code class="highlighter-rouge">FullContentBrowseActivity</code>.</li>
+</ol>
+
+<p>The following diagram shows the properties you can customize on the homepage’s Browse layout (the default):</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_homepagediagram.svg" alt="" /></figure>
+
+<p>The <code>browse_background</code> property is set through the TVUIComponent’s custom.xml file and references an image rather than a hex value.</p>
+
+<p>The following diagram shows the properties for the homepage’s Full Browse layout:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_althomepagediagram.svg" alt="" /></figure>
+
+<p>The following code in your app’s custom.xml shows where these homepage options are set:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>    <span class="c">&lt;!-- Browse Customization --&gt;</span>
+
+    <span class="c">&lt;!-- The background gradient color, if no background drawable is provided.
+         Used in default_background.xml --&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"background_gradient_start"</span><span class="nt">&gt;</span>#000000<span class="nt">&lt;/color&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"background_gradient_end"</span><span class="nt">&gt;</span>#DDDDDD<span class="nt">&lt;/color&gt;</span>
+    <span class="c">&lt;!-- The header's bar color (left-hand navigation bar) --&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"browse_headers_bar"</span><span class="nt">&gt;</span>#0DFFFFFF<span class="nt">&lt;/color&gt;</span>
+    <span class="c">&lt;!-- Selected header text color --&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"browse_header_selected"</span><span class="nt">&gt;</span>#FFFFFFFF<span class="nt">&lt;/color&gt;</span>
+    <span class="c">&lt;!-- Non-selected header text color --&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"browse_header"</span><span class="nt">&gt;</span>#CCD8D8D8<span class="nt">&lt;/color&gt;</span>
+    <span class="c">&lt;!-- Header color when left-hand navigation bar is closed
+         and rows are showing full screen --&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"browse_row_header"</span><span class="nt">&gt;</span>#99FFFFFF<span class="nt">&lt;/color&gt;</span>
+    <span class="c">&lt;!-- Search orb color (the circle shape around the search icon) --&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"search_orb"</span><span class="nt">&gt;</span>#EE962D<span class="nt">&lt;/color&gt;</span>
+    <span class="c">&lt;!-- Header text size --&gt;</span>
+    <span class="nt">&lt;dimen</span> <span class="na">name=</span><span class="s">"browse_header_text"</span><span class="nt">&gt;</span>16sp<span class="nt">&lt;/dimen&gt;</span>
+    <span class="c">&lt;!-- Company logo --&gt;</span>
+    <span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"company_logo"</span><span class="nt">&gt;</span>@drawable/fire_app_builder_white_2<span class="nt">&lt;/drawable&gt;</span>
+
+    <span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"browse_bg_color"</span><span class="nt">&gt;</span>@drawable/bg_generic_nopreview<span class="nt">&lt;/drawable&gt;</span>
+    <span class="c">&lt;!-- End of Browse Customization --&gt;</span>
+</code></pre>
+</div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Disregard the comments in the Browse Customization section in the application’s custom.xml file above. Some of the comments are out of date, and some of the elements aren’t properly configured. See the following table to understand what each element does.</div>
+
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="60%" />
+   </colgroup>
+   <thead>
+      <tr>
+         <th>Element</th>
+         <th>Description</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><code>background_gradient_start</code></td>
+         <td>Does nothing. Ignore.</td>
+      </tr>
+      <tr>
+         <td><code>background_gradient_end</code></td>
+         <td>Does nothing. Ignore.</td>
+      </tr>
+      <tr>
+         <td><code>browse_headers_bar</code></td>
+         <td>Changes the color of the left navigation bar when you're in the compressed homepage layout.</td>
+      </tr>
+      <tr>
+         <td><code>browse_header_selected</code></td>
+         <td>Does nothing. Ignore.</td>
+      </tr>
+      <tr>
+         <td><code>browse_header</code></td>
+         <td>Does nothing. Ignore.</td>
+      </tr>
+      <tr>
+         <td><code>browse_row_header</code></td>
+         <td>For the homepage Browse layout, changes the category title above the videos rows. For the Full Browse layout, changes the color of the category titles in the left navigation bar. Both the selected and non-selected category titles receive this color. The selected category titles are bold, and the non-selected category titles are softer and muted.</td>
+      </tr>
+      <tr>
+         <td><code>search_orb</code></td>
+         <td>Does nothing. Ignore.</td>
+      </tr>
+      <tr>
+         <td><code>browse_header_text</code></td>
+         <td>Changes the size of the category titles.</td>
+      </tr>
+      <tr>
+         <td><code>company_logo</code></td>
+         <td>This image is stored in <b>TVUIComponent &gt; res &gt; drawable</b>. Replace the image with your own logo. The image should be transparent and at least 356px wide by 108px tall. You can use a larger image &mdash; it will be scaled down in the app.</td>
+      </tr>
+      <tr>
+         <td><code>browse_bg_color</code></td>
+         <td>The background image used for both the Full Browse layout and the Splash screen. This image is stored in <b>TVUIComponent &gt; res &gt; drawable</b>. The image is a 1900 x 1080px PNG image with a black color.</td>
+      </tr>
+      <tr>
+         <td><code>browse_background</code></td>
+         <td>This element isn't included in application's custom.xml file &mdash; Ignore. You can simply add the line. This element controls the background image used for the homepage <i>Browse</i> layout. More details about this image are listed below.</td>
+      </tr>
+      <tr>
+         <td><code>browse_bg_color</code></td>
+         <td>This element isn't included in application's custom.xml file &mdash; Ignore. You can simply add the line. This element controls the background image used for the homepage <i>Full Browse</i> layout. More details about this image are listed below.</td>
+      </tr>
+   </tbody>
+</table>
+
+<h3 id="background-image-for-homepage-browse-layout">Background Image for Homepage Browse Layout</h3>
+
+<p>The background color for the homepage Browse layout (the default) isn’t configurable through the custom.xml values above because there’s a line missing in custom.xml:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    &lt;drawable name="browse_background"&gt;@drawable/bg_generic&lt;/drawable&gt;
+</code></pre>
+</div>
+
+<p>You can add this line to your application’s custom.xml file and control your background image file used here. Alternatively, you can edit the custom.xml inside <strong>TVUIComponent &gt; res &gt; values &gt; custom.xml</strong>. (The custom.xml file in your app just overwrites the other values in XML files, so setting the property in either file will work. But as a best practice, leave the component files unedited and just edit your application’s config.xml file.)</p>
+
+<p>Like the <code class="highlighter-rouge">browse_bg_color</code> element, the drawable image referenced here is stored in <strong>TVUIComponent &gt; res &gt; drawable</strong> (assuming you’re browsing in the Android view).</p>
+
+<p>The bg_generic.png image looks like this:</p>
+
+<figure><a target="_blank" href="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/firetv/fireappbuilder/bg_generic.png"><img style="max-width: 80%" class="docimage " src="docs/firetv/fireappbuilder/images/bg_generic.png" alt="" /></a><figcaption><b>bg_generic.png</b>. The image is a 1900 x 1080px PNG image with transparency in the upper-right area.</figcaption></figure>
+
+<p>To change this default image, create your own image file with the same dimensions. Make the upper-right corner transparent, similar to the existing image. Name it <strong>bg_generic.png</strong> and replace the existing file in <strong>TVUIComponent &gt; res &gt; drawable</strong>.</p>
+
+<p>To make it easy to customize the image, you can <a href="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/firetv/fireappbuilder/bg_generic.psd._V523835574_.zip">download the Photoshop file</a> used to create the image. In Photoshop, view the image’s layers and use the Paint Bucket tool to apply a new color to the two layers. In the downloadable file, the color has been changed from black to blue to make the colors more apparent.</p>
+
+<p>For the Full Browse layout, you change this image in a similar way — by replacing the bg_generic_nopreview.png in <strong>TVUIComponent &gt; res &gt; drawable</strong> or by creating a unique image file and updating the reference to it in your application’s custom.xml file.</p>
+
+<h2 id="customize-the-content-cards">Customize the Content Cards</h2>
+
+<p>You can customize the background colors and dimensions of the content cards. The “cards” refers to the rectangular thumbnails that show the media details. For example, the Home screen displays a row of content cards under the “Jamaican Attractions” title.</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_moviecardsdiagram.svg" alt="Fire App Builder cards home" /></figure>
+
+<p>The following code shows the available settings to customize the appearance of these cards:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- Movie Info Card Customization --&gt;</span>
+
+<span class="c">&lt;!-- Background color of the card info --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"card_info_bg"</span><span class="nt">&gt;</span>#2B2B2B<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Card info title text color --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"card_info_title_text"</span><span class="nt">&gt;</span>#E6FFFFFF<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Card info content text color --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"card_info_content_text"</span><span class="nt">&gt;</span>#FFFFFFFF<span class="nt">&lt;/color&gt;</span>
+<span class="nt">&lt;dimen</span> <span class="na">name=</span><span class="s">"card_info_title_text"</span><span class="nt">&gt;</span>8sp<span class="nt">&lt;/dimen&gt;</span>
+<span class="c">&lt;!-- Card info content text size --&gt;</span>
+<span class="nt">&lt;dimen</span> <span class="na">name=</span><span class="s">"card_info_content_text"</span><span class="nt">&gt;</span>12sp<span class="nt">&lt;/dimen&gt;</span>
+<span class="c">&lt;!-- Card info selected title text size --&gt;</span>
+<span class="nt">&lt;dimen</span> <span class="na">name=</span><span class="s">"card_info_selected_title_text"</span><span class="nt">&gt;</span>10sp<span class="nt">&lt;/dimen&gt;</span>
+<span class="c">&lt;!-- Card info selected content text size --&gt;</span>
+<span class="nt">&lt;dimen</span> <span class="na">name=</span><span class="s">"card_info_selected_content_text"</span><span class="nt">&gt;</span>15sp<span class="nt">&lt;/dimen&gt;</span>
+
+<span class="c">&lt;!-- End of Movie Info Card Customization --&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="customize-the-content-details">Customize the Content Details</h2>
+
+<p>You can customize various elements on the Content Details screen:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_contentdetailsdiagram.svg" alt="" /></figure>
+
+<p>The relevant code in the custom.xml file is as follows:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- Details Customization --&gt;</span>
+
+<span class="c">&lt;!-- Text color for unfocused action button --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"action_button_text_color"</span><span class="nt">&gt;</span>#E6FFFFFF<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Text color for focused action button --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"action_button_text_color_focused"</span><span class="nt">&gt;</span>#E6FFFFFF<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Background color for focused action button --&gt;</span>
+<span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"action_button_focused"</span><span class="nt">&gt;</span>@drawable/btn_generic_focused<span class="nt">&lt;/drawable&gt;</span>
+<span class="c">&lt;!-- Background color for normal state of action button --&gt;</span>
+<span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"action_button_normal"</span><span class="nt">&gt;</span>@drawable/btn_normal<span class="nt">&lt;/drawable&gt;</span>
+<span class="c">&lt;!-- Details description title text color --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"details_description_title"</span><span class="nt">&gt;</span>#E6FFFFFF<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Details description body text color --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"details_description_body"</span><span class="nt">&gt;</span>#FFFFFFFF<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Action button text size --&gt;</span>
+<span class="nt">&lt;dimen</span> <span class="na">name=</span><span class="s">"action_text"</span><span class="nt">&gt;</span>14sp<span class="nt">&lt;/dimen&gt;</span>
+<span class="c">&lt;!-- Details description title text size --&gt;</span>
+<span class="nt">&lt;dimen</span> <span class="na">name=</span><span class="s">"details_description_title_text"</span><span class="nt">&gt;</span>24sp<span class="nt">&lt;/dimen&gt;</span>
+<span class="c">&lt;!-- Details description body text size --&gt;</span>
+<span class="nt">&lt;dimen</span> <span class="na">name=</span><span class="s">"details_description_body_text"</span><span class="nt">&gt;</span>16sp<span class="nt">&lt;/dimen&gt;</span>
+
+<span class="c">&lt;!-- End of Details Customization --&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="customize-the-playback-overlay">Customize the Playback Overlay</h2>
+
+<p>You can customize the playback overlay on the Content Renderer screen:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_contentrendererdiagram.svg" alt="Content renderer screen" /></figure>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- Playback Overlay Customization --&gt;</span>
+
+<span class="c">&lt;!-- Background color of the playback overlay --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"playback_background"</span><span class="nt">&gt;</span>#9922262A<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Background color of the progress bar --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"playback_background_progress_bar"</span><span class="nt">&gt;</span>#FF373737<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Color of buffered progress bar --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"playback_buffered_progress"</span><span class="nt">&gt;</span>#FF5A5A5A<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Color of the progress bar --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"progress_bar"</span><span class="nt">&gt;</span>#FFDADADA<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Text color of the playback time --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"playback_time_text"</span><span class="nt">&gt;</span>#FFFFFFFF<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Hide More options status activation status--&gt;</span>
+<span class="nt">&lt;bool</span> <span class="na">name=</span><span class="s">"hide_more_options"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/bool&gt;</span>
+<span class="c">&lt;!-- End of Playback Overlay Customization --&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="customize-the-search-bar">Customize the Search Bar</h2>
+
+<p>You can customize the background color and text used in the search bar.</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_searchscreendiagram.svg" alt="Search screen diagram" /></figure>
+
+<p>The relevant code in custom.xml is as follows:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>
+<span class="c">&lt;!-- Search Bar Customization --&gt;</span>
+
+<span class="c">&lt;!-- Background color of search orb --&gt;</span>
+<span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">"search_orb_background"</span><span class="nt">&gt;</span>#EE962D<span class="nt">&lt;/color&gt;</span>
+<span class="c">&lt;!-- Icon to display inside of search orb --&gt;</span>
+<span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"search_icon"</span><span class="nt">&gt;</span>@drawable/ic_search<span class="nt">&lt;/drawable&gt;</span>
+<span class="c">&lt;!-- Background color of Search screen --&gt;</span>
+<span class="nt">&lt;drawable</span> <span class="na">name=</span><span class="s">"search_background"</span><span class="nt">&gt;</span>@drawable/bg_gradient_search<span class="nt">&lt;/drawable&gt;</span>
+<span class="c">&lt;!-- Search hint text --&gt;</span>
+<span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"search_bar_hint"</span><span class="nt">&gt;</span>I\'m looking for…<span class="nt">&lt;/string&gt;</span>
+
+<span class="c">&lt;!-- End of Search Bar Customization --&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="customize-the-content-reload-time">Customize the Content Reload Time</h2>
+
+<p>You can customize the time it takes for content to reload (content refers to  the videos and other details that your app loads from the media feed). By default the reload time is 14400000 milliseconds, or 4 hours. After this time expires, the Navigator.js file (located in <strong>app &gt; assets &gt; resources</strong>) will reload the recipes and data loader settings.</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- Content Reload time in milliseconds --&gt;</span>
+
+<span class="nt">&lt;integer</span> <span class="na">name=</span><span class="s">"time_to_reload_content"</span><span class="nt">&gt;</span>14400000<span class="nt">&lt;/integer&gt;</span>
+
+<span class="c">&lt;!-- End Content Reload time in milliseconds --&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="customize-the-app-icon">Customize the App Icon</h2>
+
+<p>You can change the app icon. This is the image thumbnail that appears in your list of apps on Fire TV.</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_appicondiagram.svg" alt="App icon" /></figure>
+
+<p>To update this file, change the ic_launcher.svg files. Switch to the <strong>Project</strong> view, and then look in <strong>app &gt; src &gt; main &gt; res</strong>. There are 4 app icon files, each corresponding to different screen sizes:</p>
+
+<ul>
+  <li>mipmap-hdpi (72x72px)</li>
+  <li>mipmap-mdpi (48x48px)</li>
+  <li>mipmap-xhdpi (96x96px)</li>
+  <li>mipmap-xxhdpi (96x96px)</li>
+</ul>
+
+<p>The app icon has a transparent background.</p>
+
+<h2 id="update-the-terms-of-use">Update the Terms of Use</h2>
+
+<p>The Terms of Use section appears in the footer of the app and links to the terms_of_use.html file (located in <strong>app &gt; assets</strong>).</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_termsofusediagram.svg" alt="Terms of Use diagram" /></figure>
+
+<p>The Terms of Use file is a sample file that you should edit before distributing your app.  For instance, you might choose to include terms of use, an end user license agreement, privacy notices, and/or other legal notices in this file.</p>
+
+<p>The Terms of Use file also includes notices for open source components that are built in to the sample app by default. These notices are provided as a convenience only. Amazon makes no representations as to their accuracy or completeness and will not be responsible for any inaccuracies or incompleteness.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>To use components that leverage authentication, ads, in-app purchasing, or analytics, see <a href="fire-app-builder-interfaces-and-components.html">Components Overview</a>.</p>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

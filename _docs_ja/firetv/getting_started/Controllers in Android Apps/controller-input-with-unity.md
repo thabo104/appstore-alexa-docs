@@ -3,7 +3,7 @@ title: Unityによるコントローラー入力
 permalink: controller-input-with-unity.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: Integrating Your App with the Fire TV Home Screen Launcher
 permalink: launcher-integration.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 
