@@ -10,7 +10,7 @@ github: true
 After you [load the media feed][fire-app-builder-load-media-feed], you need to configure two recipes that Fire App Builder will use to pull the media categories and content from your feed. "Recipes" are simple files that contain settings (in the form of keys and values) that Fire App Builder uses when building your app. The two recipes you must configure are as follows:
 
 *  **[Categories recipe][fire-app-builder-set-up-recipes-categories]**: Provides different containers to group your media. 
-*  **[Contents recipe][fire-app-builder-set-up-recipes-categories]**:  Maps the properties from your media feed, such as the titles, descriptions, video URLs, and images, to Fire App Builder's content model.
+*  **[Contents recipe][fire-app-builder-set-up-recipes-content]**:  Maps the properties from your media feed, such as the titles, descriptions, video URLs, and images, to Fire App Builder's content model.
 
 If you look at the Home screen with the default Lightcast feed, you'll see that the media is organized in different rows. On the default home screen, you can see that media is grouped under "Jamaica Attractions" and "The Country Jamaica," among other groups.
 
