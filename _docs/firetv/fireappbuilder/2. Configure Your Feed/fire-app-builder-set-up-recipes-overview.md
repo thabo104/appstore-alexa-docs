@@ -18,7 +18,7 @@ If you look at the Home screen with the default Lightcast feed, you'll see that 
 
 Since every media feed usually has a different structure (for example, your feed might use the term "channels" instead of "categories," "img" instead of "image," and so on, as well as different hierarchies and structures) you will need to write some query syntax to target the categories and content in your feed. 
 
-If your feed is JSON, you will use [Jayway JsonPath syntax](https://github.com/jayway/JsonPath) to write the queries. If your feed is XML, you will use [XPath syntax here](http://www.w3schools.com/xsl/xpath_syntax.asp) to write the queries.
+If your feed is JSON, you will use [Jayway JsonPath syntax](https://github.com/jayway/JsonPath) to write the queries. If your feed is XML, you will use [XPath syntax here](https://www.w3schools.com/xml/xpath_syntax.asp) to write the queries.
 
 After you query for the categories and content from your query, you then apply a selector to get the category or content text from the results. This selector, called `matchList`, doesn't use Jayway JsonPath or XPath expressions but rather is custom Fire App Builder syntax. 
 
