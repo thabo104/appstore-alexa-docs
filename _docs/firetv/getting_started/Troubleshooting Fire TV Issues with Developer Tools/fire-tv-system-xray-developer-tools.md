@@ -16,7 +16,7 @@ The Developer Tools Menu provides a number of options that provide real-time met
 
 ## Invoke the Developer Tools Menu
 
-{% include content/{{site.language}}/firetv-enabledevtools.md %}
+{% include content/{{site.language}}/fire/firetv-enabledevtools.md %}
 
 The following screenshot shows the options on the Developer Tools menu:
 
@@ -27,15 +27,15 @@ Not all the tools shown above are available in Generation 1 Fire TV devices. How
 
 ## System X-Ray
 
-System X-Ray gathers instantaneous system metrics and displays on top of the screen as an overlay. When toggled on, the overlay will always visible on the screen. 
+System X-Ray gathers instantaneous system metrics and displays on top of the screen as an overlay. When toggled on, the overlay will always visible on the screen.
 
 {% include image.html file="firetv/getting_started/images/firetv_xrayall" type="png" %}
 
 The System X-Ray overlay contains details about the following:
 
-*  Display 
-*  CPU 
-*  Memory 
+*  Display
+*  CPU
+*  Memory
 *  Network
 
 For deep-dive into System X-Ray, see [System X-Ray on Fire TV][fire-tv-system-xray].
@@ -57,7 +57,7 @@ Information displayed in the Multimedia panel is divided into two sections: AUDI
 * Input Bitrate
 * Secure
 
-**VIDEO**: 
+**VIDEO**:
 
 * Codec
 * Hardware Accelerated
@@ -69,7 +69,7 @@ Information displayed in the Multimedia panel is divided into two sections: AUDI
 
 ## Snapshot
 
-Snapshot provides a way for users to gather instantaneous all metrics information through `adb` command. Whenever you input the following command, metric information will display in the command line. 
+Snapshot provides a way for users to gather instantaneous all metrics information through `adb` command. Whenever you input the following command, metric information will display in the command line.
 
 ```
 adb shell dumpsys activity service com.amazon.ssm/.OverlayService
@@ -77,7 +77,7 @@ adb shell dumpsys activity service com.amazon.ssm/.OverlayService
 
 System X-Ray must be running for this command to function.
 
-Here's a sample output: 
+Here's a sample output:
 
 ```
 SERVICE com.amazon.ssm/.OverlayService 3dde6680 pid=10820
@@ -226,7 +226,7 @@ Note that Fire TV Stick (Generation 2) does not include screen size calibration.
 
 Currently some select third-party apps, such as Netflix and HBO Go, display recommendations on the Fire TV home screen in specific rows.
 
-Developer Options allows you to turn on a row called "Recommended By Your Apps" (displayed below the Netlix and HBO Go rows). This "Recommended By Your Apps" row will show recommendations sent from third-party apps. 
+Developer Options allows you to turn on a row called "Recommended By Your Apps" (displayed below the Netlix and HBO Go rows). This "Recommended By Your Apps" row will show recommendations sent from third-party apps.
 
 Currently, turning this row on shows only recommendations that your own app sends. When the feature is fully released, it will show recommendations from all third-party apps the user has installed (excluding some apps such as Netflix and HBO Go, which display recommendations on their own rows).
 

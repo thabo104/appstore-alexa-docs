@@ -8,7 +8,7 @@ toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/assistive-technologies-for-fire-os.md device="firetv" %}
+{% include content/{{site.language}}/fire/assistive-technologies-for-fire-os.md device="firetv" %}
 
 ## Related Resources
 

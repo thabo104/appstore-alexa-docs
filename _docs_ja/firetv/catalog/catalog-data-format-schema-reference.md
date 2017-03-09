@@ -8,7 +8,6 @@ github: true
 ---
 
 This topic provides a dictionary of the elements available in the Catalog Data Format (CDF) schema, used to construct a catalog of your media content for upload to Amazon Fire TV.
->>>>>>> tomunreleased
 
 For an overview of the structure of a CDF catalog file and how these elements interact, see [About the Catalog Data Format (CDF)][about-the-cdf] The catalog examples in the downloadable [cdf-examples.zip](https://s3.amazonaws.com/com.amazon.aftb.cdf/cdf-examples.zip) file also can be very useful in understanding how a catalog file is put together. Download [catalog.xsd](https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd) to examine the XSD directly.
 

@@ -8,6 +8,6 @@ toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/installation-location.md device="firetv" %}
+{% include content/{{site.language}}/fire/installation-location.md device="firetv" %}
 
 {% include links.html %}
