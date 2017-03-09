@@ -263,7 +263,7 @@ folders:
 #    jurl: /fire-tv-recommendations-overview.html
 #    ref: fire-tv-recommendations-overview
 #
-#  - title: Try Out Recommendations
+#  - title: Test Your Recommendations
 #    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-recommendations-testing
 #    jurl: /fire-tv-recommendations-testing.html
 #    ref: fire-tv-recommendations-testing
