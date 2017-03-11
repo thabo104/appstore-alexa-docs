@@ -3,7 +3,7 @@ title: Dolby Integration Guidelines for Fire TV
 permalink: amazon-fire-tv-dolby-integration-guidelines.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

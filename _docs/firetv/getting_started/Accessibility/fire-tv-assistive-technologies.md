@@ -4,11 +4,11 @@ sidebar: firetv
 product: Fire TV
 permalink: fire-tv-assistive-technologies.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-assistive-technologies
-toc: false
+toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/assistive-technologies-for-fire-os.md device="firetv" %}
+{% include content/{{site.language}}/fire/assistive-technologies-for-fire-os.md device="firetv" %}
 
 ## Related Resources
 

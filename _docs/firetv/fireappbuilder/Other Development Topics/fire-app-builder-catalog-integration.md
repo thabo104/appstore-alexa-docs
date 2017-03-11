@@ -3,7 +3,7 @@ title: Integrate Your Media into the Fire TV Catalog
 permalink: fire-app-builder-catalog-integration.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

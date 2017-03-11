@@ -3,7 +3,7 @@ title: Load Your Media Feed
 permalink: fire-app-builder-load-media-feed.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

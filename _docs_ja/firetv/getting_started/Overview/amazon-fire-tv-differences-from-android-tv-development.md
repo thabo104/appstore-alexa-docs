@@ -3,7 +3,7 @@ title: Fire TV開発とAndroid TV開発の違い
 permalink: amazon-fire-tv-differences-from-android-tv-development.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

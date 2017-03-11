@@ -3,7 +3,7 @@ title: Release Notes
 permalink: fire-app-builder-release-notes.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

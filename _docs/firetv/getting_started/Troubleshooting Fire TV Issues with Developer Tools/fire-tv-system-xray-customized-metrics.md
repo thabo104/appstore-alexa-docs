@@ -4,7 +4,7 @@ permalink: fire-tv-system-xray-customized-metrics.html
 sidebar: firetv
 product: Fire TV
 reviewers: Dongjun Huang (primary), Andy Halverson (SA)
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: TVプラットフォーム向けのデザインとユーザーエクス�
 permalink: design-and-user-experience-guidelines.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

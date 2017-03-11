@@ -5,7 +5,7 @@ product: Fling SDK
 permalink: unity-controller-plugin.html
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 This page will walk you through the steps of setting up your Unity project to include the Amazon Fling Controller Unity plugin. It will also provide instruction on how to use the plugin and additional steps for building for iOS, Android, and Fire OS. For additional information see the FlingSampleApp in the samples folder of the plugins SDK.  

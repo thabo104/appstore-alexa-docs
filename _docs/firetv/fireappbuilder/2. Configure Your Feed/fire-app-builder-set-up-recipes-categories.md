@@ -3,7 +3,7 @@ title: Set Up the Category Recipe
 permalink: fire-app-builder-set-up-recipes-categories.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

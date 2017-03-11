@@ -3,7 +3,7 @@ title: ライブストリーミングを構成する
 permalink: fire-app-builder-live-stream-configuration.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

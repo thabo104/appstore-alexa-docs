@@ -6,7 +6,7 @@ permalink: fire-tv-development-framework-comparison.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-development-framework-comparison
 reviewers: Russell Beattie, Mihir Choudhary, Jonathan Richardson, Pete Schwab, Mary Galvin, Chris DeNamur, Mario Mancia, Luca Sale, Stephen Whitney, Alexander Budyszewick
 last_updated: 12-13-2016
-toc: false
+toc-style: kramdown
 github: true
 ---
 

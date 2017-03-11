@@ -4,7 +4,7 @@ permalink: device-and-platform-specifications.html
 navtabs: true
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

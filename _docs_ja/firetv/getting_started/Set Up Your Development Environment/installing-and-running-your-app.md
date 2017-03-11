@@ -3,7 +3,7 @@ title: アプリのインストールと実行
 permalink: installing-and-running-your-app.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

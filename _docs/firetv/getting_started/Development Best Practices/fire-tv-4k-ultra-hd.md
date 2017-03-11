@@ -3,7 +3,7 @@ title: Playing 4K Ultra HD Videos on Fire TV
 permalink: fire-tv-4k-ultra-hd.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

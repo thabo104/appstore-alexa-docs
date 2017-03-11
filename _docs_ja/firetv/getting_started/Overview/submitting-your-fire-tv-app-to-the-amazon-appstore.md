@@ -3,7 +3,7 @@ title: AmazonアプリストアへのFire TV対応アプリの申請
 permalink: submitting-your-fire-tv-app-to-the-amazon-appstore.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

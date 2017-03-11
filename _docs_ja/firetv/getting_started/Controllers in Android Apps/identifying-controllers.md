@@ -3,7 +3,7 @@ title: コントローラーの識別
 permalink: identifying-controllers.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

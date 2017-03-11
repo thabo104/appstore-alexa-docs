@@ -3,7 +3,7 @@ title: Getting Started with Catalog Integration
 permalink: getting-started-catalog-integration.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

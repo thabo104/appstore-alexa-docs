@@ -3,7 +3,7 @@ title: JSONでクエリを実行する
 permalink: fire-app-builder-querying-json.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

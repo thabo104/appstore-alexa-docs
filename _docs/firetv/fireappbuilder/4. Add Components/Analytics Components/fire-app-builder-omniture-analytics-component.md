@@ -3,7 +3,7 @@ title:  Omniture Analytics Component
 permalink: fire-app-builder-omniture-analytics-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

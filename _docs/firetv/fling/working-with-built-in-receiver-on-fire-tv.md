@@ -5,7 +5,7 @@ product: Fling SDK
 permalink: working-with-built-in-receiver-on-fire-tv.html
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 The Amazon Fire TV and Fire TV Stick have a built-in receiver application that supports Amazon Fling service. This means your controller app can send supported media content over to the Fire TV and Fire TV Stick without the need for a specific companion Fire TV application.

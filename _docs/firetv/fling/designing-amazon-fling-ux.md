@@ -5,7 +5,7 @@ product: Fling SDK
 permalink: designing-amazon-fling-ux.html
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 Amazon Fling allows you to send media sources from your mobile application to the Amazon Fire TV. Your app on the mobile device is the **controller**, while the app that plays your content on the Fire TV is the **player**.  

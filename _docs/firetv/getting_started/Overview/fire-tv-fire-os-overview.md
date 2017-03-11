@@ -5,9 +5,9 @@ sidebar: firetv
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-os-overview
 product: Fire TV
 github: true
-toc: false
+toc-style: kramdown
 ---
 
-{% include content/{{site.language}}/fire-os-overview.md device="firetv" %}
+{% include content/{{site.language}}/fire/fire-os-overview.md device="firetv" %}
 
 {% include links.html %}

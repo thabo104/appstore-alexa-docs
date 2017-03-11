@@ -3,7 +3,7 @@ title: Implementing Search in Fire TV
 permalink: implementing-search-fire-tv.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

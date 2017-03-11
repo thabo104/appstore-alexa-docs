@@ -3,7 +3,7 @@ title: Configure Live Streams
 permalink: fire-app-builder-live-stream-configuration.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

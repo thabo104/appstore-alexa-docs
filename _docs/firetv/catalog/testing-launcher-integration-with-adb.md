@@ -3,7 +3,7 @@ title: Testing Launcher Integration with ADB
 permalink: testing-launcher-integration-with-adb.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

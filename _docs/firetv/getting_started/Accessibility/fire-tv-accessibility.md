@@ -4,11 +4,11 @@ sidebar: firetv
 product: Fire TV
 permalink: fire-tv-accessibility.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-accessibility
-toc: false
+toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/accessibility-in-fire-os.md device="firetv" %}
+{% include content/{{site.language}}/fire/accessibility-in-fire-os.md device="firetv" %}
 
 ## Related Resources
 

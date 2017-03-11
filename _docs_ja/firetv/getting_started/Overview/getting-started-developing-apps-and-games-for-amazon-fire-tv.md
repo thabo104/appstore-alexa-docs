@@ -3,7 +3,7 @@ title: Amazon Fire TV用アプリとゲームを開発するための準備
 permalink: getting-started-developing-apps-and-games-for-amazon-fire-tv.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

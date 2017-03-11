@@ -3,7 +3,7 @@ title: Fire TV Catalog Integration Frequently Asked Questions (FAQs)
 permalink: fire-tv-catalog-integration-faqs.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -82,7 +82,7 @@ Q: What if we send several CDF updates within quick succession of each other? Wh
 :   A: If you upload your CDF files faster than Amazon can process them, Amazon will just ignore the older copies and use the most recent file version. In other words, you cannot overload Amazon's system by uploading an abundance of catalogs to the S3 system.
 
 Q: Does Amazon provide any tools to test my catalog integration?    
-:   A: You can test your app's integration with Amazon's home screen launcher using the Android Debug Bridge (ADB). See [Testing Launcher Integration with ADB][testing-launcher-integration-with-adb]. You can also download and try out Amazon's test app, which simulates the requests made by Amazon's home screen launcher and can be used to test your app's integration with the launcher. See [Testing Fire TV Launcher Integration with the Integration Test App][testing-launcher-integration-with-the-test-app]. Additionally, to assist you with testing, we can whitelist specific Fire TV devices on request.
+:   A: You can test your app's integration with Amazon's home screen launcher using the Android Debug Bridge (ADB). See [Testing Launcher Integration with ADB][testing-launcher-integration-with-adb]. You can also download and Test Your Amazon's test app, which simulates the requests made by Amazon's home screen launcher and can be used to test your app's integration with the launcher. See [Testing Fire TV Launcher Integration with the Integration Test App][testing-launcher-integration-with-the-test-app]. Additionally, to assist you with testing, we can whitelist specific Fire TV devices on request.
 
 Q: Do I need to rename my CDF file every time that I upload a new version of it to S3? How does Amazon determine which CDF file to use if my S3 bucket contains multiple files?    
 :   A: Amazon uses timestamps to determine the newest version of your CDF file and will always ingest and use the most recent version.   

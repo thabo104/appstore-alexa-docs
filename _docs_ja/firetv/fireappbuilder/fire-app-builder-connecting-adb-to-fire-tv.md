@@ -3,11 +3,11 @@ title: ADBを使用してFire TVに接続する
 permalink: fire-app-builder-connecting-adb-to-fire-tv.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/adb.md %}
+{% include content/{{site.language}}/fire/adb.md %}
 
 ## Android TVエミュレーターを使用する
 

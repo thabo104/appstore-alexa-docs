@@ -3,7 +3,7 @@ title: Installing and Running Your App
 permalink: installing-and-running-your-app.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: 新しいFire App Builderコンポーネントを作成する
 permalink: fire-app-builder-create-a-new-component.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

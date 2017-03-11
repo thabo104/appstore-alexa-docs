@@ -3,7 +3,7 @@ title: アプリのルックアンドフィールをカスタマイズする
 permalink: fire-app-builder-customize-look-and-feel.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

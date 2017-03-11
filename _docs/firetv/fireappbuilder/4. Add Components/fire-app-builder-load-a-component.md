@@ -3,7 +3,7 @@ title: Load a Component in Your App
 permalink: fire-app-builder-load-a-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

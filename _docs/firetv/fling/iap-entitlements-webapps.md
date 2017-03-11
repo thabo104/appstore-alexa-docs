@@ -5,7 +5,7 @@ sidebar: in_app_purchasing
 product: In-App Purchasing
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 Entitlement represents a one-time purchase to unlock access to features or content within an app or game.

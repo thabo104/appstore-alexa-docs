@@ -3,7 +3,7 @@ title: Amazon Fire TVのよくある質問 (FAQ)
 permalink: amazon-fire-tv-sdk-frequently-asked-questions.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

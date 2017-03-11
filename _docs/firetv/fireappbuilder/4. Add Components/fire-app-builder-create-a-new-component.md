@@ -3,7 +3,7 @@ title: Create a New Fire App Builder Component
 permalink: fire-app-builder-create-a-new-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

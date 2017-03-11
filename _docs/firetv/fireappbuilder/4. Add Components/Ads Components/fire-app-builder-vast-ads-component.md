@@ -3,7 +3,7 @@ title: VAST Ads Component
 permalink: fire-app-builder-vast-ads-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

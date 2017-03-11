@@ -3,7 +3,7 @@ title: Querying XML
 permalink: fire-app-builder-querying-xml.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

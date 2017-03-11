@@ -3,7 +3,7 @@ title: コントローラーの概要
 permalink: supporting-controllers-on-amazon-fire-tv.html
 sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

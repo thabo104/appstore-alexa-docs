@@ -4,7 +4,7 @@ permalink: fire-app-builder-overview.html
 sidebar: fireappbuilder_ja
 product: Fire App Builder
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 Fire App Builderに用意されているJavaベースのフレームワークを使用すると、Amazon Fire TV向けのストリーミングメディアAndroidアプリを短時間で簡単に開発できます。

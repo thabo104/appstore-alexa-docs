@@ -3,1025 +3,1140 @@ title: カタログデータ形式（CDF）インジェストレポートのメ�
 permalink: catalog-data-format-ingestion-report-messages.html
 sidebar: catalog_ja_ja
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
+A catalog data format (CDF) ingestion report is generated for each [catalog file][integrating-your-catalog-with-fire-tv] that an Amazon Fire TV client uploads to Amazon. The report states whether the catalog file was successfully integrated into Fire TV's universal browse and search. If it was not, the report provides details that explain the failure. The report also provides warnings and suggestions that can be used to improve the file.
 
-<h2>はじめに</h2>
-<p>カタログデータ形式（CDF）インジェストレポートは、Amazon Fire TV クライアントから Amazon にアップロードされる<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/overview/integrating-your-catalog-with-fire-tv">カタログファイル</a>ごとに生成されます。このレポートには、Fire TV のユニバーサル閲覧・検索にカタログファイルが正常に統合されたかどうかが記録されています。正しく統合されていない場合、そのエラーに関する詳しい説明が記載されます。レポートにはまた、ファイルの不備をなくす上で参考となる警告と推奨事項も記載されています。</p>
-<p>このページでは、インジェストレポートに出力されるエラーや警告、推奨事項を挙げ、その原因について説明するとともに、それぞれの状況への解決策を紹介しています。インジェストレポートの取得方法と内容の詳細については、「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/receiving-and-understanding-the-catalog-ingestion-report">カタログインジェストレポートの取得とその内容</a>」を参照してください。</p>
-<p><strong>注意:</strong> このページは、インジェストレポートに出力される可能性のあるメッセージを網羅したものではありません。レポートには、Amazon の検証ツールによって生成された XML 検証エラーが出力される場合もあります。これらのメッセージの具体的な表現は、実際に使用されたツールによって異なります。メッセージは決して親切とは言えず、技術者でなければわからないような表現もあります。そのようなメッセージがレポートに見られた場合は、開発者や IT 担当者、または Amazon ビジネスデベロッパーマネージャーに連絡して、その意味や必要な解決策を問い合わせてください。読みやすいインジェストレポートを入手するためにも、カタログを提出する<em>前に</em>カタログファイルを検証することをお勧めします。ファイルの検証の詳細については、「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-integration#手順 2:CDF ファイルの検証">スキーマを使って CDF ファイルを検証する方法</a>」を参照してください。</p>
-<h3>要件</h3>
-<p>このページは、技術者以外のユーザーが第三者から頼まれて問題を解決したり、開発者が必要な情報を参照したりする状況を想定して書かれています。読者には、少なくとも、XML ファイルの扱いに関する基本的な知識が必要です（要素とは何か、属性とは何か、タグの閉じ方など）。また、「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/receiving-and-understanding-the-catalog-ingestion-report">カタログインジェストレポートの取得とその内容</a>」に書かれている内容に精通している必要があります。</p>
-<h3>問題の修正に適した担当者</h3>
-<p>一般に、カタログファイルは次の 2 とおりの方法で作成されます。</p>
-<ul>
-<li>自動。メディアデータベースから取り出されたメタデータ情報で自動的に作成されます。この処理はスクリプトやコードによって実行されます。あらかじめ決められたスケジュールに従ってデータが取得され、CDF 対応のカタログファイルに変換されて、S3 バケットにアップロードされます。一度正しく実行されればそれ以降は人が介入せずに済むため、通常はこの方法をお勧めします。<br></li>
-<li>手動。カタログファイルの保守担当者が定期的に作成します。<br></li>
-</ul>
-<p>カタログファイルの作成を自動で行っている会社では、カタログファイルにではなく、ソースデータベースそのものに、いくつかの修正や変更を加える必要があります。データベースへのアクセスはデータベース管理者に限定されていることが多く、変更作業にはデータベース管理者の協力が必要です。アクセス権を与えてもらうか、変更を依頼してください。また、データから CDF ファイルを作成するコードの不備をなくすために、開発者とも連携する必要があります。</p>
-<p>カタログの保守を手動で行っている会社では、アクセス制限は比較的緩いと考えられます。<br></p>大きなカタログになると、警告や推奨事項が数千件に達することも少なくありません。通常、数千件の警告のうち、実際に当てはまる項目はほんの一握りです。一括検索・置換によって修正できる問題であることは多くありません。たとえば、キャストとクルーの情報を 10,000 件の項目に追加するように推奨された場合、それに従うためには、それぞれの項目を個別に修正する必要があります。警告と推奨事項は、カタログの使用を妨げるものではありません。それらに対処するかどうかは、時間とリソースの余裕次第となります。<br>
-<h3>このドキュメントで使われている表記について</h3>
-<p>"CDF ファイル" は、開発者様が Amazon にアップロードするカタログデータファイルです。インジェストレポートの基になるファイルでもあります。<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-data-format-schema-reference">カタログデータ形式（CDF）スキーマ</a>に準拠する XML ファイルとなっています。このファイルの内容について詳しくは、「<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-data-format-cdf-overview">カタログデータ形式（CDF）について</a>」を参照してください。</p>
-<p><em><strong>WorkID</strong></em> は、問題が見つかった作品の要素（Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra）の ID です。たとえば、映画の場合、CDF ファイルの movie 項目にある ID 要素の値を指します。インジェストレポート内の各メッセージを展開すると、そのメッセージの原因となった作品ごとの ID が表示されます。</p>
-<p><strong>詳細メッセージ</strong>は、レポート内の特定のエラー、警告、推奨事項を展開したときに、<em>WorkID</em> ごとに別途表示されるテキストです。その作品に関して、メッセージの理由が具体的に記載されます。ただし、詳細メッセージが存在しない場合もあります。その場合は <em>WorkID</em> のみが記載されます。</p>
-<p>入れ子になった要素はピリオドで区切って表記されます。たとえば、TvEpisode.Credits.CrewMember は、TvEpisode 要素の子である Credits 要素の子要素 CrewMember を表します。Movie.ID は movie 要素の子として存在する ID 要素です。</p>
-<p>強調以外の用途で使われている<em>斜体</em>は、実際の値のプレースホルダーです。数字は <em>nn</em>、テキスト文字列は <em>ss</em>、URL は <em>url</em> のように表記されます。</p>
-<p>例に使用されている省略記号（...）は、そのテーマに関連した何らかの情報が、簡潔にわかりやすく表記する関係で省略されていることを示します。<br></p>
-<hr>
+This page lists errors, warnings, and suggestions seen in an ingestion report, explains their cause, and suggests a resolution to each situation. For more information on obtaining and using your ingestion report, see [receiving-and-understanding-the-catalog-ingestion-report].
 
+{% include note.html content="This is not a comprehensive list of every message you can see in an ingestion report. Your report can also contain XML validation errors generated by one of our validation tools. The wording of those messages varies according to the specific tool used. The messages are less user-friendly and might look like gibberish to a less technical person. If any message in the report has that effect on you, please consult a developer, IT professional, or your Amazon Business Developer Manager to help with the interpretation and required fix. Performing a catalog file validation _before_ you submit the catalog is both a best practice and a way to make the ingestion reports easier to read. See [Validating the CDF File Against the Schema][about-the-cdf#validating] for more details on file validation." %}
 
-<a class="anchor" name="エラー"></a>
+* TOC
+{:toc}
 
-<a class="anchor" name="errors"></a>
+### Requirements
 
-<h2>エラー</h2>
-<p>インジェストレポートの「エラー」セクションに 1 つでもメッセージが存在する場合、CDF ファイルは拒否されます。報告されたエラーをすべて修正して、CDF ファイルを再提出してください。</p>
-<p><strong>エラー</strong><br>
-<a href="#bad_file_parse">Invalid catalog file</a><br>
-<a href="#id_not_unique">ID is not unique</a><br>
-<a href="#miniseries_id_invalid">MiniSeriesEpisode references an invalid MiniSeriesID</a><br>
-<a href="#miniseries_not_found">Referenced MiniSeries not found</a><br>
-<a href="#tvseason_not_found">Referenced TvSeason not found</a><br>
-<a href="#tvshow_not_found">Referenced TvShow not found</a><br>
-<a href="#title_required">Title is required and cannot be blank</a><br>
-<a href="#too_many_invalid_images">Too many invalid images</a><br>
-<a href="#seasonid_invalid">TvEpisode references an invalid SeasonID</a><br>
-<a href="#showid_invalid_tvepisode">TvEpisode references an invalid ShowID</a><br>
-<a href="#showid_invalid_tvspecial">TvSpecial references an invalid ShowID</a></p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
-<a class="anchor" id="bad_file_parse"></a>
-<h3>エラー: Invalid catalog file</h3>
-<p><strong>詳細メッセージ</strong>: Unable to parse provided catalog</p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルが無効です。このメッセージに遭遇することはまれです。実際に多く見られるのはむしろ XML の検証に関するエラーメッセージです。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">Xmllint などのツールや、Notepad++ の検証プラグインを使用してファイルを検証し、エラー箇所を特定してください。ファイルが無効である理由としては、終了タグの漏れ、未定義の要素の使用（単純なタイプミスのほか、XML であるにもかかわらず大文字と小文字が区別されていないなど）、要素の順序の誤り、必要な要素や属性の漏れなど、さまざまな原因が考えられます。このエラーを回避するには、<em>事前に</em>ファイルを検証してから提出するようにしてください。</p>
-<p><strong>関連項目</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><a title="カタログデータ形式 - リファレンス（1.3）" target="_blank" href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/catalog/catalog-data-format-schema-reference">カタログデータ形式（CDF）スキーマリファレンス</a><br>
-<a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog-13.xsd">カタログデータ形式（CDF）XSD</a><br>
-<a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/cdf-examples.zip">サンプル CDF ファイルのダウンロード</a><br>
-<a href="https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/catalog/catalog-integration#手順 2:CDF ファイルの検証">スキーマを使って CDF ファイルを検証する方法</a></p>
-<hr>
+The information on this page is intended to help less technical users who are asked to address these issues, as well as developers in need of a reference. Readers should have at least a basic knowledge of working in an XML file (you know what elements and attributes are and know to close your tags) and be familiar with the information in [receiving-and-understanding-the-catalog-ingestion-report].
 
-<h3>エラー: ID is not unique</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> <em>nn</em> works have this ID</p>
-<p><strong>例:</strong> <strong>tt123456</strong> 6 works have this ID</p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">同じ ID を持った複数の項目がファイルに存在します。CDF ファイル内の作品（Movie、TvShow、TvSeason、TvEpisode など）には、それぞれ一意の ID が割り当てられている必要があります。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">この ID（この例では tt123456）に該当するすべての作品を CDF ファイルで特定してください。1 つを除くすべての ID を変更します。変更後の ID が一意となるように注意してください。CDF ファイルのソースがデータベースである場合、作品のデータベースキーをその ID の一部とすることで一意性を確保することが可能です。ID の割り当てに関する方針を決め、確実に従うようにしてください。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>注意:</strong> ID を変更するときは、その参照も変更する必要があります。たとえば、TvShow.ID を変更した場合、その TV 番組の TvSeason.ShowID、TvEpisode.ShowID、TvSpecial.ShowID、Extra.RelatesToID 要素もすべて、それに合わせて変更する必要があります。</p>
-<p><strong>該当する可能性のある要素</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ID<br>
-<br>
-<em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
+### Who Should Fix These Problems?
 
-<h3>エラー: MiniSeriesEpisode references an invalid MiniSeriesID</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em></p>
-<p><strong>例:</strong> <strong>tt123456</strong> MiniSeriesEpisode references an invalid MiniSeriesID</p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された作品 ID（この例では tt123456）の MiniSeriesEpisode に MiniSeriesID 要素が存在しますが、その内容が空です。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルで、このエピソードの従属先となる MiniSeries 要素を探します。存在する場合は、その ID 値をメモします。MiniSeriesEpisode の項目に移動してその MiniSeriesID 要素を特定し、MiniSeries ID に合わせて値を変更します。つまり、MiniSeries.ID = MiniSeriesEpisode.MiniSeriesID となっている必要があります。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">MiniSeries 要素が存在せず、追加する予定もない場合は、MiniSeriesEpisode.MiniSeriesID ではなく MiniSeriesEpisode.MiniSeriesTitle を使用してください。MiniSeriesEpisode.MiniSeriesTitle は、指定されたとおりに使用されます。何かに合わせる必要はありません。この方法が推奨されるのは、MiniSeries 要素が存在しない場合のみです。もっと厳密に TvSpecial としてタグ付けできないかも併せて検討してください。</p>
-<p><strong>該当する可能性のある要素</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">MiniSeries.ID<br>
-MiniSeriesEpisode.MiniSeriesID<br>
-MiniSeriesEpisode.MiniSeriesTitle</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
+In general, catalog files are created in one of two ways:
 
-<h3>エラー: Referenced MiniSeries not found</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> MiniSeriesEpisode references a missing MiniSeries with ID of <em>ss</em></p>
-<p><strong>例:</strong> <strong>tt123456</strong> MiniSeriesEpisode references a missing MiniSeries with ID of nn654321</p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された作品 ID（この例では tt123456）の MiniSeriesEpisode には、その MiniSeries の ID（この例では nn654321）が指定されていますが、対応する MiniSeries がカタログ内に存在しません。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルで、このエピソードの従属先となる MiniSeries 要素を探します。存在する場合は、その ID 値をメモします。MiniSeriesEpisode の項目に移動してその MiniSeriesID 要素を特定し、MiniSeries ID に合わせて値を変更します。つまり、MiniSeries.ID = MiniSeriesEpisode.MiniSeriesID となっている必要があります。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">MiniSeries 要素が存在せず、追加する予定もない場合は、MiniSeriesEpisode.MiniSeriesID ではなく MiniSeriesEpisode.MiniSeriesTitle を使用してください。MiniSeriesEpisode.MiniSeriesTitle は、指定されたとおりに使用されます。何かに合わせる必要はありません。この方法が推奨されるのは、MiniSeries 要素が存在しない場合のみです。もっと厳密に TvSpecial としてタグ付けできないかも併せて検討してください。</p>
-<p><strong>該当する可能性のある要素</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">MiniSeries.ID<br>
-MiniSeriesEpisode.MiniSeriesID<br>
-MiniSeriesEpisode.MiniSeriesTitle</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
+*   Automatically, with metadata information pulled from a media database. This is accomplished through a script or other code that grabs the data on a preordained schedule, transforms it into a CDF-compliant catalog file, and uploads it to your S3 bucket. This is the preferred method because once it's working correctly, it will run without the need for human interaction.
+*   Manually, with someone maintaining the catalog file over time.
 
-<h3>エラー: Referenced TvSeason not found</h3>
-<p><strong>詳細メッセージ:</strong> <strong><em>WorkID</em> TvEpisode references a missing TvSeason with ID of <em>ss</em></strong></p>
-<p><strong><strong>例:</strong> <strong>tt123456</strong> TvEpisode references a missing TvSeason with ID of nn654321</strong></p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された作品 ID（この例では tt123456）の TvEpisode には、その TvSeason の ID（この例では nn654321）が指定されていますが、対応する TvSeason がカタログ内に存在しません。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルで、このエピソードの従属先となる TvSeason 要素を探します。TvSeason が存在する場合は、その ID 値をメモします。TvEpisode の項目に移動してその SeasonID 要素を特定し、TvSeason の ID に合わせて値を変更します。つまり、TvSeason.ID = TvEpisode.SeasonID となっている必要があります。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvSeason 要素が存在せず、追加する予定もない場合は、TvEpisode.SeasonID ではなく TvEpisode.SeasonInShow を使用してください。オプションの TvEpisode.SeasonTitle を追加することもできます。TvEpisode.SeasonInShow と TvEpisode.SeasonTitle は、指定されたとおりに使用されます。何かに合わせる必要はありません。この方法が推奨されるのは TvSeason 要素が存在しない場合のみです。空にするのは、その情報をどうしても入手できない場合に限定してください。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>注意:</strong> 番組のリリースや編成がシーズンによって分類されているとは限りません。そのような場合は、TvEpisode ではなく、TvShow に関連付けられた TvSpecial として、または MiniSeries に関連付けられた MiniSeriesEpisode として作品を分類することを検討してください。</p>
-<p><strong>該当する可能性のある要素</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvSeason.ID<br>
-TvEpisode.SeasonID<br>
-TvEpisode.SeasonInShow<br>
-TvEpisode.SeasonTitle</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
+If your company uses the automated method, some fixes and changes must be made in the source database itself rather than the catalog file. Database access is often restricted to database administrators, so work with them to either allow you access or to make the changes for you. You might also have to work with developers to perfect the code that creates the CDF file from the data.
 
-<h3>エラー: Referenced TvShow not found</h3>
-<p><strong>詳細メッセージ:</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em><strong>WorkID</strong></em> TvEpisode references a missing TvShow with ID of <em>ss</em><br>
-<em><strong>WorkID</strong></em> TvSpecial references a missing TvShow with ID of <em>ss</em></p>
-<p><strong>例:</strong> <strong>tt123456</strong> TvEpisode references a missing TvShow with ID of nn654321</p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">この問題は、TvEpisode または TvSpecial で発生する場合があります。指定された作品 ID（この例では tt123456）のエピソードまたは特別番組には、その TvShow の ID（この例では nn654321）が指定されていますが、対応する TvShow がカタログ内に存在しません。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルで、エピソードまたはスペシャルの従属先となる TvShow 要素を探します。TvShow が存在する場合は、その ID 値をメモします。TvSpecial または TvEpisode の項目に移動してその ShowID 要素を特定し、その番組の ID に合わせて値を変更します。つまり、TvShow.ID = TvEpisode.ShowID または TvShow.ID = TvSpecial.ShowID となっている必要があります。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvShow が存在せず、追加する予定もない場合は、ShowID ではなく ShowTitle を使用してください。ShowTitle は、指定されたとおりに使用されます。何かに合わせる必要はありません。この方法が推奨されるのは TvShow 要素が存在しない場合のみです。この場合、TvShow 要素を追加すべきかどうか、または、もっと厳密に TvSpecial としてタグ付けできないかという問題が浮上します。</p>
-<p><strong>該当する可能性のある要素</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvShow.ID<br>
-TvEpisode.ShowID<br>
-TvSpecial.ShowID<br>
-TvEpisode.ShowTitle<br>
-TvSpecial.ShowTitle</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
+If your company maintains your catalog manually, access is probably less restrictive.
 
-<h3>エラー: Title is required and cannot be blank</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em></p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルには、指定された ID の Title 要素が存在しますが、対応するタイトルテキストが存在しません。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID の作品を CDF ファイルから探し、その Title 要素を特定して、テキストを指定してください。以下に例を示します。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>修正前:</strong> &lt;Title locale="en-US"&gt;&lt;/Title&gt;<br>
-<strong>修正後:</strong> &lt;Title locale="en-US"&gt;City Lights&lt;/Title&gt;</p>
-<p><strong>該当する可能性のある要素</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.Title<br>
-<br>
-<em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
+Be aware that in the case of large catalogs it isn't unusual to see warnings and suggestions that number in the thousands. Normally they're only a handful of warnings, just applied to thousands of entries. These don't tend to be issues that can be fixed through a blanket search-and-replace change. For instance, a suggestion to add cast and crew information to 10,000 entries requires addressing each entry individually. Warnings and suggestions do not prevent your catalog from being used, so if and when you address them depends on your time and resources.
 
-<h3>エラー: Too many invalid images</h3>
-<p>「<a href="#image">画像関連のメッセージ</a>」を参照してください。<br></p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
+### Conventions Used in This Document
 
-<h3>エラー: TvEpisode references an invalid SeasonID</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em></p>
-<p><strong>例:</strong> <strong>tt123456</strong> TvEpisode references an invalid SeasonID</p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された作品 ID（この例では tt123456）の TvEpisode に SeasonID 要素が存在しますが、その内容が空です。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルで、このエピソードの従属先となる TvSeason 要素を探します。存在する場合は、その ID 値をメモします。TvEpisode の項目に移動してその SeasonID 要素を特定し、TvSeason の ID に合わせて値を変更します。つまり、TvSeason.ID = TvEpisode.SeasonID となっている必要があります。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvSeason 要素が存在せず、追加する予定もない場合は、TvEpisode.SeasonID ではなく TvEpisode.SeasonInShow を使用してください。TvEpisode.SeasonInShow は単なる数値であり、指定されたとおりに使用されます。オプションの TvEpisode.SeasonTitle 要素を追加することもできます。この要素も指定されたとおりに使用されます。何かに合わせる必要はありません。この方法が推奨されるのは、TvSeason 要素が存在しない場合のみです。</p>
-<p><strong>該当する可能性のある要素</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvSeason.ID<br>
-TvEpisode.SeasonID<br>
-TvEpisode.SeasonInSeries<br>
-TvEpisode.SeasonTitle</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
-<a class="anchor" id="showid_invalid_tvepisode"></a>
-<h3>エラー: TvEpisode references an invalid ShowID</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em></p>
-<p><strong>例:</strong> <strong>tt123456</strong> TvEpisode references an invalid ShowID</p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された作品 ID（この例では tt123456）の TvEpisode に ShowID 要素が存在しますが、その内容が空です。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルで、このエピソードの従属先となる TvShow 要素を探します。存在する場合は、その ID 値をメモします。TvEpisode の項目に移動してその ShowID 要素を特定し、TvShow の ID に合わせて値を変更します。つまり、TvShow.ID = TvEpisode.ShowID となっている必要があります。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvShow が存在せず、追加する予定もない場合は、TvEpisode.ShowID ではなく TvEpisode.ShowTitle を使用してください。ShowTitle は、指定されたとおりに使用されます。何かに合わせる必要はありません。この方法が推奨されるのは TvShow 要素が存在しない場合のみです。この場合、TvShow 要素を追加すべきかどうか、または、もっと厳密に TvSpecial としてタグ付けできないかという問題が浮上します。</p>
-<p><strong>該当する可能性のある要素</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvShow.ID<br>
-TvEpisode.ShowID<br>
-TvEpisode.ShowTitle</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr>
-<a class="anchor" id="showid_invalid_tvspecial"></a>
-<h3>エラー: TvSpecial references an invalid ShowID</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em></p>
-<p><strong>例:</strong> <strong>tt123456</strong> TvSpecial references an invalid ShowID</p>
-<p><strong>問題</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された作品 ID（この例では tt123456）の TvSpecial に ShowID 要素が存在しますが、その内容が空です。</p>
-<p><strong>対処方法</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルで、この特別番組の従属先となる TvShow 要素を探します。存在する場合は、その ID 値をメモします。TvSpecial の項目に移動してその ShowID 要素を特定し、TvShow の ID に合わせて値を変更します。つまり、TvShow.ID = TvSpecial.ShowID となっている必要があります。</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvShow が存在せず、追加する予定もない場合は、TvSpecial.ShowID ではなく TvSpecial.ShowTitle を使用してください。ShowTitle は、指定されたとおりに使用されます。何かに合わせる必要はありません。この方法が推奨されるのは、TvShow 要素が存在しない場合のみです。TvSpecial の場合、この情報は省略可能です。ShowID/ShowTitle を省略してもかまいません。</p>
-<p><strong>該当する可能性のある要素</strong></p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvShow.ID<br>
-TvSpecial.ShowID<br>
-TvSpecial.ShowTitle</p>
-<hr>
-<hr>
+The "CDF file" is the catalog data file you upload to Amazon, upon which the ingestion report is based. It is an XML file that conforms to the [catalog data format (CDF) schema][catalog-data-format-schema-reference]. See [About the Catalog Data Format][about-the-cdf] for details on the file contents.
+
+_**WorkID**_ is the ID of the work element (Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra) in which the issue was found. For instance, in the case of a movie it refers to the value of an ID element under a movie entry in your CDF file. Each message in the ingestion report expands to show the ID of each work that caused that message.
+
+**Detail message** is the additional text you'll see for each _WorkID_ when you expand a particular error, warning, or suggestion in the report. It provides more specific information about the message's cause in relation to that work. Not all messages have detail messages, in which case you only see the _WorkID_.
+
+Nested elements are given using a period notation. For instance, TvEpisode.Credits.CrewMember refers to the CrewMember element that is a child of the Credits element that is in turn a child of the TvEpisode element. Movie.ID is an ID element that is the child of a movie element.
+
+Anything in _italics_ not used for emphasis is a placeholder for an actual value; _nn_ for a number, _ss_ for a text string_, url_ for a full URL, etc.
+
+Ellipses (...) used in examples indicate that some material not related to the topic was omitted in the interests of brevity and clarity.
+
+* * *
+
+## Errors
+
+Any message in the Errors section of your ingestion report causes your CDF file to be rejected. Correct all reported errors and then resubmit the CDF file.
+
+**Errors**
+
+[Invalid catalog file](#bad_file_parse)<br/>
+[ID is not unique](#id_not_unique)<br/>
+[MiniSeriesEpisode references an invalid MiniSeriesID](#miniseries_id_invalid)<br/>
+[Referenced MiniSeries not found](#miniseries_not_found)<br/>
+[Referenced TvSeason not found](#tvseason_not_found)<br/>
+[Referenced TvShow not found](#tvshow_not_found)<br/>
+[Title is required and cannot be blank](#title_required)<br/>
+[Too many invalid images](#too_many_invalid_images)<br/>
+[TvEpisode references an invalid SeasonID](#seasonid_invalid)<br/>
+[TvEpisode references an invalid ShowID](#showid_invalid_tvepisode)<br/>
+[TvSpecial references an invalid ShowID](#showid_invalid_tvspecial)
+
+* * *
+
+### Error: Invalid catalog file {#bad_file_parse}
+
+**Detail message**: Unable to parse provided catalog
+
+**What went wrong**
+
+The CDF file is invalid. It's unlikely that you'll see this message; instead, you'll see XML validation failure messages.
+
+**What to do**
+
+Use a tool such as Xmllint or the validation plug-in for Notepad++ to validate your file and point you to errors. An invalid file can be caused by many things: omitting a closing tag, using an undefined element (which can simply be a typo - and also remember that XML is case-sensitive), putting the elements in the wrong order, or not including a required element or attribute. To avoid this error, you should always validate your file _before_ you submit it.
+
+**See also**
+
+[Fire TV Catalog Data Format (CDF) Schema][catalog-data-format-schema-reference]<br/>
+[Catalog Data Format (CDF) XSD](https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog-13.xsd)<br/>
+[Downloadable example CDF files](https://s3.amazonaws.com/com.amazon.aftb.cdf/cdf-examples.zip)<br/>
+[Validating the CDF File Against the Schema][about-the-cdf#validating]
+
+* * *
+
+### Error: ID is not unique {#id_not_unique}
+
+**Detail message:** _**WorkID**_ _nn_ works have this ID
+
+**Example:** **tt123456** 6 works have this ID
+
+**What went wrong**
+
+Your file has at least two entries that have the same ID. Each work (Movie, TvShow, TvSeason, TvEpisode, etc.) in your CDF file must have a unique ID.
+
+**What to do**
+
+Find each of the works with this ID (tt123456 in the example) in your CDF file. Change the ID for all but one of them, making sure that you generate unique IDs for those you change. If the source of your CDF file is a database, you might use the work's database key as part of its ID to ensure uniqueness. Have an ID scheme and stick to it.
+
+{% include note.html content="When you change an ID, you must also change any references to it. For instance, if you change a TvShow.ID, you will also need to change all of that show's TvSeason.ShowID, TvEpisode.ShowID, TvSpecial.ShowID, or Extra.RelatesToID elements to match." %}
+
+**Possible elements involved**
+
+_WorkType_.ID <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
 
 
-<a class="anchor" name="警告"></a>
+### Error: MiniSeriesEpisode references an invalid MiniSeriesID {#miniseries_id_invalid}
 
-<a class="anchor" name="warnings"></a>
+**Detail message:** _**WorkID**_
 
-<h2>警告</h2>
-<p>警告が原因でカタログのインジェストに失敗することはありません（ただし、画像関連の警告は例外です。あまりに多いと失敗する可能性があります）が、リソースが許す範囲で対処してください。特に、CDF スキーマが変更されていることを示す非推奨警告は注意が必要です。従来と同じようにはデータを使用できなくなる可能性があります。
-</p>
-<p><strong>警告</strong>
-<br /> <a href="#bad_aspect_ratio_link_warn">Aspect ratio should be between %f and %f (%f to %f preferred.)</a>
-<br /> <a href="#copyright">Copyright is optional but should not be blank if supplied</a>
-<br /> <a href="#credit_name">CastMember or CrewMember name should not be blank</a>
-<br /> <a href="#externalid">ExternalID is optional but should not be blank if supplied</a>
-<br /> <a href="#image_height_link_warn">Image height must be greater than %d pixels (greater than %d pixels preferred)</a>
-<br /> <a href="#year">Inconsistent release year information</a>
-<br /> <a href="#invalid_image">Invalid image</a>
-<br /> <a href="#miniseries">MiniSeries is not associated with any MiniSeriesEpisodes</a>
-<br /> <a href="#castmember">Possible invalid string found for optional CastMember Role element</a>
-<br /> <a href="#quality_dep">Quality element in Offer is deprecated in favor of Quality element in LaunchDetails</a>
-<br /> <a href="#releaseinfo_dep">ReleaseInfo element is deprecated</a>
-<br /> <a href="#role">Role (character name) is optional but should not be blank if supplied</a>
-<br /> <a href="#minutes">Runtime minutes is not within expected range of 1 to 2880 minutes</a>
-<br /> <a href="#shortdesc">The ShortDescription should not be the same as the Title</a>
-<br /> <a href="#synopsis_v_shortdesc_1">The Synopsis should be longer and more descriptive than the ShortDescription</a>
-<br /> <a href="#synopsis_v_shortdesc_2">The Synopsis should not be the same as the ShortDescription</a>
-<br /> <a href="#synopsis_v_title">The Synopsis should not be the same as the Title</a>
-<br /> <a href="#escaped_text">Text contains characters that are escaped more than once</a>
-<br /> <a href="#tvseason_v_episodes">TvSeason is not associated with any TvEpisodes</a>
-<br /> <a href="#tvshow_v_episodes">TvShow is not associated with any TvEpisodes or TvSpecials</a>
-<br /> <a href="#unsupported_image_link">Unsupported image type. Provided image not JPG or PNG format</a>
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="bad_aspect_ratio_link_warn"></a>
-<h3>警告: Aspect ratio should be between %f and %f (%f to %f preferred.)
-<br />
-</h3>
-<p>「<a href="#image">画像関連のメッセージ</a>」を参照してください。このメッセージは重要度に応じて、警告として表示される場合と推奨事項として表示される場合とがあります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="copyright"></a>
-<h3>警告: Copyright is optional but should not be blank if supplied
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID の作品には Copyright 要素が存在しますが、著作権情報のテキストが存在しません。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">Copyright 要素は省略可能であるため、著作権情報がわからない場合は削除してもかまいません。それ以外の場合は、指定された ID に該当する作品の要素を CDF ファイルから探し、その Copyright 要素を特定して、欠落している情報を追加してください。以下に例を示します。
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>修正前:</strong> &lt;Copyright locale="en-US"&gt;&lt;/Copyright&gt;
-<br /> <strong>修正後:</strong> &lt;Copyright locale="en-US"&gt;© 1894 Edison Manufacturing Company&lt;/Copyright&gt;
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.Copyright
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="credit_name"></a>
-<h3>警告: CastMember or CrewMember name should not be blank
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">この警告が該当するのは、CastMember または CrewMember です。その人物の Name 要素が CDF ファイルに存在しますが、その人の名前が欠落しています。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された ID の作品要素を CDF ファイルから探してください。作品の Credits 要素を探します。その Credits セクションにある各 CastMember 要素または CrewMember 要素を見て、Name 要素が空になっている箇所をすべて洗い出し、その情報を追加します。以下に例を示します。
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>修正前:</strong> &lt;Name locale="en-US"&gt;&lt;/Name&gt;
-<br /> <strong>修正後:</strong> &lt;Name locale="en-US"&gt;Alan Smithee&lt;/Name&gt;
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.CastMember.Name
-<br /> <em>WorkType</em>.CrewMember.Name
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="externalid"></a>
-<h3>警告: ExternalID is optional but should not be blank if supplied
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルに ExternalID 要素が存在しますが、その情報が指定されていません。ExternalID は、他のソース（IMDb など）から作品や人物に割り当てられた ID や DVD ボックスの UPC コードです。作品（Movie、TvShow など）、CastMember、CrewMember が ExternalID の対象となります。ExternalID があることで、そのソースにリンクしたり、ソースから情報をインジェストしたりすることができます。たとえば、キャストやクルーのメンバーについて、該当する IMDb の ExternalID を使用すれば、その写真や説明をインポートすることができます。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された ID の要素を CDF ファイルから探してください。そこから各 ExternalID 要素を探します。1 つの作品に複数の ExternalID 要素が存在する場合もあります（CrewMember 要素や CastMember 要素に加えて、その作品そのものの ExternalID が存在することがあるため）。ExternalID 要素は省略可能であるため、必要であれば削除してもかまいません。それ以外の場合は、欠落している情報を追加してください。CastMember の例を次に示します。
-</p>
-<table style="margin-left: 30.0px;"> <tbody>
-<tr>
-<td>
-<pre>&lt;Movie&gt;
-&lt;ID&gt;<em>WorkID</em>&lt;/ID&gt;
-&lt;ExternalID scheme="imdb"&gt;tt0029843&lt;/ExternalID&gt;
-...
-&lt;Credits&gt;
-&lt;CastMember&gt;
-&lt;Name locale="en-US"&gt;Errol Flynn&lt;/Name&gt;
-&lt;ExternalID scheme="imdb"&gt;nm0653028&lt;/ExternalID&gt;
-</pre> </td>
-</tr> </tbody>
-</table>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ExternalID
-<br /> <em>WorkType</em>.CastMember.ExternalID
-<br /> <em>WorkType</em>.CrewMember.ExternalID
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="image_height_link_warn"></a>
-<h3>警告: Image height must be greater than %d pixels (greater than %d pixels preferred)
-<br />
-</h3>
-<p>「<a href="#image">画像関連のメッセージ</a>」を参照してください。このメッセージは重要度に応じて、警告として表示される場合と推奨事項として表示される場合とがあります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="year"></a>
-<h3>警告: Inconsistent release year information
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> Provided ReleaseYear <em>yyyy</em> differs from the year <em>yyyy</em> in the <em>ss</em> element
-</p>
-<p>例:
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>tt123456</strong> Provided ReleaseYear 1959 differs from the year 1960 in the OriginalAirDate element
-<br /> <strong>tt456789</strong> Provided ReleaseYear 1977 differs from the year 1978 in the ReleaseDate element
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">作品のリリース年が複数の箇所で指定されていますが、それらが一致しません。ReleaseYear の他に、OriginalAirDate または ReleaseDate が指定されており、それぞれに年が含まれています。調査を行う際には、2 種類の ReleaseDate 要素が存在することに注意してください。1 つは作品の直接の子要素で、もう 1 つは非推奨となった ReleaseInfo 要素の子要素です。ReleaseDate が存在するのは、Movie 要素、TvShow 要素、MiniSeries 要素だけです。非推奨となった ReleaseInfo.ReleaseDate はすべての作品タイプに存在します。OriginalAirDate は、TvEpisode 要素、TvSpecial 要素、MiniSeriesEpisode 要素にしか存在しません。
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>注意:</strong> 今後新たにカタログに追加するときは、非推奨となった ReleaseInfo.ReleaseDate 要素は使用しないでください。この要素が非推奨となる前からカタログが存在する場合は、最新のスキーマに合わせてカタログを更新することをお勧めします。その手順については、以下の「<a href="#releaseinfo_dep">ReleaseInfo element is deprecated</a>」を参照してください。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された WorkID（この例では tt123456 または tt456789）の要素を CDF ファイルから探してください。その ReleaseYear 要素を探し、年が正しいことを確認して、その値をメモします。次に、該当する作品の OriginalAirDate または ReleaseDate のインスタンスを探し、それらの文字列の年が一致していることを確認します。OriginalAirDate と ReleaseDate のデータには厳密な形式（例: 2003-08-08T00:00:00Z）が使用されており、年はあくまでその一部となります。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ReleaseYear
-<br /> <em>WorkType</em>.ReleaseDate
-<br /> <em>WorkType</em>.ReleaseInfo.ReleaseDate
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="invalid_image"></a>
-<h3>警告: Invalid image
-</h3>
-<p>「<a href="#image">画像関連のメッセージ</a>」を参照してください。
-<br />
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="miniseries"></a>
-<h3>警告: MiniSeries is not associated with any MiniSeriesEpisodes
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルには、MiniSeries の項目が存在しますが、エピソードが 1 つも存在しません。空のミニシリーズを選択できる状態となるため、ユーザーエクスペリエンスの低下につながります。これには 2 つの原因が考えられます。1 つは、MiniSeriesEpisode 要素が CDF ファイルに含まれていないことです。もう 1 つは、それらのエピソードが CDF ファイルに存在するものの、指定されているミニシリーズが間違っていることです。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">その MiniSeries に該当しそうな MiniSeriesEpisode 要素を CDF ファイルから探します。見つかりましたか？
-</p>
-<ul>
-<li><strong>いいえ:</strong> それらを追加する必要があります。</li>
-<li> <strong>はい:</strong> 対応する MiniSeries はどのように指定されていますか。MiniSeriesID 要素ですか、それとも MiniSeriesTitle 要素ですか？
-<ul>
-<li><strong>MiniSeriesID:</strong> MiniSeries.ID の値（詳細メッセージの WorkID）と一致させます。</li>
-<li><strong>MiniSeriesTitle:</strong> 大文字と小文字の区別も含め、MiniSeries.Title の値と厳密に一致させます。</li>
-</ul></li>
-</ul>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">MiniSeries.ID
-<br /> MiniSeries.Title
-<br /> MiniSeriesEpisodes.MiniSeriesID
-<br /> MiniSeriesEpisodes.MiniSeriesTitle
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="castmember"></a>
-<h3>警告: Possible invalid string found for optional CastMember Role element
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> Please confirm that <em>text</em> is a valid Role (character name)
-</p>
-<p>例:
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>tt123456</strong> Please confirm that Actor is a valid Role (character name)
-<br /> <strong>tt123456</strong> Please confirm that Unknown is a valid Role (character name)
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">この警告が生成される状況は限定されています。現時点では、検出対象となる値は CastMember.Role 要素に含まれる "Unknown" と "Actor" だけです。Role 要素は、作品の中で俳優が演じた役柄の名前（Han Solo など）を指定する目的で存在します。CastMember に指定される項目は当然、俳優（Actor）となります。もっとも、"Actor" や "Unknown" が、役柄の名前として本当に存在するケースもまれに存在します。そのような場合、この警告が逐一レポートに表示されるのを防ぐために、それらの項目の名称を変更することを検討してください（"Actor #1" や "The Unknown" など）。Role 要素を追加したにもかかわらず何も指定しなかった場合は、これとは異なる警告が表示されます。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された ID の作品要素を CDF ファイルから探してください。その Credits セクションを探します。そこに含まれている CastMember 要素を探し、Role 要素に "Actor" や "Unknown" が含まれていないか確認します。Role 要素は省略可能であるため、役柄の名前がわからない場合は省略してもかまいません。わかっている場合は、役柄の名前を追加してください。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.Credits.CastMember.Role
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="quality_dep"></a>
-<h3>警告: Quality element in Offer is deprecated in favor of Quality element in LaunchDetails
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF スキーマは変更されましたが、以前のスキーマバージョンに由来する要素がファイルに使用されています。このケースでは、CDF バージョン 1.2 以降、各 Offer タイプの Quality 要素が、新しい Offers.<em>OfferType</em>.LaunchDetails 要素の下に移動されましたが、それ以外の点では同じです。ご利用のファイルでは、Quality 要素が、依然として Offers.<em>OfferType</em> の直下に置かれています。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">技術的な対応は一切不要です。既存の Quality 値が引き続き使用されます。ただし、インジェストレポートを見やすくするために、リソースが許す範囲でファイルを更新してください。
-</p>
-<ul>
-<li> <strong>メディアデータベースから CDF ファイルが自動的に生成された場合</strong>: ご利用のデータベースから情報を取得して CDF 形式にインジェストするスクリプトや変換については更新が必要です。データベース管理者（DBA）に連絡して、Quality の値を今後は Offers.<em>OfferType</em>.Quality にではなく Offers.<em>OfferType</em>.LaunchDetails.Quality 要素にエクスポートするよう依頼してください。DBA の方は、<a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog-13.xsd">カタログデータ形式（CDF）の XSD</a> で LaunchElement の適切な配置を確認できます。</li>
-<li><strong>データベースの構造が CDF 形式と一致する場合</strong>: この場合もやはり、変更を DBA が行う必要があります。このケースでは、新しい CDF の構造に合わせてデータベース自体の設計を若干変更する必要があります。</li>
-<li> <strong>CDF ファイルを手動で作成した場合</strong>: 該当する ID の作品を CDF ファイルから探してください。対応する Offers 要素を探します。現在 Offers.<em>OfferType</em>.Quality 要素を含んでいる Offer タイプごとに次の手順を実行します。
-<ol>
-<li>LaunchDetails 要素を追加します。追加する位置に注意してください。SubscriptionOffer タイプや FreeOffer タイプの最後の要素とし、PurchaseOffer タイプと RentalOffer タイプの PriceType 要素の直前に配置してください。</li>
-<li>LaunchDetails 要素に Quality 要素を追加します。元の要素で使用されていたものと同じ値（SD、HD、UHD のいずれか）を指定します。</li>
-<li>元の Offers.<em>OfferType</em>.Quality 要素を削除します。</li>
-</ol></li>
-</ul>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">変更の例を次に示します。
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>変更前</strong>
-</p>
-<table style="margin-left: 30.0px;"> <tbody>
-<tr>
-<td>
-<pre>&lt;Movie&gt;
-...
-&lt;Offers&gt;|
-&lt;FreeOffer&gt;
-&lt;Quality&gt;HD&lt;/Quality&gt;
-...
-&lt;/FreeOffer&gt;
-...
-&lt;/Offers&gt;
-...
-&lt;/Movie&gt;</pre> </td>
-</tr> </tbody>
-</table>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>変更後</strong>
-</p>
-<table style="margin-left: 30.0px;"> <tbody>
-<tr>
-<td>
-<pre>&lt;Movie&gt;
-...
-&lt;Offers&gt;|
-&lt;FreeOffer&gt;
-....
-&lt;LaunchDetails&gt;
-&lt;Quality&gt;HD&lt;/Quality&gt;
-&lt;/LaunchDetails&gt;
-&lt;/FreeOffer&gt;
-...
-&lt;/Offers&gt;
-...
-&lt;/Movie&gt;</pre> </td>
-</tr> </tbody>
-</table>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.Offers.<em>OfferType</em>.Quality（非推奨）
-<br /> <em>WorkType</em>.Offers.<em>OfferType</em>.LaunchDetails.Quality
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-<br /> <em>OfferType</em> は SubscriptionOffer、FreeOffer、PurchaseOffer、RentalOffer のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="releaseinfo_dep"></a>
-<h3>警告: ReleaseInfo element is deprecated
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> Please use the <em>ReleaseDate / OriginalAirDate / ReleaseYear</em> element instead for <em>WorkType</em>
-</p>
-<p>例:
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>tt123456</strong> Please use the ReleaseDate element instead for ShowType
-<br /> <strong>tt45678</strong> Please use the OriginalAirDate element instead for EpisodeType
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF スキーマは変更されましたが、以前のスキーマバージョンに由来する要素がファイルに使用されています。このケースでは、CDF バージョン 1.3 以降、ReleaseInfo 要素（すべての作品タイプに存在していた）は非推奨となり、今後は作品タイプごとの値が推奨されます。ReleaseInfo には、2 つの子要素が存在していました （ReleaseDate と ReleaseCountry）。今後 ReleaseCountry の情報は使用されません。今後は ReleaseDate の情報が作品タイプに基づいて保存されます（Movie、TvShow、MiniSeries タイプでは ReleaseDate が使用され、TvEpisode、TvSpecial、MiniSeriesEpisode タイプでは OriginalAirDate が使用されます）。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">技術的な対応は一切不要です。既存の ReleaseInfo.ReleaseDate 値が引き続き使用されます。ただし、インジェストレポートを見やすくするために、リソースが許す範囲でファイルを更新してください。
-</p>
-<ul>
-<li> <strong>メディアデータベースから CDF ファイルが自動的に生成された場合</strong>: ご利用のデータベースから情報を取得して CDF 形式にインジェストするスクリプトや変換については更新が必要です。データベース管理者（DBA）に連絡し、次のことを伝えてください。
-<ul>
-<li>作品のリリース日は従来、<em>WorkType</em>.ReleaseInfo.ReleaseDate に保存されていましたが、今後は <em>WorkType</em>.OriginalAirDate（TvEpisode、TvSpecial、MiniSeriesEpisode タイプの場合）と <em>WorkType</em>.ReleaseDate（Movie、TvShow、MiniSeries タイプの場合）にエクスポートする必要があります。</li>
-<li>ReleaseInfo 要素は削除する必要があります。</li>
-</ul>DBA の方は、<a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd">カタログデータ形式（CDF）の XSD</a> を参照してください。</li>
-<li><strong>データベースの構造が CDF 形式と一致する場合</strong>: この場合もやはり、変更を DBA が行う必要があります。このケースでは、新しい CDF の構造に合わせてデータベース自体の設計を若干変更する必要があります。</li>
-<li> <strong>CDF ファイルを手動で作成した場合</strong>: 該当する ID の作品を CDF ファイルから探してください。対応する ReleaseInfo 要素を探して ReleaseDate の値をメモします。
-<ul>
-<li><strong>作品タイプが Movie、TvShow、MiniSeries のいずれかである場合</strong>: その作品の要素の一番最後に ReleaseDate 要素（値を含む）を追加します。</li>
-<li><strong>作品タイプが TvEpisode、TvSpecial、MiniSeriesEpisode のいずれかである場合</strong>: その作品の要素の一番最後に OriginalAirDate 要素（値を含む）を追加します。</li>
-<li><strong>作品タイプに関係なく:</strong> 新しい要素を設定した後、元の ReleaseInfo 要素を削除します。</li>
-</ul></li>
-</ul>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ReleaseInfo（非推奨）
-<br /> <em>WorkType</em>.ReleaseInfo.ReleaseDate（非推奨）
-<br /> <em>WorkType</em>.ReleaseInfo.ReleaseCountry（非推奨）
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-<br />
-<br /> Movie.ReleaseDate
-<br /> TvShow.ReleaseDate
-<br /> MiniSeries.ReleaseDate
-<br /> TvEpisode.OriginalAirDate
-<br /> TvSpecial.OriginalAirDate
-<br /> MiniSeriesEpisode.OriginalAirDate
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="role"></a>
-<h3>警告: Role (character name) is optional but should not be blank if supplied
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> Role (character name) for <em>​person</em> is blank
-</p>
-<p>例: <strong>tt123456</strong> <span>Role (character name) for Errol Flynn is blank</span>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">Role 要素が存在しますが、その情報が指定されていません。Role 要素は、作品の中で俳優が演じた役柄の名前（Han Solo など）を指定する目的で存在します。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID の作品を CDF ファイルから探してください（この例では tt123456）。その Credits セクションを探します。問題となっている人物（この例では Errol Flynn）の CastMember 要素を探し、その人物の Role 要素を特定します。Role は省略可能です。役柄の名前を追加するか、または、役柄の名前がわからない場合は Role 要素を削除してもかまいません。役柄の名前として "Unknown" は使用しないでください。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.Credits.CastMember.Role
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="minutes"></a>
-<h3>警告: Runtime minutes is not within expected range of 1 to 2880 minutes
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> Please confirm that <em>nn</em> minutes is the correct runtime
-</p>
-<p>例: <strong>tt123456</strong> Please confirm that 99999999 minutes is the correct runtime
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルに存在する RuntimeMinutes 要素の値が大きすぎるか、小さすぎます。この値が 1 未満であるか、2880 分（48 時間）を超えていると、この警告が生成されます。よほどの理由がなければ、この範囲を下回ったり上回ったりすることはありません。この情報はエンドユーザーからも見えるので、ユーザーエクスペリエンスを損なわないためにも正確な情報を指定する必要があります。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID の作品を CDF ファイルから探してください（この例では tt123456）。対応する RuntimeMinutes 要素を探します。正しい値が指定されていることを確認します。RuntimeMinutes 要素は省略可能であり、削除してもかまいませんが、ユーザーエクスペリエンス上、それはお勧めできません。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.RuntimeMinutes
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="shortdesc"></a>
-<h3>警告: The ShortDescription should not be the same as the Title
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">Title 要素と ShortDescription 要素にまったく同じテキストが指定されており、ユーザーエクスペリエンスを損なう原因となります。ShortDescription 要素は、ユーザーが自分にとって興味深い作品であるかどうかを判断できるよう、作品の概要として 2 ～ 3 行の情報を保持することを目的としています。その時点でユーザーはタイトルを把握済みです。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID の作品を CDF ファイルから探してください。対応する ShortDescription 要素を探します。この要素に指定されている作品の名前を、作品のプロットやテーマについての簡単な（2～3 行の）説明に置き換えてください。ShortDescription 要素は省略できます。説明が不要であれば、要素ごと削除してもかまいません。ただし、少なくとも ShortDescription はすべての作品に付けることをお勧めします。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ShortDescription
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="synopsis_v_shortdesc_1"></a>
-<h3>警告: The Synopsis should be longer and more descriptive than the ShortDescription
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">この作品についての ShortDescription と Synopsis の両方が CDF ファイルに存在します。内容は異なりますが、ShortDescription よりも短いテキストが Synopsis に使用されています。Synopsis は、2 ～ 3 行の ShortDescription では表現できない、作品の詳しい説明を保持することを目的とした要素です。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID の作品を CDF ファイルから探してください。作品の Synopsis 要素と ShortDescription 要素を探し、その内容を比較します。ユーザーエクスペリエンスを最大限に高めるという意味では、Synopsis の内容を拡充することをお勧めします。ただし、作品に関してそれ以上詳しい情報がないという場合には、Synopsis を省略してもかまいません。Synopsis は省略可能です。同様に shortDescription も省略可能ですが、少なくとも shortDescription は指定することをお勧めします。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ShortDescription
-<br /> <em>WorkType</em>.Synopsis
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="synopsis_v_shortdesc_2"></a>
-<h3>警告: The Synopsis should not be the same as the ShortDescription
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">この作品についての ShortDescription と Synopsis の両方が CDF ファイルに存在し、2 つの要素に含まれているテキストがまったく同じです。Synopsis は、2 ～ 3 行の ShortDescription では表現できない、作品の内容に関する詳しい説明を保持することを目的とした要素です。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID の作品を CDF ファイルから探してください。作品の Synopsis 要素と ShortDescription 要素を探し、その内容を比較します。ShortDescription が 2 ～ 3 行を超えている場合は短くしてください。超えていない場合は、ユーザーエクスペリエンスを最大限に高めるために、Synopsis の内容を拡充します。ただし、作品に関してそれ以上詳しい情報がないという場合には、Synopsis を省略してもかまいません。Synopsis は省略可能です。同様に ShortDescription も省略可能ですが、少なくとも shortDescription は指定することをお勧めします。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ShortDescription
-<br /> <em>WorkType</em>.Synopsis
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="synopsis_v_title"></a>
-<h3>警告: The Synopsis should not be the same as the Title
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">Title 要素と Synopsis 要素にまったく同じテキストが指定されており、ユーザーエクスペリエンスを損なう原因となります。Synopsis は、どのような趣旨の作品であるかをユーザーに伝えるためにコンテンツの概要を保持することを目的とした要素です。その時点でユーザーはタイトルを把握済みです。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID の作品を CDF ファイルから探してください。対応する Synopsis 要素を探します。この要素に指定されている作品の名前を、作品のプロットやテーマについての説明に置き換えてください。Synopsis 要素は省略できます。お勧めはしませんが、説明が不要であれば、要素ごと削除してもかまいません。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.Synopsis
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="escaped_text"></a>
-<h3>警告: Text contains characters that are escaped more than once
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> <em>Element</em> contains characters that are escaped more than once
-</p>
-<p>例:
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><strong>tt123456</strong> MiniSeriesTitle contains characters that are escaped more than once
-<br /> <strong>tt234567</strong> SeasonTitle contains characters that are escaped more than once
-<br /> <strong>tt345678</strong> ShortDescription contains characters that are escaped more than once
-<br /> <strong>tt456789</strong> ShowTitle contains characters that are escaped more than once
-<br /> <strong>tt567890</strong> Title contains characters that are escaped more than once
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">データベースからデータを取得してカタログの XML ファイルに変換するコードでは、XML シリアライザーがよく使用されます。エスケープされた文字に使用されているアンパサンド（&amp;）が、XML シリアライザーよって、アンパサンドのエスケープ表現（&amp;amp;）に置き換えられました。エスケープされた文字は、コードエンティティとしてテキストに存在します。たとえば、全角ダッシュには <em>&amp;mdash;</em> が、アンパサンドには <em>&amp;amp;</em> が使用されます。エスケープ済みの文字をシリアライザーが想定しておらず、プレーンテキストとして処理したために、アンパサンドがすべてエスケープされています。その結果、"&amp;mdash;" が "&amp;amp;mdash;" に変換され、"&amp;mdash;<em>"</em> として表示されています。たとえば、"this &amp; that" と表示されることを期待して "this &amp;amp; that" としても、文字列が "this &amp;amp;amp; that" に変換され、"this &amp;amp; that" と表示されてしまいます。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルとソースデータベースの両方について、該当する ID の作品を探し、詳細メッセージに指定されたテキスト要素（Title、ShowTitle、SeasonTitle、ShortDescription、MiniSeriesTitle のいずれか）を探してください。二重にエスケープされた文字がカタログファイルにのみ存在する場合、カタログファイルの作成時の変換に問題があります。元のテキストには、可能な限り、エスケープされていない文字を使用してください。また、場合によっては、エスケープされた文字列を意図した文字として適切に認識するようシリアライザーに命令する必要があります。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">MiniSeriesEpisode.MiniSeriesTitle
-<br /> TvEpisode.SeasonTitle
-<br /> TvEpisode.ShowTitle
-<br /> TvSeason.ShowTitle
-<br /> TvSpecial.ShowTitle
-<br /> <em>WorkType</em>.ShortDescription
-<br /> <em>WorkType</em>.Title
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="tvseason_v_episodes"></a>
-<h3>警告: TvSeason is not associated with any TvEpisodes
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルには、TvSeason の項目が存在しますが、エピソードが 1 つも存在しません。空のシーズンを選択できる状態となるため、ユーザーエクスペリエンスの低下につながります。これには大きく 2 つの原因が考えられます。1 つは、TvEpisode 要素が CDF ファイルに含まれていないことです。もう 1 つは、それらのエピソードが CDF ファイルに存在するものの、指定されているシーズンが間違っていることです。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">そのシーズンに該当しそうな TvEpisode 要素を CDF ファイルから探します。見つかりましたか？
-</p>
-<ul>
-<li><strong>いいえ:</strong> それらを追加する必要があります。</li>
-<li> <strong>はい:</strong> 対応するシーズンはどのように指定されていますか。SeasonID 要素ですか、それとも SeasonInShow 要素ですか？
-<ul>
-<li><strong>SeasonID:</strong> TvSeason.ID の値（詳細メッセージの WorkID）と一致させます。</li>
-<li><strong>SeasonInShow:</strong> TvSeason.SeasonInShow の値と一致させます。</li>
-</ul></li>
-</ul>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvSeason.ID
-<br /> TvEpisode.SeasonTitle
-<br /> TvEpisode.SeasonID
-<br /> TvEpisode.SeasonInShow
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="tvshow_v_episodes"></a>
-<h3>警告: TvShow is not associated with any TvEpisodes or TvSpecials
-<br />
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルには、TvShow の項目が存在しますが、エピソードが 1 つも存在しません。空の番組を選択できる状態となるため、ユーザーエクスペリエンスの低下につながります。これには大きく 2 つの原因が考えられます。1 つは、TvEpisode 要素が CDF ファイルに含まれていないことです。もう 1 つは、それらのエピソードが CDF ファイルに存在するものの、指定されている番組が間違っていることです。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">その番組に該当しそうな TvEpisode 要素を CDF ファイルから探します。見つかりましたか？
-</p>
-<ul>
-<li><strong>いいえ:</strong> それらを追加する必要があります。</li>
-<li> <strong>はい:</strong> 対応する番組はどのように指定されていますか。ShowID 要素ですか、それとも ShowTitle 要素ですか？
-<ul>
-<li><strong>ShowID:</strong> TvShow.ID の値（詳細メッセージの WorkID）と一致させます。</li>
-<li><strong>ShowTitle:</strong> 大文字と小文字の区別も含め、TvShow.Title の値と厳密に一致させます。</li>
-</ul></li>
-</ul>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">TvShow.ID
-<br /> TvShow.Title
-<br /> TvEpisode.ShowID
-<br /> TvEpisode.ShowTitle
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="unsupported_image_link"></a>
-<h3>警告: Unsupported image type. Provided image not JPG or PNG format
-<br />
-</h3>
-<p>「<a href="#image">画像関連のメッセージ</a>」を参照してください。
-<br />
-</p>
-<hr />
-<hr />
+**Example:** **tt123456** MiniSeriesEpisode references an invalid MiniSeriesID
+
+**What went wrong**
+
+The MiniSeriesEpisode with the given work ID (tt123456 in the example) has a MiniSeriesID element, but it's blank.
+
+**What to do**
+
+In your CDF file, find the MiniSeries element to which this episode should belong. If it is present, note its ID value. Go to the MiniSeriesEpisode's entry, locate its MiniSeriesID element, and change the value to match the MiniSeries ID. That is, ensure that MiniSeries.ID = MiniSeriesEpisode.MiniSeriesID.
+
+If the MiniSeries element isn't present and you're not going to add it, use MiniSeriesEpisode.MiniSeriesTitle instead of MiniSeriesEpisode.MiniSeriesID. MiniSeriesEpisode.MiniSeriesTitle is used as given, without having to match anything. This should be done only in the absence of a MiniSeries element. You might also consider whether this work would be more accurately tagged as a TvSpecial.
+
+**Elements possibly involved**
+
+MiniSeries.ID <br/>
+MiniSeriesEpisode.MiniSeriesID <br/>
+MiniSeriesEpisode.MiniSeriesTitle <br/>
+
+* * *
+
+### Error: Referenced MiniSeries not found {#miniseries_not_found}
+
+**Detail message:** _**WorkID**_ MiniSeriesEpisode references a missing MiniSeries with ID of _ss_
+
+**Example:** **tt123456** MiniSeriesEpisode references a missing MiniSeries with ID of nn654321
+
+**What went wrong**
+
+The MiniSeriesEpisode with the given work ID (tt123456 in the example) specifies the ID of its MiniSeries (nn654321 in the example), but there's no matching MiniSeries in your catalog.
+
+**What to do**
+
+In your CDF file, find the MiniSeries element to which this episode should belong. If it is present, note its ID value. Go to the MiniSeriesEpisode's entry, locate its MiniSeriesID element, and change the value to match the MiniSeries ID. That is, ensure that MiniSeries.ID = MiniSeriesEpisode.MiniSeriesID.
+
+If the MiniSeries element isn't present and you're not going to add it, use MiniSeriesEpisode.MiniSeriesTitle instead of MiniSeriesEpisode.MiniSeriesID. MiniSeriesEpisode.MiniSeriesTitle is used as given, without having to match anything. This should be done only in the absence of a MiniSeries element. You might also consider whether this work would be more accurately tagged as a TvSpecial.
+
+**Elements possibly involved**
+
+MiniSeries.ID <br/>
+MiniSeriesEpisode.MiniSeriesID <br/>
+MiniSeriesEpisode.MiniSeriesTitle <br/>
+
+* * *
+
+### Error: Referenced TvSeason not found {#tvseason_not_found}
+
+**Detail message:** **_WorkID_** TvEpisode references a missing TvSeason with ID of _ss_
+
+**Example:** **tt123456** TvEpisode references a missing TvSeason with ID of nn654321
+
+**What went wrong**
+
+The TvEpisode with the given work ID (tt123456 in the example) specifies the ID of its TvSeason (nn654321 in the example), but there's no matching TvSeason in your catalog.
+
+**What to do**
+
+In your CDF file, find the TvSeason element to which this episode should belong. If the TvSeason is present, note its ID value. Go to the TvEpisode's entry, locate its SeasonID element, and change the value to match the TvSeason's ID. That is, ensure that TvSeason.ID = TvEpisode.SeasonID.
+
+If the TvSeason isn't present and you're not going to add it, use TvEpisode.SeasonInShow instead of TvEpisode.SeasonID. You can also add the optional TvEpisode.SeasonTitle. TvEpisode.SeasonInShow and TvEpisode.SeasonTitle are used as given and are not required to match anything. This should be done only in the absence of a TvSeason element, which only should be absent if you absolutely cannot obtain that information.
+
+{% include note.html content="Some shows weren't released or organized by season. In those cases, instead of a TvEpisode, consider classifying the work as a TvSpecial associated with a TvShow or a MiniSeriesEpisode associated with a MiniSeries." %}
+
+**Elements possibly involved**
+
+TvSeason.ID<br/>
+TvEpisode.SeasonID<br/>
+TvEpisode.SeasonInShow<br/>
+TvEpisode.SeasonTitle<br/>
+
+* * *
+
+### Error: Referenced TvShow not found {#tvshow_not_found}
+
+**Detail messages:**
+
+_**WorkID**_ TvEpisode references a missing TvShow with ID of _ss_
+_**WorkID**_ TvSpecial references a missing TvShow with ID of _ss_
+
+**Example:** **tt123456** TvEpisode references a missing TvShow with ID of nn654321
+
+**What went wrong**
+
+This can happen with either a TvEpisode or a TvSpecial. The episode or special with the given work ID (tt123456 in the example) specifies the ID of its TvShow (nn654321 in the example), but there's no matching TvShow in your catalog.
+
+**What to do**
+
+In your CDF file, find the TvShow element to which the episode or special should belong. If the TvShow is present, note its ID value. Go to the TvSpecial or TvEpisode entry, locate its ShowID element, and change that value to match the show's ID. That is, ensure that TvShow.ID = TvEpisode.ShowID, or TvShow.ID = TvSpecial.ShowID.
+
+If the TvShow isn't present and you're not going to add it, use ShowTitle instead of ShowID. ShowTitle is used as given and is not required to match anything. This should be done only in the absence of a TvShow element, which should raise the question of whether one should be added, or whether this work might be more accurately tagged as a TvSpecial.
+
+**Elements possibly involved**
+
+TvShow.ID<br/>
+TvEpisode.ShowID<br/>
+TvSpecial.ShowID<br/>
+TvEpisode.ShowTitle<br/>
+TvSpecial.ShowTitle<br/>
+
+* * *
+
+### Error: Title is required and cannot be blank {#title_required}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+Your CDF file contains a Title element for the given ID, it just doesn't contain the title text.
+
+**What to do**
+
+Find the work with the given ID in your CDF file, locate its Title element, and provide the text. Here's an example:
+
+**Before:** `<Title locale="en-US"></Title>` <br/>
+**After:** `<Title locale="en-US">City Lights</Title>`
+
+**Possible elements involved**
+
+_WorkType_.Title <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Error: Too many invalid images {#too_many_invalid_images}
+
+See [Image-Related Messages](#image).
+
+* * *
+
+### Error: TvEpisode references an invalid SeasonID {#seasonid_invalid}
+
+**Detail message:** _**WorkID**_
+
+**Example:** **tt123456** TvEpisode references an invalid SeasonID
+
+**What went wrong**
+
+The TvEpisode with the given work ID (tt123456 in the example) has a SeasonID element, but it's blank.
+
+**What to do**
+
+In your CDF file, find the TvSeason element to which this episode should belong. If it is present, note its ID value. Go to the TvEpisode's entry, locate its SeasonID element, and change the value to match the TvSeason ID. That is, ensure that TvSeason.ID = TvEpisode.SeasonID.
+
+If the TvSeason element isn't present and you're not going to add it, use TvEpisode.SeasonInShow instead of TvEpisode.SeasonID. TvEpisode.SeasonInShow is just a number, used as given. You can also add the optional TvEpisode.SeasonTitle element, which is also used as given, without having to match anything. This should be done only in the absence of a TvSeason element.
+
+**Elements possibly involved**
+
+TvSeason.ID<br/>
+TvEpisode.SeasonID<br/>
+TvEpisode.SeasonInSeries<br/>
+TvEpisode.SeasonTitle<br/>
+
+* * *
+
+### Error: TvEpisode references an invalid ShowID {#showid_invalid_tvepisode}
+
+**Detail message:** _**WorkID**_
+
+**Example:** **tt123456** TvEpisode references an invalid ShowID
+
+**What went wrong**
+
+The TvEpisode with the given work ID (tt123456 in the example) has a ShowID element, but it's blank.
+
+**What to do**
+
+In your CDF file, find the TvShow element to which this episode should belong. If it is present, note its ID value. Go to the TvEpisode's entry, locate its ShowID element, and change the value to match the TvShow ID. That is, ensure that TvShow.ID = TvEpisode.ShowID.
+
+If the TvShow isn't present and you're not going to add it, use TvEpisode.ShowTitle instead of TvEpisode.ShowID. ShowTitle is used as given and is not required to match anything. This should be done only in the absence of a TvShow element, which should raise the question of whether one should be added, or whether this work might be more accurately tagged as a TvSpecial.
+
+**Elements possibly involved**
+
+TvShow.ID <br/>
+TvEpisode.ShowID <br/>
+TvEpisode.ShowTitle <br/>
+
+* * *
+
+### Error: TvSpecial references an invalid ShowID {#showid_invalid_tvspecial}
+
+**Detail message:** _**WorkID**_
+
+**Example:** **tt123456** TvSpecial references an invalid ShowID
+
+**What went wrong**
+
+The TvSpecial with the given work ID (tt123456 in the example) has a ShowID element, but it's blank.
+
+**What to do**
+
+In your CDF file, find the TvShow element to which this special should belong. If it is present, note its ID value. Go to the TvSpecial's entry, locate its ShowID element, and change the value to match the TvShow ID. That is, ensure that TvShow.ID = TvSpecial.ShowID.
+
+If the TvShow isn't present and you're not going to add it, use TvSpecial.ShowTitle instead of TvSpecial.ShowID. ShowTitle is used as given and is not required to match anything. This should be done only in the absence of a TvShow element. Note that this information is optional for a TvSpecial, so ShowID/ShowTitle can be omitted altogether.
+
+**Elements possibly involved**
+
+TvShow.ID <br/>
+TvSpecial.ShowID <br/>
+TvSpecial.ShowTitle <br/>
+
+* * *
+
+* * *
+
+## Warnings {#warnings}
+
+Warnings do not cause the catalog ingestion to fail (except image-related warnings, which can if there are enough of them), but they should be addressed as your resources allow. Deprecation warnings in particular call for attention because they tell you that the CDF schema has changed, which can result in some of your data no longer being used as before.
+
+**Warnings**
+
+[Aspect ratio should be between %f and %f (%f to %f preferred.)](#bad_aspect_ratio_link_warn) <br/>
+[Copyright is optional but should not be blank if supplied](#copyright) <br/>
+[CastMember or CrewMember name should not be blank](#credit_name) <br/>
+[ExternalID is optional but should not be blank if supplied](#externalid) <br/>
+[Image height must be greater than %d pixels (greater than %d pixels preferred)](#image_height_link_warn) <br/>
+[Inconsistent release year information](#year) <br/>
+[Invalid image](#invalid_image) <br/>
+[MiniSeries is not associated with any MiniSeriesEpisodes](#miniseries) <br/>
+[Possible invalid string found for optional CastMember Role element](#castmember) <br/>
+[Quality element in Offer is deprecated in favor of Quality element in LaunchDetails](#quality_dep) <br/>
+[ReleaseInfo element is deprecated](#releaseinfo_dep) <br/>
+[Role (character name) is optional but should not be blank if supplied](#role) <br/>
+[Runtime minutes is not within expected range of 1 to 2880 minutes](#minutes) <br/>
+[The ShortDescription should not be the same as the Title](#shortdesc) <br/>
+[The Synopsis should be longer and more descriptive than the ShortDescription](#synopsis_v_shortdesc_1) <br/>
+[The Synopsis should not be the same as the ShortDescription](#synopsis_v_shortdesc_2) <br/>
+[The Synopsis should not be the same as the Title](#synopsis_v_title) <br/>
+[Text contains characters that are escaped more than once](#escaped_text) <br/>
+[TvSeason is not associated with any TvEpisodes](#tvseason_v_episodes) <br/>
+[TvShow is not associated with any TvEpisodes or TvSpecials](#tvshow_v_episodes) <br/>
+[Unsupported image type. Provided image not JPG or PNG format](#unsupported_image_link) <br/>
+
+* * *
+
+### Warning: Aspect ratio should be between %f and %f (%f to %f preferred.) {#bad_aspect_ratio_link_warn}
+
+See [Image-Related Messages](#image). Note that this message can appear as either a warning or a suggestion, depending on its severity.
+
+* * *
+
+### Warning: Copyright is optional but should not be blank if supplied {#copyright}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+The Copyright element is present under the work with the given ID, but it doesn't have the copyright information text.
+
+**What to do**
+
+Because the Copyright element is optional, you can delete it altogether if you don't know the copyright information. Otherwise, find the work element with the given ID in your CDF file, locate its Copyright element, and add the missing information. Here's an example:
+
+**Before:** `<Copyright locale="en-US"></Copyright>` <br/>
+**After:** `<Copyright locale="en-US">© 1894 Edison Manufacturing Company</Copyright>` <br/>
+
+**Possible elements involved**
+
+_WorkType_.Copyright <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: CastMember or CrewMember name should not be blank {#credit_name}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+This warning can apply to either a CastMember or a CrewMember. Your CDF file contains the Name element for the person, but it's missing the person's name.
+
+**What to do**
+
+Find the work element with the given ID in your CDF file. Find that work's Credits element. Look at each CastMember or CrewMember element in that Credits section, locate any with an empty Name element, and add that information. Here's an example:
+
+**Before:** `<Name locale="en-US"></Name>`
+**After:** `<Name locale="en-US">Alan Smithee</Name>`
+
+**Possible elements involved**
+
+_WorkType_.CastMember.Name <br/>
+_WorkType_.CrewMember.Name <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: ExternalID is optional but should not be blank if supplied {#externalid}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+Your CDF file contains an ExternalID element, but doesn't provide the information. An ExternalID is the ID assigned to a work or person by some other source such as IMDb or the UPC code on a DVD box. The ExternalID can apply to a work (Movie, TvShow, etc.), a CastMember, or a CrewMember. With an ExternalID, we can link to or pull in information from that source. For instance, for a member of the cast or crew, their IMDb ExternalID allows their picture and description to be imported.
+
+**What to do**
+
+Find the element with the given ID in your CDF file. Find each ExternalID element that it contains—a work can contain as many ExternalID elements as it has CrewMember or CastMember elements, plus one for the work itself. Because the ExternalID element is optional, you can delete it altogether if necessary. Otherwise, add the missing information. Here's an example for a CastMember:
+
+```xml
+<Movie>
+    <ID>_WorkID_</ID>
+    <ExternalID scheme="imdb">tt0029843</ExternalID>
+    ...
+    <Credits>
+        <CastMember>
+            <Name locale="en-US">Errol Flynn</Name>
+            <ExternalID scheme="imdb">nm0653028</ExternalID>
+```
+
+**Possible elements involved**
+
+_WorkType_.ExternalID <br/>
+_WorkType_.CastMember.ExternalID <br/>
+_WorkType_.CrewMember.ExternalID <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: Image height must be greater than %d pixels (greater than %d pixels preferred) {#image_height_link_warn}
+
+See [Image-Related Messages](#image). Note that this message can appear as either a warning or a suggestion, depending on its severity.
+
+* * *
 
 
-<a class="anchor" name="推奨事項"></a>
+### Warning: Inconsistent release year information {#year}
 
-<a class="anchor" name="suggestions"></a>
+**Detail message:** _**WorkID**_ Provided ReleaseYear _yyyy_ differs from the year _yyyy_ in the _ss_ element
 
-<h2>推奨事項</h2>
-<p>指摘された問題が推奨事項であれば、カタログを正常に更新できなくなることはありません（"Invalid image" を除く）。ベストプラクティスを奨励してエンドユーザーの満足度を高めるのが推奨事項の目的です。
-</p>
-<p><strong>推奨事項</strong>
-<br /> <a href="#bad_aspect_ratio_link_warn">Aspect ratio should be between %f and %f (%f to %f preferred.)</a>
-<br /> <a href="#image_height_link_warn">Image height must be greater than %d pixels (greater than %d pixels preferred)</a>
-<br /> <a href="#no_image">Invalid image</a>
-<br /> <a href="#cast_and_crew">Provide cast and crew information for better search and browse integration</a>
-<br /> <a href="#one_per_locale">Provide only one <em>ShortDescription/Synopsis</em> per locale</a>
-<br /> <a href="#count_for_customerrating">Provide the Count for CustomerRating for better data quality and user experience</a>
-</p>
-<hr /> <a class="anchor" id="bad_aspect_ratio_link_sugg"></a>
-<h3>推奨事項: Aspect ratio should be between %f and %f (%f to %f preferred.)
-<br />
-</h3>
-<p>「<a href="#image">画像関連のメッセージ</a>」を参照してください。このメッセージは重要度に応じて、警告として表示される場合と推奨事項として表示される場合とがあります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="image_height_link_sugg"></a>
-<h3>推奨事項: Image height must be greater than %d pixels (greater than %d pixels preferred)
-<br />
-</h3>
-<p>「<a href="#image">画像関連のメッセージ</a>」を参照してください。このメッセージは重要度に応じて、警告として表示される場合と推奨事項として表示される場合とがあります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="no_image"></a>
-<h3>推奨事項: Invalid image
-</h3>
-<p>「<a href="#image">画像関連のメッセージ</a>」を参照してください。
-<br />
-</p>
-<hr /> <a class="anchor" id="cast_and_crew"></a>
-<h3>推奨事項: Provide cast and crew information for better search and browse integration
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">ご使用の CDF ファイルには、この作品のキャスト情報やクルー情報がまったく含まれていません。この情報を追加すると、ユーザーが作品を見つけやすくなります。たとえば、ユーザーが、ハンフリー・ボガート主演の映画や黒澤明監督の映画を探しているとします。最低でも基本的なキャストとクルー情報がないと、タイトルで検索するか、ブラウズ中に偶然見つける以外、作品を探す手立てがありません。
-</p>
-<p><strong>該当する要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.Credits.CastMember
-<br /> <em>WorkType</em>.Credits.CrewMember
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p>
-<hr /> <a class="anchor" id="one_per_locale"></a>
-<h3>推奨事項: Provide only one <em>ShortDescription/Synopsis</em> per locale
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> There is more than one <em>ShortDescription/Synopsis</em> with locale of <em>ss</em>
-</p>
-<p><strong>例</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em><strong>WorkID</strong></em> There is more than one ShortDescription with locale of en-us
-<br /> <em><strong>WorkID</strong></em> There is more than one Synopsis with locale of fr
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルの ShortDescription と Synopsis またはそのどちらか一方に同じロケールの項目が複数存在します。ShortDescription と Synopsis は、1 つのロケールにつき 1 つしか使用できません。該当する ID の作品を CDF ファイルから探してください。対応する ShortDescription 要素を探します。ShortDescription に複数の項目が存在する場合、同じロケール値を持つ項目を探します。適宜そのロケールの項目を 1 つ残して削除します。Synopsis 要素の場合も手順は同じです。<!-- TODO: In the case of multiple entries for the same locale, which is used? -->
-</p>
-<p><strong>該当する要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ShortDescription
-<br /> <em>WorkType</em>.Synopsis
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p>
-<hr /> <a class="anchor" id="count_for_customerrating"></a>
-<h3>推奨事項: Provide the Count for CustomerRating for better data quality and user experience
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em>
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">CDF ファイルの CustomerRating 項目には、Count という省略可能な要素が存在します。Count の目的は、その作品を評価した視聴者数の情報を保持することです。数字の大きい方が評価の信頼性は高くなります。サンプル集合が少ないために生じる分布の非対称性が小さくなる傾向があるためです。その情報を追跡し、カタログを更新するときに都度 Count 値と CustomerRating 値を更新する必要があります。
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">
-</p>
-<p><strong>該当する要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.CustomerRating.Count
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p>
+Examples:
+
+**tt123456** Provided ReleaseYear 1959 differs from the year 1960 in the OriginalAirDate element <br/>
+**tt456789** Provided ReleaseYear 1977 differs from the year 1978 in the ReleaseDate element <br/>
+
+**What went wrong**
+
+The work specifies its release year in more than one place, but they do not agree. You've provided a ReleaseYear plus an OriginalAirDate or ReleaseDate, each of which also include a year. In tracking this down, note that there are two different ReleaseDate elements, one that's a direct child element of the work and another that's a child element of the deprecated ReleaseInfo element. ReleaseDate is found only under Movie, TvShow, and MiniSeries elements. The deprecated ReleaseInfo.ReleaseDate is found in all work types. OriginalAirDate is found only under TvEpisode, TvSpecial, and MiniSeriesEpisode elements.
+
+{% include note.html content="Do not use the deprecated ReleaseInfo.ReleaseDate element in any new additions to your catalog. If your catalog predates that element's deprecation, consider updating the catalog to fit the current schema. See [ReleaseInfo element is deprecated](#releaseinfo_dep) below for instructions." %}
+
+**What to do**
+
+Find the element with the given WorkID (tt123456 or tt456789 in the example) in your CDF file. Find its ReleaseYear element, verify that the year is correct, and note the value. Next, find any instance of OriginalAirDate or ReleaseDate under that work and ensure that those strings include the same year. Note that OriginalAirDate and ReleaseDate have strict data forms (for example, 2003-08-08T00:00:00Z) of which the year might be only a portion.
+
+**Possible elements involved**
+
+_WorkType_.ReleaseYear <br/>
+_WorkType_.ReleaseDate <br/>
+_WorkType_.ReleaseInfo.ReleaseDate <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
 
 
-<a class="anchor" name="画像関連のメッセージ"></a>
+### Warning: Invalid image {#invalid_image}
 
-<a class="anchor" name="image"></a>
+See [Image-Related Messages](#image).
 
-<h2>画像関連のメッセージ</h2>
-<p>画像に関連したエラー、警告、推奨事項は、生じる影響が他のメッセージとは異なります。通常、警告や推奨事項が原因でカタログが拒否されることはありません。一方、画像に関連した警告や推奨事項が、登録対象の 50% 超で検出された場合、"<a href="#too_many_invalid_images">Too many invalid images</a>" というエラーになり、カタログが拒否されます。
-</p>
-<p>画像の問題の多くは CDF ファイルそのものの問題ではなく、そこで参照されている画像の問題です。画像の問題を解決するにあたって、グラフィックデザイン、画像の編集、サーバーのアクセス権が必要になる場合があります。そのような問題については、グラフィック部門や IT 部門に協力を求めてください。
-</p>
-<p><strong>エラー関連のメッセージ</strong>
-<br /> <a href="#too_many_invalid_images_2">エラー:</a> <a href="#too_many_invalid_images_2">Too many invalid images
-<br /> </a><a href="#bad_aspect_ratio">警告: Aspect ratio should be between 1:3 and 3:1 (1:2 to 2:1 preferred.)</a>
-<br /> <a href="#image_height">警告: Image height must be greater than 240 pixels (greater than 480 pixels preferred)</a>
-<br /> 警告: Invalid image
-<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#http_empty">We were unable to retrieve an image from <em>url</em>. The HTTP response was empty.</a>
-<br /> <a href="#response_invalid">We were unable to retrieve an image from <em>url</em>. The HTTP response was invalid.</a>
-<br /> <a href="#http_response">We were unable to retrieve an image from <em>url</em>. The HTTP response was <em>status code</em>, <em>reason</em>.</a>
-<br /> <a href="#unsupported_image">警告: Unsupported image type. Provided image not JPG or PNG format.</a>
-<br /> <a href="#bad_aspect_ratio">推奨事項: Aspect ratio should be between 1:3 and 3:1 (1:2 to 2:1 preferred.)</a>
-<br /> <a href="#image_height">推奨事項: Image height must be greater than 240 pixels (greater than 480 pixels preferred)</a>
-<br /> 推奨事項: Invalid image
-<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#no_image_provided">No image present for item. Please provide image if available.</a>
-</p>
-<hr /> <a class="anchor" id="too_many_invalid_images_2"></a>
-<h3>エラー: Too many invalid images
-</h3>
-<p><strong>詳細メッセージ: &nbsp;</strong><em>nn</em>% invalid images or fewer allowed; <em>nn</em>% found.See the warnings and suggestions section for details.
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">無効な画像（欠落または使用不能）が少数であれば、インジェストエラーは発生しません。そのような場合は、警告や推奨事項として表示されます。一方、無効な画像が多数このカタログに検出された場合は、エラーが発生します。そのしきい値は約 50% です。作品の画像の欠落は無効と見なされるので、カタログ内の作品の 50% 以上で有効な画像が含まれている必要があります。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">インジェストレポートの警告セクションと推奨事項セクションを参照し、インジェストの過程で発生した画像関連の具体的な問題を確認します。レポートで指摘されている警告と推奨事項に該当する箇所をすべて探して修正してください。
-</p><strong>該当する要素</strong>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ImageUrl
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="bad_aspect_ratio"></a>
-<h3>警告/推奨事項: Aspect ratio should be between 1:3 and 3:1 (1:2 to 2:1 preferred.)
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> Unsupported aspect ratio <em>nn</em> for image <em>url</em>.Please provide acceptably sized image.
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">これは CDF ファイルの問題ではなく、そこで参照されている画像の問題です。画像のアスペクト比が現行の要件を逸脱しています。つまり、両側から押しつぶしたように表示されるか、左右に引き伸ばしたように表示されます。
-</p>
-<p><strong>留意事項</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">縦横比は 1:2 または 2:1 を推奨します。ご使用の画像が 1:3 または 3:1 である場合、自動的に 1:2 または 2:1 にトリミングされ、このメッセージが推奨事項として表示されます。ただし、トリミングによって画像の高さが 240 ピクセル未満になる場合、その画像は使用されません。
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">1:3 から 3:1 の範囲を超えている場合、このメッセージが警告として表示され、無効な画像としてカウントされます。こうして無効な画像の総数が増えていくと、最終的にはカタログが拒否されます。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID（この例では tt123456）の作品を CDF ファイルから探してください。そこに含まれている ImageUrl タグを探します。この URL は、画像ファイルが置かれている場所を示しています。その URL をグラフィック部門に知らせて、画像の縦横比を少なくとも 1:3 ～ 3:1（トリミングを回避するためには 1:2 ～ 2:1）の範囲に収める必要があること、またトリミングした場合でも 480 ピクセル以上を必ず維持するように伝えます。修正済みの画像を受け取ったら、その URL が変更されていないことを確認してください。変更されている場合は、CDF ファイルで ImageUrl の値を更新します。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ImageUrl
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="image_height"></a>
-<h3>警告: Image height must be greater than 240 pixels (greater than 480 pixels preferred)
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> Image height <em>nn</em> is below acceptance criteria for <em>url</em>.Please provide acceptably sized image.
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">これは CDF ファイルの問題ではなく、そこで参照されている画像の問題です。その作品で参照されている画像の縦横比は適切ですが、高さ 480 ピクセルという要件を下回っています。画像の高さは 480 ピクセル以上を推奨します。画像の高さが 240 ～ 480 ピクセルの範囲内にある場合、このメッセージは推奨事項として表示されます。240 ピクセルを下回っている場合、このメッセージが警告として表示され、無効な画像としてカウントされます。こうして無効な画像の総数が増えていくと、最終的にはカタログが拒否されます。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">指定された ID の要素を CDF ファイルから探してください。そこに含まれている ImageUrl タグを探します。この URL は、画像ファイルが置かれている場所を示しています。その URL をグラフィック部門に知らせて、画像の高さが 240 ピクセル以上（480 ピクセル以上を推奨）必要で、かつ画像の縦横比を 1:3 ～ 3:1（トリミングを回避するためには 1:2 ～ 2:1）に維持する必要があることを伝えます。修正済みの画像を受け取ったら、その URL が変更されていないことを確認してください。変更されている場合は、CDF ファイルで ImageUrl の値を更新します。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ImageUrl
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="http_empty"></a>
-<h3>警告: Invalid image
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> We were unable to retrieve an image from <em>url</em>.The HTTP response was empty.
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">画像が保存されているサーバーに画像を要求するリクエストを送信し、成功を示すレスポンスコードが返されましたが、レスポンスにはヘッダーも本文もなく、画像も含まれていませんでした。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">これは、CDF ファイルの問題ではなく、サーバーとの通信の問題です。今後も同じ問題がレポートで発生する場合は、該当する ID の作品を CDF ファイルから探し、その ImageUrl タグを特定してください。その URL を IT 部門に伝え、画像の取得リクエストで空のレスポンスが返される旨を知らせ、調査を依頼してください。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ImageUrl
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="response_invalid"></a>
-<h3>警告: Invalid image
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> We were unable to retrieve an image from <em>url</em>.The HTTP response was invalid.
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">画像が保存されているサーバーに画像を要求するリクエストを送信しましたが、返されたレスポンスメッセージに何らかの文字化けが発生しています。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">これは、CDF ファイルの問題ではなく、サーバーとの通信の問題です。この場合、次回のレポートを待って、問題が再現するかどうかを確認するのも一つの方法です。1 回限りの問題であることも十分に考えられます。画像をリクエストしたときに絶えずこの警告が返される場合は、その画像ファイルの URL を IT 部門に伝え、取得リクエストに対してシステムが有効な HTTP レスポンスを返さない状態が続いている旨を知らせてください。その情報に基づいて詳しく調査してもらうことができます。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ImageUrl
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="http_response"></a>
-<h3>警告: Invalid image
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> We were unable to retrieve an image from <em>url</em>.The HTTP response was <em>status code:</em> <em>reason</em>.
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">画像が保存されているサーバーに画像を要求するリクエストを送信しましたが、レスポンスコードは問題を示しており、画像は返されませんでした。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">これは、CDF ファイルの問題ではなく、サーバーとの通信の問題です。画像ファイルの URL とレスポンスのステータスコードおよび理由を IT 部門に伝えてください。その情報に基づいて詳しく調査してもらうことができます。問題の原因としては、さまざまな理由が考えられます（リクエストが無効である、サーバーへのアクセスやファイアウォールに問題がある、ペイロードのサイズに問題がある、サーバーがオフラインであるなど）。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ImageUrl
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p>
-<p><strong>関連項目</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">
-</p><a title="HTTP/1.1: ステータスコードの定義" target="_blank" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP/1.1: ステータスコードの定義</a><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="unsupported_image"></a>
-<h3>警告: Unsupported image type. Provided image not JPG or PNG format.
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> Unsupported image type <em>ext</em> for <em>url</em>.Images should be in JPG or PNG format.
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">JPG と PNG 形式以外の画像ファイルが CDF ファイルに指定されています。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">該当する ID の作品を CDF ファイルから探してください。対応する ImageUrl 要素を探します。この URL は、画像ファイルの場所を示しています。場合によってはグラフィック部門に連絡して、サポートされている形式（JPG または PNG）に画像を変換してもらう必要があります。自分で変換する場合は、グラフィックプログラムでファイルを開き、サポート対象のいずれかの形式で保存してください。一部のファイル形式によっては、変換後に画像が劣化する場合があります。元の形式と変換後の形式とを比較して、問題がないか確認してください。サーバー上の画像を新しい画像で置き換えます。CDF ファイル内の ImageUrl 要素は、新しい画像の名前に合わせて適宜更新してください。
-</p>
-<p><strong>該当する可能性のある要素</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;"><em>WorkType</em>.ImageUrl
-<br />
-<br /> <em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-<hr /> <a class="anchor" id="no_image_provided"></a>
-<h3>推奨事項: Invalid Image
-</h3>
-<p><strong>詳細メッセージ:</strong> <em><strong>WorkID</strong></em> No image present for item.Please provide image if available.
-</p>
-<p><strong>問題</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">この作品の画像が CDF ファイルに指定されていません。
-</p>
-<p><strong>対処方法</strong>
-</p>
-<p style="margin-left: 30.0px;" data-mce-style="margin-left: 30.0px;">作品の ImageUrl は必須ではありませんが、作品の全項目中少なくとも 50% は、有効な画像が ImageUrl 要素で指定されている必要があります。その条件を満たしていないと、"
-</p><a href="#too_many_invalid_images_2">Too many invalid images</a>" というエラーが発生し、アップロードされたカタログが拒否されます。50% のしきい値は超えているが、作品の画像が含まれていない場合、弊社にて画像の外部ソース（IMDb など）の使用を試みます。そのためには、外部ソースでの照合に十分な情報をその作品に関して追加していただく必要があります。その他、不足している画像については、汎用的なプレースホルダーを用意しておりますが、ユーザーエクスペリエンスの観点からはお勧めできません。
-<p><strong>該当する要素</strong>
-</p><em>WorkType</em>.ImageUrl
-<br />
-<br />
-<p><em>WorkType</em> は、Movie、TvShow、TvSeason、TvEpisode、TvSpecial、MiniSeries、MiniSeriesEpisode、Extra のいずれかとなります。
-</p>
+* * *
+
+### Warning: MiniSeries is not associated with any MiniSeriesEpisodes {#miniseries}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+Your CDF file contains an entry for a MiniSeries, but it doesn't have any episodes. This can lead to a bad user experience because they can see and select the mini-series, but then find it empty. There are two possibilities for what caused this. The first is that the MiniSeriesEpisode elements weren't included in the CDF file. The second is that those episodes are in your CDF file, but they specify the wrong mini-series.
+
+**What to do**
+
+Find each expected MiniSeriesEpisode element for that MiniSeries in your CDF file. Are they there?
+
+*   **No:** You'll need to add them.
+*   **Yes:** How does each identify its MiniSeries; by using the MiniSeriesID or MiniSeriesTitle element?
+*   **MiniSeriesID:** Ensure that it matches the MiniSeries.ID value (the WorkID in the detail message).
+*   **MiniSeriesTitle:** Ensure that it matches the MiniSeries.Title value exactly, including case.
+
+**Possible elements involved**
+
+MiniSeries.ID <br/>
+MiniSeries.Title <br/>
+MiniSeriesEpisodes.MiniSeriesID <br/>
+MiniSeriesEpisodes.MiniSeriesTitle <br/>
+
+* * *
+
+### Warning: Possible invalid string found for optional CastMember Role element {#castmember}
+
+**Detail message:** _**WorkID**_ Please confirm that _text_ is a valid Role (character name)
+
+Examples:
+
+**tt123456** Please confirm that Actor is a valid Role (character name) <br/>
+**tt123456** Please confirm that Unknown is a valid Role (character name) <br/>
+
+**What went wrong**
+
+This warning is very specific. Currently, it only looks for values of "Unknown" or "Actor" in the CastMember.Role element. The Role element exists to supply the name of the character that the actor played in the work, such as Han Solo. Any entry under CastMember is, by definition, an actor. That said, there are rare instances where "Actor" or "Unknown" could be valid character names. In those cases, to avoid seeing this warning in every report, you might reword those entries somewhat if possible, such as "Actor #1" or "The Unknown". Note that if you include the Role element but leave it blank, you'll receive a different warning.
+
+**What to do**
+
+Find the work element with the given ID in your CDF file. Find its Credits section. Find any CastMember elements that it contains and locate any with "Actor" or "Unknown" in the Role element. The Role element is optional, so omit it altogether if you don't know the character's name. Otherwise, add the character name.
+
+**Possible elements involved**
+
+_WorkType_.Credits.CastMember.Role <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: Quality element in Offer is deprecated in favor of Quality element in LaunchDetails {#quality_dep}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+The CDF schema has changed, but your file still uses elements from an older schema version. In this case, as of CDF version 1.2, the Quality element for each Offer type was moved under the new Offers._OfferType_.LaunchDetails element, but is otherwise the same. Your file still places the Quality element directly under Offers._OfferType_.
+
+**What to do**
+
+Technically, you don't have to do anything. Your existing Quality value will continue to be used. However, in the interest of a clean ingestion report, you should update your file as your resources allow.
+
+*   **If your CDF file is automatically generated from your media database**: The script or transform that takes the information from your database and puts it into the CDF format will need to be updated. Contact your database administrator (DBA) and tell them that the quality value should now be exported to the Offers._OfferType_.LaunchDetails.Quality element rather than to Offers._OfferType_.Quality. The DBA can consult the [Catalog Data Format (CDF) XSD](https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog-13.xsd) for the LaunchElement's proper placement.
+*   **If your database has a structure that matches the CDF format**: Again, your DBA will need to make this change. In this case, the database itself will need to be slightly redesigned to account for the newer CDF structure.
+*   **If you construct the CDF file manually**: Find the work with the given ID in your CDF file. Find its Offers element. Do the following for each offer type that currently has an Offers._OfferType_.Quality element:
+1.  Add a LaunchDetails element. Location matters - it should be the last element in the SubscriptionOffer and FreeOffer types, and should be directly before the PriceType element in the PurchaseOffer and RentalOffer types.
+2.  Add a Quality element under the LaunchDetails element. Specify the same value (SD, HD, or UHD) that the original element used.
+3.  Delete the original Offers._OfferType_.Quality element.
+
+Here's an example of the change:
+
+**Before**
+
+```xml
+<Movie>
+    ...
+    <Offers>|
+        <FreeOffer>
+            <Quality>HD</Quality>
+            ...
+        </FreeOffer>
+        ...
+    </Offers>
+    ...
+</Movie>
+```
+
+**After**
+
+```xml
+<Movie>
+    ...
+    <Offers>|
+        <FreeOffer>
+            ....
+            <LaunchDetails>
+                <Quality>HD</Quality>
+            </LaunchDetails>
+        </FreeOffer>
+        ...
+    </Offers>
+    ...
+</Movie>
+```
+
+**Possible elements involved**
+
+_WorkType_.Offers._OfferType_.Quality (deprecated) <br/>
+_WorkType_.Offers._OfferType_.LaunchDetails.Quality <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+_OfferType_ can be SubscriptionOffer, FreeOffer, PurchaseOffer, or RentalOffer <br/>
+
+* * *
+
+### Warning: ReleaseInfo element is deprecated {#releaseinfo_dep}
+
+**Detail message:** _**WorkID**_ Please use the _ReleaseDate / OriginalAirDate / ReleaseYear_ element instead for _WorkType_
+
+Examples:
+
+**tt123456** Please use the ReleaseDate element instead for ShowType <br/>
+**tt45678** Please use the OriginalAirDate element instead for EpisodeType
+
+**What went wrong**
+
+The CDF schema has changed, but your file still uses elements from an older schema version. In this case, as of CDF version 1.3, the ReleaseInfo element, which applied to all work types, is deprecated in favor of work-type-specific values. ReleaseInfo contained two child elements: ReleaseDate and ReleaseCountry. ReleaseCountry information is no longer used at all. ReleaseDate information is now stored based on the work type: ReleaseDate for the Movie, TvShow, and MiniSeries types; OriginalAirDate for TvEpisode, TvSpecial, and MiniSeriesEpisode types.
+
+**What to do**
+
+Technically, you don't have to do anything. Your existing ReleaseInfo.ReleaseDate value will continue to be used. However, in the interest of a clean ingestion report, you should update your file as your resources allow.
+
+*   **If your CDF file is automatically generated from your media database**: The script or transform that takes the information from your database and puts it into the CDF format will need to be updated. Contact your database administrator (DBA) and tell them the following:
+    *   The work's release date, previously contained in _WorkType_.ReleaseInfo.ReleaseDate, should now be exported to _WorkType_.OriginalAirDate for TvEpisode, TvSpecial, and MiniSeriesEpisode types and _WorkType_.ReleaseDate for Movie, TvShow, and MiniSeries types.
+    *   The ReleaseInfo element should be removed. <br/><br/>The DBA can consult the [Catalog Data Format (CDF) XSD](https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd) for details.
+*   **If your database has a structure that matches the CDF format**: Again, your DBA will need to make this change. In this case, the database itself will need to be slightly redesigned to account for the newer CDF structure.
+*   **If you construct the CDF file manually**: Find the work with the given ID in your CDF file. Find its ReleaseInfo element and note the ReleaseDate value.
+*   **If the work type is Movie, TvShow, or MiniSeries**: Add a ReleaseDate element, including the value, as the very last thing under the work's element.
+*   **if the work type is TvEpisode, TvSpecial, or MiniSeriesEpisode**: Add an OriginalAirDate element, including the value, as the very last thing under the work's element.
+*   **Regardless of work type**: Remove the original ReleaseInfo element once the new elements are in place.
+
+**Elements possibly involved**
+
+_WorkType_.ReleaseInfo (deprecated) <br/>
+_WorkType_.ReleaseInfo.ReleaseDate (deprecated) <br/>
+_WorkType_.ReleaseInfo.ReleaseCountry (deprecated) <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+Movie.ReleaseDate <br/>
+TvShow.ReleaseDate <br/>
+MiniSeries.ReleaseDate <br/>
+TvEpisode.OriginalAirDate <br/>
+TvSpecial.OriginalAirDate <br/>
+MiniSeriesEpisode.OriginalAirDate <br/>
+
+* * *
+
+### Warning: Role (character name) is optional but should not be blank if supplied {#role}
+
+**Detail message:** _**WorkID**_ Role (character name) for _​person_ is blank
+
+Example: **tt123456** Role (character name) for Errol Flynn is blank
+
+**What went wrong**
+
+The Role element is present, but it doesn't provide the information. The Role element exists to supply the name of the character that the actor played in the work, such as Han Solo.
+
+**What to do**
+
+Find the work with the given ID in your CDF file (tt123456 in the example). Find its Credits section. Find the CastMember element for the person in question (Errol Flynn in the example), and locate that person's Role element. Role is optional, so you can either add the character name or, if you don't know the character name, delete the Role element altogether. Do not use "Unknown" as a character name.
+
+**Possible elements involved**
+
+_WorkType_.Credits.CastMember.Role <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: Runtime minutes is not within expected range of 1 to 2880 minutes {#minutes}
+
+**Detail message:** _**WorkID**_ Please confirm that _nn_ minutes is the correct runtime
+
+Example: **tt123456** Please confirm that 99999999 minutes is the correct runtime
+
+**What went wrong**
+
+Your CDF file contains a RuntimeMinutes element with a value that seems unusually large or small. This warning is triggered when the value is less than 1 or greater than 2880 minutes (48 hours!). Few works would legitimately fall outside of that range. This information can be seen by the end user and so should be accurate to avoid a bad user experience.
+
+**What to do**
+
+Find the work with the given ID in your CDF file (tt123456 in the example). Find its RuntimeMinutes element. Make sure that the correct value is given. Because this is an optional element, you can delete the RuntimeMinutes element altogether, but for a better user experience this is not recommended.
+
+**Possible elements involved**
+
+_WorkType_.RuntimeMinutes <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: The ShortDescription should not be the same as the Title {#shortdesc}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+The Title and ShortDescription elements contain identical text, which is a poor user experience. The ShortDescription element is meant to hold a 2-3 line summary of the work to give the user an idea of whether that work is of interest to them. Users already know the title at that point.
+
+**What to do**
+
+Find the work with the given ID in your CDF file. Find its ShortDescription element. Replace the work's name in that element with a brief (2-3 lines) description of its plot or subject. The ShortDescription element is optional; if you don't have a description, you can delete it altogether, although we recommended that each work has at least a ShortDescription.
+
+**Possible elements involved**
+
+_WorkType_.ShortDescription <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: The Synopsis should be longer and more descriptive than the ShortDescription {#synopsis_v_shortdesc_1}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+This CDF file contains both a ShortDescription and a Synopsis for this work. The Synopsis text is shorter than, but not identical to, the ShortDescription text. The Synopsis element is meant to hold a more detailed description of the work than can be given in the 2-3 line ShortDescription.
+
+**What to do**
+
+Find the work with the given ID in your CDF file. Find that work's Synopsis and ShortDescription elements and compare their contents. Adding an expanded Synopsis is the ideal solution for the best user experience. However, if you don't have any further information on the work, you can omit the Synopsis as it is optional. Although it is also optional, we recommend that you supply at least a shortDescription.
+
+**Possible elements involved**
+
+_WorkType_.ShortDescription <br/>
+_WorkType_.Synopsis <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: The Synopsis should not be the same as the ShortDescription {#synopsis_v_shortdesc_2}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+This CDF file contains both a ShortDescription and a Synopsis for this work, and the two elements contain identical text. The Synopsis element is meant to hold a more detailed description of the work's content than can be given in the 2-3 line ShortDescription.
+
+**What to do**
+
+Find the work with the given ID in your CDF file. Find that work's Synopsis and ShortDescription elements and compare their contents. If the ShortDescription is more than 2-3 lines, shorten it. If not, then expand the Synopsis for the best user experience. However, if you don't have any further information on the work, you can omit the Synopsis as it is optional. Although it is also optional, we recommend that you supply at least a ShortDescription.
+
+**Possible elements involved**
+
+_WorkType_.ShortDescription <br/>
+_WorkType_.Synopsis <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: The Synopsis should not be the same as the Title {#synopsis_v_title}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+The Title and Synopsis elements contain identical text, which is a poor user experience. The Synopsis element is meant to hold a summary of the content to give the user an idea of what the work is about. They already know the title by that point.
+
+**What to do**
+
+Find the work with the given ID in your CDF file. Find its Synopsis element. Replace the work's name in that element with a description of its plot or subject. The Synopsis element is optional, so if you don't have a description you can delete it altogether, although this is not ideal.
+
+**Possible elements involved**
+
+_WorkType_.Synopsis </br>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: Text contains characters that are escaped more than once {#escaped_text}
+
+**Detail message:** _**WorkID**_ _Element_ contains characters that are escaped more than once
+
+Examples:
+
+**tt123456** MiniSeriesTitle contains characters that are escaped more than once <br/>
+**tt234567** SeasonTitle contains characters that are escaped more than once <br/>
+**tt345678** ShortDescription contains characters that are escaped more than once <br/>
+**tt456789** ShowTitle contains characters that are escaped more than once <br/>
+**tt567890** Title contains characters that are escaped more than once <br/>
+
+**What went wrong**
+
+An XML serializer (possibly used in the code that pulls data from your database and converts it into the catalog XML file), has replaced the ampersand (&) in an escaped character with the escaped ampersand (&amp;). An escaped character is present in your text as a code entity; for example, _&bull;_ for an em-dash, and _&amp;_ for an ampersand. The serializer did not expect escaped characters and dealt with them as plain text, escaping all ampersands. This results in "&bull;" becoming "&amp;mdash;" and displaying as "&bull;_"_. The string "this &amp; that", which you expect to render as "this & that", becomes "this &amp;amp; that", which displays as "this &amp; that".
+
+**What to do**
+
+In both your CDF file and in your source database, find the work with the given ID and then its text element as specified in the detail message (Title, ShowTitle, SeasonTitle, ShortDescription, or MiniSeriesTitle). If the doubly-escaped characters are only present in your catalog file, the problem lies in the transformation when the catalog file is created. Use non-escaped characters in the original text whenever possible. You might also be able to instruct the serializer to expect an escaped string so that it properly recognizes those characters.
+
+**Possible elements involved**
+
+MiniSeriesEpisode.MiniSeriesTitle <br/>
+TvEpisode.SeasonTitle <br/>
+TvEpisode.ShowTitle <br/>
+TvSeason.ShowTitle <br/>
+TvSpecial.ShowTitle <br/>
+_WorkType_.ShortDescription <br/>
+_WorkType_.Title <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: TvSeason is not associated with any TvEpisodes {#tvseason_v_episodes}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+Your CDF file contains an entry for a TvSeason, but it doesn't have any episodes. This can lead to a bad user experience because they can see and select the season, but then find it empty. There are two primary possibilities for what caused this. The first is that the TvEpisode elements weren't included in the CDF file. The second is that those episodes are in your CDF file, but they specify the wrong season.
+
+**What to do**
+
+Find each expected TvEpisode element for that season in your CDF file. Are they there?
+
+*   **No:** You'll need to add them.
+*   **Yes:** How does each identify its season; by using the SeasonID or SeasonInShow element?
+*   **SeasonID:** Ensure that it matches the TvSeason.ID value (the WorkID in the detail message).
+*   **SeasonInShow:** Ensure that it matches the TvSeason.SeasonInShow value.
+
+**Possible elements involved**
+
+TvSeason.ID <br />
+TvEpisode.SeasonTitle <br />
+TvEpisode.SeasonID <br />
+TvEpisode.SeasonInShow <br />
+
+* * *
+
+### Warning: TvShow is not associated with any TvEpisodes or TvSpecials {#tvshow_v_episodes}
+
+**Detail message:** _**WorkID**_
+
+**What went wrong**
+
+Your CDF file contains an entry for a TvShow, but it doesn't have any episodes. This can lead to a bad user experience because they can see and select the show, but then find it empty. There are two primary possibilities for what caused this. The first is that the TvEpisode elements weren't included in the CDF file. The second is that those episodes are in your CDF file, but they specify the wrong show.
+
+**What to do**
+
+Find each expected TvEpisode element for that show in your CDF file. Are they there?
+
+*   **No:** You'll need to add them.
+*   **Yes:** How does each identify its show; by using the ShowID or ShowTitle element?
+*   **ShowID:** Ensure that it matches the TvShow.ID value (the WorkID in the detail message).
+*   **ShowTitle:** Ensure that it matches the TvShow.Title value exactly, including case.
+
+**Possible elements involved**
+
+TvShow.ID <br/>
+TvShow.Title <br/>
+TvEpisode.ShowID <br/>
+TvEpisode.ShowTitle <br/>
+
+* * *
+
+### Warning: Unsupported image type. Provided image not JPG or PNG format {#unsupported_image_link}
+
+See [Image-Related Messages](#image).
+
+* * *
+
+* * *
+
+## Suggestions {#suggestions}
+
+Suggestions other than "Invalid image" do not prevent your catalog from being successfully updated. They are provided to encourage best practices for an improved end user experience.
+
+**Suggestions**
+
+[Aspect ratio should be between %f and %f (%f to %f preferred.)](#bad_aspect_ratio_link_warn) <br/>
+[Image height must be greater than %d pixels (greater than %d pixels preferred)](#image_height_link_warn) <br/>
+[Invalid image](#no_image) <br/>
+[Provide cast and crew information for better search and browse integration](#cast_and_crew) <br/>
+[Provide only one _ShortDescription/Synopsis_ per locale](#one_per_locale) <br/>
+[Provide the Count for CustomerRating for better data quality and user experience](#count_for_customerrating) <br/>
+
+* * *
+
+### Suggestion: Aspect ratio should be between %f and %f (%f to %f preferred.) {#bad_aspect_ratio_link_sugg}
+
+See [Image-Related Messages](#image). Note that this message can appear as either a warning or a suggestion, depending on its severity.
+
+* * *
+
+### Suggestion: Image height must be greater than %d pixels (greater than %d pixels preferred) {#image_height_link_sugg}
+
+See [Image-Related Messages](#image). Note that this message can appear as either a warning or a suggestion, depending on its severity.
+
+* * *
+
+### Suggestion: Invalid image {#no_image}
+
+See [Image-Related Messages](#image).
+
+* * *
+
+### Suggestion: Provide cast and crew information for better search and browse integration {#cast_and_crew}
+
+**Detail message:** _**WorkID**_
+
+**What to do**
+
+In your CDF file, this work does not include any cast or crew information. Including this information can make the work easier to find by the user. For instance, the user might want to search for movies that feature the actor Humphrey Bogart, or films directed by Akira Kurosawa. Without at least basic cast and crew information, the work can only be found by searching for its title or coming across it while browsing.
+
+**Elements involved**
+
+_WorkType_.Credits.CastMember <br/>
+_WorkType_.Credits.CrewMember <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra<br/.
+
+* * *
+
+### Suggestion: Provide only one _ShortDescription/Synopsis_ per locale {#one_per_locale}
+
+**Detail message:** _**WorkID**_ There is more than one _ShortDescription/Synopsis_ with locale of _ss_
+
+**Examples**
+
+_**WorkID**_ There is more than one ShortDescription with locale of en-us <br/>
+_**WorkID**_ There is more than one Synopsis with locale of fr <br/>
+
+**What to do**
+
+Your CDF file contains either multiple entries with the same locale under ShortDescription, multiple entries with the same locale under Synopsis, or both. For a given locale, only one ShortDescription and one Synopsis can be used. Find the work with the given ID in your CDF file. Find its ShortDescription element. If the ShortDescription contains multiple entries, find any with the same locale value. Remove entries as needed to leave a single entry with that locale. Repeat the procedure for the Synopsis element.
+
+**Elements involved**
+
+_WorkType_.ShortDescription <br/>
+_WorkType_.Synopsis <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Suggestion: Provide the Count for CustomerRating for better data quality and user experience {#count_for_customerrating}
+
+**Detail message:** _**WorkID**_
+
+**What to do**
+
+The CustomerRating entry in your CDF file has the option of a Count element. Count is intended to state the number of customers who rated the work. Higher numbers give a rating more credibility, as they tend to balance out the skew that can result from a low sample set. You would need to track that information and update the Count and CustomerRating values each time you update your catalog.
+
+**Elements involved**
+
+_WorkType_.CustomerRating.Count <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+## Image-Related Messages {#image}
+
+Errors, warnings, and suggestions that concern images interact in a way that the other messages do not. Normally, warnings and suggestions do not cause your catalog to be rejected. However, image-related warnings and suggestions in over 50% of your entries trigger the [Too many invalid images](#too_many_invalid_images) error, which does cause a catalog rejection.
+
+Many image issues aren't a problem with the CDF file itself, but rather a problem with one or more images that it references. Solving some image issues can involve graphic design, image editing, or server access rights. You might need to reach out to your graphics or IT department to help you solve these problems.
+
+**Error-related messages**
+
+[Error: Too many invalid images](#too_many_invalid_images_2) <br/>
+[Warning: Aspect ratio should be between 1:3 and 3:1 (1:2 to 2:1 preferred.)](#bad_aspect_ratio) <br/>
+[Warning: Image height must be greater than 240 pixels (greater than 480 pixels preferred)](#image_height) <br/>
+
+**Warning: Invalid image** <br/>
+
+[We were unable to retrieve an image from _url_. The HTTP response was empty.](#http_empty) <br/>
+[We were unable to retrieve an image from _url_. The HTTP connection was unexpectedly closed.](#http_closed) <br/>
+[We were unable to retrieve an image from _url_. The HTTP response was invalid.](#response_invalid) <br/>
+[We were unable to retrieve an image from _url_. The HTTP response was _status code_, _reason_.](#http_response) <br/>
+[Warning: Unsupported image type. Provided image not JPG or PNG format.](#unsupported_image) <br/>
+[Suggestion: Aspect ratio should be between 1:3 and 3:1 (1:2 to 2:1 preferred.)](#bad_aspect_ratio) <br/>
+[Suggestion: Image height must be greater than 240 pixels (greater than 480 pixels preferred)](#image_height) <br/>
+
+**Suggestion: Invalid image** <br/>
+
+[No image present for item. Please provide image if available.](#no_image_provided) <br/>
+
+* * *
+
+### Error: Too many invalid images {#too_many_invalid_images_2}
+
+**Detail message: **_nn_% invalid images or fewer allowed; _nn_% found. See the warnings and suggestions section for details.
+
+**What went wrong**
+
+A small number of invalid images (missing or unusable) do not cause an ingestion failure—you'll only see warnings and suggestions in that case. However, enough invalid images were found in this catalog to cause a failure. The threshold is approximately 50%. Note that the lack of an image for a work is considered an invalid image, so at least 50% of the works in your catalog must include valid images.
+
+**What to do**
+
+Refer to the Warnings and Suggestions sections of the ingestion report for the specific image-related issues encountered in the ingestion. Find and correct any instances of those warnings and suggestions that you find in the report.
+
+**Elements involved**
+
+_WorkType_.ImageUrl <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning/Suggestion: Aspect ratio should be between 1:3 and 3:1 (1:2 to 2:1 preferred.) {#bad_aspect_ratio}
+
+**Detail message:** _**WorkID**_ Unsupported aspect ratio _nn_ for image _url_. Please provide acceptably sized image.
+
+**What went wrong**
+
+This is not a problem with your CDF file; it is a problem with an image that it references. The image exceeds our current height-to-width ratio requirements, which is to say that it's either too skinny or too flat.
+
+**What you need to know**
+
+We want a width-to-height ratio between 1:2 and 2:1. If your image is between 1:3 and 3:1, we crop it to 1:2 or 2:1 and this message appears as a suggestion. However, if the cropping causes the image height to drop below 240 pixels, the image won't be used.
+
+If your image is outside of 1:3 to 3:1, this message appears as a warning and the image counts toward the total number of invalid images, which can lead to the catalog being rejected.
+
+**What to do**
+
+Find the work with the given ID (tt123456 in the example) in your CDF file. Find the ImageUrl tag that it contains. This URL tells you where the image file is located. Provide that URL to your graphics department and let them know that you need the image to have a width-to-height ratio between at least 1:3 and 3:1 (1:2 and 2:1 to avoid cropping), while ensuring that the height is no less than 480 pixels, even after cropping. Once you have a corrected image, ensure that its URL hasn't changed. If it has, update the ImageUrl value in your CDF file.
+
+**Possible elements involved**
+
+_WorkType_.ImageUrl <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: Image height must be greater than 240 pixels (greater than 480 pixels preferred) {#image_height}
+
+**Detail message:** _**WorkID**_ Image height _nn_ is below acceptance criteria for _url_. Please provide acceptably sized image.
+
+**What went wrong**
+
+This is not a problem with your CDF file, but rather a problem with an image that it references. The image referenced by the work has a proper width-to-height ratio, but it is shorter than the required 480 pixels high. We prefer a height of at least 480 pixels. If your image height is between 240 and 480 pixels, this message appears as a suggestion. If your image height is below 240 pixels, this message appears as a warning and the image counts toward the total number of invalid images, which can lead to the catalog being rejected.
+
+**What to do**
+
+Find the element with the given ID in your CDF file. Find the ImageUrl tag that it contains. This URL tells you where the image file is located. Provide that URL to your graphics department and let them know that the image height should be no less than 240 pixels (480 pixels or more preferred) while ensuring that the image retains a width-to-height ratio between 1:3 or 3:1 (between 1:2 and 2:1 to avoid cropping). Once you have a corrected image, ensure that its URL hasn't changed. If it has, update the ImageUrl value in your CDF file.
+
+**Possible elements involved**
+
+_WorkType_.ImageUrl <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: Invalid image {#http_empty}
+
+**Detail message:** _**WorkID**_ We were unable to retrieve an image from _url_. The HTTP response was empty.
+
+**What went wrong**
+
+The request to provide the image was made to the server where the image is stored, but, while the response code indicated success, the response contained no headers or body, and no image.
+
+**What to do**
+
+This is not a problem with the CDF file, but rather a server communication problem. If the problem persists in subsequent reports, find the work with the given ID in your CDF file and find its ImageUrl tag. Provide the URL to your IT department, let them know that retrieval requests for the image are coming back empty, and ask them to investigate.
+
+**Possible elements involved**
+
+_WorkType_.ImageUrl <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: Invalid image {#http_closed}
+
+**Detail message:** _**WorkID**_ We were unable to retrieve an image from _url_. The HTTP response was unexpectedly closed.
+
+**What went wrong**
+
+The request to provide the image was made to the server where the image is stored, but the server connection closed unexpectedly and the image could not be retreived.
+
+**What to do**
+
+This is not a problem with the CDF file, but rather a server communication problem. In this case, wait for the next report to try to reproduce the issue, which might very well be a one-time problem. If the image request continues to return this warning, provide the image file's URL to your IT department and let them know that the system is repeatedly not responding to a retrieval request with a valid HTTP response. They should be able to further investigate based on that information.
+
+**Possible elements involved**
+
+_WorkType_.ImageUrl <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra </br>
+
+* * *
+
+### Warning: Invalid image {#response_invalid}
+
+**Detail message:** _**WorkID**_ We were unable to retrieve an image from _url_. The HTTP response was invalid.
+
+**What went wrong**
+
+The request to provide the image was made to the server where the image is stored, but the response message that came back was garbled in some way.
+
+**What to do**
+
+This is not a problem with the CDF file, but rather a server communication problem. In this case, you might wait for the next report to see if it replicates; it's entirely possible that it was a one-time problem. If the image request continues to return this warning, provide the image file's URL to your IT department and let them know that the system is repeatedly not responding to a retrieval request with a valid HTTP response. They should be able to further investigate based on that information.
+
+**Possible elements involved**
+
+_WorkType_.ImageUrl <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Warning: Invalid image {#http_response}
+
+**Detail message:** _**WorkID**_ We were unable to retrieve an image from _url_. The HTTP response was _status code:_ _reason_.
+
+**What went wrong**
+
+The request to provide the image was made to the server where the image is stored, but the response code indicated a problem and did not return an image.
+
+**What to do**
+
+This is not a problem with the CDF file, but rather a server communication problem. Provide the image file's URL and the response's status code and reason to your IT department. They should be able to further investigate based on that information. The problem could lie with an invalid request, a server accessibility or firewall issue, a payload size issue, an offline server, or any number of things.
+
+**Possible elements involved**
+
+_WorkType_.ImageUrl <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+**See also**
+
+[HTTP/1.1: Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html "HTTP/1.1: Status Code Definitions")
+
+* * *
+
+### Warning: Unsupported image type. Provided image not JPG or PNG format. {#unsupported_image}
+
+**Detail message:** _**WorkID**_ Unsupported image type _ext_ for _url_. Images should be in JPG or PNG format.
+
+**What went wrong**
+
+The CDF file has specified an image file with a format other than JPG or PNG.
+
+**What to do**
+
+Find the work with the given ID in the CDF file. Find its ImageUrl element. This URL specifies the image file location. You might need to contact your graphics department to have the image converted to a supported format (JPG or PNG), or you can do it yourself by opening the file in a graphics program and saving it as one of the supported types. Some file type conversions can degrade the image, so compare the original and new versions to ensure that the new image is still acceptable. Replace the image on the server with the new version. You might need to update the ImageUrl element in the CDF file to match the new image name.
+
+**Possible elements involved**
+
+_WorkType_.ImageUrl <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+* * *
+
+### Suggestion: Invalid Image {#no_image_provided}
+
+**Detail message:** _**WorkID**_ No image present for item. Please provide image if available.
+
+**What went wrong**
+
+The CDF file does not specify an image for this work.
+
+**What to do**
+
+While ImageUrl is optional for any given work, at least 50% of your work entries must provide a valid image through that element. Failure to do so causes the [Too many invalid images](#too_many_invalid_images_2) error to be triggered, which causes your uploaded catalog to be rejected. If you are above the 50% threshold and do not include an image for a work, we will attempt to use an external source for the image, such as IMDb. This requires that you include enough information about the work to allow us to match it to that external source. For lack of any other image, we will provide a generic placeholder, but that is a less than ideal user experience.
+
+**Elements involved**
+
+_WorkType_.ImageUrl <br/>
+_WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
+
+[1]: http://www.amazon.com/gp/html-forms-controller/aftsdk-cdf-request
+[2]: https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog-13.xsd
+>>>>>>> tomunreleased
 
 
 {% include links.html %}

@@ -3,7 +3,7 @@ title:  Login with Amazon Component
 permalink: fire-app-builder-login-with-amazon-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -115,7 +115,7 @@ To get the MD5 and SHA-256 values from your signature, you use a Java utility ca
        For Windows users, use Windows methods for adding tools to your PATH.
 
 2.  With keytool in your PATH, browse to the folder where the `debug.keystore` resides. This path is as follows:
-
+    
     ```
     /Users/<your username>/.android/debug.keystore
     ```
