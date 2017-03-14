@@ -53,6 +53,6 @@ Omniture gives you a JAR file to integrate into your app (instead of relying on 
     Your app will now start tracking activities using Omniture Analytics.
 
 
-{% include content/{{site.language}}/fire-app-builder-customize-analytics-tags.md filename="OmnitureCustomAnalyticsTags.json" %}
+{% include content/{{site.language}}/fire/fire-app-builder-customize-analytics-tags.md filename="OmnitureCustomAnalyticsTags.json" %}
 
 {% include links.html %}

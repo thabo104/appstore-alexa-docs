@@ -128,7 +128,7 @@ After you have set up the code, run the app, and caused a crash, Crashlytics wil
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_crashlytics_dashboard" type="png" caption="Sample crash appearing in the Crashlytics Dashboard" %}
 
-{% include content/{{site.language}}/fire-app-builder-customize-analytics-tags.md filename="CrashlyticsCustomAnalyticsTags.json" %}
+{% include content/{{site.language}}/fire/fire-app-builder-customize-analytics-tags.md filename="CrashlyticsCustomAnalyticsTags.json" %}
 
 
 {% include links.html %}

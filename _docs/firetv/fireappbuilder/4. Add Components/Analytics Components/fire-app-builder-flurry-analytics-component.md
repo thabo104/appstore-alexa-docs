@@ -141,6 +141,6 @@ Although it takes several hours before the activity data populates in Flurry Ana
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_flurryeventlog" type="png" %}
 
-{% include content/{{site.language}}/fire-app-builder-customize-analytics-tags.md filename="FlurryCustomAnalyticsTags.json" %}
+{% include content/{{site.language}}/fire/fire-app-builder-customize-analytics-tags.md filename="FlurryCustomAnalyticsTags.json" %}
 
 {% include links.html %}
