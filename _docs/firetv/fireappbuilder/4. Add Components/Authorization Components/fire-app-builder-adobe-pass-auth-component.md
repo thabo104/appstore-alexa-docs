@@ -311,4 +311,34 @@ To configure which screens require authentication:
     }
     ```
 
+## Show the Logo of the Logged-in Provider
+
+When a user logs in to a provider through Adobe Pass, you can show the provider logo on the screen of the app. You do this by supplying an MVPD URL that contains the MVPD (multichannel video programming distributor) along with the MVPD's logo.
+
+In your app's **custom.xml** file, add a string called `mvpd_url` pointing to your MVPD data, like this:
+
+```xml
+<string name="mvpd_url">http://somedomain.com/where/my/mvpd/details/reside</string>
+```
+
+The MVPD URL must include data in the following format:
+
+```json
+{
+   "mvpdWhitelist":[
+      {
+         "mvpd":"xyz123",
+         "loggedInImage":"http://www.xyz123.mysite.com/content/myimage.png"
+      },
+      {
+         "mvpd":"qrs456",
+         "loggedInImage":"http://www.qrs456.mysite.com/content/myfile.png"
+      }
+   ]
+}
+```
+
+Although your MVPD data will most likely contain more values, only the ones above are necessary for Fire App Builder to display the logo of the logged in provider.
+
+
 {% include links.html %}

@@ -9,15 +9,18 @@ github: true
 
 Omniture gives you a JAR file to integrate into your app (instead of relying on API keys). The JAR file stores your security keys and other configuration information.
 
-{% include note.html content="These instructions assume you have the **Project** view selected in Android Studio." %}
+* TOC
+{:toc}
 
-**To configure the Omniture Analytics Component:**
+## Configure the Omniture Analytics Component
+
+{% include note.html content="These instructions assume you have the **Project** view selected in Android Studio." %}
 
 1.  Load the Omniture Analytics component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
 2. Remove any other analytics components that are loaded in your app (such as FlurryAnalyticsComponent, CrashlyticsComponent, or LoggerAnalyticsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.    
 
     {% include_relative componentnote_analytics.html %}
-    
+
 2.  Inside your app's folder, create a folder called **AdobeMobileLibrary**.
 3.  Inside this new **AdobeMobileLibrary** folder, put the JAR file that Adobe gives you.
 
@@ -48,5 +51,8 @@ Omniture gives you a JAR file to integrate into your app (instead of relying on 
     ```
 
     Your app will now start tracking activities using Omniture Analytics.
+
+
+{% include content/{{site.language}}/fire-app-builder-customize-analytics-tags.md filename="OmnitureCustomAnalyticsTags.json" %}
 
 {% include links.html %}

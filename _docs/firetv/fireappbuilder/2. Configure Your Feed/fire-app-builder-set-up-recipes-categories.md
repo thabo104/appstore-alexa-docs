@@ -164,7 +164,7 @@ See [Querying JSON][fire-app-builder-querying-json] for more details about const
 
 #### XML Feeds {#categoryxml}
 
-If your feed is XML, instead of using Jayway JsonPath, you must use [XPath expressions](http://www.w3schools.com/xsl/xpath_syntax.asp) to target the specific elements in your feed. XPath reduces your XML document into various items called "nodes." The XPath syntax targets the location of specific nodes. 
+If your feed is XML, instead of using Jayway JsonPath, you must use [XPath expressions](https://www.w3schools.com/xml/xpath_syntax.asp) to target the specific elements in your feed. XPath reduces your XML document into various items called "nodes." The XPath syntax targets the location of specific nodes. 
 
 Suppose your XML feed contains a structure like this:
 
@@ -204,7 +204,7 @@ Note that with iTunes feeds, there's a general category for the feed (such as `<
 
 Try copying your XML feed into the [XPath Tester/Evaluator](http://www.freeformatter.com/xpath-tester.html) and selecting the categories using a similar syntax.
 
-See [Querying XML][fire-app-builder-querying-xml] for more examples showing XPath expressions. See also [XPath syntax](http://www.w3schools.com/xsl/xpath_syntax.asp) and the examples section on [XPath Examples](http://www.freeformatter.com/xpath-tester.html#xpath-examples) for more details about XPath expressions in general.
+See [Querying XML][fire-app-builder-querying-xml] for more examples showing XPath expressions. See also [XPath syntax](https://www.w3schools.com/xml/xpath_syntax.asp) and the examples section on [XPath Examples](http://www.freeformatter.com/xpath-tester.html#xpath-examples) for more details about XPath expressions in general.
 
 {% include note.html content="If individual items in your feed are associated with multiple categories, your app's display will show those items in each category they're associated with. For example, if your Cool Video appears in both Technology and Gadgets categories, this video will appear in two places in your app's display." %}
 

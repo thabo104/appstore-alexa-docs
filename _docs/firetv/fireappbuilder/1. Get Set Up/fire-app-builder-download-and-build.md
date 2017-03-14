@@ -68,7 +68,7 @@ To work with Fire App Builder, you need to install [Android Studio](https://deve
 
 See [Getting Started with Android Studio](https://developer.android.com/sdk/installing/studio.html) and [Install Android Studio](https://developer.android.com/sdk/installing/index.html) for information about setting up the Android Studio development environment on your machine.
 
-The Fire App Builder project requires you to have certain SDK tools and APIs installed with Android Studio. Note that selecting these tools from the Standalone SDK Manager isn't entirely necessary. When you open the Fire App Builder project (as described in the next section, [Open the Sample App](#openFireAppBuilder)), Android Studio will prompt you to install any build tools or APIs that you're missing. For example, you'll see messages such as the following:
+The Fire App Builder project requires you to have certain SDK tools and APIs installed with Android Studio. Selecting these tools from the Standalone SDK Manager ahead of time isn't necessary. When you open the Fire App Builder project (as described in the next section, [Open the Sample App](#openFireAppBuilder)), Android Studio will prompt you to install any build tools or APIs that you're missing. For example, you might see messages such as the following:
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_sdktoolsneeded" max-width="70%" type="png" border="true" %}
 
@@ -76,18 +76,25 @@ Or you may see the following in the Gradle Console:
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_androidprompts"  max-width="70%" type="png" %}
 
-Clicking these links will install the missing tools and attempt to rebuild the project. You can simply keep opening the project and installing any missing tools as prompted until Android Studio no longer complains.
+Click these links to install the missing tools and rebuild the project. Simply keep opening the project and installing any missing tools as prompted until Android Studio no longer complains.
 
-However, you can also open the Standalone SDK Manager and install all the tool and SDK requirements ahead of time. To install the necessary tools:
+You can also open the Standalone SDK Manager and install all the tool and SDK requirements ahead of time. To install the necessary tools:
 
 1.  Go to **Tools > Android > SDK Manager** (or simply click the **SDK Manager** button {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_androidsdkmanagericon" type="png" %}).
-2.  In the Preferences dialog box that opens, click the **Launch Standalone SDK Manager** link.
-3.  Make sure you have at least the following tools, APIs, and SDKs selected and installed:
+2.  On the **SDK Tools** tab, exand **Android SDK Build-Tools** and select the following:
+    *  24.0.1
+    *  24.0.3
+    *  25.0.0
+    *  25.0.2
+3.  Expand **LLDB** and select the following:
+    *  Android Emulator
+    *  Android SDK Platform-Tools
+    * Android SDK Tools
+4.  Expand **Support Repository** and select the following:
+    * Android Support Repository
+    * Google Repository
 
-    {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_standalonesdkinstalls" type="png" max-width="75%" %}
-
-4.  After selecting the check boxes, click the **Install packages...** button.
-
+After selecting the check boxes, click the **Apply** button.
 
 ## 4. Open the Sample App {#openFireAppBuilder}
 

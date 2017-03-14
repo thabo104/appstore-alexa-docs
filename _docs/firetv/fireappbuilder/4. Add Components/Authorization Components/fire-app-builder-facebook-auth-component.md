@@ -58,9 +58,9 @@ To create a Facebook app:
 7.  In the left sidebar, under **PRODUCTS**, click **+ Add Product**.
 8.  Next to **Facebook Login**, click **Get Started**.
 9.  In the **Client OAuth Settings** section, turn on **Login from Devices**.
-    
+
     {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_fbloginsetting" type="png" caption="Client OAuth settings for your Facebook app." %}
-    
+
 10. Click **Save Changes**.
 11. In the left sidebar, click **Settings > Basic**. Copy the **App ID** into a convenient place.
 11. In the left sidebar, click **Settings > Advanced**. Copy the **Client Token** into a convenient place.
@@ -69,9 +69,9 @@ To create a Facebook app:
 
 The Facebook Auth Component should already be loaded in the sample app in Fire App Builder, but you will need to configure the component.
 
-1.  The Facebook Auth Component is already loaded in the sample app built with Fire App Builder. If it isn't loaded due to updates you've made, see [Load a Component in Your App][fire-app-builder-load-a-component]. 
+1.  The Facebook Auth Component is already loaded in the sample app built with Fire App Builder. If it isn't loaded due to updates you've made, see [Load a Component in Your App][fire-app-builder-load-a-component].
 2.  Remove any other authentication components that are loaded in your app (such as AdobepassAuthComponent or LoginWithAmazonComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
-    
+
     {% include_relative componentnote_authentication.html %}
 
 ## Step 3. Encrypt the Facebook App ID and Token Values {#step3}
@@ -80,11 +80,11 @@ You must insert an encrypted version of the Facebook app ID and client token int
 
 1.  Expand the **FacebookAuthComponent > res > values** folder and open the **strings.xml** file.
 2.  Copy the following strings and paste them into your app's **custom.xml** file:
-    
+
     ```xml
     <string name="encrypted_fb_client_token">YOUR_ENCRYPTED_FB_APP_CLIENT_TOKEN</string>
     <string name="encrypted_fb_app_id">YOUR_ENCRYPTED_FB_APP_ID</string>
-    
+
     <string name="fb_key_1">fb_random_key_1</string>
     <string name="fb_key_2">fb_random_key_2</string>
     <string name="fb_key_3">fb_random_key_3</string>
@@ -92,13 +92,13 @@ You must insert an encrypted version of the Facebook app ID and client token int
     <string name="fb_key_5">fb_random_key_5</string>
     <string name="fb_key_6">fb_random_key_6</string>
     ```
-     
+
      {% include tip.html content="As a best practice to integrate future updates, always copy values from the component's XML files into your app's custom.xml file. Your app's XML values will overwrite any values in your component's XML files." %}
-      
+
      The `encrypted_authentication_client_token` is the encrypted version of the client token you generated when you created your Facebook app. The `encrypted_authentication_app_id` is the encrypted version of the Facebook app ID. You'll encrypt these values in the upcoming steps. The random keys are used to create the encryption.
-    
+
 3.  Type a random alphanumeric string for each of these `fb_key_[#]` values. For example:
-    
+
     ```xml
     <string name="fb_key_1">odysseusgrEEk2000bc</string>
     <string name="fb_key_2">helengreekFAce5000ships</string>
@@ -107,12 +107,12 @@ You must insert an encrypted version of the Facebook app ID and client token int
     <string name="fb_key_5">calypsoIslandShipBLLd99</string>
     <string name="fb_key_6">athenazeusEPICodysseY77</string>
     ```
-    
+
 4.  In the Android View, expand the **Utils > java > com > amazon > utils > security** folder and open the **ResourceObfuscationStandaloneUtility** class.
-5.  In the `getRandomStringsForKey()` method, enter the values you used for `fb_key_1`, `fb_key_2`, and `fb_key_3` respectively. 
-    
+5.  In the `getRandomStringsForKey()` method, enter the values you used for `fb_key_1`, `fb_key_2`, and `fb_key_3` respectively.
+
     For example, assuming these first 3 keys are the ones displayed in the previous code sample, you would enter the following:
-        
+
     ```java
     private static String[] getRandomStringsForKey() {
 
@@ -123,18 +123,18 @@ You must insert an encrypted version of the Facebook app ID and client token int
         };
     }
     ```
-    
+
     In this example, the values are as follows:
-     
-    *  `odysseusgrEEk2000bc` is the value used for `fb_key_1`. 
-    *  `helengreekFAce5000ships` is the value used for `fb_key_2`. 
+
+    *  `odysseusgrEEk2000bc` is the value used for `fb_key_1`.
+    *  `helengreekFAce5000ships` is the value used for `fb_key_2`.
     *  `homer@1storyTllr20` is the value used for `fb_key_3`.
-    
+
 6.  In the `getRandomStringsForIv()` method, enter the values you used for `fb_key_4`, `random_key_5`, and `random_key_6` respectively. For example:
-    
+
     ```java
         private static String[] getRandomStringsForIv() {
-    
+
             return new String[]{
                     "latinusOdysseusson332",
                     "calypsoIslandShipBLLd99",
@@ -143,46 +143,46 @@ You must insert an encrypted version of the Facebook app ID and client token int
         }
     }
     ```
-    
+
     In this example, the values are as follows:
-     
-    *  `latinusOdysseusson332` is the value used for `fb_key_4`. 
-    *  `calypsoIslandShipBLLd99` is the value used for `fb_key_5`. 
+
+    *  `latinusOdysseusson332` is the value used for `fb_key_4`.
+    *  `calypsoIslandShipBLLd99` is the value used for `fb_key_5`.
     *  `athenazeusEPICodysseY77` is the value for `fb_key_6`.
-    
+
 7.  In the `getPlainTextToEncrypt()` method, insert your Facebook client token in place of `Encrypt_this_text`:
-    
+
     ```java
      private static String getPlainTextToEncrypt() {
             return "Encrypt_this_text";
         }
     ```
-    
+
 8.  Right-click the **ResourceObfuscationStandaloneUtility.java** file and select **Run 'ResourceObfusc...main()**.
-    
- 
+
+
 9.  Look for the encrypted result printed to the console. It will look something like this:
 
     ```
     Encrypted version of plain text 123456789 is mTWxLhZeHslQFwpN3irjfQ==
     ```
-    
+
 10. Copy your encrypted app ID and paste it into the `encrypted_fb_client_token` string's value in your app's **custom.xml** file. For example:
-                                                                                        
+
     ```xml
     <string name="encrypted_fb_client_token">rneiu89EIxnk9489faoPoaQ</string>
     <string name="encrypted_fb_app_id">YOUR_ENCRYPTED_FB_APP_ID</string>
     ```
-    
+
 11. Now insert your Facebook app ID into the `getPlainTextToEncrypt()` method, and run the script again (using the same random strings). Copy the encrypted key into the `encrypted_fb_app_id` string value in your app's **custom.xml** file. For example:
-    
+
     ```xml
     <string name="encrypted_adobe_pass_public_key">gnobHJEIxnkBMobJk7mBaQ==</string>
     <string name="encrypted_adobe_pass_private_key">AQ/9Qtc26GzLVSHRe1ftPw==</string>
     ```
-    
+
     {% include tip.html content="Save your random keys in a safe place, such as your company wiki, so that you always have an easy way to retrieve them. You will need these keys to decrypt the value." %}
-      
+
 ## Step 4. Decide When to Prompt Users to Log In{#step4}
 
 You can configure the screen where users should be prompted to log in to Facebook.
@@ -197,14 +197,14 @@ You can configure the screen where users should be prompted to log in to Faceboo
       "onAction": "CONTENT_RENDERER_SCREEN"
     }
     ```
-    
+
     Now when users launch your app and try to watch media, they will be prompted to log in.
 
 ## Step 5. Customize the UI Text{#step5}
 
 To change the text that appears in the dialog box prompting users to log in:
 
-1.  Go to **ContentBrowser > res > values** and open the **strings.xml** file. 
+1.  Go to **ContentBrowser > res > values** and open the **strings.xml** file.
 2.  Copy the following strings into your app's **custom.xml** file (inside res > values):
 
     ```xml
@@ -214,19 +214,19 @@ To change the text that appears in the dialog box prompting users to log in:
     <string name="later">Later</string>
     ```
 3.  Customize the string values.
-    
-## Disable User's Ability to Postpone Login
-    
-By default, users have the option of postponing the Facebook login. Currently if users click **Later** at this prompt, they aren't prompted ever again -- this is a bug. To disable the user's ability to postpone the Facebook login:
 
-1.  Expand the **FacebookAuthComponent > res values** folder and open the **custom.xml** file. 
+## Disable User's Ability to Postpone Login
+
+By default, users have the option of postponing the Facebook login. Currently if users click **Later** at this prompt, they can log in later using the Login Settings button.
+
+1.  Expand the **FacebookAuthComponent > res values** folder and open the **custom.xml** file.
 2.  Copy the following strings into your app's **custom.xml** file (inside res > values):
-    
+
     ```xml
     <bool name="is_authentication_can_be_done_later">true</bool>
     ```
-    
-4.  Change the string's value to `false`. 
+
+4.  Change the string's value to `false`.
 
 ## Looking at the Logs for Facebook Auth Component Actions
 

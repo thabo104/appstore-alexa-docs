@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/fire/adb.md %}
+{% include content/{{site.language}}/adb.md %}
 
 ## Using an Android TV Emulator
 
