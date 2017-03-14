@@ -4,7 +4,7 @@ permalink: fire-tv-recommendations-testing.html
 sidebar: firetv
 product: Fire TV
 reviewers: Murtaza, Dongjune
-toc: false
+toc-style: kramdown
 wiki_pages:
 - https://wiki.labcollab.net/confluence/display/DEVTECH/ReYA+Test+Plan
 - https://wiki.labcollab.net/confluence/display/DEVTECH/Shared+Recommendations+Test+Plan

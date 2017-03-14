@@ -4,7 +4,7 @@ permalink: fire-tv-recommendations-send-recommendations.html
 sidebar: firetv
 product: Fire TV
 reviewers: Murtaza
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -24,17 +24,20 @@ In addition what's included in the Android documentation, you can expand the rec
 
 Before diving into code examples, let's look at a sample recommendation card. The numbers show several attributes set through the Android API and one Amazon extra.
 
-{% include image.html file="firetv/getting_started/images/firetv_recommendations-high-level" type="png" %}
+{% include image.html file="firetv/getting_started/images/firetv_recommendations" type="png" %}
 
 <div class="number_legend" markdown="span">
 {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} [setTitle][setTitle]. Sets the title for the recommendation. (Android API)<br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} [setText][setText]. Sets the description for the recommendation. (Android API)<br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} [setContentImage][setContentImage]. Sets the image used for the recommendation. (Android API)<br/>
-
 {% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} Sets an abbreviated name for your app, which is used in the launch menu. This is set by one of the Amazon `extra` fields: `com.amazon.extra.DISPLAY_NAME", "displayName"`.
 </div>
 
-For example, if your app has a long name, such as "World Premier Association Videos," this long title will be truncated in the launch menu. Instead of accepting the default truncation, you can specify the shortened name for your app through the Amazon extras (in this case, the `DISPLAY_NAME`).
+For example, if your app has a long name, such as "World Premier Association Videos for Fire TV," this long title will be truncated in the launch menu. Instead of accepting the default truncation, you can specify the shortened name for your app through the Amazon extras (in this case, the `DISPLAY_NAME`).
+
+The following screenshot shows how the AOL On for Fire TV app customized the text in the launch menu using Amazon `extra` fields.
+
+{% include image.html file="firetv/getting_started/images/aolonexample2" type="png" %}
 
 ## Code Example for a Recommendation
 
@@ -346,9 +349,9 @@ To learn more, see the following:
 [2]: http://developer.android.com/guide/topics/data/install-location.html#ShouldNot
 [3]: http://developer.android.com/guide/topics/manifest/manifest-element.html#install
 
-[setTitle]: [setTitle](http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setTitle%28java.lang.String%29)
-[setText]: [setText](http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setText%28java.lang.String%29)
-[setContentImage]: [setContentImage](http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setContentImage%28android.graphics.Bitmap%29)
+[setTitle]: http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setTitle%28java.lang.String%29
+[setText]: http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setText%28java.lang.String%29
+[setContentImage]: http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setContentImage%28android.graphics.Bitmap%29
 
 
 {% include links.html %}

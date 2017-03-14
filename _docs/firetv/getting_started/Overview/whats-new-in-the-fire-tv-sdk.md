@@ -10,29 +10,31 @@ github: true
 * TOC
 {:toc}
 
+### Fire TV Stick Gen 2 Available in UK and Germany
+
+**Feb 21, 2017**. The Fire TV Stick Gen 2 (officially called the "Fire TV Stick with Alexa Voice Remote) is now available the UK and Germany. It will also be available in Japan this April. For more details, see [he All-New Fire TV Stick to Hit Shelves in the UK, Germany, and Japan][uk-germany].
+
 ### Fire TV User Interface Update
 
-Fire TV Gen 2 devices received an update to the interface. The update provides a more cinematic experience that
-offers video trailers and content screenshots to help customers access the content they want more quickly. Third-party apps are also more visible on the homepage in recommended rows. Accessibility improvements were included that allow customers to use Fire TV and any compatible apps with the VoiceView screen reader. (See the [original announcement](http://phx.corporate-ir.net/phoenix.zhtml?c=176060&p=irol-newsArticle&ID=2206525).)
+**Sep. 28, 2016**. Fire TV Gen 2 devices received an update to the interface. The update provides a more cinematic experience that offers video trailers and content screenshots to help customers access the content they want more quickly. Third-party apps are also more visible on the homepage in recommended rows. Accessibility improvements were included that allow customers to use Fire TV and any compatible apps with the VoiceView screen reader. (See the [original announcement](http://phx.corporate-ir.net/phoenix.zhtml?c=176060&p=irol-newsArticle&ID=2206525).) To upload the new Fire TV assets required for the new UI, see the instruction in [Image Asset Guidelines for Appstore Submission][asset-guidelines-for-app-submission#firetvassets]. The user interface update will be applied to generation 1 devices in a later phase.
 
-To upload the new Fire TV assets required for the new UI, see the instruction in [Image Asset Guidelines for Appstore Submission](/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets). The user interface update will be applied to generation 1 devices in a later phase.
+### Fire App Builder 1.0
 
-### Fire App Builder
-
-[Fire App Builder][fire-app-builder-overview] was released on September 29, 2016. Fire App Builder provides a Java-based framework that you can use to easily and quickly build streaming media Android apps for Amazon Fire TV. Fire App Builder lets you build an engaging, high-quality media experience on Fire TV following best practices and techniques — without having to develop all the code yourself. Fire App Builder’s code is Java-based and uses Android Studio, Gradle, and other tools common to Android app development. Fire App Builder is released as an open source project on Github ([github.com/amzn/fire-app-builder](github.com/amzn/fire-app-builder)) under the Apache 2.0 license.
+**Nov 4, 2016**. [Fire App Builder][fire-app-builder-overview] was released on September 29, 2016. Fire App Builder provides a Java-based framework that you can use to easily and quickly build streaming media Android apps for Amazon Fire TV. Fire App Builder lets you build an engaging, high-quality media experience on Fire TV following best practices and techniques — without having to develop all the code yourself. Fire App Builder’s code is Java-based and uses Android Studio, Gradle, and other tools common to Android app development. Fire App Builder is released as an open source project on Github ([github.com/amzn/fire-app-builder](github.com/amzn/fire-app-builder)) under the Apache 2.0 license. See [Introducing Fire App Builder for Amazon Fire TV](https://developer.amazon.com/blogs/post/Tx26ZCW178CQDUW/Introducing-Fire-App-Builder-for-Amazon-Fire-TV) for the original announcement.
 
 ### Fire TV Stick (Generation 2)
 
-[Fire TV Stick with Alexa Voice Remote](https://www.amazon.com/dp/B00ZV9RDKK), referred to as Fire TV Stick (Generation 2) in the documentation, was released on September 28, 2016. This next-generation Fire TV Stick is 30 percent faster than the original best-selling version, offers access to more than 300,000 movies and TV episodes, and includes the Alexa Voice Remote—for only $39.99. Now sporting a quad-core processor, it has the horsepower to let your high-performance apps and games shine. Read more about it here: [Introducing the All-New Fire TV Stick with Alexa Voice Remote](https://developer.amazon.com/public/community/post/Tx1W8FCB4UA5KIB/Introducing-the-All-New-Fire-TV-Stick-with-Alexa-Voice-Remote). You can see the specs for Fire TV Stick (Generation 2) on [Fire TV Device Specifications][device-and-platform-specifications].
+**Sept 28, 2016**. [Fire TV Stick with Alexa Voice Remote](https://www.amazon.com/dp/B00ZV9RDKK), referred to as Fire TV Stick (Generation 2) in the documentation, was released on September 28, 2016. This next-generation Fire TV Stick is 30 percent faster than the original best-selling version, offers access to more than 300,000 movies and TV episodes, and includes the Alexa Voice Remote—for only $39.99. Now sporting a quad-core processor, it has the horsepower to let your high-performance apps and games shine. Read more about it here: [Introducing the All-New Fire TV Stick with Alexa Voice Remote](https://developer.amazon.com/public/community/post/Tx1W8FCB4UA5KIB/Introducing-the-All-New-Fire-TV-Stick-with-Alexa-Voice-Remote). You can see the specs for Fire TV Stick (Generation 2) on [Fire TV Device Specifications][device-and-platform-specifications].
 
 ## Fire TV Documentation Updates
-
-The following updates have been made to the Fire TV documentation:
 
 {: .grid}
 | Date | Page | Details |
 |-----|-----|------|
-| Jan 20, 2016 | [System X-Ray Overview][fire-tv-system-xray], [Developer Tool Options][fire-tv-system-xray-developer-tools], [Customize System X-Ray][fire-tv-system-xray-customized-metrics] | Updated details about System X-Ray and the Developer Tools Options menu. |
+| Mar 10, 2017 | - [Recommendations Overview][fire-tv-recommendations-overview] <br/> - [Send Recommendations that Include Amazon Enhancements][fire-tv-recommendations-send-recommendations] <br/> - [Test Your Recommendations][fire-tv-recommendations-send-recommendations] <br/> - [Best Practices with Recommendations][fire-tv-recommendations-best-practices] | New documentation on how to send recommendations to a row called "Recommended By Your Apps" on the Fire TV home screen.|
+| March 5, 2017 | [Documentation index page](https://developer.amazon.com/documentation). | The top navigation bar of the Developer Portal now includes a Docs link that provides an index to all documentation on the Developer Portal. |
+| Feb 28, 2017 | [github.com/amzn/appstore-alexa-docs/](https://github.com/amzn/appstore-alexa-docs/) | Fire TV, Fire App Builder, Fire TV Catalog, and Fling docs are in a public GitHub repo. You can edit docs and [log issues](https://github.com/amzn/appstore-alexa-docs/issues) as desired. |
+| Jan 20, 2016 | - [System X-Ray Overview][fire-tv-system-xray] <br/> - [Developer Tool Options][fire-tv-system-xray-developer-tools]<br/> - [Customize System X-Ray][fire-tv-system-xray-customized-metrics] | Updated details about System X-Ray and the Developer Tools Options menu. |
 | Dec. 14, 2016 | [Amazon Fire TV Development Framework Comparison][fire-tv-development-framework-comparison] | Detailed comparison between Web App Starter Kit for Fire TV (WASK) and Fire App Builder. |
 | Nov 29, 2016 | [Notifications for Amazon Fire TV][notifications-for-amazon-fire-tv] | Updated to explain upcoming the Notification Center functionality that will be included in the Fire TV UI refresh release. |
 | Nov 23, 2016 | [Specifying Your App's Installation Location][specifying-installation-location] | Update with emphasis on preferring external storage on app install. Also includes details for app installs across platforms. |
@@ -64,5 +66,6 @@ You can follow the latest news about Fire TV by reading the Fire TV category on 
 
 <a href="https://developer.amazon.com/blogs/tag/Fire+TV"><button class="feedbackButton">Read the Fire TV blog</button></a>
 
+[uk-germany]: https://developer.amazon.com/blogs/post/acc08b81-8f50-4bc8-998a-58530a39f5c8/the-all-new-fire-tv-stick-to-hit-shelves-in-the-uk-germany-and-japan
 
 {% include links.html %}

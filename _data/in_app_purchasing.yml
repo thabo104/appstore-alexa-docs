@@ -36,12 +36,12 @@ folders:
 - title: Get Started
   folderitems:
 
-  - title: What is New in In-App Purchasing
+  - title: What's New in In-App Purchasing
     jurl: /whats-new-in-in-app-purchasing.html
     hurl: https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/whats-new-in-in-app-purchasing
     ref: IAP-whatsnew
 
-  - title: About In-App Purchasing
+  - title: In-App Purchasing Overview
     jurl: /understanding-in-app-purchasing.html
     hurl: https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/understanding-in-app-purchasing
     ref: understanding-iap
@@ -61,11 +61,10 @@ folders:
     hurl: https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/deep-linking-to-the-amazon-client
     ref: deep-linking-to-the-amazon-client
 
-  - title: Submit Single In-App Items with Developer Console
+  - title: Create and Submit In-app Items 
     jurl: /submitting-iap-items.html
     hurl: https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/submitting-iap-items
     ref: submitting-iap-items
-
 
 - title: Implement IAP for Android Apps
   folderitems:
