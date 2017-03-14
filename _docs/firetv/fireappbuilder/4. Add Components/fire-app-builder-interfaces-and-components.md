@@ -47,20 +47,20 @@ Authentication components allow you to identify and authorize users before they 
   </thead>
   <tbody>
     <tr>
-      <td span="markdown">[AdobepassAuthComponent][fire-app-builder-adobe-pass-auth-component]</a></td>
-      <td>Uses Adobe Pass to authenticate users.</td>
+      <td markdown="span">[AdobepassAuthComponent][fire-app-builder-adobe-pass-auth-component]</td>
+      <td markdown="span">Uses Adobe Pass to authenticate users.</td>
     </tr>
     <tr>
-      <td span="markdown">[FacebookAuthComponent][fire-app-builder-facebook-auth-component]</a></td>
-      <td>Uses Facebook to authenticate users.</td>
+      <td markdown="span">[FacebookAuthComponent][fire-app-builder-facebook-auth-component]</td>
+      <td markdown="span">Uses Facebook to authenticate users.</td>
     </tr>
     <tr>
-      <td span="markdown">[LoginWithAmazon Component][fire-app-builder-login-with-amazon-component]</a></td>
-      <td>Uses Login with Amazon to authenticate users.</td>
+      <td markdown="span">[LoginWithAmazon Component][fire-app-builder-login-with-amazon-component]</td>
+      <td markdown="span">Uses Login with Amazon to authenticate users.</td>
     </tr>
     <tr>
-      <td span="markdown">PassThroughLoginComponent</td>
-      <td>Used only if you don't want to use any other authentication component. Your app must load at least one authentication component loaded. This PassThrough Login Component component satisfies the authentication component requirement without affecting the user experience in your app. This component is loaded as the default authentication component in the app.</td>
+      <td markdown="span">PassThroughLoginComponent</td>
+      <td markdown="span">Used only if you don't want to use any other authentication component. Your app must load at least one authentication component loaded. This PassThrough Login Component component satisfies the authentication component requirement without affecting the user experience in your app. This component is loaded as the default authentication component in the app.</td>
     </tr>
   </tbody>
 </table>
@@ -82,24 +82,24 @@ Analytics components track activities within your app and provide metrics for an
   </thead>
   <tbody>
     <tr>
-      <td span="markdown">[FlurryAnalyticsComponent][fire-app-builder-flurry-analytics-component]</a></td>
-      <td>Uses Flurry Analytics to provide analytics.  By default, this component is loaded but not configured in the Fire App Builder sample app.</td>
+      <td markdown="span">[FlurryAnalyticsComponent][fire-app-builder-flurry-analytics-component]</td>
+      <td markdown="span">Uses Flurry Analytics to provide analytics.  By default, this component is loaded but not configured in the Fire App Builder sample app.</td>
     </tr>
     <tr>
-      <td span="markdown">[OmnitureAnalyticsComponent][fire-app-builder-omniture-analytics-component]</a></td>
-      <td>Uses Omniture to provide analytics.</td>
+      <td markdown="span">[OmnitureAnalyticsComponent][fire-app-builder-omniture-analytics-component]</td>
+      <td markdown="span">Uses Omniture to provide analytics.</td>
     </tr>
     <tr>
-      <td span="markdown">[CrashlyticsComponent][fire-app-builder-crashlytics-component]</td>
-      <td>Uses Crashlytics to provide analytics.</td>
+      <td markdown="span">[CrashlyticsComponent][fire-app-builder-crashlytics-component]</td>
+      <td markdown="span">Uses Crashlytics to provide analytics.</td>
     </tr>
     <tr>
-      <td span="markdown">[GoogleAnalyticsComponent][fire-app-builder-google-analytics-component]</td>
-      <td>Uses Google Analytics to provide analytics.</td>
+      <td markdown="span">[GoogleAnalyticsComponent][fire-app-builder-google-analytics-component]</td>
+      <td markdown="span">Uses Google Analytics to provide analytics.</td>
     </tr>
     <tr>
-      <td span="markdown">LoggerAnalyticsComponent</td>
-      <td>The Logger Analytics Component is not intended to be used for actual analytics. Instead, this is a dummy analytics component that inserts log messages during events. If you’re not using any other analytics component, use Logger Analytics Component because at least one analytics component must be configured in your app. You can see the log messages triggered by the LoggerAnalytics component by searching for “loggeranalytics” in Logcat.</td>
+      <td markdown="span">LoggerAnalyticsComponent</td>
+      <td markdown="span">The Logger Analytics Component is not intended to be used for actual analytics. Instead, this is a dummy analytics component that inserts log messages during events. If you’re not using any other analytics component, use Logger Analytics Component because at least one analytics component must be configured in your app. You can see the log messages triggered by the LoggerAnalytics component by searching for “loggeranalytics” in Logcat.</td>
     </tr>
   </tbody>
 </table>
@@ -122,16 +122,16 @@ Ads components refer to any components that show advertisements in your app. Ads
   </thead>
   <tbody>
     <tr>
-      <td span="markdown">[FreeWheelAdsComponent][fire-app-builder-freewheel-ads-component]</td>
-      <td>Used for displaying Freewheel ads in your app.</td>
+      <td markdown="span">[FreeWheelAdsComponent][fire-app-builder-freewheel-ads-component]</td>
+      <td markdown="span">Used for displaying Freewheel ads in your app.</td>
     </tr>
     <tr>
-      <td span="markdown">[VastAdsComponent][fire-app-builder-vast-ads-component]</td>
-      <td>Used for displaying VAST ads in your app.</td>
+      <td markdown="span">[VastAdsComponent][fire-app-builder-vast-ads-component]</td>
+      <td markdown="span">Used for displaying VAST ads in your app.</td>
     </tr>
     <tr>
-      <td span="markdown">PassThroughAdsComponent</td>
-      <td>Used only if you don’t want to use any other ads component. Your app must load at least one ads component loaded. This PassThroughAds component satisfies the ads component requirement without affecting the user experience in your app.</td>
+      <td markdown="span">PassThroughAdsComponent</td>
+      <td markdown="span">Used only if you don’t want to use any other ads component. Your app must load at least one ads component loaded. This PassThroughAds component satisfies the ads component requirement without affecting the user experience in your app.</td>
     </tr>
   </tbody>
 </table>
@@ -157,8 +157,8 @@ The following purchasing components are available.
   </thead>
   <tbody>
     <tr>
-      <td span="markdown">[AmazonInAppPurchasingComponent][fire-app-builder-amazon-in-app-purchase-component]</a></td>
-      <td>Uses Amazon In-App Purchasing to allow users to choose Daily Pass (24-hour access) or Go Premium (subscription) to view the media in your app. This component is loaded by default but set as disabled and not configured.</td>
+      <td markdown="span">[AmazonInAppPurchasingComponent][fire-app-builder-amazon-in-app-purchase-component]</td>
+      <td markdown="span">Uses Amazon In-App Purchasing to allow users to choose Daily Pass (24-hour access) or Go Premium (subscription) to view the media in your app. This component is loaded by default but set as disabled and not configured.</td>
     </tr>
   </tbody>
 </table>
@@ -177,12 +177,12 @@ Media Player components control the media player that is used for media playback
   </thead>
   <tbody>
     <tr>
-      <td>[AMZNMediaPlayerComponent][fire-app-builder-amazon-media-player-component]</td>
-      <td>Uses the Amazon Media Player, which is based on ExoPlayer. This component is loaded by default in Fire App Builder.</td>
+      <td markdown="span">[AMZNMediaPlayerComponent][fire-app-builder-amazon-media-player-component]</td>
+      <td markdown="span">Uses the Amazon Media Player, which is based on ExoPlayer. This component is loaded by default in Fire App Builder.</td>
     </tr>
     <!-- <tr>
-      <td>[BrightCoveMediaPlayerComponent][fire-app-builder-brightcove-media-player-component]</td>
-      <td>Uses the BrightCove media player. This is useful if your media is already tightly coupled with BrightCove.</td>
+      <td markdown="span">[BrightCoveMediaPlayerComponent][fire-app-builder-brightcove-media-player-component]</td>
+      <td markdown="span">Uses the BrightCove media player. This is useful if your media is already tightly coupled with BrightCove.</td>
     </tr> -->
   </tbody>
 </table>

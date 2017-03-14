@@ -41,7 +41,7 @@ To load a component in your app:
 First you need to first define the implemented components in the "settings.gradle (Project Settings)" file:
 
 1.  In Android Studio, in the Android view, expand **Gradle Scripts** and open the **settings.gradle (Project Settings)** file. (This file appears near the bottom of the list.)
-2.  In the two **Implementations** sections, list the components that you want.
+2.  In the two **Implementations** sections, list the components that you want (just one component for each interface).
 
     In settings.gradle (Project Settings), there are three places to list the components. The areas are identified through the `/* Implementations */` comments, which are set off in <span class="red">red</span> here:
 
@@ -95,18 +95,6 @@ First you need to first define the implemented components in the "settings.gradl
     project(':AmazonInAppPurchaseComponent').projectDir = new File(rootProject.projectDir, '../AmazonInAppPurchaseComponent')
     </pre>
 
-    Look in the source directory of the Fire App Builder project to get the exact directory names for each of the components, or just consult the names in the tables in the [Components Overview][fire-app-builder-interfaces-and-components]. (Note that no component contains hyphens in the name. If hyphens appear, it's because of a wrapping style.)
-
-    In the the sample app in Fire App Builder, the following components are implemented by default:
-
-    * AMZNMediaPlayerComponent    
-    * PassThroughAdsComponent
-    * FlurryAnalyticsComponent
-    * FacebookAuthComponent
-    * AmazonInAppPurchaseComponent
-
-4.  Adjust the implementations by adding or removing the components you want to use in your app. Be sure to make the updates in both places that <span class="red">`/*Implementations*/`</span> is mentioned.
-
     For the component names, use the component folder name:
 
     *  AdobepassAuthComponent
@@ -122,38 +110,36 @@ First you need to first define the implemented components in the "settings.gradl
     *  AMZNMediaPlayerComponent
 {% comment %}*  BrightCoveMediaPlayerComponent {% endcomment %}
 
-5.  You can implement only one component per interface, so remove any previous components for the same interface.
+    In the the sample app in Fire App Builder, the following components are implemented by default: AMZNMediaPlayerComponent, PassThroughAdsComponent, LoggerAnalyticsComponent, PassThroughLoginComponent, and AmazonInAppPurchaseComponent.
 
-    For example, if you added the LoginWithAmazonComponent, which implements the `IAuthentication` interface, you must remove any other authentication components (such as AdobepassAuthComponent or FacebookAuthComponent).
-
+4.  Adjust the implementations by adding or removing the components you want to use in your app. Be sure to make the updates in both places that <span class="red">`/*Implementations*/`</span> is mentioned.
+5.  You can implement only one component per interface, so remove any previous components for the same interface. For example, if you added the LoginWithAmazonComponent, which implements the `IAuthentication` interface, you must remove any other authentication components (such as AdobepassAuthComponent or FacebookAuthComponent).
 6.  Expand **Gradle Scripts** and open the **build.gradle (Module: app)** file.
 7.  In the **dependencies** object, include the components you want to include in your app.
 
     By default, Fire App Builder shows these components:
 
-    ```
+    ```java
     compile project(':TVUIComponent')
     compile project(':UAMP')
     compile project(':AMZNMediaPlayerComponent')
     compile project(':PassThroughAdsComponent')
-    compile project(':FlurryAnalyticsComponent')
-    compile project(':FacebookAuthComponent')
+    compile project(':PassThroughLoginComponent')
     compile project(':AmazonInAppPurchaseComponent')
+    compile project(':LoggerAnalyticsComponent')
     ```
 
-    Add or remove the components you want to implement following the same pattern as before. Remember that you can implement only one component per interface, so remove any previous components for the same interface.
-
-    For example, if you added the LoginWithAmazonComponent, which implements the `IAuthentication` interface, you must remove any other authentication components (such as AdobepassAuthComponent or FacebookAuthComponent).
+    Add or remove the components you want to implement following the same pattern as before.
 
 5.  Resync your project with Gradle by clicking the **Resync Project with Gradle Files** button {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_syncgradlebutton" type="png" %}.
 
     If you're prompted that some modules are no longer imported from Gradle anymore, click **OK**.
 
-    {% include image.html file="gradlemoduleprompt" type="png" %}
+    {% include image.html file="firetv/fireappbuilder/images/gradlemoduleprompt" type="png" %}
 
     When the project syncs, you will see the new components reflected in the Project pane.
 
-6.  Remove old build artifacts from previous components by going to **Build > Rebuild Project** .
+6.  You can remove old build artifacts from previous components by going to **Build > Rebuild Project** .
 
 ### 2. Configure the Component's Values {#configure}
 

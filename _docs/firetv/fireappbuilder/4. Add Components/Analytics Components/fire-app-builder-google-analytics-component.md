@@ -9,7 +9,7 @@ github: true
 
 The Google Analytics Component allows you to gather analytics from your Android app using Google Analytics. You can learn more about the analytics service by going to [Google Analytics](https://developers.google.com/analytics/).
 
-Configuring the component requires you to set up a `google-services.json` file that you generate from Google Analytics. You then match up dimensions and metrics indexes between Google Analytics and the component in Fire App Builder. You also need to set up custom reports that contain the dimensions and metrics you want.
+Configuring the component requires you to set up a google-services.json file that you generate from Google Analytics. You then match up dimensions and metrics indexes between Google Analytics and the component in Fire App Builder. You also need to set up custom reports that contain the dimensions and metrics you want.
 
 To configure the Google Analytics Component, complete each of the following sections.
 
@@ -28,21 +28,21 @@ To configure the Google Analytics Component, complete each of the following sect
 
 ## Step 2. Set Up the google-services.json File {#step2}
 
-Google Analytics packages all of your analytics settings into a g`oogle-services.json` file. After you generate and download this file, you will place it in the Google Analytics Component folder.
+Google Analytics packages all of your analytics settings into a google-services.json file. After you generate and download this file, you will place it in the Google Analytics Component folder.
 
 1.  Sign in to your Google account.
 2.  On the Google Analytics site, go to [Add Analytics to Your Android App](https://developers.google.com/analytics/devguides/collection/android/v4/).
 3.  In the **Get a configuration file** section, click **Get a Configuration File**.
 4.  Enter an **App name** and an **Android package name**.
     *  For the App name, type the name of your app.
-    *  For the Android package name, use the package name in the Google Analytics Component's `AndroidManifest.xml` file: **com.amazon.analytics.google**.
+    *  For the Android package name, use the package name in the Google Analytics Component's AndroidManifest.xml file: **com.amazon.analytics.google**.
 5.  Click **Continue to choose and configure services**.
 
     Although the screen says "Select which Google services you'd like to add to your app below," only Analytics is available for integration.
 
 6.  Click **Continue to generate configuration files**.
 7.  Click **Download google-services.json** and download the JSON file.
-8.  Move the `google-services.json` file into your **GoogleAnalyticsComponent** folder. (If you're in the Android view, switch to the Project view to see this file.)
+8.  Move the google-services.json file into your **GoogleAnalyticsComponent** folder. (If you're in the Android view, switch to the Project view to see this file.)
 
 ## Step 3. Set Up Dimensions {#step3}
 
@@ -82,7 +82,7 @@ According to [Google Analytics' documentation](https://support.google.com/analyt
 
     {% include warning.html content="You can create only 20 dimensions. Also, you cannot edit a dimension once you create it, so be careful here. If you make a mistake and need to change things, you may need to sign in with a different Google account." %}
 
-7.  Type a friendly name for the first dimension. For example, type `Platform` instead of `ATTRIBUTE_PLATFORM`.
+7.  Type a friendly name for the first dimension. For example, type "Platform" instead of "ATTRIBUTE_PLATFORM".
 8.  Leave the **Scope** as **Hit** (the default).
 9.  Leave **Active** check box selected.
 10. Click **Create**.
@@ -91,19 +91,19 @@ According to [Google Analytics' documentation](https://support.google.com/analyt
 
 11. Click **Done**.
 12. Repeat this process until you have created a custom dimension for all of the following values:
-    * `Platform`
-    * `Search Term`
-    * `Error Message`
-    * `Playback Source`
-    * `Purchase Source`
-    * `Purchase Result`
-    * `Purchase SKU`
-    * `Title`
-    * `Subtitle`
-    * `Video Type`
-    * `Purchase Type`
+    * Platform
+    * Search Term
+    * Error Message
+    * Playback Source
+    * Purchase Source
+    * Purchase Result
+    * Purchase SKU
+    * Title
+    * Subtitle
+    * Video Type
+    * Purchase Type
 
-    {% include note.html content="The names here (for example, `Platform`) do not need to match up with the names in the `GoogleCustomDimensionsTags.json` file (for example, `ATTRIBUTE_PLATFORM`). Google will match up the dimensions based on the index values." %}
+    {% include note.html content="The names here (for example, \"Platform\") do not need to match up with the names in the `GoogleCustomDimensionsTags.json` file (for example, \"ATTRIBUTE_PLATFORM\"). Google will match up the dimensions based on the index values." %}
 
 13. In the **GoogleCustomDimensionsTags.json** file (inside your app's **assets > configurations** folder), change the index numbers to correspond with the auto-created dimension index numbers (highlighted in yellow in the screenshot below) in your Google Analytics Dashboard.
 
@@ -130,7 +130,7 @@ According to [Google Analytics' documentation](https://support.google.com/analyt
 
 ## Step 4. Set Up Metric Indexes {#step4}
 
-In this section, you'll do the same thing you did in the previous section but with metric indexes. According to [Google Analytics' documentation](https://support.google.com/analytics/answer/1033861?hl=en), "Metrics are quantitative measurements. The metric Sessions is the total number of sessions. The metric Pages/Session is the average number of pages viewed per session."
+In this section, you'll do the same thing you did in the previous section but with metric indexes. According to [Google Analytics documentation](https://support.google.com/analytics/answer/1033861?hl=en), "Metrics are quantitative measurements. The metric Sessions is the total number of sessions. The metric Pages/Session is the average number of pages viewed per session."
 
 1.  Expand **GoogleAnalyticsComponent > assets > configurations** and open the **GoogleCustomMetricTags.json** file.
 
@@ -154,17 +154,17 @@ In this section, you'll do the same thing you did in the previous section but wi
 
     {% include warning.html content="You can create only 20 metrics. Also, you cannot edit a metric once you create it, so be careful here. If you mess up and need to change things, you may need to sign in with a different Google account." %}
 
-7.  Type a friendly name for the first metric. For example, type `Ad Seconds Watched` instead of `ATTRIBUTE_VIDEO_SECONDS_WATCHED`.
+7.  Type a friendly name for the first metric. For example, type "Ad Seconds Watched" instead of "ATTRIBUTE_VIDEO_SECONDS_WATCHED".
 8.  Leave the other values (Scope, Formatting Type, Minimum Value, Maximum Value, and Active) at the defaults unless you specifically want to adjust these values.
 10. Click **Create**.   
 11. Click **Done**.
 12. Repeat this process until you have created a custom dimension for all of the following values:
-    * `Ad Seconds Watched`
-    * `Video Seconds Watched`
-    * `Video ID`
-    * `Ad ID`
+    * Ad Seconds Watched
+    * Video Seconds Watched
+    * Video ID
+    * Ad ID
 
-    {% include note.html content="As before, the names here (for example, `Ad Seconds Watched`) do not need to match up with the names in the `GoogleCustomMetricTags.json` file (for example, `ATTRIBUTE_VIDEO_SECONDS_WATCHED`). Google will match up the metrics based on the index values." %}
+    {% include note.html content="As before, the names here (for example, \"Ad Seconds Watched\") do not need to match up with the names in the `GoogleCustomMetricTags.json` file (for example, \"ATTRIBUTE_VIDEO_SECONDS_WATCHED\"). Google will match up the metrics based on the index values." %}
 
 13. In the `GoogleCustomMetricTags.json` file (inside your app's **assets > configurations** folder), change the metrics index numbers to correspond with the auto-created metric index numbers in your Google Analytics Dashboard.
 
