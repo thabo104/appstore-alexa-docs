@@ -10,6 +10,8 @@ Note that when you make an update to the docs, Github will fork the repo in your
 
 When we receive your pull request (PR), we'll either merge it or make requests for changes. After PRs are merged, they move into an internal publishing pipeline that is separate from Github.
 
+If you want to build the project from your Github fork, you can do so. You can build the site with Jekyll by running `jekyll serve`. (Note that the Jekyll theme is only a convenience for previewing the site and doesn't show the current Dev Portal doc theme. In the future we'll probably make these displays the same.)
+
 ## Log Issues
 
 You can also log documentation issues on the Issues tab. This is helpful if you know there's an issue or need an update about something, but you don't want to make the change directly yourself.

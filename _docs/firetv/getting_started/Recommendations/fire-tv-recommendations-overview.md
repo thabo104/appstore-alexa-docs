@@ -8,7 +8,7 @@ toc-style: kramdown
 github: true
 ---
 
-{% include note.html content="Recommendations from 3rd-party apps is a feature in development. This functionality will roll out in a future release. You can prepare for the release by incorporating recommendations into your app now." %}
+{% include note.html content="Recommendations from 3rd-party apps is a feature in development and only supported by Fire TV Gen 2 and Fire TV Stick Gen 2 devices. The recommendations functionality will roll out to all devices in a future release. You can prepare for the release by incorporating recommendations into your app now." %}
 
 You can send recommendations to users about the content (movies, shows, music, games) you want them to watch. Recommendations appear on a "Recommended By Your Apps" row on the Fire TV home screen.
 
@@ -34,7 +34,7 @@ Recommendations are sorted by a selection algorithm provided by Fire TV. The row
 If you select a recommendation and then click the **Menu** button on your remote, a launch menu appears in the lower-right corner. The menu shows different viewing options.
 
 {% include image.html file="firetv/getting_started/images/recommendations-watchnow" type="png" %}
-The text shown in the launch menu &mdash; \"Watch\" &mdash; might differ across recommendations. Depending on the string set by the app, a recommendation can show any of the following strings:
+The text shown in the launch menu &mdash; \"Open\" &mdash; might differ across recommendations. Depending on the string set by the app, a recommendation can show any of the following strings:
 
 *  Watch
 *  Resume
