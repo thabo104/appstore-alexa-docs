@@ -125,7 +125,7 @@ To learn more, see the following:
 
 * [Test Your Recommendations][fire-tv-recommendations-testing]
 * [Send Recommendations that Include Amazon Extras][fire-tv-recommendations-send-recommendations]
-* [Best Practices for Recommendations][fire-tv-recommendations-send-recommendations]
+* [Best Practices for Recommendations][fire-tv-recommendations-best-practices]
 
 
 [1]: https://developer.android.com/reference/android/app/Notification.html#CATEGORY_RECOMMENDATION
