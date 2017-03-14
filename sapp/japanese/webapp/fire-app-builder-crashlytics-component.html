@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Crashlyticsコンポーネント | Fire App Builder</title>
+    <base target="_self">
+    <meta name="description" content="(Fabricを使用した) Crashlyticsでは、アプリのクラッシュを中心とした分析が提供されます。Crashlyticsによると、次のように言われています。  Crashlyticsは、iOSとAndroid向けの業界随一のクラッシュレポートプラットフォームです。Crashlyticsを使用すると、アプリ内のクラッシュに関するリアルタイムの情報や、最も影響の大きい安定性の問題に真正面から取り組むために必要なすべての詳細情報が得られます。Crashlyticsを導入するだけで、すぐにクラッシュレポートの作成が可能になります。追加のコードを記述する必要はありません。 – Crashlytics  詳細は、Android向けのCrashlyticsのドキュメントを参照してください。Crashlyticsコンポーネントには、IAnalyticsインターフェースが実装されています。このコンポーネントを使用するには、Crashlyticsアカウントが必要です。 Crashlyticsを構成するには、次の手順に従います。  手順 1. Crashlyticsキーを取得する 手順 2. Crashlyticsコンポーネントを構成する 手順 3. テストクラッシュを発生させる... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-overview.html">Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプリ向けスターターキット</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">リリースノート</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">アプリを作成するための一連のプロセス</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">よくある質問</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Fire App Builderをダウンロードして、アプリをビルドする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">アプリの概要</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-media-feed.html">メディアフィードをロードする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">レシピ構成の概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-categories.html">カテゴリレシピをセットアップする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-content.html">コンテンツレシピをセットアップする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigatorの構成の概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Navigatorの構成 -- トークンベースフィード</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Navigatorの構成 -- オープンフィード</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-customize-look-and-feel.html">アプリのルックアンドフィールをカスタマイズする</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-interfaces-and-components.html">コンポーネントの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">アプリにコンポーネントをロードする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">新しいFire App Builderコンポーネントを作成する</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">Freewheel広告コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST広告コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items open"><a href="fire-app-builder-crashlytics-component.html">Crashlyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Googleアナリティクスコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass認証コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook認証コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazonコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazonアプリ内課金のコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Playerコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Githubから更新データをプルする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">ライブストリーミングを構成する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Fire TVカタログにメディアを組み込む</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Android TVエミュレーターを使用してアプリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">JSONでクエリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">XMLでクエリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">トラブルシューティング</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire App Builder > </div>
+                    <h1>Crashlyticsコンポーネント</h1>
+
+                    
+
+                    <p>(Fabricを使用した) <a href="http://try.crashlytics.com/">Crashlytics</a>では、アプリのクラッシュを中心とした分析が提供されます。Crashlyticsによると、次のように言われています。</p>
+
+<blockquote>
+  <p>Crashlyticsは、iOSとAndroid向けの業界随一のクラッシュレポートプラットフォームです。Crashlyticsを使用すると、アプリ内のクラッシュに関するリアルタイムの情報や、最も影響の大きい安定性の問題に真正面から取り組むために必要なすべての詳細情報が得られます。Crashlyticsを導入するだけで、すぐにクラッシュレポートの作成が可能になります。追加のコードを記述する必要はありません。 – <a href="https://docs.fabric.io/android/crashlytics/overview.html">Crashlytics</a></p>
+</blockquote>
+
+<p>詳細は、<a href="https://docs.fabric.io/android/crashlytics/overview.html">Android向けのCrashlyticsのドキュメント</a>を参照してください。Crashlyticsコンポーネントには、<code class="highlighter-rouge">IAnalytics</code>インターフェースが実装されています。このコンポーネントを使用するには、Crashlyticsアカウントが必要です。</p>
+
+<p>Crashlyticsを構成するには、次の手順に従います。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#step1" id="markdown-toc-step1">手順 1. Crashlyticsキーを取得する</a></li>
+  <li><a href="#step2" id="markdown-toc-step2">手順 2. Crashlyticsコンポーネントを構成する</a></li>
+  <li><a href="#step3" id="markdown-toc-step3">手順 3. テストクラッシュを発生させる</a></li>
+  <li><a href="#step4" id="markdown-toc-step4">手順 4. Crashlyticsダッシュボードを探索する</a></li>
+</ul>
+
+<h2 id="step1">手順 1. Crashlyticsキーを取得する</h2>
+
+<p>まだCrashlyticsアカウントを持っていない場合は、アカウントにサインアップし、アプリの詳細を提供します。</p>
+
+<ol>
+  <li><a href="https://fabric.io/sign_up">https://fabric.io/sign_up</a>にアクセスし、アカウントにサインアップします。</li>
+  <li>確認画面とようこそ画面を進みます。</li>
+  <li>
+    <p>“You’ll be up and running in 3 steps!” と表示される画面は<strong>何もせずに進みます</strong>。</p>
+
+    <figure><img class="docimage " src="docs_ja/firetv/fireappbuilder/images/fireappbuilder_fabricgettingstarted.png" alt="" /><figcaption>この 3 つの手順でFabricプラグインをダウンロードしてインストールできますが、ここではこの画面はすべて無視してください。Android StudioにFabricプラグインをインストールしたり、Crashlyticsコンポーネントを構成したりする必要はありません。このプラグインでは、単にCrashlyticsが動作できるようにコードが更新されるだけです。以下の手順で、Fire App Builderコードに調整を加えて、同じ目的を達成します。</figcaption></figure>
+  </li>
+  <li>
+    <p>「<a href="https://fabric.io/kits/android/crashlytics/install">Install Crashlytics via Gradle</a>」ページにアクセスし、「Add Your API Key」セクションを確認します。</p>
+
+    <p>ログインした状態を維持していれば、コードサンプルにAPIキーが自動的に設定されます。</p>
+
+    <figure><img class="docimage " src="docs_ja/firetv/fireappbuilder/images/fireappbuilder_fabricapikey.png" alt="" /><figcaption>コードサンプルにAPIキーが自動的に設定されます。</figcaption></figure>
+  </li>
+  <li>この後の手順で使用するためにこのAPIキーを便利な場所にコピーします。</li>
+</ol>
+
+<p>(すでにCrashlyticsアカウントを持っていて、これまでにCrashlyticsの統計データを表示したことがある場合は、組織の設定からAPIキーを確認することもできます。詳細については、「<a href="https://docs.fabric.io/android/fabric/settings/api-keys.html">Fabric API Keys</a>」を参照してください。)</p>
+
+<h2 id="step2">手順 2. Crashlyticsコンポーネントを構成する</h2>
+
+<p>次の手順は、Androidビューが表示されていることを前提としています。</p>
+
+<ol>
+  <li>Crashlyticsコンポーネントをアプリにロードします。コンポーネントをアプリにロードする方法の詳細については、「<a href="fire-app-builder-load-a-component.html">アプリにコンポーネントをロードする</a>」を参照してください。</li>
+  <li>
+    <p>アプリにロードされている他の分析コンポーネント (FlurryAnalyticsComponent、OmnitureAnalyticsComponent、LoggerAnalyticsComponentなど) があれば削除します。詳細については、「<a href="fire-app-builder-load-a-component.html#removeacomponent">コンポーネントを削除する</a>」を参照してください。</p>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> You can load only <em>one</em> component per interface. For example, you cannot load both the Flurry Analytics component <em>and</em> the Omniture Analytics component, because both components use the same <code class="highlighter-rouge">IAnalytics</code> interface. For a list of the components by interface, see <a href="fire-app-builder-interfaces-and-components.html">Components Overview</a>.</div>
+  </li>
+  <li><strong>Gradle Scripts</strong>を展開し、<strong>build.gradle (Project: Application)</strong> ファイルを開きます (開発するアプリの名前に “Fire App Builder” とは付けないため、実際のアプリ名のbuild.gradleファイルを見つけて開いてください)。</li>
+  <li>
+    <p>Crashlyticsコードのコメントに記述されているとおり、コードをコメント解除します。次のコードサンプルは、正しくコメント解除されたコードを示しています。</p>
+
+    <pre>
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        <span class="red">// Uncomment when using CrashlyticsComponent</span>
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.3'
+    <span class="red">// Uncomment when using CrashlyticsComponent</span>
+        classpath 'io.fabric.tools:gradle:1.+'
+    //         NOTE: Do not place your application dependencies here; they belong
+    //         in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url 'http://repo.brightcove.com/releases' }
+        <span class="red">// Uncomment when using CrashlyticsComponent</span>
+        maven { url 'https://maven.fabric.io/public' }
+    }
+}
+</pre>
+  </li>
+  <li><strong>CrashlyticsComponent</strong> &gt; <strong>manifests</strong>の順に移動し、<strong>AndroidManifest.xml</strong>ファイルを開きます。</li>
+  <li>
+    <p><code class="highlighter-rouge">value</code>プロパティにCrashlyticsキーを挿入します。</p>
+
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code>android:name="io.fabric.ApiKey"
+android:value="0c508f569dc758c937d5c0046a17871dcccce2c8"/&gt;
+</code></pre>
+    </div>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> <strong>CrashlyticsComponent</strong> &gt; <strong>res</strong> &gt; <strong>values</strong> &gt; <strong>strings.xml</strong>には、<code class="highlighter-rouge">your_api_key</code>という名前の文字列があります。この文字列には何もする必要はありません。コードの上にあるコメントでは、代わりにAndroidManifest.xmlファイルにCrashlyticsキーを挿入するよう指示されています。</div>
+  </li>
+  <li>*Gradle Scripts<strong>フォルダーを展開し、</strong>build.gradle (Module: app)** ファイルを開きます。</li>
+  <li>
+    <p>Crashlyticsのコメントで示されているように、次の行をコメント解除します。</p>
+
+    <pre>
+<span class="red">// Uncomment when using CrashlyticsComponent</span>
+apply plugin: 'io.fabric'
+</pre>
+  </li>
+  <li><strong>Gradle Scripts</strong>フォルダーを展開し、<strong>build.gradle (Module: app)</strong> ファイルを開きます。</li>
+  <li>
+    <p>Crashlyticsのコメントで示されているように、次の行をコメント解除します。</p>
+
+    <pre>
+  androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.3.1'
+
+    compile project(':TVUIComponent')
+    compile project(':UAMP')
+    compile project(':AMZNMediaPlayerComponent')
+    compile project(':PassThroughAdsComponent')
+    compile project(':FacebookAuthComponent')
+    compile project(':AmazonInAppPurchaseComponent')
+    compile project(':LoggerAnalyticsComponent')
+    <span class="red">// Uncomment when using CrashlyticsComponent</span>
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
+        transitive = true;
+    }
+</pre>
+  </li>
+  <li>アプリをビルドして実行します。</li>
+</ol>
+
+<p>アプリをビルドして実行すると、Crashlyticsにより、コードが正しく構成されていることが検出されます。この時点で、<a href="https://www.fabric.io/onboard/pending">Crashlyticsのオンボード画面</a>でブロックされなくなり、Crashlyticsダッシュボードに進むことができるようになります。</p>
+
+<figure><a target="_blank" href="https://www.fabric.io/onboard/pending"><img class="docimage " src="docs_ja/firetv/fireappbuilder/images/fireappbuilder_crashlyticsonboardsuccess.png" alt="" /></a><figcaption>(アプリのビルドに基づいて) Crashlyticsの構成が正しいことがFabricによって検出されると、このような画面が表示され、ここからダッシュボードに進むことができます。ダッシュボードには、クラッシュの分析が表示されます。</figcaption></figure>
+
+<h2 id="step3">手順 3. テストクラッシュを発生させる</h2>
+
+<p>Crashlyticsの構成をテストするために、次の手順でテストクラッシュを発生させます。</p>
+
+<ol>
+  <li>Androidビューで、<strong>TVUIComponent</strong> &gt; <strong>java</strong> &gt; <strong>com.amazon.android</strong> &gt; <strong>tv.tenfoot</strong> &gt; <strong>ui</strong> &gt; <strong>fragments</strong>の順に移動し、<strong>ContentDetailsFragment.java</strong>ファイルを開きます。</li>
+  <li>
+    <p>先頭付近にある<code class="highlighter-rouge">onStart()</code> メソッド内に次の行を追加します。</p>
+
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">if</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+<span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"Causing fake crash for Crashlytics test"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>[<strong>Run ‘app’</strong>] ボタン <img class="inline " src="docs_ja/firetv/fireappbuilder/images/fireappbuilder_runappbutton.png" alt="Run 'app' button" />
+ をクリックしてアプリを起動します。</li>
+</ol>
+
+<p>アプリは、起動するとすぐにクラッシュします。logcatコンソールをキーワード”crashlytics”でフィルタリングすると、次のログが表示されます。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>07-01 13:04:02.021 28688-28688/com.amazon.android.calypso D/CrashlyticsAnalyticsModuleInitReceiver: IAnalyticsModule initialized.
+07-01 13:04:02.064 28688-28688/com.amazon.android.calypso I/CrashlyticsCore: Initializing Crashlytics 2.3.8.97
+07-01 13:04:04.296 28688-28787/com.amazon.android.calypso I/CrashlyticsCore: Crashlytics report upload complete: 5776CC9E029B-0001-6E05-6C83E6F7D1F2.cls
+</code></pre>
+</div>
+
+<h2 id="step4">手順 4. Crashlyticsダッシュボードを探索する</h2>
+
+<p>コードの設定、アプリの実行、クラッシュの発生が完了したら、Crashlyticsでは、<a href="https://www.fabric.io/onboard/pending">オンボードページ</a>を介さずに、クラッシュの詳細を確認できるダッシュボードに進むことができます。</p>
+
+<ol>
+  <li><a href="https://fabric.io/kits/android/crashlytics">Crashlytics</a>にログインします。</li>
+  <li>右上隅にある [<strong>Dashboard</strong>] をクリックします。</li>
+  <li>ダッシュボードで情報と設定を確認します。</li>
+</ol>
+
+<figure><img class="docimage " src="docs_ja/firetv/fireappbuilder/images/fireappbuilder_crashlytics_dashboard.png" alt="" /><figcaption>Crashlyticsダッシュボードに表示されているサンプルクラッシュ</figcaption></figure>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire App Builder</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

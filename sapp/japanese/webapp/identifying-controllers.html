@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>コントローラの識別 | Fire TV</title>
+    <base target="_self">
+    <meta name="description" content="Amazon Fire TVプラットフォームでは、ユーザーは最大で 7 つのBluetoothコントローラに同時に接続できます。アプリまたはゲームが複数のユーザーやプレーヤーからの入力をサポートしている場合、接続されたコントローラを識別し、それらのコントローラの機能を特定し、それぞれのコントローラからのユーザー入力を区別できる必要があります。 Fire TVプラットフォームでは、Androidの標準機能であるInputDeviceクラスが使用されます。InputDeviceクラスを使用することで、接続されたすべての入力端末 (コントローラを含む) のリストを入手し、入力端末の機能を問い合わせることができます。 また、任意のキーイベントやモーションイベントから入力端末オブジェクトを入手できることから、異なるコントローラやユーザーからの入力が発生した場合に、それらを処理することができます。  入力端末と端末IDの取得  すべての入力端末IDの取得 キーイベントまたはモーションイベントからの入力端末IDの取得   コントローラ機能の特定... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Amazon Fire TV用アプリとゲームを開発するための準備</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV端末の仕様</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Amazon Fire TV開発フレームワークの比較</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">Fire TV開発とAndroid TV開発の違い</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">Fire TV開発における最新情報</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Amazon Fire TVのよくある質問 (FAQ)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">AmazonアプリストアへのFire TVアプリの申請</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">開発環境のセットアップ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">アプリのインストールと実行</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">コントローラの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">リモート入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">ゲームコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Unityによるコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="identifying-controllers.html">コントローラの識別</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">コントローラ動作のガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">コントローラ画像アセット</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire TV > </div>
+                    <h1>コントローラの識別</h1>
+
+                    
+
+                    <p>Amazon Fire TVプラットフォームでは、ユーザーは最大で 7 つのBluetoothコントローラに同時に接続できます。アプリまたはゲームが複数のユーザーやプレーヤーからの入力をサポートしている場合、接続されたコントローラを識別し、それらのコントローラの機能を特定し、それぞれのコントローラからのユーザー入力を区別できる必要があります。</p>
+
+<p>Fire TVプラットフォームでは、Androidの標準機能である<a href="http://developer.android.com/reference/android/view/InputDevice.html"><code class="highlighter-rouge">InputDevice</code></a>クラスが使用されます。<code class="highlighter-rouge">InputDevice</code>クラスを使用することで、接続されたすべての入力端末 (コントローラを含む) のリストを入手し、入力端末の機能を問い合わせることができます。</p>
+
+<p>また、任意のキーイベントやモーションイベントから入力端末オブジェクトを入手できることから、異なるコントローラやユーザーからの入力が発生した場合に、それらを処理することができます。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#入力端末と端末idの取得" id="markdown-toc-入力端末と端末idの取得">入力端末と端末IDの取得</a>    <ul>
+      <li><a href="#すべての入力端末idの取得" id="markdown-toc-すべての入力端末idの取得">すべての入力端末IDの取得</a></li>
+      <li><a href="#キーイベントまたはモーションイベントからの入力端末idの取得" id="markdown-toc-キーイベントまたはモーションイベントからの入力端末idの取得">キーイベントまたはモーションイベントからの入力端末IDの取得</a></li>
+    </ul>
+  </li>
+  <li><a href="#コントローラ機能の特定" id="markdown-toc-コントローラ機能の特定">コントローラ機能の特定</a>    <ul>
+      <li><a href="#端末がゲームコントローラかどうかの判断" id="markdown-toc-端末がゲームコントローラかどうかの判断">端末がゲームコントローラかどうかの判断</a></li>
+      <li><a href="#端末がリモコンかどうかの判断" id="markdown-toc-端末がリモコンかどうかの判断">端末がリモコンかどうかの判断</a></li>
+      <li><a href="#端末がセカンドスクリーンアプリかどうかの判断" id="markdown-toc-端末がセカンドスクリーンアプリかどうかの判断">端末がセカンドスクリーンアプリかどうかの判断</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="入力端末と端末idの取得">入力端末と端末IDの取得</h2>
+
+<p>Amazon Fire TVに接続された入力端末は、Android <a href="http://developer.android.com/reference/android/view/InputDevice.html"><code class="highlighter-rouge">InputDevice</code></a>クラスによって表されます。接続された入力端末は、システムのブート時、および新たに端末が追加された場合に、端末IDを割り当てられます。IDのリストにある入力端末は、ゲームコントローラなどの実際のコントローラである場合と、オンスクリーンキーボードなど、他の入力形式を表している場合があります。端末IDは無作為に割り当てられるもので、これによって特定のコントローラやコントローラ種類を一意に識別することはできません。</p>
+
+<p>利用可能なすべての端末IDのリストを取得することで、アプリやゲームが使用できるコントローラの番号と種類を確認できます。また、特定のキーイベントまたはモーションイベントから端末IDまたは入力端末オブジェクトを取得して、どのコントローラがそのイベントで使用されていたかを確認することもできます。</p>
+
+<h3 id="すべての入力端末idの取得">すべての入力端末IDの取得</h3>
+
+<p>以下のように、静的な<a href="http://developer.android.com/reference/android/view/InputDevice.html#getDeviceIds%28%29"><code class="highlighter-rouge">InputDevice.getDeviceIds()</code></a> メソッドを使って、利用可能なすべての入力端末IDの配列を取得し、<a href="http://developer.android.com/reference/android/view/InputDevice.html#getDevice%28int%29"><code class="highlighter-rouge">InputDevice.getDevice()</code></a> を使って、それらのIDを実際の入力端末オブジェクトと関連付けることができます。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">getDeviceIds</span><span class="o">();</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">ids</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+<span class="c1">// get an InputDevice object based on the device ID</span>
+<span class="n">InputDevice</span> <span class="n">device</span> <span class="o">=</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">getDevice</span><span class="o">(</span><span class="n">ids</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+
+<span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">getDeviceIds()</code> メソッドで取得した端末IDのリストには、システムに実際に接続された入力端末のみが含まれることに留意してください。Bluetoothコントローラによっては、しばらくの間使用されていないと、電気を節約するために切断される (スリープ状態になる) 場合があります。また接続範囲外になると、切断される場合もあります。</p>
+
+<p>スリープ状態のコントローラ、または他の状態で使用不可能なコントローラは、接続されているとみなされないため、端末IDのリストには列挙されません。<a href="http://developer.android.com/reference/android/hardware/input/InputManager.InputDeviceListener.html"><code class="highlighter-rouge">InputDeviceListener</code></a>インターフェースを実装することで、コントローラの接続イベントや切断イベントをリッスンできます。</p>
+
+<h3 id="キーイベントまたはモーションイベントからの入力端末idの取得">キーイベントまたはモーションイベントからの入力端末IDの取得</h3>
+
+<p>以下のように、<a href="http://developer.android.com/reference/android/view/InputEvent.html#getDeviceId%28%29"><code class="highlighter-rouge">InputEvent.getDeviceId()</code></a> メソッドを使って、イベントハンドラ内でキーイベントまたはモーションイベントを起動した端末のIDを取得できます。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onKeyDown</span><span class="o">(</span><span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="n">KeyEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+<span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getDeviceId</span><span class="o">();</span>
+<span class="n">InputDevice</span> <span class="n">device</span> <span class="o">=</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">getDevice</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>または、以下のように入力端末オブジェクトそのものを取得します。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onKeyDown</span><span class="o">(</span><span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="n">KeyEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+<span class="n">InputDevice</span> <span class="n">device</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getDevice</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="コントローラ機能の特定">コントローラ機能の特定</h2>
+
+<p>Androidの入力端末IDは無作為に割り当てられるもので、これによってコントローラやコントローラの種類を一意に識別することはできません。入力端末の種類を特定するには、その端末の機能を問い合わせ、コントローラ (リモコン、ゲームコントローラ、またはセカンドスクリーンアプリ) からの入力であるか、または他の端末からの入力であるかを判断します。</p>
+
+<p><a href="http://developer.android.com/reference/android/view/InputDevice.html#getSources%28%29"><code class="highlighter-rouge">InputDevice.getSources()</code></a> メソッドを使用して、入力端末の機能を取得します。このメソッドは、端末の機能を表す整数ビットマップを返します。<a href="http://developer.android.com/reference/android/view/InputDevice.html"><code class="highlighter-rouge">InputDevice</code></a>クラスで定義された定数を使用して、そのビットマップと、アプリに実装したい具体的な機能を比較します。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// get an InputDevice object based on the device ID</span>
+<span class="n">InputDevice</span> <span class="n">device</span> <span class="o">=</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">getDevice</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+
+<span class="c1">// getSources() gives you an integer bitmap that defines the features of the device;</span>
+<span class="c1">// compare with constants from InputDevice to find controller features</span>
+<span class="k">if</span> <span class="o">((</span><span class="n">device</span><span class="o">.</span><span class="na">getSources</span><span class="o">()</span> <span class="o">&amp;</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">SOURCE_CLASS_JOYSTICK</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">{</span>
+<span class="c1">// this controller has a joystick</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>以下のように、<a href="http://developer.android.com/reference/android/view/InputEvent.html#getSource()"><code class="highlighter-rouge">InputEvent.getSource()</code></a> メソッドを使って、キーイベントやモーションイベントから入力端末機能のビットマップを直接取得することもできます。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onGenericMotionEvent</span><span class="o">(</span><span class="n">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// did this event come from a joystick?</span>
+<span class="k">if</span> <span class="o">((</span><span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">()</span> <span class="o">&amp;</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">SOURCE_CLASS_JOYSTICK</span><span class="o">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// ... handle input events from controllers with joysticks }</span>
+<span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="端末がゲームコントローラかどうかの判断">端末がゲームコントローラかどうかの判断</h3>
+
+<p><a href="http://developer.android.com/reference/android/view/InputDevice.html#SOURCE_GAMEPAD"><code class="highlighter-rouge">InputDevice.SOURCE_GAMEPAD</code></a>と<a href="http://developer.android.com/reference/android/view/InputDevice.html#SOURCE_JOYSTICK"><code class="highlighter-rouge">InputDevice.SOURCE_JOYSTICK</code></a>の両方の定数をテストして、ゲームコントローラ (Amazonゲームコントローラと他のゲームコントローラの両方) を特定することができます。このコードでは、Amazonゲームコントローラと他社製のBluetoothコントローラが区別されないことに留意してください。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">hasFlags</span> <span class="o">=</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">SOURCE_GAMEPAD</span> <span class="o">|</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">SOURCE_JOYSTICK</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">isGamepad</span> <span class="o">=</span> <span class="n">inputDevice</span><span class="o">.</span><span class="na">getSources</span><span class="o">()</span> <span class="o">&amp;</span> <span class="n">hasFlags</span> <span class="o">==</span> <span class="n">hasFlags</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h3 id="端末がリモコンかどうかの判断">端末がリモコンかどうかの判断</h3>
+
+<p><a href="http://developer.android.com/reference/android/view/InputDevice.html#SOURCE_DPAD"><code class="highlighter-rouge">InputDevice.SOURCE_DPAD</code></a>定数を使用して、Amazon Fire TV RemoteまたはAmazon Fire TV Voice Remoteを特定できます。ただし、一部のキーボードはD-Padを搭載していると認識される場合もあるため、キーボードの種類もテストする必要があります (以下のように、<a href="http://developer.android.com/reference/android/view/InputDevice.html#KEYBOARD_TYPE_ALPHABETIC"><code class="highlighter-rouge">InputDevice.KEYBOARD_TYPE_NON_ALPHABETIC</code></a>を使用)。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">hasFlags</span> <span class="o">=</span>  <span class="n">InputDevice</span><span class="o">.</span><span class="na">SOURCE_DPAD</span><span class="o">;</span>
+<span class="n">bool</span> <span class="n">isRemote</span> <span class="o">=</span> <span class="o">(</span><span class="n">inputDevice</span><span class="o">.</span><span class="na">getSources</span><span class="o">()</span> <span class="o">&amp;</span> <span class="n">hasFlags</span> <span class="o">==</span> <span class="n">hasFlags</span><span class="o">)</span>
+<span class="o">&amp;&amp;</span> <span class="n">inputDevice</span><span class="o">.</span><span class="na">getKeyboardType</span><span class="o">()</span> <span class="o">==</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">KEYBOARD_TYPE_NON_ALPHABETIC</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h3 id="端末がセカンドスクリーンアプリかどうかの判断">端末がセカンドスクリーンアプリかどうかの判断</h3>
+
+<p><a href="http://developer.android.com/reference/android/view/InputDevice.html#SOURCE_MOUSE"><code class="highlighter-rouge">InputDevice.SOURCE_MOUSE</code></a>と<a href="http://developer.android.com/reference/android/view/InputDevice.html#SOURCE_TOUCHPAD"><code class="highlighter-rouge">InputDevice.SOURCE_TOUCHPAD</code></a>の両方の定数を使用して、Amazonセカンドスクリーンアプリを特定できます。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">hasFlags</span> <span class="o">=</span>  <span class="n">InputDevice</span><span class="o">.</span><span class="na">SOURCE_MOUSE</span> <span class="o">|</span> <span class="n">InputDevice</span><span class="o">.</span><span class="na">SOURCE_TOUCHPAD</span><span class="o">;</span>
+<span class="n">bool</span> <span class="n">isRemote</span> <span class="o">=</span> <span class="n">inputDevice</span><span class="o">.</span><span class="na">getSources</span><span class="o">()</span> <span class="o">&amp;</span> <span class="n">hasFlags</span> <span class="o">==</span> <span class="n">hasFlags</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire TV</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ADBを使用してFire TVに接続する | Fire App Builder</title>
+    <base target="_self">
+    <meta name="description" content="Android Debug Bridge (ADB) を使用すると、Amazon Fire TV端末またはAmazon Fire TV Stickに開発コンピューターを接続して、アプリのインストール、テスト、デバッグを行うことができます。 ADBでFire TVまたはFire TV Stickに接続する際は、あらかじめ以下のセクションをお読みください。  Note: Android Debug Bridgeは、Amazonではなく、Android Open Source Projectにより提供されます。 ... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-overview.html">Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプリ向けスターターキット</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">リリースノート</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">アプリを作成するための一連のプロセス</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">よくある質問</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Fire App Builderをダウンロードして、アプリをビルドする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">アプリの概要</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-media-feed.html">メディアフィードをロードする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">レシピ構成の概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-categories.html">カテゴリレシピをセットアップする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-content.html">コンテンツレシピをセットアップする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigatorの構成の概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Navigatorの構成 -- トークンベースフィード</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Navigatorの構成 -- オープンフィード</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-customize-look-and-feel.html">アプリのルックアンドフィールをカスタマイズする</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-interfaces-and-components.html">コンポーネントの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">アプリにコンポーネントをロードする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">新しいFire App Builderコンポーネントを作成する</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">Freewheel広告コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST広告コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-crashlytics-component.html">Crashlyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Googleアナリティクスコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass認証コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook認証コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazonコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazonアプリ内課金のコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Playerコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Githubから更新データをプルする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">ライブストリーミングを構成する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Fire TVカタログにメディアを組み込む</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Android TVエミュレーターを使用してアプリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">JSONでクエリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">XMLでクエリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">トラブルシューティング</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire App Builder > </div>
+                    <h1>ADBを使用してFire TVに接続する</h1>
+
+                    
+
+                    <p>Android Debug Bridge (ADB) を使用すると、Amazon Fire TV端末またはAmazon Fire TV Stickに開発コンピューターを接続して、アプリのインストール、テスト、デバッグを行うことができます。</p>
+
+<p>ADBでFire TVまたはFire TV Stickに接続する際は、あらかじめ以下のセクションをお読みください。</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> <a href="https://developer.android.com/studio/command-line/adb.html">Android Debug Bridge</a>は、Amazonではなく、Android Open Source Projectにより提供されます。</div>
+
+<ul id="markdown-toc">
+  <li><a href="#turnondebugging" id="markdown-toc-turnondebugging">手順 1. Amazon Fire TVでデバッグを有効にする</a></li>
+  <li><a href="#setupadb" id="markdown-toc-setupadb">手順 2. Android Debug Bridgeを設定する</a>    <ul>
+      <li><a href="#mac-os-x" id="markdown-toc-mac-os-x">Mac OS X</a></li>
+      <li><a href="#windows" id="markdown-toc-windows">Windows</a></li>
+    </ul>
+  </li>
+  <li><a href="#addadbpath" id="markdown-toc-addadbpath">手順 3. 環境変数パスにAndroid Debug Bridgeを追加する</a>    <ul>
+      <li><a href="#mac-os-x-1" id="markdown-toc-mac-os-x-1">Mac OS X</a></li>
+      <li><a href="#windows-1" id="markdown-toc-windows-1">Windows</a></li>
+    </ul>
+  </li>
+  <li><a href="#connectingadboptions" id="markdown-toc-connectingadboptions">手順 4: ADBの接続方法</a>    <ul>
+      <li><a href="#networkconnect" id="markdown-toc-networkconnect">ネットワーク経由でADBを接続する</a></li>
+      <li><a href="#usbconnect" id="markdown-toc-usbconnect">USB経由でADBを接続する</a></li>
+    </ul>
+  </li>
+  <li><a href="#updateadb" id="markdown-toc-updateadb">ADBを更新する</a></li>
+  <li><a href="#トラブルシューティング" id="markdown-toc-トラブルシューティング">トラブルシューティング</a></li>
+  <li><a href="#android-tvエミュレーターを使用する" id="markdown-toc-android-tvエミュレーターを使用する">Android TVエミュレーターを使用する</a></li>
+  <li><a href="#次のステップ" id="markdown-toc-次のステップ">次のステップ</a></li>
+</ul>
+
+<h2 id="turnondebugging">手順 1. Amazon Fire TVでデバッグを有効にする</h2>
+
+<p>Fire TV端末に接続するには、端末でADBとデバッグの両方を有効にする必要があります。</p>
+
+<ol>
+  <li>Fire TVのメイン画面で [<strong>Settings</strong>] を選択します。</li>
+  <li>[<strong>Device</strong>] &gt; [<strong>Developer Options</strong>] の順に選択します。</li>
+  <li>[<strong>ADB Debugging</strong>] を有効にします。</li>
+  <li>
+    <p>(省略可能) USBケーブルを使用してコンピューターをFire TV端末に接続する場合は、[<strong>USB Debugging</strong>] をオンにします。</p>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> USBデバッグが有効になっているときは、USBポートを他の用途 (外部ストレージ、入力端末など) に使用することはできません。USBポートを再度有効にするには、USBデバッグをオフにしてください。</div>
+  </li>
+  <li>[<strong>Apps from Unknown Sources</strong>] を有効にします。</li>
+</ol>
+
+<h2 id="setupadb">手順 2. Android Debug Bridgeを設定する</h2>
+
+<p>Android Debug Bridge (ADB) は、ご利用の端末またはエミュレータでAndroidアプリの実行と管理を行うためのコマンドラインユーティリティです。ADBはAndroid Studioをインストールすると利用できますが、Windowsをご利用の場合は、特別なUSBドライバをインストールする必要があります。</p>
+
+<h3 id="mac-os-x">Mac OS X</h3>
+
+<p>Mac OS XでADBを使用する場合は、特に必要な作業はありません。</p>
+
+<h3 id="windows">Windows</h3>
+
+<p>Windowsが実行されているコンピューターをUSBケーブルでFire TVに接続する場合、ADBを介してFire TV端末にコンピューターを接続するためには特別なUSBドライバをインストールする必要があります。このドライバは、すべてのFire TVプラットフォームをサポートしています。ドライバをインストールするには:</p>
+
+<ol>
+  <li><a href="https://s3.amazonaws.com/android-sdk-manager/redist/fire_devices_usb_driver.zip">USBファイルをダウンロード</a>してzipファイルの内容を抽出します。</li>
+  <li><strong>FireDevices_Drivers</strong>をダブルクリックします。</li>
+  <li>ダイアログボックスの指示に従ってインストールを実行します。</li>
+</ol>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> このUSBドライバはWindows 8.1 に対してのみ認定されています。Windows 10 をご利用の場合は、”信頼されていない発行元”からのインストールに明示的に同意する必要があります。</div>
+
+<h2 id="addadbpath">手順 3. 環境変数パスにAndroid Debug Bridgeを追加する</h2>
+
+<p><code class="highlighter-rouge">adb</code>のコマンドを実行しやすくするために、環境変数PATHにADBを追加する必要があります。(PATH環境変数は、プログラムの実行ファイルの場所を指定するものです。ADBをPATHに追加しなかった場合、<code class="highlighter-rouge">adb</code>コマンドを実行するには、<code class="highlighter-rouge">&lt;Android SDK&gt;/platform-tools</code>ディレクトリに移動したうえで<code class="highlighter-rouge">adb</code>を実行する必要があります。)</p>
+
+<h3 id="mac-os-x-1">Mac OS X</h3>
+
+<p>Macで環境変数PATHにADBを追加するには:</p>
+
+<ol>
+  <li>
+    <p>Android SDK platform-toolsディレクトリのパスを確認します。</p>
+
+    <ol>
+      <li>
+        <p>Android Studioを起動して [<strong>SDK Manager</strong>] ボタン <img class="inline " src="docs_ja/firetv/fireappbuilder/images/fireappbuilder_androidsdkmanagericon.png" alt="" />
+ をクリックします。</p>
+
+        <p>上部の [<strong>Android SDK Location</strong>] の横にAndroid SDKの場所が表示されます(例: <code class="highlighter-rouge">/Users/&lt;your username&gt;/Library/Android/sdk</code>)。</p>
+
+        <p>Android Studioを初めて起動する場合は、[SDK Manager] ボタンが表示されません。[Welcome to Android Studio] というプロンプトで、[<strong>Configure</strong>] &gt; [<strong>SDK Manager</strong>] の順にクリックし、Android SDKの場所を指定してください。</p>
+      </li>
+      <li>SDKのパスをコピーして、テキストエディターなどに貼り付けます。</li>
+      <li>直前の手順でコピーしたパスの末尾に<strong>/platform-tools</strong>を追加します。”platform-tools” は<code class="highlighter-rouge">adb</code>実行ファイルが格納されているディレクトリです。</li>
+      <li>フルパスをクリップボードにコピーします。</li>
+    </ol>
+  </li>
+  <li>
+    <p>以下のコマンドを使用してadbを<strong>.bash_profile</strong>に追加します。<code class="highlighter-rouge">/Users/&lt;your username&gt;/Library/Android/sdk/platform-tools/</code> の部分は、Android SDKの実際のパスに置き換えてください。</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'export PATH=$PATH:/Users/&lt;your username&gt;/Library/Android/sdk/platform-tools/'</span> &gt;&gt; ~/.bash_profile
+</code></pre>
+    </div>
+
+    <p>.bash_profileファイルは通常、ユーザーディレクトリにあります。ユーザーディレクトリは、「<code class="highlighter-rouge">cd ~</code>」(change directory) と入力して確認できます。次に、「<code class="highlighter-rouge">ls -a</code>」(list all) と入力して、非表示のファイルも含めたすべてのファイルを表示します。</p>
+
+    <p>.bash_profileファイルが存在しない場合は、新規に作成します。そのうえで「<code class="highlighter-rouge">open .bash_profile</code>」と入力すると、パスが一覧表示されます。各行は、<code class="highlighter-rouge">export PATH=$PATH:/Users/&lt;your username&gt;/Library/Android/sdk/platform-tools/</code> のようになっています。</p>
+  </li>
+  <li>
+    <p>ターミナルセッションを再起動して「<strong>adb</strong>」と入力します。PATHにADBが正しく追加されると、ADBのヘルプ情報が表示されます。正しく追加されていないと、”command not found.” と表示されます。</p>
+  </li>
+</ol>
+
+<h3 id="windows-1">Windows</h3>
+
+<p>Windowsで環境変数PATHにADBを追加するには:</p>
+
+<ol>
+  <li>
+    <p>Android SDK platform-toolsディレクトリのパスを確認します。</p>
+
+    <ol>
+      <li>
+        <p>Android Studioを起動して [<strong>SDK Manager</strong>] ボタン <img class="inline " src="docs_ja/firetv/fireappbuilder/images/fireappbuilder_androidsdkmanagericon.png" alt="" />
+ をクリックします。</p>
+
+        <p>上部の [<strong>Android SDK Location</strong>] の横にAndroid SDKの場所が表示されます(例: <code class="highlighter-rouge">C:\Users\&lt;your user name&gt;\AppData\Local\Android\Sdk\platform-tools</code>)。</p>
+
+        <p>Android Studioを初めて起動する場合は、[SDK Manager] ボタンが表示されません。[Welcome to Android Studio] というプロンプトで、[<strong>Configure</strong>] &gt; [<strong>SDK Manager</strong>] の順にクリックし、Android SDKの場所を指定してください。</p>
+      </li>
+      <li>
+        <p>SDKのパスをコピーして、テキストエディターなどに貼り付けます。3.  直前の手順でコピーしたパスの末尾に<strong>/platform-tools</strong>を追加します。”platform-tools” は<code class="highlighter-rouge">adb</code>実行ファイルが格納されているディレクトリです。4.  フルパスをクリップボードにコピーします。</p>
+      </li>
+    </ol>
+  </li>
+  <li>[<strong>スタート</strong>] ボタンをクリックし、検索ボックスに「<strong>システムの詳細設定の表示</strong>」と入力します。</li>
+  <li>[<strong>システムの詳細設定の表示</strong>] をクリックします。</li>
+  <li>[システム設定] ダイアログが表示されたら、[<strong>環境変数</strong>] ボタンをクリックします。</li>
+  <li>[<em>システム環境変数</em>] (下のペイン) で [<strong>Path</strong>] を選択し、[<strong>編集</strong>] をクリックします。</li>
+  <li>
+    <p>次のいずれかの作業を行います。</p>
+
+    <ul>
+      <li><em>Windows 7 または 8</em> の場合: カーソルを右端に移動し、「<code class="highlighter-rouge">;</code>」と入力して<strong>Ctrl+V</strong>キーを押し、先ほどコピーしたSDKのパスを挿入します(例: <code class="highlighter-rouge">;C:\Users\&lt;your user name&gt;\AppData\Local\Android\Sdk\platform-tools</code>)。開いている 3 つのダイアログボックスをそれぞれ [<strong>OK</strong>] ボタンで閉じます。</li>
+      <li><em>Windows 10</em> の場合: [<strong>新規</strong>] ボタンをクリックしてこの場所を追加します。</li>
+    </ul>
+  </li>
+  <li>ターミナルセッションを再起動して「<strong>adb</strong>」と入力します。PATHにADBが正しく追加されると、ADBのヘルプ情報が表示されます。正しく追加されていないと、”command not found.” と表示されます。</li>
+</ol>
+
+<h2 id="connectingadboptions">手順 4: ADBの接続方法</h2>
+
+<p>ADBを使用してFire TVまたはFire TV Stickをコンピューターに接続するには、次の 2 つの方法を利用できます。</p>
+
+<ul>
+  <li><a href="#networkconnect">ネットワーク経由でADBを接続する</a>。有線イーサネットまたはWiFiネットワーク接続を使用した接続方法です。ネットワークADB接続が機能するには、コンピューターとFire TV端末が同じネットワーク上に存在する必要があります。*   <a href="#usbconnect">USB経由でADBを接続する</a>。USBケーブル (A-to-A) を使用して直接USB接続を確立する方法です。</li>
+</ul>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> 以降の手順は、ユーザーインターフェースが刷新された第 2 世代の端末を想定して書かれています。第 1 世代の端末をご使用の場合は、メニューの場所が若干異なります。</div>
+
+<h3 id="networkconnect">ネットワーク経由でADBを接続する</h3>
+
+<p>Fire TV端末にADBを接続するには、ネットワークにあるFire TV端末のIPアドレスが必要となります。</p>
+
+<ol>
+  <li>まだ接続していない場合は、Fire TV端末をネットワークに接続します (対象のコンピューターと同じネットワークに接続すること)。Fire TVのホーム画面で [<strong>Settings</strong>] &gt; [<strong>Network</strong>] の順に選択して目的のネットワークを選択してください。2.  Fire TVのホーム画面で [<strong>Settings</strong>] を選択します。</li>
+  <li>
+    <p>[<strong>Device</strong>] &gt; [<strong>About</strong>] &gt; [<strong>Network</strong>] の順に移動します。画面に表示されるIPアドレスをメモします。</p>
+
+    <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> 日常的にネットワーク経由で接続する場合は、いつでも確認できるようにこのIPアドレスをコピーしておいてください。</div>
+  </li>
+  <li>
+    <p>ターミナルウィンドウを開きます。</p>
+
+    <p>Macの場合、ターミナルを開くには、<strong>Cmd + Spaceキー</strong>を押して「<strong>Terminal</strong>」と入力します。Windowsの場合は、通常、プログラムの検索画面で「<strong>cmd</strong>」と入力してコマンドプロンプトを開きます(厳密な手順は、Windowsのバージョンによって異なります)。</p>
+  </li>
+  <li>Fire TV端末とコンピューターが同じネットワーク上にあることを確認します。WiFiネットワークと有線ネットワークのどちらも使用できます。</li>
+  <li>
+    <p>次のコマンドを実行します。<code class="highlighter-rouge">&lt;ipaddress&gt;</code> の部分には、前のセクションでメモしたFire TV端末のIPアドレスを指定してください。</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>adb kill-server
+adb start-server
+adb connect &lt;ipaddress&gt;
+</code></pre>
+    </div>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> ADBが環境変数PATHに追加されていることを確認してください (「<a href="#addadbpath">環境変数パスにAndroid Debug Bridgeを追加する</a>」を参照)。追加されていない場合は、「<code class="highlighter-rouge">cd</code>」 (change directories) でplatform-toolsディレクトリに移動してから、「<code class="highlighter-rouge">./adb</code>」 (Macの場合) または「<code class="highlighter-rouge">adb</code>」 (Windowsの場合) を使用して<code class="highlighter-rouge">adb</code>のコマンドを実行する必要があります。</div>
+
+    <p>接続に成功すると、ADBから次のようなメッセージが返されます。</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>connected to &lt;ipaddress&gt;:5555
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>次のコマンドを実行して、端末のリストにFire TV端末が表示されることを確認します。</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>adb devices
+</code></pre>
+    </div>
+
+    <p>ADBから次のメッセージが返されます。</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>List of devices attached
+&lt;ipaddress&gt;:5555  device
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p><code class="highlighter-rouge">adb devices</code>を実行してもシリアル番号が表示されない場合は、<a href="#updateadb">ADBを更新</a>してから、再度この手順を実行してください。</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> 必ずしもADBサーバーを停止 (kill) して起動 (start) する必要はありません。通常は単に<code class="highlighter-rouge">adb connect &lt;ipaddress&gt;</code>コマンドを実行してください。</div>
+
+<h3 id="usbconnect">USB経由でADBを接続する</h3>
+
+<p>コンピューターをUSBでFire TVに接続するには、A-to-AタイプのUSBケーブルが必要となります。利用できるのはFire TVのみで、Fire TV Stickでは利用できないためご注意ください。USBケーブルポートはFire TV (ボックス) にしか存在しません。</p>
+
+<ol>
+  <li>Windowsコンピューターを使用する場合は、USBドライバをインストールします (「<a href="#setupadb">Android Debug Bridgeを設定する</a>」を参照)。</li>
+  <li>コンピューターのUSBポートにFire TVを接続します。</li>
+  <li>
+    <p>次のコマンドを実行します。</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>adb kill-server
+adb start-server
+adb devices
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>最後のコマンドを入力すると、ADBから次のメッセージが返されます。<code class="highlighter-rouge">&lt;serialno&gt;</code> は端末のシリアル番号です。</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>List of devices attached
+<span class="gp">&lt;serialno&gt; </span>device
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">adb devices</code>を実行してもシリアル番号が表示されない場合は、<a href="#updateadb">ADBを更新</a>してから、再度この手順を実行してください。</p>
+
+<p>コンピューターとFire TV端末の接続がADBによって確立された後、開発中のアプリを実行すると、次のようなダイアログボックスが表示されます。</p>
+
+<figure><img style="max-width: 60%" class="docimage border" src="docs_ja/firetv/fireappbuilder/images/fireappbuilder_aftsoptions.png" alt="" /></figure>
+
+<p>この例では、”Amazon AFTS” はFire TV (第 2 世代) を表しています。</p>
+
+<h2 id="updateadb">ADBを更新する</h2>
+
+<p>「<code class="highlighter-rouge">adb devices</code>」と入力してもご利用の端末が表示されない場合は、次の手順に従ってADBを更新してみてください。</p>
+
+<ol>
+  <li>
+    <p>ターミナルセッションを開いて、Android SDKの<strong>tools</strong>ディレクトリに移動します。</p>
+
+    <p>インストールディレクトリは、Android Studioで [<strong>Tools</strong>] &gt; [<strong>Android</strong>] &gt; [<strong>SDK Manager</strong>] の順に選択するか、[<strong>SDK Manager</strong>] ボタン <img class="inline " src="docs_ja/firetv/getting_started/images/androidsdkmanagericon.png" alt="" />
+ をクリックして確認できます。[<strong>Android SDK Location</strong>] の横にディレクトリが表示されます。</p>
+  </li>
+  <li>
+    <p>ターミナルまたはコマンドプロンプトから<code class="highlighter-rouge">cd</code>コマンドでAndroid SDKディレクトリに移動し、1 階層下の<strong>tools</strong>に移動 (<code class="highlighter-rouge">cd</code>) します (toolsディレクトリはSDKディレクトリに格納されています)。</p>
+  </li>
+  <li>
+    <p>次のいずれかのコマンドを実行してADBを更新します。</p>
+
+    <p><strong>Mac</strong>:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>./android update adb
+</code></pre>
+    </div>
+
+    <p><strong>Windows</strong>:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>android update adb
+</code></pre>
+    </div>
+
+    <p>ADBが更新されたことを示すメッセージが返されます。</p>
+  </li>
+</ol>
+
+<h2 id="トラブルシューティング">トラブルシューティング</h2>
+
+<p>次のようなメッセージが表示される場合があります。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> unable to connect to 192.168.0.6:5555: Operation timed out
+</code></pre>
+</div>
+
+<p>この場合は、次のことを試してください。</p>
+
+<ul>
+  <li>Fire TVとコンピューターで、どちらも同じネットワークとルーターが使用されていることを確認します。</li>
+  <li><a href="#updateadb">ADBを更新</a>し、サーバーを停止してから再起動します。</li>
+  <li>Fire TVとルーターを再起動します。</li>
+  <li>IPアドレスがドット (<code class="highlighter-rouge">.</code>) も含め、正しく入力されていることを確認します。</li>
+</ul>
+
+<h2 id="android-tvエミュレーターを使用する">Android TVエミュレーターを使用する</h2>
+
+<p>アプリのテストにどうしてもFire TV端末を使用できない場合は、限定的ではありますが、エミュレーターの使用がサポートされています。「<a href="fire-app-builder-use-an-android-tv-emulator.html">Android TVエミュレーターを使用してアプリを実行する</a>」を参照してください。</p>
+
+<h2 id="次のステップ">次のステップ</h2>
+
+<p>ADBのセットアップが完了したら、<a href="fire-app-builder-download-and-build.html">Fire App Builderをダウンロードしてビルドする</a>ことができます。</p>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire App Builder</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

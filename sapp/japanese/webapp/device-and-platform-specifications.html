@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fire TV端末の仕様 | Fire TV</title>
+    <base target="_self">
+    <meta name="description" content="このページでは、すべてのAmazon Fire TV端末を対象に、メディアと端末、プラットフォームの仕様、サポートされるテクノロジーを紹介しています。  Fire TV Stick (第 2 世代) Fire TV (Gen. 2) Fire TV Stick... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Amazon Fire TV用アプリとゲームを開発するための準備</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="device-and-platform-specifications.html">Fire TV端末の仕様</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Amazon Fire TV開発フレームワークの比較</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">Fire TV開発とAndroid TV開発の違い</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">Fire TV開発における最新情報</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Amazon Fire TVのよくある質問 (FAQ)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">AmazonアプリストアへのFire TVアプリの申請</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">開発環境のセットアップ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">アプリのインストールと実行</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">コントローラの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">リモート入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">ゲームコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Unityによるコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">コントローラの識別</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">コントローラ動作のガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">コントローラ画像アセット</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire TV > </div>
+                    <h1>Fire TV端末の仕様</h1>
+
+                    
+
+                    
+<p>このページでは、すべてのAmazon Fire TV端末を対象に、メディアと端末、プラットフォームの仕様、サポートされるテクノロジーを紹介しています。</p>
+
+<ul id="profileTabs" class="nav nav-tabs">
+   <li class="active"><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick (第 2 世代)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV (Gen. 2)</a></li>
+    <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick (第 1 世代)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV (Gen. 1)</a></li>
+</ul>
+
+<div class="tab-content">
+
+<div role="tabpanel" class="tab-pane active" id="firetvstickgen2">
+
+NOTE: I FORGOT TO INCLUDE THIS FILE IN THE PREVIOUS BATCH OF TRANSLATED FILES.
+</div>
+  
+<div role="tabpanel" class="tab-pane" id="firetvgen2">
+<div class="subheading">メディアの仕様 (Fire TV、第 2 世代)</div>
+
+<table class="grid">
+   <colgroup>
+      <col width="10%" />
+      <col width="17%" />
+      <col width="15%" />
+      <col width="38%" />
+   </colgroup>
+   <thead>
+      <tr class="header">
+         <th>タイプ</th>
+         <th>コーデック</th>
+         <th>MIME type</th>
+         <th>詳細</th>
+      </tr>
+   </thead>
+   <tr>
+        <td class="white" rowspan="6"><b>ビデオ</b></td>
+        <td class="white">H.263</td>
+        <td class="white">video/3gp</td>
+        <td class="white">ハードウェアによる高速化: 最大WVGA (800 x 400)、30fps、6 Mbps、プロファイル 0 レベル 70</td>
+     </tr>
+     <tr>
+        <td class="white">H.264</td>
+        <td class="white">video/avc</td>
+        <td class="white">ハードウェアによる高速化: 最大 1080p、30fps、20 Mbps、ハイプロファイル (最大レベル 4)</td>
+     </tr>
+     <tr>
+        <td class="white">H.265 (HEVC)</td>
+        <td class="white">video/mp4</td>
+        <td class="white">ハードウェアによる高速化: 最大 3840x2160p (4K)、30 fps、25 Mbps、Main 10 プロファイル (レベル 5.0)、色空間 8 ビットおよび 10 ビット (入力のみ、出力は 8 ビット)</td>
+     </tr>
+     <tr>
+        <td class="white">VP8</td>
+        <td class="white">video/webm</td>
+        <td class="white">ハードウェアによる高速化、プロファイル 0</td>
+  </tr>
+     <tr>
+        <td class="white">VP9</td>
+        <td class="white">video/webm</td>
+        <td class="white">ハードウェアによる高速化: 最大Youtube 4K、プロファイル 0</td>
+  </tr>
+      <tr>
+         <td class="white">MPEG-4</td>
+         <td class="white">video/mp4v-es</td>
+         <td class="white">最大 1080p、30fps、20 Mbps、アドバンスドシンプルプロファイル (レベル 5)</td>
+      </tr>
+   <tr>
+      <td class="gray" rowspan="12"><b>オーディオ</b></td>
+      <td class="gray">AAC-LC</td>
+      <td class="gray">audio/mp4a-latm</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">HE-AACv1 (AAC+)</td>
+      <td class="gray">audio/mp4a-latm</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">HE-AACv2 (拡張AAC+)</td>
+      <td class="gray">audio/mp4a-latm</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">AC3 (ドルビーデジタル)</td>
+      <td class="gray">audio/ac3</td>
+      <td class="gray">最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">eAC3 (ドルビーデジタルプラス)</td>
+      <td class="gray">audio/eac3</td>
+      <td class="gray">最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">FLAC</td>
+      <td class="gray">audio/flac</td>
+      <td class="gray">最大 48 kHz、2 チャネル、16 ビットと 24 ビット (24 ビットはディザなし)</td>
+   </tr>
+   <tr>
+      <td class="gray">MIDI</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">MIDI (タイプ 0 および 1)、DLS (バージョン 1 および 2)、XMF、およびモバイルXMF。着信音の形式: RTTTL/RTX、OTA、およびiMelody</td>
+   </tr>
+   <tr>
+      <td class="gray">MP3</td>
+      <td class="gray">audio/mp3</td>
+      <td class="gray">最大 48 kHz、DSPに 2 チャネル (16 ビットおよび 24 ビット) およびソフトウェア (16 ビット)</td>
+   </tr>
+   <tr>
+      <td class="gray">PCM/Wave</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">Vorbis</td>
+      <td class="gray">audio/vorbis</td>
+      <td class="gray">Ogg (.ogg)<br />Matroska (.mkv)</td>
+   </tr>
+      <tr>
+      <td class="gray">AMR-NB</td>
+      <td class="gray">audio/amr-web</td>
+      <td class="gray"></td>
+      </tr>
+       <tr>
+       <td class="gray">AMR-WB</td>
+       <td class="gray">audio/3gpp</td>
+       <td class="gray"></td>
+       </tr>
+   <tr>
+           <td class="white"><b>DRM</b></td>
+           <td class="white" colspan="2">Widevine Level 1 <br /> PlayReady Version 2.5 のみ</td>
+           <td class="white">PlayReadyでサポートされるのは暗号化されたビデオだけです。オーディオはサポートされません。暗号化されたオーディオとビデオの両方を含むコンテンツを再生する必要がある場合は、<a href="https://developer.amazon.com/appsandservices/support/contact/contact-us">こちら</a>から具体的なカスタマイズの詳細と手順をお問い合わせください。その他のDRMに関する情報は、実装する<a href="fire-tv-media-players.html">メディアプレーヤー</a>によって異なります。</td>
+     </tr>
+   <tr>
+      <td class="gray" rowspan="4"><b>画像</b></td>
+      <td class="gray">JPEG</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">ベースおよびプログレッシブ</td>
+   </tr>
+   <tr>
+      <td class="gray">GIF</td>
+      <td class="gray">該当なし</td>
+      <td class="gray"></td>
+   </tr>
+   <tr>
+      <td class="gray">PNG</td>
+      <td class="gray">該当なし</td>
+      <td class="gray"></td>
+   </tr>
+   <tr>
+      <td class="gray">BMP</td>
+      <td class="gray">該当なし</td>
+      <td class="gray"></td>
+   </tr>      
+</table>
+
+<div class="subheading">端末およびプラットフォームの仕様 (Fire TV、第 2 世代)</div>
+
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="60%" />
+   </colgroup>
+  <thead>
+    <tr>
+      <th>端末の要素</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>画面解像度 (px) とリフレッシュレート (Hz)</td>
+      <td>3840 x 2160 (2160p / 4K) - 30Hz <br /> 
+      1920 x 1080 (1080p) - 60Hz <br /> 
+      1280 x 720 (720p) - 60Hz</td>
+    </tr>
+    <tr>
+     <td>HDCP</td>
+     <td>2.2</td>
+   </tr>
+    <tr>
+      <td>密度 (dp)</td>
+      <td>640 (2160p) <br /> 320 (1080p) <br /> 213 (720p)</td>
+    </tr>
+    <tr>
+      <td>密度識別子</td>
+      <td>xxxhdpi (2160p) <br /> xhdpi (1080p) <br /> tvdpi (720p)</td>
+    </tr>
+    <tr>
+      <td>ストレージ</td>
+      <td>8 GB</td>
+    </tr>
+    <tr>
+      <td>RAM</td>
+      <td>2 GB</td>
+    </tr>
+    <tr>
+      <td>システムオンチップ (SoC) プラットフォーム</td>
+      <td>MediaTek 8173C</td>
+    </tr>
+    <tr>
+      <td>CPU</td>
+      <td>Quad Core (最大 2GHzのDual Core ARM Cortex A72、最大 1.573 GhzのDual Core ARM Cortex A53)</td>
+    </tr>
+    <tr>
+      <td>GPU</td>
+      <td>PowerVR Rogue GX6250</td>
+    </tr>
+    <tr>
+      <td>ネットワーキング: WiFi</td>
+      <td>802.11 a/b/g/n/ac; 2x2 MIMO <br /> (2.4 GHzおよび 5.0 GHzデュアルバンド)</td>
+    </tr>
+    <tr>
+      <td>ネットワーキング: イーサネット </td>
+      <td>10/100Mbs</td>
+    </tr>
+    <tr>
+      <td>Bluetooth</td>
+      <td>Bluetooth 4.1、BTLE <br /> HID、HFP、SPPプロファイル</td>
+    </tr>
+    <tr>
+      <td>USB</td>
+      <td>USB 2.0 Type A (アクセサリおよびメディアストレージ)</td>
+    </tr>
+    <tr>
+      <td>拡張可能ストレージ</td>
+      <td>最大 128 GBのMicroSD  <br />(ストレージに関連したマニフェスト設定のベストプラクティスについては「<a href="specifying-installation-location.html">アプリのインストール場所の指定</a>」を参照)</td>
+    </tr>
+    <tr>
+      <td>端末のOS/プラットフォームソフトウェア</td>
+      <td>Android 5.0 に基づく (API 22)</td>
+    </tr>
+    <tr>
+      <td>位置情報サービス</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>前面カメラ</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>マイクロホン</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>マルチタッチ</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>加速度計</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>コンパス</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>ジャイロスコープ</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>光センサー</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>近接センサー</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td><code>android.os.Build.MANUFACTURER</code></td>
+      <td><code>Amazon</code>。詳細については、「<a href="identifying-amazon-fire-tv-devices.html">Identifying Amazon Fire TV Devices</a>」を参照してください。</td>
+    </tr>
+    <tr>
+      <td><code>android.os.Build.MODEL</code></td>
+      <td><code>AFTS</code> (Fire TV第 2 世代のみ) <br /> <code>AFT*</code> (すべてのFire TV端末)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="subheading">OpenGLのプロパティと制限 (Fire TV、第 2 世代)</div>
+
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="60%" />
+   </colgroup>
+  <thead>
+    <tr>
+      <th>アイテム</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OpenGLのバージョン</td>
+      <td>OpenGL ES 3.0</td>
+    </tr>
+    <tr>
+      <td><code>MAX_TEXTURE_SIZE</code></td>
+      <td>8192</td>
+    </tr>
+    <tr>
+      <td><code>MAX_CUBE_MAP_TEXTURE_SIZE</code></td>
+      <td>8192</td>
+    </tr>
+    <tr>
+      <td><code>MAX_RENDERBUFFER_SIZE</code></td>
+      <td>8192</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VERTEX_TEXTURE_IMAGE_UNITS</code></td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td><code>MAX_TEXTURE_IMAGE_UNITS</code></td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td><code>MAX_COMBINED_TEXTURE_IMAGE_UNITS</code></td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VERTEX_UNIFORM_VECTORS</code></td>
+      <td>256</td>
+    </tr>
+    <tr>
+      <td><code>MAX_FRAGMENT_UNIFORM_VECTORS</code></td>
+      <td>224</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VERTEX_ATTRIBS</code></td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VARYING_VECTORS</code></td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VIEWPORT_DIMS</code></td>
+      <td>8192 x 8192</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+<div role="tabpanel" class="tab-pane" id="firetvstickgen1">
+<div class="subheading">メディアの仕様 (Fire TV Stick、第 1 世代)</div>
+
+<table class="grid">
+   <colgroup>
+      <col width="10%" />
+      <col width="17%" />
+      <col width="15%" />
+      <col width="38%" />
+   </colgroup>
+   <thead>
+      <tr class="header">
+         <th>タイプ</th>
+         <th>コーデック</th>
+         <th>MIMEタイプ</th>
+         <th>詳細</th>
+      </tr>
+   </thead>
+    <tr>
+         <td class="white" rowspan="3"><b>Video</b></td>
+         <td class="white">H.263</td>
+         <td class="white">video/3gp</td>
+         <td class="white">ハードウェアによる高速化: 最大WVGA (800 x 400)、30fps、6 Mbps、プロファイル 0 レベル 70</td>
+      </tr>
+      <tr>
+         <td class="white">H.264</td>
+         <td class="white">video/avc</td>
+         <td class="white">ハードウェアによる高速化: 最大 1080p、30fps、20 Mbps、ハイプロファイル (最大レベル 4)</td>
+      </tr>
+       <tr>
+          <td class="white">MPEG-4</td>
+          <td class="white">video/mp4v-es</td>
+          <td class="white">最大 1080p、30fps、20 Mbps、アドバンスドシンプルプロファイル (レベル 5)</td>
+       </tr>
+ <tr>
+      <td class="gray" rowspan="12"><b>オーディオ</b></td>
+      <td class="gray">AAC-LC</td>
+      <td class="gray">audio/mp4a-latm</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">HE-AACv1 (AAC+)</td>
+      <td class="gray">audio/mp4a-latm</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">HE-AACv2 (拡張AAC+)</td>
+      <td class="gray">audio/mp4a-latm</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">AC3 (ドルビーデジタル)</td>
+      <td class="gray">audio/ac3</td>
+      <td class="gray">最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">eAC3 (ドルビーデジタルプラス)</td>
+      <td class="gray">audio/eac3、audio/ec3</td>
+      <td class="gray">最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">FLAC</td>
+      <td class="gray">audio/flac</td>
+      <td class="gray">最大 48 kHz、2 チャネル、16 ビットと 24 ビット (24 ビットはディザなし)</td>
+   </tr>
+   <tr>
+      <td class="gray">MIDI</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">MIDI (タイプ 0 および 1)、DLS (バージョン 1 および 2)、XMF、およびモバイルXMF。着信音の形式: RTTTL/RTX、OTA、およびiMelody</td>
+   </tr>
+   <tr>
+      <td class="gray">MP3</td>
+      <td class="gray">audio/mp3</td>
+      <td class="gray">最大 48 kHz、DSPに 2 チャネル (16 ビットおよび 24 ビット) およびソフトウェア (16 ビット)</td>
+   </tr>
+   <tr>
+      <td class="gray">PCM/Wave</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">Vorbis</td>
+      <td class="gray">audio/vorbis</td>
+      <td class="gray">Ogg (.ogg)<br />Matroska (.mkv)</td>
+   </tr>
+    <tr>
+    <td class="gray">AMR-NB</td>
+    <td class="gray">audio/amr-web</td>
+    <td class="gray"></td>
+    </tr>
+     <tr>
+     <td class="gray">AMR-WB</td>
+     <td class="gray">audio/3gpp</td>
+     <td class="gray"></td>
+     </tr>
+    <tr>
+       <td class="white"><b>DRM</b></td>
+       <td class="white" colspan="2">Widevine Level 3 <br /> PlayReady Version 2.5 のみ</td>
+       <td class="white">PlayReadyでサポートされるのは暗号化されたビデオだけです。オーディオはサポートされません。暗号化されたオーディオとビデオの両方を含むコンテンツを再生する必要がある場合は、<a href="https://developer.amazon.com/appsandservices/support/contact/contact-us">こちら</a>から具体的なカスタマイズの詳細と手順をお問い合わせください。その他のDRMに関する情報は、実装する<a href="fire-tv-media-players.html">メディアプレーヤー</a>によって異なります。</td>
+ </tr>
+   <tr>
+      <td class="gray" rowspan="4"><b>画像</b></td>
+      <td class="gray">JPEG</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">ベースおよびプログレッシブ</td>
+   </tr>
+   <tr>
+      <td class="gray">GIF</td>
+      <td class="gray">該当なし</td>
+      <td class="gray"></td>
+   </tr>
+   <tr>
+      <td class="gray">PNG</td>
+      <td class="gray">該当なし</td>
+      <td class="gray"></td>
+   </tr>
+   <tr>
+      <td class="gray">BMP</td>
+      <td class="gray">該当なし</td>
+      <td class="gray"></td>
+   </tr>     
+</table>
+
+<div class="subheading">端末およびプラットフォームの仕様 (Fire TV Stick、第 1 世代)</div>
+
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="60%" />
+   </colgroup>
+  <thead>
+    <tr>
+      <th>端末の要素</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>画面解像度 (px) とリフレッシュレート (Hz)</td>
+      <td>1920 x 1080 (1080p) - 60Hz <br /> 
+      1280 x 720 (720p) - 60Hz </td>
+    </tr>
+      <tr>
+       <td>HDCP</td>
+       <td>1.4</td>
+     </tr>
+    <tr>
+      <td>密度 (dp)</td>
+      <td>320 (1080p) <br /> 213 (720p)</td>
+    </tr>
+    <tr>
+      <td>密度識別子</td>
+      <td>xhdpi (1080p) <br /> tvdpi (720p)</td>
+    </tr>
+    <tr>
+      <td>ストレージ</td>
+      <td>8 GB</td>
+    </tr>
+    <tr>
+      <td>RAM</td>
+      <td>1 GB (システム用に 512 MB、ビデオ用に 512 MB)</td>
+    </tr>
+    <tr>
+      <td>システムオンチップ (SoC) プラットフォーム</td>
+      <td>Broadcom Capri 28155</td>
+    </tr>
+    <tr>
+      <td>CPU</td>
+      <td>最大 1 GHzのDual Core ARM Cortex A9</td>
+    </tr>
+    <tr>
+      <td>GPU</td>
+      <td>Broadcom VideoCore IV GPU/VPU (Capri VC4)</td>
+    </tr>
+    <tr>
+      <td>ネットワーキング: WiFi</td>
+      <td>802.11 b/g/n; 2x2 MIMO <br /> (2.4 GHzおよび 5.0 GHzデュアルバンド)</td>
+    </tr>
+    <tr>
+      <td>ネットワーキング: イーサネット</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>Bluetooth</td>
+      <td>Bluetooth 3.0 <br /> HID、SPPプロファイル</td>
+    </tr>
+    <tr>
+      <td>USB</td>
+      <td>Micro USB 2.0 (電源のみ)</td>
+    </tr>
+    <tr>
+      <td>拡張可能ストレージ</td>
+      <td>なし <br />(ストレージに関連したマニフェスト設定のベストプラクティスについては「<a href="specifying-installation-location.html">アプリのインストール場所の指定</a>」を参照)</td>
+    </tr>
+    <tr>
+      <td>端末のOS/プラットフォームソフトウェア</td>
+      <td>Android 5.0 に基づく (API 22)</td>
+    </tr>
+    <tr>
+      <td>位置情報サービス</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>前面カメラ</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>マイクロホン</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>マルチタッチ</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>加速度計</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>コンパス</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>ジャイロスコープ</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>光センサー</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>近接センサー</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td><code>android.os.Build.MANUFACTURER</code></td>
+      <td><code>Amazon</code> <br />詳細については、「<a href="identifying-amazon-fire-tv-devices.html">Identifying Amazon Fire TV Devices</a>」を参照してください。</td>
+    </tr>
+    <tr>
+      <td><code>android.os.Build.MODEL</code></td>
+      <td><code>AFTM</code> (Fire TV Stick第 1 世代のみ) <br /> <code>AFT*</code> (すべてのFire TV端末)</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="subheading">OpenGLのプロパティと制限 (Fire TV Stick、第 1 世代)</div>
+
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="60%" />
+   </colgroup>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OpenGLのバージョン</td>
+      <td>OpenGL ES 2.0</td>
+    </tr>
+    <tr>
+      <td><code>MAX_TEXTURE_SIZE</code></td>
+      <td>2048</td>
+    </tr>
+    <tr>
+      <td><code>MAX_CUBE_MAP_TEXTURE_SIZE</code></td>
+      <td>2048</td>
+    </tr>
+    <tr>
+      <td><code>MAX_RENDERBUFFER_SIZE</code></td>
+      <td>2048</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VERTEX_TEXTURE_IMAGE_UNITS</code></td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td><code>MAX_TEXTURE_IMAGE_UNITS</code></td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td><code>MAX_COMBINED_TEXTURE_IMAGE_UNITS</code></td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VERTEX_UNIFORM_VECTORS</code></td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <td><code>MAX_FRAGMENT_UNIFORM_VECTORS</code></td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VERTEX_ATTRIBS</code></td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VARYING_VECTORS</code></td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VIEWPORT_DIMS</code></td>
+      <td>2048 x 2048</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<div role="tabpanel" class="tab-pane" id="firetvgen1">
+<div class="subheading">メディアの仕様 (Fire TV、第 1 世代)</div>
+
+<table class="grid">
+   <colgroup>
+      <col width="10%" />
+      <col width="17%" />
+      <col width="15%" />
+      <col width="38%" />
+   </colgroup>
+   <thead>
+      <tr class="header">
+         <th>タイプ</th>
+         <th>コーデック</th>
+         <th>MIMEタイプ</th>
+         <th>詳細</th>
+      </tr>
+   </thead>
+    <tr>
+        <td class="white" rowspan="3"><b>ビデオ</b></td>
+        <td class="white">H.263</td>
+        <td class="white">video/3gp</td>
+        <td class="white">ハードウェアによる高速化: 最大WVGA (800 x 400)、30fps、6 Mbps、プロファイル 0 レベル 70</td>
+     </tr>
+     <tr>
+        <td class="white">H.264</td>
+        <td class="white">video/avc</td>
+        <td class="white">ハードウェアによる高速化: 最大 1080p、30fps、20 Mbps、ハイプロファイル (最大レベル 4)</td>
+     </tr>
+      <tr>
+         <td class="white">MPEG-4</td>
+         <td class="white">video/mp4v-es</td>
+         <td class="white">最大 1080p、30fps、20 Mbps、アドバンスドシンプルプロファイル (レベル 5)</td>
+      </tr>
+   <tr>
+      <td class="gray" rowspan="12"><b>オーディオ</b></td>
+      <td class="gray">AAC-LC</td>
+      <td class="gray">audio/mp4a-latm</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">HE-AACv1 (AAC+)</td>
+      <td class="gray">audio/mp4a-latm</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">HE-AACv2 (拡張AAC+)</td>
+      <td class="gray">audio/mp4a-latm</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">AC3 (ドルビーデジタル)</td>
+      <td class="gray">audio/ac3</td>
+      <td class="gray">最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">eAC3 (ドルビーデジタルプラス)</td>
+      <td class="gray">audio/eac3</td>
+      <td class="gray">最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">FLAC</td>
+      <td class="gray">audio/flac</td>
+      <td class="gray">最大 48 kHz、2 チャネル、16 ビットと 24 ビット (24 ビットはディザなし)</td>
+   </tr>
+   <tr>
+      <td class="gray">MIDI</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">MIDI (タイプ 0 および 1)、DLS (バージョン 1 および 2)、XMF、およびモバイルXMF。着信音の形式: RTTTL/RTX、OTA、およびiMelody</td>
+   </tr>
+   <tr>
+      <td class="gray">MP3</td>
+      <td class="gray">audio/mp3</td>
+      <td class="gray">最大 48 kHz、DSPに 2 チャネル (16 ビットおよび 24 ビット) およびソフトウェア (16 ビット)</td>
+   </tr>
+   <tr>
+      <td class="gray">PCM/Wave</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
+   </tr>
+   <tr>
+      <td class="gray">Vorbis</td>
+      <td class="gray">audio/vorbis</td>
+      <td class="gray">Ogg (.ogg)<br />Matroska (.mkv)</td>
+   </tr>
+    <tr>
+    <td class="gray">AMR-NB</td>
+    <td class="gray">audio/amr-web</td>
+    <td class="gray"></td>
+    </tr>
+     <tr>
+     <td class="gray">AMR-WB</td>
+     <td class="gray">audio/3gpp</td>
+     <td class="gray"></td>
+     </tr>
+         <tr>
+         <td class="white"><b>DRM</b></td>
+         <td class="white" colspan="2">Widevine Level 3 <br /> PlayReady Version 2.5 のみ</td>
+         <td class="white">PlayReadyでサポートされるのは暗号化されたビデオだけです。オーディオはサポートされません。暗号化されたオーディオとビデオの両方を含むコンテンツを再生する必要がある場合は、<a href="https://developer.amazon.com/appsandservices/support/contact/contact-us">こちら</a>から具体的なカスタマイズの詳細と手順をお問い合わせください。その他のDRMに関する情報は、実装する<a href="fire-tv-media-players.html">メディアプレーヤー</a>によって異なります。</td>
+           </tr>
+   <tr>
+      <td class="gray" rowspan="4"><b>画像</b></td>
+      <td class="gray">JPEG</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">ベースおよびプログレッシブ</td>
+   </tr>
+   <tr>
+      <td class="gray">GIF</td>
+      <td class="gray">該当なし</td>
+      <td class="gray"></td>
+   </tr>
+   <tr>
+      <td class="gray">PNG</td>
+      <td class="gray">該当なし</td>
+      <td class="gray"></td>
+   </tr>
+   <tr>
+      <td class="gray">BMP</td>
+      <td class="gray">該当なし</td>
+      <td class="gray"></td>
+   </tr>     
+</table>
+
+
+<div class="subheading">端末およびプラットフォームの仕様 (Fire TV、第 1 世代)</div>
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="60%" />
+   </colgroup>
+  <thead>
+    <tr>
+      <th>端末の要素</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>画面解像度 (px) とリフレッシュレート (Hz)</td>
+      <td>1920 x 1080 (1080p) - 60Hz <br />
+       1280 x 720 (720p) - 60Hz</td>
+    </tr>
+      <tr>
+       <td>HDCP</td>
+       <td>1.4</td>
+     </tr>
+    <tr>
+    <td>密度 (dp)</td>
+      <td>320 (1080p) <br /> 213 (720p)</td>
+    </tr>
+    <tr>
+    <td>密度識別子</td>
+      <td>xhdpi (1080p) <br /> tvdpi (720p)</td>
+    </tr>
+    <tr>
+    <td>ストレージ</td>
+      <td>8 GB</td>
+    </tr>
+    <tr>
+      <td>RAM</td>
+      <td>2 GB</td>
+    </tr>
+    <tr>
+      <td>システムオンチップ (SoC) プラットフォーム</td>
+      <td>Qualcomm Snapdragon 8064</td>
+    </tr>
+    <tr>
+      <td>CPU</td>
+      <td>最大 1.7 GHzのQuad Core Qualcomm Krait 300</td>
+    </tr>
+    <tr>
+      <td>GPU</td>
+      <td>Qualcomm Adreno 320</td>
+    </tr>
+    <tr>
+      <td>ネットワーキング: WiFi </td>
+      <td>802.11 b/g/n; 2x2 MIMO <br /> (2.4 GHzおよび 5.0 GHzのデュアルバンド)</td>
+    </tr>
+    <tr>
+      <td>ネットワーキング: イーサネット</td>
+      <td>10/100Mbs</td>
+    </tr>
+    <tr>
+      <td>Bluetooth</td>
+      <td>Bluetooth 4.0 <br />HID、SPPプロファイル</td>
+    </tr>
+    <tr>
+      <td>USB</td>
+      <td>USB 2.0 Type A (アクセサリおよびストレージ) </td>
+    </tr>
+    <tr>
+      <td>拡張可能ストレージ</td>
+      <td>最大 128 GBのUSB<br />(ストレージに関連したマニフェスト設定のベストプラクティスについては「<a href="specifying-installation-location.html">アプリのインストール場所の指定</a>」を参照)</td>
+    </tr>
+    <tr>
+      <td>端末のOS/プラットフォームソフトウェア</td>
+      <td>Android 5.0 に基づく (API 22)</td>
+    </tr>
+    <tr>
+      <td>位置情報サービス</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>前面カメラ</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>マイクロホン</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>マルチタッチ</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>加速度計</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>コンパス</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>ジャイロスコープ</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>光センサー</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>近接センサー</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td><code>android.os.Build.MANUFACTURER</code></td>
+      <td><code>Amazon</code>  <br />詳細については、「<a href="identifying-amazon-fire-tv-devices.html">Identifying Amazon Fire TV Devices</a>」を参照してください。</td>
+    </tr>
+    <tr>
+      <td><code>android.os.Build.MODEL</code></td>
+      <td><code>AFTB</code> (Fire TV第 1 世代のみ)  <br /> <code>AFT*</code> (すべてのFire TV端末)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="subheading">OpenGLのプロパティと制限 (Fire TV、第 1 世代)</div>
+
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="60%" />
+   </colgroup>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OpenGLのバージョン</td>
+      <td>OpenGL ES 3.0</td>
+    </tr>
+    <tr>
+      <td><code>MAX_TEXTURE_SIZE</code></td>
+      <td>4096</td>
+    </tr>
+    <tr>
+      <td><code>MAX_CUBE_MAP_TEXTURE_SIZE</code></td>
+      <td>4096</td>
+    </tr>
+    <tr>
+      <td><code>MAX_RENDERBUFFER_SIZE</code></td>
+      <td>4096</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VERTEX_TEXTURE_IMAGE_UNITS</code></td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td><code>MAX_TEXTURE_IMAGE_UNITS</code></td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td><code>MAX_COMBINED_TEXTURE_IMAGE_UNITS</code></td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VERTEX_UNIFORM_VECTORS</code></td>
+      <td>256</td>
+    </tr>
+    <tr>
+      <td><code>MAX_FRAGMENT_UNIFORM_VECTORS</code></td>
+      <td>224</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VERTEX_ATTRIBS</code></td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VARYING_VECTORS</code></td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td><code>MAX_VIEWPORT_DIMS</code></td>
+      <td>4096 x 4096</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h2 id="すべてのfire-tv端末">すべてのFire TV端末</h2>
+
+<h3 id="リモコンとゲームコントローラ">リモコンとゲームコントローラ</h3>
+
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="60%" />
+   </colgroup>
+  <thead>
+    <tr>
+      <th>コントローラ</th>
+      <th>入力端末名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Fire TV Remote <br /> Amazon Fire TV Voice Remote (全モデル)</td>
+      <td><code>"Amazon Fire TV Remote"</code></td>
+    </tr>
+    <tr>
+      <td>Amazon Fire TVゲームコントローラ <br /> Amazon Fireゲームコントローラ</td>
+      <td><code>"Amazon Fire Game Controller"</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="fire-tvでサポートされるテクノロジー">Fire TVでサポートされるテクノロジー</h3>
+
+<p>サポートされるテクノロジーは、すべてのAmazon Fire TV端末で同じです。</p>
+
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="25%" />
+   </colgroup>
+  <thead>
+    <tr>
+      <th>テクノロジー</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Miracast</td>
+      <td>サポートされます (Sink)。</td>
+    </tr>
+    <tr>
+      <td>DIAL</td>
+      <td>サポートされます。Fire TVのアプリを検出できるようにするには、Androidマニフェストを変更する必要があります。詳細については、「<a href="dial-integration.html">DIALの統合</a>」を参照してください。</td>
+    </tr>
+    <tr>
+      <td>ウェブサイトの閲覧/外部リンク</td>
+      <td>ウェブブラウザは使用できません。Android <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a>を使用します。</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing">Amazonアプリ内課金</a></td>
+      <td>サポートされます。最新バージョンの<a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/installing-and-configuring-app-tester">App Tester</a>を使用します。</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.amazon.com/public/apis/earn/mobile-associates">Amazonモバイルアソシエイト</a></td>
+      <td>サポートされません。</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.amazon.com/public/apis/engage/gamecircle">Amazon GameCircle</a></td>
+      <td>サポートされます。バージョン 2.1 以降を使用します。</td>
+    </tr>
+    <tr>
+      <td><a href="http://login.amazon.com/">Login with Amazon</a></td>
+      <td>サポートされます。</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.amazon.com/public/apis/experience/maps">Amazon Maps</a></td>
+      <td>サポートされません。</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.amazon.com/public/apis/engage/device-messaging">Amazon Device Messaging</a></td>
+      <td>プッシュメッセージをサポートします。</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.amazon.com/public/apis/earn/mobile-ads">Amazonモバイル広告</a></td>
+      <td>サポートされません。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="端末のリリース日">端末のリリース日</h3>
+
+<table class="grid">
+   <colgroup>
+      <col width="40%" />
+      <col width="60%" />
+   </colgroup>
+  <thead>
+    <tr>
+      <th>端末</th>
+      <th>リリース日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fire TV Stick (第 2 世代) </td>
+      <td>2016 年 9 月 </td>
+    </tr>
+    <tr>
+      <td>Fire TV (第 2 世代)  </td>
+      <td>2015 年 12 月</td>
+    </tr>
+    <tr>
+      <td>Fire TV Stick (第 1 世代) </td>
+      <td> 2014 年 11 月</td>
+    </tr>
+    <tr>
+      <td>Fire TV (第 1 世代)</td>
+      <td>2014 年 4 月</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire TV</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

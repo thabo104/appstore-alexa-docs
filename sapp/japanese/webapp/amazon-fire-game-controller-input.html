@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ゲームコントローラ入力 | Fire TV</title>
+    <base target="_self">
+    <meta name="description" content="Amazon Fire TVゲームコントローラ (Bluetooth HIDゲームパッドプロファイルに準拠したコントローラ全般) には、各種ボタン、Androidモーション、キーイベント定数があります。アプリ内で発生した入力イベントは、これらの情報を使用してキャプチャします。 サポートされるすべてのコントローラにおけるボタンの動作に関するガイドラインについては、「コントローラ動作のガイドライン」を参照してください。Amazon Fire TVリモコンの入力を処理する方法の詳細については、「Amazon Fire TVリモート入力」を参照してください。  ボタン 入力情報を取得する プライマリとセカンダリの入力イベント 入力イベントリファレンス  ボタン... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Amazon Fire TV用アプリとゲームを開発するための準備</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV端末の仕様</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Amazon Fire TV開発フレームワークの比較</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">Fire TV開発とAndroid TV開発の違い</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">Fire TV開発における最新情報</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Amazon Fire TVのよくある質問 (FAQ)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">AmazonアプリストアへのFire TVアプリの申請</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">開発環境のセットアップ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">アプリのインストールと実行</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">コントローラの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">リモート入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="amazon-fire-game-controller-input.html">ゲームコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Unityによるコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">コントローラの識別</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">コントローラ動作のガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">コントローラ画像アセット</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire TV > </div>
+                    <h1>ゲームコントローラ入力</h1>
+
+                    
+
+                    <p>Amazon Fire TVゲームコントローラ (Bluetooth HIDゲームパッドプロファイルに準拠したコントローラ全般) には、各種ボタン、Androidモーション、キーイベント定数があります。アプリ内で発生した入力イベントは、これらの情報を使用してキャプチャします。</p>
+
+<p>サポートされるすべてのコントローラにおけるボタンの動作に関するガイドラインについては、「<a href="controller-behavior-guidelines.html">コントローラ動作のガイドライン</a>」を参照してください。Amazon Fire TVリモコンの入力を処理する方法の詳細については、「<a href="amazon-fire-tv-remote-input.html">Amazon Fire TVリモート入力</a>」を参照してください。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#ボタン" id="markdown-toc-ボタン">ボタン</a></li>
+  <li><a href="#入力情報を取得する" id="markdown-toc-入力情報を取得する">入力情報を取得する</a></li>
+  <li><a href="#primary_and_secondary" id="markdown-toc-primary_and_secondary">プライマリとセカンダリの入力イベント</a></li>
+  <li><a href="#inputreference" id="markdown-toc-inputreference">入力イベントリファレンス</a></li>
+</ul>
+
+<h2 id="ボタン">ボタン</h2>
+
+<p>Amazon Fire TV (第 2 世代) ゲームコントローラには次のボタンがあります。</p>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/gamecontroller2.png" alt="" /></figure>
+
+<p>Amazon Fire TV (第 1 世代) ゲームコントローラには次のボタンがあります。</p>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/gamepad-callouts.png" alt="" /></figure>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/gamepad-callouts-second-view.png" alt="" /></figure>
+
+<h2 id="入力情報を取得する">入力情報を取得する</h2>
+
+<p>Amazon Fire TVで使用されるゲームコントローラでは、デジタルボタン ([A] ボタンなど) を押すとAndroid <a href="http://developer.android.com/reference/android/view/KeyEvent.html"><code class="highlighter-rouge">KeyEvent</code></a>イベントが生成され、アナログコントロール (ジョイスティックなど) を動かすと<a href="http://developer.android.com/reference/android/view/MotionEvent.html"><code class="highlighter-rouge">MotionEvent</code></a>イベントが生成されます。</p>
+
+<p>単純なボタン入力は、標準のAndroidイベントリスナーインターフェースとコールバック (<a href="http://developer.android.com/reference/android/view/View.OnClickListener.html#onClick%28android.view.View%29"><code class="highlighter-rouge">onClick()</code></a>、<a href="http://developer.android.com/reference/android/view/View.OnFocusChangeListener.html#onFocusChange%28android.view.View,%20boolean%29"><code class="highlighter-rouge">onFocusChange()</code></a> など) を使用して処理できます。</p>
+
+<p><a href="http://developer.android.com/reference/android/view/View.html"><code class="highlighter-rouge">View</code></a>で特定のボタンが押されたことを示すイベントをキャプチャするには、<a href="http://developer.android.com/reference/android/view/View.html#onKeyDown%28int,%20android.view.KeyEvent%29"><code class="highlighter-rouge">onKeyDown()</code></a> などの入力イベントハンドラをオーバーライドします。</p>
+
+<p>特定のキーをキャプチャするには、<a href="http://developer.android.com/reference/android/view/KeyEvent.html"><code class="highlighter-rouge">KeyEvent</code></a>クラスの入力定数に該当するかどうかをテストします。たとえば、[A] ボタンが押されたことをキャプチャするには、次のコードを使用します。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onKeyDown</span><span class="o">(</span><span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="n">KeyEvent</span> <span class="n">event</span><span class="o">){</span>
+    <span class="kt">boolean</span> <span class="n">handled</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+
+    <span class="k">switch</span> <span class="o">(</span><span class="n">keyCode</span><span class="o">){</span>
+        <span class="k">case</span> <span class="n">KeyEvent</span><span class="o">.</span><span class="na">KEYCODE_BUTTON_A</span><span class="o">:</span>
+                <span class="c1">// ... handle selections</span>
+                <span class="n">handled</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+     <span class="o">}</span>
+     <span class="k">return</span> <span class="n">handled</span> <span class="o">||</span> <span class="kd">super</span><span class="o">.</span><span class="na">onKeyDown</span><span class="o">(</span><span class="n">keyCode</span><span class="o">,</span> <span class="n">event</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>モーションイベントをキャプチャするには、<a href="http://developer.android.com/reference/android/view/View.html"><code class="highlighter-rouge">View</code></a>の<a href="http://developer.android.com/reference/android/view/View.html#onGenericMotionEvent(android.view.MotionEvent)"><code class="highlighter-rouge">onGenericMotionEvent()</code></a> イベントをオーバーライドします。モーションイベントを生成したコントロールを特定するには<a href="http://developer.android.com/reference/android/view/MotionEvent.html"><code class="highlighter-rouge">MotionEvent</code></a>クラスの入力定数を使用し、モーションイベントの値を特定するには<a href="http://developer.android.com/reference/android/view/MotionEvent.html"><code class="highlighter-rouge">MotionEvent</code></a>クラスの<a href="http://developer.android.com/reference/android/view/MotionEvent.html#getAxisValue(int)"><code class="highlighter-rouge">getAxisValue()</code></a> などのイベントを使用します。</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onGenericMotionEvent</span><span class="o">(</span><span class="n">MotionEvent</span> <span class="n">event</span><span class="o">){</span>
+    <span class="c1">// get changes in value from left joystick</span>
+    <span class="kt">float</span> <span class="n">deltaX</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getAxisValue</span><span class="o">(</span><span class="n">MotionEvent</span><span class="o">.</span><span class="na">AXIS_X</span><span class="o">);</span>
+    <span class="kt">float</span> <span class="n">deltaY</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getAxisValue</span><span class="o">(</span><span class="n">MotionEvent</span><span class="o">.</span><span class="na">AXIS_Y</span><span class="o">);</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">deltaX</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="o">&amp;&amp;</span> <span class="n">deltaY</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// do something</span>
+        <span class="n">handled</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="k">return</span> <span class="n">handled</span> <span class="o">||</span> <span class="kd">super</span><span class="o">.</span><span class="na">onGenericMotionEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="primary_and_secondary">プライマリとセカンダリの入力イベント</h2>
+
+<p>Fire TV端末の一部のゲームコントローラ操作では、1 つの操作に対して複数の入力イベントが生成されることがあります。たとえば、Amazon Fire TVゲームコントローラのD-Padは、モーションイベントを生成する<em>アナログ方向コントロール</em>ですが、Fire TVのリモコンのD-Padは、キーイベントを生成する<em>デジタルコントロール</em>です。</p>
+
+<p>同様に、選択操作は、ゲームコントローラでは <em>[A] ボタン</em>ですが、Fire TVのリモコンでは<em>D-Padの [Center] ボタン</em>です。Amazon Fire TVの一部のゲームコントローラ操作では、最初にプライマリ入力イベント (通常はモーションイベント) が生成されます。これらのイベントがアプリによって処理されなければ、次に、セカンダリ入力イベント (通常はキーイベント) が生成されます。プライマリとセカンダリの両方の入力イベントを、次の「<a href="#inputreference">入力イベントリファレンス</a>」の表に示します。</p>
+
+<p>セカンダリ入力イベントを利用すると、ゲームコントローラ入力を処理するプロセスを単純化することができます。ゲームコントローラからのボタンイベントおよびD-Padイベントだけをアプリで処理する場合、セカンダリイベントを使用することで、モーションイベントをすべて無視し、キーイベントだけを対象にすることができます。</p>
+
+<p>同様に、[A] ボタンは<code class="highlighter-rouge">KEYCODE_BUTTON_A</code>と<code class="highlighter-rouge">KEYCODE_DPAD_CENTER</code>の両方を生成するので、アプリがFire TVリモコンのD-Padの [Center] ボタンをサポートする場合、[A] ボタンもテストする必要はありません。</p>
+
+<p>プライマリ入力イベントを適切に処理しないと、アプリが入力を二重に受信しているように動作する可能性があることに注意してください。イベントがキャプチャされて処理されたとき、入力イベントハンドラは<code class="highlighter-rouge">true</code>を返す必要があります。プライマリ入力イベントがキャプチャされた場合、セカンダリ入力イベントは生成されません。</p>
+
+<h2 id="inputreference">入力イベントリファレンス</h2>
+
+<p>次の表は、各ゲームコントローラボタンのモーションイベント定数およびキーイベント定数、それらのボタンでの推奨されるユーザーエクスペリエンス動作、およびAmazon Fire TVユーザーインターフェースでのそれらのボタンのデフォルトの動作を示します。</p>
+
+<p>デジタルボタンはキーイベント (<a href="http://developer.android.com/reference/android/view/KeyEvent.html"><code class="highlighter-rouge">KeyEvent</code></a>) を、アナログコントロールはモーションイベント (<a href="http://developer.android.com/reference/android/view/MotionEvent.html"><code class="highlighter-rouge">MotionEvent</code></a>) を報告します。コントローラ入力に対するアプリの推奨される動作については、「<a href="controller-behavior-guidelines.html">コントローラ動作のガイドライン</a>」を参照してください。</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> アプリで使用されないボタンの入力イベントを、アプリでキャプチャや破棄などの処理の対象にしないでください。システムでの未使用イベントの処理を可能にすると、メディアの再生や音量制御などのバックグラウンドの動作が可能になります。</div>
+
+<p>「<code class="highlighter-rouge">MotionEvent</code>」列または「<code class="highlighter-rouge">KeyEvent</code>」列に示されているプライマリイベントをアプリが処理しない場合、これらのイベントに<strong>加えて</strong>「セカンダリイベント」列のイベントも生成されます。これらのセカンダリイベントについては、前の「<a href="#primary_and_secondary">プライマリとセカンダリの入力イベント</a>」を参照してください。</p>
+
+<p>この表における<em>ゲーム</em>とは、ゲームカテゴリでAmazonアプリストアに申請され、Amazonアプリストアから端末にインストールされたアプリのことです。</p>
+
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>ゲームコントローラボタン</th>
+      <th>MotionEvent</th>
+      <th>KeyEvent</th>
+      <th>セカンダリイベント</th>
+      <th>デフォルトの動作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Home</td>
+      <td>なし</td>
+      <td>なし</td>
+      <td>なし</td>
+      <td>GameCircleをサポートしているゲームの場合、GameCircleオーバーレイを起動します。GameCircleをサポートしていないゲームの場合、[Game Paused] ダイアログが表示されます。それ以外のアプリの場合、ホーム画面に戻ります。      </td>
+    </tr>
+    <tr>
+      <td>Back</td>
+      <td>なし</td>
+      <td><code>KEYCODE_BACK</code></td>
+      <td>なし</td>
+      <td>前の操作または画面 (アクティビティ) に戻ります。</td>
+    </tr>
+    <tr>
+      <td>Menu</td>
+      <td>なし</td>
+      <td><code>KEYCODE_MENU</code></td>
+      <td>なし</td>
+      <td>Androidコンテキストメニュー (<a href="http://developer.android.com/guide/topics/ui/menus.html#options-menu">OptionsMenu</a>) が起動されます。</td>
+    </tr>
+    <tr>
+      <td>GameCircle (第 1 世代のFireゲームコントローラのみ)</td>
+      <td>なし</td>
+      <td><code>なし</code></td>
+      <td>なし</td>
+      <td>GameCircleをサポートしているゲームの場合、GameCircleオーバーレイを起動します。GameCircleをサポートしていないゲームの場合、[Game Paused] ダイアログが表示されます。それ以外のアプリの場合、ランチャーの [Games] 画面に戻ります。</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>なし</td>
+      <td><code>KEYCODE_BUTTON_A</code></td>
+      <td><code>KEYCODE_DPAD_CENTER</code></td>
+      <td>フォーカスが現在置かれているアイテムが選択されます。</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>なし</td>
+      <td><code>KEYCODE_BUTTON_B</code></td>
+      <td><code>KEYCODE_BACK</code></td>
+      <td>前の画面 (アクティビティ) に戻ります ([戻る] と同じ)。</td>
+    </tr>
+    <tr>
+      <td>X</td>
+      <td>なし</td>
+      <td><code>KEYCODE_BUTTON_X</code></td>
+      <td>なし</td>
+      <td>何も起こりません。</td>
+    </tr>
+    <tr>
+      <td>Y</td>
+      <td>なし</td>
+      <td><code>KEYCODE_BUTTON_Y</code></td>
+      <td>なし</td>
+      <td>何も起こりません。</td>
+    </tr>
+    <tr>
+      <td>Left (D-PAD) Right (D-PAD)</td>
+      <td><code>AXIS_HAT_X</code> (&gt;0 is right)</td>
+      <td>なし</td>
+      <td><code>KEYCODE_DPAD_LEFT</code> <code>KEYCODE_DPAD_RIGHT</code></td>
+      <td>ユーザーインターフェースのフォーカスが左方向または右方向に移動します。</td>
+    </tr>
+    <tr>
+      <td>Up (D-PAD) Down (D-PAD)</td>
+      <td><code>AXIS_HAT_Y</code> (&gt;0 is down)</td>
+      <td>なし</td>
+      <td><code>KEYCODE_DPAD_UP</code> <code>KEYCODE_DPAD_DOWN</code></td>
+      <td>ユーザーインターフェースのフォーカスが上方向または下方向に移動します。</td>
+    </tr>
+    <tr>
+      <td>左側のジョイスティック (左/右)</td>
+      <td><code>AXIS_X</code> (正の値は右方向を表します)</td>
+      <td>なし</td>
+      <td><code>KEYCODE_DPAD_LEFT</code> <code>KEYCODE_DPAD_RIGHT</code>(移動が 0.5 を超える場合)</td>
+      <td>ユーザーインターフェースのフォーカスが入力された方向に移動します。</td>
+    </tr>
+    <tr>
+      <td>左側のジョイスティック (上/下)</td>
+      <td><code>AXIS_Y</code> (正の値は下方向を表します)</td>
+      <td>なし</td>
+      <td><code>KEYCODE_DPAD_UP</code> <code>KEYCODE_DPAD_DOWN</code> (移動が 0.5 を超える場合)</td>
+      <td>ユーザーインターフェースのフォーカスが入力された方向に移動します。</td>
+    </tr>
+    <tr>
+      <td>左側のジョイスティックの押し下げ</td>
+      <td>なし</td>
+      <td><code>KEYCODE_BUTTON_THUMBL</code></td>
+      <td>なし</td>
+      <td>再生/一時停止</td>
+    </tr>
+    <tr>
+      <td>右側のジョイスティック (左/右)</td>
+      <td><code>AXIS_Z</code> (正の値は右方向を表します)</td>
+      <td>なし</td>
+      <td>なし</td>
+      <td>何も起こりません。</td>
+    </tr>
+    <tr>
+      <td>右側のジョイスティック (上/下)</td>
+      <td><code>AXIS_RZ</code> (正の値は下方向を表します)</td>
+      <td>なし</td>
+      <td>なし</td>
+      <td>何も起こりません。</td>
+    </tr>
+    <tr>
+      <td>右側のジョイスティックの押し下げ</td>
+      <td>なし</td>
+      <td><code>KEYCODE_BUTTON_THUMBR</code></td>
+      <td>なし</td>
+      <td>再生/一時停止</td>
+    </tr>
+    <tr>
+      <td>Play/Pause (第 1 世代のFireゲームコントローラのみ)</td>
+      <td>なし</td>
+      <td><code>KEYCODE_MEDIA_PLAY_PAUSE</code></td>
+      <td>なし</td>
+      <td>再生/一時停止</td>
+    </tr>
+    <tr>
+      <td>Rewind (第 1 世代のFireゲームコントローラのみ)</td>
+      <td>なし</td>
+      <td><code>KEYCODE_MEDIA_REWIND</code></td>
+      <td>なし</td>
+      <td>早戻し</td>
+    </tr>
+    <tr>
+      <td>Fast Forward (第 1 世代のFireゲームコントローラのみ)</td>
+      <td>なし</td>
+      <td><code>KEYCODE_MEDIA_FAST_FORWARD</code></td>
+      <td>なし</td>
+      <td>早送り</td>
+    </tr>
+    <tr>
+      <td>左側のトリガー (L2)</td>
+      <td><code>AXIS_BRAKE</code></td>
+      <td>なし</td>
+      <td>なし</td>
+      <td>音量 +</td>
+    </tr>
+    <tr>
+      <td>左側のショルダー (L1)</td>
+      <td>なし</td>
+      <td><code>KEYCODE_BUTTON_L1</code></td>
+      <td>なし</td>
+      <td>早戻し</td>
+    </tr>
+    <tr>
+      <td>右側のトリガー (R2)</td>
+      <td><code>AXIS_GAS</code></td>
+      <td>なし</td>
+      <td>なし</td>
+      <td>音量 -</td>
+    </tr>
+    <tr>
+      <td>右側のショルダー (R1)</td>
+      <td>なし</td>
+      <td><code>KEYCODE_BUTTON_R1</code></td>
+      <td>なし</td>
+      <td>早送り</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire TV</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

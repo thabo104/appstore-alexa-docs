@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>コンポーネントの概要 | Fire App Builder</title>
+    <base target="_self">
+    <meta name="description" content="Fire App Builderには、インターフェースを実装する多くのコンポーネントが用意されています。これらのインターフェースは、Fire App Builderのメソッドとフィールドを定義しているため、コンポーネントは、コードが完全に開発されたインターフェースを実装します。 コンポーネントを使用するために独自のJavaコードを記述する必要はありません。必要なのは、コードからXMLファイルに抽出されたさまざまな文字列値のカスタマイズのみです。 主なインターフェースには、以下が含まれます。  広告インターフェース (IAds): ユーザーに広告を表示するために使用されます。 分析インターフェース (IAnalytics): 分析を実装するために使用されます。 認証インターフェース (IAuthentication): ユーザーのメディアに対するアクセスを認証または許可するために使用されます。 購入インターフェース (IPurchase): アプリ内課金に使用されます。 UAMP (UAMP): メディアの再生に使用されます。  使用できないコンポーネントが必要な場合は、いずれかのインターフェースを実装する独自のコンポーネントを作成できます。... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-overview.html">Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプリ向けスターターキット</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">リリースノート</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">アプリを作成するための一連のプロセス</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">よくある質問</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Fire App Builderをダウンロードして、アプリをビルドする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">アプリの概要</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-media-feed.html">メディアフィードをロードする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">レシピ構成の概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-categories.html">カテゴリレシピをセットアップする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-content.html">コンテンツレシピをセットアップする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigatorの構成の概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Navigatorの構成 -- トークンベースフィード</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Navigatorの構成 -- オープンフィード</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-customize-look-and-feel.html">アプリのルックアンドフィールをカスタマイズする</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="fire-app-builder-interfaces-and-components.html">コンポーネントの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">アプリにコンポーネントをロードする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">新しいFire App Builderコンポーネントを作成する</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">Freewheel広告コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST広告コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-crashlytics-component.html">Crashlyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Googleアナリティクスコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass認証コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook認証コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazonコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazonアプリ内課金のコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Playerコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Githubから更新データをプルする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">ライブストリーミングを構成する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Fire TVカタログにメディアを組み込む</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Android TVエミュレーターを使用してアプリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">JSONでクエリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">XMLでクエリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">トラブルシューティング</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire App Builder > </div>
+                    <h1>コンポーネントの概要</h1>
+
+                    
+
+                    <p>Fire App Builderには、インターフェースを実装する多くのコンポーネントが用意されています。これらのインターフェースは、Fire App Builderのメソッドとフィールドを定義しているため、コンポーネントは、コードが完全に開発されたインターフェースを実装します。</p>
+
+<p>コンポーネントを使用するために独自のJavaコードを記述する必要はありません。必要なのは、コードからXMLファイルに抽出されたさまざまな文字列値のカスタマイズのみです。</p>
+
+<p>主なインターフェースには、以下が含まれます。</p>
+
+<ul>
+  <li><strong>広告インターフェース</strong> (<code class="highlighter-rouge">IAds</code>): ユーザーに広告を表示するために使用されます。</li>
+  <li><strong>分析インターフェース</strong> (<code class="highlighter-rouge">IAnalytics</code>): 分析を実装するために使用されます。</li>
+  <li><strong>認証インターフェース</strong> (<code class="highlighter-rouge">IAuthentication</code>): ユーザーのメディアに対するアクセスを認証または許可するために使用されます。</li>
+  <li><strong>購入インターフェース</strong> (<code class="highlighter-rouge">IPurchase</code>): アプリ内課金に使用されます。</li>
+  <li><strong>UAMP</strong> (<code class="highlighter-rouge">UAMP</code>): メディアの再生に使用されます。</li>
+</ul>
+
+<p>使用できないコンポーネントが必要な場合は、いずれかのインターフェースを実装する独自のコンポーネントを作成できます。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#componentgroups" id="markdown-toc-componentgroups">利用可能なコンポーネントとインターフェース</a></li>
+  <li><a href="#authenticationcomponents" id="markdown-toc-authenticationcomponents">認証コンポーネント</a></li>
+  <li><a href="#analyticscomponents" id="markdown-toc-analyticscomponents">分析コンポーネント</a></li>
+  <li><a href="#adscomponents" id="markdown-toc-adscomponents">広告コンポーネント</a></li>
+  <li><a href="#purchasingcomponents" id="markdown-toc-purchasingcomponents">課金コンポーネント</a></li>
+  <li><a href="#mediaplayercomponents" id="markdown-toc-mediaplayercomponents">メディアプレーヤーコンポーネント</a></li>
+  <li><a href="#uiコンポーネント" id="markdown-toc-uiコンポーネント">UIコンポーネント</a></li>
+</ul>
+
+<h2 id="componentgroups">利用可能なコンポーネントとインターフェース</h2>
+
+<p>Android Studioでは、すべてのコンポーネントが表示されるわけではありません。Fire App Builderサンプルアプリでは、アプリのGradleファイルでの定義に従って、Fire App Builderライブラリから利用可能なコンポーネントの一部のみがロードされるためです。各インターフェースからコンポーネントが 1 つだけロードされます。</p>
+
+<p>ディスクで利用可能なコンポーネントを表示するには、コンピューターでFire App Builderプロジェクトをダウンロードしたフォルダーを参照する (Finderまたはエクスプローラーを使用) か、ここに記載されている情報を参照してください。</p>
+
+<h2 id="authenticationcomponents">認証コンポーネント</h2>
+
+<p>認証コンポーネントを使用すると、ユーザーがアプリで操作を行う前に、そのユーザーの身元を確認して権限を付与することができます。認証コンポーネントは、アプリに少なくとも 1 つロードしておく必要があります。認証コンポーネントは<code class="highlighter-rouge">IAuthentication</code>インターフェースを実装します。これはAuthInterfaceフォルダーで確認できます。次の認証コンポーネントが利用可能です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンポーネント</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="fire-app-builder-adobe-pass-auth-component.html">AdobepassAuthComponent</a></td>
+      <td>Adobe Passを使用してユーザーを認証します。</td>
+    </tr>
+    <tr>
+      <td><a href="fire-app-builder-facebook-auth-component.html">FacebookAuthComponent</a></td>
+      <td>Facebookを使用してユーザーを認証します。デフォルトでは、このコンポーネントはFire App Builderサンプルアプリにロードされます (ただし、構成されていないため、ユーザーにはプロンプトが表示されません)。</td>
+    </tr>
+    <tr>
+      <td><a href="fire-app-builder-login-with-amazon-component.html">LoginWithAmazon Component</a></td>
+      <td>Login with Amazonを使用してユーザーを認証します。</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--| PassThroughLoginComponent | その他の認証コンポーネントを使用しない場合にのみ使用されます。アプリには、少なくとも 1 つの認証コンポーネントをロードする必要があります。このPassThrough Loginコンポーネントは、アプリのユーザーエクスペリエンスに影響を及ぼすことなく、認証コンポーネントの要件を満たします。|-->
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> ログインコンポーネントを使用しない場合は、FacebookAuthComponentを、アプリのcustom.xmlファイルでこのコンポーネントに汎用の値を使用したコンポーネントとして構成された状態にしておいてください。Fire App Builderには認証コンポーネントが必要なため、(広告コンポーネントのPassThroughAdsのような) ダミーの認証コンポーネントはありません。この方法では、Facebookに関連した情報がユーザーに表示されません。</div>
+
+<h2 id="analyticscomponents">分析コンポーネント</h2>
+
+<p>分析コンポーネントでは、アプリ内での行動を追跡し、分析用の指標を提供します。分析コンポーネントは、AnalyticsInterfaceフォルダーの<code class="highlighter-rouge">IAnalytics</code>インターフェースを実装します。アプリに分析コンポーネントをロードすることは必須ではありません。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンポーネント</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="fire-app-builder-flurry-analytics-component.html">FlurryAnalyticsComponent</a></td>
+      <td>Flurry Analyticsを使用して分析を行います。デフォルトで、このコンポーネントはFire App Builderサンプルアプリにロードされますが、構成されていません。</td>
+    </tr>
+    <tr>
+      <td><a href="fire-app-builder-omniture-analytics-component.html">OmnitureAnalyticsComponent</a></td>
+      <td>Omnitureを使用して分析を行います。</td>
+    </tr>
+    <tr>
+      <td><a href="fire-app-builder-crashlytics-component.html">CrashlyticsComponent</a></td>
+      <td>Crashlyticsを使用して分析を行います。</td>
+    </tr>
+    <tr>
+      <td>LoggerAnalyticsComponent</td>
+      <td>Logger Analyticsコンポーネントは、実際の分析に使用することを目的としていません。これは、イベント中にログメッセージを挿入するダミーの分析コンポーネントです。アプリでは少なくとも 1 つの分析コンポーネントを構成する必要があるため、他の分析コンポーネントを使用していない場合にLogger Analyticsコンポーネントを使用します。LoggerAnalyticsコンポーネントによって発生したログメッセージは、logcatで “loggeranalytics” を検索すると確認できます。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="adscomponents">広告コンポーネント</h2>
+
+<p>広告コンポーネントとは、アプリで広告を表示するすべてのコンポーネントを指します。広告コンポーネントは、AnalyticsInterfaceフォルダーの<code class="highlighter-rouge">IAds</code>インターフェースを実装します。アプリに広告コンポーネントをロードすることは必須です。次の広告コンポーネントが利用可能です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンポーネント</th>
+      <th>説明</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="fire-app-builder-freewheel-ads-component.html">FreeWheelAdsComponent</a></td>
+      <td>アプリでFreewheel広告を表示するために使用されます。</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><a href="fire-app-builder-vast-ads-component.html">VastAdsComponent</a></td>
+      <td>アプリでVAST広告を表示するために使用されます。</td>
+      <td> </td>
+      <td>PassThroughAdsComponent</td>
+      <td>その他の広告コンポーネントを使用しない場合にのみ使用されます。アプリには、少なくとも 1 つの広告コンポーネントをロードする必要があります。このPassThroughAdsコンポーネントは、アプリのユーザーエクスペリエンスに影響を及ぼすことなく、広告コンポーネントの要件を満たします。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>上記の表に記載されている認証コンポーネントを使用しない場合は、PassThroughAdsComponentを使用します。アプリには、少なくとも 1 つの広告コンポーネントをロードしておく必要があります。このダミーコンポーネントは、アプリのユーザーエクスペリエンスに影響を及ぼすことなく、広告コンポーネントの要件を満たします。</p>
+
+<h2 id="purchasingcomponents">課金コンポーネント</h2>
+
+<p>課金コンポーネントを使用すると、ユーザーは、アプリでコンテンツをレンタルまたは購読するために支払いを行うことができます。課金コンポーネントは、PurchaseInterfaceフォルダーの<code class="highlighter-rouge">IPurchase</code>インターフェースを実装します。課金コンポーネントのロードは必須です。ただし、このコンポーネントをアクティブにしたくない場合は、アクティブにしなくてもかまいません。</p>
+
+<p>次の課金コンポーネントが利用可能です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンポーネント</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="fire-app-builder-amazon-in-app-purchase-component.html">AmazonInAppPurchasingComponent</a></td>
+      <td>Amazonアプリ内課金を使用して、ユーザーがアプリでメディアを視聴するためにDaily Pass (24 時間アクセス) またはGo Premium (購読) を選択できるようにします。このコンポーネントはデフォルトでロードされますが、無効に設定されていて、構成もされていません。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="mediaplayercomponents">メディアプレーヤーコンポーネント</h2>
+
+<p>メディアプレーヤーコンポーネントは、アプリでのメディア再生に使用されるメディアプレーヤーを制御します。メディアコンポーネントは、UAMPフォルダーの<code class="highlighter-rouge">UAMP</code>インターフェースを実装します (UAMPは、Universal Android Media Playerの略です)。メディアコンポーネントのロードは必須です。次のメディアプレーヤーコンポーネントが利用可能です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンポーネント</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="fire-app-builder-amazon-media-player-component.html">AMZNMediaPlayerComponent</a></td>
+      <td>ExoPlayerをベースにしたAmazon Media Playerを使用します。このコンポーネントはデフォルトでFire App Builderにロードされます。</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--| [BrightCoveMediaPlayerComponent][fire-app-builder-brightcove-media-player-component] | BrightCoveメディアプレーヤーを使用します。|-->
+
+<h2 id="uiコンポーネント">UIコンポーネント</h2>
+
+<p>TVUIComponentは省略可能なコンポーネントではありません。このコンポーネントには、アプリのユーザーインターフェースと機能 (メディアプレーヤー機能以外) のほとんどが含まれています。これは、タブレットなどの他の端末用にさらにUIコンポーネントを追加できるようにするためのコンポーネントとして作成されています。</p>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire App Builder</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

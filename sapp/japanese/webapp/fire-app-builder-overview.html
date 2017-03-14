@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプリ向けスターターキット | Fire App Builder</title>
+    <base target="_self">
+    <meta name="description" content="Fire App Builderに用意されているJavaベースのフレームワークを使用すると、Amazon Fire TV向けのストリーミングメディアAndroidアプリを短時間で簡単に開発できます。 Fire App Builderでは、ベストプラクティスや各種テクニックをもとにして、Fire TVでの魅力的かつ高品質なメディア体験を構築できるため、すべてのコードを自分で開発する必要はありません。Fire App BuilderのコードはJavaをベースにしており、Android StudioやGradleなど、Androidアプリの開発に広く使用されているツールが使用できます。 Fire App Builderは、Apache 2.0 ライセンスに基づくオープンソースプロジェクトとして、Github (github.com/amzn/fire-app-builder) でリリースされています。  Fire App Builderの操作方法 Fire... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="fire-app-builder-overview.html">Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプリ向けスターターキット</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">リリースノート</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">アプリを作成するための一連のプロセス</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">よくある質問</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Fire App Builderをダウンロードして、アプリをビルドする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">アプリの概要</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-media-feed.html">メディアフィードをロードする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">レシピ構成の概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-categories.html">カテゴリレシピをセットアップする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-content.html">コンテンツレシピをセットアップする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigatorの構成の概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Navigatorの構成 -- トークンベースフィード</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Navigatorの構成 -- オープンフィード</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-customize-look-and-feel.html">アプリのルックアンドフィールをカスタマイズする</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-interfaces-and-components.html">コンポーネントの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">アプリにコンポーネントをロードする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">新しいFire App Builderコンポーネントを作成する</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">Freewheel広告コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST広告コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-crashlytics-component.html">Crashlyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Googleアナリティクスコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analyticsコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass認証コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook認証コンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazonコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazonアプリ内課金のコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Playerコンポーネント</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Githubから更新データをプルする</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">ライブストリーミングを構成する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Fire TVカタログにメディアを組み込む</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Android TVエミュレーターを使用してアプリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">JSONでクエリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">XMLでクエリを実行する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">トラブルシューティング</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire App Builder > </div>
+                    <h1>Fire App Builder: JavaベースのAmazon Fire TVおよびAndroidアプリ向けスターターキット</h1>
+
+                    
+
+                    <p>Fire App Builderに用意されているJavaベースのフレームワークを使用すると、Amazon Fire TV向けのストリーミングメディアAndroidアプリを短時間で簡単に開発できます。</p>
+
+<p>Fire App Builderでは、ベストプラクティスや各種テクニックをもとにして、Fire TVでの魅力的かつ高品質なメディア体験を構築できるため、すべてのコードを自分で開発する必要はありません。Fire App BuilderのコードはJavaをベースにしており、Android StudioやGradleなど、Androidアプリの開発に広く使用されているツールが使用できます。</p>
+
+<p>Fire App Builderは、Apache 2.0 ライセンスに基づくオープンソースプロジェクトとして、Github (<a href="https://github.com/amzn/fire-app-builder">github.com/amzn/fire-app-builder</a>) でリリースされています。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#fire-app-builderの操作方法" id="markdown-toc-fire-app-builderの操作方法">Fire App Builderの操作方法</a></li>
+  <li><a href="#fire-app-builderのサンプルアプリ" id="markdown-toc-fire-app-builderのサンプルアプリ">Fire App Builderのサンプルアプリ</a></li>
+  <li><a href="#fire-app-builderの対象者" id="markdown-toc-fire-app-builderの対象者">Fire App Builderの対象者</a></li>
+  <li><a href="#requirements" id="markdown-toc-requirements">Fire App Builderの使用条件</a></li>
+  <li><a href="#fire-app-builderの機能" id="markdown-toc-fire-app-builderの機能">Fire App Builderの機能</a></li>
+  <li><a href="#fire-tvの用語と端末" id="markdown-toc-fire-tvの用語と端末">Fire TVの用語と端末</a></li>
+  <li><a href="#始めるにあたって開始" id="markdown-toc-始めるにあたって開始">始めるにあたって開始</a></li>
+  <li><a href="#プロジェクトの更新データを取得する" id="markdown-toc-プロジェクトの更新データを取得する">プロジェクトの更新データを取得する</a></li>
+  <li><a href="#サポートを受ける" id="markdown-toc-サポートを受ける">サポートを受ける</a></li>
+  <li><a href="#バグの指摘または機能に関する要望" id="markdown-toc-バグの指摘または機能に関する要望">バグの指摘または機能に関する要望</a></li>
+</ul>
+
+<h2 id="fire-app-builderの操作方法">Fire App Builderの操作方法</h2>
+
+<p>Fire App Builderでアプリを作成する場合は、複数のJSONファイルを通じてデータフィード、画面レイアウト、および各機能の設定を構成します。また、メディアフィードからカテゴリとコンテンツを取得するクエリ構文の作成も行います。</p>
+
+<p>認証、広告、分析、またはアプリ内課金用に、インターフェースを実装するさまざまなコンポーネントをプラグインとして使用できます。フォント、色、ロゴ、レイアウト、その他の詳細など、アプリのルックアンドフィールをカスタマイズする際は、(Javaで直接コーディングするのではなく) XMLファイルかJSONファイルの一部の値を更新するだけで済みます。</p>
+
+<p>このように、Fire App Builderでは、Javaプログラミングを行わずに高品質なアプリを短時間で開発できます。Fire App Builderのコンポーネントの大部分はモジュール形式であるため、より高度な機能でFire App Builderを拡張したい場合は、Fire App Builderを基礎フレームワークとして使用し、その上に高度な機能を構築することができます。</p>
+
+<h2 id="fire-app-builderのサンプルアプリ">Fire App Builderのサンプルアプリ</h2>
+
+<p>Fire App Builderには、次のようなホーム画面を持つ “Application” という名前のサンプルアプリが用意されています。</p>
+
+<figure><img class="docimage " src="docs_ja/firetv/fireappbuilder/images/fireappbuilder_home.png" alt="Fire App Builderによるサンプルアプリ" /><figcaption>Fire App Builderで構築されたサンプルアプリのホーム画面。</figcaption></figure>
+
+<p>Fire App Builderのサンプルアプリには、Lightcastによる汎用のビデオフィードが含まれており、テスト目的に限定して使用できます。</p>
+
+<h2 id="fire-app-builderの対象者">Fire App Builderの対象者</h2>
+
+<p>Fire App Builderは、NetflixやHuluのようにストリーミングメディアアセットを保有し、自社のコンテンツをFire TVやその他のAndroid TVプラットフォームを通じてオンラインで提供したいと考えている企業向けに設計されています。メディアアセット (映画やテレビ番組などのビデオコンテンツ) を公開するためのビデオフィードがある場合には最適な開発ツールです。</p>
+
+<p>メディアフィードにはJSONまたはXMLを使用できますが、YoutubeチャネルやVimeoチャネルではなく独自のフィードを用意する必要があります(XMLの場合は、iTunesに送信するようなメディアRSSフィードを使用できます)。フィードはどのような構造でもかまいません。フィードからカテゴリとコンテンツを選択するにはクエリ構文を使用します。</p>
+
+<p>また、Fire App BuilderではAndroid Studioを使用してファイルを構成する必要があるため、(HTML5 ウェブテクノロジーではなく) JavaベースのAndroidを使用したアプリ制作を好むような開発者が対象となります。Fire App Builderのフレームワークを基盤として、より高性能のアプリを作成することもできます。Fire App Builderは、本質的にはAndroid Java開発者向けのFire TV SDKです。</p>
+
+<p>コーディングではなくコンテンツ制作を担当している場合や、自分のYoutubeビデオ用のFire TVアプリを構築したい場合、またはAndroid Studioでのコーディングに慣れていない場合 (プログラミングスキルは不要ですが) は、代わりに<a href="the-web-app-starter-kit-for-fire-tv">Fire TV用ウェブアプリスターターキット</a>の使用を検討してください。</p>
+
+<h2 id="requirements">Fire App Builderの使用条件</h2>
+
+<p>Fire App Builderで開発を行うには、以下のものが必要になります。</p>
+
+<ul>
+  <li><strong><a href="http://developer.android.com/sdk/index.html">Android Studio</a></strong>。お使いのコンピューターにAndroid Studio開発環境をセットアップする方法については、Androidドキュメントの「<a href="https://developer.android.com/sdk/installing/studio.html">Android Studioを使い始める</a>」と「<a href="https://developer.android.com/sdk/installing/index.html">Android Studioのインストール</a>」を参照してください。</li>
+  <li><strong><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java Development Kit (JDK) 8</a></strong>。コンピューターに<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8</a> 以降がインストールされている必要があります。</li>
+  <li><strong><a href="https://www.amazon.com/dp/B00U3FPN4U">Fire TV</a>または<a href="https://www.amazon.com/Amazon-Fire-TV-Stick-Streaming-Media-Player/dp/B00GDQ0RMG">Fire TV Stick</a></strong>。実際のFire TV端末、つまりFire TVまたはFire TV Stickでアプリをテストする必要があります(エミュレーターでもテストできますが、常に動作するとは限らず、またFire TV開発用としてはサポートされていません)。パフォーマンスはFire TVの方が優れているため、お持ちのメディアがリソースを多く消費する場合は、Fire TV Stickでも正常に再生されるか確認するとよいでしょう(Fire TVにはHDMIケーブルが付属していないため、Fire TVボックスをテレビに接続するにはHDMIケーブルを用意する必要があります)。</li>
+  <li><strong>HDMIポート付きのテレビ</strong>。Fire TVを接続できるHDMIポート付きのテレビが必要になります。</li>
+  <li><strong>A-to-A USBケーブル</strong>。(Fire TV Stickではなく) Fire TVを使用しており、(ワイヤレスネットワーク経由ではなく) USB経由でコンピューターをFire TVに接続する場合は、A-to-A USBケーブルが必要になります。ケーブルを使用する代わりに、ネットワーク経由でFire TV端末に接続することもできます(詳細については、「<a href="fire-app-builder-connecting-adb-to-fire-tv.html">ADBを使用してFire TVに接続する</a>」を参照してください)。</li>
+  <li><strong>必要な要素を含むメディアフィード。</strong> ビデオアセットと次のフィード要素が含まれたメディアフィード (JSON形式またはXML形式) が必要になります: タイトル、ID、説明、URL、カード画像、背景画像(カードと背景の両方に同じ画像を使用することができます)。<a href="https://google.github.io/ExoPlayer/supported-formats.html">Exoplayer</a>でサポートされているビデオ形式は、Fire App Builderとも互換性があります。</li>
+</ul>
+
+<h2 id="fire-app-builderの機能">Fire App Builderの機能</h2>
+
+<p>Fire App Builderは以下の機能を備えています。</p>
+
+<ul>
+  <li><strong>5 種類の画面</strong>: スプラッシュ画面、ホーム (2 種類のレイアウト)、Content Details、Content Renderer、Search。</li>
+  <li><strong>検索機能と検索結果</strong>: アプリ内でのテキスト検索。メディアがFire TVカタログに統合されている場合にグローバルFire TV検索に組み込むインテントフィルターも備えています。</li>
+  <li><strong>Exoplayerベースのストリーミングメディア用Amazon Media Player</strong>: このメディアプレーヤーには、クローズドキャプション、HTTPライブストリーミング (HLS)、帯域幅設定など、数多くの機能が搭載されています。</li>
+  <li><strong>広告、分析、承認、およびアプリ内課金用のコンポーネント</strong>: 10 種類以上のコンポーネントをプラグインとして簡単にアプリに適用でき、XMLファイルを通じて構成できます。これらのコンポーネントには、Amazonアプリ内課金、Login with Amazon、Facebookログイン、Omniture Analytics、Flurry Analytics、Adobe Pass認証、Freewheel広告、VAST 2.0 広告などがあります。</li>
+</ul>
+
+<h2 id="fire-tvの用語と端末">Fire TVの用語と端末</h2>
+
+<p>“<a href="https://www.amazon.com/dp/B00U3FPN4U">Fire TV</a>” はFire TVボックスを表し、”<a href="https://www.amazon.com/dp/B00ZV9RDKK">Fire TV Stick</a>” はスティックバージョンのFire TVを表します。</p>
+
+<p>「<a href="device-and-platform-specifications.html">端末およびプラットフォームの仕様</a>」で各端末の仕様を比較できます。処理能力と処理速度はFire TVの方が優れていますが、2 つの端末はどちらも同じFire OSを搭載しており、エンドユーザーの観点ではほとんど差がありません。各端末には 2 つの世代があり、第 2 世代が最新です。</p>
+
+<p>Fire TVは、<a href="https://www.amazon.com/Amazon-Fire-TV-Gaming-Edition-Streaming-Media-Player/dp/B00XNQECFM">Gaming Edition</a>も提供されています。また、専用の<a href="https://www.amazon.com/Amazon-Fire-Game-Controller-Alexa/dp/B00NO8LX7E">ゲームコントローラ</a>を購入してFire TV Stickとともに使用することもできます。Fire TV Stick (第 2 世代) にはデフォルトでVoice Remoteが付属していますが、Fire TV Stick (第 1 世代) ではVoice Remoteがオプションとして提供されます。</p>
+
+<h2 id="始めるにあたって開始">始めるにあたって開始</h2>
+
+<p>Fire App Builderを使用してアプリ開発を始めるには、Fire App Builderによるアプリ開発に必要な手順がまとめられている「<a href="fire-app-builder-end-to-end-process.html">アプリを作成するための一連のプロセス</a>」を参照してください。</p>
+
+<p>ドキュメントに記載された手順に従う場合は、通常、Android Studioの<strong>Androidビュー</strong>で操作していることが前提となっている点に注意してください。特定のフォルダーやパスが見つからない場合は、どのビューで操作しているかを確認してください。</p>
+
+<p>また、<strong>Shift</strong>キーを 2 回押してファイル名を入力すると、任意のファイルを検索することもできます。ファイルをロードすると、上部のナビゲーションバーにあるボタンの列のすぐ下にファイルへのパスが表示されます。</p>
+
+<h2 id="プロジェクトの更新データを取得する">プロジェクトの更新データを取得する</h2>
+
+<p>アプリケーションの更新データを取得するには、<a href="https://github.com/amzn/fire-app-builder">Fire App Builder Githubリポジトリ</a>をwatchし、<code class="highlighter-rouge">git pull</code>コマンドを実行して最新の更新データを取得します。詳細については、「<a href="fire-app-builder-pulling-updates-from-github.html">
+Githubから更新データをプルする</a>」を参照してください。</p>
+
+<h2 id="サポートを受ける">サポートを受ける</h2>
+
+<p>Fire App Builderに関するフィードバックまたは不明点がある場合は、<a href="https://forums.developer.amazon.com/spaces/166/index.html">Fire TVに関するAmazonフォーラム</a>を通じてサポートを受けることができます。</p>
+
+<h2 id="バグの指摘または機能に関する要望">バグの指摘または機能に関する要望</h2>
+
+<p>バグの指摘や機能に関する要望は、<a href="https://github.com/amzn/fire-app-builder">Fire App Builder Githubリポジトリ</a>の [Issues] タブから提出できます。または、<a href="https://forums.developer.amazon.com/spaces/166/index.html">Fire TVに関するAmazonフォーラム</a>に投稿することもできます。</p>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire App Builder</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

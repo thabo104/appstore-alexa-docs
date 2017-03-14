@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>お客様体験（CX）ガイドライン (DRS) | </title>
+    <base target="_self">
+    <meta name="description" content="概要 この項ではお客様に優れた自動発注の体験を確実にお届けすることを目標とし、典型的なデバイスのライフサイクルで各タッチポイントにおけるデバイスメーカー向けのガイドラインを提供します。 デバイスの購入 貴殿/貴社のデバイスにおける自動再発注能力に関して関心を呼び起こすには、Amazon および貴殿/貴社のウェブサイト上の製品詳細ページに DRS との互換性を記述しておかなければなりません。 貴殿/貴社はデバイスの梱包内に紙面の折り込みを入れるか、またはデバイスにステッカーを貼っておくことにより、お客様に DRS への登録案内を行ってください。 サービス登録 貴殿/貴社のお客様にはデバイス設定手順の一環でデバイスを DRS に登録し、DRS にサービスへの加入を行うオプションの表示がなければなりません。 これはデバイスがその意図した使用の前（例えばチュートリアル完了前、「お客様のデバイスは今よりご利用いただけます」に類するメッセージより前）に済ませていなければなりません。 登録およびサービスへの加入はWebViewを使用してお客様に表示され、ページコンテンツは Amazon が管理しています。 Amazon では以下の画面を表示します。  ティザーページ - DRS およびそのメリットの説明、そして登録への呼びかけ。 お客様は自動再発注にサインアップするか、辞退しデバイス設定に戻るか、のどちらかを選択できます。... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-dash_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Dash Replenishment Service</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Getting Started</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-replenishment-service.html">文書およびリソース</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="dash-customer-experience-guidelines.html">お客様体験（CX）ガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-create-a-security-profile.html">LWA セキュリティプロフィールを作成</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-create-an-sns-topic.html">SNS トピックを作成</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-device-management-and-settings.html">デバイス管理および設定</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-teaser-page.html">ティザーページ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-glossary.html">用語集</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">LWA Integration</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-web-api.html">LWA ウェブ API の使用</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-mobile-sdk.html">LWA モバイル SDK を使用</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-mobile-sdk-android.html">LWA モバイル SDK を使用</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-mobile-sdk-ios.html">LWA モバイル SDK を使用</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Notifications & Workflows</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-notification-messages.html">SNS 通知メッセージ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-amazon-order-resolution-flow.html">Amazon 発注解決手順</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-test-device-purchases.html">テストデバイス購入</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">API Endpoints</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-replenish-endpoint.html">Replenishmentエンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-slotstatus-endpoint.html">SlotStatus エンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-devicestatus-endpoint.html">DeviceStatus エンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-deregistration-endpoint.html">解除登録エンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-getsubscriptioninfo-endpoint.html">SubscriptionInfo エンドポイント</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/dash-faqs.html">よくある質問</a></li>
+        
+        <li><a class="noCrossRef" href="https://forums.developer.amazon.com/spaces/61/Dash+Replenishment+Service.html">Forum</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/dash-replenishment-service/getting-started">Get Started (Self-Service Portal)</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/dash-replenishment/index.html">Device Wizard (Self-Service Portal)</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> >  > </div>
+                    <h1>お客様体験（CX）ガイドライン (DRS)</h1>
+
+                    
+
+                    <h2 id="概要">概要</h2>
+
+<p>この項ではお客様に優れた自動発注の体験を確実にお届けすることを目標とし、典型的なデバイスのライフサイクルで各タッチポイントにおけるデバイスメーカー向けのガイドラインを提供します。</p>
+
+<h2 id="デバイスの購入">デバイスの購入</h2>
+
+<p>貴殿/貴社のデバイスにおける自動再発注能力に関して関心を呼び起こすには、Amazon および貴殿/貴社のウェブサイト上の製品詳細ページに DRS との互換性を記述しておかなければなりません。 貴殿/貴社はデバイスの梱包内に紙面の折り込みを入れるか、またはデバイスにステッカーを貼っておくことにより、お客様に DRS への登録案内を行ってください。</p>
+
+<h2 id="サービス登録">サービス登録</h2>
+
+<p>貴殿/貴社のお客様にはデバイス設定手順の一環でデバイスを DRS に登録し、DRS にサービスへの加入を行うオプションの表示がなければなりません。 これはデバイスがその意図した使用の前（例えばチュートリアル完了前、「お客様のデバイスは今よりご利用いただけます」に類するメッセージより前）に済ませていなければなりません。</p>
+
+<p>登録およびサービスへの加入はWebViewを使用してお客様に表示され、ページコンテンツは Amazon が管理しています。 Amazon では以下の画面を表示します。</p>
+
+<ul>
+  <li><strong>ティザーページ</strong> - DRS およびそのメリットの説明、そして登録への呼びかけ。 お客様は自動再発注にサインアップするか、辞退しデバイス設定に戻るか、のどちらかを選択できます。</li>
+  <li><strong>Amazon</strong> <strong>にログイン（</strong> <strong>LWA</strong> <strong>）</strong> - お客様は Amazon の認証情報を入力し、Amazon が DRS 発注詳細および状況についての情報をデバイスメーカーと共有することを許可するよう依頼されます。</li>
+  <li><strong>ASIN</strong> <strong>の選択</strong> - お客様はデバイスが対象となる ASIN 一覧から再発注する特定の ASIN を選択します。</li>
+  <li><strong>詳細の確定</strong> - お客様は選択した ASIN、お支払い方法、および発送先住所を確定します。</li>
+</ul>
+
+<p>貴殿/貴社のお客様が登録およびサービスへの加入を完了する前にデバイスの設定手順を中断する場合、登録およびサービスへの加入手順はお客様がデバイス設定手順に復帰したときに表示される必要があります。</p>
+
+<p>お客様がデバイスを初めて設定する際に貴殿/貴社から<strong>ようこそ</strong>Eメールを送付する場合、そのEメールは DRS への加入を勧める呼びかけを含むことが理想的です。</p>
+
+<h2 id="継続的使用">継続的使用</h2>
+
+<p>貴殿/貴社の製品紹介のページ（PDP）には、お客様に DRS への加入設定を管理するオプションを際立たせて表示する必要があります（Amazon Dash Replenishment Serviceへの入り口は PDP から最大0～1回のタップで到達できるように設定）。 この入り口がWebViewで DRS 設定ページ（DSP）を起動します。</p>
+
+<p>DSP は Amazon が管理し、次の情報を提供します。 * お客様のサービス加入状況および加入/解除オプション。 * ASIN 詳細（名前、価格など）および代替の ASIN を選択するオプション（該当する場合）。 * 発送および請求書の詳細（変更オプションあり） * このデバイスからの過去の注文。</p>
+
+<p>デバイスが登録済みでない場合、Amazon では DSP WebViewを呼び出す際に、上記の記述の通りに登録およびサービス加入手順を表示します。</p>
+
+<p>Amazon ではお客様が自分の Amazon アカウントからデバイスを登録解除する機能を提供します。 登録解除があった場合、Amazon は状況の変更を SNS 通知を使用して貴殿/貴社に伝達します。</p>
+
+<p>貴殿/貴社が自動再補充を中止または妨げるようなアクションへのオプションを提供する場合、適切な API コールによりその旨を Amazon に通知する必要があります。 例えばお客様が自分のアカウントからデバイスを消去、削除、または切り離した場合、貴殿/貴社は Amazon に通知しなければなりません。</p>
+
+<h2 id="再発注および在庫管理">再発注および在庫管理</h2>
+
+<p>再発注および配送の体験を最適化するため、関連情報が Amazon およびデバイスメーカー間で交換され、注文品が予定通りに確実に配送されるようにします。</p>
+
+<p>貴殿/貴社のデバイスは最低一日に一回、消費に関する情報（「前回のメッセージから250gの消費」など）、消費財の残り数量（「在庫残1kg」など）、 および消費財の在庫が0に達する予測日（「0％在庫予測日2015年11月3日」など）を記載したステータスメッセージを Amazon に送信しなければなりません。 詳細は<a href="dash-slotstatus-endpoint.html">SlotStatus エンドポイント</a>をご覧ください。</p>
+
+<p>貴殿/貴社のデバイスは要求されたお客様への配送日より少なくとも7日前に発注しなければなりません。 これにより納期を確実に守り、Amazon はお客様の要望により注文を取り消すオプションを提供することができます。</p>
+
+<p>商品の発送後、Amazon は貴殿/貴社に予定配送日と数量に関する詳細（「1.2kgを2015年11月3日に配送予定」など）を提供します。</p>
+
+<p>デバイスが発注したオーダーをお客様が取り消した場合、貴殿/貴社は通知を受け取ります。 取り消しが記録され、デバイスが5日後に再発注する旨の通知がお客様に送信されることをご確認ください。</p>
+
+<p>お客様が2回目の発注を取り消した場合、貴殿/貴社は通知を受信します。 貴殿/貴社はこの2度目の取り消しにすぐに対応し、消費財の数量が100％に戻るまで再発注がない旨をお客様に通知する必要があります。</p>
+
+<h2 id="通知およびeメール">通知およびEメール</h2>
+
+<p>Amazon では一貫したお客様体験を提供する目的で、DRS 関連のお客様への通信用に既存のEメール基盤を使用します。 お客様は注文が発信されたとき、発送があったとき、または DRS 加入の設定に重要な変更があったとき（例えばサービスへの加入時）にEメールを受け取ります。 重複を避けるため、貴殿/貴社は DRS の注文/状況についてお客様に通信しないでください。</p>
+
+<h2 id="消費財の配送">消費財の配送</h2>
+
+<p>貴殿/貴社がデバイス関連の消費財も製造されている場合、DRS を介した注文用に1回分の補充単位を用意されると理想的です。 こうすればお客様は自宅に在庫を保管する必要がなくなります。 1回分の補充単位が実用的でない場合、1カ月以内に使い切れる量の補充パックを提供してください。</p>
+
+<h2 id="お客様のコンテンツとデバイスの管理mycd">お客様のコンテンツとデバイスの管理（MYCD）</h2>
+
+<p>お客様は<a href="https://www.amazon.com/mn/dcw/myx.html">お客様のコンテンツと端末の管理</a>を通して、ネットに接続したデバイスに関する情報にアクセスできます。 具体的にお客様ができることは以下をご覧ください。</p>
+
+<ul>
+  <li>デバイスを DRS から登録解除</li>
+  <li>DRS 設定の管理（自動補充をオフにする、選択した製品を変更する、支払い/発送詳細を変更するなど）</li>
+  <li>デバイスの識別番号を確認</li>
+</ul>
+
+<h2 id="カスタマーサービス">カスタマーサービス</h2>
+
+<p>Amazon は DRS を通したあらゆる注文に関するお問い合わせ（発送の追跡、支払いに関する質問など）へのカスタマーサービスを提供します。</p>
+
+<p>貴殿/貴社にはデバイス設定、Wi-Fi 接続性、DRS の範囲外のサービスへの接続性、製品のハードウェア関連の欠陥など、その他のあらゆるカスタマーサービスのお問い合わせをご担当いただきます。</p>
+
+<p>DRS 発注関連のお問い合わせを貴殿/貴社がお客様より受け取られた場合、以下の手順に沿ってお客様を Amazon にお取り次ぎください。</p>
+
+<ul>
+  <li><strong>E</strong> <strong>メール</strong> ： Amazon のセルフサービス<a href="http://www.amazon.com/gp/help/contact-us/general-questions.html">「お問い合わせ」ページ</a>への以下のリンクを記載したメールをお客様に送付してください。</li>
+</ul>
+
+<p><strong>電話</strong> ： デバイスメーカーのカスタマーサービス係員は Amazon のカスタマーサービス係員にコールを転送します。 Amazon ではデバイスメーカーがデバイスに関する自動補充サービスを開始するより前に、Amazon のカスタマーサービス係員にコールを転送する手順についての詳細をデバイスメーカーにお教えいたします。</p>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li></li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

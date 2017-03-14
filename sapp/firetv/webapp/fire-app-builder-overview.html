@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Fire App Builder: A Starter Kit for Java-based Amazon Fire TV and Android Apps | Fire App Builder</title>
+    
+    <base target="_self">
+    <meta name="description" content="Fire App Builder provides a Java-based framework that you can use to easily and quickly build streaming media Android apps for Amazon Fire TV. Fire App Builder lets you build... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- TOC generator-->
+    <script src="assets/js/toc.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/fireappbuilder/Introduction/fire-app-builder-overview.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-fireappbuilder.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire App Builder</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Introduction</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="fire-app-builder-overview.html">Fire App Builder Introduction</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-release-notes.html">Release Notes</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-end-to-end-process.html">Beginning-to-End Process Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-questions-and-answers.html">Miscellaneous Questions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">1. Get Set Up</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-download-and-build.html">Download Fire App Builder and Build an App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-connecting-adb-to-fire-tv.html">Connect to Fire TV Through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-app-tour.html">Take an App Tour</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">2. Configure Your Feed</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-media-feed.html">Load Your Media Feed</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-overview.html">Recipe Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-categories.html">Set Up the Categories Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-set-up-recipes-content.html">Set Up the Contents Recipe</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator.html">Navigator Configuration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-token-feeds.html">Configure Navigator -- Token-based Feeds</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-configure-navigator-open-feeds.html">Configure Navigator -- Open Feeds</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">3. Customize the Appearance</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-customize-look-and-feel.html">Customize the Look and Feel</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">4. Add Components</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-interfaces-and-components.html">Components Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-load-a-component.html">Load a Component</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-create-a-new-component.html">Create Your Own Fire App Builder Component</a></li>
+            
+            
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Ads Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-freewheel-ads-component.html">FreeWheel Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-vast-ads-component.html">VAST Ads Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Analytics Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-crashlytics-component.html">Crashlytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-flurry-analytics-component.html">Flurry Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-google-analytics-component.html">Google Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-omniture-analytics-component.html">Omniture Analytics Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Authorization components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-adobe-pass-auth-component.html">Adobe Pass Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-facebook-auth-component.html">Facebook Authorization Component</a></li>
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-login-with-amazon-component.html">Login with Amazon Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Purchasing Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-in-app-purchase-component.html">Amazon In-App Purchasing Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            <li class="level2"><a class="subfoldersTitle" href="#">Media Components</a>
+                <ul style="display:none;">
+                    
+
+                    
+                    
+                    <li class="level2items"><a href="fire-app-builder-amazon-media-player-component.html">Amazon Media Player Component</a></li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+            </li>
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Other Development Topics</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-pulling-updates-from-github.html">Pull Updates from Github</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-live-stream-configuration.html">Configure Live Streams</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-catalog-integration.html">Integrate Your Media into the Fire TV Catalog</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-use-an-android-tv-emulator.html">Use an Android TV Emulator to Run Your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-json.html">Querying JSON</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-querying-xml.html">Querying XML</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-app-builder-troubleshooting.html">Troubleshooting</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire App Builder </div>
+
+                    <h1>Fire App Builder: A Starter Kit for Java-based Amazon Fire TV and Android Apps</h1>
+
+                    <p>Fire App Builder provides a Java-based framework that you can use to easily and quickly build streaming media Android apps for Amazon Fire TV.</p>
+
+<p>Fire App Builder lets you build an engaging, high-quality media experience on Fire TV following best practices and techniques — without having to develop all the code yourself. Fire App Builder’s code is Java-based and uses Android Studio, Gradle, and other tools common to Android app development.</p>
+
+<p>Fire App Builder is released as an open source project on Github (<a href="https://github.com/amzn/fire-app-builder">github.com/amzn/fire-app-builder</a>) under the Apache 2.0 license.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#how-you-work-with-fire-app-builder" id="markdown-toc-how-you-work-with-fire-app-builder">How You Work with Fire App Builder</a></li>
+  <li><a href="#sample-app-from-fire-app-builder" id="markdown-toc-sample-app-from-fire-app-builder">Sample App from Fire App Builder</a></li>
+  <li><a href="#who-fire-app-builder-is-for" id="markdown-toc-who-fire-app-builder-is-for">Who Fire App Builder Is For</a></li>
+  <li><a href="#requirements" id="markdown-toc-requirements">Requirements to Work with Fire App Builder</a></li>
+  <li><a href="#fire-app-builder-features" id="markdown-toc-fire-app-builder-features">Fire App Builder Features</a></li>
+  <li><a href="#fire-tv-terminology-and-devices" id="markdown-toc-fire-tv-terminology-and-devices">Fire TV Terminology and Devices</a></li>
+  <li><a href="#getting-started" id="markdown-toc-getting-started">Getting Started</a></li>
+  <li><a href="#getting-updates-to-the-project" id="markdown-toc-getting-updates-to-the-project">Getting Updates to the Project</a></li>
+  <li><a href="#getting-support" id="markdown-toc-getting-support">Getting Support</a></li>
+  <li><a href="#noting-bugs-or-feature-requests" id="markdown-toc-noting-bugs-or-feature-requests">Noting Bugs or Feature Requests</a></li>
+</ul>
+
+<h2 id="how-you-work-with-fire-app-builder">How You Work with Fire App Builder</h2>
+
+<p>When you create an app with Fire App Builder, you configure the settings for your data feed, screen layouts, and functionality through a series of JSON files. You also construct query syntax to get the categories and contents from your media feed.</p>
+
+<p>For authentication, ads, analytics, or in-app purchasing, you can use a variety of pluggable components that implement interfaces. To customize the look and feel of your app, including font, colors, logos, layouts, and other details, you simply update some values in XML or JSON files (rather than coding directly in Java).</p>
+
+<p>Overall, Fire App Builder allows you to quickly develop a high quality app without doing Java programming. If you want to extend Fire App Builder with more advanced functionality, you can use Fire App Builder as the underlying framework and build on top of it, since most of Fire App Builder’s components are modular.</p>
+
+<h2 id="sample-app-from-fire-app-builder">Sample App from Fire App Builder</h2>
+
+<p>Fire App Builder contains a sample app (called “Application”) with a home screen that looks as follows:</p>
+
+<figure><img class="docimage " src="docs/firetv/fireappbuilder/images/fireappbuilder_home.png" alt="Sample app with Fire App Builder" /><figcaption>The home screen of the sample app built with Fire App Builder.</figcaption></figure>
+
+<p>The sample app in Fire App Builder contains a generic video feed from Lightcast that is used for testing purposes only.</p>
+
+<h2 id="who-fire-app-builder-is-for">Who Fire App Builder Is For</h2>
+
+<p>Fire App Builder is designed for companies with streaming media assets (similar to Netflix or Hulu) who want to make their content available online through Fire TV and other Android TV platforms. You would be a good fit if you have a video feed where your media assets (movies, shows, or other video content) are published.</p>
+
+<p>The media feed can be JSON or XML, but it must be its own feed rather than a Youtube or Vimeo channel. (If it’s XML, it can be a media RSS feed, such as what you submit to iTunes.) The feed can be in any structure — you’ll use query syntax to select the categories and contents from your feed.</p>
+
+<p>Additionally, Fire App Builder requires you to configure files using Android Studio, so it’s geared toward developer types who prefer to create their app using Java-based Android (instead of HTML5 web technologies). You can also build on top of the Fire App Builder framework to create more sophisticated apps. Essentially Fire App Builder is the Fire TV SDK for Android Java developers.</p>
+
+<p>If you’re more of a content creator instead of a coder, or you just want to build a Fire TV app for your Youtube videos, or if you’re not comfortable working in Android Studio with code (even though no programming skills are required), consider using the <a href="the-web-app-starter-kit-for-fire-tv">Web App Starter Kit for Fire TV</a> instead.</p>
+
+<h2 id="requirements">Requirements to Work with Fire App Builder</h2>
+
+<p>To develop with Fire App Builder, you will need the following:</p>
+
+<ul>
+  <li><strong><a href="http://developer.android.com/sdk/index.html">Android Studio</a></strong>. See <a href="https://developer.android.com/sdk/installing/studio.html">Getting Started with Android Studio</a> and <a href="https://developer.android.com/sdk/installing/index.html">Install Android Studio</a> from the Android documentation for information about setting up the Android Studio development environment on your machine.</li>
+  <li><strong><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java Development Kit (JDK) 8</a></strong>. You must have the <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8</a> or later on your computer.</li>
+  <li><strong><a href="https://www.amazon.com/dp/B00U3FPN4U">Fire TV</a> or <a href="https://www.amazon.com/Amazon-Fire-TV-Stick-Streaming-Media-Player/dp/B00GDQ0RMG">Fire TV Stick</a></strong>. You will need to test your app on an actual Fire TV device — either the Fire TV or Fire TV Stick. (Although emulators are possible, they don’t always work and aren’t supported for Fire TV development.) The Fire TV has better performance, so if your media is resource intensive, you’ll want to be sure it plays well on the Fire TV Stick too. (Note that Fire TV does not come with an HDMI cable, so you will need to supply that cable to connect the Fire TV box to your TV.)</li>
+  <li><strong>Television with HDMI port</strong>. You will need a television with an HDMI port that your Fire TV can connect to.</li>
+  <li><strong>A-to-A USB cable</strong>. If you’re using Fire TV (not the stick) and connecting your computer to Fire TV through USB (instead of through a wireless network), you will need an A-to-A USB cable. Instead of using a cable, you can also connect to Fire TV devices through a network. (See <a href="fire-app-builder-connecting-adb-to-fire-tv.html">Connecting to Fire TV Through ADB</a>.)</li>
+  <li><strong>Media feed with necessary elements.</strong> You will need a media feed (in either JSON or XML format) with video assets as well as the following feed elements: title, ID, description, URL, card image, background image. (The same image can be used for both the card and background.) Any video format supported by <a href="https://google.github.io/ExoPlayer/supported-formats.html">Exoplayer</a> is compatible with Fire App Builder.</li>
+</ul>
+
+<h2 id="fire-app-builder-features">Fire App Builder Features</h2>
+
+<p>Fire App Builder provides the following features:</p>
+
+<ul>
+  <li><strong>Five screens</strong>: Splash screen, Home (two layouts), Content Details, Content Renderer, and Search.</li>
+  <li><strong>Search functionality and search results</strong>: Text search within your app. Also includes intent filters to integrate with the global Fire TV search if your media is integrated into the Fire TV catalog.</li>
+  <li><strong>Exoplayer-based Amazon Media Player for streaming media</strong>: The media player includes closed captions, HTTP Live Streaming (HLS), bandwidth settings, and more.</li>
+  <li><strong>Components for ads, analytics, authorization, and in-app purchasing</strong>: More than 10 components that you can easily plug into your app and configure through XML files. Some of these components include Amazon in-app purchases, Login with Amazon, Facebook Login, Omniture Analytics, Flurry Analytics, Adobe Pass Authentication, Freewheel ads, and VAST 2.0 ads.</li>
+</ul>
+
+<h2 id="fire-tv-terminology-and-devices">Fire TV Terminology and Devices</h2>
+
+<p>“<a href="https://www.amazon.com/dp/B00U3FPN4U">Fire TV</a>” refers to the Fire TV box, while “<a href="https://www.amazon.com/dp/B00ZV9RDKK">Fire TV Stick</a>” refers to the stick version.</p>
+
+<p>You can compare the specifications across devices at <a href="device-and-platform-specifications.html">Fire TV Device Specifications</a>. The Fire TV has more power and faster performance, but the two devices run the same Fire OS and are more or less identical from an end-user’s perspective. Each device has two generations — Generation 2 is the latest.</p>
+
+<p>Fire TV also optionally comes in a <a href="https://www.amazon.com/Amazon-Fire-TV-Gaming-Edition-Streaming-Media-Player/dp/B00XNQECFM">Gaming Edition</a>. You can also buy a <a href="https://www.amazon.com/Amazon-Fire-Game-Controller-Alexa/dp/B00NO8LX7E">game controller</a> on its own and use it with Fire TV stick. Fire TV Stick (Generation 2) includes the voice remote by default, whereas Fire TV Stick (Generation 1) optionally provided the voice remote.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>To get started building an app with Fire App Builder, see <a href="fire-app-builder-end-to-end-process.html">Beginning-to-End Process for Building an App with Fire App Builder</a>, which lists the steps needed to develop an app with Fire App Builder.</p>
+
+<p>As you follow the instructions in the documentation, note that it’s usually assumed that you’re working in the <strong>Android view</strong> in Android Studio. If you don’t see a certain folder or path, check the view you’re in.</p>
+
+<p>Also, you can find any file by clicking <strong>Shift</strong> twice and then typing the file name. When you load the file, the path to the file appears just below the row of buttons on the top navigation bar.</p>
+
+<h2 id="getting-updates-to-the-project">Getting Updates to the Project</h2>
+
+<p>You can get updates to the application by watching the <a href="https://github.com/amzn/fire-app-builder">Fire App Builder Github repository</a> and running a <code class="highlighter-rouge">git pull</code> command to get the latest updates. See <a href="fire-app-builder-pulling-updates-from-github.html">
+Pull Updates from Github</a> for more details.</p>
+
+<h2 id="getting-support">Getting Support</h2>
+
+<p>If you have feedback or questions about Fire App Builder, you can get support through the <a href="https://forums.developer.amazon.com/spaces/166/index.html">Fire TV Amazon forums</a>.</p>
+
+<h2 id="noting-bugs-or-feature-requests">Noting Bugs or Feature Requests</h2>
+
+<p>To note bugs or make feature requests, you can do so through the Issues tab on the <a href="https://github.com/amzn/fire-app-builder">Fire App Builder Github repository</a>. Or you can submit the info to the <a href="https://forums.developer.amazon.com/spaces/166/index.html">Fire TV Amazon forums</a>.</p>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Search Firetv | </title>
+    <base target="_self">
+    <meta name="description" content="           ... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Amazon Fire TV用アプリとゲームを開発するための準備</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV端末の仕様</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Amazon Fire TV開発フレームワークの比較</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">Fire TV開発とAndroid TV開発の違い</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">Fire TV開発における最新情報</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Amazon Fire TVのよくある質問 (FAQ)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">AmazonアプリストアへのFire TVアプリの申請</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">開発環境のセットアップ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">アプリのインストールと実行</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">コントローラの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">リモート入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">ゲームコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Unityによるコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">コントローラの識別</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">コントローラ動作のガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">コントローラ画像アセット</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                <div class="subtitle"></div>
+                <h1> の検索結果</h1>
+                    
+
+                    
+<div style="display:none">
+<form action="search-firetv_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="サーチ ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<div id="search-results"></div>
+
+<script>
+  window.store = {
+      
+          
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+
+
+      "amazon-fire-game-controller-input-html": {
+        "title": "ゲームコントローラ入力",
+        "tags": "[]",
+        "content": "Amazon Fire TVゲームコントローラ (Bluetooth HIDゲームパッドプロファイルに準拠したコントローラ全般) には、各種ボタン、Androidモーション、キーイベント定数があります。アプリ内で発生した入力イベントは、これらの情報を使用してキャプチャします。サポートされるすべてのコントローラにおけるボタンの動作に関するガイドラインについては、「コントローラ動作のガイドライン」を参照してください。Amazon Fire TVリモコンの入力を処理する方法の詳細については、「Amazon Fire TVリモート入力」を参照してください。  ボタン  入力情報を取得する  プライマリとセカンダリの入力イベント  入力イベントリファレンスボタンAmazon Fire TV (第 2 世代) ゲームコントローラには次のボタンがあります。Amazon Fire TV (第 1 世代) ゲームコントローラには次のボタンがあります。入力情報を取得するAmazon Fire TVで使用されるゲームコントローラでは、デジタルボタン ([A] ボタンなど) を押すとAndroid KeyEventイベントが生成され、アナログコントロール (ジョイスティックなど) を動かすとMotionEventイベントが生成されます。単純なボタン入力は、標準のAndroidイベントリスナーインターフェースとコールバック (onClick()、onFocusChange() など) を使用して処理できます。Viewで特定のボタンが押されたことを示すイベントをキャプチャするには、onKeyDown() などの入力イベントハンドラをオーバーライドします。特定のキーをキャプチャするには、KeyEventクラスの入力定数に該当するかどうかをテストします。たとえば、[A] ボタンが押されたことをキャプチャするには、次のコードを使用します。@Overridepublic boolean onKeyDown(int keyCode, KeyEvent event){    boolean handled = false;    switch (keyCode){        case KeyEvent.KEYCODE_BUTTON_A:                // ... handle selections                handled = true;                break;     }     return handled || super.onKeyDown(keyCode, event);}モーションイベントをキャプチャするには、ViewのonGenericMotionEvent() イベントをオーバーライドします。モーションイベントを生成したコントロールを特定するにはMotionEventクラスの入力定数を使用し、モーションイベントの値を特定するにはMotionEventクラスのgetAxisValue() などのイベントを使用します。@Overridepublic boolean onGenericMotionEvent(MotionEvent event){    // get changes in value from left joystick    float deltaX = event.getAxisValue(MotionEvent.AXIS_X);    float deltaY = event.getAxisValue(MotionEvent.AXIS_Y);    if (deltaX &gt; 0.5 &amp;&amp; deltaY &gt; 0.5) {        // do something        handled = true;    }    return handled || super.onGenericMotionEvent(event);}プライマリとセカンダリの入力イベントFire TV端末の一部のゲームコントローラ操作では、1 つの操作に対して複数の入力イベントが生成されることがあります。たとえば、Amazon Fire TVゲームコントローラのD-Padは、モーションイベントを生成するアナログ方向コントロールですが、Fire TVのリモコンのD-Padは、キーイベントを生成するデジタルコントロールです。同様に、選択操作は、ゲームコントローラでは [A] ボタンですが、Fire TVのリモコンではD-Padの [Center] ボタンです。Amazon Fire TVの一部のゲームコントローラ操作では、最初にプライマリ入力イベント (通常はモーションイベント) が生成されます。これらのイベントがアプリによって処理されなければ、次に、セカンダリ入力イベント (通常はキーイベント) が生成されます。プライマリとセカンダリの両方の入力イベントを、次の「入力イベントリファレンス」の表に示します。セカンダリ入力イベントを利用すると、ゲームコントローラ入力を処理するプロセスを単純化することができます。ゲームコントローラからのボタンイベントおよびD-Padイベントだけをアプリで処理する場合、セカンダリイベントを使用することで、モーションイベントをすべて無視し、キーイベントだけを対象にすることができます。同様に、[A] ボタンはKEYCODE_BUTTON_AとKEYCODE_DPAD_CENTERの両方を生成するので、アプリがFire TVリモコンのD-Padの [Center] ボタンをサポートする場合、[A] ボタンもテストする必要はありません。プライマリ入力イベントを適切に処理しないと、アプリが入力を二重に受信しているように動作する可能性があることに注意してください。イベントがキャプチャされて処理されたとき、入力イベントハンドラはtrueを返す必要があります。プライマリ入力イベントがキャプチャされた場合、セカンダリ入力イベントは生成されません。入力イベントリファレンス次の表は、各ゲームコントローラボタンのモーションイベント定数およびキーイベント定数、それらのボタンでの推奨されるユーザーエクスペリエンス動作、およびAmazon Fire TVユーザーインターフェースでのそれらのボタンのデフォルトの動作を示します。デジタルボタンはキーイベント (KeyEvent) を、アナログコントロールはモーションイベント (MotionEvent) を報告します。コントローラ入力に対するアプリの推奨される動作については、「コントローラ動作のガイドライン」を参照してください。 Note: アプリで使用されないボタンの入力イベントを、アプリでキャプチャや破棄などの処理の対象にしないでください。システムでの未使用イベントの処理を可能にすると、メディアの再生や音量制御などのバックグラウンドの動作が可能になります。「MotionEvent」列または「KeyEvent」列に示されているプライマリイベントをアプリが処理しない場合、これらのイベントに加えて「セカンダリイベント」列のイベントも生成されます。これらのセカンダリイベントについては、前の「プライマリとセカンダリの入力イベント」を参照してください。この表におけるゲームとは、ゲームカテゴリでAmazonアプリストアに申請され、Amazonアプリストアから端末にインストールされたアプリのことです。            ゲームコントローラボタン      MotionEvent      KeyEvent      セカンダリイベント      デフォルトの動作                  Home      なし      なし      なし      GameCircleをサポートしているゲームの場合、GameCircleオーバーレイを起動します。GameCircleをサポートしていないゲームの場合、[Game Paused] ダイアログが表示されます。それ以外のアプリの場合、ホーム画面に戻ります。                    Back      なし      KEYCODE_BACK      なし      前の操作または画面 (アクティビティ) に戻ります。              Menu      なし      KEYCODE_MENU      なし      Androidコンテキストメニュー (OptionsMenu) が起動されます。              GameCircle (第 1 世代のFireゲームコントローラのみ)      なし      なし      なし      GameCircleをサポートしているゲームの場合、GameCircleオーバーレイを起動します。GameCircleをサポートしていないゲームの場合、[Game Paused] ダイアログが表示されます。それ以外のアプリの場合、ランチャーの [Games] 画面に戻ります。              A      なし      KEYCODE_BUTTON_A      KEYCODE_DPAD_CENTER      フォーカスが現在置かれているアイテムが選択されます。              B      なし      KEYCODE_BUTTON_B      KEYCODE_BACK      前の画面 (アクティビティ) に戻ります ([戻る] と同じ)。              X      なし      KEYCODE_BUTTON_X      なし      何も起こりません。              Y      なし      KEYCODE_BUTTON_Y      なし      何も起こりません。              Left (D-PAD) Right (D-PAD)      AXIS_HAT_X (&gt;0 is right)      なし      KEYCODE_DPAD_LEFT KEYCODE_DPAD_RIGHT      ユーザーインターフェースのフォーカスが左方向または右方向に移動します。              Up (D-PAD) Down (D-PAD)      AXIS_HAT_Y (&gt;0 is down)      なし      KEYCODE_DPAD_UP KEYCODE_DPAD_DOWN      ユーザーインターフェースのフォーカスが上方向または下方向に移動します。              左側のジョイスティック (左/右)      AXIS_X (正の値は右方向を表します)      なし      KEYCODE_DPAD_LEFT KEYCODE_DPAD_RIGHT(移動が 0.5 を超える場合)      ユーザーインターフェースのフォーカスが入力された方向に移動します。              左側のジョイスティック (上/下)      AXIS_Y (正の値は下方向を表します)      なし      KEYCODE_DPAD_UP KEYCODE_DPAD_DOWN (移動が 0.5 を超える場合)      ユーザーインターフェースのフォーカスが入力された方向に移動します。              左側のジョイスティックの押し下げ      なし      KEYCODE_BUTTON_THUMBL      なし      再生/一時停止              右側のジョイスティック (左/右)      AXIS_Z (正の値は右方向を表します)      なし      なし      何も起こりません。              右側のジョイスティック (上/下)      AXIS_RZ (正の値は下方向を表します)      なし      なし      何も起こりません。              右側のジョイスティックの押し下げ      なし      KEYCODE_BUTTON_THUMBR      なし      再生/一時停止              Play/Pause (第 1 世代のFireゲームコントローラのみ)      なし      KEYCODE_MEDIA_PLAY_PAUSE      なし      再生/一時停止              Rewind (第 1 世代のFireゲームコントローラのみ)      なし      KEYCODE_MEDIA_REWIND      なし      早戻し              Fast Forward (第 1 世代のFireゲームコントローラのみ)      なし      KEYCODE_MEDIA_FAST_FORWARD      なし      早送り              左側のトリガー (L2)      AXIS_BRAKE      なし      なし      音量 +              左側のショルダー (L1)      なし      KEYCODE_BUTTON_L1      なし      早戻し              右側のトリガー (R2)      AXIS_GAS      なし      なし      音量 -              右側のショルダー (R1)      なし      KEYCODE_BUTTON_R1      なし      早送り      ",
+        "url": "amazon-fire-game-controller-input.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "amazon-fire-tv-remote-input-html": {
+        "title": "リモート入力",
+        "tags": "[]",
+        "content": "すべてのボタン、Androidイベント、および動作のガイドラインは、[Voice Search] ([Microphone]) ボタンを除いて、すべてのリモコンで同じです。[Voice Search] ([Microphone]) ボタンは一部のリモコンでしか利用できません。サポートされるすべてのコントローラにおけるボタンの動作に関する推奨ガイドラインについては、「コントローラ動作のガイドライン」を参照してください。Amazon Fireゲームコントローラからの入力を処理する方法の詳細については、「Amazon Fire TVゲームコントローラ入力」を参照してください。  ボタン  入力情報を取得する  入力イベントリファレンスボタンほとんどのAmazon Fire TVリモコンには次のボタンがあります。一部のFire TVのリモコンには [Microphone] ボタンまたは [Voice Search] ボタンが付属していません。Remote control入力情報を取得するAndroid入力機器と同じように、すべてのAmazon Fire TVのリモコンは、ボタンが押されると、KeyEventイベントを生成します。コントローラボタン入力は、標準のAndroidイベントリスナーインターフェースとコールバック (onClick()、onFocusChange() など) を使用して処理できます。Amazon Fire TV RemoteとVoice Remoteのいずれも、(Android MotionEventクラスからの) モーションイベントを生成しません。Viewで特定のボタンが押されたことを示すイベントをキャプチャするには、onKeyDown() などの入力イベントハンドラをオーバーライドします。特定のキーをキャプチャするには、KeyEventクラスの入力定数に該当するかどうかをテストします。たとえば、[Left]、[Right]、および [Center] のD-Padボタンをキャプチャするには、次のコードを使用します (ゲームコントローラの [A] ボタンに対しても同様です)。@Overridepublic boolean onKeyDown(int keyCode, KeyEvent event){boolean handled = false;switch (keyCode){case KeyEvent.KEYCODE_DPAD_CENTER:case KeyEvent.KEYCODE_BUTTON_A:        // ... handle selections        handled = true;        break;case KeyEvent.KEYCODE_DPAD_LEFT:        // ... handle left action        handled = true;        break;case KeyEvent.KEYCODE_DPAD_RIGHT:        // ... handle right action        handled = true;        break;}return handled || super.onKeyDown(keyCode, event);}すべての入力イベントに関して、リスナーメソッドは、イベントをキャプチャして処理するためにtrueを返すか、他のコントロールがそのイベントを管理できるようにイベントをsuper.onKeyDown() に渡す必要があります。入力イベントリファレンス次の表に、ボタンとそのAndroid KeyEvent定数、各ボタンのデフォルトの動作を示します。Amazon Fire TVのリモコンはいずれも、(Android MotionEventクラスからの) モーションイベントを生成しません。アプリが特定の入力イベントをキャプチャしないと、デフォルトの動作が発生します。            ボタン      KeyEvent      デフォルトの動作                  Home      なし      [Home] 画面に戻ります。これはシステムイベントで、インターセプトできません。              Back      KEYCODE_BACK      前の操作または画面 (アクティビティ) に戻ります。              Menu      KEYCODE_MENU      Androidコンテキストメニュー (OptionsMenu) が起動されます。              Microphone (検索) (Voice Remoteのみ)      なし      システムの音声検索が起動されます。これはシステムイベントで、インターセプトできません。              Select (D-Padの [Center])      KEYCODE_DPAD_CENTER      現在フォーカスが置かれているユーザーインターフェースアイテムが選択されます。              Up (D-Pad)      KEYCODE_DPAD_UP      ユーザーインターフェース内でフォーカスが上方向に移動します。              Down (D-Pad)      KEYCODE_DPAD_DOWN      ユーザーインターフェース内でフォーカスが下方向に移動します。              Left (D-Pad)      KEYCODE_DPAD_LEFT      ユーザーインターフェース内でフォーカスが左方向に移動します。              Right (D-Pad)      KEYCODE_DPAD_RIGHT      ユーザーインターフェース内でフォーカスが右方向に移動します。              Play/Pause      KEYCODE_MEDIA_PLAY_PAUSE      メディアが再生または一時停止されます。再生と一時停止は、相互に切り替わります。              Rewind      KEYCODE_MEDIA_REWIND      再生中のメディアコンテキストが早戻しされます。              Fast Forward      KEYCODE_MEDIA_FAST_FORWARD      再生中のメディアコンテキストが早送りされます。      ",
+        "url": "amazon-fire-tv-remote-input.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "controller-behavior-guidelines-html": {
+        "title": "コントローラ動作のガイドライン",
+        "tags": "[]",
+        "content": "Amazon Fire TVプラットフォーム向けのアプリを開発する際、各種コントローラからの入力をサポートできます。各種コントローラには、Amazon Fire TV RemoteとVoice Remote、Amazon Fire TVゲームコントローラ、Bluetooth HIDゲームパッドプロファイルをサポートするその他のコントローラが含まれます。アプリにコントローラ入力を実装するには、「[リモート入力][amazon-fire-tv-remote-input]」と「[ゲームコントローラ入力][amazon-fire-game-controller-input]」に記載されているモーションイベントと入力イベントを使用します。このページでは、さまざまなコントローラに共通するアプリ機能の推奨事項について説明します。以下のガイドラインは、Amazon Fire TV用アプリを公開する要件ではありません。開発者は、アプリに最適の方法でコントローラ入力を設計できます。ただし、異なるコントローラ、アプリ、ゲームでも一貫したユーザーエクスペリエンスを提供するために、これらのガイドラインに従うことをおすすめします。 Note: [Microphone] ボタンを除けば、すべてのFire TVのリモコンの動作は同じです。Fire TV Remoteに関するこのドキュメントのガイドラインは、Fire TV Voice Remoteにも適用されます。  コア動作  ナビゲーションと選択コア動作            アクション      Amazon Fire TV Remoteのボタン      Amazon Fire TVゲームコントローラのボタン      その他のゲームコントローラのボタン      動作                  ホーム      Home      Home      Home (存在する場合)       これはシステムイベントで、アプリではキャプチャできません。このボタンを押すと、ホームに戻ります。Amazonアプリストアでゲームに分類されるアプリの場合は、GameCircleオーバーレイまたは [Game Paused] 画面が表示されます。もう一度 [Home] ボタンを押すと、ホームに戻ります。 予期せずホームに戻った場合にアプリまたはゲームの状態を保持するには、onPause() を実装します。アプリを続きから再開できるようにするには、onResume() を実装します。オーディオアプリの場合、オーディオフォーカスをリクエストして、バックグラウンドで再生を続けることができます。              戻る      Back      Back      B      直前の操作または画面 (アクティビティ) に戻るか、現在の操作またはプロンプトを取り消します。確認ダイアログを表示するには、このイベントをキャプチャします。たとえば、アプリのメイン画面に [Do you want to Quit] ダイアログを表示するには、[Back] をキャプチャします。              メニュー      Menu      Menu      Y      Androidの標準コンテキストメニュー (OptionsMenu) が起動されます。独自のメニューを提供するか、他の目的に使う場合は、このイベントをキャプチャします。提供するメニューに 1 つしかオプションがない場合は、[Menu] ボタンをそのオプションの切り替えボタンとして使用できます。メディアアプリでは、[Menu] ボタンを使って再生パネルを表示または非表示にできます。              検索      Microphone (Voice Remoteのみ)      該当なし      該当なし      これはシステムイベントで、アプリではキャプチャできません。このボタンを押すと、音声検索が起動されます。音声検索の起動時にアプリまたはゲームの状態を保持するにはonPause() を実装し、検索完了後にアプリやゲームを続行できるようにするにはonResume() を実装します。オーディオアプリでは、音声検索の起動中は、再生を一時停止するか、音量を小さくします。ビデオアプリでは、音声検索の起動中は、音声をミュートするか、再生を一時停止します。              GameCircle      該当なし      GameCircle      該当なし      これはシステムイベントで、アプリではキャプチャできません。このボタンを押すと、GameCircleオーバーレイ (GameCircleをサポートしているゲームの場合)、または [Game Paused] ダイアログ (GameCircleをサポートしていないゲームの場合) が表示されるか、ランチャーの [Games] ページに戻ります (他のすべてのアプリの場合)。 注意: サイドロードされたアプリは、GameCircleを実装していても必ずランチャーの [Games] ページに戻ります。GameCircleの正しい動作を示すのは、Amazonアプリストアに申請されたアプリだけです。アプリを申請する前に、ライブアプリテストを使用してGameCircleの統合をテストできます。 [GameCircle] ボタンが押されたときにアプリまたはゲームの状態を保持するには、 onPause() を実装します。ユーザーがゲームに戻ったときに続きから再開できるようにするには、onResume() を実装します。      ナビゲーションと選択次の表では、ユーザーインターフェースのナビゲーションと選択で推奨される動作について説明します。複数のボタンを表示するアイテムでは、すべてのボタンを対象にしてください。            アクション      Amazon Fire TV Remoteのボタン      Amazon Fire TVゲームコントローラのボタン      その他のゲームコントローラのボタン      動作                  選択/メインアクション      D-Padの [Center]      A      A      フォーカスされたアイテムを選択するか、メニューオプションまたはプロンプトを確定するか、メインゲームアクションを実行します。              キャンセル/戻る      Back      Back B      B      現在の操作を取り消すか、直前の画面に戻ります。確認ダイアログ (\"Are you sure you want to quit?\") を表示するには、このアクションをインターセプトします。              上下左右      D-Pad      D-Pad左側のジョイスティック      D-Pad左側のジョイスティック      入力フォーカスを該当する方向に移動します。 Amazon Fireゲームコントローラやその他のゲームコントローラでは、左側のジョイスティックがD-Padと同じ動作をします。      &lt;/table&gt;## メディアの再生次の表では、メディアの再生に関する推奨動作を説明します。次の点に注意してください。* メディアを再生しないアプリや、アナログスティックまたはショルダーボタン (L1/R1) を使用するアプリの場合には、それらのボタンのイベントをキャプチャしないでください。他の機能にキャプチャすると、システムがバックグラウンドで再生しているメディアをコントロールできなくなる可能性があります。* Unityなどのフレームワークはシステム経由で主要なイベントを渡す機能がサポートされていないため、これらのフレームワークを使用しているアプリの場合、この推奨を無視できます。* アプリやゲームでこれらのボタンを他の目的のために使用する場合、GameCircleオーバーレイ (GameCircleボタン) から、またはFire TVランチャーで、システムメディアコントロールにアクセスできます。            アクション      Amazon Fire TV Remoteのボタン      Amazon Fire TVゲームコントローラのボタン      Amazon Fireゲームコントローラ (第 1 世代) のボタン      その他のゲームコントローラのボタン      動作                  再生/一時停止      Play/Pause      A左側/右側のジョイスティックの押し下げ      Play/Pause      A      メディアの再生と一時停止を切り替えます。              早戻し      RewindLeft (D-Pad)左側のショルダー (L1)      左側のショルダー (L1)      RewindLeft (D-Pad)左側のショルダー (L1)      Left (D-Pad) 左側のショルダー (L1)      再生中のメディアコンテキストが早戻しされます。実際の動作はそれぞれのメディアによって異なります。ビデオなら再生位置の調整に、音楽なら直前のトラックに戻るために、スライドショーなら直前の写真に移動するために、このボタンを使用できます。              早送り      FFRight (D-Pad)右側のショルダー (R1)      右側のショルダー (R1)      FFRight (D-Pad)右側のショルダー (R1)      Right (D-Pad)右側のショルダー (R1)      再生中のメディアコンテキストが早送りされます。正確な動作はそれぞれのメディアによって異なります。ビデオなら再生位置の調整に、音楽なら次のトラックに進むために、スライドショーなら次の写真に移動するために、このボタンを使用できます。      &lt;/table&gt;## 音量制御Amazon Fire TVでは、オーディオをAmazon Fire TVゲームコントローラのヘッドホンジャックにストリーミングできます。オーディオ再生の音量制御は、左側/右側のトリガーボタン (L2/R2) を使用して行うことができます。音量制御はシステム機能であり、アプリの他のボタンにマップできません。次の点に注意してください。* これらのボタンを使用しないアプリまたはゲームの場合、それらの入力イベントをキャプチャしないでください。他の機能にキャプチャすると、ユーザーは音量をコントロールできなくなる可能性があります。* アプリやゲームでこれらのボタンを他の目的のために使用する場合、GameCircleオーバーレイから、またはFire TVランチャーで、システム音量制御にアクセスできます。            アクション      Amazon Fire TVゲームコントローラのボタン                  音量 +      左側のトリガー (L2)               音量 -      右側のトリガー (R2)       ## ゲームプレイゲームプレイのユーザーインターフェースはゲームによって大きく違いますが、基本的な推奨事項は次の表の通りです。            アクション      Amazon Fire TV Remoteのボタン      Amazon Fire TVゲームコントローラのボタン      その他のゲームコントローラのボタン                  プライマリゲームプレイアクション      D-Padの [Center]      A      A              セカンダリゲームプレイアクション      推奨なし      B      B      [understanding-custom-skills]: understanding-custom-skills.html[uCustom_steps]: steps-to-build-a-custom-skill.html[using-the-alexa-skills-kit-samples]: using-the-alexa-skills-kit-samples.html[lambda_samples]: deploying-a-sample-skill-to-aws-lambda.html[samples]: deploying-a-sample-skill-as-a-web-service.html[definingslu]: defining-the-voice-interface.html[launch_ref]: supported-phrases-to-begin-a-conversation.html[choosing-the-invocation-name-for-an-alexa-skill]: choosing-the-invocation-name-for-an-alexa-skill.html[voice_handbook]: alexa-skills-kit-voice-design-handbook.html[voice_bestpractices]: alexa-skills-kit-voice-design-best-practices.html[registering]: registering-and-managing-alexa-skills-in-the-developer-portal.html[devlambda]: developing-an-alexa-skill-as-a-lambda-function.html[hosting-as-web-service]: developing-an-alexa-skill-as-a-web-service.html[hosting-as-web-service#timestamp]: developing-an-alexa-skill-as-a-web-service.html#timestamp[developing-skills-in-multiple-languages]: developing-skills-in-multiple-languages.html[developing-skills-in-multiple-languages#distribution]: developing-skills-in-multiple-languages.html#distribution[handling_req]: handling-requests-sent-by-alexa.html[handling_req#input-errors]: handling-requests-sent-by-alexa.html#input-errors[intents]: implementing-the-built-in-intents.html[intents#extending]: implementing-the-built-in-intents.html#extending[understanding-the-structure-of-the-built-in-intent-library]: understanding-the-structure-of-the-built-in-intent-library.html[account]: linking-an-alexa-user-with-a-user-in-your-system.html[cards]: providing-home-cards-for-the-amazon-alexa-app.html[best-practices-for-skill-card-design]: best-practices-for-skill-card-design.html[testing]: testing-an-alexa-skill.html[deploy_eb]: deploying-a-web-service-for-an-alexa-skill-to-aws-elastic-beanstalk.html[submitting]: publishing-an-alexa-skill.html[sub_checklist]: alexa-skills-kit-submission-checklist.html[sub_policy]: alexa-skills-kit-policy-testing.html[sub_security]: ask-alexa-skills-kit-security-testing.html[alexa-skills-kit-functional-testing]: alexa-skills-kit-functional-testing.html[sub_vui]: ask-voice-interface-and-user-experience-testing.html[service_ref]: alexa-skills-kit-interface-reference.html[service_ref#response-format]: alexa-skills-kit-interface-reference.html#response-format[service_ref#response-object]: alexa-skills-kit-interface-reference.html#response-object[service_ref#request-format]: alexa-skills-kit-interface-reference.html#request-format[custom-standard-request-type-reference]: custom-standard-request-type-reference.html[custom-standard-request-type-reference#launchrequest]: custom-standard-request-type-reference.html#launchrequest[custom-standard-request-type-reference#intentrequest]: custom-standard-request-type-reference.html#intentrequest[custom-standard-request-type-reference#sessionendedrequest]: custom-standard-request-type-reference.html#sessionendedrequest[custom-audioplayer-interface-reference]: custom-audioplayer-interface-reference.html[custom-audioplayer-interface-reference#intents]: custom-audioplayer-interface-reference.html#intents[custom-audioplayer-interface-reference#config]: custom-audioplayer-interface-reference.html#config[custom-audioplayer-interface-reference#directives]: custom-audioplayer-interface-reference.html#directives[custom-audioplayer-interface-reference#requests]: custom-audioplayer-interface-reference.html#requests[custom-audioplayer-interface-reference#play]: custom-audioplayer-interface-reference.html#play[custom-playback-controller-interface-reference]: custom-playback-controller-interface-reference.html[custom-playback-controller-interface-reference#requests]: custom-playback-controller-interface-reference.html#requests[intent_ref]: alexa-skills-kit-interaction-model-reference.html[built-in-intent-library]: built-in-intent-library.html[slot-type-reference]: slot-type-reference.html[standard-intents]: standard-intents.html[migrate_slottypes]: migrating-to-the-improved-built-in-and-custom-slot-types.html[migrate_slottypes#literal]: migrating-to-the-improved-built-in-and-custom-slot-types.html#literal[javadocs]: https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/javadocs/alexa-skills-kit-java-library-reference[ssml_ref]: speech-synthesis-markup-language-ssml-reference.html[ssml_ref#say-as]: speech-synthesis-markup-language-ssml-reference.html#say-as[speechcon-reference]: speechcon-reference.html[uk-migration-faq]: uk-migration-faq.html[gs_landing]: ask-getting-started-guide.html[gs_skilltypes]: ask-understanding-the-different-types-of-skills.html[gs_interaction]: ask-understanding-how-users-interact-with-skills.html[gs_requirements]: ask-requirements-to-build-a-skill.html[glossary]: ask-alexa-skills-kit-glossary.html[submitting]: publishing-an-alexa-skill.html[service_ref]: alexa-skills-kit-interface-reference.html[content_understanding]: understanding-the-flash-briefing-skill-api.html[steps-to-create-a-flash-briefing-skill]: steps-to-create-a-flash-briefing-skill.html[tips-for-creating-a-great-flash-briefing-skill]: tips-for-creating-a-great-flash-briefing-skill.html[flash-briefing-skill-api-feed-reference]: flash-briefing-skill-api-feed-reference.html[flash-briefing-skill-certification-checklist]: flash-briefing-skill-certification-checklist.html[app-testing-service-understanding]: app-testing-service-understanding.html[app-testing-service-troubleshooting]: app-testing-service-troubleshooting.html[appstore-presubmission-checklist]: appstore-presubmission-checklist.html[appstore-understanding-submission]: appstore-understanding-submission.html[appstore-migrate-existing-app]: appstore-migrate-existing-app.html[appstore-avoid-compile-errors]: appstore-avoid-compile-errors.html[taking-screenshots]: taking-screenshots.html[taking-screenshots#firetv]: taking-screenshots.html#firetv[taking-screenshots#firetablets]: taking-screenshots.html#firetablets[appstore-avoid-compile-errors]: appstore-avoid-compile-errors.html[appstore-ssl-validation]: appstore-ssl-validation.html[appstore-content-policy]: appstore-content-policy.html[appstore-content-policy#faq]: appstore-content-policy.html#faq[appstore-coppa-policy]: appstore-coppa-policy.html[appstore-coppa-policy#faq]: appstore-coppa-policy.html#faq[asset-guidelines-for-app-submission]: asset-guidelines-for-app-submission.html[asset-guidelines-for-app-submission#firetvassets]: asset-guidelines-for-app-submission.html#firetvassets[appstore-test-criteria]: appstore-test-criteria.html[getting-started-with-device-targeting]: getting-started-with-device-targeting.html[getting-started-with-device-targeting#build_apks]: getting-started-with-device-targeting.html#build_apks[targeting-amazon-devices-with-your-android-manifest]: targeting-amazon-devices-with-your-android-manifest.html[supported-filters-on-the-amazon-appstore]: supported-filters-on-the-amazon-appstore.html[troubleshooting-android-manifest-and-device-targeting]: troubleshooting-android-manifest-and-device-targeting.html[manifest-filter]: https://developer.amazon.com/public/binaries/content/assets/xls/manifest-filter-reference-for-fire-devices---2016-feb-26.xlsx[testing-your-app]: testing-your-app.html[getting-started-with-live-app-testing]: getting-started-with-live-app-testing.html[app-testing-service-understanding]: app-testing-service-understanding.html[submitting-your-app]: submitting-your-app.html[submitting-apps-to-amazon-appstore]: submitting-apps-to-amazon-appstore.html[submitting-apps-to-amazon-appstore#APK]: submitting-apps-to-amazon-appstore.html#APK[submitting-apps-to-amazon-appstore#SecurityProfile]: submitting-apps-to-amazon-appstore.html#SecurityProfile[viewing-app-submission-status]: viewing-app-submission-status.html[appstore-user-permissions]: appstore-user-permissions.html[update-published-app]: update-published-app.html[appstore-unlist-app]: appstore-unlist-app.html[faq]: faq.html[faq#policy_intellectual_property]: faq.html#policy_intellectual_property[faq#policy_guidelines]: faq.html#policy_guidelines[faq#account_permissions]: faq.html#account_permissions[faq#web_apps]: faq.html#web_apps[faq#pc_mac_software]: faq.html#pc_mac_software[faq#international_distribution]: faq.html#international_distribution[payments-understanding]: payments-understanding.html[payments-tax]: payments-tax.html[payments-reports]: payments-reports.html[cross-platform-plugins-landing-page]: cross-platform-plugins-landing-page.html[cross-platform-unity-landing-page]: cross-platform-unity-landing-page.html[adding-a-plugin-to-your-unity-project]: adding-a-plugin-to-your-unity-project.html[unity-controller-plugin]: unity-controller-plugin.html[unity-player-plugin]: unity-player-plugin.html[gamecircle-plugin-for-unity]: gamecircle-plugin-for-unity.html[implementing-iap-with-plugin-for-cross-platform]: implementing-iap-with-plugin-for-cross-platform.html[iap-plugin-methods-and-events-for-cross-platform]: iap-plugin-methods-and-events-for-cross-platform.html[using-the-iap-plugin-for-unity]: using-the-iap-plugin-for-unity.html[amazon-mobile-ads-plugin-overview]: amazon-mobile-ads-plugin-overview.html[implementing-mobile-ads-with-plugin-for-cross-platform]: implementing-mobile-ads-with-plugin-for-cross-platform.html[mobile-ads-plugin-methods-and-events-for-unity]: mobile-ads-plugin-methods-and-events-for-unity.html[cross-platform-adobe-air-landing-page]: cross-platform-adobe-air-landing-page.html[adding-a-plugin-to-your-adobe-air-project]: adding-a-plugin-to-your-adobe-air-project.html[gamecircle-plugin-for-adobe-air]: gamecircle-plugin-for-adobe-air.html[implementing-iap-with-plugin-for-cross-platform]: implementing-iap-with-plugin-for-cross-platform.html[iap-plugin-methods-and-events-for-cross-platform]: iap-plugin-methods-and-events-for-cross-platform.html[using-the-iap-plugin-for-adobe-air]: using-the-iap-plugin-for-adobe-air.html[amazon-mobile-ads-plugin-overview]: amazon-mobile-ads-plugin-overview.html[implementing-mobile-ads-with-plugin-for-cross-platform]: implementing-mobile-ads-with-plugin-for-cross-platform.html[mobile-ads-plugin-methods-and-events-for-adobe-air]: mobile-ads-plugin-methods-and-events-for-adobe-air.html[cross-platform-cordova-landing-page]: cross-platform-cordova-landing-page.html[adding-a-plugin-to-your-cordova-project]: adding-a-plugin-to-your-cordova-project.html[implementing-iap-with-plugin-for-cross-platform]: implementing-iap-with-plugin-for-cross-platform.html[iap-plugin-methods-and-events-for-cross-platform]: iap-plugin-methods-and-events-for-cross-platform.html[using-the-iap-plugin-for-cordova]: using-the-iap-plugin-for-cordova.html[amazon-mobile-ads-plugin-overview]: amazon-mobile-ads-plugin-overview.html[implementing-mobile-ads-with-plugin-for-cross-platform]: implementing-mobile-ads-with-plugin-for-cross-platform.html[mobile-ads-plugin-methods-and-events-for-cordova]: mobile-ads-plugin-methods-and-events-for-cordova.html[building-and-testing-your-hybrid-app]: building-and-testing-your-hybrid-app.html[cross-platform-xamarin-landing-page]: cross-platform-xamarin-landing-page.html[adding-a-plugin-to-your-xamarin-project]: adding-a-plugin-to-your-xamarin-project.html[implementing-iap-with-plugin-for-cross-platform]: implementing-iap-with-plugin-for-cross-platform.html[iap-plugin-methods-and-events-for-cross-platform]: iap-plugin-methods-and-events-for-cross-platform.html[using-the-iap-plugin-for-xamarin]: using-the-iap-plugin-for-xamarin.html[amazon-mobile-ads-plugin-overview]: amazon-mobile-ads-plugin-overview.html[implementing-mobile-ads-with-plugin-for-cross-platform]: implementing-mobile-ads-with-plugin-for-cross-platform.html[mobile-ads-plugin-methods-and-events-for-xamarin]: mobile-ads-plugin-methods-and-events-for-xamarin.html[dash-replenishment-service]: dash-replenishment-service.html[dash-customer-experience-guidelines]: dash-customer-experience-guidelines.html[dash-create-a-security-profile]: dash-create-a-security-profile.html[dash-create-an-sns-topic]: dash-create-an-sns-topic.html[dash-device-management-and-settings]: dash-device-management-and-settings.html[dash-teaser-page]: dash-teaser-page.html[dash-glossary]: dash-glossary.html[dash-lwa-web-api]: dash-lwa-web-api.html[dash-lwa-mobile-sdk]: dash-lwa-mobile-sdk.html[dash-lwa-mobile-sdk-android]: dash-lwa-mobile-sdk-android.html[dash-lwa-mobile-sdk-ios]: dash-lwa-mobile-sdk-ios.html[dash-notification-messages]: dash-notification-messages.html[dash-notification-messages#device-deregistered]: dash-notification-messages.html#device-deregistered[dash-amazon-order-resolution-flow]: dash-amazon-order-resolution-flow.html[dash-test-device-purchases]: dash-test-device-purchases.html[dash-replenish-endpoint]: dash-replenish-endpoint.html[dash-slotstatus-endpoint]: dash-slotstatus-endpoint.html[dash-devicestatus-endpoint]: dash-devicestatus-endpoint.html[dash-deregistration-endpoint]: dash-deregistration-endpoint.html[dash-getsubscriptioninfo-endpoint]: dash-getsubscriptioninfo-endpoint.html[adm-understanding]: adm-understanding.html[adm-obtaining-credentials]: adm-obtaining-credentials.html[adm-setting-up]: adm-setting-up[adm-integrating-your-app]: adm-integrating-your-app.html[adm-requesting-access-token]: adm-requesting-access-token.html[adm-sending-message]: adm-sending-message.html[adm-faq]: adm-faq.html[obtaining-an-access-token-for-the-developer-publishing-api]: obtaining-an-access-token-for-the-developer-publishing-api.html[developer-survey]: developer-survey.html[creating-and-submitting-a-new-app-using-the-developer-publishing]: creating-and-submitting-a-new-app-using-the-developer-publishing-api.html[updating-an-existing-app-using-the-developer-publishing-api]: updating-an-existing-app-using-the-developer-publishing-api.html[api-reference-table-of-contents]: api-reference-table-of-contents.html[api-reference-error-codes]: api-reference-error-codes.html[api-reference-upload-apk]: api-reference-upload-apk.html[api-reference-app]: api-reference-app.html[api-reference-apps]: api-reference-apps.html[api-reference-created-asset]: api-reference-created-asset.html[api-reference-new-apk]: api-reference-new-apk.html[api-reference-new-submission]: api-reference-new-submission.html[api-reference-new-large-icon]: api-reference-new-large-icon.html[api-reference-new-release]: api-reference-new-release.html[api-reference-new-screenshot]: api-reference-new-screenshot.html[api-reference-new-small-icon]: api-reference-new-small-icon.html[api-reference-upload-large-icon]: api-reference-upload-large-icon.html[api-reference-release]: api-reference-release.html[api-reference-upload-screenshot]: api-reference-upload-screenshot.html[api-reference-upload-small-icon]: api-reference-upload-small-icon.html[api-reference-error-codes]: api-reference-error-codes.html[fire-app-builder-overview]: fire-app-builder-overview.html[fire-app-builder-overview#requirements]: fire-app-builder-overview.html#requirements[fire-app-builder-release-notes]: fire-app-builder-release-notes.html[fire-app-builder-release-notes#known_issues]: fire-app-builder-release-notes.html#known_issues[fire-app-builder-end-to-end-process]: fire-app-builder-end-to-end-process.html[fire-app-builder-questions-and-answers]: fire-app-builder-questions-and-answers.html[fire-app-builder-questions-and-answers#translator]: fire-app-builder-questions-and-answers.html#translator[fire-app-builder-download-and-build]: fire-app-builder-download-and-build.html[fire-app-builder-download-and-build#customize]: fire-app-builder-download-and-build.html#customize[fire-app-builder-connecting-adb-to-fire-tv]: fire-app-builder-connecting-adb-to-fire-tv.html[fire-app-builder-app-tour]: fire-app-builder-app-tour.html[fire-app-builder-load-media-feed]: fire-app-builder-load-media-feed.html[fire-app-builder-set-up-recipes-overview]: fire-app-builder-set-up-recipes-overview.html[fire-app-builder-set-up-recipes-categories]: fire-app-builder-set-up-recipes-categories.html[fire-app-builder-set-up-recipes-categories#matchlistparameter]: fire-app-builder-set-up-recipes-categories.html#matchlistparameter[fire-app-builder-set-up-recipes-content]: fire-app-builder-set-up-recipes-content.html[fire-app-builder-set-up-recipes-content#matchlistparameter]: fire-app-builder-set-up-recipes-content.html#matchlistparameter[fire-app-builder-set-up-recipes-content#tags]: fire-app-builder-set-up-recipes-content.html#tags[fire-app-builder-configure-navigator]: fire-app-builder-configure-navigator.html[fire-app-builder-configure-navigator-token-feeds]: fire-app-builder-configure-navigator-token-feeds.html[fire-app-builder-configure-navigator-open-feeds]: fire-app-builder-configure-navigator-open-feeds.html[fire-app-builder-configure-navigator-open-feeds#hardcodingcategories]: fire-app-builder-configure-navigator-open-feeds.html#hardcodingcategories[fire-app-builder-customize-look-and-feel]: fire-app-builder-customize-look-and-feel.html[fire-app-builder-customize-look-and-feel#recommendations]: fire-app-builder-customize-look-and-feel.html#recommendations[fire-app-builder-interfaces-and-components]: fire-app-builder-interfaces-and-components.html[fire-app-builder-interfaces-and-components#componentgroups]: fire-app-builder-interfaces-and-components.html#componentgroups[fire-app-builder-load-a-component]: fire-app-builder-load-a-component.html[fire-app-builder-load-a-component#removeacomponent]: fire-app-builder-load-a-component.html#removeacomponent[fire-app-builder-create-a-new-component]: fire-app-builder-create-a-new-component.html[fire-app-builder-freewheel-ads-component]: fire-app-builder-freewheel-ads-component.html[fire-app-builder-vast-ads-component]: fire-app-builder-vast-ads-component.html[fire-app-builder-crashlytics-component]: fire-app-builder-crashlytics-component.html[fire-app-builder-flurry-analytics-component]: fire-app-builder-flurry-analytics-component.html[fire-app-builder-google-analytics-component]: fire-app-builder-google-analytics-component.html[fire-app-builder-omniture-analytics-component]: fire-app-builder-omniture-analytics-component.html[fire-app-builder-adobe-pass-auth-component]: fire-app-builder-adobe-pass-auth-component.html[fire-app-builder-facebook-auth-component]: fire-app-builder-facebook-auth-component.html[fire-app-builder-login-with-amazon-component]: fire-app-builder-login-with-amazon-component.html[fire-app-builder-amazon-in-app-purchase-component]: fire-app-builder-amazon-in-app-purchase-component.html[fire-app-builder-amazon-media-player-component]: fire-app-builder-amazon-media-player-component.html[fire-app-builder-pulling-updates-from-github]: fire-app-builder-pulling-updates-from-github.html[fire-app-builder-live-stream-configuration]: fire-app-builder-live-stream-configuration.html[fire-app-builder-catalog-integration]: fire-app-builder-catalog-integration.html[fire-app-builder-use-an-android-tv-emulator]: fire-app-builder-use-an-android-tv-emulator.html[fire-app-builder-querying-json]: fire-app-builder-querying-json.html[fire-app-builder-querying-xml]: fire-app-builder-querying-xml.html[fire-app-builder-troubleshooting]: fire-app-builder-troubleshooting.html[fire-os-overview]: fire-os-overview.html[specifying-installation-location]: specifying-installation-location.html[fire-os-advertising-id]: fire-os-advertising-id.html[07-resources-for-international-locales]: 07-resources-for-international-locales.html[understanding-assistive-technologies-for-fireos]: understanding-assistive-technologies-for-fireos.html[implementing-accessibility-in-fireos]: implementing-accessibility-in-fireos.html[getting-started-developing-apps-and-games-for-amazon-fire-tv]: getting-started-developing-apps-and-games-for-amazon-fire-tv.html[device-and-platform-specifications]: device-and-platform-specifications.html[fire-tv-development-framework-comparison]: fire-tv-development-framework-comparison.html[amazon-fire-tv-differences-from-android-tv-development]: amazon-fire-tv-differences-from-android-tv-development.html[design-and-user-experience-guidelines]: design-and-user-experience-guidelines.html[fire-os-overview]: fire-os-overview.html[whats-new-in-the-fire-tv-sdk]: whats-new-in-the-fire-tv-sdk.html[amazon-fire-tv-sdk-frequently-asked-questions]: amazon-fire-tv-sdk-frequently-asked-questions.html[submitting-your-fire-tv-app-to-the-amazon-appstore]: submitting-your-fire-tv-app-to-the-amazon-appstore.html[setting-up-your-development-environment]: setting-up-your-development-environment.html[connecting-adb-to-fire-tv-device]: connecting-adb-to-fire-tv-device.html[connecting-adb-to-fire-tv-device#addadbpath]: connecting-adb-to-fire-tv-device.html#addadbpath[installing-and-running-your-app]: installing-and-running-your-app.html[supporting-controllers-on-amazon-fire-tv]: supporting-controllers-on-amazon-fire-tv.html[amazon-fire-tv-remote-input]: amazon-fire-tv-remote-input.html[amazon-fire-game-controller-input]: amazon-fire-game-controller-input.html[controller-input-with-unity]: controller-input-with-unity.html[identifying-controllers]: identifying-controllers.html[controller-behavior-guidelines]: controller-behavior-guidelines.html[controller-image-assets]: controller-image-assets.html[customizing-mouse-pointer]: customizing-mouse-pointer.html[display-and-layout]: display-and-layout.html[user-agent-strings]: user-agent-strings.html[managing-audio-focus]: managing-audio-focus.html[managing-audio-focus#audiofocusvoice]: managing-audio-focus.html#audiofocusvoice[fire-tv-media-players]: fire-tv-media-players.html[fire-tv-media-players#exoplayer]: fire-tv-media-players.html#exoplayer[amazon-fire-tv-dolby-integration-guidelines]: amazon-fire-tv-dolby-integration-guidelines.html[identifying-amazon-fire-tv-devices]: identifying-amazon-fire-tv-devices.html[fire-tv-handling-hdmi-events]: fire-tv-handling-hdmi-events.html[fire-tv-4k-ultra-hd]: fire-tv-4k-ultra-hd.html[user-interface]: user-interface.html[dial-integration]: dial-integration.html[implementing-search-fire-tv]: implementing-search-fire-tv.html[implementing-search-fire-tv#voicesearch]: implementing-search-fire-tv.html#voicesearch[notifications-for-amazon-fire-tv]: notifications-for-amazon-fire-tv.html[specifying-installation-location]: specifying-installation-location.html[fire-os-advertising-id]: fire-os-advertising-id.html[07-resources-for-international-locales]: 07-resources-for-international-locales.html[fire-tv-system-xray-developer-tools]: fire-tv-system-xray-developer-tools.html[fire-tv-system-xray]: fire-tv-system-xray.html[fire-tv-system-xray-customized-metrics]: fire-tv-system-xray-customized-metrics.html[understanding-assistive-technologies-for-fireos]: understanding-assistive-technologies-for-fireos.html[implementing-accessibility-in-fireos]: implementing-accessibility-in-fireos.html[implementing-future-voiceview-accessibility-features]: implementing-future-voiceview-accessibility-features.html[fire-tv-recommendations-overview]: fire-tv-recommendations-overview.html[fire-tv-recommendations-testing]: fire-tv-recommendations-testing.html[fire-tv-recommendations-send-recommendations]: fire-tv-recommendations-send-recommendations.html[fire-tv-recommendations-send-recommendations#amazon-enhancements]: fire-tv-recommendations-send-recommendations.html#amazon-enhancements[fire-tv-recommendations-best-practices]: fire-tv-recommendations-best-practices.html[getting-started-with-web-apps-for-fire-tv]: getting-started-with-web-apps-for-fire-tv.html[getting-started-with-web-apps-for-fire-tv#resolution_scaling]: getting-started-with-web-apps-for-fire-tv.html#resolution_scaling[getting-started-with-web-apps-for-fire-tv#focus_changes]: getting-started-with-web-apps-for-fire-tv.html#focus_changes[supporting-controllers-in-web-apps]: supporting-controllers-in-web-apps.html[supporting-controllers-in-web-apps#using_input]: supporting-controllers-in-web-apps.html#using_input[the-web-app-starter-kit-for-fire-tv]: the-web-app-starter-kit-for-fire-tv.html[customizing-your-fire-tv-web-app]: customizing-your-fire-tv-web-app.html[migrating-your-web-app-to-fire-tv]: migrating-your-web-app-to-fire-tv.html[fire-tv-web-app-faq]: fire-tv-web-app-faq.html[fire-tv-web-app-faq#unchanging_duration]: fire-tv-web-app-faq.html#unchanging_duration[fire-tv-web-app-faq#close_webapp]: fire-tv-web-app-faq.html#close_webapp[fire-tv-web-app-faq#customize_back]: fire-tv-web-app-faq.html#customize_back[integrating-your-catalog-with-fire-tv]: integrating-your-catalog-with-fire-tv.html[understanding-fire-tv-catalog-integration]: understanding-fire-tv-catalog-integration.html[understanding-fire-tv-catalog-integration#matching]: understanding-fire-tv-catalog-integration.html#matching[getting-started-catalog-integration]: getting-started-catalog-integration.html[getting-started-catalog-integration#beforeyoubegin]: getting-started-catalog-integration.html#beforeyoubegin[about-the-cdf]: about-the-cdf.html[about-the-cdf#validating]: about-the-cdf.html#validating[setting-up-your-aws-account-for-fire-tv-catalog-integration]: setting-up-your-aws-account-for-fire-tv-catalog-integration.html[fire-tv-catalog-integration-faqs]: fire-tv-catalog-integration-faqs.html[uploading-your-catalog]: uploading-your-catalog.html[receiving-and-understanding-the-catalog-ingestion-report]: receiving-and-understanding-the-catalog-ingestion-report.html[launcher-integration]: launcher-integration.html[test-cases-for-verifying-deep-links-from-your-fire-tv-catalog]: test-cases-for-verifying-deep-links-from-your-fire-tv-catalog.html[testing-launcher-integration-with-adb]: testing-launcher-integration-with-adb.html[testing-launcher-integration-with-the-test-app]: testing-launcher-integration-with-the-test-app.html[catalog-data-format-ingestion-report-messages]: catalog-data-format-ingestion-report-messages.html[migrating-a-cdf-file-to-the-latest-version]: migrating-a-cdf-file-to-the-latest-version.html[catalog-data-format-schema-reference]: catalog-data-format-schema-reference.html[catalog-data-format-schema-reference#AdultProduct]: catalog-data-format-schema-reference.html#AdultProduct[catalog-data-format-schema-reference#FreeOffer]: catalog-data-format-schema-reference.html#FreeOffer[catalog-data-format-schema-reference#Partner]: catalog-data-format-schema-reference.html#Partner[catalog-data-format-schema-reference#ShortDescription]: catalog-data-format-schema-reference.html#ShortDescription[catalog-data-format-schema-reference#AudioLanguage]: catalog-data-format-schema-reference.html#AudioLanguage[catalog-data-format-schema-reference#Genre]: catalog-data-format-schema-reference.html#Genre[catalog-data-format-schema-reference#Price]: catalog-data-format-schema-reference.html#Price[catalog-data-format-schema-reference#ShowID]: catalog-data-format-schema-reference.html#ShowID[catalog-data-format-schema-reference#CastMember]: catalog-data-format-schema-reference.html#CastMember[catalog-data-format-schema-reference#Genres]: catalog-data-format-schema-reference.html#Genres[catalog-data-format-schema-reference#PurchaseOffer]: catalog-data-format-schema-reference.html#PurchaseOffer[catalog-data-format-schema-reference#ShowTitle]: catalog-data-format-schema-reference.html#ShowTitle[catalog-data-format-schema-reference#Catalog]: catalog-data-format-schema-reference.html#Catalog[catalog-data-format-schema-reference#ID]: catalog-data-format-schema-reference.html#ID[catalog-data-format-schema-reference#Quality]: catalog-data-format-schema-reference.html#Quality[catalog-data-format-schema-reference#Source]: catalog-data-format-schema-reference.html#Source[catalog-data-format-schema-reference#Certification]: catalog-data-format-schema-reference.html#Certification[catalog-data-format-schema-reference#Regions]: catalog-data-format-schema-reference.html#Regions[catalog-data-format-schema-reference#Rank]: catalog-data-format-schema-reference.html#Rank[catalog-data-format-schema-reference#ImageUrl]: catalog-data-format-schema-reference.html#ImageUrl[catalog-data-format-schema-reference#Studio]: catalog-data-format-schema-reference.html#Studio[catalog-data-format-schema-reference#Color]: catalog-data-format-schema-reference.html#Color[catalog-data-format-schema-reference#Job]: catalog-data-format-schema-reference.html#Job[catalog-data-format-schema-reference#Studios]: catalog-data-format-schema-reference.html#Studios[catalog-data-format-schema-reference#ContentRating]: catalog-data-format-schema-reference.html#ContentRating[catalog-data-format-schema-reference#JP_Require18PlusAgeConfirmation]: catalog-data-format-schema-reference.html#JP_Require18PlusAgeConfirmation[catalog-data-format-schema-reference#RelatesToExternalID]: catalog-data-format-schema-reference.html#RelatesToExternalID[catalog-data-format-schema-reference#SubscriptionOffer]: catalog-data-format-schema-reference.html#SubscriptionOffer[catalog-data-format-schema-reference#ContentRatings]: catalog-data-format-schema-reference.html#ContentRatings[catalog-data-format-schema-reference#Language]: catalog-data-format-schema-reference.html#Language[catalog-data-format-schema-reference#RelatesToID]: catalog-data-format-schema-reference.html#RelatesToID[catalog-data-format-schema-reference#Subtitle]: catalog-data-format-schema-reference.html#Subtitle[catalog-data-format-schema-reference#Copyright]: catalog-data-format-schema-reference.html#Copyright[catalog-data-format-schema-reference#LaunchDetails]: catalog-data-format-schema-reference.html#LaunchDetails[catalog-data-format-schema-reference#ReleaseCountry]: catalog-data-format-schema-reference.html#ReleaseCountry[catalog-data-format-schema-reference#LaunchId]: catalog-data-format-schema-reference.html#LaunchId[catalog-data-format-schema-reference#Synopsis]: catalog-data-format-schema-reference.html#Synopsis[catalog-data-format-schema-reference#Count]: catalog-data-format-schema-reference.html#Count[catalog-data-format-schema-reference#ReleaseDate]: catalog-data-format-schema-reference.html#ReleaseDate[catalog-data-format-schema-reference#System]: catalog-data-format-schema-reference.html#System[catalog-data-format-schema-reference#Country]: catalog-data-format-schema-reference.html#Country[catalog-data-format-schema-reference#MaxValue]: catalog-data-format-schema-reference.html#MaxValue[catalog-data-format-schema-reference#ReleaseInfo]: catalog-data-format-schema-reference.html#ReleaseInfo[catalog-data-format-schema-reference#Title]: catalog-data-format-schema-reference.html#Title[catalog-data-format-schema-reference#Credits]: catalog-data-format-schema-reference.html#Credits[catalog-data-format-schema-reference#MiniSeries]: catalog-data-format-schema-reference.html#MiniSeries[catalog-data-format-schema-reference#ReleaseYear]: catalog-data-format-schema-reference.html#ReleaseYear[catalog-data-format-schema-reference#TvEpisode]: catalog-data-format-schema-reference.html#TvEpisode[catalog-data-format-schema-reference#CrewMember]: catalog-data-format-schema-reference.html#CrewMember[catalog-data-format-schema-reference#MiniSeriesEpisode]: catalog-data-format-schema-reference.html#MiniSeriesEpisode[catalog-data-format-schema-reference#RentalOffer]: catalog-data-format-schema-reference.html#RentalOffer[catalog-data-format-schema-reference#TvSeason]: catalog-data-format-schema-reference.html#TvSeason[catalog-data-format-schema-reference#CustomerRating]: catalog-data-format-schema-reference.html#CustomerRating[catalog-data-format-schema-reference#MiniSeriesID]: catalog-data-format-schema-reference.html#MiniSeriesID[catalog-data-format-schema-reference#Role]: catalog-data-format-schema-reference.html#Role[catalog-data-format-schema-reference#TvShow]: catalog-data-format-schema-reference.html#TvShow[catalog-data-format-schema-reference#Duration]: catalog-data-format-schema-reference.html#Duration[catalog-data-format-schema-reference#MiniSeriesTitle]: catalog-data-format-schema-reference.html#MiniSeriesTitle[catalog-data-format-schema-reference#RuntimeMinutes]: catalog-data-format-schema-reference.html#RuntimeMinutes[catalog-data-format-schema-reference#TvSpecial]: catalog-data-format-schema-reference.html#TvSpecial[catalog-data-format-schema-reference#EpisodeInSeason]: catalog-data-format-schema-reference.html#EpisodeInSeason[catalog-data-format-schema-reference#Movie]: catalog-data-format-schema-reference.html#Movie[catalog-data-format-schema-reference#Score]: catalog-data-format-schema-reference.html#Score[catalog-data-format-schema-reference#EpisodeInSeries]: catalog-data-format-schema-reference.html#EpisodeInSeries[catalog-data-format-schema-reference#Name]: catalog-data-format-schema-reference.html#Name[catalog-data-format-schema-reference#SeasonID]: catalog-data-format-schema-reference.html#SeasonID[catalog-data-format-schema-reference#WindowEnd]: catalog-data-format-schema-reference.html#WindowEnd[catalog-data-format-schema-reference#ExternalID]: catalog-data-format-schema-reference.html#ExternalID[catalog-data-format-schema-reference#Offers]: catalog-data-format-schema-reference.html#Offers[catalog-data-format-schema-reference#SeasonInShow]: catalog-data-format-schema-reference.html#SeasonInShow[catalog-data-format-schema-reference#WindowStart]: catalog-data-format-schema-reference.html#WindowStart[catalog-data-format-schema-reference#Extra]: catalog-data-format-schema-reference.html#Extra[catalog-data-format-schema-reference#OriginalAirDate]: catalog-data-format-schema-reference.html#OriginalAirDate[catalog-data-format-schema-reference#SeasonTitle]: catalog-data-format-schema-reference.html#SeasonTitle[catalog-data-format-schema-reference#SeasonTitle]: catalog-data-format-schema-reference.html#SeasonTitle[catalog-data-format-schema-reference#Type]: catalog-data-format-schema-reference.html#Type[catalog-data-format-schema-reference#Works]: catalog-data-format-schema-reference.html#Works[catalog-data-format-schema-definition]: https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd[catalog-data-format-examples]: https://s3.amazonaws.com/com.amazon.aftb.cdf/cdf-examples.zip[getting-started-for-fire-tablets]: getting-started-for-fire-tablets.html[setting-up-your-development-environment-for-fire-tablets]: setting-up-your-development-environment-for-fire-tablets.html[04-creating-your-first-kindle-fire-app]: 04-creating-your-first-kindle-fire-app.html[tablets-faq]: tablets-faq.html[01-device-and-feature-specifications]: 01-device-and-feature-specifications.html[02-video-specifications]: 02-video-specifications.html[03-ux-specifications]: 03-ux-specifications.html[04-user-agent-strings]: 04-user-agent-strings.html[05-supported-android-intents]: 05-supported-android-intents.html[01--screen-layout-and-resolution]: 01--screen-layout-and-resolution.html[02-device-orientation]: 02-device-orientation.html[03--soft-key-bar]: 03--soft-key-bar.html[04--button-size-and-placement]: 04--button-size-and-placement.html[05-graphics-performance]: 05-graphics-performance.html[06-data-transfers-and-mobile-networks]: 06-data-transfers-and-mobile-networks.html[launcher-icon-guidelines]: launcher-icon-guidelines.html[05-setting-up-your-kindle-fire-tablet-for-testing]: 05-setting-up-your-kindle-fire-tablet-for-testing.html[06-testing-your-app-on-an-emulator-or-tablet]: 06-testing-your-app-on-an-emulator-or-tablet.html[testing-without-an-amazon-device]: testing-without-an-amazon-device.html[screenshots]: screenshots.html[understanding-hybrid-apps]: understanding-hybrid-apps.html[building-and-testing-your-hybrid-app]: building-and-testing-your-hybrid-app.html[awv-faq]: awv-faq.html[api-reference]: https://developer.amazon.com/public/solutions/platforms/webapps/javadocs/api-reference.html[blackberry-10-hardware-specifications]: blackberry-10-hardware-specifications.html[understandingFB]: understanding-the-flash-briefing-skill-api.html[stepsforFBskill]: steps-to-create-a-flash-briefing-skill.html[FBchecklist]: flash-briefing-skill-certification-checklist.html[tipsFB]: tips-for-creating-a-great-flash-briefing-skill.html[FBapiRef]: flash-briefing-skill-api-feed-reference.html[understanding-the-amazon-fling-service]: understanding-the-amazon-fling-service.html[download-the-fling-sdk]: https://developer.amazon.com/public/resources/development-tools/sdk[amazon-fling-frequently-asked-questions]: amazon-fling-frequently-asked-questions.html[setting-up-your-amazon-fling-development-environment-for-android]: setting-up-your-amazon-fling-development-environment-for-android.html[setting-up-your-amazon-fling-development-environment-for-ios]: setting-up-your-amazon-fling-development-environment-for-ios.html[integrating-amazon-fling-into-your-android-app]: integrating-amazon-fling-into-your-android-app.html[integrating-amazon-fling-into-your-ios-app]: integrating-amazon-fling-into-your-ios-app.html[integrating-amazon-fling-into-your-fire-tv-app]: integrating-amazon-fling-into-your-fire-tv-app.html[using-amazon-fling-with-android-mediarouter]: using-amazon-fling-with-android-mediarouter.html[working-with-built-in-receiver-on-fire-tv]: working-with-built-in-receiver-on-fire-tv.html[integrating-amazon-fling-with-cast]: integrating-amazon-fling-with-cast.html[integrating-amazon-fling-with-an-existing-android-cast-app]: integrating-amazon-fling-with-an-existing-android-cast-app.html[integrating-amazon-fling-with-an-existing-ios-cast-app]: integrating-amazon-fling-with-an-existing-ios-cast-app.html[designing-amazon-fling-ux]: designing-amazon-fling-ux.html[remote-install]: remote-install.html[android-remote-install]: android-remote-install.html[ios-remote-install]: ios-remote-install.html[unity-controller-plugin]: unity-controller-plugin.html[unity-player-plugin]: unity-player-plugin.html[fling-android-api-docs]: https://developer.amazon.com/public/binaries/content/assets/javadoc/whisperplay/javadocs/reference/packages.html[fling-ios-api-docs]: https://developer.amazon.com/public/binaries/content/assets/javadoc/whisperplay/objc-apidocs/index.html[how-does-gamecircle-work]: how-does-gamecircle-work.html[how-does-gamecircle-work#Whispersync]: how-does-gamecircle-work.html#Whispersync[whats-new-with-gamecircle]: whats-new-with-gamecircle.html[get-set-up-for-gamecircle]: get-set-up-for-gamecircle.html[get-set-up-for-gamecircle#CreateLeaderboards]: get-set-up-for-gamecircle.html#CreateLeaderboards[get-set-up-for-gamecircle#CreateAchievements]: get-set-up-for-gamecircle.html#CreateAchievements[get-set-up-for-gamecircle#Whispersync]: get-set-up-for-gamecircle.html#Whispersync[update-to-current-api]: update-to-current-api.html[api-version-info]: api-version-info.html[faq-gamecircle]: faq-gamecircle.html[faq-gamecircle#leaderboards]: faq-gamecircle.html#leaderboards[integrate-gamecircle-apis-into-your-app]: integrate-gamecircle-apis-into-your-app.html[create-a-gamecircle-configuration]: create-a-gamecircle-configuration.html[create-a-gamecircle-configuration#AddGameDetails]: create-a-gamecircle-configuration.html#AddGameDetails[create-a-gamecircle-configuration#AddLeaderboards]: create-a-gamecircle-configuration.html#AddLeaderboards[create-a-gamecircle-configuration#AddAchievements]: create-a-gamecircle-configuration.html#AddAchievements[create-a-gamecircle-configuration#GenerateAPIKeys]: create-a-gamecircle-configuration.html#GenerateAPIKeys[create-a-gamecircle-configuration#AddTestAccounts]: create-a-gamecircle-configuration.html#AddTestAccounts[manage-your-gamecircle-configuration]: manage-your-gamecircle-configuration.html[sign-in-to-the-developer-console]: sign-in-to-the-developer-console.html[initialize-android]: initialize-android.html[friends-api]: friends-api.html[whispersync]: whispersync.html[achievements]: achievements.html[leaderboards]: leaderboards.html[testing-features]: testing-features.html[publish-your-game]: publish-your-game.html[cplusplus-api]: cplusplus-api.html[unity-setup]: unity-setup.html[corona-integration]: corona-integration.html[cocos2dx-integration]: cocos2dx-integration.html[air-ane-2x-overview]: air-ane-2x-overview.html[air-ane-2x-setup]: air-ane-2x-setup.html[air-ane-2x-signin]: air-ane-2x-signin.html[air-ane-2x-leaderboards]: air-ane-2x-leaderboards.html[air-ane-2x-leaderboards#ChangeToastPopupLocation]: air-ane-2x-leaderboards.html#ChangeToastPopupLocation[air-ane-2x-achievements]: air-ane-2x-achievements.html[air-ane-2x-whispersync]: air-ane-2x-whispersync.html[air-ane-2x-build-test]: air-ane-2x-build-test.html[air-ane-2x-build-test#AddAPIKey]: air-ane-2x-build-test.html#AddAPIKey[air-ane-2x-build-test#UpdateDescriptor]: air-ane-2x-build-test.html#UpdateDescriptor[air-ane-2x-update]: air-ane-2x-update.html[sublevel1]: sublevel1.html[sublevel2]: sublevel2.html[sublevel3]: sublevel3.html[glossary]: glossary.html[glossary#abstruse]: glossary.html#abstruse[glossary#adumbrate]: glossary.html#adumbrate[glossary#arboreal]: glossary.html#arboreal[glossary#Ebullient]: glossary.html#Ebullient[glossary#macabre]: glossary.html#macabre[glossary#riparian]: glossary.html#riparian[sample]: subsublevel1.html[sample]: subsublevel2.html[sublevel3]: subsublevel3.html[sublevel3]: anothertopic.html[testtopicurl]: http://google.com[IAP-whatsnew]: whats-new-in-in-app-purchasing.html[understanding-iap]: understanding-in-app-purchasing.html[faqs-iap]: iap-faqs.html[ui-and-ux-design-guidelines]: best-practices-ui-and-ux-design-guidelines.html[deep-linking-to-the-amazon-client]: deep-linking-to-the-amazon-client.html[submitting-iap-items]: submitting-iap-items.html[iap-managing-bulk-items]: iap-managing-bulk-items.html[iap-bulk-items-csv]: iap-bulk-items-csv.html[submitting-iap-apps]: submitting-iap-apps.html[iap-bulk-faqs]: iap-bulk-faqs.html[getting-started-with-iap]: getting-started-with-iap.html[implementing-iap]: implementing-iap.html[obfuscating-the-code]: obfuscating-the-code.html[migrate-from-iapv1-to-iapv2]: migrate-iapv1-apps-to-iapv2.html[migrate-from-iab-to-iapv2]: migrating-from-googles-iab-to-amazons-iap.html[testing-iap]: testing-iap.html[installing-and-configuring-app-tester]: installing-and-configuring-app-tester.html[app-tester-ug]: app-tester-user-guide.html[test-cases-for-iap]: test-cases-for-iap.html[rvs-iap]: verifying-receipts-in-iap.html[iap-api-for-webapps-overview]: iap-api-for-webapps-overview.html[iap-consumables-webapps]: iap-consumables-webapps.html[iap-entitlements-webapps]: iap-entitlements-webapps.html[iap-subscriptions-webapps]: iap-subscriptions-webapps.html[iap-sdk-tester-for-webapps]: iap-sdk-tester-for-webapps.html[rvs-iap-webapps]: verifying-receipts-in-iap-webapp.html[IAP-2.0-api-ref]: in-app-purchasing-2.0-api-reference.html[jekyllhowto-getting-started]: jekyllhowto-getting-started.html[jekyllhowto-getting-started#updates]: jekyllhowto-getting-started.html#updates[jekyllhowto-getting-started#editors]: jekyllhowto-getting-started.html#editors[jekyllhowto-getting-started]: jekyllhowto-set-up-new-project.html[jekyllhowto-sidebar-navigation]: jekyllhowto-sidebar-navigation.html[jekyllhowto-content-and-formatting]: jekyllhowto-content-and-formatting.html[jekyllhowto-content-and-formatting#inlineimages]: jekyllhowto-content-and-formatting.html#inlineimages[jekyllhowto-content-and-formatting#images]: jekyllhowto-content-and-formatting.html#images[jekyllhowto-content-and-formatting#htmltables]: jekyllhowto-content-and-formatting.html#htmltables[jekyllhowto-content-and-formatting#automatedlinks]: jekyllhowto-content-and-formatting.html#automatedlinks[jekyllhowto-content-and-formatting#variableincludes]: jekyllhowto-content-and-formatting.html#variableincludes[jekyllhowto-content-and-formatting#bookmarklinks]: jekyllhowto-content-and-formatting.html#bookmarklinks[jekyllhowto-content-and-formatting#automatedlinks]: jekyllhowto-content-and-formatting.html#automatedlinks[jekyllhowto-git-workflows]: jekyllhowto-git-workflows.html[jekyllhowto-publishing]: jekyllhowto-publishing.html[jekyllhowto-publishing#redirects]: jekyllhowto-publishing.html#redirects[jekyllhowto-localization]: jekyllhowto-localization.html[jekyllhowto-style]: jekyllhowto-style.html[jekyllhowto-troubleshooting]: jekyllhowto-troubleshooting.html[listapi]: listapi.html[getting-started-with-live-app-testing]: getting-started-with-live-app-testing.html[live-app-testing-faq]: live-app-testing-faq.html[faq-mac-and-pc]: faq-mac-and-pc.html[understanding-value-added-tax-vat]: understanding-value-added-tax-vat.html[understanding-the-amazon-maps-api-v2]: understanding-the-amazon-maps-api-v2.html[getting-started-with-the-amazon-maps-api-v2]: getting-started-with-the-amazon-maps-api-v2.html[configuring-your-project-to-use-the-amazon-maps-api-v2]: configuring-your-project-to-use-the-amazon-maps-api-v2.html[registering-and-testing-your-amazon-maps-api-v2-app]: registering-and-testing-your-amazon-maps-api-v2-app.html[using-the-amazon-maps-api-v2-sample-app]: using-the-amazon-maps-api-v2-sample-app.html[displaying-an-interactive-map-with-the-amazon-maps-api-v2]: displaying-an-interactive-map-with-the-amazon-maps-api-v2.html[drawing-markers-and-objects-on-the-map-with-the-amazon-maps-api-v2]: drawing-markers-and-objects-on-the-map-with-the-amazon-maps-api-v2.html[migrating-an-app-from-google-maps-v2]: migrating-an-app-from-google-maps-v2.html[differences-between-amazon-maps-api-v2-and-google-maps-api-v2]: differences-between-amazon-maps-api-v2-and-google-maps-api-v2.html[understanding-the-smart-home-skill-api]: understanding-the-smart-home-skill-api.html[steps-to-create-a-smart-home-skill]: steps-to-create-a-smart-home-skill.html[smart-home-skill-api-reference]: smart-home-skill-api-reference.html[developing-smart-home-skills-in-multiple-languages]: developing-smart-home-skills-in-multiple-languages.html[providing-scenes-in-a-smart-home-skill]: providing-scenes-in-a-smart-home-skill.html[linking-an-alexa-user-with-a-user-in-your-system]: https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/linking-an-alexa-user-with-a-user-in-your-system[getting-started-with-amazon-underground]: getting-started-with-amazon-underground.html[understanding-amazon-underground]: understanding-amazon-underground.html[amazon-underground-eligibility-and-submission-checklists]: amazon-underground-eligibility-and-submission-checklists.html[monetizing-your-app-with-amazon-underground]: monetizing-your-app-with-amazon-underground.html[app-design-and-modification-requirements-and-guidelines-for-amazon-underground]: app-design-and-modification-requirements-and-guidelines-for-amazon-underground.html[app-rebalancing-requirements-for-amazon-underground]: app-rebalancing-requirements-for-amazon-underground.html[migrating-your-app-to-amazon-underground]: migrating-your-app-to-amazon-underground.html[migrating-users-progress-between-app-versions]: migrating-users-progress-between-app-versions.html[testing-your-app-for-amazon-underground]: testing-your-app-for-amazon-underground.html[amazon-underground-frequently-asked-questions-faq]: amazon-underground-frequently-asked-questions-faq.html[environment]: environment.html[runtime-feature-support]: runtime-feature-support.html[differences-between-packaged-and-hosted-apps]: differences-between-packaged-and-hosted-apps.html[best-practices]: best-practices.html[webapp-faq]: webapp-faq.html[detecting-the-devices-display-characteristics]: detecting-the-devices-display-characteristics.html[forcing-the-device-to-be-oriented-in-a-certain-direction]: forcing-the-device-to-be-oriented-in-a-certain-direction.html[handling-device-orientation]: handling-device-orientation.html[automatically-scaling-an-element-to-fill-the-screen]: automatically-scaling-an-element-to-fill-the-screen.html[tester]: tester.html[debugging-webapp]: debugging-webapp.html[using-the-debug-apk-to-test-your-app]: using-the-debug-apk-to-test-your-app.html[caching-and-security]: caching-and-security.html[web-app-security]: web-app-security.html[capturing-media-from-the-devices-sensors]: capturing-media-from-the-devices-sensors.html[using-geolocation-data]: using-geolocation-data.html[creating-a-new-aws-account-for-alexa-prize]: creating-a-new-aws-account-for-alexa-prize.html[getting-started-with-alexa-prize-development]: getting-started-with-alexa-prize-development.html[intent-request-reference-for-alexa-prize]: alexa-prize-api-reference.html[custom-standard-request-types-reference]: https://forums.developer.amazon.com/spaces/191/2017-alexa-prize-team-forum.html[custom-standard-request-types-reference]: custom-standard-request-types-reference.html[handling-requests-sent-by-alexa]: handling-requests-sent-by-alexa.html  [devportal_home]: https://developer.amazon.com/home.html \"Amazon Developer Portal Console\"[devportal_echo]: https://developer.amazon.com/edw/home.html#/ \"Developer Portal - Alexa\"[echo_app]: http://alexa.amazon.com \"Amazon Alexa App\"[echo_household]: http://alexa.amazon.com/spa/index.html#help/node/201628040 \"Household Profiles\"[devportal_lwa]: https://developer.amazon.com/lwa/sp/overview.html[legal_pml]: https://developer.amazon.com/public/support/pml.html \"Program Materials License Agreement\"[legal_betaterms]: https://developer.amazon.com/edw/home.html#/app/toc/ \"Alexa Skills Kit Beta Terms\"[legal_appdistagree]: https://developer.amazon.com/appsandservices/support/legal/da \"App Distribution Agreement\"[devportal_content]: https://developer.amazon.com/public/support/faq#Submission:%20Content%20Guidelines \"Content Guidelines FAQ\"[ask_forum]: https://forums.developer.amazon.com/spaces/23/index.html \"Posts in Alexa Skills Kit (ASK)\"[lwa]: https://developer.amazon.com/login-with-amazon \"Login with Amazon\"[lwa_blog_post]: https://developer.amazon.com/blogs/post/Tx3CX1ETRZZ2NPC/Alexa-Account-Linking-5-Steps-to-Seamlessly-Link-Your-Alexa-Skill-with-Login-wit \"Alexa Account Linking: 5 Steps to Seamlessly Link Your Alexa Skill with Login with Amazon\"[amzn_certs]: https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/[openssl]: https://www.openssl.org/source/ \"Open SSL\"[openssl_binary]: https://www.openssl.org/about/binaries.html \"Open SSL Binary Distributions\"[java_download]: http://www.oracle.com/technetwork/java/javase/downloads/index.html \"Download Java\"[curl_download]: http://curl.haxx.se/download.html \"Download cURL\"[ant_download]: http://ant.apache.org \"Download Apache Ant\"[slf4j_info]: http://www.slf4j.org/ \"Simple Logging Facade for Java\"[log4j_info]: http://logging.apache.org/log4j/1.2/  \"Apache log4j 1.2\"[maven_home]: http://maven.apache.org/index.html \"Apache Maven Project\"[maven_dl]: http://maven.apache.org/download.cgi \"Downloading Apache Maven\"[maven_eclipse]: https://marketplace.eclipse.org/content/maven-integration-eclipse-luna-and-newer \"Maven Integration for Eclipse\"[ffmpeg]: https://www.ffmpeg.org/ \"FFmpeg\"[iso_date]: https://en.wikipedia.org/wiki/ISO_8601#Dates \"ISO 8601 - Dates\"[iso_time]: https://en.wikipedia.org/wiki/ISO_8601#Times \"ISO 8601 - Times\"[iso_duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations \"ISO 8601 - Durations\"[echosim]: https://echosim.io/ \"Alexa Skill Testing Tool\"[audacity]: http://www.audacityteam.org/ \"Audacity\"[lame_library]: http://lame.buanzo.org/#lamewindl[m3u]: https://en.wikipedia.org/wiki/M3U[pls]: https://en.wikipedia.org/wiki/PLS_%28file_format%29[hls]: https://en.wikipedia.org/wiki/HTTP_Live_Streaming[accept-language]: https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4 \"Header Field Definitions - Accept-Language\"[navigator-language]: http://www.w3schools.com/jsref/prop_nav_language.asp \"Navigator language Property\"[node_npm_install]: https://docs.npmjs.com/getting-started/installing-node \"Installing Node.js and Updating NPM\"[oauth_all]: https://tools.ietf.org/html/rfc6749 \"The OAuth 2.0 Authorization Framework\"[oauth_roles]: https://tools.ietf.org/html/rfc6749#section-1.1 \"The OAuth 2.0 Authorization Framework: Roles\"[oauth_implicit]: http://tools.ietf.org/html/rfc6749#section-4.2 \"The OAuth 2.0 Authorization Framework: Implicit Grant\"[oauth_code]: http://tools.ietf.org/html/rfc6749#section-4.1 \"The OAuth 2.0 Authorization Framework: Authorization Code Grant\"[oauth_tokens]: https://tools.ietf.org/html/rfc6750 \"The OAuth 2.0 Authorization Framework: Bearer Token Usage\"[oauth_clientauth]: https://tools.ietf.org/html/rfc6749#section-2.3.1 \"The OAuth 2.0 Authorization Framework: Client Password\"[oauth_redirecturi]: https://tools.ietf.org/html/rfc6749#section-3.1.2 \"The OAuth 2.0 Authorization Framework: Redirection Endpoint\"[phon_ipa]: https://www.internationalphoneticassociation.org/content/ipa-chart \"International Phonetic Association\"[phon_xsampa]: https://en.wikipedia.org/wiki/X-SAMPA \"X-Sampa\"[ssml_spec]: http://www.w3.org/TR/speech-synthesis11/ \"W3C Speech Synthesis Markup Language (SSML) Version 1.1\"[aws_toolkit]: https://aws.amazon.com/eclipse/ \"AWS Toolkit for Eclipse\"[aws_cli]: http://aws.amazon.com/cli/ \"AWS Command Line Interface\"[aws_beanstalkdocs]: http://aws.amazon.com/documentation/elastic-beanstalk/ \"AWS Elastic Beanstalk Documentation\"[aws_home]: http://aws.amazon.com/ \"Amazon Web Services\"[aws_ebhome]: http://aws.amazon.com/elasticbeanstalk/ \"AWS Elastic Beanstalk\"[aws_ebcomponents]: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.components.html \"AWS - Elastic Beanstalk Components\"[aws_pricing]: http://aws.amazon.com/ec2/pricing/ \"Amazon EC2 Pricing\"[aws_logs]: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.loggingS3.title.html \"AWS - Working with Logs\"[aws_ebcustomprops]: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Java.managing.html \"Using Custom Environment Properties with Elastic Beanstalk\"[aws_lambdahome]: http://aws.amazon.com/lambda/ \"AWS Lambda\"[aws_lambdadocs]: http://aws.amazon.com/documentation/lambda/ \"AWS Lambda Documentation\"[aws_lambdaoverview]: http://docs.aws.amazon.com/lambda/latest/dg/welcome.html[aws_lambda_create]: http://docs.aws.amazon.com/lambda/latest/dg/getting-started-custom-events.html \"Invoking Lambda Functions from User Applications (Using the AWS Lambda Console)\"[aws_lambda_addpermcli]: http://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html \"add-permission\"[aws_toolkitlambda]: http://docs.aws.amazon.com/AWSToolkitEclipse/latest/GettingStartedGuide/lambda.html \"Using AWS Lambda with the Toolkit for Eclipse\"[aws_installcli]: http://docs.aws.amazon.com/cli/latest/userguide/installing.html \"Installing the AWS Command Line Interface\"[aws_configcli]: http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html \"Configuring the AWS Command Line Interface\"[aws_lambdapricing]: http://aws.amazon.com/lambda/pricing/ \"AWS Lambda Pricing\"[aws_dynamodb]: https://aws.amazon.com/dynamodb/ \"AWS DynamoDB\"[aws_securitybp]: http://media.amazonwebservices.com/AWS_Security_Best_Practices.pdf \"AWS Security Best Practices\"[aws_s3]: https://aws.amazon.com/s3/ \"Amazon S3\"[aws_cors]: http://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html \"Enabling Cross-Origin Resource Sharing\"[book_wired]: http://www.amazon.com/Wired-Speech-Activates-Human-Computer-Relationship/dp/0262640651[book_elementsvui]: http://www.amazon.com/The-Elements-VUI-Style-Practical/dp/1461188172[book_dont_tap]: http://www.amazon.com/Dont-Make-Me-Tap-Usability/dp/1492196517/[book_voicemachine]: http://www.amazon.com/The-Voice-Machine-Computers-Understand/dp/0262016850[book_vuidesign]: http://www.amazon.com/Voice-Interface-Design-Michael-Cohen/dp/0321185765[author_bouzid]: http://www.amazon.com/Dr.-Ahmed-Bouzid/e/B00J1MV2NM/ref=dp_byline_cont_book_1[author_weiye]: http://www.amazon.com/Dr.-Weiye-Ma/e/B00J1MVLKG/ref=dp_byline_cont_book_2[github_java]: https://github.com/amzn/alexa-skills-kit-java \"Java Library and Java samples on GitHub\"[github_js]: https://github.com/alexa \"Alexa Organization on GitHub\"[github_nodejs_sdk]: https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs \"Alexa Skills Kit SDK for Node.js\"[github_hello]: https://github.com/alexa/skill-sample-nodejs-hello-world[github_audio_sample]: https://github.com/alexa/skill-sample-nodejs-audio-player \"Audio Player Sample Project\"[github_howto]: https://github.com/alexa/skill-sample-nodejs-howto \"How To Skill Sample\"[github_trivia]: https://github.com/alexa/skill-sample-nodejs-trivia \"Step-by-Step Guide to Build a Trivia Skill\"[github_fact]: https://github.com/alexa/skill-sample-nodejs-fact \"How to Build a Fact-Based Alexa Skill\"[github_highlowgame]: https://github.com/alexa/skill-sample-nodejs-highlowgame[github_decision_tree]: https://github.com/alexa/skill-sample-nodejs-decision-tree[github_calendar]: https://github.com/alexa/skill-sample-nodejs-calendar-reader \"How to Build a Calendar Reader for Alexa\"[cities]: https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population \"List of United States cities by population\"[us_states]: https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States \"List of States and Territories of the United States\"[stock_tickers]: https://en.wikipedia.org/wiki/List_of_stock_exchanges#Major_stock_exchanges \"Major Stock Exchanges\"[ontology]: https://en.wikipedia.org/wiki/Ontology_%28information_science%29 \"Wikipedia: Ontology (information science)\"[books-domain]: built-in-intent-library.html#books[book-intents]: book-intents.html[bookseries-intents]: bookseries-intents.html[creativework-intents]: creativework-intents.html[creativeworksection-intents]: creativeworksection-intents.html[readinglist-intents]: readinglist-intents.html[calendar-domain]: built-in-intent-library.html#calendar[calendar-intents]: calendar-intents.html[event-intents]: event-intents.html[cinema-showtimes-domain]: built-in-intent-library.html#cinema-showtimes[screeningevent-intents]: screeningevent-intents.html[general-domain]: built-in-intent-library.html#general[creativework-intents]: creativework-intents.html[creativeworksection-intents]: creativeworksection-intents.html[thing-intents]: thing-intents.html[local-search-domain]: built-in-intent-library.html#local-search[localbusiness-intents]: localbusiness-intents.html[music-domain]: built-in-intent-library.html#music[catalog-intents]: catalog-intents.html[musiccreativework-intents]: musiccreativework-intents.html[musicgroup-intents]: musicgroup-intents.html[musicplaylist-intents]: musicplaylist-intents.html[musicrecording-intents]: musicrecording-intents.html[musician-intents]: musician-intents.html[playbackmode-intents]: playbackmode-intents.html[singer-intents]: singer-intents.html[video-domain]: built-in-intent-library.html#video[actor-intents]: actor-intents.html[creativework-intents]: creativework-intents.html[episode-intents]: episode-intents.html[tvseason-intents]: tvseason-intents.html[tvseries-intents]: tvseries-intents.html[videocreativework-intents]: videocreativework-intents.html[videoplaylist-intents]: videoplaylist-intents.html[weather-domain]: built-in-intent-library.html#weather[weatherforecast-intents]: weatherforecast-intents.html[date]: slot-type-reference.html#date[duration]: slot-type-reference.html#duration[four_digit_number]: slot-type-reference.html#four_digit_number[number]: slot-type-reference.html#number[time]: slot-type-reference.html#time[us_state]: slot-type-reference.html#us_state[devicetype]: slot-type-reference.html#devicetype[localbusinesstype]: slot-type-reference.html#localbusinesstype[professionaltype]: slot-type-reference.html#professionaltype[eventtype]: slot-type-reference.html#eventtype[writtencreativeworktype]: slot-type-reference.html#writtencreativeworktype[musiccreativeworktype]: slot-type-reference.html#musiccreativeworktype[actor]: slot-type-reference.html#actor[administrativearea]: slot-type-reference.html#administrativearea[aggregaterating]: slot-type-reference.html#aggregaterating[airline]: slot-type-reference.html#airline[airport]: slot-type-reference.html#airport[animal]: slot-type-reference.html#animal[artist]: slot-type-reference.html#artist[athlete]: slot-type-reference.html#athlete[author]: slot-type-reference.html#author[book]: slot-type-reference.html#book[bookseries]: slot-type-reference.html#bookseries[broadcastchannel]: slot-type-reference.html#broadcastchannel[civicstructure]: slot-type-reference.html#civicstructure[color]: slot-type-reference.html#color[corporation]: slot-type-reference.html#corporation[country]: slot-type-reference.html#country[dayofweek]: slot-type-reference.html#dayofweek[dessert]: slot-type-reference.html#dessert[director]: slot-type-reference.html#director[drink]: slot-type-reference.html#drink[educationalorganization]: slot-type-reference.html#educationalorganization[festival]: slot-type-reference.html#festival[fictionalcharacter]: slot-type-reference.html#fictionalcharacter[financialservice]: slot-type-reference.html#financialservice[food]: slot-type-reference.html#food[foodestablishment]: slot-type-reference.html#foodestablishment[game]: slot-type-reference.html#game[genre]: slot-type-reference.html#genre[comic]: slot-type-reference.html#comic[landform]: slot-type-reference.html#landform[landmarksorhistoricalbuildings]: slot-type-reference.html#landmarksorhistoricalbuildings[language]: slot-type-reference.html#language[localbusiness]: slot-type-reference.html#localbusiness[medicalorganization]: slot-type-reference.html#medicalorganization[month]: slot-type-reference.html#month[movie]: slot-type-reference.html#movie[movieseries]: slot-type-reference.html#movieseries[movietheater]: slot-type-reference.html#movietheater[musicalbum]: slot-type-reference.html#musicalbum[musicevent]: slot-type-reference.html#musicevent[musicgroup]: slot-type-reference.html#musicgroup[musician]: slot-type-reference.html#musician[musicplaylist]: slot-type-reference.html#musicplaylist[musicrecording]: slot-type-reference.html#musicrecording[musicvenue]: slot-type-reference.html#musicvenue[musicvideo]: slot-type-reference.html#musicvideo[organization]: slot-type-reference.html#organization[person]: slot-type-reference.html#person[postaladdress]: slot-type-reference.html#postaladdress[professional]: slot-type-reference.html#professional[radiochannel]: slot-type-reference.html#radiochannel[residence]: slot-type-reference.html#residence[room]: slot-type-reference.html#room[screeningevent]: slot-type-reference.html#screeningevent[service]: slot-type-reference.html#service[socialmediaplatform]: slot-type-reference.html#socialmediaplatform[softwareapplication]: slot-type-reference.html#softwareapplication[softwaregame]: slot-type-reference.html#softwaregame[sport]: slot-type-reference.html#sport[sportsevent]: slot-type-reference.html#sportsevent[sportsteam]: slot-type-reference.html#sportsteam[streetaddress]: slot-type-reference.html#streetaddress[televisionchannel]: slot-type-reference.html#televisionchannel[tvepisode]: slot-type-reference.html#tvepisode[tvseason]: slot-type-reference.html#tvseason[tvseries]: slot-type-reference.html#tvseries[videogame]: slot-type-reference.html#videogame[weathercondition]: slot-type-reference.html#weathercondition[at_city]: slot-type-reference.html#at_city[at_region]: slot-type-reference.html#at_region[de_city]: slot-type-reference.html#de_city[de_first_name]: slot-type-reference.html#de_first_name[de_region]: slot-type-reference.html#de_region[europe_city]: slot-type-reference.html#europe_city[gb_city]: slot-type-reference.html#gb_city[gb_first_name]: slot-type-reference.html#gb_first_name[gb_region]: slot-type-reference.html#gb_region[us_city]: slot-type-reference.html#us_city[us_first_name]: slot-type-reference.html#us_first_name[creativeworktype]: slot-type-reference.html#creativeworktype",
+        "url": "controller-behavior-guidelines.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "controller-image-assets-html": {
+        "title": "コントローラ画像アセット",
+        "tags": "[]",
+        "content": "アプリまたはゲームでコントローラの使用方法に関する説明やヘルプ画面を提供する場合は、このページのコントローラ画像やボタンヒントをアプリで自由に使用できます。 すべての画像をダウンロードする  ボタンのアイコンヒント  Amazon Fire TV Voice Remote  Amazon Fire TV Remote  Amazon Fire TVゲームコントローラ  Amazon Fireゲームコントローラボタンのアイコンヒントたとえば、アプリやゲームの手順を説明するために、次のヒントを使用します。Amazon Fire TV Voice RemoteAmazon Fire TV RemoteAmazon Fire TVゲームコントローラAmazon Fireゲームコントローラ",
+        "url": "controller-image-assets.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "controller-input-with-unity-html": {
+        "title": "Unityによるコントローラ入力",
+        "tags": "[]",
+        "content": "Unity開発ツールを使用すれば、Android端末用のアプリやゲームを作成するのと同様に、Amazon Fire TV用のアプリやゲームを作成できます。Fire TV開発用のUnityプラグインは提供されていませんが、ゲームコントローラをサポートするためのパッケージがUnity Asset Storeにあります。特にGallant GamesのInControlには、Amazonの開発者も大きな恩恵を受けています。InControlは、広く利用されている各種コントローラの制御マッピングを標準化する、Unity3Dのクロスプラットフォーム入力マネージャーです。Unity入力マネージャーを使って、ゲームのコントローラ入力を設定することもできます。Amazon Fire TVのリモコン/ゲームコントローラのボタンとUnity入力マネージャーのボタン/軸との対応関係については、以下の表を参照してください。 Note: このドキュメントの入力リファレンスはUnity 4.3.x以降に適用されますが、今後のUnityのリリースで変更される可能性があります。  リモート入力  ゲームコントローラ入力  コントローラの名前リモート入力Unityの以下の値を使用して、Amazon Fire TV RemoteとAmazon Fire TV Voice Remoteの両方でボタンをマップします。Unity KeyCodeの値の詳細については、「KeyCode」を参照してください。            ボタン      Unity入力マネージャーの値      Unity KeyCodeの値                  Home      1 (システムイベント)       なし (システムイベント)              Back      なし (非サポート)      KeyCode.Escape              Menu      なし (非サポート)      KeyCode.Menu              Microphone (検索)      なし (システムイベント)      なし (システムイベント)              Select (D-Padの [Center])      ジョイスティックボタン 0      KeyCode.JoystickButton0              Left (D-Pad)      第 5 軸      KeyCode.LeftArrow              Right (D-Pad)      第 5 軸      KeyCode.RightArrow              Up (D-Pad)      第 6 軸      KeyCode.UpArrow              Down (D-Pad)      第 6 軸      KeyCode.DownArrow              Play/Pause      なし (非サポート)      なし (非サポート)              Rewind      なし (非サポート)      なし (非サポート)              Fast Forward      なし (非サポート)      なし (非サポート)      ゲームコントローラ入力Unityの以下の値を使って、Amazon Fire Game Controllerでボタンをマップします。Unity KeyCodeの値の詳細については、「KeyCode」を参照してください。            ゲームコントローラボタン      Unity入力マネージャーの値      Unity KeyCodeの値                  Home      なし (システムイベント)      なし (システムイベント)              Back      なし (システムイベント)      KeyCode.Escape              Menu      なし (システムイベント)      KeyCode.Menu              GameCircle      なし (システムイベント)      なし (システムイベント)              A      ジョイスティックボタン 0      KeyCode.JoystickButton0              B      ジョイスティックボタン 1      KeyCode.JoystickButton1              X      ジョイスティックボタン 2       KeyCode.JoystickButton2              Y      ジョイスティックボタン 3      KeyCode.JoystickButton3              Left (D-Pad)      第 5 軸      なし              Right (D-Pad)      第 5 軸      なし              Up (D-Pad)      第 6 軸      なし              Down (D-Pad)      第 6 軸      なし              左側のジョイスティック (左/右)      X軸 第 1 軸      なし              左側のジョイスティック (上/下)      Y軸 第 2 軸      なし              左側のジョイスティックの押し下げ      ジョイスティックボタン 8      KeyCode.JoystickButton8              右側のジョイスティック (左/右)      第 3 軸      なし              右側のジョイスティック (上/下)      第 4 軸      なし              右側のジョイスティックの押し下げ      ジョイスティックボタン 9      KeyCode.JoystickButton9              Play/Pause      なし (非サポート)      なし (非サポート)              Rewind      なし (非サポート)      なし (非サポート)              Fast Forward      なし (非サポート)      なし (非サポート)              左側のトリガー (L2)       第 13 軸      なし              左側のショルダー (L1)      ジョイスティックボタン 4      KeyCode.LeftShift KeyCode.JoystickButton4              右側のトリガー (R2)      第 12 軸      なし              右側のショルダー (R1)      ジョイスティックボタン 5      KeyCode.RightShift KeyCode.JoystickButton5      コントローラの名前Unityでは、Input.GetJoystickNames() メソッドでコントローラの名前を使用できます。各コントローラに使用する値は次の通りです。  Remote: \"Amazon Fire TV Remote\"  Voice Remote: \"Amazon Fire TV Remote\"  Game controller: \"Amazon Fire Game Controller\"",
+        "url": "controller-input-with-unity.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "identifying-controllers-html": {
+        "title": "コントローラの識別",
+        "tags": "[]",
+        "content": "Amazon Fire TVプラットフォームでは、ユーザーは最大で 7 つのBluetoothコントローラに同時に接続できます。アプリまたはゲームが複数のユーザーやプレーヤーからの入力をサポートしている場合、接続されたコントローラを識別し、それらのコントローラの機能を特定し、それぞれのコントローラからのユーザー入力を区別できる必要があります。Fire TVプラットフォームでは、Androidの標準機能であるInputDeviceクラスが使用されます。InputDeviceクラスを使用することで、接続されたすべての入力端末 (コントローラを含む) のリストを入手し、入力端末の機能を問い合わせることができます。また、任意のキーイベントやモーションイベントから入力端末オブジェクトを入手できることから、異なるコントローラやユーザーからの入力が発生した場合に、それらを処理することができます。  入力端末と端末IDの取得          すべての入力端末IDの取得      キーイベントまたはモーションイベントからの入力端末IDの取得        コントローラ機能の特定          端末がゲームコントローラかどうかの判断      端末がリモコンかどうかの判断      端末がセカンドスクリーンアプリかどうかの判断      入力端末と端末IDの取得Amazon Fire TVに接続された入力端末は、Android InputDeviceクラスによって表されます。接続された入力端末は、システムのブート時、および新たに端末が追加された場合に、端末IDを割り当てられます。IDのリストにある入力端末は、ゲームコントローラなどの実際のコントローラである場合と、オンスクリーンキーボードなど、他の入力形式を表している場合があります。端末IDは無作為に割り当てられるもので、これによって特定のコントローラやコントローラ種類を一意に識別することはできません。利用可能なすべての端末IDのリストを取得することで、アプリやゲームが使用できるコントローラの番号と種類を確認できます。また、特定のキーイベントまたはモーションイベントから端末IDまたは入力端末オブジェクトを取得して、どのコントローラがそのイベントで使用されていたかを確認することもできます。すべての入力端末IDの取得以下のように、静的なInputDevice.getDeviceIds() メソッドを使って、利用可能なすべての入力端末IDの配列を取得し、InputDevice.getDevice() を使って、それらのIDを実際の入力端末オブジェクトと関連付けることができます。int[] ids = InputDevice.getDeviceIds();for (int i=0;i &lt; ids.length; i++) {// get an InputDevice object based on the device IDInputDevice device = InputDevice.getDevice(ids[i]);// ...}getDeviceIds() メソッドで取得した端末IDのリストには、システムに実際に接続された入力端末のみが含まれることに留意してください。Bluetoothコントローラによっては、しばらくの間使用されていないと、電気を節約するために切断される (スリープ状態になる) 場合があります。また接続範囲外になると、切断される場合もあります。スリープ状態のコントローラ、または他の状態で使用不可能なコントローラは、接続されているとみなされないため、端末IDのリストには列挙されません。InputDeviceListenerインターフェースを実装することで、コントローラの接続イベントや切断イベントをリッスンできます。キーイベントまたはモーションイベントからの入力端末IDの取得以下のように、InputEvent.getDeviceId() メソッドを使って、イベントハンドラ内でキーイベントまたはモーションイベントを起動した端末のIDを取得できます。public boolean onKeyDown(int keyCode, KeyEvent event) {int id = event.getDeviceId();InputDevice device = InputDevice.getDevice(id);}または、以下のように入力端末オブジェクトそのものを取得します。public boolean onKeyDown(int keyCode, KeyEvent event) {InputDevice device = event.getDevice();}コントローラ機能の特定Androidの入力端末IDは無作為に割り当てられるもので、これによってコントローラやコントローラの種類を一意に識別することはできません。入力端末の種類を特定するには、その端末の機能を問い合わせ、コントローラ (リモコン、ゲームコントローラ、またはセカンドスクリーンアプリ) からの入力であるか、または他の端末からの入力であるかを判断します。InputDevice.getSources() メソッドを使用して、入力端末の機能を取得します。このメソッドは、端末の機能を表す整数ビットマップを返します。InputDeviceクラスで定義された定数を使用して、そのビットマップと、アプリに実装したい具体的な機能を比較します。// get an InputDevice object based on the device IDInputDevice device = InputDevice.getDevice(id);// getSources() gives you an integer bitmap that defines the features of the device;// compare with constants from InputDevice to find controller featuresif ((device.getSources() &amp; InputDevice.SOURCE_CLASS_JOYSTICK != 0 {// this controller has a joystick}以下のように、InputEvent.getSource() メソッドを使って、キーイベントやモーションイベントから入力端末機能のビットマップを直接取得することもできます。public boolean onGenericMotionEvent(MotionEvent event) {// did this event come from a joystick?if ((event.getSource() &amp; InputDevice.SOURCE_CLASS_JOYSTICK) != 0) {// ... handle input events from controllers with joysticks }// ...}端末がゲームコントローラかどうかの判断InputDevice.SOURCE_GAMEPADとInputDevice.SOURCE_JOYSTICKの両方の定数をテストして、ゲームコントローラ (Amazonゲームコントローラと他のゲームコントローラの両方) を特定することができます。このコードでは、Amazonゲームコントローラと他社製のBluetoothコントローラが区別されないことに留意してください。int hasFlags = InputDevice.SOURCE_GAMEPAD | InputDevice.SOURCE_JOYSTICK;boolean isGamepad = inputDevice.getSources() &amp; hasFlags == hasFlags;端末がリモコンかどうかの判断InputDevice.SOURCE_DPAD定数を使用して、Amazon Fire TV RemoteまたはAmazon Fire TV Voice Remoteを特定できます。ただし、一部のキーボードはD-Padを搭載していると認識される場合もあるため、キーボードの種類もテストする必要があります (以下のように、InputDevice.KEYBOARD_TYPE_NON_ALPHABETICを使用)。int hasFlags =  InputDevice.SOURCE_DPAD;bool isRemote = (inputDevice.getSources() &amp; hasFlags == hasFlags)&amp;&amp; inputDevice.getKeyboardType() == InputDevice.KEYBOARD_TYPE_NON_ALPHABETIC;端末がセカンドスクリーンアプリかどうかの判断InputDevice.SOURCE_MOUSEとInputDevice.SOURCE_TOUCHPADの両方の定数を使用して、Amazonセカンドスクリーンアプリを特定できます。int hasFlags =  InputDevice.SOURCE_MOUSE | InputDevice.SOURCE_TOUCHPAD;bool isRemote = inputDevice.getSources() &amp; hasFlags == hasFlags;",
+        "url": "identifying-controllers.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "supporting-controllers-on-amazon-fire-tv-html": {
+        "title": "コントローラの概要",
+        "tags": "[]",
+        "content": "Amazon Fire TVプラットフォームは、Amazon Fire TV Remote、Fire TV Voice Remote、Fireゲームコントローラなど、Bluetooth HIDゲームパッドプロファイルに対応した各種のゲームコントローラからのユーザー入力をサポートします。すべてのコントローラは、端末に接続して使用する必要があります。すべてのAmazon Fire TVコントローラは、Android入力機器です。これらの端末から送られた入力の処理には、他のAndroid入力機器の場合と同じ技術とAPIを使用します。特にナビゲーションや選択など、コントローラからの単純な入力は、キーボードやボタンパッドからの入力を処理する場合と同じようにキーイベントを使用して処理することができます。",
+        "url": "supporting-controllers-on-amazon-fire-tv.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "connecting-adb-to-fire-tv-device-html": {
+        "title": "ADBを使用してFire TVに接続する",
+        "tags": "[]",
+        "content": "Android Debug Bridge (ADB) を使用すると、Amazon Fire TV端末またはAmazon Fire TV Stickに開発コンピューターを接続して、アプリのインストール、テスト、デバッグを行うことができます。ADBでFire TVまたはFire TV Stickに接続する際は、あらかじめ以下のセクションをお読みください。 Note: Android Debug Bridgeは、Amazonではなく、Android Open Source Projectにより提供されます。  手順 1. Amazon Fire TVでデバッグを有効にする  手順 2. Android Debug Bridgeを設定する          Mac OS X      Windows        手順 3. 環境変数パスにAndroid Debug Bridgeを追加する          Mac OS X      Windows        手順 4: ADBの接続方法          ネットワーク経由でADBを接続する      USB経由でADBを接続する        ADBを更新する  トラブルシューティング  次のステップ手順 1. Amazon Fire TVでデバッグを有効にするFire TV端末に接続するには、端末でADBとデバッグの両方を有効にする必要があります。  Fire TVのメイン画面で [Settings] を選択します。  [Device] &gt; [Developer Options] の順に選択します。  [ADB Debugging] を有効にします。      (省略可能) USBケーブルを使用してコンピューターをFire TV端末に接続する場合は、[USB Debugging] をオンにします。     Note: USBデバッグが有効になっているときは、USBポートを他の用途 (外部ストレージ、入力端末など) に使用することはできません。USBポートを再度有効にするには、USBデバッグをオフにしてください。    [Apps from Unknown Sources] を有効にします。手順 2. Android Debug Bridgeを設定するAndroid Debug Bridge (ADB) は、ご利用の端末またはエミュレータでAndroidアプリの実行と管理を行うためのコマンドラインユーティリティです。ADBはAndroid Studioをインストールすると利用できますが、Windowsをご利用の場合は、特別なUSBドライバをインストールする必要があります。Mac OS XMac OS XでADBを使用する場合は、特に必要な作業はありません。WindowsWindowsが実行されているコンピューターをUSBケーブルでFire TVに接続する場合、ADBを介してFire TV端末にコンピューターを接続するためには特別なUSBドライバをインストールする必要があります。このドライバは、すべてのFire TVプラットフォームをサポートしています。ドライバをインストールするには:  USBファイルをダウンロードしてzipファイルの内容を抽出します。  FireDevices_Driversをダブルクリックします。  ダイアログボックスの指示に従ってインストールを実行します。 Note: このUSBドライバはWindows 8.1 に対してのみ認定されています。Windows 10 をご利用の場合は、”信頼されていない発行元”からのインストールに明示的に同意する必要があります。手順 3. 環境変数パスにAndroid Debug Bridgeを追加するadbのコマンドを実行しやすくするために、環境変数PATHにADBを追加する必要があります。(PATH環境変数は、プログラムの実行ファイルの場所を指定するものです。ADBをPATHに追加しなかった場合、adbコマンドを実行するには、&lt;Android SDK&gt;/platform-toolsディレクトリに移動したうえでadbを実行する必要があります。)Mac OS XMacで環境変数PATHにADBを追加するには:      Android SDK platform-toolsディレクトリのパスを確認します。                  Android Studioを起動して [SDK Manager] ボタン  をクリックします。        上部の [Android SDK Location] の横にAndroid SDKの場所が表示されます(例: /Users/&lt;your username&gt;/Library/Android/sdk)。        Android Studioを初めて起動する場合は、[SDK Manager] ボタンが表示されません。[Welcome to Android Studio] というプロンプトで、[Configure] &gt; [SDK Manager] の順にクリックし、Android SDKの場所を指定してください。            SDKのパスをコピーして、テキストエディターなどに貼り付けます。      直前の手順でコピーしたパスの末尾に/platform-toolsを追加します。”platform-tools” はadb実行ファイルが格納されているディレクトリです。      フルパスをクリップボードにコピーします。            以下のコマンドを使用してadbを.bash_profileに追加します。/Users/&lt;your username&gt;/Library/Android/sdk/platform-tools/ の部分は、Android SDKの実際のパスに置き換えてください。    echo 'export PATH=$PATH:/Users/&lt;your username&gt;/Library/Android/sdk/platform-tools/' &gt;&gt; ~/.bash_profile        .bash_profileファイルは通常、ユーザーディレクトリにあります。ユーザーディレクトリは、「cd ~」(change directory) と入力して確認できます。次に、「ls -a」(list all) と入力して、非表示のファイルも含めたすべてのファイルを表示します。    .bash_profileファイルが存在しない場合は、新規に作成します。そのうえで「open .bash_profile」と入力すると、パスが一覧表示されます。各行は、export PATH=$PATH:/Users/&lt;your username&gt;/Library/Android/sdk/platform-tools/ のようになっています。        ターミナルセッションを再起動して「adb」と入力します。PATHにADBが正しく追加されると、ADBのヘルプ情報が表示されます。正しく追加されていないと、”command not found.” と表示されます。  WindowsWindowsで環境変数PATHにADBを追加するには:      Android SDK platform-toolsディレクトリのパスを確認します。                  Android Studioを起動して [SDK Manager] ボタン  をクリックします。        上部の [Android SDK Location] の横にAndroid SDKの場所が表示されます(例: C:\\Users\\&lt;your user name&gt;\\AppData\\Local\\Android\\Sdk\\platform-tools)。        Android Studioを初めて起動する場合は、[SDK Manager] ボタンが表示されません。[Welcome to Android Studio] というプロンプトで、[Configure] &gt; [SDK Manager] の順にクリックし、Android SDKの場所を指定してください。                    SDKのパスをコピーして、テキストエディターなどに貼り付けます。3.  直前の手順でコピーしたパスの末尾に/platform-toolsを追加します。”platform-tools” はadb実行ファイルが格納されているディレクトリです。4.  フルパスをクリップボードにコピーします。              [スタート] ボタンをクリックし、検索ボックスに「システムの詳細設定の表示」と入力します。  [システムの詳細設定の表示] をクリックします。  [システム設定] ダイアログが表示されたら、[環境変数] ボタンをクリックします。  [システム環境変数] (下のペイン) で [Path] を選択し、[編集] をクリックします。      次のいずれかの作業を行います。          Windows 7 または 8 の場合: カーソルを右端に移動し、「;」と入力してCtrl+Vキーを押し、先ほどコピーしたSDKのパスを挿入します(例: ;C:\\Users\\&lt;your user name&gt;\\AppData\\Local\\Android\\Sdk\\platform-tools)。開いている 3 つのダイアログボックスをそれぞれ [OK] ボタンで閉じます。      Windows 10 の場合: [新規] ボタンをクリックしてこの場所を追加します。        ターミナルセッションを再起動して「adb」と入力します。PATHにADBが正しく追加されると、ADBのヘルプ情報が表示されます。正しく追加されていないと、”command not found.” と表示されます。手順 4: ADBの接続方法ADBを使用してFire TVまたはFire TV Stickをコンピューターに接続するには、次の 2 つの方法を利用できます。  ネットワーク経由でADBを接続する。有線イーサネットまたはWiFiネットワーク接続を使用した接続方法です。ネットワークADB接続が機能するには、コンピューターとFire TV端末が同じネットワーク上に存在する必要があります。*   USB経由でADBを接続する。USBケーブル (A-to-A) を使用して直接USB接続を確立する方法です。 Note: 以降の手順は、ユーザーインターフェースが刷新された第 2 世代の端末を想定して書かれています。第 1 世代の端末をご使用の場合は、メニューの場所が若干異なります。ネットワーク経由でADBを接続するFire TV端末にADBを接続するには、ネットワークにあるFire TV端末のIPアドレスが必要となります。  まだ接続していない場合は、Fire TV端末をネットワークに接続します (対象のコンピューターと同じネットワークに接続すること)。Fire TVのホーム画面で [Settings] &gt; [Network] の順に選択して目的のネットワークを選択してください。2.  Fire TVのホーム画面で [Settings] を選択します。      [Device] &gt; [About] &gt; [Network] の順に移動します。画面に表示されるIPアドレスをメモします。     Tip: 日常的にネットワーク経由で接続する場合は、いつでも確認できるようにこのIPアドレスをコピーしておいてください。        ターミナルウィンドウを開きます。    Macの場合、ターミナルを開くには、Cmd + Spaceキーを押して「Terminal」と入力します。Windowsの場合は、通常、プログラムの検索画面で「cmd」と入力してコマンドプロンプトを開きます(厳密な手順は、Windowsのバージョンによって異なります)。    Fire TV端末とコンピューターが同じネットワーク上にあることを確認します。WiFiネットワークと有線ネットワークのどちらも使用できます。      次のコマンドを実行します。&lt;ipaddress&gt; の部分には、前のセクションでメモしたFire TV端末のIPアドレスを指定してください。    adb kill-serveradb start-serveradb connect &lt;ipaddress&gt;         Note: ADBが環境変数PATHに追加されていることを確認してください (「環境変数パスにAndroid Debug Bridgeを追加する」を参照)。追加されていない場合は、「cd」 (change directories) でplatform-toolsディレクトリに移動してから、「./adb」 (Macの場合) または「adb」 (Windowsの場合) を使用してadbのコマンドを実行する必要があります。    接続に成功すると、ADBから次のようなメッセージが返されます。    connected to &lt;ipaddress&gt;:5555            次のコマンドを実行して、端末のリストにFire TV端末が表示されることを確認します。    adb devices        ADBから次のメッセージが返されます。    List of devices attached&lt;ipaddress&gt;:5555  device      adb devicesを実行してもシリアル番号が表示されない場合は、ADBを更新してから、再度この手順を実行してください。 Tip: 必ずしもADBサーバーを停止 (kill) して起動 (start) する必要はありません。通常は単にadb connect &lt;ipaddress&gt;コマンドを実行してください。USB経由でADBを接続するコンピューターをUSBでFire TVに接続するには、A-to-AタイプのUSBケーブルが必要となります。利用できるのはFire TVのみで、Fire TV Stickでは利用できないためご注意ください。USBケーブルポートはFire TV (ボックス) にしか存在しません。  Windowsコンピューターを使用する場合は、USBドライバをインストールします (「Android Debug Bridgeを設定する」を参照)。  コンピューターのUSBポートにFire TVを接続します。      次のコマンドを実行します。    adb kill-serveradb start-serveradb devices      最後のコマンドを入力すると、ADBから次のメッセージが返されます。&lt;serialno&gt; は端末のシリアル番号です。List of devices attached&lt;serialno&gt; deviceadb devicesを実行してもシリアル番号が表示されない場合は、ADBを更新してから、再度この手順を実行してください。コンピューターとFire TV端末の接続がADBによって確立された後、開発中のアプリを実行すると、次のようなダイアログボックスが表示されます。この例では、”Amazon AFTS” はFire TV (第 2 世代) を表しています。ADBを更新する「adb devices」と入力してもご利用の端末が表示されない場合は、次の手順に従ってADBを更新してみてください。      ターミナルセッションを開いて、Android SDKのtoolsディレクトリに移動します。    インストールディレクトリは、Android Studioで [Tools] &gt; [Android] &gt; [SDK Manager] の順に選択するか、[SDK Manager] ボタン  をクリックして確認できます。[Android SDK Location] の横にディレクトリが表示されます。        ターミナルまたはコマンドプロンプトからcdコマンドでAndroid SDKディレクトリに移動し、1 階層下のtoolsに移動 (cd) します (toolsディレクトリはSDKディレクトリに格納されています)。        次のいずれかのコマンドを実行してADBを更新します。    Mac:    ./android update adb        Windows:    android update adb        ADBが更新されたことを示すメッセージが返されます。  トラブルシューティング次のようなメッセージが表示される場合があります。 unable to connect to 192.168.0.6:5555: Operation timed outこの場合は、次のことを試してください。  Fire TVとコンピューターで、どちらも同じネットワークとルーターが使用されていることを確認します。  ADBを更新し、サーバーを停止してから再起動します。  Fire TVとルーターを再起動します。  IPアドレスがドット (.) も含め、正しく入力されていることを確認します。次のステップAmazon Fire TV端末にテスト目的でアプリをインストールして実行する方法については、「アプリのインストールと実行」を参照してください。",
+        "url": "connecting-adb-to-fire-tv-device.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "installing-and-running-your-app-html": {
+        "title": "アプリのインストールと実行",
+        "tags": "[]",
+        "content": "Amazonアプリストアに申請するFire TVアプリは、事前にテストとデバッグを済ませる必要があります。この作業にはAndroid Debug Bridge (ADB) を使用し、Fire TV端末にアプリをインストールして実行します。開発したアプリを (アプリストアを介さずに) インストールすることを、アプリを “サイドロードする” とも言います。作業を行う前に、Fire TV端末がADB経由で開発コンピューターにあらかじめ接続されている必要があります。詳細については、「ADBを使用してFire TVに接続する」を参照してください。 Note: このページで参照されている一部の開発ツールやリソースは、Amazonではなく、サードパーティによって提供されています。これらのツールやリソースへのリンクは、サードパーティのサイトを指しています。  アプリをインストールする (コマンドライン)  アプリを実行する (端末)  アプリを実行する (コマンドライン)  アプリをアンインストールする (端末)  アプリをアンインストールする (コマンドライン)アプリをインストールする (コマンドライン)コマンドラインからアプリをFire TV端末にインストールするには、次のコマンドを使用します。ここで、&lt;path-to-apk-file&gt; はアプリのAPKへのファイルシステムパスです。adb install &lt;path-to-apk-file&gt;インストールが正常に終了すると、ADBによって次のようなメッセージが表示されます。764 KB/s (217246 bytes in 0.277s)pkg: /data/local/tmp/HelloWorld.apkSuccessデバイスにすでに存在するアプリを再インストールするには、次のコマンドのように、-rオプションを指定してアプリを再インストールします。adb install -r &lt;path-to-apk-file&gt;アプリを再インストールしても、既存のユーザーデータやキャッシュは上書きされません。このデータをクリアするには、古いアプリをアンインストールしてから新しいバージョンをインストールするか、[System] &gt; [Applications] で手動でデータをクリアします。アプリを実行する (端末)サイドロードされたアプリは、[Apps] セクションの [Recent] 行と [My Library] 行に表示されます。また、[Settings] メニューにもアプリが表示されます。  Fire TVのメイン画面から、[Settings] &gt; [Applications] &gt; [Manage Installed Applications] の順に選択します。  アプリを選択します。  [Launch application] を選択します。 Note: 第 1 世代の端末をご使用の場合、一部のメニューが若干異なる場合があります。アプリを実行する (コマンドライン)Amazon Fire TV端末のアプリに起動インテントを送信するには、次のコマンドを使用します。ここで、com.amazon.sample.helloworldはアプリのパッケージ名で、MainActivityはアプリのプライマリアクティビティの名前です。adb shell am start -n com.amazon.sample.helloworld/.MainActivityADBから次のようなメッセージが返され、アプリが実行を開始します。Starting: Intent { cmp=com.amazon.sample.helloworld/.MainActivity }アプリをアンインストールする (端末)Amazon Fire TV端末自体を使用してアプリを端末からアンインストールするには、次の手順に従います。  Fire TVのメイン画面から、[Settings] &gt; [Applications] &gt; [Manage Installed Applications] の順に選択します。  アプリを選択します。  [Uninstall] &gt; [Uninstall] を選択します。アプリをアンインストールする (コマンドライン)コマンドラインからアプリをアンインストールするには、APKのパッケージ名が必要です。次のコマンドを使用してアプリをアンインストールします。ここで、com.amazon.sample.helloworldはアプリのパッケージです。adb uninstall com.amazon.sample.helloworldアプリのパッケージ名が不明な場合は、次のコマンドを使用すると、インストール済みのすべてのAPKとそのパッケージ名が一覧表示されます。adb shell pm list packages -f",
+        "url": "installing-and-running-your-app.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "setting-up-your-development-environment-html": {
+        "title": "開発環境のセットアップ",
+        "tags": "[]",
+        "content": "Amazon Fire TVプラットフォームを対象にAndroidベースのFire TV対応アプリ開発を行うには、あらかじめ開発環境をセットアップしておく必要があります。  JDKのセットアップ  Android Studioのセットアップ  次のステップJDKのセットアップご使用のコンピューターでJavaアプリをコンパイルするには、Oracleから提供されているJava Development Kit (JDK) が必要です。まず、JDKがすでにインストールされているかどうかを確認します。ターミナルまたはコマンドプロンプトを開いて「java -version」と入力します。JDKがインストールされている場合、次のようなメッセージが返されます。java version \"1.8.0_101\"Java(TM) SE Runtime Environment (build 1.8.0_101-b13)Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)JDKがインストールされていない場合は、ご使用のコンピューターに合ったバージョンのJDKインストーラをJava SE Development Kit Downloadsからダウンロードして実行してください。詳細については、以下のページを参照してください。  10 JDK 8 Installation for OS X  JDK Installation for Microsoft Windows。このページの「Running the JDK Installer」と「Updating the PATH Environment Variable」のセクションをご覧ください。その他のオペレーティングシステムと情報については、「JDK 8 and JRE 8 Installation Start Here」を参照してください。Android StudioのセットアップAndroidプロジェクトの公式IDEであるAndroid Studioをインストールします。ご使用のコンピューターへのAndroid Studio開発環境のセットアップについては、Android Studioの概要に関するページと「Android Studioのインストール」を参照してください。次のステップADBを使用してFire TV端末を開発コンピューターに接続する方法については、「ADBを使用してFire TVに接続する」を参照してください。開発したアプリをFire TV端末にインストールして実行する方法については、「アプリのインストールと実行」を参照してください。",
+        "url": "setting-up-your-development-environment.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "amazon-fire-tv-differences-from-android-tv-development-html": {
+        "title": "Fire TV開発とAndroid TV開発の違い",
+        "tags": "[]",
+        "content": "Fire TVとAndroid TVは、どちらもAndroidが使用されているため、開発したAndroidアプリをAmazonアプリストアとGoogle Playストアの両方で配信することができます。AmazonストアとGoogleストアの両方で配信することによって、アプリの知名度とダウンロード件数を大幅に向上させることができます。ただし、Fire TVにはコードの中で考慮すべき違いがいくつかあります。これらの違いは、たとえばハードウェアやサービスを構成する独自の要素に起因しています。一方のサービスには存在する機能がもう一方のサービスにはない場合もあります。異なるサービスではあるものの、同等の働きをするものもあります。コードの中でこうした違いに対応するためには、Amazon Fire TV端末を特定し、条件分岐させることで、それに応じた動作をコーディングする必要があります。  Fire TVとは何か、Android TVとは何か  Android TVとFire TVの違い          Leanback Support Library      音声検索      グローバル検索      早送りボタン、早戻しボタン、メニューボタン      Googleのサービス      アプリ内課金      Firebase Analytics      SDKレベル      おすすめの表示      エミュレータ      通知API      ユーザー補助      アプリストア      Fire TVとは何か、Android TVとは何かまず、Android TVとFire TVとは何かを明確にしておきましょう。  Android TVとは、テレビ用に最適化されたAndroidオペレーティングシステムをいいます (Lollipop以降)。Android LollipopとLeanback Support Libraryには、テレビのプラットフォームにAndroidを最適化する機能が備わっています。Android TVは、テレビ端末単体でネイティブOSとして実行できるほか、テレビからセットトップボックスを介してAndroidを実行することができます。Android TVの詳細については、Wikipediaを参照してください。  Fire TVとは、ご使用のテレビでFireオペレーティングシステム (OS) を実行するFire TVセットトップボックスまたはFire TV Stickを指します。Fire OSは、Amazonのハードウェアとサービスに対応したAndroidフォークです。Fire OSは、最新のAndroidリリースにほぼ足並みを合わせる形で進化していますが、拡張範囲はLollipopおよびバックポートされたMarshmallowコードまでです(Fire OSはFireタブレットでも使用されていますが、テレビプラットフォームでの “10 フィートエクスペリエンス” に主眼を置いた機能はFireタブレットでは利用されません)。重要な点は、Android TVとFire TVはどちらもAndroidをベースにしており、アプリ開発において開発者が実装する技術は、相違点よりも共通点の方がはるかに多いということです。Android TVとFire TVの違い以降のセクションでは、Fire TVでの使用を予定しているコードの中で考慮に入れるべき相違点を見ていきます。Leanback Support LibraryFire TVでは、AndroidのLeanback Support Libraryが一部サポートされています。Fire TVではLeanbackに含まれているテレビ用のUIコンポーネントが使用されており、Leanbackのウィジェットも動作しますが、Leanbackランチャーのアクティビティをタグで定義しても、アクティビティは動作しません。具体的には、アクティビティカテゴリCATEGORY_LEANBACK_LAUNCHERがFire TVでは認識されません。音声検索音声検索に関しては、Android TVではLeanback APIを利用したアプリコントロールが使用されています (SearchFragmentによる音声認識など)。一方、Fire TVでの音声検索には、Amazon独自のシステムコントロールが使用されています。ユーザーはFire TV上の任意の操作画面 (ランチャー、アプリ内など) で、音声対応リモコンのマイクボタンを押し、目的のテレビ番組やAlexaアクションを声に出して言うと、そのアクションによってグローバル検索が開始されます。このときに使用されるのはAlexaクラウドサービスであり、Leanbackライブラリの音声認識APIは使用されません。音声によるメディアリクエストでは、常にFire TVカタログからコンテンツが返されます。詳細については、「Implementing Search in Fire TV」を参照してください。グローバル検索Android TVでは、目的のコンテンツをグローバル検索に統合したい場合、検索結果のContentProviderをアプリから使用してローカルに実現できます。一方、Fire TVでグローバル検索の結果にコンテンツを表示させるには、メディアのコンテンツをFire TVカタログに統合する必要があります。カタログへの送信は、(アプリ内からローカルにではなく) クラウドベースモデルで実現されます。早送りボタン、早戻しボタン、メニューボタンAndroid TVとFire TVにはどちらも、4 方向のD-Padボタン、D-Pad のCenter/選択ボタン、戻るボタン、再生/一時停止ボタンが備わっています。ただし、Fire TVにはさらに、早戻しボタン、早送りボタン、メニューボタンが備わっています。Fire TVの [Menu] ボタンを押すと、Androidのコンテキストメニューが起動し、画面の中央にメニューアイテムのリストが表示されます。[Menu] ボタンをオーバーライドして、独自のカスタムメニューユーザーインターフェースを提供するなどの目的に使用できます。メニューアイテムが 1 つだけ必要な場合は、単純な切り替えスイッチ (たとえば、クローズドキャプションのオン/オフ) として [Menu] ボタンを使用し、この機能をユーザーに知らせるためにヒントを画面に表示することもできます。GoogleのサービスGoogle固有のサービスに依存するAPI (位置情報サービスなど) は、Fire TVでは利用できません。Amazon Maps APIやAmazonモバイル広告APIは存在しますが、まだFire TVではサポートされていません。アプリ内課金Android TVでのアプリ内課金には、通常、Googleのアプリ内課金機能 (Google In-App Billing) を使用します。Fire TVでのアプリ内課金には、Amazonのアプリ内課金 (IAP) APIを使用します。詳細については、両者の詳しい機能比較を参照してください。Firebase AnalyticsAndroid TVでは、分析ソリューションとしてFirebaseが使用されています。Fire TVでは、Amazon Mobile Analyticsやその他の分析パッケージ (Google Analytics、Flurry Analytics、Crashlyticsなど) を使用できます。SDKレベルAndroid TVでは最新のSDK (Nougat) が使用できるのに対し、Fire TVではLollipopのみが最小SDKレベルとして使用されます(特定のアプリをサポートするために、Fire OSにはMarshmallowの一部のAPIがバックポートされています)。おすすめの表示Android TVでは、アプリからランチャーでおすすめの表示を行うことができます。Fire TVにはRecommendations APIが存在するものの、現時点では機能しません。つまり、Fire TVランチャー上のコンテンツをアプリから制御することはできません (ランチャーのおすすめカテゴリに対する登録は、一部の限られたアプリで間もなく対応予定となっていますが、現時点では実装されていません)。エミュレータ開発したFire TVアプリのコードをテストするときに使用するのは、通常、仮想エミュレータではなく実際のFire TV端末です。詳細については、「ADBを使用してFire TVに接続する」を参照してください。通知APIFire TVアプリで通知を作成するには、標準のAndroid通知APIを使用します。Fire TVには、Android TVと同じトースト通知と永続化モデルが備わっています。ただし、Fire TVはトーストの他にもHeads up (高優先度) 通知に対応しており、それらの通知にはインタラクティブなボタンが利用できます。さらに、古い通知は、通知ドロワーには格納されずに通知センターに保存されます。詳細については、「Notifications for Amazon Fire TV」を参照してください。ユーザー補助Fire TVにはVoiceViewが備わっており、目の不自由な方でも利用しやすいようにアプリを開発することができます。VoiceViewとユーザー補助の詳細については、次のページを参照してください。  Understanding Assistive Technologies for Fire OS  Implementing Accessibility in Fire OSアプリストアAndroid TV端末では、Google Playストアが使用されます。これに対してFire TVでは、Amazonアプリストアが使用されます。Google Playストアへのリンクはすべて、Amazonアプリストアへのリンクに変更する必要があります。",
+        "url": "amazon-fire-tv-differences-from-android-tv-development.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "amazon-fire-tv-sdk-frequently-asked-questions-html": {
+        "title": "Amazon Fire TVのよくある質問 (FAQ)",
+        "tags": "[]",
+        "content": "全般  Q: Amazon Fire TVプラットフォーム向けに開発したアプリを申請するにはどうすればよいですか?  Amazon Fire TV端末向けのアプリを申請するには、Amazonアプリおよびサービス開発者ポータルでアカウントを作成し、ポータルからアプリを申請します。    すでにAmazonでアプリを公開済みである場合は、Amazon Fire TV用に別のバイナリAPKを追加してアプリを更新してください。 詳細については、「Device Targetingの使用」を参照してください。    Q: 私が開発したアプリは、Amazon Fire TVプラットフォームで動作するでしょうか?  開発したアプリが、Amazon Fire TV端末の仕様に適合している必要があります。端末と機能の仕様について詳しくは、端末の仕様を参照してください。    Amazonアプリストアコンテンツポリシー要件にアプリが準拠していることが必要です。またアプリをご自身でテストし、問題が見つかった場合はアップデートを申請することをお勧めします。    Q:  自分のアプリがAmazon Fire TV端末で実行されるかどうかを確認するにはどうすればよいでしょうか?  A: amazon.hardware.fire_tvという機能が存在するかどうかを確認してください。厳密に端末の機種 (Fire TV第 1 世代、Fire TV第 2 世代など) を調べる必要がある場合は、MODELの戻り値 (それぞれAFTB、AFTS) を調べることで確認できます。ただし、機能のフォールバックは必ず含めるようにしてください。詳細については、「Identifying Amazon Fire TV Devices」を参照してください。  Q: テストのためにアプリをAmazon Fire TVにサイドロードすることはできますか?  はい。できます。Android Debug Bridge (ADB) をご利用ください。  詳細については、「Getting Started Developing Apps and Games for Fire TV」を参照してください。   Q: 開発者向けにAmazon Fire TVのテスト端末は提供されていますか?  開発者向けのテスト端末は、Amazonでは提供していません。    Amazon Fire TV端末は、米国、英国、ドイツのAmazonリテールサイトで販売されています。国ごとの販売状況については、商品詳細ページを参照してください。    Q: Amazon Fire TVプラットフォームでは、具体的にどのような機能がサポートされていますか?  端末と機能の仕様について詳しくは、端末の仕様および「Fireタブレット」を参照してください。  Q: 自分が作ったアプリをAmazon Fire TVプラットフォームで宣伝してもらうにはどうすればよいでしょうか?  「アプリのマーケティング」を参照してください。  Q: Amazon Fire TVプラットフォームに関する情報はどのようにして入手できますか?  お問い合わせフォームでご質問をお寄せください。  Q:  アプリはどのような状況で一時停止しますか? また、一時停止の動作をどのように実装すればよいですか?  A: アプリが一時停止するのは、Fire TVのリモコンまたはAmazon Fireゲームコントローラの [Microphone] (音声検索)、[Home]、[GameCircle] のいずれかのボタンが押されたときです。[Back] ボタンが押されたときも、現在のアクティビティが一時停止します。この場合、スタック上の前のアクティビティが再開されます。再開されるアクティビティは、一時停止されたアプリのものではないことがあります。    一時停止の動作を処理するには、他のAndroidアプリと同様に、アクティビティにonPause() メソッドを実装します。onPause() メソッドでは、ユーザーの状態または場所を保存して、アプリが再開したときにユーザーを一時停止前と同じ位置に置く必要があります。    また、メディアアプリでは、次の要件を満たす必要があります。          ビデオを再生するアプリは再生を一時停止し、一時停止状態になったらすぐにデコーダーなどのすべてのメディアリソースを解放する必要があります。これは、これらの限りあるリソースがハードウェアベースであり、メモリを大量に消費するためです。詳細については、「Releasing the Media Player」および「MediaPlayer.release()」を参照してください。      オーディオを再生するアプリは、一時停止しても再生を継続することは許可されますが、他のアプリによって要求された場合は、オーディオフォーカスを放棄する必要があります。詳細については、「Managing Audio Focus」を参照してください。        Q:  デフォルトのウェブブラウザで広告を開くことはできますか?  A: Amazon Fire TVにはブラウザアプリは含まれていないため、URL (広告など) は一切機能しません。アプリにウェブページへのリンクを含める必要がある場合は、AndroidのWebViewを使用できます。ただし、AndroidのWebViewを使用する場合は、コントローラからの入力イベントを処理するために、アプリで独自のCookieや認証を管理する必要があります(AndroidのWebViewはD-Padナビゲーションをサポートしますが、レイアウトとナビゲーションの見直しが必要になることがあります)。    AndroidのWebViewを実装する際のヒントについては、ブログ投稿「Using WebViews on Tablets with HD Screens」を参照してください。この投稿はタブレットに関するものですが、アドバイスはテレビにも適用できます。  Q:  Amazonアプリ内課金APIをFire TVアプリで使用できますか?:   A: はい。Amazonのアプリ内課金 (IAP) APIは、すべてのFire TV端末およびFire TVのリモコンとゲームコントローラで機能します。トランザクションをプレビューするには、App Testerを使用します。  Q:  Amazon Device Messaging (ADM) をFire TVアプリで使用できますか?  A: Amazon Device Messagingを使用して、プッシュメッセージや他のデータを受け取ることができます。  Q:  Amazon Maps APIをFire TVアプリで使用できますか?  A: Amazon Fire TVには位置情報サービスはないので、現時点でAmazon Maps APIはサポートされていません。  Q:  Amazon Mobile Ads APIをFire TVアプリで使用できますか?   A: 現時点では、Amazon Mobile Ads APIはFire TVでサポートされていません。  Q:  Amazonアプリストアに存在するアプリの詳細ページにリンクできますか?  A: はい。Amazonアプリストアのディープリンクは、他のアプリと同様にFire TVアプリでも機能します。ディープリンクの詳細については、「Amazonアプリストアアプリへのリンク」を参照してください。ただし、アプリを評価する機能は、現在、Amazon Fire TVでサポートされません。アプリでは、ユーザーに評価を依頼しないでください。  Q:  オンスクリーンキーボードをテンキーパッドに変更するにはどうすればよいですか?  A: 標準のAndroidメカニズムを使用することにより、すべてのEditTextウィジェットに対してIME (入力方式エディター) を構成できます。In XML, use android:inputType=\"number\":    &lt;EditTextandroid:layout_width=\"wrap_content\"android:layout_height=\"wrap_content\"android:id=\"@+id/edittext\"android:inputType=\"number\"/&gt;        Q:  Amazon Fire TVでスクリーンショットを取得するにはどうすればよいですか?  A: スクリーンショットを取得するには、adbを使用して端末に接続し、次のコマンドを使用します。filename.pngをスクリーンショットの名前に変更し、/tmpをスクリーンショットを格納する開発コンピューターのディレクトリに置き換えます。    adb shell screencap -p /sdcard/filename.pngadb pull /sdcard/filename.png /tmpadb shell rm /sdcard/filename.png        詳細については、「Taking Screenshots of your Fire TV App」を参照してください。    Q: Googleのアプリ内課金テクノロジーを使用しているのですが、Amazon Fire TVプラットフォームで動作するでしょうか?  いいえ。Googleのアプリ内課金APIなどのサービスは、Google Mobile Servicesにアクセスする必要があり、Amazon Fire TVプラットフォームでは動作しません。アプリ内課金に関して、Amazonでは独自のアプリ内課金APIを提供しています。開発者の皆さまが開発するアプリでは、このAPIを通じてデジタルコンテンツやサブスクリプションを簡単に提供することができます。  Q: Amazon Fire TVまたはFire TV Stick用のアプリをドイツやオーストリアで配布する場合、他に基準はありますか?  はい。Amazonではでは、Amazon Fire TVやFire TV Stickのアプリのうち、Amazon Fire TVやFire TV Stick端末、SDメモリカード、接続されている外部ストレージ (該当する場合) に対して何らかのビデオコンテンツやオーディオコンテンツを格納 (複製、録音、ダウンロード、保存など) する機能が備わっているアプリをドイツやオーストリアで配布することを禁止しています。そのような機能が含まれているとAmazonが判断したアプリは、ドイツやオーストリアでは公開されません。Fire OS 5 (Android Lollipop)  Q: Fire OS 5 では、Android TVとv17 Leanback Libraryがサポートされますか?  A: Fire OS 5 では、Android TV機能とLeanback Libraryの両方がサポートされています。ただし、LeanbackライブラリのSearchFragmentクラスによる音声認識は現在サポートされていません。詳細については、「Implementing Search in Fire TV」を参照してください。メディアとDRM  Q: Fire TVでは、どのようなサードパーティ製のメディアプレーヤーSDKがサポートされますか?  A: Androidメディア再生APIおよび暗号化APIを実装しているメディアプレーヤーSDKであれば、Amazon Fire TVプラットフォームで機能します。  そのようなSDKの例として、Amazon Port of the ExoPlayer、Android MediaPlayer、VisualOn OnStream MediaPlayer+ SDK、NexStreaming NexPlayer SDKがあります。詳細については、「Media Players」を参照してください。  Q:  Microsoft PlayReady DRMで暗号化されたメディアを再生する機能を実装する場合、どのようなオプションがありますか?  A: Amazon Fire TVプラットフォームには、保護されたメディアを再生するためのAndroid MediaCryptoクラスがサポートされています。または、PlayReadyをサポートするサードパーティ製のメディアプレーヤーSDKも使用できます。Amazon Fire TVでサポートされるのはPlayReady Version 2.5 だけです。  Fire TV端末では、PlayReady Security Level 3000 (SL3000) がサポートされません。PlayReady 3.0 でSL3000 が導入されたものの、Amazon Fire TV端末の対応がバージョン 2.5 に限られるためです。  Q:  Amazon Fire TVでは、暗号化されたオーディオを含むPlayReadyコンテンツはサポートされますか?  A: Fire TVでサポートされるのは、暗号化されたビデオとクリア (暗号化されていない) オーディオを含むPlayReadyコンテンツのみです。Widevine DRMもサポートされます。詳細については、Fire TV端末の仕様に関するページのDRMのセクションを参照してください。暗号化されたオーディオとビデオの両方を含むコンテンツを再生する方法の詳細については、こちらからお問い合わせください。  Q:  Dolby DigitalオーディオをFire TV端末で復号化する方法は?  A: Fire TVとFire TV Stickのどちらにも、Dolby Digital (AC3) およびDolby Digital Plus (eAC3) の復号化機能が含まれています。これらの形式は、標準のAndroidメディアプレーヤーライブラリを使用して再生できます。Amazon Fireタブレット用のDolbyAudioProcessing SDKは、Fire TV端末でサポートされない (または必要ない) ことに注意してください。Dolby再生の詳細については、「Dolby Integration Guidelines」を参照してください。  Q:  端末では、ファームウェアとOSを検証するためのセキュアブートがサポートされますか?  A: はい。  Q:  OSはアプリの署名確認を強制しますか?  A: はい。  Q:  出力はHDMI上のセキュアチャネルを通してHDCP保護されますか?  A: はい。  Q: Amazon Fire TVでは、カスタマイズ可能なクローズドキャプション (CEA-708) はサポートされますか?  A: Fire TVはプラットフォームレベルでクローズドキャプションをサポートしていますが、現時点では機能が限られています。メディアアプリでは、視聴者がキャプションをカスタマイズできるようにするUIを、サードパーティ製のメディア再生SDKまたは独自の実装を通して実装する必要があります。  Q: Amazon Fire TVでは、クローズドキャプションにどのようなフォントを使用できますか?  A: Amazon Fire TVで利用できるプラットフォームフォントは限られています。CEA-708 で定義されているスタイルカテゴリのそれぞれについて、独自のフォントファイルのライセンスを取得し、そのフォントファイルを埋め込む必要があります。メディアの再生  Q:  メディアの再生に関してリソースとメモリを節約するうえでのベストプラクティスを教えてください。      A: Amazon Fire TVでメディアの再生に使用されるリソースはハードウェアベースで、メモリに限りがあるため、アプリ側の適切な振る舞いが要求されます。使い終えたメディアリソースはアプリ側で確実に解放してください。    具体的には、ビデオを再生するアプリは、再生を一時停止し、デコーダーなどのすべてのメディアリソースをonPause() メソッド内ですぐに解放する必要があります。詳細については、「Releasing the Media Player」および「MediaPlayer.release()」を参照してください。    HTMLの &lt;video&gt; タグを使用して、AndroidのWebView経由でビデオを再生する場合、アプリが一時停止または停止しても、現時点ではハードウェアメディアリソースが自動的には解放されません。この問題を避けるために、onPause() メソッドとonStop() メソッドの実装コードの中で、次のようにプロセスを強制的に終了して、これらのリソースを明示的に解放してください。    public void onStop() {   super.onStop();   android.os.Process.killProcess(android.os.Process.myPid());}        Q: バックグラウンドで音楽を再生するアプリを作成しました。このアプリが一時停止すると、オーディオ再生が停止するのはなぜでしょうか?また、このアプリを起動しても、他のアプリのオーディオが再生され続けるのはなぜですか?  A: そのアプリは、オーディオフォーカスを正しく管理していません。アプリは再生を開始したときに、オーディオフォーカスを要求し、また、メディアボタンイベントのレシーバーとして自身を登録する必要があります。オーディオフォーカスを放棄した (再生が終了したか、または他のアプリがオーディオフォーカスを要求したために) ときには、メディアボタンイベントのレシーバーから自身を登録解除する必要があります。具体的には、次のようにします。          アプリが再生を開始するときには、AudioManager.requestAudioFocus() を使用してオーディオフォーカスを要求します。      オーディオフォーカスを取得したら、AudioManager.registerMediaButtonEventReceiver() を使用してメディアボタンのレシーバーとして登録します。      AudioManager.onAudioFocusChangeListener() を使用して、オーディオフォーカスが失われるのをリッスンします。      オーディオフォーカスが失われたら、再生を停止し、AudioManager.unregisterMediaButtonEventReceiver() を使用してメディアボタンのレシーバーとしての登録を解除します。        詳細については、以下のドキュメントを参照してください。          Managing Audio Focus (Fire TV関連ドキュメント)      Managing Audio Focus (Android関連ドキュメント)      Allowing applications to play nice(r) with each other: Handling remote control buttons        Q:  音楽アプリをバックグラウンドで実行して音楽を再生しているときに、不規則に停止するのはなぜでしょうか?  A: 音楽再生アプリをフォアグラウンドサービスとして実行してください。バックグラウンドサービス (デフォルト) は、リソースが少なくなると、システムによって自動的にシャットダウンされます。詳細については、Androidガイド (「Media Playback」とServiceクラスのstartForeground() メソッド) を参照してください。  Q:  TVの電源が消されたり、HDMIケーブルが抜かれたりした場合には、どのように対処すべきでしょうか?  A: HDMIとの接続が解除されたときに求められる動作は、オーディオとビデオとで異なります。詳細については、「Handling HDMI Events」を参照してください。  Q:  メディアを再生している際に、端末がスタンバイまたはスリープモード (スクリーンセーバー) に遷移するのを防止するにはどうすればよいですか?  A: メディアの再生中にAmazon Fire TVとテレビがスタンバイまたはスリープモード (スクリーンセーバー) に遷移しないようにする (オンの状態を維持する) には、アクティビティに KEEP_SCREEN_ONフラグを設定するか、PowerManagerからWakeLockを取得します。オーディオまたはビデオの再生を行っていないときには、すべてのWakeLockをアプリで解放して、端末とテレビがスリープモードに遷移し、電力消費が少なくなるようにする必要があります。WakeLockを使用する方法の詳細については、PowerManagerおよびPowerManager.WakeLockクラスを参照してください。    アプリがオーディオを再生する際にPartialWakeLock (PARTIAL_WAKE_LOCK) を設定すると、テレビはオンの状態を維持し、端末はアイドルになるとスリープモードに遷移します (スクリーンセーバーが表示されます)。これは、モバイル端末でのPartialWakeLockの動作と異なります。モバイル端末では、CPUはオンに維持され、画面は消灯します。Amazon Fire TVの動作は、HDMI経由でオーディオを再生する場合に、テレビがオンである必要があるためです。繰り返しになりますが、アプリがオーディオの再生を行っていないときには、WakeLockを解放して、テレビがスリープモードに遷移できるようにします。    SCREEN_BRIGHT_WAKE_LOCKフラグまたはSCREEN_DIM_WAKE_LOCKフラグを設定しても、端末の動作は影響を受けません。    Q:  端末がスリープモード (スクリーンセーバーがオン) に遷移したことを検知するにはどうすればよいですか?  A: スリープモードはAndroidの機能です。テレビがオンのときにAmazon Fire TVがスリープモードに遷移すると、スクリーンセーバーが表示されます。端末がスリープモードに遷移したか、スリープモードから他のモードに遷移したことを検知するには、Intent.ACTION_DREAMING_STARTEDおよびIntent.ACTION_DREAMING_STOPPEDのレシーバーとしてアプリを登録します。    音楽アプリではないアプリでオーディオを再生する場合、端末がスリープモードに遷移したときには、オーディオの再生を一時停止する必要があります。    ビデオを再生するのに、AndroidのWebViewおよびHTMLの&lt;video&gt;タグを使用できますか?  A: 答えは “はい” ですが、制限があります。現時点では、アプリが一時停止または停止したときに、ハードウェアメディアリソースはシステムによって解放されません。この問題を回避するには、次のonStop()メソッドを実装して、アプリのプロセスを明示的に停止します。    public void onStop() {super.onStop();android.os.Process.killProcess(android.os.Process.myPid());}        この問題によって、アプリのユーザーエクスペリエンスとナビゲーションが不安定になることがあります。端末でメディアを再生する方法としては、サードパーティ製のメディアプレーヤーSDKの使用が推奨されます。    Q:  アプリで 4K Ultra HDビデオを再生できますか?      はい。Fire TV (第 2 世代) が 4K対応TVに接続されていれば、4K Ultra HDビデオを再生できます。Fire TV (第 1 世代) とFire TV Stickでは、4Kビデオが再生されません。    4Kのコンテンツを再生する前に、(1) 端末がFire TV (第 2 世代) であるかどうかと、(2) 接続されているテレビが 4Kに対応しているかどうかをアプリ側でチェックする必要があります。Amazon 4K Extension Libraryは、4Kモードスイッチを開始できるように開発されています。    Ultra HDビデオに対応したアプリは、必要なユーザーエクスペリエンスを確実に満たすために、Amazonによって認定されます。通常、認定は数週間以内に完了します。詳細については、「Playing 4K Ultra HD Videos」を参照してください。  コントローラ  Q:  Amazon Fire TVゲームコントローラに、以前のバージョンにはあったメディアボタンがありません。メディアを再生するにはどうすればよいですか?  A: Amazon Fire TVでは、アナログスティック ([Play/Pause]) を押したとき、および左側のショルダー ([Rewind]) ボタン (L1) や右側のショルダー ([Fast Forward]) ボタン (R1) を押したときに、メディア入力イベントが生成されます。これらのボタンを使用しないアプリまたはゲームでは、ユーザーがメディアの再生をバックグラウンドでコントロールできるように、これらのボタンイベントをアプリでキャプチャや破棄などの処理の対象にしないでください。    Amazon Fireゲームコントローラのメディアボタンをアプリで他の目的に転用している場合、新しいAmazon Fire TVゲームコントローラのユーザーは、ボタンがなければその機能を使用できません。両方のゲームコントローラに共通するボタンを使用するようにアプリを更新することや、画面上に表示されるヒントを更新することを検討してください。    Q: Amazon Fire TVゲームコントローラから音量制御を行うには、どうすればよいですか?  A: Amazon Fire TVでは、オーディオをAmazon Fire TVゲームコントローラのヘッドホンジャックにストリーミングできます (現行世代の端末のみ)。音量制御には、左側/右側のトリガーボタン (L2/R2) ボタンを使用します。    音量制御はシステム機能であり、アプリの他のボタンにマップできません。トリガーボタンを使用しないアプリまたはゲームでは、ユーザーがメディアの再生をバックグラウンドでコントロールできるように、これらのボタンイベントをアプリでキャプチャや破棄などの処理の対象にしないでください。これらのボタンをアプリまたはゲームで他の目的に転用している場合、GameCircle画面またはシステムランチャーから音量を制御できることを、画面上に表示されるヒントで知らせることを検討してください。    Q:  アプリでFire TV Voice Remoteの [Microphone] ボタンをオーバーライドできますか?  A: [Microphone] ボタンは、一時的オーディオフォーカスを要求してシステム全体の音声機能を起動するもので、オーバーライドすることはできません。開発するアプリケーションは、このオーディオフォーカス変更イベント (AUDIOFOCUS_LOSS_TRANSIENT) に加え、他のオーディオフォーカス変更イベント (AUDIOFOCUS_LOSS、AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCKなど) も処理する必要があります。各種オーディオフォーカス要求は、音声に限らず、あらゆるアプリケーションによって行われることが考えられるためです。つまり、すべてのオーディオフォーカスのユースケースが適切に処理される必要があります。詳細については、「Handling Audio Focus with Voice Search」を参照してください。  Q:  [Menu] ボタンにはどのような機能がありますか? また、アプリ内でオーバーライドできますか?  A: デフォルトでは、[Menu] ボタンはAndroidコンテキストメニューを起動し、画面の中央にメニューアイテムのリストを表示します。[Menu] ボタンをオーバーライドして、独自のカスタムメニューユーザーインターフェースを提供するなどの目的に使用できます。    メニューアイテムが 1 つだけ必要な場合は、単純な切り替えスイッチ (たとえば、クローズドキャプションのオン/オフ) として [Menu] ボタンを使用し、この機能をユーザーに知らせるためにヒントを画面に表示することもできます。    Q:  Fireゲームコントローラの [GameCircle] ボタンを押しても、ゲームのGameCircleオーバーレイが表示されないのはなぜですか?  A: GameCircleオーバーレイは、次の条件が満たされる場合にだけ表示されます。          ゲームにGameCircle APIが実装されている。      ゲームがAmazonアプリストアに申請されており、ゲームとして分類されている。      ゲームがAmazonアプリストアからFire TV端末にインストールされている。        テストのためにゲームをFire TV端末にサイドロードしている場合、GameCircleオーバーレイは表示されません。アプリのGameCircle実装は、ライブアプリテストを使用することにより、申請前にテストできます。    GameCircleオーバーレイは、いずれのリーダーボードまたはアチーブメントも公開しておらず、しかもテストアカウントを使用していない場合にも表示されないことがあります。このシナリオでは、1 つ以上のアチーブメントまたはリーダーボードをAmazon Developer Consoleで公開するか、またはテストアカウントを (Amazon Developer Consoleで) セットアップし、そのアカウントを使用して暫定のアチーブメントおよびリーダーボードをGameCircleオーバーレイで表示します。    Q:  コントローラを接続、切断、またはスリープ状態にすると、アクティビティが初めから再起動するのはなぜですか?  A: これらのイベントは、Androidによって実行時設定変更として処理されます。これらのイベントをアプリで無視するには、AndroidManifest.xmlを変更してandroid:configChanges属性を追加し、この属性にkeyboard、keyboardHidden、navigationの各キーを含めます。    &lt;activity android:name=\"MyActivity\"android:configChanges=\"keyboard|keyboardHidden|navigation\"&gt;        configChanges属性について、および必要に応じて設定変更を処理する方法の詳細については、Androidガイド「実行時の変更の処理」を参照してください。    Q:  ゲームコントローラの切断をアプリまたはゲームでどのように処理すればよいですか?  A: Amazon Fire TVゲームコントローラは、5 分を超えてアイドルであるかスティックが同じ角度に保持されていると、バッテリー残量を維持するためにシステムから切断される可能性があります。他のコントローラも、アイドルであるか、バッテリー残量が無くなると切断される可能性があります。コントローラ切断イベントを処理するには、Android OnInputDeviceRemoved リスナーを使用します。コントローラが利用できないことをユーザーに知らせるために、ゲームを一時停止するか、またはダイアログを表示することを検討してください。Amazon Fire TV Stick  Q:  Amazon Fire TVとFire TV Stickの違いは何ですか?  A: Fire TV端末の仕様に、すべてのFire TV端末の仕様が記載されています。  Q:  Amazon Fire TVアプリをAmazon Fire TV Stickに適応させるにはどうすればよいですか?  A: Amazon Fire TVとFire TV Stickは両方とも、同じプラットフォームソフトウェアを実行します。ただし、Fire TV Stickではハードウェアの条件が厳しいので、パフォーマンスと安定性に関してアプリを最適化する必要があります。ハードウェアアクセラレーションとパフォーマンスに関するAndroidのベストプラクティスに従うことが重要です。特に、OpenGLとテクスチャについては注意が必要です。Fire TV StickのGPUはMAX_TEXTURE_SIZEが 2048 x 2048 のOpenGL 2.0 をサポートします。  Q:  Fire TV Stick端末の識別方法は?  A: amazon.hardware.fire_tvという機能が存在するかどうかを確認してください。Fire TV端末の機種 (Stick) まで厳密に調べる必要がある場合は、MODELの戻り値 (AFTM) をチェックします。詳細については、「Identifying Amazon Fire TV Devices」を参照してください。  Q:  アプリの一部の画像/背景色が表示されないか、画像の代わりに灰色のボックスが表示されます。  A: この現象は、通常、ビットマップ画像またはテクスチャが非常に大きい場合に発生します。Fire TV Stickは、最大 2048 x 2048 のテクスチャをサポートします。アプリにこの問題がある場合は、次のようなエラーがログに表示されます。    W/OpenGLRenderer( 8941): Bitmap too large to be uploaded in a texture (3840x2160, max=2048x2048)        また、Fire TV用の画像は、drawables/ フォルダーではなく、drawables-xhdpi/ フォルダーに存在する必要があります。デフォルトのドローアブルをプラットフォームに応じて拡大すると、テクスチャ制限を超える大きな画像が作成されることがあります。  ",
+        "url": "amazon-fire-tv-sdk-frequently-asked-questions.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "design-and-user-experience-guidelines-html": {
+        "title": "TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン",
+        "tags": "[]",
+        "content": "テレビのユーザーインターフェースのデザインは、デスクトップコンピューターやタブレット、スマートフォンのデザインとは大きく異なります。ここでは、開発者の皆さんが 10 フィートUIのデザイン原則を理解し、アプリケーションとデザインをAmazon Fire TVユーザーインターフェースに統合する際の助けとなるガイドラインを紹介しています。  全般的な原則          10 フィートUI      クリア、シンプル、ビジュアル      重要なコンテンツを最初に配置する      コンテンツ再生に重点を置く        デザインガイドライン          画面サイズと解像度      オーバースキャンとセーフゾーン      カラー      タイポグラフィ        ナビゲーションと入力          D-Padを使用した方向ナビゲーション      フォーカスと選択      テキスト入力        画面、ビュー、フロー          ホーム画面 (ランチャー)      1Dリストビュー      詳細ビュー      検索      全般的な原則アプリをデザインする際は、次に示す全般的な原則を適用します。10 フィートUIテレビを見るとき、ユーザーは画面から 10 フィート (約 3 メートル) 以上離れているため、テレビのインターフェースは、10 フィートユーザーインターフェース (10-ft UI) と呼ばれることがあります。画面自体を大きくすることはできますが、画面が大きいほど解像度は低くなり、画面から離れるほど視野角は小さくなります。デスクトップコンピューターやタブレット、スマートフォンでは、より近い距離から画面を見るため、これらで実行するアプリケーションまたはウェブページ向けのデザインは、テレビを対象にする場合と根本的に異なります。また、テレビはデスクトップコンピューター、タブレット、またはスマートフォンに比べて、よりくつろいだ雰囲気で視聴されるため、テレビのUIでは、高いレベルの注意力および正確性を求めないようにする必要があります。10-ft UIでは、既存のアプリのデザインやレイアウト、ナビゲーションを完全に見直す必要があります。クリア、シンプル、ビジュアル10-ft UIでは、画面をシンプルかつクリアにし、情報密度を低くする必要があります。画面に表示されるデザイン要素またはUIコンポーネント (メニュー、ボタン、イメージ) の数を制限し、これらの要素は、遠くからでも認識および区別できるように十分に大きくし、間を空けるようにします。各画面では、一連の操作とオプションを明確に提示します。ユーザーはテレビの画面で大量のテキストを読むことに慣れていないので、テキストの量は最小限にします。情報を大量に入力しなくても済むようにし、可能な限り合理的なデフォルト値を提供します。重要なコンテンツを最初に配置する最も重要なコンテンツまたはオプションを画面の目立つところに配置し、ユーザーが容易に認識およびナビゲーションできるようにします。コンテンツ再生に重点を置くアプリケーションでは、ユーザーがすばやくコンテンツにアクセスできるようにすることに重点を置く必要があります。テレビのインターフェースは、娯楽を提供することが主な目的です。テレビの前に座っているユーザーは、余分な操作をしたくありせん。ユーザーは、”見聞きしたいものをすぐに再生する” という本来の目的を実現する、シンプルなユーザーインターフェースを求めています。デザインガイドラインアプリで個々の画面やビューをデザインする際には、次のガイドラインを使用します。画面サイズと解像度タブレットやスマートフォン向けのアプリをデザインする際、対象となる画面のサイズと解像度は固定されています。これと異なり、テレビのデザインでは、同じアプリが 720pまたは 1080pのいずれかの解像度で、しかもさまざまなサイズの画面に表示されることを考慮する必要があります。最高のユーザーエクスペリエンスを提供するために、フル 1080pのテレビ画面を対象にして、アプリとそのリソースをデザインすることをお勧めします。Amazon Fire TVプラットフォームは、テレビの画面サイズと解像度に応じて、リソースを拡大/縮小します。1080pの場合、画面サイズは 1920 x 1080 px、密度は 320 dpi (“xhdpi”)、出力解像度は 960 x 540 dp (“large”) です。また、Amazon Fire TVプラットフォームでは、標準のAndroid設定がサポートされており、Android開発者ガイドの「複数画面をサポートする」で説明されているように、出力パラメータの違いに応じて複数のリソースディレクトリを使用できます。アプリを実行すると、Fire TVはリソースを適切なフォルダーから読み込みます。Amazon Fire TVで利用できるリソース設定の詳細については、「表示とレイアウト」を参照してください。オーバースキャンとセーフゾーン画面サイズに関係なく、すべてのテレビには、画面の表示可能な領域の周囲に余白が確保されています。このスペースは、_オーバースキャン_と呼ばれます。テレビがオーバースキャンとして使用する領域の大きさは、メーカーによって異なります。オーバースキャンの領域は、アプリで使用できません。Amazon Fire TVプラットフォームでは、テレビのオーバースキャンの大きさを設定で調整できますが、念のために画面の縁から 5% 以内にはアプリのUI要素を配置しないようにすることをお勧めします。特に、フォーカスが置かれるアイテムや画面上のテキストは、その全体が画面の内側 90% (セーフゾーン) 内に配置されるようにする必要があります。オーバースキャンをFire TVに表示するには、[Developer Options] を使用します。詳細については、「[System X-Ray][amazon-fire-tv-system-xray]」を参照してください。カラーテレビの画面はコンピューターの画面よりもコントラストが高く設定されており、カラーがより明るく、鮮やかで、飽和しているように見えます。表示可能な色の範囲を示す色域も、PC画面よりも狭い範囲となります。アプリでは、飽和度の低いカラーを使用してください。寒色 (青、紫、灰) が暖色 (赤、橙) よりも見やすくなります。タイポグラフィテレビ画面は部屋のどこからでも読み取れる必要があるため、本文のテキストには大きなフォントサイズ (14 sp以上、つまり 720pでは約 19 px、1080pでは約 28 px) を使用します。Amazonでは、システムフォントとしてHelvetica Neue Regularが使用されます。アイテムの説明やその他のテキストブロックは、その内容も行幅もできる限り短くします。行間は、デスクトップやタブレットの画面の場合よりも広くします。テキストは段落または小さなかたまりに分割し、短い平叙文で記述します。ナビゲーションと入力Fire TVユーザーインターフェースでのナビゲーションとユーザー入力はどちらも、Fire TVのリモコン (Amazon Fire TV RemoteまたはVoice Remote)、またはゲームコントローラ (Amazon Fireゲームコントローラ、またはBluetoothゲームコントローラ) から行います。マウスやキーボード、タッチ入力の代わりに物理コントローラを使用するため、Fire TV対応アプリの入力や制御の方法は、柔軟性の点で他の端末に比べてやや劣ります。D-Padを使用した方向ナビゲーションFire TVのリモコンやゲームコントローラの上下左右のD-Padボタンを使用して、アプリのユーザーインターフェースをナビゲーションできます。ユーザーに対しては、アプリのユーザーインターフェースを使用したナビゲーションの方法を明確に示してください。上下左右の方向を明確に示し、画面上の操作可能なすべての要素がD-Padを通してアクセスできるようにします。フォーカスと選択ユーザーはリモコンまたはゲームコントローラの方向ボタンを使用してユーザーインターフェースをナビゲーションするので、フォーカスのある要素を示すために各種のUI要素を強調表示します。アプリ内では、現在フォーカスのある画面上の要素を明確に示す必要があります。ユーザーがテレビから目を離し、再び画面を見たときに、ナビゲーションで利用できるオプションが明確に維持されている必要があります。UI要素にフォーカスがあるときに [Select] (またはゲームコントローラの [A] ボタン) が押された場合、その要素はすぐに選択された状態に変化する必要があります。テキスト入力テキストフィールドにフォーカスがナビゲートされると、システムキーボードが自動的に表示されます。情報の入力は、リモコンまたはゲームコントローラの方向ボタンを使用して文字や数字を選択することによって行うことができます。オートコンプリート機能が用意されており、予測された入力候補をいつでも選択できます。画面、ビュー、フローこのセクションでは、Amazon Fire TVユーザーインターフェースの主な画面とビュー、およびそれらを構築するために使用されているコントロールについて説明します。独自のアプリのデザインを最適化し、アプリをシステムUIと統合する際には、ここに記載されているパターンを参照してください。ホーム画面 (ランチャー)ホーム画面は、グローバルナビゲーションメニュー (左側) と一連のコンテンツタイル (右側) で構成されます。グローバルナビゲーションメニューは、中心となるシステムメニューです。画面の左側に、縦に 1 列に並んで表示されます。グローバルナビゲーションメニューでは、主なコンテンツカテゴリのほか、[Search]、[Home]、[Movies]、[TV]、[Music]、[Games]、[Apps] などのオプションを選択できます。グローバルナビゲーションメニューの各アイテムは、[Up] と [Down] の方向ボタンを使用して選択できます。グローバルナビゲーションメニューのいずれかのアイテムにフォーカスを置くと、そのノードのホームビューが画面の右側に表示されます。各ノードには、独自のホームビューと独自のコンテンツがあります。ランチャーと呼ばれる、システム全体のホームビューにアクセスするには、Fire TVのリモコンまたはゲームコントローラの [Home] キーを使用するか、グローバルナビゲーションメニューから [Home] を選択します。各ホームビューは、複数のコンテンツ行で構成されます。行のタイトルタイルはコンテンツの種類 (たとえば、「最も人気」、「マイムービー」、「お勧め」など) を示します。残りのタイルは、そのコンテンツのサンプルを示します。これらのコンテンツ行では、次のことを行うことができます。  [Up] と [Down] の方向ボタンを使用して行間をナビゲーションする。  [Left] ボタンを使用してナビゲーションメニューに戻る。  [Select] または [Right] を使用して行を選択し、その行の 1Dリストを表示する。1Dリストビュー1Dリストビューは、ホームビューからコンテンツ行が選択されると表示されます。1Dリストは、1 行のアイテムで構成されます。タイトルバーには、リストのタイトル (たとえば、「最も人気」、「マイムービー」、「お勧め」など) に加えて、リストにあるアイテムの数とフォーカスされているアイテムの位置を示す数の 2 つの数が表示されます。参照リストでフォーカスされているアイテムについては、そのアイテムの簡単な説明がリストの下に表示されます。簡単な説明には、アイテムの基本情報 (タイトル、日付、評価) と [Add to Watchlist] などのオプションが含まれます。1Dリストでは、次のことを行うことができます。  [Left] と [Right] の方向ボタンを使用してアイテム間をナビゲーションする。リストの最後を越えてナビゲーションすると、フォーカスは最初のアイテムに戻ります。* [Select] ボタンを使用してアイテムを選択する。これにより、そのアイテムの詳細ビューが表示されます。詳細ビュー詳細ビューは、参照リストからアイテムが選択されると表示されます。このイメージは、ある映画の詳細ビューを示しています。表示される詳細情報は、テレビ番組、音楽、または他のコンテンツにより異なる可能性があります。詳細ビューには、コンテンツまたは他のアイテムに関連する情報と操作が表示されます。説明の下には、このアイテムで実行可能な操作が表示されます。実行可能な操作は、ユーザーの登録ステータス (たとえば、Amazonプライムメンバーであるなど) とコンテンツの利用状況によって異なります。画面の左側のディスカバリーメニューには、アイテムに関連するその他の情報 (たとえば、[Cast]、[Trivia]、または [Reviews] など) が表示されます。検索ホーム画面の [Search] メニューアイテムを選択すると、音声検索またはテキスト検索を利用できる検索画面が表示されます。検索画面は、Amazon Fire TV Voice Remoteの [Microphone] ボタンからも利用でき、現在のアプリまたはコンテンツ上にオーバーレイとして表示されます。テキスト検索の場合は、[LEFT] と [RIGHT] の方向キーを使用してアルファベット間を移動し、文字ごとに [SELECT] を押して検索クエリを入力します。入力候補がクエリの下にリストとして表示されます。グローバル検索がシステム全体で利用できますが、個々のアプリ向けにカスタマイズすることはできません。開発者は独自のアプリ内検索を実装できますが、この検索は、グローバル検索機能には含まれません。",
+        "url": "design-and-user-experience-guidelines.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "device-and-platform-specifications-html": {
+        "title": "Fire TV端末の仕様",
+        "tags": "[]",
+        "content": "このページでは、すべてのAmazon Fire TV端末を対象に、メディアと端末、プラットフォームの仕様、サポートされるテクノロジーを紹介しています。   Fire TV Stick (第 2 世代)    Fire TV (Gen. 2)    Fire TV Stick (第 1 世代)    Fire TV (Gen. 1)NOTE: I FORGOT TO INCLUDE THIS FILE IN THE PREVIOUS BATCH OF TRANSLATED FILES.  メディアの仕様 (Fire TV、第 2 世代)                                                タイプ         コーデック         MIME type         詳細                    ビデオ        H.263        video/3gp        ハードウェアによる高速化: 最大WVGA (800 x 400)、30fps、6 Mbps、プロファイル 0 レベル 70                  H.264        video/avc        ハードウェアによる高速化: 最大 1080p、30fps、20 Mbps、ハイプロファイル (最大レベル 4)                  H.265 (HEVC)        video/mp4        ハードウェアによる高速化: 最大 3840x2160p (4K)、30 fps、25 Mbps、Main 10 プロファイル (レベル 5.0)、色空間 8 ビットおよび 10 ビット (入力のみ、出力は 8 ビット)                  VP8        video/webm        ハードウェアによる高速化、プロファイル 0               VP9        video/webm        ハードウェアによる高速化: 最大Youtube 4K、プロファイル 0                 MPEG-4         video/mp4v-es         最大 1080p、30fps、20 Mbps、アドバンスドシンプルプロファイル (レベル 5)               オーディオ      AAC-LC      audio/mp4a-latm      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            HE-AACv1 (AAC+)      audio/mp4a-latm      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            HE-AACv2 (拡張AAC+)      audio/mp4a-latm      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            AC3 (ドルビーデジタル)      audio/ac3      最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット            eAC3 (ドルビーデジタルプラス)      audio/eac3      最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット            FLAC      audio/flac      最大 48 kHz、2 チャネル、16 ビットと 24 ビット (24 ビットはディザなし)            MIDI      該当なし      MIDI (タイプ 0 および 1)、DLS (バージョン 1 および 2)、XMF、およびモバイルXMF。着信音の形式: RTTTL/RTX、OTA、およびiMelody            MP3      audio/mp3      最大 48 kHz、DSPに 2 チャネル (16 ビットおよび 24 ビット) およびソフトウェア (16 ビット)            PCM/Wave      該当なし      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            Vorbis      audio/vorbis      Ogg (.ogg)Matroska (.mkv)               AMR-NB      audio/amr-web                          AMR-WB       audio/3gpp                            DRM           Widevine Level 1  PlayReady Version 2.5 のみ           PlayReadyでサポートされるのは暗号化されたビデオだけです。オーディオはサポートされません。暗号化されたオーディオとビデオの両方を含むコンテンツを再生する必要がある場合は、こちらから具体的なカスタマイズの詳細と手順をお問い合わせください。その他のDRMに関する情報は、実装するメディアプレーヤーによって異なります。              画像      JPEG      該当なし      ベースおよびプログレッシブ            GIF      該当なし                  PNG      該当なし                  BMP      該当なし               端末およびプラットフォームの仕様 (Fire TV、第 2 世代)                              端末の要素      詳細                  画面解像度 (px) とリフレッシュレート (Hz)      3840 x 2160 (2160p / 4K) - 30Hz        1920 x 1080 (1080p) - 60Hz        1280 x 720 (720p) - 60Hz             HDCP     2.2             密度 (dp)      640 (2160p)  320 (1080p)  213 (720p)              密度識別子      xxxhdpi (2160p)  xhdpi (1080p)  tvdpi (720p)              ストレージ      8 GB              RAM      2 GB              システムオンチップ (SoC) プラットフォーム      MediaTek 8173C              CPU      Quad Core (最大 2GHzのDual Core ARM Cortex A72、最大 1.573 GhzのDual Core ARM Cortex A53)              GPU      PowerVR Rogue GX6250              ネットワーキング: WiFi      802.11 a/b/g/n/ac; 2x2 MIMO  (2.4 GHzおよび 5.0 GHzデュアルバンド)              ネットワーキング: イーサネット       10/100Mbs              Bluetooth      Bluetooth 4.1、BTLE  HID、HFP、SPPプロファイル              USB      USB 2.0 Type A (アクセサリおよびメディアストレージ)              拡張可能ストレージ      最大 128 GBのMicroSD  (ストレージに関連したマニフェスト設定のベストプラクティスについては「アプリのインストール場所の指定」を参照)              端末のOS/プラットフォームソフトウェア      Android 5.0 に基づく (API 22)              位置情報サービス      なし              前面カメラ      なし              マイクロホン      なし              マルチタッチ      なし              加速度計      なし              コンパス      なし              ジャイロスコープ      なし              光センサー      なし              近接センサー      なし              android.os.Build.MANUFACTURER      Amazon。詳細については、「Identifying Amazon Fire TV Devices」を参照してください。              android.os.Build.MODEL      AFTS (Fire TV第 2 世代のみ)  AFT* (すべてのFire TV端末)      OpenGLのプロパティと制限 (Fire TV、第 2 世代)                              アイテム      詳細                  OpenGLのバージョン      OpenGL ES 3.0              MAX_TEXTURE_SIZE      8192              MAX_CUBE_MAP_TEXTURE_SIZE      8192              MAX_RENDERBUFFER_SIZE      8192              MAX_VERTEX_TEXTURE_IMAGE_UNITS      16              MAX_TEXTURE_IMAGE_UNITS      16              MAX_COMBINED_TEXTURE_IMAGE_UNITS      48              MAX_VERTEX_UNIFORM_VECTORS      256              MAX_FRAGMENT_UNIFORM_VECTORS      224              MAX_VERTEX_ATTRIBS      16              MAX_VARYING_VECTORS      15              MAX_VIEWPORT_DIMS      8192 x 8192      メディアの仕様 (Fire TV Stick、第 1 世代)                                                タイプ         コーデック         MIMEタイプ         詳細                      Video         H.263         video/3gp         ハードウェアによる高速化: 最大WVGA (800 x 400)、30fps、6 Mbps、プロファイル 0 レベル 70                     H.264         video/avc         ハードウェアによる高速化: 最大 1080p、30fps、20 Mbps、ハイプロファイル (最大レベル 4)                       MPEG-4          video/mp4v-es          最大 1080p、30fps、20 Mbps、アドバンスドシンプルプロファイル (レベル 5)              オーディオ      AAC-LC      audio/mp4a-latm      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            HE-AACv1 (AAC+)      audio/mp4a-latm      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            HE-AACv2 (拡張AAC+)      audio/mp4a-latm      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            AC3 (ドルビーデジタル)      audio/ac3      最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット            eAC3 (ドルビーデジタルプラス)      audio/eac3、audio/ec3      最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット            FLAC      audio/flac      最大 48 kHz、2 チャネル、16 ビットと 24 ビット (24 ビットはディザなし)            MIDI      該当なし      MIDI (タイプ 0 および 1)、DLS (バージョン 1 および 2)、XMF、およびモバイルXMF。着信音の形式: RTTTL/RTX、OTA、およびiMelody            MP3      audio/mp3      最大 48 kHz、DSPに 2 チャネル (16 ビットおよび 24 ビット) およびソフトウェア (16 ビット)            PCM/Wave      該当なし      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            Vorbis      audio/vorbis      Ogg (.ogg)Matroska (.mkv)           AMR-NB    audio/amr-web                  AMR-WB     audio/3gpp                     DRM       Widevine Level 3  PlayReady Version 2.5 のみ       PlayReadyでサポートされるのは暗号化されたビデオだけです。オーディオはサポートされません。暗号化されたオーディオとビデオの両方を含むコンテンツを再生する必要がある場合は、こちらから具体的なカスタマイズの詳細と手順をお問い合わせください。その他のDRMに関する情報は、実装するメディアプレーヤーによって異なります。          画像      JPEG      該当なし      ベースおよびプログレッシブ            GIF      該当なし                  PNG      該当なし                  BMP      該当なし              端末およびプラットフォームの仕様 (Fire TV Stick、第 1 世代)                              端末の要素      詳細                  画面解像度 (px) とリフレッシュレート (Hz)      1920 x 1080 (1080p) - 60Hz        1280 x 720 (720p) - 60Hz                  HDCP       1.4               密度 (dp)      320 (1080p)  213 (720p)              密度識別子      xhdpi (1080p)  tvdpi (720p)              ストレージ      8 GB              RAM      1 GB (システム用に 512 MB、ビデオ用に 512 MB)              システムオンチップ (SoC) プラットフォーム      Broadcom Capri 28155              CPU      最大 1 GHzのDual Core ARM Cortex A9              GPU      Broadcom VideoCore IV GPU/VPU (Capri VC4)              ネットワーキング: WiFi      802.11 b/g/n; 2x2 MIMO  (2.4 GHzおよび 5.0 GHzデュアルバンド)              ネットワーキング: イーサネット      なし              Bluetooth      Bluetooth 3.0  HID、SPPプロファイル              USB      Micro USB 2.0 (電源のみ)              拡張可能ストレージ      なし (ストレージに関連したマニフェスト設定のベストプラクティスについては「アプリのインストール場所の指定」を参照)              端末のOS/プラットフォームソフトウェア      Android 5.0 に基づく (API 22)              位置情報サービス      なし              前面カメラ      なし              マイクロホン      なし              マルチタッチ      なし              加速度計      なし              コンパス      なし              ジャイロスコープ      なし              光センサー      なし              近接センサー      なし              android.os.Build.MANUFACTURER      Amazon 詳細については、「Identifying Amazon Fire TV Devices」を参照してください。              android.os.Build.MODEL      AFTM (Fire TV Stick第 1 世代のみ)  AFT* (すべてのFire TV端末)      OpenGLのプロパティと制限 (Fire TV Stick、第 1 世代)                              プロパティ      詳細                  OpenGLのバージョン      OpenGL ES 2.0              MAX_TEXTURE_SIZE      2048              MAX_CUBE_MAP_TEXTURE_SIZE      2048              MAX_RENDERBUFFER_SIZE      2048              MAX_VERTEX_TEXTURE_IMAGE_UNITS      8              MAX_TEXTURE_IMAGE_UNITS      8              MAX_COMBINED_TEXTURE_IMAGE_UNITS      8              MAX_VERTEX_UNIFORM_VECTORS      300              MAX_FRAGMENT_UNIFORM_VECTORS      300              MAX_VERTEX_ATTRIBS      8              MAX_VARYING_VECTORS      8              MAX_VIEWPORT_DIMS      2048 x 2048      メディアの仕様 (Fire TV、第 1 世代)                                                タイプ         コーデック         MIMEタイプ         詳細                     ビデオ        H.263        video/3gp        ハードウェアによる高速化: 最大WVGA (800 x 400)、30fps、6 Mbps、プロファイル 0 レベル 70                  H.264        video/avc        ハードウェアによる高速化: 最大 1080p、30fps、20 Mbps、ハイプロファイル (最大レベル 4)                    MPEG-4         video/mp4v-es         最大 1080p、30fps、20 Mbps、アドバンスドシンプルプロファイル (レベル 5)               オーディオ      AAC-LC      audio/mp4a-latm      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            HE-AACv1 (AAC+)      audio/mp4a-latm      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            HE-AACv2 (拡張AAC+)      audio/mp4a-latm      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            AC3 (ドルビーデジタル)      audio/ac3      最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット            eAC3 (ドルビーデジタルプラス)      audio/eac3      最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット            FLAC      audio/flac      最大 48 kHz、2 チャネル、16 ビットと 24 ビット (24 ビットはディザなし)            MIDI      該当なし      MIDI (タイプ 0 および 1)、DLS (バージョン 1 および 2)、XMF、およびモバイルXMF。着信音の形式: RTTTL/RTX、OTA、およびiMelody            MP3      audio/mp3      最大 48 kHz、DSPに 2 チャネル (16 ビットおよび 24 ビット) およびソフトウェア (16 ビット)            PCM/Wave      該当なし      最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット            Vorbis      audio/vorbis      Ogg (.ogg)Matroska (.mkv)           AMR-NB    audio/amr-web                  AMR-WB     audio/3gpp                            DRM         Widevine Level 3  PlayReady Version 2.5 のみ         PlayReadyでサポートされるのは暗号化されたビデオだけです。オーディオはサポートされません。暗号化されたオーディオとビデオの両方を含むコンテンツを再生する必要がある場合は、こちらから具体的なカスタマイズの詳細と手順をお問い合わせください。その他のDRMに関する情報は、実装するメディアプレーヤーによって異なります。                    画像      JPEG      該当なし      ベースおよびプログレッシブ            GIF      該当なし                  PNG      該当なし                  BMP      該当なし              端末およびプラットフォームの仕様 (Fire TV、第 1 世代)                              端末の要素      詳細                  画面解像度 (px) とリフレッシュレート (Hz)      1920 x 1080 (1080p) - 60Hz        1280 x 720 (720p) - 60Hz                 HDCP       1.4             密度 (dp)      320 (1080p)  213 (720p)            密度識別子      xhdpi (1080p)  tvdpi (720p)            ストレージ      8 GB              RAM      2 GB              システムオンチップ (SoC) プラットフォーム      Qualcomm Snapdragon 8064              CPU      最大 1.7 GHzのQuad Core Qualcomm Krait 300              GPU      Qualcomm Adreno 320              ネットワーキング: WiFi       802.11 b/g/n; 2x2 MIMO  (2.4 GHzおよび 5.0 GHzのデュアルバンド)              ネットワーキング: イーサネット      10/100Mbs              Bluetooth      Bluetooth 4.0 HID、SPPプロファイル              USB      USB 2.0 Type A (アクセサリおよびストレージ)               拡張可能ストレージ      最大 128 GBのUSB(ストレージに関連したマニフェスト設定のベストプラクティスについては「アプリのインストール場所の指定」を参照)              端末のOS/プラットフォームソフトウェア      Android 5.0 に基づく (API 22)              位置情報サービス      なし              前面カメラ      なし              マイクロホン      なし              マルチタッチ      なし              加速度計      なし              コンパス      なし              ジャイロスコープ      なし              光センサー      なし              近接センサー      なし              android.os.Build.MANUFACTURER      Amazon  詳細については、「Identifying Amazon Fire TV Devices」を参照してください。              android.os.Build.MODEL      AFTB (Fire TV第 1 世代のみ)   AFT* (すべてのFire TV端末)      OpenGLのプロパティと制限 (Fire TV、第 1 世代)                              プロパティ      詳細                  OpenGLのバージョン      OpenGL ES 3.0              MAX_TEXTURE_SIZE      4096              MAX_CUBE_MAP_TEXTURE_SIZE      4096              MAX_RENDERBUFFER_SIZE      4096              MAX_VERTEX_TEXTURE_IMAGE_UNITS      16              MAX_TEXTURE_IMAGE_UNITS      16              MAX_COMBINED_TEXTURE_IMAGE_UNITS      32              MAX_VERTEX_UNIFORM_VECTORS      256              MAX_FRAGMENT_UNIFORM_VECTORS      224              MAX_VERTEX_ATTRIBS      16              MAX_VARYING_VECTORS      16              MAX_VIEWPORT_DIMS      4096 x 4096      すべてのFire TV端末リモコンとゲームコントローラ                              コントローラ      入力端末名                  Amazon Fire TV Remote  Amazon Fire TV Voice Remote (全モデル)      \"Amazon Fire TV Remote\"              Amazon Fire TVゲームコントローラ  Amazon Fireゲームコントローラ      \"Amazon Fire Game Controller\"      Fire TVでサポートされるテクノロジーサポートされるテクノロジーは、すべてのAmazon Fire TV端末で同じです。                              テクノロジー      説明                  Miracast      サポートされます (Sink)。              DIAL      サポートされます。Fire TVのアプリを検出できるようにするには、Androidマニフェストを変更する必要があります。詳細については、「DIALの統合」を参照してください。              ウェブサイトの閲覧/外部リンク      ウェブブラウザは使用できません。Android WebViewを使用します。              Amazonアプリ内課金      サポートされます。最新バージョンのApp Testerを使用します。              Amazonモバイルアソシエイト      サポートされません。              Amazon GameCircle      サポートされます。バージョン 2.1 以降を使用します。              Login with Amazon      サポートされます。              Amazon Maps      サポートされません。              Amazon Device Messaging      プッシュメッセージをサポートします。              Amazonモバイル広告      サポートされません。      端末のリリース日                              端末      リリース日                  Fire TV Stick (第 2 世代)       2016 年 9 月               Fire TV (第 2 世代)        2015 年 12 月              Fire TV Stick (第 1 世代)        2014 年 11 月              Fire TV (第 1 世代)      2014 年 4 月      ",
+        "url": "device-and-platform-specifications.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "fire-tv-development-framework-comparison-html": {
+        "title": "Amazon Fire TV開発フレームワークの比較",
+        "tags": "[]",
+        "content": "Amazon Fire TVを対象としたメディアベースのアプリ開発を検討している方のために、Amazonでは、アプリ開発を強力に支援する 2 つのフレームワークを用意しています。それぞれのフレームワークは、特定のスキルを持った開発者が対象となっています。  Fire TV用ウェブアプリスターターキット: HTML5、CSS3、JavaScriptを使ってウェブアプリを構築するウェブ開発者向けです。  Fire App Builder: Javaを使ってネイティブアプリを構築するAndroid開発者向けです。この 2 つのフレームワークは、使用するコードの種類に違いがあるほか、備わっている機能も若干異なります。詳細については、「機能の比較」を参照してください。  Fire TV用ウェブアプリスターターキット  Fire App Builder  機能の比較  ウェブアプリからAndroidアプリへの移行Fire TV用ウェブアプリスターターキットFire TV用ウェブアプリスターターキット (Githubからダウンロード可能) は、Fire TVを対象とするメディア指向アプリをHTML5 やCSS3、JavaScriptで開発する際の基礎となるキットです。このキットで開発したウェブアプリをAmazon開発者ポータルでパッケージすることで、Fire TV対応アプリを作成できます。ネイティブアプリとまったく同様に、Amazonアプリストアで公開することができます。Fire TV用ウェブアプリスターターキット (WASK) を使用した開発は、アプリテンプレートを基にして行うことができます。Media RSSフィードやJSONフィードのサポート、オンラインビデオプロバイダー (YouTube、Brightcoveなど) のサポートなど、各種メディア機能がテンプレートに含まれています。このテンプレートは、標準のウェブテクノロジー (JavaScript、HTML5、CSS3) を使って拡張機能を追加したり、設定ファイルを変更したりすることによってカスタマイズできます。WASKテンプレートには、アプリ申請プロセスでAmazonアプリストアのテストに合格するために必要な要素に加え、ユーザーが大画面に期待する利便性を実現するうえで必要なコードがあらかじめ記述されています。 最低でも、メディアファイルのフィードを指定するだけでアプリを開発できます。アプリは、このメディアファイルを使用してカテゴリの選択リストを表示したり、回転式のスライドショーでメディアコンテンツを表示したりすることが可能です。単純なレイアウトのスクリーンショットを以下に示します。基本的なWASKテンプレートをカスタマイズまたは拡張する際は、Amazon Web App Testerを使ってアプリをテストできます。Amazon Web App Testerは、ウェブアプリを実際の端末でテストするためのFire TV対応アプリです。Web App Testerには、アプリが公開されたときに使用されるネイティブアプリラッパーとウェブエンジンがそのまま使用されていて、開発段階で正確にアプリの動作を確認することができます。完成したアプリは、Amazon開発者ポータルからAmazonアプリストアに申請すれば、数分後には公開されます。この点に関して直接コードを記述する必要はありません。オンラインでサインアップを行い、アプリに関する基本的な情報を入力してサムネイルやプレビュー画像をアップロードしたら、アプリのホスト先を選ぶことができます。アプリのアセットファイルを自社のウェブサーバーでホストし、そのURLだけを申請する方法と、Amazonのサーバーにアセットをアップロードし、そこでスタンドアロンのパッケージアプリとしてバンドルする方法があります。申請したアプリはその後、Amazonのインジェストサービスを経ることになります。アプリが公開されると申請者に通知が送られます。詳細については、「Fire TV用ウェブアプリスターターキット」を参照してください。WASKを使って作成されたFire TV対応アプリの例としては、Acorn TV、Urban Movie Channel、Euronewsがあります。Fire App BuilderFire App Builder (Githubからダウンロード可能) には、Amazon Fire TVを対象としたストリーミングメディアAndroidアプリを短時間で簡単に開発できるJavaベースのフレームワークが備わっています。WASKではHTML5/CSS3/JSが使用されるのに対し、Fire App Builderで使用されるのはJava Androidコードです。Fire App BuilderはAndroid Studioで使用します。Android Debug Bridge (ADB) を介してFire TV端末に接続し、APK (Android Package Kit) ファイルを生成してAmazonアプリストアにアップロードします。Fire App BuilderではAndroidのAPI (特にLeanback Library) が使用されていますが、大半の設定とカスタマイズはJSONファイルとXMLファイルで行うことができます。たとえば、JSONファイルとXMLファイルで 10 種類以上のコンポーネントを設定し、アプリに追加することができます。各種コンポーネントには、分析、広告、承認、購入、メディアプレーヤーの機能があらかじめ搭載されています。Fire App Builderは、Javaに関する専門的な知識に極力依存しないように設計されていますが、深いレベルで統合したい場合には、Fire App Builderを基盤として開発を進めることもできます。共通のインターフェースや他のコードから、カスタムのJavaクラスを追加して独自に機能を拡張することが可能です(Javaのカスタムプログラミングを望まない場合は、しなくても問題ありません)。Fire App Builderでは、メディアフィードとして、JSONまたはXMLを使用できます。使用するデータの構造やタグ名に決まりはありません。Fire App Builderの設定作業では、対象となるフィードの各種要素をクエリ構文 (JSON Jayway構文またはXPath式) で記述します。フィードには、DRMで保護されているメディアのトークンが必要になることもあります。YouTubeベースのフィードなど、各種ビデオホスティングサービスへの対応が予定されていますが、現時点ではまだ実装されていません。色、レイアウト、タイポグラフィなどは自由に調整できます。いずれも、対応する設定が抽出されたXMLファイルまたはJSONファイルを編集することによって行います。以下に示したのは、Fire App Builderを使って開発されたサンプルアプリのスクリーンショットです。さらに簡潔なホームページレイアウトも用意されています。詳細については、Fire App Builderのドキュメントを参照してください。Fire App Builderで作成されたサンプルアプリについては、Hallmarkアプリを参照してください。機能の比較以下の表は、Fire App Builderの機能とWASKの機能を比較したものです。 Note: 特定の機能がフレームワークにない場合、その機能はフレームワークではサポートされません。言い換えれば、その機能はまだコードに組み込まれていない状態です。そうした機能に対応するために用意されたサードパーティのコードは、多くの場合、簡単に挿入することができます。カテゴリ機能Fire App BuilderWASK  コードベース  Java/Android      HTML5/CSS3/JS      フィードの形式  JSONフィード      Media RSS XMLフィード      カスタムXMLフィード      アプリ配信オプション  端末にAPKとしてインストール      URLから直接アプリをホスト      メディアの種類  HLS, DASH, Smooth Streaming, MP4      DRMで保護されたメディア      ライブストリーム      メディアプロバイダー  YouTube      Brightcove      Kaltura      Ooyala      メディアプレーヤー  Amazon Media Player      Brightcove      課金  アプリ内課金      認証  Login with Amazon      Facebook Authorization      Adobe Primetime      広告サービス  Freewheel広告      VAST広告      分析  Omniture Analytics      Google Analytics      Crashlytics      Flurry Analytics      グローバルカタログ検索  Fire TVカタログ統合によるグローバル音声検索    すでに述べたように、どちらのフレームワークにも必要なサービスや機能を追加することができます。コードは開放されており (オープンソース)、フレームワークのコードをベースに機能強化や拡張など、各種開発を自由に行うことができます。ウェブアプリからAndroidアプリへの移行企業によっては、まず (WASKで) ウェブアプリを作成し、後で (Fire App Builderを使用するなどして) Java Androidアプリに移行するよう計画する場合もあります。アプリの種類 (ウェブアプリかAndroidアプリか) は、アプリストアへの申請時に選択します。アプリの申請後は、別の種類に移行することができません。最初にウェブアプリとして申請したら、新しいバージョンをAndroidアプリとしてアップロードすることはできません。まったく別のアプリをアップロードする必要があり、結果として既存のユーザーを失うことにつながります。そこで、Androidアプリへの移行が予定されているウェブアプリには、Cordovaの使用を検討してください。Cordovaを使用すると、ウェブアプリをAPKとしてラップし、Androidアプリとして申請することができます。後で完全にネイティブなAndroidアプリに移行することになった場合でも、新しいバージョンとしてアプリストアで公開することができます。",
+        "url": "fire-tv-development-framework-comparison.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "getting-started-developing-apps-and-games-for-amazon-fire-tv-html": {
+        "title": "Amazon Fire TV用アプリとゲームを開発するための準備",
+        "tags": "[]",
+        "content": "Fire TV向けのアプリを開発する際は、まず、Androidアプリとウェブアプリのどちらを作成するのかを決めます。  Androidアプリ: Android Java開発者は、既存のツール (Android Studioなど) とフレームワーク (Unityなど) を使用して、10 フィートエクスペリエンス向けのアプリやゲームを開発できます。アプリの開発に役立つサンプルコード、ドキュメント、ガイドラインが用意されています。ストリーミングメディアアプリを開発する場合、Fire App Builder (JavaベースのAndroidスターターキット) を使用して効率的にアプリを作成することができます。*  ウェブアプリ: HTML5 ウェブ開発者は、Amazon WebViewを利用してアプリやゲームを開発できます。開発の成果物として、HTML5 ウェブアプリ、Fire OSポートを使用するCordovaアプリ、ハイブリッドアプリのいずれかを選択できます。ストリーミングメディアアプリを開発する場合、Fire TV向けウェブアプリスターターキットを使用して効率的にアプリを作成することができます。 Tip: Fire TV向けウェブアプリスターターキット (WASK) とFire App Builderの詳しい比較については、「Fire TV開発フレームワークの比較」を参照してください。加えて、自分のスキルを考慮することも重要です。得意とするのはJavaを使用したAndroid開発でしょうか。それとも、HTML5/ウェブ開発でしょうか。自分の経験とアプリの要件に合った方法を選んでください。  Fire TV向けAndroidアプリ開発  Fire TV向けのHTML5 ウェブアプリ開発  Fire TVアプリに使用されるAPI  端末とメディアの仕様  Fire TVのドキュメントについて  Fire TVフォーラムFire TV向けAndroidアプリ開発JavaでAndroid開発を行っている方のために、Fire TVでも、Android開発で使われているのと同じツール、IDE、APIが使用されています。まずは、「Fire App Builder」を参照してください。Amazon Fire TVアプリやAndroidアプリをJavaで開発する方法が、初めての方にもわかりやすく説明されています。Fire App Builderは、(ゲームではなく) ストリーミングメディアTVアプリを意図した設計になっています。独自のアプリをゼロから開発する場合は、次のトピックを参照してください。  開発環境のセットアップ: 初めてAndroid開発に取り組む場合は、このページが参考になります。  ADBを使用してFire TVに接続する: ネットワーク接続またはUSBケーブルを使用し、ADBを介して開発コンピューターをFire TV端末に接続する方法を説明しています。  アプリのインストールと実行: アプリストアに申請する前のテスト目的で、Fire TV端末にアプリをインストールして実行し、その後アンインストールします。Android開発の経験が豊富にある方は、Fire OSを対象とする開発とAndroidを対象とする開発の違いも確認しておいてください。Fire TV向けのHTML5 ウェブアプリ開発日頃、HTML5 を使ったウェブアプリ開発でストリーミングメディアアプリを作成している方は、Fire TV用ウェブアプリスターターキット (WASK) をご使用ください。WASKは、Fire TV向けに簡単なメディア指向アプリを短時間で作成できるよう支援することを目的としたオープンソースプロジェクトです。このスターターキットには、10 フィートエクスペリエンスに適したユーザーインターフェース設計の例や、Fire TVリモコンのサポートが含まれています。サンプルコンポーネントも用意されており、それを基に独自のメディアアプリを作成してカスタマイズすることができます。HTML5 のウェブアプリをゼロから開発する場合は、「Fire TV用ウェブアプリの準備」を参照してください。Fire TVアプリに使用されるAPIFire TVアプリを作成する際、堅牢性を高めるために他のAmazon APIを実装することもできます。  アプリ内課金API: Fire TV端末を購入し、Amazonアカウントに登録すると、自動的にAmazon支払いプロファイルが設定され、その他の設定をすることなく、アプリまたはアプリ内アイテムを購入できるようになります。Amazon Fire TVとFire TV Stickは、Amazonアプリ内課金のAPIをサポートしているため、消費可能アイテムや消費不可アイテムのほか、定期購入もアプリ内で販売することができます。  Amazon Fling SDK: Amazon Fling SDKを使用すると、スマートフォンやタブレットに表示される画面を直接テレビに転送することができます。アプリを 2 画面に拡張することにより、複数のユーザーでアプリを利用することができます。その他のFire TV APIとSDKについては、「アプリおよびゲームサービスSDK」を参照してください。端末とメディアの仕様Fire TVでサポートされるメディア、端末、仕様 (ビデオの形式、DRM、コーデック、解像度など) については、「Fire TV端末の仕様」を参照してください。Fire TVのドキュメントについてFire TVのドキュメントは、次のグループに分かれています。  準備  Fire App Builder  ウェブアプリ  カタログの統合  Fling SDK  アプリストアへの公開Fire TVフォーラムご不明な点やご質問、ご意見など、他のユーザーと共有したい事柄がある場合は、Amazon開発者フォーラムのFire TVとFire TV Stickのカテゴリをご利用ください。",
+        "url": "getting-started-developing-apps-and-games-for-amazon-fire-tv.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "submitting-your-fire-tv-app-to-the-amazon-appstore-html": {
+        "title": "AmazonアプリストアへのFire TVアプリの申請",
+        "tags": "[]",
+        "content": "アプリの開発とテストが終了したら、次のリソースを使用して、アプリをAmazonアプリストアに申請するための準備を行います。  Understanding Amazon Appstore Submission: 申請プロセスの全般的な情報について説明しています。  Amazon Appstore Presubmission Checklist: Amazonアプリストアに申請したアプリまたはゲームは、テストに合格して初めて公開されます。このページのテスト条件を、独自の品質保証テストのガイドとして使用します。  Image Guidelines for App Submission: アプリを申請する際には、アイコンとスクリーンショットを含める必要があります。このページでは、それらのメディアアセットについてのガイドラインについて説明しています。  Device Targetingの使用: 複数のプラットフォームまたは端末 (たとえば、Kindle FireタブレットとAmazon Fire TV端末) を対象にするアプリを開発した場合、Device Targetingを使用することにより、アプリを一度だけ申請して複数のバイナリAPKを提供することができます。このページでは、アプリ申請用にDevice Targetingを管理する方法と、Fire TV APKを既存のタブレットアプリに追加する方法について説明しています。",
+        "url": "submitting-your-fire-tv-app-to-the-amazon-appstore.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+
+
+      "whats-new-in-the-fire-tv-sdk-html": {
+        "title": "Fire TV開発における最新情報",
+        "tags": "[]",
+        "content": "  Fire TVのユーザーインターフェースの更新  Fire App Builder  Fire TV Stick (第 2 世代)  Fire TVドキュメントの更新  Fire TVブログの更新Fire TVのユーザーインターフェースの更新Fire TV第 2 世代端末のインターフェースが更新されました。ビデオのトレーラーやコンテンツのスクリーンショットが表示され、視聴者は観たい内容にすばやくアクセスできるようになり、これまで以上に魅力的な映画体験が得られます。ホームページのお勧めコンテンツ行にサードパーティ製のアプリを表示することもできます。ユーザー補助機能は、VoiceViewスクリーンリーダーを使ってFire TVや対応アプリを利用できるように強化されています(プレスリリースを参照)。最新のUIに必要な新しいFire TVアセットをアップロードする方法については、「Image Guidelines for App Submission」を参照してください。第 1 世代の端末には、このユーザーインターフェースの更新が少し遅れて適用されます。Fire App Builder2016 年 9 月 29 日にFire App Builderがリリースされました。Fire App Builderには、Javaベースのフレームワークが備わっており、このフレームワークを使用することで、Amazon Fire TVを対象としたストリーミングメディアAndroidアプリを短時間で簡単に開発することができます。Fire App Builderを使用すると、コードをゼロから開発しなくても、ベストプラクティスと各種手法に従いながら、魅力的で高品質のメディア体験をFire TVに構築することができます。Fire App BuilderのコードはJavaベースであり、Android StudioやGradleなど、Androidアプリの開発用として広く普及しているツールで使用できます。Fire App Builderは、Apache 2.0 ライセンスのオープンソースプロジェクトとして、Github (github.com/amzn/fire-app-builder) で公開されています。Fire TV Stick (第 2 世代)2016 年 9 月 28 日、Fire TV Stick with Alexa Voice Remote (本ドキュメントでは「Fire TV Stick (第 2 世代)」と呼んでいます) がリリースされました。この次世代Fire TV Stickは、ベストセラーを博した初代バージョンと比較して速度が 30% 向上しています。300,000 本を超える映画やTVエピソードが提供され、Alexa Voice Remoteが付属して、価格はわずか 39.99 ドルとなっています。クアッドコアプロセッサが搭載されているため、ハイパフォーマンスのアプリやゲームの真価が存分に発揮されます。詳細については、「Introducing the All-New Fire TV Stick with Alexa Voice Remote」を参照してください。Fire TV Stick (第 2 世代) の仕様は、「Fire TV端末の仕様」でご確認いただけます。Fire TVドキュメントの更新Fire TV関連のドキュメントが以下のように更新されています。            日付      ページ      詳細                  2016 年 12 月 14 日      Amazon Fire TV開発フレームワークの比較      Fire TV向けウェブアプリスターターキット (WASK) とFire App Builderとの違いについて詳しい説明が追加されました。              2016 年 11 月 29 日      Notifications for Amazon Fire TV      Fire TVのUIアップデート時に追加される予定の通知センター機能に関する説明が追加されました。              2016 年 11 月 23 日      アプリのインストール場所の指定      アプリのインストールで外部ストレージを優先する点が強調されました。各種プラットフォームにおけるアプリのインストールについての記述も追加されています。              2016 年 10 月 25 日      Image Guidelines for App Submission      [Fire TV Assets] セクションのグラフィックと手順を更新しました。汎用的な図を廃止し、コンテンツセーフ領域に表示される実際のサンプルグラフィックを追加し、色分けによる説明を追加しました。              2016 年 10 月 20 日      Amazon Fire TV用アプリとゲームを開発するための準備      セクションを展開したり折りたたんだりするための新しいサイドバーナビゲーションが右側に追加されました。              2016 年 10 月 2 日      Fire App Builder: A Starter Kit for Java-based Amazon Fire TV and Android Apps      Fire TV向けにJavaベースのAndroid TVアプリをFire App Builderで作成する方法について詳しく (30 ページ超) 解説したドキュメントです。              2016 年 9 月 29 日      Identifying Amazon Fire TV Devices      Fire TV Stick (第 2 世代) の機能IDが追加されました。              2016 年 9 月 28 日      Image Guidelines for App Submission      アプリの申請時に使用する [Images &amp; Multimedia] タブの [Fire TV Assets] セクションに関して、画像アセットのガイドラインが追加されました。              2016 年 9 月 28 日      Fire TV端末の仕様      Fire TV Stick (第 2 世代) の仕様が追加されました。また、同じページに、対応する「メディアの仕様」の内容も追加されています (情報を一元化、統合するため)。ナビゲーションタブで切り替えて情報を表示できます。              2016 年 9 月 28 日      Image Guidelines for App Submission      近く予定されているFire TVのUIアップデートに合わせて、Fire TV画像アセットについて説明する新しいセクションが追加されました。              2016 年 9 月 16 日      Fire TV開発とAndroid TV開発の違い      Fire TV向けアプリの開発時に考慮すべき点についてのページが追加されました。              2016 年 9 月 14 日      Amazon Fire TV用アプリとゲームを開発するための準備      新しいサイトワークフローに基づいて改訂されました。              2016 年 9 月 10 日      [Using System X-Ray on Fire TV][amazon-fire-tv-system-xray]      System Xrayオーバーレイを使用したアプリの問題のトラブルシューティングについて詳しく説明するページが追加されました。              2016 年 9 月 5 日      Getting the Advertising ID on Fire TV      広告IDの取得について詳しく説明するページが追加されました。              2016 年 9 月 1 日      Playing 4K Ultra HD Videos on Fire TV      4Kアプリ開発のガイドラインとFire TV用の拡張サポートライブラリに関するページが追加されました。              2016 年 8 月 30 日      Amazon Fire TVホームページ      新しいバージョンの開発者ポータルサイトにホームページを移行しました (順次展開予定)。              2016 年 8 月 5 日      Identifying Amazon Fire TV Devices      Fire TV端末を識別するための新しい方法 (モデル + 製造業者ではなく機能の有無を調べる) について説明しています。              2016 年 7 月 23 日      Fire TV端末の仕様      H.265 の詳細やWidevineサポートなどの情報を更新しました。              2016 年 7 月 22 日      Dolby Integration Guidelines      Dolby Audioをサポートするための技術的な情報について詳しく説明するページが追加されました。              2016 年 7 月 1 日      Media Players for Amazon Fire TV      サポートされるメディアプレーヤーについての情報を更新するとともに、ExoplayerのAmazon向けポートについて詳しい説明が追加されました。              2016 年 6 月 10 日      “Handling Audio Focus with Voice Interactions”      音声操作が開始されたときのオーディオフォーカスの処理についてのセクションが追加されました。              2016 年 6 月 16 日      “Voice Search”      音声検索とテキスト検索の動作、およびこの 2 つの検索から返される内容についてのセクションが追加されました。              2016 年 6 月 1 日      Persistent sidebar navigation      Fire TVのドキュメントに、関連するドキュメントが閲覧しやすいよう右サイドバーが表示されます。      Fire TVブログの更新ブログのFire TVカテゴリで、Fire TVに関する最新情報をチェックできます。Fire TVのブログを読む",
+        "url": "whats-new-in-the-fire-tv-sdk.html",
+        "product": "Fire TV"
+      }
+      ,
+      
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+            
+    
+            
+
+          
+      
+    
+            
+
+          
+      
+    
+          
+          
+            
+    
+            
+    
+            
+    
+            
+    
+          
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+  };
+</script>
+
+<script src="assets/js/lunr.min.js"></script>
+<script src="assets/js/search.js"></script>
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li></li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン | Fire TV</title>
+    <base target="_self">
+    <meta name="description" content="テレビのユーザーインターフェースのデザインは、デスクトップコンピューターやタブレット、スマートフォンのデザインとは大きく異なります。ここでは、開発者の皆さんが 10 フィートUIのデザイン原則を理解し、アプリケーションとデザインをAmazon Fire TVユーザーインターフェースに統合する際の助けとなるガイドラインを紹介しています。  全般的な原則  10 フィートUI クリア、シンプル、ビジュアル 重要なコンテンツを最初に配置する コンテンツ再生に重点を置く   デザインガイドライン ... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Amazon Fire TV用アプリとゲームを開発するための準備</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV端末の仕様</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Amazon Fire TV開発フレームワークの比較</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">Fire TV開発とAndroid TV開発の違い</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="design-and-user-experience-guidelines.html">TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">Fire TV開発における最新情報</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Amazon Fire TVのよくある質問 (FAQ)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">AmazonアプリストアへのFire TVアプリの申請</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">開発環境のセットアップ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">アプリのインストールと実行</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">コントローラの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">リモート入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">ゲームコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Unityによるコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">コントローラの識別</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">コントローラ動作のガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">コントローラ画像アセット</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire TV > </div>
+                    <h1>TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン</h1>
+
+                    
+
+                    <p>テレビのユーザーインターフェースのデザインは、デスクトップコンピューターやタブレット、スマートフォンのデザインとは大きく異なります。ここでは、開発者の皆さんが 10 フィートUIのデザイン原則を理解し、アプリケーションとデザインをAmazon Fire TVユーザーインターフェースに統合する際の助けとなるガイドラインを紹介しています。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#全般的な原則" id="markdown-toc-全般的な原則">全般的な原則</a>    <ul>
+      <li><a href="#10-フィートui" id="markdown-toc-10-フィートui">10 フィートUI</a></li>
+      <li><a href="#クリアシンプルビジュアル" id="markdown-toc-クリアシンプルビジュアル">クリア、シンプル、ビジュアル</a></li>
+      <li><a href="#重要なコンテンツを最初に配置する" id="markdown-toc-重要なコンテンツを最初に配置する">重要なコンテンツを最初に配置する</a></li>
+      <li><a href="#コンテンツ再生に重点を置く" id="markdown-toc-コンテンツ再生に重点を置く">コンテンツ再生に重点を置く</a></li>
+    </ul>
+  </li>
+  <li><a href="#デザインガイドライン" id="markdown-toc-デザインガイドライン">デザインガイドライン</a>    <ul>
+      <li><a href="#画面サイズと解像度" id="markdown-toc-画面サイズと解像度">画面サイズと解像度</a></li>
+      <li><a href="#オーバースキャンとセーフゾーン" id="markdown-toc-オーバースキャンとセーフゾーン">オーバースキャンとセーフゾーン</a></li>
+      <li><a href="#カラー" id="markdown-toc-カラー">カラー</a></li>
+      <li><a href="#タイポグラフィ" id="markdown-toc-タイポグラフィ">タイポグラフィ</a></li>
+    </ul>
+  </li>
+  <li><a href="#ナビゲーションと入力" id="markdown-toc-ナビゲーションと入力">ナビゲーションと入力</a>    <ul>
+      <li><a href="#d-padを使用した方向ナビゲーション" id="markdown-toc-d-padを使用した方向ナビゲーション">D-Padを使用した方向ナビゲーション</a></li>
+      <li><a href="#フォーカスと選択" id="markdown-toc-フォーカスと選択">フォーカスと選択</a></li>
+      <li><a href="#テキスト入力" id="markdown-toc-テキスト入力">テキスト入力</a></li>
+    </ul>
+  </li>
+  <li><a href="#画面ビューフロー" id="markdown-toc-画面ビューフロー">画面、ビュー、フロー</a>    <ul>
+      <li><a href="#ホーム画面-ランチャー" id="markdown-toc-ホーム画面-ランチャー">ホーム画面 (ランチャー)</a></li>
+      <li><a href="#1dリストビュー" id="markdown-toc-1dリストビュー">1Dリストビュー</a></li>
+      <li><a href="#詳細ビュー" id="markdown-toc-詳細ビュー">詳細ビュー</a></li>
+      <li><a href="#検索" id="markdown-toc-検索">検索</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="全般的な原則">全般的な原則</h2>
+
+<p>アプリをデザインする際は、次に示す全般的な原則を適用します。</p>
+
+<h3 id="10-フィートui">10 フィートUI</h3>
+
+<p>テレビを見るとき、ユーザーは画面から 10 フィート (約 3 メートル) 以上離れているため、テレビのインターフェースは、10 フィートユーザーインターフェース (10-ft UI) と呼ばれることがあります。画面自体を大きくすることはできますが、画面が大きいほど解像度は低くなり、画面から離れるほど視野角は小さくなります。</p>
+
+<p>デスクトップコンピューターやタブレット、スマートフォンでは、より近い距離から画面を見るため、これらで実行するアプリケーションまたはウェブページ向けのデザインは、テレビを対象にする場合と根本的に異なります。</p>
+
+<p>また、テレビはデスクトップコンピューター、タブレット、またはスマートフォンに比べて、よりくつろいだ雰囲気で視聴されるため、テレビのUIでは、高いレベルの注意力および正確性を求めないようにする必要があります。10-ft UIでは、既存のアプリのデザインやレイアウト、ナビゲーションを完全に見直す必要があります。</p>
+
+<h3 id="クリアシンプルビジュアル">クリア、シンプル、ビジュアル</h3>
+
+<p>10-ft UIでは、画面をシンプルかつクリアにし、情報密度を低くする必要があります。画面に表示されるデザイン要素またはUIコンポーネント (メニュー、ボタン、イメージ) の数を制限し、これらの要素は、遠くからでも認識および区別できるように十分に大きくし、間を空けるようにします。各画面では、一連の操作とオプションを明確に提示します。</p>
+
+<p>ユーザーはテレビの画面で大量のテキストを読むことに慣れていないので、テキストの量は最小限にします。情報を大量に入力しなくても済むようにし、可能な限り合理的なデフォルト値を提供します。</p>
+
+<h3 id="重要なコンテンツを最初に配置する">重要なコンテンツを最初に配置する</h3>
+
+<p>最も重要なコンテンツまたはオプションを画面の目立つところに配置し、ユーザーが容易に認識およびナビゲーションできるようにします。</p>
+
+<h3 id="コンテンツ再生に重点を置く">コンテンツ再生に重点を置く</h3>
+
+<p>アプリケーションでは、ユーザーがすばやくコンテンツにアクセスできるようにすることに重点を置く必要があります。テレビのインターフェースは、娯楽を提供することが主な目的です。テレビの前に座っているユーザーは、余分な操作をしたくありせん。ユーザーは、”見聞きしたいものをすぐに再生する” という本来の目的を実現する、シンプルなユーザーインターフェースを求めています。</p>
+
+<h2 id="デザインガイドライン">デザインガイドライン</h2>
+
+<p>アプリで個々の画面やビューをデザインする際には、次のガイドラインを使用します。</p>
+
+<h3 id="画面サイズと解像度">画面サイズと解像度</h3>
+
+<p>タブレットやスマートフォン向けのアプリをデザインする際、対象となる画面のサイズと解像度は固定されています。これと異なり、テレビのデザインでは、同じアプリが 720pまたは 1080pのいずれかの解像度で、しかもさまざまなサイズの画面に表示されることを考慮する必要があります。</p>
+
+<p>最高のユーザーエクスペリエンスを提供するために、フル 1080pのテレビ画面を対象にして、アプリとそのリソースをデザインすることをお勧めします。Amazon Fire TVプラットフォームは、テレビの画面サイズと解像度に応じて、リソースを拡大/縮小します。1080pの場合、画面サイズは 1920 x 1080 px、密度は 320 dpi (“xhdpi”)、出力解像度は 960 x 540 dp (“large”) です。</p>
+
+<p>また、Amazon Fire TVプラットフォームでは、標準のAndroid設定がサポートされており、Android開発者ガイドの「<a href="https://developer.android.com/guide/practices/screens_support.html">複数画面をサポートする</a>」で説明されているように、出力パラメータの違いに応じて複数のリソースディレクトリを使用できます。</p>
+
+<p>アプリを実行すると、Fire TVはリソースを適切なフォルダーから読み込みます。Amazon Fire TVで利用できるリソース設定の詳細については、「<a href="display-and-layout.html">表示とレイアウト</a>」を参照してください。</p>
+
+<h3 id="オーバースキャンとセーフゾーン">オーバースキャンとセーフゾーン</h3>
+
+<p>画面サイズに関係なく、すべてのテレビには、画面の表示可能な領域の周囲に余白が確保されています。このスペースは、_オーバースキャン_と呼ばれます。テレビがオーバースキャンとして使用する領域の大きさは、メーカーによって異なります。オーバースキャンの領域は、アプリで使用できません。</p>
+
+<p>Amazon Fire TVプラットフォームでは、テレビのオーバースキャンの大きさを設定で調整できますが、念のために画面の縁から 5% 以内にはアプリのUI要素を配置しないようにすることをお勧めします。特に、フォーカスが置かれるアイテムや画面上のテキストは、その全体が画面の内側 90% (セーフゾーン) 内に配置されるようにする必要があります。</p>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/overscan.png" alt="オーバースキャン" /></figure>
+
+<p>オーバースキャンをFire TVに表示するには、[Developer Options] を使用します。詳細については、「[System X-Ray][amazon-fire-tv-system-xray]」を参照してください。</p>
+
+<h3 id="カラー">カラー</h3>
+
+<p>テレビの画面はコンピューターの画面よりもコントラストが高く設定されており、カラーがより明るく、鮮やかで、飽和しているように見えます。表示可能な色の範囲を示す色域も、PC画面よりも狭い範囲となります。アプリでは、飽和度の低いカラーを使用してください。寒色 (青、紫、灰) が暖色 (赤、橙) よりも見やすくなります。</p>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/color.png" alt="カラー" /></figure>
+
+<h3 id="タイポグラフィ">タイポグラフィ</h3>
+
+<p>テレビ画面は部屋のどこからでも読み取れる必要があるため、本文のテキストには大きなフォントサイズ (14 sp以上、つまり 720pでは約 19 px、1080pでは約 28 px) を使用します。Amazonでは、システムフォントとしてHelvetica Neue Regularが使用されます。</p>
+
+<p>アイテムの説明やその他のテキストブロックは、その内容も行幅もできる限り短くします。行間は、デスクトップやタブレットの画面の場合よりも広くします。テキストは段落または小さなかたまりに分割し、短い平叙文で記述します。</p>
+
+<h2 id="ナビゲーションと入力">ナビゲーションと入力</h2>
+
+<p>Fire TVユーザーインターフェースでのナビゲーションとユーザー入力はどちらも、Fire TVのリモコン (Amazon Fire TV RemoteまたはVoice Remote)、またはゲームコントローラ (Amazon Fireゲームコントローラ、またはBluetoothゲームコントローラ) から行います。マウスやキーボード、タッチ入力の代わりに物理コントローラを使用するため、Fire TV対応アプリの入力や制御の方法は、柔軟性の点で他の端末に比べてやや劣ります。</p>
+
+<h3 id="d-padを使用した方向ナビゲーション">D-Padを使用した方向ナビゲーション</h3>
+
+<p>Fire TVのリモコンやゲームコントローラの上下左右のD-Padボタンを使用して、アプリのユーザーインターフェースをナビゲーションできます。ユーザーに対しては、アプリのユーザーインターフェースを使用したナビゲーションの方法を明確に示してください。上下左右の方向を明確に示し、画面上の操作可能なすべての要素がD-Padを通してアクセスできるようにします。</p>
+
+<h3 id="フォーカスと選択">フォーカスと選択</h3>
+
+<p>ユーザーはリモコンまたはゲームコントローラの方向ボタンを使用してユーザーインターフェースをナビゲーションするので、フォーカスのある要素を示すために各種のUI要素を強調表示します。アプリ内では、現在フォーカスのある画面上の要素を明確に示す必要があります。ユーザーがテレビから目を離し、再び画面を見たときに、ナビゲーションで利用できるオプションが明確に維持されている必要があります。</p>
+
+<p>UI要素にフォーカスがあるときに [Select] (またはゲームコントローラの [A] ボタン) が押された場合、その要素はすぐに選択された状態に変化する必要があります。</p>
+
+<h3 id="テキスト入力">テキスト入力</h3>
+
+<p>テキストフィールドにフォーカスがナビゲートされると、システムキーボードが自動的に表示されます。情報の入力は、リモコンまたはゲームコントローラの方向ボタンを使用して文字や数字を選択することによって行うことができます。オートコンプリート機能が用意されており、予測された入力候補をいつでも選択できます。</p>
+
+<h2 id="画面ビューフロー">画面、ビュー、フロー</h2>
+
+<p>このセクションでは、Amazon Fire TVユーザーインターフェースの主な画面とビュー、およびそれらを構築するために使用されているコントロールについて説明します。独自のアプリのデザインを最適化し、アプリをシステムUIと統合する際には、ここに記載されているパターンを参照してください。</p>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/3_screens.png" alt="画面" /></figure>
+
+<h3 id="ホーム画面-ランチャー">ホーム画面 (ランチャー)</h3>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/home-1.png" alt="画面" /></figure>
+
+<p>ホーム画面は、グローバルナビゲーションメニュー (左側) と一連のコンテンツタイル (右側) で構成されます。</p>
+
+<p>グローバルナビゲーションメニューは、中心となるシステムメニューです。画面の左側に、縦に 1 列に並んで表示されます。グローバルナビゲーションメニューでは、主なコンテンツカテゴリのほか、[Search]、[Home]、[Movies]、[TV]、[Music]、[Games]、[Apps] などのオプションを選択できます。グローバルナビゲーションメニューの各アイテムは、[Up] と [Down] の方向ボタンを使用して選択できます。</p>
+
+<p>グローバルナビゲーションメニューのいずれかのアイテムにフォーカスを置くと、そのノードのホームビューが画面の右側に表示されます。各ノードには、独自のホームビューと独自のコンテンツがあります。ランチャーと呼ばれる、システム全体のホームビューにアクセスするには、Fire TVのリモコンまたはゲームコントローラの [Home] キーを使用するか、グローバルナビゲーションメニューから [Home] を選択します。</p>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/home-1-3rd-row-focus.png" alt="コンテンツ行" /></figure>
+
+<p>各ホームビューは、複数のコンテンツ行で構成されます。行のタイトルタイルはコンテンツの種類 (たとえば、「最も人気」、「マイムービー」、「お勧め」など) を示します。残りのタイルは、そのコンテンツのサンプルを示します。これらのコンテンツ行では、次のことを行うことができます。</p>
+
+<ul>
+  <li>[Up] と [Down] の方向ボタンを使用して行間をナビゲーションする。</li>
+  <li>[Left] ボタンを使用してナビゲーションメニューに戻る。</li>
+  <li>[Select] または [Right] を使用して行を選択し、その行の 1Dリストを表示する。</li>
+</ul>
+
+<h3 id="1dリストビュー">1Dリストビュー</h3>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/1d_outerspace-first-tile-focus.png" alt="1Dリスト" /></figure>
+
+<p>1Dリストビューは、ホームビューからコンテンツ行が選択されると表示されます。1Dリストは、1 行のアイテムで構成されます。タイトルバーには、リストのタイトル (たとえば、「最も人気」、「マイムービー」、「お勧め」など) に加えて、リストにあるアイテムの数とフォーカスされているアイテムの位置を示す数の 2 つの数が表示されます。</p>
+
+<p>参照リストでフォーカスされているアイテムについては、そのアイテムの簡単な説明がリストの下に表示されます。簡単な説明には、アイテムの基本情報 (タイトル、日付、評価) と [Add to Watchlist] などのオプションが含まれます。</p>
+
+<p>1Dリストでは、次のことを行うことができます。</p>
+
+<ul>
+  <li>[Left] と [Right] の方向ボタンを使用してアイテム間をナビゲーションする。リストの最後を越えてナビゲーションすると、フォーカスは最初のアイテムに戻ります。* [Select] ボタンを使用してアイテムを選択する。これにより、そのアイテムの詳細ビューが表示されます。</li>
+</ul>
+
+<h3 id="詳細ビュー">詳細ビュー</h3>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/detail-watch-now-focus.png" alt="詳細ビュー" /></figure>
+
+<p>詳細ビューは、参照リストからアイテムが選択されると表示されます。このイメージは、ある映画の詳細ビューを示しています。表示される詳細情報は、テレビ番組、音楽、または他のコンテンツにより異なる可能性があります。詳細ビューには、コンテンツまたは他のアイテムに関連する情報と操作が表示されます。</p>
+
+<p>説明の下には、このアイテムで実行可能な操作が表示されます。実行可能な操作は、ユーザーの登録ステータス (たとえば、Amazonプライムメンバーであるなど) とコンテンツの利用状況によって異なります。</p>
+
+<p>画面の左側のディスカバリーメニューには、アイテムに関連するその他の情報 (たとえば、[Cast]、[Trivia]、または [Reviews] など) が表示されます。</p>
+
+<h3 id="検索">検索</h3>
+
+<p>ホーム画面の [Search] メニューアイテムを選択すると、音声検索またはテキスト検索を利用できる検索画面が表示されます。検索画面は、Amazon Fire TV Voice Remoteの [Microphone] ボタンからも利用でき、現在のアプリまたはコンテンツ上にオーバーレイとして表示されます。</p>
+
+<p>テキスト検索の場合は、[LEFT] と [RIGHT] の方向キーを使用してアルファベット間を移動し、文字ごとに [SELECT] を押して検索クエリを入力します。入力候補がクエリの下にリストとして表示されます。</p>
+
+<figure><img class="docimage " src="docs_ja/firetv/getting_started/images/search.png" alt="検索" /></figure>
+
+<p>グローバル検索がシステム全体で利用できますが、個々のアプリ向けにカスタマイズすることはできません。開発者は独自のアプリ内検索を実装できますが、この検索は、グローバル検索機能には含まれません。</p>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire TV</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

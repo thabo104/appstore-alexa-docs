@@ -1,0 +1,592 @@
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var pgurl = window.location.href.split('?')[0];
+        pgurl = pgurl.split('#')[0];
+        //console.log("pgurl: " + pgurl);
+        $("ul#hipposidebar li a").each(function(){
+            var sidebaritem = ($(this).attr("href"));
+            if($(this).attr("href") == pgurl || $(this).attr("href") == pgurl + "/") {
+                $(this).addClass("open");
+                //console.log("sidebaritem: " + sidebaritem);
+            }
+        });
+    });
+</script>
+
+<script>$("a.open").parents('li').toggleClass("open");</script>
+
+<script>
+    // Initialize navgoco
+    $("#hipposidebar").navgoco({
+        caretHtml: '',
+        accordion: false,
+        openClass: 'open', // open
+        save: false, // leave false or nav highlighting doesn't work right
+        cookie: {
+            name: 'navgoco',
+            expires: false,
+            path: '/'
+        },
+        slide: {
+            duration: 400,
+            easing: 'swing'
+        }
+    });
+
+</script>
+
+
+
+<div class="hippoRight">
+    <div class="productTitle">Fire TV</div>
+    <ul id="hipposidebar" class="hipponav">
+        
+        <li class="level1"><a href="#">Overview</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv">Get Started Developing Apps and Games for Fire TV</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/device-and-platform-specifications">Fire TV Device Specifications</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-development-framework-comparison">Fire TV Development Frameworks: WASK and FireBuilder</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/amazon-fire-tv-differences-from-android-tv-development">How Fire TV Development Differs from Android TV Development</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/design-and-user-experience-guidelines">TV App Design UX Guidelines</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-fire-os-overview">What Is Fire OS?</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/whats-new-in-the-fire-tv-sdk">What's New in Fire TV Development</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/amazon-fire-tv-sdk-frequently-asked-questions">Fire TV FAQs</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/submitting-your-fire-tv-app-to-the-amazon-appstore">Submitting Your Fire TV App to the Appstore</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Set Up Your Development Environment</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/setting-up-your-development-environment">Set Up Your Development Environment</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/connecting-adb-to-fire-tv-device">Connect to Fire TV through ADB</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/installing-and-running-your-app">Install and Run Your Fire TV App</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Controllers in Android Apps</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/supporting-controllers-on-amazon-fire-tv">Controllers Overview</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/amazon-fire-tv-remote-input">Remote Input</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/amazon-fire-game-controller-input">Game Controller Input</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/controller-input-with-unity">Controller Input with Unity</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/identifying-controllers">Identifying Controllers</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/controller-behavior-guidelines">Controller Behavior Guidelines</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/controller-image-assets">Controller Image Assets</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Development Best Practices</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/customizing-mouse-pointer">Mouse Pointers</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/display-and-layout">Display and Layout</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/user-agent-strings">User Agent Strings</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/managing-audio-focus">Managing Audio Focus</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-media-players">Media Players</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/amazon-fire-tv-dolby-integration-guidelines">Dolby Integration</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/identifying-amazon-fire-tv-devices">Identifying Fire TV Devices</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-handling-hdmi-events">HDMI Events</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-4k-ultra-hd">4K Ultra HD Videos</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/user-interface">Android Menu and ActionBar widgets</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/dial-integration">DIAL Integration</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/implementing-search-fire-tv">Search</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/notifications-for-amazon-fire-tv">Notifications</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/specifying-installation-location">App Installation Location</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-os-advertising-id">Advertising ID</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-international-locales">Resources for International Locales</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Troubleshooting Fire TV Issues with Developer Tools</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-system-xray-developer-tools">Developer Tool Options</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-system-xray">System X-Ray</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-system-xray-customized-metrics">Customize System X-Ray</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Accessibility</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-assistive-technologies">Understanding Assistive Technologies for Fire OS</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-accessibility">Implementing Accessibility in Fire OS</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-preview-future-voiceview-accessibility-features">PREVIEW: Implementing Future VoiceView Accessibility Features</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Recommendations</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-overview">Recommendations Overview</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-send-recommendations">Send Recommendations that Include Amazon Enhancements</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-testing">Test Your Recommendations</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-best-practices">Best Practices with Recommendations</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+        <li class="level1"><a href="#">Build Webapps for Fire TV</a>
+            <ul>
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/platforms/webapps/docs/getting-started-with-web-apps-for-fire-tv">Get Started with Web Apps</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/platforms/webapps/docs/supporting-controllers-in-web-apps">Web App Controllers</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/platforms/webapps/docs/the-web-app-starter-kit-for-fire-tv">Web App Starter Kit</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/platforms/webapps/docs/customizing-your-fire-tv-web-app">Customize your App</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/platforms/webapps/docs/migrating-your-web-app-to-fire-tv">Migrate Your App to Fire TV</a></li>
+                
+                
+
+                
+
+                
+                
+                
+                <li class="level1items"><a href="https://developer.amazon.com/public/solutions/platforms/webapps/docs/fire-tv-web-app-faq">Web App FAQ</a></li>
+                
+                
+
+                
+
+                
+            </ul>
+
+            
+
+        </li>
+    </ul>
+
+    <hr class="resourceSeparator"></hr>
+
+    <div class="relatedResources">Related Resources</div>
+
+    <ul id="entrypages">
+        <ul>
+            
+            
+            <li><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/catalog/integrating-your-catalog-with-fire-tv">Fire TV Catalog Integration</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-overview">Fire App Builder</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-understanding-submission">Appstore Publishing</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/whats-new-in-in-app-purchasing">In-App Purchasing API</a></li>
+            
+            
+            
+            <li><a href="https://developer.amazon.com/public/apis/experience/fling/docs/understanding-the-amazon-fling-service">Fling SDK</a></li>
+            
+            
+            
+            <li><a href="https://forums.developer.amazon.com/">Developer Portal Forums</a></li>
+            
+            
+        </ul>
+    </ul>
+</div>

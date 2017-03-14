@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SNS 通知メッセージ (DRS) | </title>
+    <base target="_self">
+    <meta name="description" content="概要 Amazon はデバイス変更、オーダー状況、サービス加入の状況、その他多様な通知を Amazon の簡易通知サービス （SNS、Simple Notification Service）で送信します。 Amazon SNS により、アプリケーションはスピードが重視されるメッセージを「プッシュ」メカニズムを通して複数の購読者に向けて配信することができます。こうして定期的に更新のチェックをしなくても済みます。 例えば、Dash Replenishmentシステムサービス（DRS、Dash Replenishment Service）はデバイスの登録解除やイベントの不具合を貴殿/貴社（デバイスメーカー）に通知するのに SNS を使用し、配送状況の提供に通知を使用します。 以下の項目では、通知のサンプルが参考用に JSON で提供されます。  Note: 通知には将来新しい項目が追加されることがありますが、貴殿/貴社のサービスコードは不要な項目に対処し無視しなくてはなりません。 DRS... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-dash_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Dash Replenishment Service</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Getting Started</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-replenishment-service.html">文書およびリソース</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-customer-experience-guidelines.html">お客様体験（CX）ガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-create-a-security-profile.html">LWA セキュリティプロフィールを作成</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-create-an-sns-topic.html">SNS トピックを作成</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-device-management-and-settings.html">デバイス管理および設定</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-teaser-page.html">ティザーページ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-glossary.html">用語集</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">LWA Integration</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-web-api.html">LWA ウェブ API の使用</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-mobile-sdk.html">LWA モバイル SDK を使用</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-mobile-sdk-android.html">LWA モバイル SDK を使用</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-mobile-sdk-ios.html">LWA モバイル SDK を使用</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Notifications & Workflows</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="dash-notification-messages.html">SNS 通知メッセージ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-amazon-order-resolution-flow.html">Amazon 発注解決手順</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-test-device-purchases.html">テストデバイス購入</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">API Endpoints</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-replenish-endpoint.html">Replenishmentエンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-slotstatus-endpoint.html">SlotStatus エンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-devicestatus-endpoint.html">DeviceStatus エンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-deregistration-endpoint.html">解除登録エンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-getsubscriptioninfo-endpoint.html">SubscriptionInfo エンドポイント</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/dash-faqs.html">よくある質問</a></li>
+        
+        <li><a class="noCrossRef" href="https://forums.developer.amazon.com/spaces/61/Dash+Replenishment+Service.html">Forum</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/dash-replenishment-service/getting-started">Get Started (Self-Service Portal)</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/dash-replenishment/index.html">Device Wizard (Self-Service Portal)</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> >  > </div>
+                    <h1>SNS 通知メッセージ (DRS)</h1>
+
+                    
+
+                    <h2 id="概要">概要</h2>
+
+<p>Amazon はデバイス変更、オーダー状況、サービス加入の状況、その他多様な通知を Amazon の簡易通知サービス （SNS、Simple Notification Service）で送信します。 Amazon SNS により、アプリケーションはスピードが重視されるメッセージを「プッシュ」メカニズムを通して複数の購読者に向けて配信することができます。こうして定期的に更新のチェックをしなくても済みます。 例えば、Dash Replenishmentシステムサービス（DRS、Dash Replenishment Service）はデバイスの登録解除やイベントの不具合を貴殿/貴社（デバイスメーカー）に通知するのに SNS を使用し、配送状況の提供に通知を使用します。</p>
+
+<p>以下の項目では、通知のサンプルが参考用に JSON で提供されます。</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> 通知には将来新しい項目が追加されることがありますが、貴殿/貴社のサービスコードは不要な項目に対処し無視しなくてはなりません。</div>
+
+<p>DRS では以下の通知をサポートしています。</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> SNS は必ずしもメッセージを連続的に受け取るものではありません。 非常に狭い時間枠（30-60秒）でテストを行う場合はこのことを念頭に置いてください。 SNS はメッセージを受信した順番に送信しますが、メッセージが「送信」された順番に受信したことを保証するものではありません。 SNS メッセージペイロード内の通知時刻欄は DRS がメッセージを送信した時刻を示します。</div>
+
+<h2 id="発注がありました">発注がありました</h2>
+
+<p>受注確認の通知は DRS がReplenishment API コールを受け取り、注文に何の問題もなかった場合に送信されます。 このメッセージを受信次第、デバイスメーカーはReplenishment API リクエストから受け取った注文が、24時間以内に Amazon のお客様により取り消されない場合、発送されることが通知されます。</p>
+
+<p>以下は参考用に、受注確認の通知のサンプルです。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"notificationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderPlacedNotification"</span><span class="p">,</span><span class="w"> </span><span class="nt">"LWAClientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.application-oa2-client.6b68e3c7ba3c434baa9283ad8747d469"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-01T20:19:39.959Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.dash.notification.v1.66142640-5d57-4efd-947e-4a4825970971"</span><span class="p">,</span><span class="w"> </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySerial"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="p">,</span><span class="w">
+        </span><span class="nt">"productIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"modelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myDeviceModel"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"customerInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"directedCustomerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.account.AHIJYKW2N4EGMV3GWWH4P4GA2O5Q"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"orderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"instanceId"</span><span class="p">:</span><span class="s2">"amzn1.dash.v1.o.ci44MzUwODFkNy1iMmViLTQ1MTUtYWIwYS03NDIzYmNmNWU3NzkuZjZmOWI2NjgtMTUyOS00YTQ1LWFlNDEtZTY2ZGE5ZGRlZDhj"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slotId"</span><span class="p">:</span><span class="s2">"vacuumBag"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"productInfo"</span><span class="p">:[</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Count"</span><span class="err">]</span><span class="p">,</span><span class="w"> </span><span class="nt">"estimatedDeliveryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-07T06:59:59Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="注文が取り消されました">注文が取り消されました</h2>
+
+<p>注文の取り消し通知の送信には2つのシナリオがあります。</p>
+
+<ol>
+  <li>
+    <p>正常に発信された注文がお客様の手で取り消されたとき。</p>
+  </li>
+  <li>
+    <p>Replenishment API リクエストが Amazon オーダー解決手順を引き起こし、Amazon のお客様が72時間以内に問題を解決できないとき。</p>
+  </li>
+</ol>
+
+<p>以下は参考用に、注文の取り消しの通知のサンプルです。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"notificationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderCancelledNotification"</span><span class="p">,</span><span class="w"> </span><span class="nt">"LWAClientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.application-oa2-client.6b68e3c7ba3c434baa9283ad8747d469"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-01T20:20:29.461Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.dash.notification.v1.93f419a5-da08-45d4-9abb-eb88a1bafb1d"</span><span class="p">,</span><span class="w"> </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySerial"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"productIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"modelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myDeviceModel"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"customerInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"directedCustomerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.account.AHIJYKW2N4EGMV3GWWH4P4GA2O5Q"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"orderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"instanceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.dash.v1.o.ci44MzUwODFkNy1iMmViLTQ1MTUtYWIwYS03NDIzYmNmNWU3NzkuZjZmOWI2NjgtMTUyOS00YTQ1LWFlNDEtZTY2ZGE5ZGRlZDhj"</span><span class="p">,</span><span class="w"> </span><span class="nt">"slotId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vacuumBag"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="デバイスが登録されました">デバイスが登録されました</h2>
+
+<p>デバイスの登録通知はお客様が LWA を正常に完了したときに随時送信されます。 通知はお客様がいずれかの ASIN を選ぶ前に送信されます。</p>
+
+<p>以下は参考用に、デバイスの登録通知のサンプルです。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"notificationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DeviceRegisteredNotification"</span><span class="p">,</span><span class="w"> </span><span class="nt">"LWAClientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.application-oa2-client.6b68e3c7ba3c434baa9283ad8747d469"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-01T02:23:52.747Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.dash.notification.v1.4eab8f47-f876-4650-a74a-5ca90bb657c0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySerial"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"productIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"modelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myDeviceModel"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"customerInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"directedCustomerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.account.AEYAPUSDAKRB7KDV5WSAAIAIVMSA"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="デバイスが登録解除されました">デバイスが登録解除されました</h2>
+
+<p>デバイスの登録解除通知の送信には多数の理由があります。以下に例を挙げます。</p>
+
+<ol>
+  <li>
+    <p>デバイスメーカーが登録解除 API をコールする。</p>
+  </li>
+  <li>
+    <p>Amazon のお客様が Amazon.com に行き、デバイスを何らかの Amazon.com 管理ページから登録解除する。</p>
+  </li>
+  <li>
+    <p>Amazon のお客様が Amazon カスタマーサービスに連絡し、カスタマーサービスの係員がお客様に代わってデバイスを登録解除する。</p>
+  </li>
+  <li>
+    <p>Amazon のお客様が「<a href="https://www.amazon.co.jp/ap/adam?_encoding=UTF8&amp;_encoding=UTF8&amp;ref_=ya_iba">Amazonアカウントによる外部サイトへのログインの設定</a> 」に行き、デバイスメーカーとの関係を削除する。 これによりデバイスメーカーと関連したあらゆるお客様のデバイスが登録解除されます。</p>
+  </li>
+</ol>
+
+<p>以下は参考用に、受注確認の通知のサンプルです。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"notificationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DeviceDeregisteredNotification"</span><span class="p">,</span><span class="w"> </span><span class="nt">"LWAClientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.application-oa2-client.6b68e3c7ba3c434baa9283ad8747d469"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-29T18:03:28.669Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.dash.notification.v1.3b060d60-f5e1-49d1-93f9-4020f0060297"</span><span class="p">,</span><span class="w"> </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySerial"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"productIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"modelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myDeviceModel"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"customerInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"directedCustomerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.account.AFOM77AMO524CJY3HPKB2GIJCBAQ"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="サービス加入が変更されました">サービス加入が変更されました</h2>
+
+<p>サービス加入変更通知の送信には4つのシナリオがあります。</p>
+
+<ul>
+  <li>お客様が新規の LWA デバイス登録を完了したとき</li>
+  <li>お客様が以前選択のなかった ASIN を選択したとき</li>
+  <li>お客様がこれまで選択されていた ASIN の選択を解除したとき</li>
+  <li>お客様がサービス加入のスイッチのオン・オフを切り替えたとき</li>
+</ul>
+
+<p>以下は参考用に、サービス加入の変更通知のサンプルです。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"notificationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SubscriptionChangedNotification"</span><span class="p">,</span><span class="w"> </span><span class="nt">"LWAClientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.application-oa2-client.1bf9d3fa83bc4c50968ecf595ace1127"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-30T23:27:50.771Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.dash.notification.v1.067cb532-ec2d-4ab4-a0ed-6e3da599cb83"</span><span class="p">,</span><span class="w"> </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySerial"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"productIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"myDeviceModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DrsBountySampleDevice"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"subscriptionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"slotsSubscriptionStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"vacuumBag"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"vacuumFilter"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"customerInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"directedCustomerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.account.AEZPSLGB77YDGN55ESXOP2WWA3ZQ"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="商品発送の通知">商品発送の通知</h2>
+
+<p>商品発送の通知はReplenishment API リクエストが正常に受信され、発注が行われお客様から取り消されず、Amazon フルフィルメントが商品をお客様に発送したときに送信されます。</p>
+
+<p>以下は参考用に、商品発送の通知のサンプルです。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"notificationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ItemShippedNotification"</span><span class="p">,</span><span class="w"> </span><span class="nt">"LWAClientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.application-oa2-client.6b68e3c7ba3c434baa9283ad8747d469"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-01T20:43:28.626Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"notificationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.dash.notification.v1.aaa0d823-4021-4e67-9ecc-ba4ee5467ae5"</span><span class="p">,</span><span class="w"> </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySerial"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"productIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"modelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myDeviceModel"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"customerInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"directedCustomerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amzn1.account.AHIJYKW2N4EGMV3GWWH4P4GA2O5Q"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"orderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"instanceId"</span><span class="p">:</span><span class="s2">"amzn1.dash.v1.o.ci4wMWZlODRhNC0wNGM2LTQxNzMtYmQ1OS00MmY3MjRlODNiM2UuMWQ1ODYyZWQtZTU4OS00ODdiLWJkODYtODQyYTBmZDMxM2Ex"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slotId"</span><span class="p">:</span><span class="s2">"vacuumBag"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"productInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Count"</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"estimatedDeliveryDate"</span><span class="p">:</span><span class="s2">"2015-10-07T06:59:59Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li></li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

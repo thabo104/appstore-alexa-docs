@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fire TV開発における最新情報 | Fire TV</title>
+    <base target="_self">
+    <meta name="description" content=" Fire TVのユーザーインターフェースの更新 Fire App Builder Fire TV Stick (第 2 世代) Fire TVドキュメントの更新 Fire TVブログの更新  Fire... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Amazon Fire TV用アプリとゲームを開発するための準備</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV端末の仕様</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Amazon Fire TV開発フレームワークの比較</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">Fire TV開発とAndroid TV開発の違い</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="whats-new-in-the-fire-tv-sdk.html">Fire TV開発における最新情報</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Amazon Fire TVのよくある質問 (FAQ)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">AmazonアプリストアへのFire TVアプリの申請</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">開発環境のセットアップ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">アプリのインストールと実行</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">コントローラの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">リモート入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">ゲームコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Unityによるコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">コントローラの識別</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">コントローラ動作のガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">コントローラ画像アセット</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire TV > </div>
+                    <h1>Fire TV開発における最新情報</h1>
+
+                    
+
+                    <ul id="markdown-toc">
+  <li><a href="#fire-tvのユーザーインターフェースの更新" id="markdown-toc-fire-tvのユーザーインターフェースの更新">Fire TVのユーザーインターフェースの更新</a></li>
+  <li><a href="#fire-app-builder" id="markdown-toc-fire-app-builder">Fire App Builder</a></li>
+  <li><a href="#fire-tv-stick-第-2-世代" id="markdown-toc-fire-tv-stick-第-2-世代">Fire TV Stick (第 2 世代)</a></li>
+  <li><a href="#fire-tvドキュメントの更新" id="markdown-toc-fire-tvドキュメントの更新">Fire TVドキュメントの更新</a></li>
+  <li><a href="#fire-tvブログの更新" id="markdown-toc-fire-tvブログの更新">Fire TVブログの更新</a></li>
+</ul>
+
+<h3 id="fire-tvのユーザーインターフェースの更新">Fire TVのユーザーインターフェースの更新</h3>
+
+<p>Fire TV第 2 世代端末のインターフェースが更新されました。ビデオのトレーラーやコンテンツのスクリーンショットが表示され、視聴者は観たい内容にすばやくアクセスできるようになり、これまで以上に魅力的な映画体験が得られます。ホームページのお勧めコンテンツ行にサードパーティ製のアプリを表示することもできます。ユーザー補助機能は、VoiceViewスクリーンリーダーを使ってFire TVや対応アプリを利用できるように強化されています(<a href="http://phx.corporate-ir.net/phoenix.zhtml?c=176060&amp;p=irol-newsArticle&amp;ID=2206525">プレスリリース</a>を参照)。</p>
+
+<p>最新のUIに必要な新しいFire TVアセットをアップロードする方法については、「<a href="/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets">Image Guidelines for App Submission</a>」を参照してください。第 1 世代の端末には、このユーザーインターフェースの更新が少し遅れて適用されます。</p>
+
+<h3 id="fire-app-builder">Fire App Builder</h3>
+
+<p>2016 年 9 月 29 日に<a href="fire-app-builder-overview.html">Fire App Builder</a>がリリースされました。Fire App Builderには、Javaベースのフレームワークが備わっており、このフレームワークを使用することで、Amazon Fire TVを対象としたストリーミングメディアAndroidアプリを短時間で簡単に開発することができます。Fire App Builderを使用すると、コードをゼロから開発しなくても、ベストプラクティスと各種手法に従いながら、魅力的で高品質のメディア体験をFire TVに構築することができます。Fire App BuilderのコードはJavaベースであり、Android StudioやGradleなど、Androidアプリの開発用として広く普及しているツールで使用できます。Fire App Builderは、Apache 2.0 ライセンスのオープンソースプロジェクトとして、Github (<a href="github.com/amzn/fire-app-builder">github.com/amzn/fire-app-builder</a>) で公開されています。</p>
+
+<h3 id="fire-tv-stick-第-2-世代">Fire TV Stick (第 2 世代)</h3>
+
+<p>2016 年 9 月 28 日、<a href="https://www.amazon.com/dp/B00ZV9RDKK">Fire TV Stick with Alexa Voice Remote</a> (本ドキュメントでは「Fire TV Stick (第 2 世代)」と呼んでいます) がリリースされました。この次世代Fire TV Stickは、ベストセラーを博した初代バージョンと比較して速度が 30% 向上しています。300,000 本を超える映画やTVエピソードが提供され、Alexa Voice Remoteが付属して、価格はわずか 39.99 ドルとなっています。クアッドコアプロセッサが搭載されているため、ハイパフォーマンスのアプリやゲームの真価が存分に発揮されます。詳細については、「<a href="https://developer.amazon.com/public/community/post/Tx1W8FCB4UA5KIB/Introducing-the-All-New-Fire-TV-Stick-with-Alexa-Voice-Remote">Introducing the All-New Fire TV Stick with Alexa Voice Remote</a>」を参照してください。Fire TV Stick (第 2 世代) の仕様は、「<a href="device-and-platform-specifications.html">Fire TV端末の仕様</a>」でご確認いただけます。</p>
+
+<h2 id="fire-tvドキュメントの更新">Fire TVドキュメントの更新</h2>
+
+<p>Fire TV関連のドキュメントが以下のように更新されています。</p>
+
+<table class="grid">
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>ページ</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2016 年 12 月 14 日</td>
+      <td><a href="fire-tv-development-framework-comparison.html">Amazon Fire TV開発フレームワークの比較</a></td>
+      <td>Fire TV向けウェブアプリスターターキット (WASK) とFire App Builderとの違いについて詳しい説明が追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 11 月 29 日</td>
+      <td><a href="notifications-for-amazon-fire-tv.html">Notifications for Amazon Fire TV</a></td>
+      <td>Fire TVのUIアップデート時に追加される予定の通知センター機能に関する説明が追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 11 月 23 日</td>
+      <td><a href="specifying-installation-location.html">アプリのインストール場所の指定</a></td>
+      <td>アプリのインストールで外部ストレージを優先する点が強調されました。各種プラットフォームにおけるアプリのインストールについての記述も追加されています。</td>
+    </tr>
+    <tr>
+      <td>2016 年 10 月 25 日</td>
+      <td><a href="/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets">Image Guidelines for App Submission</a></td>
+      <td>[Fire TV Assets] セクションのグラフィックと手順を更新しました。汎用的な図を廃止し、コンテンツセーフ領域に表示される実際のサンプルグラフィックを追加し、色分けによる説明を追加しました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 10 月 20 日</td>
+      <td><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Amazon Fire TV用アプリとゲームを開発するための準備</a></td>
+      <td>セクションを展開したり折りたたんだりするための新しいサイドバーナビゲーションが右側に追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 10 月 2 日</td>
+      <td><a href="fire-app-builder-overview.html">Fire App Builder: A Starter Kit for Java-based Amazon Fire TV and Android Apps</a></td>
+      <td>Fire TV向けにJavaベースのAndroid TVアプリをFire App Builderで作成する方法について詳しく (30 ページ超) 解説したドキュメントです。</td>
+    </tr>
+    <tr>
+      <td>2016 年 9 月 29 日</td>
+      <td><a href="identifying-amazon-fire-tv-devices.html">Identifying Amazon Fire TV Devices</a></td>
+      <td>Fire TV Stick (第 2 世代) の機能IDが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 9 月 28 日</td>
+      <td><a href="/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets">Image Guidelines for App Submission</a></td>
+      <td>アプリの申請時に使用する [Images &amp; Multimedia] タブの [Fire TV Assets] セクションに関して、画像アセットのガイドラインが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 9 月 28 日</td>
+      <td><a href="device-and-platform-specifications.html">Fire TV端末の仕様</a></td>
+      <td>Fire TV Stick (第 2 世代) の仕様が追加されました。また、同じページに、対応する「メディアの仕様」の内容も追加されています (情報を一元化、統合するため)。ナビゲーションタブで切り替えて情報を表示できます。</td>
+    </tr>
+    <tr>
+      <td>2016 年 9 月 28 日</td>
+      <td><a href="asset-guidelines-for-app-submission.html">Image Guidelines for App Submission</a></td>
+      <td>近く予定されているFire TVのUIアップデートに合わせて、Fire TV画像アセットについて説明する新しいセクションが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 9 月 16 日</td>
+      <td><a href="amazon-fire-tv-differences-from-android-tv-development.html">Fire TV開発とAndroid TV開発の違い</a></td>
+      <td>Fire TV向けアプリの開発時に考慮すべき点についてのページが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 9 月 14 日</td>
+      <td><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Amazon Fire TV用アプリとゲームを開発するための準備</a></td>
+      <td>新しいサイトワークフローに基づいて改訂されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 9 月 10 日</td>
+      <td>[Using System X-Ray on Fire TV][amazon-fire-tv-system-xray]</td>
+      <td>System Xrayオーバーレイを使用したアプリの問題のトラブルシューティングについて詳しく説明するページが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 9 月 5 日</td>
+      <td><a href="fire-os-advertising-id.html">Getting the Advertising ID on Fire TV</a></td>
+      <td>広告IDの取得について詳しく説明するページが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 9 月 1 日</td>
+      <td><a href="fire-tv-4k-ultra-hd.html">Playing 4K Ultra HD Videos on Fire TV</a></td>
+      <td>4Kアプリ開発のガイドラインとFire TV用の拡張サポートライブラリに関するページが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 8 月 30 日</td>
+      <td><a href="/solutions/devices/fire-tv">Amazon Fire TVホームページ</a></td>
+      <td>新しいバージョンの開発者ポータルサイトにホームページを移行しました (順次展開予定)。</td>
+    </tr>
+    <tr>
+      <td>2016 年 8 月 5 日</td>
+      <td><a href="identifying-amazon-fire-tv-devices.html">Identifying Amazon Fire TV Devices</a></td>
+      <td>Fire TV端末を識別するための新しい方法 (モデル + 製造業者ではなく機能の有無を調べる) について説明しています。</td>
+    </tr>
+    <tr>
+      <td>2016 年 7 月 23 日</td>
+      <td><a href="device-and-platform-specifications.html">Fire TV端末の仕様</a></td>
+      <td>H.265 の詳細やWidevineサポートなどの情報を更新しました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 7 月 22 日</td>
+      <td><a href="amazon-fire-tv-dolby-integration-guidelines.html">Dolby Integration Guidelines</a></td>
+      <td>Dolby Audioをサポートするための技術的な情報について詳しく説明するページが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 7 月 1 日</td>
+      <td><a href="fire-tv-media-players.html">Media Players for Amazon Fire TV</a></td>
+      <td>サポートされるメディアプレーヤーについての情報を更新するとともに、ExoplayerのAmazon向けポートについて詳しい説明が追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 6 月 10 日</td>
+      <td><a href="managing-audio-focus.html#audiofocusvoice">“Handling Audio Focus with Voice Interactions”</a></td>
+      <td>音声操作が開始されたときのオーディオフォーカスの処理についてのセクションが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 6 月 16 日</td>
+      <td><a href="implementing-search-fire-tv.html#voicesearch">“Voice Search”</a></td>
+      <td>音声検索とテキスト検索の動作、およびこの 2 つの検索から返される内容についてのセクションが追加されました。</td>
+    </tr>
+    <tr>
+      <td>2016 年 6 月 1 日</td>
+      <td>Persistent sidebar navigation</td>
+      <td><a href="/solutions/devices/fire-tv">Fire TV</a>のドキュメントに、関連するドキュメントが閲覧しやすいよう右サイドバーが表示されます。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="fire-tvブログの更新">Fire TVブログの更新</h2>
+
+<p>ブログのFire TVカテゴリで、Fire TVに関する最新情報をチェックできます。</p>
+
+<p><a href="https://developer.amazon.com/blogs/tag/Fire+TV"><button class="feedbackButton">Fire TVのブログを読む</button></a></p>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire TV</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Dolby Integration Guidelines for Fire TV | Fire TV</title>
+    
+    <base target="_self">
+    <meta name="description" content="This documentation provides integration guidelines for app developers who need to support Dolby Digital or Dolby Digital Plus audio content in their apps.  Important:... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- TOC generator-->
+    <script src="assets/js/toc.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/getting_started/Development Best Practices/amazon-fire-tv-dolby-integration-guidelines.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Get Started Developing Apps and Games for Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV Device Specifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Fire TV Development Frameworks: WASK and FireBuilder</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">How Fire TV Development Differs from Android TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TV App Design UX Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-fire-os-overview.html">What Is Fire OS?</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">What's New in Fire TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Fire TV FAQs</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">Submitting Your Fire TV App to the Appstore</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">Set Up Your Development Environment</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">Connect to Fire TV through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">Install and Run Your Fire TV App</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">Controllers Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">Remote Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">Game Controller Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Controller Input with Unity</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">Identifying Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">Controller Behavior Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">Controller Image Assets</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Development Best Practices</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-mouse-pointer.html">Mouse Pointers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="display-and-layout.html">Display and Layout</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-agent-strings.html">User Agent Strings</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="managing-audio-focus.html">Managing Audio Focus</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-media-players.html">Media Players</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="amazon-fire-tv-dolby-integration-guidelines.html">Dolby Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-amazon-fire-tv-devices.html">Identifying Fire TV Devices</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-handling-hdmi-events.html">HDMI Events</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-4k-ultra-hd.html">4K Ultra HD Videos</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-interface.html">Android Menu and ActionBar widgets</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dial-integration.html">DIAL Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="implementing-search-fire-tv.html">Search</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="notifications-for-amazon-fire-tv.html">Notifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="specifying-installation-location.html">App Installation Location</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-advertising-id.html">Advertising ID</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-international-locales.html">Resources for International Locales</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Troubleshooting Fire TV Issues with Developer Tools</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-developer-tools.html">Developer Tool Options</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray.html">System X-Ray</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-customized-metrics.html">Customize System X-Ray</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Accessibility</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-assistive-technologies.html">Understanding Assistive Technologies for Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-accessibility.html">Implementing Accessibility in Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-preview-future-voiceview-accessibility-features.html">PREVIEW: Implementing Future VoiceView Accessibility Features</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Recommendations</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-overview.html">Recommendations Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-send-recommendations.html">Send Recommendations that Include Amazon Enhancements</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-testing.html">Test Your Recommendations</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-best-practices.html">Best Practices with Recommendations</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Build Webapps for Fire TV</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-with-web-apps-for-fire-tv.html">Get Started with Web Apps</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-in-web-apps.html">Web App Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="the-web-app-starter-kit-for-fire-tv.html">Web App Starter Kit</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-your-fire-tv-web-app.html">Customize your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="migrating-your-web-app-to-fire-tv.html">Migrate Your App to Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-web-app-faq.html">Web App FAQ</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire TV </div>
+
+                    <h1>Dolby Integration Guidelines for Fire TV</h1>
+
+                    <p>This documentation provides integration guidelines for app developers who need to support Dolby Digital or Dolby Digital Plus audio content in their apps.</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> All apps that support Dolby audio content must also work on devices that do NOT support a Dolby decoder.</div>
+
+<p>You can see the Dolby settings in Fire TV by going to <strong>Settings &gt; Display &amp; Sounds &gt; Audio &gt; Dolby Digital Output</strong>.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#terms" id="markdown-toc-terms">Terms</a></li>
+  <li><a href="#four-ways-to-play-dolby-audio" id="markdown-toc-four-ways-to-play-dolby-audio">Four Ways to Play Dolby Audio</a></li>
+  <li><a href="#custom" id="markdown-toc-custom">Option 1: Custom Media Player Approach</a>    <ul>
+      <li><a href="#audiomanager-overview" id="markdown-toc-audiomanager-overview">AudioManager Overview</a></li>
+      <li><a href="#audiotrack-overview" id="markdown-toc-audiotrack-overview">AudioTrack Overview</a></li>
+      <li><a href="#mediacodec-optional-overview" id="markdown-toc-mediacodec-optional-overview">MediaCodec (Optional) Overview</a></li>
+    </ul>
+  </li>
+  <li><a href="#dolby-support-in-fire-tv--2nd-generation" id="markdown-toc-dolby-support-in-fire-tv--2nd-generation">Dolby Support in Fire TV – 2nd Generation</a>    <ul>
+      <li><a href="#audiotrack-fire-tv--2nd-generation" id="markdown-toc-audiotrack-fire-tv--2nd-generation">AudioTrack (Fire TV – 2nd Generation)</a></li>
+      <li><a href="#audiomanager-fire-tv--2nd-generation" id="markdown-toc-audiomanager-fire-tv--2nd-generation">AudioManager (Fire TV – 2nd Generation)</a></li>
+      <li><a href="#mediacodec-fire-tv--2nd-generation" id="markdown-toc-mediacodec-fire-tv--2nd-generation">MediaCodec (Fire TV – 2nd Generation)</a></li>
+    </ul>
+  </li>
+  <li><a href="#dolby-support-in-firetv-stick" id="markdown-toc-dolby-support-in-firetv-stick">Dolby Support in FireTV Stick</a>    <ul>
+      <li><a href="#mediacodec-fire-tv-stick" id="markdown-toc-mediacodec-fire-tv-stick">MediaCodec (Fire TV Stick)</a></li>
+      <li><a href="#audiotrack-fire-tv-stick" id="markdown-toc-audiotrack-fire-tv-stick">AudioTrack (Fire TV Stick)</a>        <ul>
+          <li><a href="#a-create-the-decoder-by-mimetype" id="markdown-toc-a-create-the-decoder-by-mimetype">A. Create the Decoder by MimeType</a></li>
+          <li><a href="#b-handle-mediacodec-output-format-change-notification" id="markdown-toc-b-handle-mediacodec-output-format-change-notification">B. Handle MediaCodec Output Format Change Notification</a></li>
+          <li><a href="#c-limitations-of-audiotrack-for-dolby-encoding-formats" id="markdown-toc-c-limitations-of-audiotrack-for-dolby-encoding-formats">C. Limitations of AudioTrack for Dolby encoding formats</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#dolby-support-in-fire-tv--1st-generation" id="markdown-toc-dolby-support-in-fire-tv--1st-generation">Dolby Support in Fire TV — 1st Generation</a>    <ul>
+      <li><a href="#mediacodec-fire-tv--1st-generation" id="markdown-toc-mediacodec-fire-tv--1st-generation">MediaCodec (Fire TV — 1st Generation)</a></li>
+      <li><a href="#audiotrack-fire-tv--1st-generation" id="markdown-toc-audiotrack-fire-tv--1st-generation">AudioTrack (Fire TV — 1st Generation)</a></li>
+      <li><a href="#limitations-of-audiotrack-for-dolby-encoding-formats-fire-tv--1st-generation" id="markdown-toc-limitations-of-audiotrack-for-dolby-encoding-formats-fire-tv--1st-generation">Limitations of AudioTrack for Dolby Encoding Formats (Fire TV — 1st Generation)</a></li>
+    </ul>
+  </li>
+  <li><a href="#exoplayer" id="markdown-toc-exoplayer">Option 2: Use ExoPlayer</a></li>
+  <li><a href="#supported" id="markdown-toc-supported">Option 3: Use Other Supported Media Players</a></li>
+  <li><a href="#androidmp" id="markdown-toc-androidmp">Option 4: Use Android Media Player</a></li>
+  <li><a href="#handling-non-dolby-end-points-and-private-listening-modes" id="markdown-toc-handling-non-dolby-end-points-and-private-listening-modes">Handling non-Dolby End-Points and Private Listening Modes</a></li>
+</ul>
+
+<h2 id="terms">Terms</h2>
+
+<p>Note the following abbreviations used in this documentation:</p>
+
+<ul>
+  <li><strong>EAC3</strong>: Dolby Digital Plus (DDP)</li>
+  <li><strong>AC3</strong>: Dolby Digital (DD)</li>
+</ul>
+
+<p>The following terms are used to refer to Fire TV:</p>
+
+<ul>
+  <li><strong>Fire TV (1st Generation)</strong>: Refers to the first version of the Fire TV box (released in 2014).</li>
+  <li><strong>Fire TV (2nd Generation)</strong>: Refers to the second version of the Fire TV box (released in 2015).</li>
+  <li><strong>Fire TV Stick</strong>: Refers to the first (and so far only) version of the Fire TV stick (released in 2014).</li>
+</ul>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Usually the latest version of the Fire TV box is just referred to as “Fire TV,” but since this documentation contrasts two versions of Fire TV, the terms “Fire TV – 1st Generation” and “Fire TV – 2nd Generation” are used. These terms always refer to the box. There is just one version of Fire TV Stick, so there’s no need to distinguish versions through a 1st Generation or 2nd Generation descriptor.</div>
+
+<h2 id="four-ways-to-play-dolby-audio">Four Ways to Play Dolby Audio</h2>
+
+<p>You can play Dolby (DD or DDP) audio content in your app in four ways:</p>
+
+<ol>
+  <li><a href="../amazon-fire-tv-dolby-integration-guidelines.md#custom">Custom Media Player Approach</a></li>
+  <li><a href="../amazon-fire-tv-dolby-integration-guidelines.md#exoplayer">ExoPlayer</a></li>
+  <li><a href="../amazon-fire-tv-dolby-integration-guidelines.md#supported">Other Supported Media Players</a></li>
+  <li><a href="../amazon-fire-tv-dolby-integration-guidelines.md#androidmp">Android Media Player</a></li>
+</ol>
+
+<h2 id="custom">Option 1: Custom Media Player Approach</h2>
+
+<p>Implement a custom player that uses  <a href="http://developer.android.com/reference/android/media/AudioManager.html">AudioManager</a>,  <a href="http://developer.android.com/reference/android/media/AudioTrack.html">AudioTrack</a>, and (optionally)  <a href="http://developer.android.com/reference/android/media/MediaCodec.html)">MediaCodec APIs</a>. This section specifies the use of AudioManager, AudioTrack, and optionally MediaCodec APIs to play Dolby audio content as recommended by Android.</p>
+
+<h3 id="audiomanager-overview">AudioManager Overview</h3>
+
+<p>Android L enhanced the <a href="https://developer.android.com/reference/android/media/AudioManager.html#ACTION_HDMI_AUDIO_PLUG">ACTION_HDMI_AUDIO_PLUG</a> intent in <a href="http://developer.android.com/reference/android/media/AudioManager.html">AudioManager</a> to report the capabilities of sinks in Lollipop. This intent is broadcast whenever HDMI is plugged into or unplugged from to the device.</p>
+
+<p>This intent also has a provision for apps to detect the capabilities of the connected endpoint (AVR or TV) via <a href="https://developer.android.com/reference/android/media/AudioManager.html#EXTRA_ENCODINGS">EXTRA_ENCODINGS</a> present in the intent. The possible values are one of the ENCODING_XXXX values. For example:</p>
+
+<ul>
+  <li><a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_PCM_16BIT">ENCODING_PCM_16BIT</a></li>
+  <li><a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_AC3">ENCODING_AC3</a></li>
+  <li><a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_E_AC3">ENCODING_E_AC3</a>, and so on</li>
+</ul>
+
+<h3 id="audiotrack-overview">AudioTrack Overview</h3>
+
+<p>Android L added the support of <a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_AC3">ENCODING_AC3</a> and <a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_E_AC3">ENCODING_E_AC3</a> encoding formats to AudioFormat. If the AudioTrack is configured with Dolby encoding format, and if the connecting endpoint supports that encoding format, AudioTrack accepts the Dolby raw bitstream as input and passes the bitstream to the endpoint after IEC61937 packetization. AudioTrack supports only clear (not encrypted) input bitstream.</p>
+
+<p>Additionally, the creation of AudioTrack fails if the encoding format is not supported by the connected endpoint.</p>
+
+<p>Applications can use the <a href="https://developer.android.com/reference/android/media/AudioManager.html#ACTION_HDMI_AUDIO_PLUG">ACTION_HDMI_AUDIO_PLUG</a> intent to find the list of supported Dolby encoding formats for the connected device, create AudioTrack with one of the supported Dolby encoding formats, and pass the corresponding Dolby raw bitstream (in clear) as input to AudioTrack to achieve Dolby pass-through playback.</p>
+
+<p>Optionally, AudioTrack can also support transcoding DDP bitstream to DD if the connected endpoint only supports DD. This feature is made available to the application by adding ENCODING_E_AC3 to the EXTRA_ENCODINGS extra of the ACTION_HDMI_AUDIO_PLUG intent if the endpoint only supports DD.</p>
+
+<p>Hence, from an application’s perspective, an endpoint that supports DD also supports DDP and can continue to send DDP bitstream to AudioTrack, which internally transcodes the bitstream to DD before passing it through.</p>
+
+<h3 id="mediacodec-optional-overview">MediaCodec (Optional) Overview</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Apps that use MediaCodec for Dolby must also be able to operate on devices without Dolby availability in MediaCodec. To do so, call <a href="https://developer.android.com/reference/android/media/MediaCodecList.html#findDecoderForFormat(android.media.MediaFormat)">findDecoderForFormat</a>. If Dolby is not supported, apps must fall back to non-Dolby (such as AAC) content.</div>
+
+<p>AudioTrack does not support Dolby audio content that is encrypted with DRM keys. Hence, for an encrypted Dolby audio bitstream, it is mandatory to use MediaCodec APIs to decrypt the bitstream and then pass the decrypted bitstream to AudioTrack.</p>
+
+<p>Android provides a generic raw audio decoder via MediaCodec interface named “OMX.google.raw.dec,” which is essentially a no-op (no operation) copy decoder. If the bitstream is encrypted, it uses MediaCrypto APIs to decrypt the bitstream and outputs it. Apps must use this decoder to decrypt the encrypted Dolby bitstream and pass the clear Dolby bitstream to AudioTrack.</p>
+
+<p>Optionally, a platform can support Dolby decoder via MediaCodec interface. This decoder decodes the Dolby audio bitstream to PCM. Applications can use <a href="https://developer.android.com/reference/android/media/MediaCodecList.html#findDecoderForFormat(android.media.MediaFormat)">findDecoderForFormat</a> to detect the presence of a decoder that supports Dolby MIME type.</p>
+
+<p>The following table summarizes various Dolby playback scenarios in a typical Android TV that does not support DDP to DD transcode in AudioTrack.</p>
+
+<table class="grid">
+<colgroup>
+<col width="10%" />
+<col width="22%" />
+<col width="13%" />
+<col width="20%" />
+<col width="18%" />
+<col width="10%" />
+</colgroup>
+   <thead>
+      <tr class="header">
+         <th>Connected End-Point capabilities (AVR or TV)</th>
+         <th>EXTRA_ENCODINGS in ACTION_HDMI_<br />AUDIO_PLUG intent</th>
+         <th>Source Audio Stream</th>
+         <th>MediaCodec (optional)</th>
+         <th>AudioTrack encoding format</th>
+         <th>Scenario</th>
+      </tr>
+   </thead>
+     <tr>
+        <td class="white" rowspan="2">EAC3, AC3 and PCM</td>
+        <td class="white" rowspan="2">ENCODING_E_AC3, ENCODING_AC3, ENCODING_PCM_16BIT</td>
+        <td class="white">Clear EAC3 or AC3</td>
+        <td class="white">None</td>
+        <td class="white" rowspan="2">ENCODING_E_AC3 or ENCODING_AC3</td>
+        <td class="white" rowspan="2">DDP or DD pass-through</td>
+     </tr> 
+     <tr>
+           <td class="white">Encrypted EAC3 or AC3</td>
+           <td class="white">OMX.google.raw.dec</td>
+        </tr>
+        
+    <tr>
+          <td class="gray" rowspan="2">AC3 and PCM</td>
+          <td class="gray" rowspan="2">ENCODING_AC3, ENCODING_PCM_16BIT</td>
+          <td class="gray">Clear AC3</td>
+          <td class="gray">None</td>
+          <td class="gray" rowspan="2">ENCODING_AC3</td>
+          <td class="gray" rowspan="2"> DD passthrough</td>
+       </tr>
+       <tr>
+             <td class="gray">Encrypted AC3</td>
+             <td class="gray">OMX.google.raw.dec</td>
+          </tr>
+        <tr>
+           <td class="white" rowspan="2">PCM</td>
+           <td class="white" rowspan="2">ENCODING_PCM_16BIT</td>
+           <td class="white">AAC or any non-Dolby (recommended)</td>
+           <td class="white">OMX.google.aac.decoder</td>
+           <td class="white">ENCODING_PCM_16BIT</td>
+           <td class="white">PCM playback</td>
+        </tr>
+      <tr>
+         <td class="white">AC3 or EAC3 (only if non-dolby stream is unavailable &amp; Dolby decoder is available in the platform)</td>
+         <td class="white">OMX.google.aac.decoder, OMX.dolby.eac3.decoder</td>
+         <td class="white">ENCODING_PCM_16BIT</td>
+         <td class="white">DD or DDP decode</td>
+      </tr>
+</table>
+
+<h2 id="dolby-support-in-fire-tv--2nd-generation">Dolby Support in Fire TV – 2nd Generation</h2>
+
+<p>Fire TV (2nd Generation) 4K was launched with Android L based Fire OS 5 and fully complies with the Android L recommended Dolby architecture. This section describes the Dolby support in Fire TV (2nd Generation).</p>
+
+<h3 id="audiotrack-fire-tv--2nd-generation">AudioTrack (Fire TV – 2nd Generation)</h3>
+
+<p>AudioTrack supports both DDP/DD pass-through and DDP-to-DD transcoder. The AudioTrack accepts Dolby raw bitstream and, depending on the Dolby capability of the endpoint, decides to either do a DD/DDP pass-through or DDP-to-DD transcode and pass-through.</p>
+
+<h3 id="audiomanager-fire-tv--2nd-generation">AudioManager (Fire TV – 2nd Generation)</h3>
+
+<p>Since AudioTrack also supports transcoding DDP bitstream to DD when the connected endpoint only supports DD, AudioManager indicates this by adding <a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_E_AC3">ENCODING_E_AC3</a> to the <a href="https://developer.android.com/reference/android/media/AudioManager.html#EXTRA_ENCODINGS">EXTRA_ENCODINGS</a> extra of the <a href="https://developer.android.com/reference/android/media/AudioManager.html#ACTION_HDMI_AUDIO_PLUG">ACTION_HDMI_AUDIO_PLUG</a> intent if the endpoint only supports DD.</p>
+
+<p>Hence, from an application’s perspective, an endpoint that supports DD also supports DDP and can continue to send DDP bitstream to AudioTrack, which internally transcodes it to DD before passing it through.</p>
+
+<h3 id="mediacodec-fire-tv--2nd-generation">MediaCodec (Fire TV – 2nd Generation)</h3>
+
+<p>The MediaCodec for Dolby Decoder (OMX.dolby.ac3.decoder &amp; OMX.dolby.eac3.decoder) supports decoding to PCM only. Additionally, Dolby decoders also down-mixes the multi-channel output to stereo. So irrespective of the number of input channels of the content, the output is always stereo PCM. The table below summarizes various Dolby playback scenarios in Fire TV – 2nd Generation:</p>
+
+<table class="grid">
+<colgroup>
+<col width="10%" />
+<col width="20%" />
+<col width="8%" />
+<col width="23%" />
+<col width="12%" />
+<col width="18%" />
+<col width="10%" />
+</colgroup>
+   <thead>
+      <tr class="header">
+         <th>Connected End-Point capabilities (AVR or TV)</th>
+         <th>EXTRA_ENCODINGS in ACTION_HDM_AUDIO_<br />PLUG intent</th>
+         <th>Source Audio Stream</th>
+         <th>MediaCodec</th>
+         <th>Output Mime Type of MediaCodec</th>
+         <th>AudioTrack encoding format</th>
+         <th>Scenario</th>
+      </tr>
+   </thead>
+     <tr>
+        <td class="white">EAC3, AC3 and PCM</td>
+        <td class="white">ENCODING_E_AC3, ENCODING_AC3, ENCODING_PCM_16BIT</td>
+        <td class="white">EAC3 or AC3</td>
+        <td class="white">OMX.google.raw.dec<sup>**</sup></td>
+        <td class="white">audio/eac3 or audio/ac3</td>
+        <td class="white">ENCODING_E_AC3 or ENCODING_AC3</td>
+        <td class="white">DDP / DD pass-through</td>
+     </tr> 
+     <tr>
+           <td class="gray">AC3 and PCM</td>
+           <td class="gray">ENCODING_E_AC3<sup>*</sup>, ENCODING_AC3, ENCODING_PCM_16BIT</td>
+           <td class="gray">EAC3 or AC3</td>
+           <td class="gray">OMX.google.raw.dec<sup>**</sup></td>
+           <td class="gray">audio/eac3 or audio/ac3</td>
+           <td class="gray">ENCODING_E_AC3 or ENCODING_AC3</td>
+           <td class="gray">DDP-to-DD transcode or DD pass-through</td>
+        </tr>
+        
+     <tr>
+           <td class="white" rowspan="3">PCM only</td>
+           <td class="white" rowspan="3">ENCODING_PCM_16BIT</td>
+           <td class="white">AAC (rec-<br />ommended)</td>
+           <td class="white">OMX.google.raw.dec**</td>
+           <td class="white">audio/raw</td>
+           <td class="white">ENCODING_PCM_16BIT</td>
+           <td class="white">AAC decode</td>
+        </tr>
+        
+     <tr>
+           <td class="white">EAC3</td>
+           <td class="white">OMX.dolby.eac3.decoder</td>
+           <td class="white">audio/raw</td>
+           <td class="white">ENCODING_PCM_16BIT</td>
+           <td class="white">DDP decode</td>
+        </tr>
+   
+        <tr>
+              <td class="white">AC3</td>
+              <td class="white">OMX.dolby.ac3.decoder</td>
+              <td class="white">audio/raw</td>
+              <td class="white">ENCODING_PCM_16BIT</td>
+              <td class="white">DDP decode</td>
+           </tr>
+</table>
+
+<p>* Because transcoding from DDP to DD is supported.<br />
+** Optional if the content is not encrypted.</p>
+
+<h2 id="dolby-support-in-firetv-stick">Dolby Support in FireTV Stick</h2>
+
+<p>Fire TV Stick, which is based on JellyBean Android OS, was launched before Android L was released. Android L officially introduced support for Dolby pass-through audio in Android TV.</p>
+
+<p>Android L has a recommended architecture for Dolby integration in the platform, which unfortunately does not match with the Dolby integration architecture on Fire TV Stick. This section describes the Dolby support in Fire TV Stick.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The information contained in this section is applicable even though Fire TV Stick is now upgraded to Android L based Fire OS 5.</div>
+
+<h3 id="mediacodec-fire-tv-stick">MediaCodec (Fire TV Stick)</h3>
+
+<p>The MediaCodec that handles Dolby bitstream supports all scenarios: Dolby pass-through, transcode, and decode. The MediaCodec depends on the Dolby capability of the connected endpoint and the system’s Dolby settings to select the appropriate mode for handling the incoming Dolby bitstream.</p>
+
+<ul>
+  <li>For Dolby pass-through or transcode mode, the decoder converts the raw input Dolby bitstream to the IEC61937 packetized format.</li>
+  <li>For Dolby decode mode, Dolby decoders also down-mixes the multi-channel output to stereo PCM. So irrespective of the number of input channels of the content, the output is always stereo PCM. The decoders available are OMX.dolby.ec3.decoder to handle DDP bitstream and OMX.dolby.ac3.decoder to handle DD bitstream.</li>
+</ul>
+
+<p>The following table illustrates the functionality of MediaCodec.</p>
+
+<table class="grid">
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="22%" />
+<col width="20%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+   <thead>
+      <tr class="header">
+         <th>Endpoint capability</th>
+         <th>Input stream type</th>
+         <th>Codec</th>
+         <th>Dolby Setting</th>
+         <th>Output format MimeType</th>
+         <th>Comments</th>
+      </tr>
+   </thead>
+     <tr>
+        <td class="white" rowspan="3">DDP, DD and PCM</td>
+        <td class="white" rowspan="2">DDP</td>
+        <td class="white" rowspan="2">OMX.dolby.ec3.decoder</td>
+        <td class="white">DDP over HDMI or DDP Auto</td>
+        <td class="white">audio/ec3<sup>*</sup></td>
+        <td class="white">DDP Pass-through</td>
+     </tr> 
+     <tr>
+           <td class="white">DDP OFF</td>
+           <td class="white">audio/raw</td>
+           <td class="white">DDP Decode</td>
+        </tr>
+     <tr>
+            <td class="white">DD</td>
+            <td class="white">OMX.dolby.ac3.decoder</td>
+            <td class="white">DDP over HDMI or DD over HDMI or DDP Auto</td>
+            <td class="white">audio/ac3</td>
+            <td class="white">DD Pass-through</td>
+      </tr>
+ <tr>
+         <td class="gray" rowspan="4">DD and PCM</td>
+         <td class="gray" rowspan="2">DDP</td>
+         <td class="gray" rowspan="2">OMX.dolby.ec3.decoder</td>
+         <td class="gray">DDP over HDMI, DD over HDMI, DDP Auto</td>
+         <td class="gray">audio/ec3<sup>*</sup></td>
+         <td class="gray">DDP &gt; DD Transcode</td>
+      </tr> 
+      <tr>
+            <td class="gray">DDP OFF</td>
+            <td class="gray">audio/raw</td>
+            <td class="gray">DDP Decode</td>
+         </tr>
+      <tr>
+             <td class="gray" rowspan="2">DD</td>
+             <td class="gray" rowspan="2">OMX.dolby.ac3.decoder</td>
+             <td class="gray">DDP over HDMI, DD over HDMI, or DDP Auto</td>
+             <td class="gray">audio/ac3</td>
+             <td class="gray">DD Pass-through</td>
+       </tr>
+       <tr>
+       <td class="gray">DDP OFF</td>
+       <td class="gray">audio/raw</td>
+       <td class="gray">DD Decode</td>
+       
+</tr>
+     <tr>
+                <td class="white" rowspan="2">PCM</td>
+                <td class="white">DDP</td>
+                <td class="white">OMX.dolby.ec3.decoder</td>
+                <td class="white">N/A</td>
+                <td class="white">audio/raw</td>
+                <td class="white">DDP decode</td>
+             </tr>
+           <tr>
+              <td class="white">DD</td>
+              <td class="white">OMX.dolby.ac3.decoder</td>
+              <td class="white">N/A</td>
+              <td class="white">audio/raw</td>
+              <td class="white">DDP decode</td>
+           </tr>
+</table>
+
+<p>* The missing “a” in eac3 is intentional. This is a subtle difference between Fire TV Stick and Fire TV.</p>
+
+<h3 id="audiotrack-fire-tv-stick">AudioTrack (Fire TV Stick)</h3>
+
+<p>AudioTrack in Fire TV Stick has certain limitations — it does not support Dolby Transcode or Dolby Decode, and only supports Dolby Pass-through. Additionally,the input Dolby bitstream must be in IEC61937 packetized format — which is same as the output of Dolby MediaCodec decoders.</p>
+
+<p>Due to these architectural differences between Fire TV Stick and Android L, app developers need to do major changes in their app to support Dolby audio content playback. The application must always use MediaCodec (even if the content is not encrypted) to process the Dolby bitstream and must configure the AudioTrack based on the output MIME type indicated by MediaCodec. The following steps provide more detail about this process.</p>
+
+<h4 id="a-create-the-decoder-by-mimetype">A. Create the Decoder by MimeType</h4>
+
+<p>Create the MediaCodec by MIME Type (audio/eac3, audio/ec3, or audio/ac3). This is a generic Android way of creating a codec — no custom changes are required.</p>
+
+<h4 id="b-handle-mediacodec-output-format-change-notification">B. Handle MediaCodec Output Format Change Notification</h4>
+
+<p>When the app starts using MediaCodec to process the input bit stream, it detects an output format change and returns <code class="highlighter-rouge">INFO_OUTPUT_FORMAT_CHANGED</code> in the <code class="highlighter-rouge">dequeueOutputBuffer</code> API call. The application must handle this response and use the <code class="highlighter-rouge">getOutputFormat</code> API to find out the output format MIME type. It should use this MIME type to configure AudioTrack as per the following table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>MimeType AudioFormat value</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>audio/eac3</td>
+      <td><a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_E_AC3">ENCODING_E_AC3</a></td>
+    </tr>
+    <tr>
+      <td>audio/ac3</td>
+      <td><a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_AC3">ENCODING_AC3</a></td>
+    </tr>
+    <tr>
+      <td>audio/raw</td>
+      <td><a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_PCM_16BIT">ENCODING_PCM_16BIT</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="c-limitations-of-audiotrack-for-dolby-encoding-formats">C. Limitations of AudioTrack for Dolby encoding formats</h4>
+
+<p>AudioTrack for Dolby encoding formats ENCODING_E_AC3 and ENCODING_AC3 has following limitations and known issues:</p>
+
+<ul>
+  <li>The AudioTrack start/pause API is not effective. Your app might start writing data to the AudioTrack just after creation, and as a result, it will start playing. It does not wait for start API to be called.</li>
+  <li>AudioTrack’s <a href="https://developer.android.com/reference/android/media/AudioTrack.html#getTimestamp(android.media.AudioTimestamp)">getTimeStamp</a> API (which was introduced in KitKat) is back-ported to Jelly-Bean-based Fire TV – 1st Generation and Fire TV Stick and can be used for A/V Sync logic.</li>
+</ul>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> These limitations are applicable only for the Dolby audio formats mentioned in this section.</div>
+
+<h2 id="dolby-support-in-fire-tv--1st-generation">Dolby Support in Fire TV — 1st Generation</h2>
+
+<p>Fire TV – 1st Generation was initially built on a Jelly-Bean-based OS and launched much before Android L – which officially introduced support for Dolby audio pass-through in Android TV.</p>
+
+<p>Android L has a recommended architecture for Dolby integration in the platform, which unfortunately does not fully match with the Dolby integration architecture on Fire TV – 1st Generation). This section describes the Dolby architecture in Fire TV – 1st Generation.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The information contained in this section is applicable even though the Fire TV – 1st Generation is now upgraded with Android-L-based Fire OS 5.</div>
+
+<h3 id="mediacodec-fire-tv--1st-generation">MediaCodec (Fire TV — 1st Generation)</h3>
+
+<p>The default MediaCodec for Dolby MIME type available in Fire TV – 1st Generation is a pass-through decoder only. It copies input data to output data without changing the MIME type. Hence, the output format has same MIME type as that of the input format.</p>
+
+<p>The decoders available are <strong>OMX.qcom.audio.decoder.passthrougheac3</strong> to handle DDP bitstream and <strong>OMX.qcom.audio.decoder.passthroughac3</strong> to handle DD bitstream. In addition, these decoders also decrypt the data if it is encrypted by a DRM scheme. Hence, if the content is encrypted by DRM, applications must use this decoder. Otherwise, the usage of this decoder is optional and the Dolby bitstream can be passed to AudioTrack directly.</p>
+
+<h3 id="audiotrack-fire-tv--1st-generation">AudioTrack (Fire TV — 1st Generation)</h3>
+
+<p>AudioTrack handles Dolby pass-through, Dolby Decode, and Dolby transcode internally. This means that depending on the Dolby capability of the connected endpoint and the system Dolby setting, AudioTrack selects the appropriate mode of handling the incoming Dolby bitstream.</p>
+
+<table class="grid">
+<thead>
+<tr class="header">
+<th>endpoint capability</th>
+<th>Input stream type</th>
+<th>Dolby Setting</th>
+<th>HDMI Output</th>
+<th>Comments</th>
+</tr>
+</thead>
+  <tr>
+    <td class="white" rowspan="3">DDP, DD, and PCM</td>
+    <td class="white" rowspan="2">DDP</td>
+    <td class="white">DDP over HDMI/Optical or DDP Auto</td>
+    <td class="white">DDP</td>
+    <td class="white">DDP Passthrough</td>
+  </tr>
+  <tr>
+    <td class="white">DDP OFF</td>
+    <td class="white">PCM</td>
+    <td class="white">DDP Decode</td>
+  </tr>
+  <tr>
+    <td class="white">DD</td>
+    <td class="white">DDP over HDMI/Optical, DD over HDMI, or DDP Auto</td>
+    <td class="white">DD</td>
+    <td class="white">DD Passthrough</td>
+  </tr>
+  <tr>
+    <td class="gray" rowspan="4">DD and PCM</td>
+    <td class="gray" rowspan="2">DDP</td>
+    <td class="gray">DDP over HDMI/Optical, DD over HDMI, or DDP Auto</td>
+    <td class="gray">DD</td>
+    <td class="gray">DDP &gt; DD Transcode</td>
+  </tr>
+  <tr>
+
+    <td class="gray">DDP OFF</td>
+    <td class="gray">PCM</td>
+    <td class="gray">DDP Decode</td>
+  </tr>
+  <tr>
+
+    <td class="gray" rowspan="2">DD</td>
+    <td class="gray">DDP over HDMI/Optical, DD over HDMI, or DDP Auto</td>
+    <td class="gray">DD</td>
+    <td class="gray">DD Passthrough</td>
+  </tr>
+  <tr>
+    <td class="gray">DDP OFF</td>
+    <td class="gray">PCM</td>
+    <td class="gray">DD Decode</td>
+  </tr>
+  <tr>
+    <td class="white">PCM</td>
+    <td class="white">DDP or DD</td>
+    <td class="white">NA</td>
+    <td class="white">PCM</td>
+    <td class="white">DD or DDP decode</td>
+  </tr>
+</table>
+
+<h3 id="limitations-of-audiotrack-for-dolby-encoding-formats-fire-tv--1st-generation">Limitations of AudioTrack for Dolby Encoding Formats (Fire TV — 1st Generation)</h3>
+
+<p>AudioTrack for Dolby encoding formats ENCODING_E_AC3 and ENCODING_AC3 has following limitations and known issues:</p>
+
+<ul>
+  <li>The <a href="https://developer.android.com/reference/android/media/AudioTrack.html#getPlaybackHeadPosition()">getPlaybackHeadPosition</a> API of AudioTrack is not implemented. Consequently, do not depend on it for A/V sync. Your app must not call this API. Calling this API may result into a crash.</li>
+  <li>AudioTrack’s start/pause API is not effective. You app might start writing data to the AudioTrack just after creation and it will start playing. It does not wait for start API to be called.</li>
+  <li>AudioTrack’s <a href="https://developer.android.com/reference/android/media/AudioTrack.html#getTimestamp(android.media.AudioTimestamp)">getTimeStamp</a> API (which was introduced in KitKat) is back-ported to Jelly-Bean-based Fire TV 1st Gen and Fire TV Stick and can be used for A/V Sync logic via reflection.</li>
+</ul>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> These limitations are applicable only for the Dolby audio formats mentioned in this section.</div>
+
+<h2 id="exoplayer">Option 2: Use ExoPlayer</h2>
+
+<p><a href="fire-tv-media-players.html#exoplayer">ExoPlayer</a> is a open source player backed by Google that supports playing Dolby audio stream. However, due to the architectural differences in Dolby support between a standard Android L device and Fire TV – 1st Generation family of devices (as described in preceding sections), ExoPlayer fails to play Dolby audio content.</p>
+
+<p>Amazon has developed patches for Exoplayer to enable playback of Dolby audio content in Fire TV Gen1 family of devices. These patches are open sourced here: <a href="https://github.com/amzn/exoplayer-amazon-port">exoplayer-amazon-port</a>. This port also includes other patches required to enable playback of PlayReady DRM protected content. (Note that each “amazon/rx.y.z” branch maps to ExoPlayer version x.y.z.)</p>
+
+<h2 id="supported">Option 3: Use Other Supported Media Players</h2>
+
+<p>You can use other supported media players for Fire TV, such as VisualOn or NexPlayer, to play Dolby audio content and DRM content. Refer to <a href="fire-tv-media-players.html">Media Players for Fire TV</a> for further details.</p>
+
+<h2 id="androidmp">Option 4: Use Android Media Player</h2>
+
+<p>Your app can use <a href="https://developer.android.com/reference/android/media/MediaPlayer.html">Android MediaPlayer</a> to play Dolby content.</p>
+
+<h2 id="handling-non-dolby-end-points-and-private-listening-modes">Handling non-Dolby End-Points and Private Listening Modes</h2>
+
+<p>This section describes recommendations and best practices for Dolby audio content playback on the Fire TV family of devices when connected to a non-Dolby endpoint and private listening. Following these guidelines will help you create the best user experience for Dolby audio content playback.</p>
+
+<p>As described previously, Android L introduced a new API in <a href="http://developer.android.com/reference/android/media/AudioManager.html">AudioManager</a> called <a href="https://developer.android.com/reference/android/media/AudioManager.html#ACTION_HDMI_AUDIO_PLUG">ACTION_HDMI_AUDIO_PLUG</a> intent. This intent allows apps to detect the capabilities of the connected endpoint (AVR or TV). This detection can be used to support Dolby audio content playback in various scenarios including private listening.</p>
+
+<dl>
+  <dt>Q. How does an app detect the capabilities of the connected endpoint?</dt>
+  <dd>The app must register a broadcast receiver to receive the <a href="https://developer.android.com/reference/android/media/AudioManager.html#ACTION_HDMI_AUDIO_PLUG">ACTION_HDMI_AUDIO_PLUG</a> intent and read the <a href="https://developer.android.com/reference/android/media/AudioManager.html#EXTRA_ENCODINGS">EXTRA_ENCODINGS</a> extra values in the intent. This list of encoding values will indicate the endpoint capabilities. The possible values are one of the <a href="https://developer.android.com/reference/android/media/AudioFormat.html">ENCODING_XXXX</a> values (for example, <a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_PCM_16BIT">ENCODING_PCM_16BIT</a>, <a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_AC3">ENCODING_AC3</a>, <a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_E_AC3">ENCODING_E_AC3</a>, and so on).</dd>
+  <dt>Q. Which audio stream should be selected for playback when the connected endpoint does not support DD or DDP?</dt>
+  <dd>In these cases, let your app select a non-Dolby audio content for playback (for example, AAC). This option has the advantage of reduced bandwidth usage as compared to Dolby audio content.
+
+    <p>However, if the app cannot select an alternative non-Dolby audio content and chooses to continue to stream Dolby (DD or DDP) audio, it must do the following for each device.</p>
+
+    <ul>
+      <li><strong>Fire TV – 1st Generation</strong>: Send Dolby raw bitstream to AudioTrack, which internally decodes and down-mixes to stereo PCM.</li>
+      <li><strong>Fire TV Stick and Fire TV – 2nd Generation</strong>: Use the MediaCodec for Dolby (OMX.dolby.ac3.decoder or OMX.dolby.eac3.decoder). This MediaCodec decodes the Dolby bitstream, down-mixes to stereo PCM, and configures AudioTrack with the ENCODING_PCM_16BIT audio format to render the PCM data. Since the Dolby Decoder in all the platforms down-mixes multi-channel content to stereo, there is no real advantage in choosing Dolby audio content when the endpoint does not support DD or DDP.</li>
+    </ul>
+
+    <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> It is strongly recommended that you select a non-Dolby audio stream when the device is connected to an endpoint that does not support Dolby (DD or DDP).</div>
+  </dd>
+  <dt>Q. Which audio stream should be selected for playback when the connected endpoint supports DD but does not support DDP?</dt>
+  <dd>The answer depends on the Fire TV device:
+
+    <ul>
+      <li><strong>Fire TV – 1st Generation and Fire TV – 2nd Generation</strong>: AudioTrack supports transcoding DDP bitstream to DD. Hence, even if the endpoint supports DD only, AudioManager appends DDP as the supported capability in the ACTION_HDMI_AUDIO_PLUG intent. As a result, from an app’s perspective, the endpoint that supports DD also supports DDP (via transcoding in AudioTrack).</li>
+      <li><strong>Fire TV Stick</strong>: The app can select any audio content for playback because the MediaCodec decides whether to pass-through, transcode, or decode based on endpoint capabilities. In this use case, it would pass-through DD or transcode DDP to DD and pass-through DD.</li>
+    </ul>
+  </dd>
+  <dt>Q. Which audio stream should be selected for playback when the connected endpoint supports DDP and DD?</dt>
+  <dd><strong>Fire TV – 1st Generation and Fire TV – 2nd Generation</strong>: The app can select DDP or DD audio content for playback. If the audio is not encrypted, the app can then send this clear DD/DDP bitstream data as is to AudioTrack. Internally, AudioTrack will pass-through the DD/DDP bitstream to the connected endpoint.
+
+    <p>If the audio contend is DRM protected, the app must instantiate the following MediaCodec to decrypt the bitstream:</p>
+
+    <ul>
+      <li>
+        <p>In Fire TV – 1st Generation, OMX.qcom.audio.decoder.passthrougheac3 or OMX.qcom.audio.decoder.passthroughac3 . This special decoder is a no-op pass-through decoder that supports decryption (that is, it copies the input bitstream to output after decrypting if needed).</p>
+      </li>
+      <li>
+        <p>In Fire TV – 2nd Generation, OMX.google.raw.dec (by name). This special decoder is a no-op pass-through decoder that supports decryption (that is, it copies the input bitstream to output after decrypting if needed).</p>
+      </li>
+    </ul>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> OMX.google.raw.dec is also available in the Fire OS 5 version of Fire TV – 1st Generation.</div>
+
+    <p><strong>Fire TV Stick</strong>: The app can select any audio content for playback because the MediaCodec decides whether to pass-through, transcode, or decode based on the endpoint capabilities. In this use case it would pass-through the Dolby audio content.</p>
+  </dd>
+  <dt>Q. How does the app handle private listening use cases involving audio headsets or Bluetooth A2DP headsets during Dolby pass-through playback?</dt>
+  <dd><strong>Fire TV – 1st Generation</strong>: The app does not need to do anything special to handle the private listening use cases. This is automatically taken care of internally in AudioTrack (it switches over from pass-through to decode the mode of operating).
+
+    <p><strong>Fire TV Stick and Fire TV – 2nd Generation</strong>: When either an audio headset (via a game controller) or Bluetooth headset is connected to the device during Dolby pass-through playback, the operating system re-broadcasts the <a href="https://developer.android.com/reference/android/media/AudioManager.html#ACTION_HDMI_AUDIO_PLUG">ACTION_HDMI_AUDIO_PLUG</a> intent with modified encoding extra values.</p>
+
+    <p>Since the audio headset via a game controller or Bluetooth headset do not support Dolby pass-through, the encoding extra value would now be <a href="https://developer.android.com/reference/android/media/AudioFormat.html#ENCODING_PCM_16BIT">ENCODING_PCM_16BIT</a> only. The app must register to receive this intent during playback and re-configure the audio pipeline to do one of the following:</p>
+
+    <ul>
+      <li>Switch to an alternate non-Dolby audio content mid-stream (for example AAC)</li>
+      <li>If an alternative audio content is not available, re-configure the audio pipeline to use the MediaCodec Dolby decoder to decode the Dolby content to Stereo PCM. In case of Fire TV Stick, re-creation of the MediaCodec is required as part of re-creating the audio pipeline.</li>
+    </ul>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The first option (switching to non-Dolby audio) is highly recommended because the Dolby decoder in the device always down-mixes multi-channel output to stereo internally, regardless of the endpoint’s multi-channel capabilities. As a result, there is no advantage of playing the 5.1 Dolby stream over stereo with a non-Dolby stream. Additionally, the non-Dolby audio stream (such as AAC) consumes less bandwidth than the multi-channel Dolby audio stream.</div>
+  </dd>
+</dl>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>
