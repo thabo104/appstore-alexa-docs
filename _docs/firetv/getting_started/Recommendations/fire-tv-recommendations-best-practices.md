@@ -17,7 +17,7 @@ The following are best practices for creating recommendations.
 
 Note the difference between [notifications][notifications-for-amazon-fire-tv] and [recommendations][fire-tv-recommendations-overview]:
 
-*  **Recommendations** try to guide users to guide users to content they might enjoy. The recommendations are based on prior the user's history, new content available, or related content.
+*  **Recommendations** try to guide users to content they might enjoy. The recommendations are based on prior the user's history, new content available, or related content.
 *  **Notifications** let users know about updates associated with your app. These updates might include new functionality, new levels, new release versions, changes in the app, or new badges earned.
 
 ## Personalize the notifications to the user
