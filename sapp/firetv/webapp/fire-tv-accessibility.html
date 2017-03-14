@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Accessibility - Fire TV | Fire TV</title>
+    
+    <base target="_self">
+    <meta name="description" content="This page discusses the concepts and terminology related to implementing accessibility features for Fire OS.  Note: Before you begin, Amazon recommends reading through the... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- TOC generator-->
+    <script src="assets/js/toc.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/getting_started/Accessibility/fire-tv-accessibility.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Get Started Developing Apps and Games for Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV Device Specifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Fire TV Development Frameworks: WASK and FireBuilder</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">How Fire TV Development Differs from Android TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TV App Design UX Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-fire-os-overview.html">What Is Fire OS?</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">What's New in Fire TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Fire TV FAQs</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">Submitting Your Fire TV App to the Appstore</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">Set Up Your Development Environment</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">Connect to Fire TV through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">Install and Run Your Fire TV App</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">Controllers Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">Remote Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">Game Controller Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Controller Input with Unity</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">Identifying Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">Controller Behavior Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">Controller Image Assets</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Development Best Practices</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-mouse-pointer.html">Mouse Pointers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="display-and-layout.html">Display and Layout</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-agent-strings.html">User Agent Strings</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="managing-audio-focus.html">Managing Audio Focus</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-media-players.html">Media Players</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-dolby-integration-guidelines.html">Dolby Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-amazon-fire-tv-devices.html">Identifying Fire TV Devices</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-handling-hdmi-events.html">HDMI Events</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-4k-ultra-hd.html">4K Ultra HD Videos</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-interface.html">Android Menu and ActionBar widgets</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dial-integration.html">DIAL Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="implementing-search-fire-tv.html">Search</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="notifications-for-amazon-fire-tv.html">Notifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="specifying-installation-location.html">App Installation Location</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-advertising-id.html">Advertising ID</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-international-locales.html">Resources for International Locales</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Troubleshooting Fire TV Issues with Developer Tools</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-developer-tools.html">Developer Tool Options</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray.html">System X-Ray</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-customized-metrics.html">Customize System X-Ray</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Accessibility</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-assistive-technologies.html">Understanding Assistive Technologies for Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="fire-tv-accessibility.html">Implementing Accessibility in Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-preview-future-voiceview-accessibility-features.html">PREVIEW: Implementing Future VoiceView Accessibility Features</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Recommendations</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-overview.html">Recommendations Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-send-recommendations.html">Send Recommendations that Include Amazon Enhancements</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-testing.html">Test Your Recommendations</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-best-practices.html">Best Practices with Recommendations</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Build Webapps for Fire TV</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-with-web-apps-for-fire-tv.html">Get Started with Web Apps</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-in-web-apps.html">Web App Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="the-web-app-starter-kit-for-fire-tv.html">Web App Starter Kit</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-your-fire-tv-web-app.html">Customize your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="migrating-your-web-app-to-fire-tv.html">Migrate Your App to Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-web-app-faq.html">Web App FAQ</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire TV </div>
+
+                    <h1>Accessibility - Fire TV</h1>
+
+                    <p>This page discusses the concepts and terminology related to implementing accessibility features for Fire OS.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Before you begin, Amazon recommends reading through the Android documentation for accessibility to familiarize yourself with these terms and concepts. See <a href="https://developer.android.com/guide/topics/ui/accessibility/apps.html">Making Applications Accessible</a>.</div>
+
+<ul id="markdown-toc">
+  <li><a href="#overview-of-fire-os-accessibility-objects-and-events" id="markdown-toc-overview-of-fire-os-accessibility-objects-and-events">Overview of Fire OS Accessibility Objects and Events</a>    <ul>
+      <li><a href="#accessibilityevent" id="markdown-toc-accessibilityevent">AccessibilityEvent</a></li>
+      <li><a href="#accessibilitynodeinfo" id="markdown-toc-accessibilitynodeinfo">AccessibilityNodeInfo</a></li>
+      <li><a href="#accessibilitynodeprovider" id="markdown-toc-accessibilitynodeprovider">AccessibilityNodeProvider</a></li>
+      <li><a href="#accessibilitydelegate" id="markdown-toc-accessibilitydelegate">AccessibilityDelegate</a></li>
+    </ul>
+  </li>
+  <li><a href="#path-of-an-accessibility-event" id="markdown-toc-path-of-an-accessibility-event">Path of an Accessibility Event</a>    <ul>
+      <li><a href="#standard-views" id="markdown-toc-standard-views">Standard Views</a></li>
+      <li><a href="#custom-views" id="markdown-toc-custom-views">Custom Views</a></li>
+    </ul>
+  </li>
+  <li><a href="#setting-a-views-importance" id="markdown-toc-setting-a-views-importance">Setting a view’s importance</a></li>
+  <li><a href="#managing-an-accessibilitynodeinfo-object" id="markdown-toc-managing-an-accessibilitynodeinfo-object">Managing an AccessibilityNodeInfo Object</a></li>
+  <li><a href="#implementing-virtually-accessible-descendants" id="markdown-toc-implementing-virtually-accessible-descendants">Implementing Virtually Accessible Descendants</a>    <ul>
+      <li><a href="#creating-virtually-accessible-descendant-views" id="markdown-toc-creating-virtually-accessible-descendant-views">Creating Virtually Accessible Descendant Views</a></li>
+      <li><a href="#management-of-a-virtually-accessible-descendant-view" id="markdown-toc-management-of-a-virtually-accessible-descendant-view">Management of a Virtually Accessible Descendant view</a></li>
+    </ul>
+  </li>
+  <li><a href="#best-practices-for-fire-os-accessibility" id="markdown-toc-best-practices-for-fire-os-accessibility">Best Practices for Fire OS Accessibility</a></li>
+  <li><a href="#related-resources" id="markdown-toc-related-resources">Related Resources</a></li>
+</ul>
+
+<h2 id="overview-of-fire-os-accessibility-objects-and-events">Overview of Fire OS Accessibility Objects and Events</h2>
+
+<p>This section contains an introduction to the terms and their definitions for the objects and events that you will use when implementing accessibility in your app.</p>
+
+<h3 id="accessibilityevent">AccessibilityEvent</h3>
+
+<p>An <code class="highlighter-rouge">AccessibilityEvent</code> is a message from an application to an assistive technology indicating that something happened in the UI. Examples of UI changes that could trigger an accessibility event include focus changes, a window appearing or disappearing, or an on-screen object changing locations.</p>
+
+<p>Also see the Android documentation for <a href="https://developer.android.com/reference/android/view/accessibility/AccessibilityEvent.html"><code class="highlighter-rouge">AccessibilityEvents</code></a>.</p>
+
+<h3 id="accessibilitynodeinfo">AccessibilityNodeInfo</h3>
+
+<p>An <code class="highlighter-rouge">AccessibilityNodeInfo</code> is a snapshot of the accessibility information related to an on-screen component and provides mostly one-way communication between your app and the assistive technology. The assistive technology also has very limited communication back to the app via accessibility actions.</p>
+
+<p>After your application creates and returns an <code class="highlighter-rouge">AccessibilityNodeInfo</code>, the assistive technology and accessibility framework will not see any further changes to that node, so at that point you can discard the node. If the underlying object represented by the node changes, send an appropriate accessibility event indicating the change, reflecting the updated characteristics of the object in the node returned from the next call to either <code class="highlighter-rouge">createAccessibilityNodeInfo</code> or <code class="highlighter-rouge">onInitializeAccessibilityNodeInfo</code>.</p>
+
+<p>In the app, on the server side, reference nodes using a combination of an Android view and a virtual descendant number. If the node represents the view itself, the virtual descendant number is <code class="highlighter-rouge">-1 (AccessibilityNodeProvider.HOST_VIEW_ID)</code>.</p>
+
+<p>An app can add descriptive information about an <code class="highlighter-rouge">AccessibilityNodeInfo</code> object in that object’s <code class="highlighter-rouge">getExtras</code> Bundle, which VoiceView can read by calling <a href="https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html#getExtras%28%29">AccessibilityNodeInfo.getExtras()</a>.</p>
+
+<p>Also see the Android documentation for <a href="https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html"><code class="highlighter-rouge">AccessibilityNodeInfo</code></a>.</p>
+
+<h3 id="accessibilitynodeprovider">AccessibilityNodeProvider</h3>
+
+<p>An <code class="highlighter-rouge">AccessibilityNodeProvider</code> is an interface which creates an <code class="highlighter-rouge">AccessibilityNodeInfo</code> either for a view or for the virtually accessible descendant of a view.</p>
+
+<p>Also see the Android documentation for <a href="https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeProvider.html"><code class="highlighter-rouge">AccessibilityNodeProvider</code></a>.</p>
+
+<h3 id="accessibilitydelegate">AccessibilityDelegate</h3>
+
+<p>An <code class="highlighter-rouge">AccessibilityDelegate</code>  is an interface that can initialize accessibility events, nodes for views, or virtual accessible descendants. Use <code class="highlighter-rouge">AccessibilityDelegates</code> to proxy or augment accessibility information in one view from information in another. For example, a parent list can provide accessibility information for a list item.</p>
+
+<p>Also see the Android documentation for <a href="https://developer.android.com/reference/android/view/View.AccessibilityDelegate.html"><code class="highlighter-rouge">AccessibilityDelegate</code></a>.</p>
+
+<h2 id="path-of-an-accessibility-event">Path of an Accessibility Event</h2>
+
+<p> This section discusses the path of accessibility events for standard and custom views.</p>
+
+<h3 id="standard-views">Standard Views</h3>
+
+<p>The visual elements that make up the user interface of a Fire OS app are called Views. For example consider a simple app that has a single text element, a <code class="highlighter-rouge">TextView</code> with the text “hello world”. In this example, the <code class="highlighter-rouge">TextView</code> is a child of a <code class="highlighter-rouge">RelativeLayout</code>. <code class="highlighter-rouge">RelativeLayout</code> is a child of <code class="highlighter-rouge">ViewRootImpl</code>, the class that is always the root of an app’s View hierarchy. Since a <code class="highlighter-rouge">TextView</code> is a standard Android view, the default behavior of the <code class="highlighter-rouge">TextView</code> is to send appropriate accessibility events when VoiceView is running.</p>
+
+<p>The following process describes the path of an accessibility event created within this simple app: </p>
+
+<ol>
+  <li>The app’s code calls <code class="highlighter-rouge">textView.setText("new text")</code> a few seconds after the app opens.</li>
+  <li>The <code class="highlighter-rouge">TextView</code> creates a <code class="highlighter-rouge">TYPE_WINDOW_CONTENT_CHANGED</code> <code class="highlighter-rouge">AccessibilityEvent</code> and requests that its parent, the <code class="highlighter-rouge">RelativeLayout</code>, send the event.</li>
+  <li>The <code class="highlighter-rouge">RelativeLayout</code> then passes the event up to its parent, the <code class="highlighter-rouge">ViewRootImpl</code>, and requests that it send the event to the framework.</li>
+  <li>The <code class="highlighter-rouge">ViewRootImpl</code> sends the event to the Accessibility Framework by calling the <code class="highlighter-rouge">AccessibilityManager</code>’s <code class="highlighter-rouge">sendAccessibilityEvent()</code>.</li>
+  <li>The <code class="highlighter-rouge">AccessibilityManager</code> passes the event to the <code class="highlighter-rouge">AccessibilityManagerService</code>, which then passes the event out of the Accessibility Framework and into VoiceView.</li>
+  <li>When VoiceView processes the <code class="highlighter-rouge">TYPE_WINDOW_CONTENT_CHANGED AccessibilityEvent</code>, it calls the event object’s <code class="highlighter-rouge">getSource()</code> method.</li>
+  <li>This will trigger the Accessibility Framework to call the <code class="highlighter-rouge">TextView's createAccessibilityNodeInfo()</code> method, which returns an <code class="highlighter-rouge">AccessibilityNodeInfo</code> object containing the text “new text”.</li>
+  <li>The Accessibility Framework then passes the <code class="highlighter-rouge">AccessibilityNodeInfo</code> object to VoiceView.</li>
+  <li>Finally, VoiceView becomes aware of the <code class="highlighter-rouge">TextView</code>’s change from “hello world” to “new text”, and if a customer uses linear navigation to hear the text of the <code class="highlighter-rouge">TextView</code>, VoiceView will correctly speak “new text”.</li>
+</ol>
+
+<h3 id="custom-views">Custom Views</h3>
+
+<p>If your app uses a custom view instead of a standard view, you must uphold this pattern of informing VoiceView of the state of your widget. When doing so, do not try to send an <code class="highlighter-rouge">AccessibilityNodeInfo</code> object to VoiceView, or update a local copy of the <code class="highlighter-rouge">AccessibilityNodeInfo</code> in your app; these approaches will not work.</p>
+
+<p>Remember, when you change the state of a custom widget:</p>
+
+<p><strong>DO</strong></p>
+
+<ul>
+  <li>Send an <code class="highlighter-rouge">AccessibilityEvent</code> by calling <code class="highlighter-rouge">requestSendAccessibilityEvent()</code> on your custom view’s parent.</li>
+  <li>Ensure the variables pointed to in your custom view’s <code class="highlighter-rouge">createAccessibilityNodeInfo()</code> function contain updated values. VoiceView calls <code class="highlighter-rouge">createAccessibilityNodeInfo()</code> when VoiceView receives your <code class="highlighter-rouge">AccessibilityEvent</code>.</li>
+</ul>
+
+<p><strong>DO NOT</strong></p>
+
+<ul>
+  <li>Try to send an <code class="highlighter-rouge">AccessibilityNodeInfo</code> to VoiceView.</li>
+  <li>Keep references to <code class="highlighter-rouge">AccessibilityNodeInfo</code> objects outside of your <code class="highlighter-rouge">createAccessibilityNodeInfo()</code> function and then update these objects. VoiceView does not have any way to reference to these objects and will never see your updates to them.</li>
+</ul>
+
+<p>In the Android documentation, be sure to review a code example demonstrating correct use of the <code class="highlighter-rouge">AccessibilityDelegate</code> and AccessibilityNodeProvider classes where the <code class="highlighter-rouge">createAccessibilityNodeInfo()</code> function is implemented.</p>
+
+<h2 id="setting-a-views-importance">Setting a view’s importance</h2>
+
+<p>To ensure that accessibility events are handled properly, make sure to set the importance for accessibility for each Android view. </p>
+
+<p>Set the state of view’s importance for accessibility either in an XML layout with the <code class="highlighter-rouge">android:importantForAccessibility</code> attribute or programmatically with the <code class="highlighter-rouge">View.setImportantForAccessibility</code> method. You can set importance to <code class="highlighter-rouge">yes, no, no_hide_descendants</code>, or <code class="highlighter-rouge">auto</code> (default). Views that are not tagged as important do not have corresponding accessibility nodes, and additionally, the framework drops any accessibility events sent by them.</p>
+
+<p>If your view is sending appropriate accessibility events, but VoiceView doesn’t seem to be responding correctly, verify that your view is tagged as important for accessibility.</p>
+
+<h2 id="managing-an-accessibilitynodeinfo-object">Managing an AccessibilityNodeInfo Object</h2>
+
+<p>One important aspect of Fire OS and Android accessibility is the management of <code class="highlighter-rouge">AccessibilityNodeInfo</code> objects. When the Android accessibility framework, which runs in the app’s process, receives a request for a particular node, the framework first checks to see if the node is in its cache:</p>
+
+<ul>
+  <li>If the node exists in the cache, it is returned, and no call to create the node is made to the app. Because of this, your app must diligently notify the framework and assistive technologies whenever the accessibility information about a component changes. Otherwise, the framework returns stale information to the assistive technologies.</li>
+  <li>To indicate that a node has changed and is no longer valid, send an accessibility event of type <code class="highlighter-rouge">AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED</code>.</li>
+  <li>If the node is not already in the cache depends, the node could be created, depending on how it was requested. Several possible actions by the assistive technology can trigger the creation of an <code class="highlighter-rouge">AccessibilityNodeInfo</code> object:
+    <ul>
+      <li>Receiving an accessibility event, and requesting its source.</li>
+      <li>Requesting the root node of the active window.</li>
+      <li>Requesting the parent or child node of a particular node.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="implementing-virtually-accessible-descendants">Implementing Virtually Accessible Descendants</h2>
+
+<p>This section discusses how to implement virtually accessible descendant views.</p>
+
+<h3 id="creating-virtually-accessible-descendant-views">Creating Virtually Accessible Descendant Views</h3>
+
+<p>Both <code class="highlighter-rouge">AccessibilityDelegate</code> and <code class="highlighter-rouge">AccessibilityNodeProvider</code> can provide accessibility for on-screen components that are not represented by backing views. An example of such a component is the AOSP on-screen keyboard whose keys are drawn on a canvas. Note that when implementing a virtual node tree, the <code class="highlighter-rouge">ExploreByTouchHelper</code> support library provided by Android might not work as expected.</p>
+
+<p>Apps reference <code class="highlighter-rouge">AccessibilityNodeInfo</code> objects in by the view hosting the node and a virtual view ID. A virtual view ID of <code class="highlighter-rouge">-1 (AccessibilityNodeProvider.HOST_VIEW_ID)</code> references the host view itself. When creating nodes, you can add virtual children using the <code class="highlighter-rouge">AccessibilityNodeInfo.addChild()</code> method and specifying both the host view and the virtual view ID of the virtual child. Similarly, when creating child nodes, you can set a virtual parent by specifying the host view and the parent virtual view ID in the call to <code class="highlighter-rouge">AccessibilityNodeInfo.setParent()</code>.</p>
+
+<h3 id="management-of-a-virtually-accessible-descendant-view">Management of a Virtually Accessible Descendant view</h3>
+
+<p>When you initially create virtual views, they are only referenced by their IDs and have no associated accessibility information (text, content description, etc.). When the accessibility framework requests that your app create the appropriate node, input the corresponding accessibility information into the <code class="highlighter-rouge">AccessibilityNodeInfo</code>. As a result, make sure that your app tracks which virtual view ID represents which portion of your custom widget.</p>
+
+<p>Add the IDs of the child or parent nodes, and the framework later requests that your application actually create those nodes. Do not simply add child nodes to a container node.</p>
+
+<h2 id="best-practices-for-fire-os-accessibility">Best Practices for Fire OS Accessibility</h2>
+
+<p>To ensure the best user experience for apps with accessibility features, follow these guidelines:</p>
+
+<ul>
+  <li><strong>AccessibilityNodeInfo text</strong>: The text of an <code class="highlighter-rouge">AccessibilityNodeInfo</code> should only return the on-screen text of an object.</li>
+  <li><strong>Labels for onscreen items</strong>: All important onscreen items should have labels. Make sure that when testing with VoiceView, you touch all onscreen items and that you hear an appropriate description read. If a description is missing, add the appropriate text or content description to the item’s <code class="highlighter-rouge">AccessibilityNodeInfo</code>.</li>
+  <li><strong>Content descriptions</strong>: Use the content description for items that do not have on-screen text (for example, alt text for an image), or to augment the on-screen text to provide additional context to the user. However, avoid putting too much content into the content description to avoid overwhelming the user.</li>
+  <li><strong>Accessibility event usage</strong>: Avoid using the <code class="highlighter-rouge">AccessibilityEvent.TYPE_ANNOUNCEMENT</code> event type to convey on-screen activity. Preferably, use a combination of accessibility events and corresponding changes to the <code class="highlighter-rouge">AccessibilityNodeInfo</code> to communicate information about on-screen changes.</li>
+</ul>
+
+<h2 id="related-resources">Related Resources</h2>
+
+<ul>
+  <li><a href="fire-tv-assistive-technologies.html">Understanding assistive Technologies for Fire OS</a></li>
+  <li><a href="fire-tv-preview-future-voiceview-accessibility-features.html">Implementing Future VoiceView Accessibility Features</a></li>
+</ul>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

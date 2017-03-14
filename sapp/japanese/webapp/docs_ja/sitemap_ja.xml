@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sitemap_ja | </title>
+    <base target="_self">
+    <meta name="description" content="   /dash-amazon-order-resolution-flow.html 2017-February-15 daily 0.5   /dash-create-a-security-profile.html 2017-February-15 daily 0.5   /dash-create-an-sns-topic.html 2017-February-15 daily 0.5   /dash-customer-experience-guidelines.html 2017-February-15 daily 0.5  ... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources"></div>
+<ul id="entrypages">
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> >  > </div>
+                    <h1>Sitemap_ja</h1>
+
+                    
+
+                    <?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    
+
+    <url>
+        <loc>/dash-amazon-order-resolution-flow.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-create-a-security-profile.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-create-an-sns-topic.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-customer-experience-guidelines.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-deregistration-endpoint.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-device-management-and-settings.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-devicestatus-endpoint.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-faqs.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-getsubscriptioninfo-endpoint.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-glossary.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-lwa-mobile-sdk-android.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-lwa-mobile-sdk-ios.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-lwa-mobile-sdk.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-lwa-web-api.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-notification-messages.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-overview.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-replenish-endpoint.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-slotstatus-endpoint.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-teaser-page.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/dash-test-device-purchases.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-adobe-pass-auth-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-amazon-in-app-purchase-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-amazon-media-player-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-app-tour.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-brightcove-media-player-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-catalog-integration.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-configure-navigator-open-feeds.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-configure-navigator-token-feeds.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-configure-navigator.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-connecting-adb-to-fire-tv.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-crashlytics-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-create-a-new-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-customize-look-and-feel.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-download-and-build.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-end-to-end-process.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-facebook-auth-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-flurry-analytics-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-freewheel-ads-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-google-analytics-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-interfaces-and-components.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-live-stream-configuration.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-load-a-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-load-media-feed.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-login-with-amazon-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-omniture-analytics-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-overview.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-pulling-updates-from-github.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-querying-json.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-querying-xml.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-questions-and-answers.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-release-notes.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-set-up-recipes-categories.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-set-up-recipes-content.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-set-up-recipes-overview.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-troubleshooting.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-use-an-android-tv-emulator.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-app-builder-vast-ads-component.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/amazon-fire-game-controller-input.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/amazon-fire-tv-remote-input.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/controller-behavior-guidelines.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/controller-image-assets.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/controller-input-with-unity.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/identifying-controllers.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/supporting-controllers-on-amazon-fire-tv.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/connecting-adb-to-fire-tv-device.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/installing-and-running-your-app.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/setting-up-your-development-environment.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/amazon-fire-tv-differences-from-android-tv-development.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/amazon-fire-tv-sdk-frequently-asked-questions.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/design-and-user-experience-guidelines.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/device-and-platform-specifications.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/fire-tv-development-framework-comparison.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/getting-started-developing-apps-and-games-for-amazon-fire-tv.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/submitting-your-fire-tv-app-to-the-amazon-appstore.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/whats-new-in-the-fire-tv-sdk.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/glossary.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/mytest.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/sample1.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/sample2.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/sample3.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/sublevel1.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/sublevel2.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/sublevel3.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/subsublevel1.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/subsublevel2.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/subsublevel3.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/thing1.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/thing2.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/thing3.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/index.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/docs_ja/links.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/docs_ja/sitemap_ja.xml</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    
+    
+
+    <url>
+        <loc>/search-fireappbuilder_ja.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/search-firetv_ja.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/search-generic_ja.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/search.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    
+
+    <url>
+        <loc>/tag-collaboration.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/tag-content-types.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/tag-formatting.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/tag-getting-started.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/tag-navigation.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/tag-publishing.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/tag-single-sourcing.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+    <url>
+        <loc>/tag-troubleshooting.html</loc>
+        <lastmod>2017-February-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+
+</urlset>
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li></li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

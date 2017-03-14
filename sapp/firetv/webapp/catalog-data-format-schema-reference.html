@@ -1,0 +1,4496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Fire TV Catalog Data Format (CDF) Schema | Fire TV Catalog</title>
+    
+    <base target="_self">
+    <meta name="description" content="This topic provides a dictionary of the elements available in the Catalog Data Format (CDF) schema, used to construct a catalog of your media content for upload to Amazon Fire... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- TOC generator-->
+    <script src="assets/js/toc.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/catalog/catalog-data-format-schema-reference.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-catalog.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV Catalog Integration</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Getting Started</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-your-catalog-with-fire-tv.html">Catalog Integration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="understanding-fire-tv-catalog-integration.html">Understanding Catalog Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-catalog-integration.html">Getting Started with Catalog Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="about-the-cdf.html">About the Catalog Data Format (CDF)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-aws-account-for-fire-tv-catalog-integration.html">Setting Up Your AWS Account</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-catalog-integration-faqs.html">Catalog Integration FAQs</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Integration</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="uploading-your-catalog.html">Uploading Your Catalog</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="receiving-and-understanding-the-catalog-ingestion-report.html">Catalog Ingestion Reports</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="launcher-integration.html">Integrating with the Launcher</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="test-cases-for-verifying-deep-links-from-your-fire-tv-catalog.html">Verifying Fire TV Deep Links</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Testing</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="testing-launcher-integration-with-adb.html">Testing Launcher Integration with ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="testing-launcher-integration-with-the-test-app.html">Testing Launcher Integration with the Test App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="catalog-data-format-ingestion-report-messages.html">Ingestion Report Messages</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Migration</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="migrating-a-cdf-file-to-the-latest-version.html">Migrating CDF Versions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Catalog Data Format Reference</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="catalog-data-format-schema-reference.html">CDF Schema Reference</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd">CDF Schema Definition (XSD)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://s3.amazonaws.com/com.amazon.aftb.cdf/cdf-examples.zip">CDF Examples (ZIP)</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Other Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+        <li><a class="noCrossRef" href="/setting-up-your-development-environment-for-fire-tablets.html">Fire Tablets</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-os-overview.html">Fire OS</a></li>
+        
+        <li><a class="noCrossRef" href="/environment.html">HTML5 Web API</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="/obtaining-an-access-token-for-the-developer-publishing-api">Developer Publishing API</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire TV Catalog </div>
+
+                    <h1>Fire TV Catalog Data Format (CDF) Schema</h1>
+
+                    <p>This topic provides a dictionary of the elements available in the Catalog Data Format (CDF) schema, used to construct a catalog of your media content for upload to Amazon Fire TV.</p>
+
+<p>For an overview of the structure of a CDF catalog file and how these elements interact, see <a href="about-the-cdf.html">About the Catalog Data Format (CDF)</a> The catalog examples in the downloadable <a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/cdf-examples.zip">cdf-examples.zip</a> file also can be very useful in understanding how a catalog file is put together. Download <a href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd">catalog.xsd</a> to examine the XSD directly.</p>
+
+<p>To use this information, readers should have a good understanding of XML. The following sections list the CDF schema element definitions.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#AdultProduct" id="markdown-toc-AdultProduct">AdultProduct (deprecated)</a></li>
+  <li><a href="#AudioLanguage" id="markdown-toc-AudioLanguage">AudioLanguage</a></li>
+  <li><a href="#CastMember" id="markdown-toc-CastMember">CastMember</a></li>
+  <li><a href="#Catalog" id="markdown-toc-Catalog">Catalog</a></li>
+  <li><a href="#Certification" id="markdown-toc-Certification">Certification</a></li>
+  <li><a href="#Color" id="markdown-toc-Color">Color</a></li>
+  <li><a href="#ContentRating" id="markdown-toc-ContentRating">ContentRating</a></li>
+  <li><a href="#ContentRatings" id="markdown-toc-ContentRatings">ContentRatings</a></li>
+  <li><a href="#Copyright" id="markdown-toc-Copyright">Copyright</a></li>
+  <li><a href="#Count" id="markdown-toc-Count">Count</a></li>
+  <li><a href="#Country" id="markdown-toc-Country">Country</a></li>
+  <li><a href="#Credits" id="markdown-toc-Credits">Credits</a></li>
+  <li><a href="#CrewMember" id="markdown-toc-CrewMember">CrewMember</a></li>
+  <li><a href="#CustomerRating" id="markdown-toc-CustomerRating">CustomerRating</a></li>
+  <li><a href="#Duration" id="markdown-toc-Duration">Duration</a></li>
+  <li><a href="#EpisodeInSeason" id="markdown-toc-EpisodeInSeason">EpisodeInSeason</a></li>
+  <li><a href="#EpisodeInSeries" id="markdown-toc-EpisodeInSeries">EpisodeInSeries</a></li>
+  <li><a href="#ExternalID" id="markdown-toc-ExternalID">ExternalID</a></li>
+  <li><a href="#Extra" id="markdown-toc-Extra">Extra</a></li>
+  <li><a href="#FreeOffer" id="markdown-toc-FreeOffer">FreeOffer</a></li>
+  <li><a href="#Genre" id="markdown-toc-Genre">Genre</a></li>
+  <li><a href="#Genres" id="markdown-toc-Genres">Genres</a></li>
+  <li><a href="#ID" id="markdown-toc-ID">ID</a></li>
+  <li><a href="#ImageUrl" id="markdown-toc-ImageUrl">ImageUrl</a></li>
+  <li><a href="#Job" id="markdown-toc-Job">Job</a></li>
+  <li><a href="#JP_Require18PlusAgeConfirmation" id="markdown-toc-JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a></li>
+  <li><a href="#Language" id="markdown-toc-Language">Language</a></li>
+  <li><a href="#LaunchDetails" id="markdown-toc-LaunchDetails">LaunchDetails</a></li>
+  <li><a href="#LaunchId" id="markdown-toc-LaunchId">LaunchId</a></li>
+  <li><a href="#MaxValue" id="markdown-toc-MaxValue">MaxValue</a></li>
+  <li><a href="#MiniSeries" id="markdown-toc-MiniSeries">MiniSeries</a></li>
+  <li><a href="#MiniSeriesEpisode" id="markdown-toc-MiniSeriesEpisode">MiniSeriesEpisode</a></li>
+  <li><a href="#MiniSeriesID" id="markdown-toc-MiniSeriesID">MiniSeriesID</a></li>
+  <li><a href="#MiniSeriesTitle" id="markdown-toc-MiniSeriesTitle">MiniSeriesTitle</a></li>
+  <li><a href="#Movie" id="markdown-toc-Movie">Movie</a></li>
+  <li><a href="#Name" id="markdown-toc-Name">Name</a></li>
+  <li><a href="#Offers" id="markdown-toc-Offers">Offers</a></li>
+  <li><a href="#OriginalAirDate" id="markdown-toc-OriginalAirDate">OriginalAirDate</a></li>
+  <li><a href="#Partner" id="markdown-toc-Partner">Partner</a></li>
+  <li><a href="#Price" id="markdown-toc-Price">Price</a></li>
+  <li><a href="#PurchaseOffer" id="markdown-toc-PurchaseOffer">PurchaseOffer</a></li>
+  <li><a href="#Quality" id="markdown-toc-Quality">Quality</a></li>
+  <li><a href="#Rank" id="markdown-toc-Rank">Rank</a></li>
+  <li><a href="#Regions" id="markdown-toc-Regions">Regions</a></li>
+  <li><a href="#RelatesToExternalID" id="markdown-toc-RelatesToExternalID">RelatesToExternalID</a></li>
+  <li><a href="#RelatesToID" id="markdown-toc-RelatesToID">RelatesToID</a></li>
+  <li><a href="#ReleaseCountry" id="markdown-toc-ReleaseCountry">ReleaseCountry (deprecated)</a></li>
+  <li><a href="#ReleaseDate" id="markdown-toc-ReleaseDate">ReleaseDate</a></li>
+  <li><a href="#ReleaseDateDep" id="markdown-toc-ReleaseDateDep">ReleaseDate (deprecated)</a></li>
+  <li><a href="#ReleaseInfo" id="markdown-toc-ReleaseInfo">ReleaseInfo (deprecated)</a></li>
+  <li><a href="#ReleaseYear" id="markdown-toc-ReleaseYear">ReleaseYear</a></li>
+  <li><a href="#RentalOffer" id="markdown-toc-RentalOffer">RentalOffer</a></li>
+  <li><a href="#Role" id="markdown-toc-Role">Role</a></li>
+  <li><a href="#RuntimeMinutes" id="markdown-toc-RuntimeMinutes">RuntimeMinutes</a></li>
+  <li><a href="#Score" id="markdown-toc-Score">Score</a></li>
+  <li><a href="#SeasonID" id="markdown-toc-SeasonID">SeasonID</a></li>
+  <li><a href="#SeasonInShow" id="markdown-toc-SeasonInShow">SeasonInShow</a></li>
+  <li><a href="#SeasonTitle" id="markdown-toc-SeasonTitle">SeasonTitle</a></li>
+  <li><a href="#ShortDescription" id="markdown-toc-ShortDescription">ShortDescription</a></li>
+  <li><a href="#ShowID" id="markdown-toc-ShowID">ShowID</a></li>
+  <li><a href="#ShowTitle" id="markdown-toc-ShowTitle">ShowTitle</a></li>
+  <li><a href="#Source" id="markdown-toc-Source">Source</a></li>
+  <li><a href="#Studio" id="markdown-toc-Studio">Studio</a></li>
+  <li><a href="#Studios" id="markdown-toc-Studios">Studios</a></li>
+  <li><a href="#SubscriptionOffer" id="markdown-toc-SubscriptionOffer">SubscriptionOffer</a></li>
+  <li><a href="#Subtitle" id="markdown-toc-Subtitle">Subtitle</a></li>
+  <li><a href="#Synopsis" id="markdown-toc-Synopsis">Synopsis</a></li>
+  <li><a href="#System" id="markdown-toc-System">System</a></li>
+  <li><a href="#Title" id="markdown-toc-Title">Title</a></li>
+  <li><a href="#TvEpisode" id="markdown-toc-TvEpisode">TvEpisode</a></li>
+  <li><a href="#TvSeason" id="markdown-toc-TvSeason">TvSeason</a></li>
+  <li><a href="#TvShow" id="markdown-toc-TvShow">TvShow</a></li>
+  <li><a href="#TvSpecial" id="markdown-toc-TvSpecial">TvSpecial</a></li>
+  <li><a href="#Type" id="markdown-toc-Type">Type</a></li>
+  <li><a href="#WindowEnd" id="markdown-toc-WindowEnd">WindowEnd</a></li>
+  <li><a href="#WindowStart" id="markdown-toc-WindowStart">WindowStart</a></li>
+  <li><a href="#Works" id="markdown-toc-Works">Works</a></li>
+</ul>
+
+<h2 id="AdultProduct">AdultProduct (deprecated)</h2>
+
+<p><strong>Deprecated, do not use</strong>. Use a <a href="#ContentRating">ContentRating</a> to convey this information instead. In Japan, you can also use <a href="#JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a> (CDF v1.2 and later).</p>
+
+<p>Identifies a work as content for adult audiences only.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Deprecated</td>
+      <td>CDF version 1.1</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>true <br /> false</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Movie&gt;</span>false<span class="nt">&lt;/Movie&gt;</span>
+  ...
+  <span class="nt">&lt;AdultProduct&gt;</span>false<span class="nt">&lt;/AdultProduct&gt;</span>
+  ...
+<span class="nt">&lt;/Movie&gt;</span>false<span class="nt">&lt;/Movie&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="AudioLanguage">AudioLanguage</h2>
+
+<p>An audio option for the work when that work has been dubbed into additional languages. You can include as many AudioLanguage elements as needed to specify the work’s available alternatives.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#LaunchDetails">LaunchDetails</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;LaunchDetails&gt;</span>
+  <span class="nt">&lt;Quality&gt;</span>SD<span class="nt">&lt;/Quality&gt;</span>
+  <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+  <span class="nt">&lt;AudioLanguage&gt;</span>en-US<span class="nt">&lt;/AudioLanguage&gt;</span>
+  <span class="nt">&lt;AudioLanguage&gt;</span>es-MX<span class="nt">&lt;/AudioLanguage&gt;</span>
+  <span class="nt">&lt;Subtitle&gt;</span>en-US<span class="nt">&lt;/Subtitle&gt;</span>
+  <span class="nt">&lt;Subtitle&gt;</span>es-MX<span class="nt">&lt;/Subtitle&gt;</span>
+  <span class="nt">&lt;LaunchId&gt;</span>MV123456_HD_es-MX_en<span class="nt">&lt;/LaunchId&gt;</span>
+<span class="nt">&lt;/LaunchDetails&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="CastMember">CastMember</h2>
+
+<p>Provides information about a person in the work’s cast, such as an actor, host, narrator, or voice talent. When present, the optional <a href="#Credits">Credits</a> element must include at least one entry, either a CastMember or a <a href="#CrewMember">CrewMember</a>. You can include as many CastMember elements as needed.</p>
+
+<p><strong>Required if no CrewMember element is present, otherwise optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Credits">Credits</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#Name">Name</a> (required), <a href="#ExternalID">ExternalID</a> (optional), <a href="#Role">Role</a> (optional)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Credits&gt;</span>
+  <span class="nt">&lt;CastMember&gt;</span>
+    <span class="nt">&lt;Name</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Alan Smithee<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;ExternalID</span> <span class="na">scheme=</span><span class="s">"imdb"</span><span class="nt">&gt;</span>tt0000000<span class="nt">&lt;/ExternalID&gt;</span>
+    <span class="nt">&lt;Role</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Self<span class="nt">&lt;/Role&gt;</span>
+  <span class="nt">&lt;/CastMember&gt;</span>
+<span class="nt">&lt;/Credits&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Catalog">Catalog</h2>
+
+<p>The root element of a CDF file. Each catalog file must contain a single Catalog element which contains the rest of the file.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#partner">Partner</a> (required), <a href="#works">Works</a> (required)</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>xmlns</td>
+      <td>http://www.amazon.com/ FireTv/2014-04-11/ingestion</td>
+      <td><strong>Required</strong>. The XML namespace.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>SchemaVersion</td>
+      <td>FireTv-v1.2 <br /> FireTv-v1.3</td>
+      <td><strong>Optional</strong>. Added in CDF v1.2. The version of the schema this catalog uses. Refer to the schema “id” to figure out which schema version you are using. Although this attribute is optional for compatibility reasons, we recommend that you provide the version.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;xml</span> <span class="na">version=</span><span class="s">"1.0"</span> <span class="na">encoding=</span><span class="s">"utf-8"</span> <span class="err">?</span><span class="nt">&gt;</span>
+<span class="nt">&lt;Catalog</span> <span class="na">xmlns=</span><span class="s">"http://www.amazon.com/FireTv/2014-04-11/ingestion"</span> <span class="na">version=</span><span class="s">"FireTv-v1.3"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Partner&gt;</span>Everything Ever Made Filmworks<span class="nt">&lt;/Partner&gt;</span>
+  <span class="nt">&lt;Works&gt;</span>
+    ...
+  <span class="nt">&lt;/Works&gt;</span>
+<span class="nt">&lt;Catalog&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Certification">Certification</h2>
+
+<p>The certification or rating given to the work under a specified certification <a href="#System">System</a>. Only one Certification element is allowed for each ContentRating.</p>
+
+<p><strong>Required in a ContentRating:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#ContentRating">ContentRating</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ContentRating&gt;</span>
+  <span class="nt">&lt;System&gt;</span>MPAA<span class="nt">&lt;/System&gt;</span>
+  <span class="nt">&lt;Certification&gt;</span>PG-13<span class="nt">&lt;/Certification&gt;</span>
+<span class="nt">&lt;/ContentRating&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Color">Color</h2>
+
+<p>Specifies whether the movie is primarily in color or in black-and-white.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>color <br />black_and_white</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Movie&gt;</span>
+  ...
+  <span class="nt">&lt;Color&gt;</span>black_and_white<span class="nt">&lt;/Color&gt;</span>
+  ...
+<span class="nt">&lt;/Movie&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ContentRating">ContentRating</h2>
+
+<p>Contains elements that specify a rating system or organization and the rating they gave the work. When present, the optional <a href="#ContentRatings">ContentRatings</a> must contain at least one ContentRating. You can have as many ContentRating elements as you need, one for each system/rating pair.</p>
+
+<p><strong>Required if the optional ContentRatings element is present:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#ContentRatings">ContentRatings</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#System">System</a> (required), <a href="#Certification">Certification</a> (required)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ContentRatings&gt;</span>
+  <span class="nt">&lt;ContentRating&gt;</span>
+    <span class="nt">&lt;System&gt;</span>MPAA<span class="nt">&lt;/System&gt;</span>
+    <span class="nt">&lt;Certification&gt;</span>PG-13<span class="nt">&lt;/Certification&gt;</span>
+  <span class="nt">&lt;/ContentRating&gt;</span>
+<span class="nt">&lt;/ContentRatings&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ContentRatings">ContentRatings</h2>
+
+<p>Contains one or more official ratings for the work, as determined by a specified certifying agency. Only one ContentRatings element is allowed per work.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#ContentRating">ContentRating</a> (at least one required)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ContentRatings&gt;</span>
+  <span class="nt">&lt;ContentRating&gt;</span>
+    <span class="nt">&lt;System&gt;</span>MPAA<span class="nt">&lt;/System&gt;</span>
+    <span class="nt">&lt;Certification&gt;</span>PG-13<span class="nt">&lt;/Certification&gt;</span>
+  <span class="nt">&lt;/ContentRating&gt;</span>
+  <span class="nt">&lt;ContentRating&gt;</span>
+    <span class="nt">&lt;System&gt;</span>Eirin<span class="nt">&lt;/System&gt;</span>
+    <span class="nt">&lt;Certification&gt;</span>R15+<span class="nt">&lt;/Certification&gt;</span>
+  <span class="nt">&lt;/ContentRating&gt;</span>
+<span class="nt">&lt;/ContentRatings&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Copyright">Copyright</h2>
+
+<p>A statement of the work’s copyright.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s language setting under which to use this string.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Copyright</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>© 2014 Amazon Studios<span class="nt">&lt;/Copyright&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Count">Count</h2>
+
+<p>The number of users that have contributed to a customer rating <a href="#Score">Score</a>. Only one Count is allowed per <a href="#CustomerRating">CustomerRating</a>.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.2</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#CustomerRating">CustomerRating</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>Any non-negative whole number.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CustomerRating&gt;</span>
+  <span class="nt">&lt;Score&gt;</span>8.2<span class="nt">&lt;/Score&gt;</span>
+  <span class="nt">&lt;MaxValue&gt;</span>10<span class="nt">&lt;/MaxValue&gt;</span>
+  <span class="nt">&lt;Count&gt;</span>512<span class="nt">&lt;/Count&gt;</span>
+<span class="nt">&lt;/CustomerRating&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Country">Country</h2>
+
+<p>A country in which a particular offer (subscription, free, purchase, or rental) is available. Each offer can contain as many Country elements as needed.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Regions">Regions</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>The following subset of <a href="http://www.iso.org/iso/country_codes.htm">ISO 3166-1 country codes</a>: AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BQ BA BW BV BR IO BN BG BF BI KH CM CA CV KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE ET FK FO FJ FI FR GF PF TF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT HM VA HN HK HU IS IN ID IR IQ IE IM IL IT JM JP JE JO KZ KE KI KP KR KW KG LA LV LB LS LR LY LI LT LU MO MK MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS SS ES LK SD SR SJ SZ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VE VN VG VI WF EH YE ZM ZW</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>CA<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  ...
+<span class="nt">&lt;/SubscriptionOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Credits">Credits</h2>
+
+<p>Contains elements that represent a work’s cast and crew members. The same person can appear as both cast or crew multiple times. Each work can contain only one Credits element. If present, Credits must contain at least one <a href="#CastMember">CastMember</a> or <a href="#CrewMember">CrewMember</a>, though it can contain as many of each of those elements as needed.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#CastMember">CastMember</a>, <a href="#CrewMember">CrewMember</a> (at least one of these two is required)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Credits&gt;</span>
+  <span class="nt">&lt;CastMember&gt;</span>
+    <span class="nt">&lt;Name</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Alan Smithee<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;Role</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Self<span class="nt">&lt;/Role&gt;</span>
+  <span class="nt">&lt;/CastMember&gt;</span>
+<span class="nt">&lt;/Credits&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="CrewMember">CrewMember</h2>
+
+<p>Contains elements that provide information about a person in the work’s off-screen crew, such as a director, writer, cinematographer, best boy, animator, or grip. When present, the optional <a href="#Credits">Credits</a> must include at least one entry, either a <a href="#CastMember">CastMember</a> or a CrewMember. You can include as many CrewMember elements as needed.</p>
+
+<p><strong>Required if no CastMember element is present, otherwise optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Credits">Credits</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#Name">Name</a> (required), <a href="#ExternalID">ExternalID</a> (optional), <a href="#Job">Job</a> (optional)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Credits&gt;</span>
+  <span class="nt">&lt;CrewMember&gt;</span>
+    <span class="nt">&lt;Name</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Alan Smithee<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;ExternalID</span> <span class="na">scheme=</span><span class="s">"imdb"</span><span class="nt">&gt;</span>tt0000000<span class="nt">&lt;/ExternalID&gt;</span>
+    <span class="nt">&lt;Job</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Director<span class="nt">&lt;/Job&gt;</span>
+  <span class="nt">&lt;/CrewMember&gt;</span>
+<span class="nt">&lt;/Credits&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="CustomerRating">CustomerRating</h2>
+
+<p>Contains elements that provide the average customer rating for a work, the maximum rating value, and the number of ratings that contributed to the score. Each work can contain only one CustomerRating element.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#Score">Score</a> (required), <a href="#MaxValue">MaxValue</a> (required), <a href="#Count">Count</a> (optional, CDF v1.2 and later only)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CustomerRating&gt;</span>
+  <span class="nt">&lt;Score&gt;</span>8.2<span class="nt">&lt;/Score&gt;</span>
+  <span class="nt">&lt;MaxValue&gt;</span>10<span class="nt">&lt;/MaxValue&gt;</span>
+  <span class="nt">&lt;Count&gt;</span>512<span class="nt">&lt;/Count&gt;</span>
+<span class="nt">&lt;/CustomerRating&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Duration">Duration</h2>
+
+<p>Defines how long a work’s rental lasts, measured in hours. A RentalOffer can contain only one Duration element.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#RentalOffer">RentalOffer</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;RentalOffer&gt;</span>
+  ...
+  <span class="nt">&lt;Duration&gt;</span>120<span class="nt">&lt;/Duration&gt;</span>
+<span class="nt">&lt;/RentalOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="EpisodeInSeason">EpisodeInSeason</h2>
+
+<p>A TV episode’s sequence number within its season. Each <a href="#TvEpisode">TvEpisode</a> can contain only one EpisodeInSeason element.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#TvEpisode">TvEpisode</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;EpisodeInSeason&gt;</span>6<span class="nt">&lt;/EpisodeInSeason&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="EpisodeInSeries">EpisodeInSeries</h2>
+
+<p>A mini-series episode’s sequence number within its series. Each <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a> can contain only one EpisodeInSeries element.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#MiniSeriesEpisode">MiniSeriesEpisode</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Example</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;MiniSeriesEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;EpisodeInSeries&gt;</span>13<span class="nt">&lt;/EpisodeInSeries&gt;</span>
+  ...
+<span class="nt">&lt;/MiniSeriesEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ExternalID">ExternalID</h2>
+
+<p>An identifier for a work under an external classification, such as IMDb. This value is used in content matching, to compare a work or person against that in another catalog to determine whether they’re the same work or person. It can also be used as the source of external content such as images. Each element that contains an ExternalID can contain as many as needed.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#CastMember">CastMember</a>, <a href="#CrewMember">CrewMember</a>, <a href="#Extra">Extra</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Movie">Movie</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSpecial">TvSpecial</a></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>Attribute</td>
+      <td>Description</td>
+      <td>Accepted Values</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>scheme</td>
+      <td><strong>Required</strong>. The external source that provided this ID.</td>
+      <td>imdb <br />tms<br />isan<br />ean<br />upc</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Comments <br />(the values represent these sources)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Value</td>
+      <td>Description</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>imdb</td>
+      <td>The Internet Movie Database (IMDb). IDs can be found as part of the URL of a given page.</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>tms</td>
+      <td>The ID used in the Gracenote™ database.</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>isan</td>
+      <td>The International Standard Audiovisual Number (ISAN), an alphanumeric strings of 26 characters, usually presented broken by dashes.</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ean</td>
+      <td>The International Article Number (EAN), a barcode normally expressed in 13-digits.</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>upc</td>
+      <td>The Universal Product Code (UPC), a barcode normally expressed in 12-digits.</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Movie&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>MV123456<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;ExternalID</span> <span class="na">scheme=</span><span class="s">"imdb"</span><span class="nt">&gt;</span>tt0000000<span class="nt">&lt;/ExternalID&gt;</span>
+  <span class="nt">&lt;ExternalID</span> <span class="na">scheme=</span><span class="s">"tms"</span><span class="nt">&gt;</span>MV000000000000<span class="nt">&lt;/ExternalID&gt;</span>
+  <span class="nt">&lt;ExternalID</span> <span class="na">scheme=</span><span class="s">"isan"</span><span class="nt">&gt;</span>0000-0000-0F00-0000-X-0000-0000-Y<span class="nt">&lt;/ExternalID&gt;</span>
+  <span class="nt">&lt;ExternalID</span> <span class="na">scheme=</span><span class="s">"ean"</span><span class="nt">&gt;</span>0011559514120<span class="nt">&lt;/ExternalID&gt;</span>
+  <span class="nt">&lt;ExternalID</span> <span class="na">scheme=</span><span class="s">"upc"</span><span class="nt">&gt;</span>123456789990<span class="nt">&lt;/ExternalID&gt;</span>
+  ...
+<span class="nt">&lt;/Movie&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Extra">Extra</h2>
+
+<p>One of the basic work types, Extra represents a clip or trailer that can be a standalone work or, more commonly, can be associated with another work (either external or in your catalog). Generally think of these as the equivalent of an extra feature included on a DVD.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Common to All Work Types</td>
+      <td>Required: <a href="#ID">ID</a>, <a href="#Offers">Offers</a>, <a href="#Title">Title</a> <br /> Optional: <a href="#AdultProduct">AdultProduct</a> (deprecated), <a href="#Color">Color</a>, <a href="#ContentRatings">ContentRatings</a>, <a href="#JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a>, <a href="#Copyright">Copyright</a>, <a href="#Credits">Credits</a>, <a href="#CustomerRating">CustomerRating</a>, <a href="#ExternalID">ExternalID</a>, <a href="#Genres">Genres</a>, <a href="#ImageUrl">ImageUrl</a>, <a href="#Language">Language</a>, <a href="#Rank">Rank</a>, <a href="#ReleaseInfo">ReleaseInfo</a> (deprecated), <a href="#ShortDescription">ShortDescription</a>, <a href="#ReleaseYear">ReleaseYear</a>, <a href="#RuntimeMinutes">RuntimeMinutes</a>, <a href="#Source">Source</a>, <a href="#Studios">Studios</a>, <a href="#Synopsis">Synopsis</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Specific to Extra</td>
+      <td>Required: <a href="#Type">Type</a> <br /> Required: Either <a href="#RelatesToID">RelatesToID</a> or <a href="#RelatesToExternalID">RelatesToExternalID</a>, but not both</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Extra&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>EXTRA-11111<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;Title</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Wishenpoof! Trailer<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;Offers&gt;</span>
+    <span class="nt">&lt;FreeOffer&gt;</span>
+      <span class="nt">&lt;Regions&gt;</span>
+        <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+      <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;/FreeOffer&gt;</span>
+  <span class="nt">&lt;/Offers&gt;</span>
+  <span class="nt">&lt;Type&gt;</span>trailer<span class="nt">&lt;/Type&gt;</span>
+<span class="nt">&lt;/Extra&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="FreeOffer">FreeOffer</h2>
+
+<p>One of the four offer types. Under this offer, the work is free to view at any time, optionally only during a given window. If necessary, you can have multiple FreeOffer elements under Offers.</p>
+
+<p><strong>Optional, though at least one offer type is required under Offers:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Offers">Offers</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>Required: <a href="#Regions">Regions</a> <br /> Optional: <a href="#LaunchDetails">LaunchDetails</a>, <a href="#Quality">Quality</a> (deprecated), <a href="#WindowStart">WindowStart</a>, <a href="#WindowEnd">WindowEnd</a></td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;FreeOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>CA<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  <span class="nt">&lt;WindowStart&gt;</span>2014-02-06T12:00:00-07:00<span class="nt">&lt;/WindowStart&gt;</span>
+  <span class="nt">&lt;WindowEnd&gt;</span>2016-01-01T07:00:00-07:00<span class="nt">&lt;/WindowEnd&gt;</span>
+  <span class="nt">&lt;LaunchDetails&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>en-US<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>en-US<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>fr<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>es<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;LaunchId&gt;</span>EXTRA-11113_HD_en-US<span class="nt">&lt;/LaunchId&gt;</span>
+  <span class="nt">&lt;/LaunchDetails&gt;</span>
+<span class="nt">&lt;/FreeOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Genre">Genre</h2>
+
+<p>The genre of the work, such as comedy, horror, drama, or documentary. A work can be described through multiple Genre elements if necessary. For optimized search and matching, attempt to use standard genre descriptions. Use multiple Genre tags rather than combine several descriptions into a single string.</p>
+
+<p><strong>Required if the optional Genres element is present:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Genres">Movie</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s language setting under which to use this string.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Genres&gt;</span>
+  <span class="nt">&lt;Genre</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>horror<span class="nt">&lt;/Genre&gt;</span>
+  <span class="nt">&lt;Genre</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>sci-fi<span class="nt">&lt;/Genre&gt;</span>
+<span class="nt">&lt;/Genres&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Genres">Genres</h2>
+
+<p>Contains one or more <a href="#Genre">Genre</a> tags used to describe the category of the work, such as comedy, horror, or documentary.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#Genre">Genre</a> (at least one required when Genres is present)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Genres&gt;</span>
+  <span class="nt">&lt;Genre</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>horror<span class="nt">&lt;/Genre&gt;</span>
+  <span class="nt">&lt;Genre</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>sci-fi<span class="nt">&lt;/Genre&gt;</span>
+<span class="nt">&lt;/Genres&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ID">ID</h2>
+
+<p>An identifier string for a work. This value must be at least one character long and unique among all other IDs in your catalog. Two works with the same ID will cause your catalog to be rejected by the ingestion system. Devise an ID scheme and use it unfailingly to avoid duplicate IDs. For instance, you could use your Partner ID + the work type + a long identifier such as a GUID, for an ID such as <code class="highlighter-rouge">AmazonStudios_ Movie_01152ce2-de7e-44c1-9736-e8f3b15a1ddf</code>. Any scheme that assures unique IDs within your catalog is valid.</p>
+
+<p>When you update an existing catalog, the IDs for your works should not change. If an ID disappears from your catalog, we assume that work is no longer available on your service and remove it from our index.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Movie&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>AmazonStudios_Movie_01152ce2-de7e-44c1-9736-e8f3b15a1ddf<span class="nt">&lt;/ID&gt;</span>
+  ...
+<span class="nt">&lt;/Movie&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ImageUrl">ImageUrl</h2>
+
+<p>The URL of an image that represents the work, sometimes called the “box art.” Each work can contain only a single ImageUrl element. If you don’t include ImageUrl, we attempt to use available art from other sources such as IMDb, or we might use a generic placeholder image. See <a href="about-the-cdf.html">About the CDF</a> for image requirements.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Provide a unique image for each work that applies to the work’s content. Do not use a generic placeholder image, such as a logo.</div>
+
+<p><strong>Optional (see Comments):</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Comments</td>
+      <td>Any one given ImageUrl element is optional, but at least 50% of your entries must include it and the image it points to must be valid. If more than 50% of the images in your file are determined to be invalid (and simply not having an image is considered an invalidity), your uploaded catalog will be rejected by the ingestion system. An image also helps us in matching this work with the same work from other providers, which improves the customer search experience by bundling all offers for the work into a single search result. That, in turn, improves the discoverability of your particular offer. See <a href="about-the-cdf.html">About the CDF</a> for image size and height-to-width ratio requirements.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  ...
+  <span class="nt">&lt;ImageUrl&gt;</span>http://amazon.com/images/01152ce2de7e44c1/image.jpg<span class="nt">&lt;/ImageUrl&gt;</span>
+  ...
+<span class="nt">&lt;/TvShow&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Job">Job</h2>
+
+<p>The position held by a work’s CrewMember, such as director, cinematographer, writer, or animator. A CrewMember can have as many Job elements as needed.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#CrewMember">CrewMember</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s language setting under which to use this string.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CrewMember&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Alan Smithee<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;ExternalID</span> <span class="na">scheme=</span><span class="s">"imdb"</span><span class="nt">&gt;</span>tt0000000<span class="nt">&lt;/ExternalID&gt;</span>
+  <span class="nt">&lt;Job</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Grip<span class="nt">&lt;/Job&gt;</span>
+<span class="nt">&lt;/CrewMember&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</h2>
+
+<p>Marks content for the Japanese marketplace intended to be viewed only by persons 18 years of age or older. In compliance with Japan’s legal requirements, setting this flag to true requires viewers of this content in Japan to confirm that their age is above 18.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.2</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>true <br /> false</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Movie&gt;</span>
+  ...
+  <span class="nt">&lt;JP_Require18PlusAgeConfirmation&gt;</span>true<span class="nt">&lt;/JP_Require18PlusAgeConfirmation&gt;</span>
+<span class="nt">&lt;/Movie&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Language">Language</h2>
+
+<p>The language in which the work was originally produced, which can refer to either the audio or, in the case of a silent work, on-screen text. A work can contain only one Language element. Also use <a href="#AudioLanguage">AudioLanguage</a> to specify any dubbed options.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Movie&gt;</span>
+  ...
+  <span class="nt">&lt;Language&gt;</span>ja<span class="nt">&lt;/Language&gt;</span>
+  ...
+<span class="nt">&lt;/Movie&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="LaunchDetails">LaunchDetails</h2>
+
+<p>Contains elements that specify a work’s available video quality, audio language, and subtitle options under a particular offer. LaunchDetails also contains an optional LaunchId which allows a direct launch of the work in a specific configuration of quality, language, and subtitle.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.2</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#SubscriptionOffer">SubscriptionOffer</a>, <a href="#FreeOffer">FreeOffer</a>, <a href="#PurchaseOffer">PurchaseOffer</a>, <a href="#RentalOffer">RentalOffer</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#Quality">Quality</a> (optional), <a href="#AudioLanguage">AudioLanguage</a> (optional), <a href="#Subtitle">Subtitle</a> (optional), <a href="#LaunchId">LaunchId</a> (optional)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;FreeOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  <span class="nt">&lt;LaunchDetails&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>SD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>en-US<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>fr-FR<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>en-US<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>fr<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>es<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;LaunchId&gt;</span>EXTRA-11113_HD_en-US<span class="nt">&lt;/LaunchId&gt;</span>
+  <span class="nt">&lt;/LaunchDetails&gt;</span>
+<span class="nt">&lt;/FreeOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="LaunchId">LaunchId</h2>
+
+<p>An identifier that allows you to launch a work with a specific configuration of video quality, audio language, and subtitles (or any subset of those three). A LaunchId does not have a given format—the format must only be understood by your app’s logic. Each LaunchDetails element can contain only a single LaunchId, so to specify more than one LaunchId, you must include multiple LaunchDetails elements.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.2</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#LaunchDetails">LaunchDetails</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  <span class="nt">&lt;LaunchDetails&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>SD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>en-US<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>fr-FR<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>en-US<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>fr<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;LaunchId&gt;</span>EXTRA-11113_HD_en-US<span class="nt">&lt;/LaunchId&gt;</span>
+  <span class="nt">&lt;/LaunchDetails&gt;</span>
+  <span class="nt">&lt;LaunchDetails&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>SD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>en-US<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>fr-FR<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>en-US<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>fr<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;LaunchId&gt;</span>EXTRA-11113_SD_fr-FR_en-US<span class="nt">&lt;/LaunchId&gt;</span>
+  <span class="nt">&lt;/LaunchDetails&gt;</span>
+<span class="nt">&lt;/SubscriptionOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="MaxValue">MaxValue</h2>
+
+<p>The highest possible value for a work’s customer rating. Each CustomerRating can contain only one MaxValue.</p>
+
+<p><strong>Required when the optional CustomerRating element is present:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CustomerRating&gt;</span>
+  <span class="nt">&lt;Score&gt;</span>8.2<span class="nt">&lt;/Score&gt;</span>
+  <span class="nt">&lt;MaxValue&gt;</span>10<span class="nt">&lt;/MaxValue&gt;</span>
+  <span class="nt">&lt;Count&gt;</span>512<span class="nt">&lt;/Count&gt;</span>
+<span class="nt">&lt;/CustomerRating&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="MiniSeries">MiniSeries</h2>
+
+<p>One of the basic work types, a MiniSeries is loosely defined as a television show that collects a small number of ordered episodes not presented in seasons. There is no explicit limit on the number of episodes a MiniSeries can contain, but it should be reasonably low.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Common to All Work Types</td>
+      <td>Required: <a href="#ID">ID</a>, <a href="#Offers">Offers</a>, <a href="#Title">Title</a> <br /> Optional: <a href="#AdultProduct">AdultProduct</a> (deprecated), <a href="#Color">Color</a>, <a href="#ContentRatings">ContentRatings</a>, <a href="#JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a>, <a href="#Copyright">Copyright</a>, <a href="#Credits">Credits</a>, <a href="#CustomerRating">CustomerRating</a>, <a href="#ExternalID">ExternalID</a>, <a href="#Genres">Genres</a>, <a href="#ImageUrl">ImageUrl</a>, <a href="#Language">Language</a>, <a href="#Rank">Rank</a>, <a href="#ReleaseInfo">ReleaseInfo</a> (deprecated), <a href="#ShortDescription">ShortDescription</a>, <a href="#ReleaseYear">ReleaseYear</a>, <a href="#RuntimeMinutes">RuntimeMinutes</a>, <a href="#Source">Source</a>, <a href="#Studios">Studios</a>, <a href="#Synopsis">Synopsis</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Specific to MiniSeries</td>
+      <td><a href="#ReleaseDate">ReleaseDate</a> (optional)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;MiniSeries&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>MS-2329880<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;Title</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>All the Best People<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;Offers&gt;</span>
+    <span class="nt">&lt;SubscriptionOffer&gt;</span>
+      <span class="nt">&lt;Regions&gt;</span>
+        <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+      <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;/SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;/Offers&gt;</span>
+  <span class="nt">&lt;ReleaseDate&gt;</span>2005-04-29T20:00:00<span class="nt">&lt;/ReleaseDate&gt;</span>
+<span class="nt">&lt;/MiniSeries&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="MiniSeriesEpisode">MiniSeriesEpisode</h2>
+
+<p>One of the basic work types, a MiniSeriesEpisode is a single episode in a MiniSeries. This content is not associated with a season and is sequenced in the context of the MiniSeries.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Common to All Work Types</td>
+      <td>Required: <a href="#ID">ID</a>, <a href="#Offers">Offers</a>, <a href="#Title">Title</a> <br /> Optional: <a href="#AdultProduct">AdultProduct</a> (deprecated), <a href="#Color">Color</a>, <a href="#ContentRatings">ContentRatings</a>, <a href="#JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a>, <a href="#Copyright">Copyright</a>, <a href="#Credits">Credits</a>, <a href="#CustomerRating">CustomerRating</a>, <a href="#ExternalID">ExternalID</a>, <a href="#Genres">Genres</a>, <a href="#ImageUrl">ImageUrl</a>, <a href="#Language">Language</a>, <a href="#Rank">Rank</a>, <a href="#ReleaseInfo">ReleaseInfo</a> (deprecated), <a href="#ShortDescription">ShortDescription</a>, <a href="#ReleaseYear">ReleaseYear</a>, <a href="#RuntimeMinutes">RuntimeMinutes</a>, <a href="#Source">Source</a>, <a href="#Studios">Studios</a>, <a href="#Synopsis">Synopsis</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Specific to MiniSeriesEpisode</td>
+      <td>Required: <a href="#EpisodeInSeries">EpisodeInSeries</a> <br /> Required: Either <a href="#MiniSeriesID">MiniSeriesID</a> or <a href="#MiniSeriesTitle">MiniSeriesTitle</a>, but not both <br /> Optional: <a href="#OriginalAirDate">OriginalAirDate</a></td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;MiniSeries&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>MS-123456789<span class="nt">&lt;/ID&gt;</span>
+  ...
+<span class="nt">&lt;/MiniSeries&gt;</span>
+<span class="nt">&lt;MiniSeriesEpisode&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>MSE-2329880<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;Title</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>The First Steps on a New Planet<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;Offers&gt;</span>
+    <span class="nt">&lt;SubscriptionOffer&gt;</span>
+      <span class="nt">&lt;Regions&gt;</span>
+        <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+      <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;/SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;/Offers&gt;</span>
+  <span class="nt">&lt;MiniSeriesID&gt;</span>MS-123456789<span class="nt">&lt;/MiniSeriesID&gt;</span>
+  <span class="nt">&lt;EpisodeInSeries&gt;</span>1<span class="nt">&lt;/EpisodeInSeries&gt;</span>
+  <span class="nt">&lt;OriginalAirDate&gt;</span>2012-07-02T20:00:00<span class="nt">&lt;/OriginalAirDate&gt;</span>
+<span class="nt">&lt;/MiniSeriesEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="MiniSeriesID">MiniSeriesID</h2>
+
+<p>Used to specify the mini-series that an episode is a part of. The <a href="#MiniSeries">MiniSeries</a> with this <a href="#ID">ID</a> must be present in the same catalog as this MiniSeriesEpisode. You have the option of using MiniSeriesID or <a href="#MiniSeriesTitle">MiniSeriesTitle</a> to specify the mini-series, but not both. MiniSeriesID should always be used when the mini-series is in your catalog. If it is not in your catalog, we advise you to create a MiniSeries entry to use.</p>
+
+<p><strong>Required if no MiniSeriesTitle element is present:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#MiniSeriesEpisode">MiniSeriesEpisode</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;MiniSeries&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>MS-2329880<span class="nt">&lt;/ID&gt;</span>
+  ...
+<span class="nt">&lt;/MiniSeries&gt;</span>
+<span class="nt">&lt;/MiniSeriesEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;MiniSeriesID&gt;</span>MS-2329880<span class="nt">&lt;/MiniSeriesID&gt;</span>
+  <span class="nt">&lt;EpisodeInSeries&gt;</span>3<span class="nt">&lt;/EpisodeInSeries&gt;</span>
+<span class="nt">&lt;/MiniSeriesEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="MiniSeriesTitle">MiniSeriesTitle</h2>
+
+<p>Specifies which mini-series an episode is part of when that mini-series is not part of your catalog. MiniSeriesTitle is simply a string for use in the UI and is not required to match any existing title in your catalog. You have the option of using <a href="#MiniSeriesID">MiniSeriesID</a> or MiniSeriesTitle to specify the mini-series, but not both. Use MiniSeriesTitle <em>only</em> in the absence of MiniSeriesID, which should be a rare occurrance.</p>
+
+<p><strong>Required if no MiniSeriesID element is present:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#MiniSeriesEpisode">MiniSeriesEpisode</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;/MiniSeriesEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;MiniSeriesTitle&gt;</span>Cats, The Most Beautiful Creature<span class="nt">&lt;/MiniSeriesTitle&gt;</span>
+  <span class="nt">&lt;EpisodeInSeries&gt;</span>3<span class="nt">&lt;/EpisodeInSeries&gt;</span>
+<span class="nt">&lt;/MiniSeriesEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Movie">Movie</h2>
+
+<p>One of the basic work types, Movie generally represents a feature-length film, though it can also be used for short films. This work can be a theatrical release or a made-for-TV movie.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Common to All Work Types</td>
+      <td>Required: <a href="#ID">ID</a>, <a href="#Offers">Offers</a>, <a href="#Title">Title</a> <br /> Optional: <a href="#AdultProduct">AdultProduct</a> (deprecated), <a href="#Color">Color</a>, <a href="#ContentRatings">ContentRatings</a>, <a href="#JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a>, <a href="#Copyright">Copyright</a>, <a href="#Credits">Credits</a>, <a href="#CustomerRating">CustomerRating</a>, <a href="#ExternalID">ExternalID</a>, <a href="#Genres">Genres</a>, <a href="#ImageUrl">ImageUrl</a>, <a href="#Language">Language</a>, <a href="#Rank">Rank</a>, <a href="#ReleaseInfo">ReleaseInfo</a> (deprecated), <a href="#ShortDescription">ShortDescription</a>, <a href="#ReleaseYear">ReleaseYear</a>, <a href="#RuntimeMinutes">RuntimeMinutes</a>, <a href="#Source">Source</a>, <a href="#Studios">Studios</a>, <a href="#Synopsis">Synopsis</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Specific to Movie</td>
+      <td><a href="#ReleaseDate">ReleaseDate</a> (optional)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Movie&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>MV-123456<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;Title</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Chase the Prawns<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;Offers&gt;</span>
+    <span class="nt">&lt;SubscriptionOffer&gt;</span>
+      <span class="nt">&lt;Regions&gt;</span>
+        <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+      <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;/SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;/Offers&gt;</span>
+  <span class="nt">&lt;ReleaseDate&gt;</span>2013-10-04T00:00:00<span class="nt">&lt;/ReleaseDate&gt;</span>
+<span class="nt">&lt;/Movie&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Name">Name</h2>
+
+<p>The name of a work’s cast or crew member. For a cast member, this is the person’s name and not their character’s name.</p>
+
+<p><strong>Required in a CastMember or CrewMember element:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#CastMember">CastMember</a>, <a href="#CrewMember">CrewMember</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s language setting under which to use this string.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CastMember&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Alan Smithee<span class="nt">&lt;/Name&gt;</span>
+  ...
+<span class="nt">&lt;/CastMember&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Offers">Offers</h2>
+
+<p>Contains the offers through which a viewer can play a given work: for free, by having a subscription to the service, through rental, or through purchase. Each work type can contain only one Offers element, and that Offers element must contain at least one offer type.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#SubscriptionOffer">SubscriptionOffer</a> (optional), <a href="#FreeOffer">FreeOffer</a> (optional), <a href="#PurchaseOffer">PurchaseOffer</a> (optional), <a href="#RentalOffer">RentalOffer</a> (optional)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Offers&gt;</span>
+  <span class="nt">&lt;FreeOffer&gt;</span>
+    <span class="nt">&lt;Regions&gt;</span>
+      <span class="nt">&lt;Country&gt;</span>CA<span class="nt">&lt;/Country&gt;</span>
+    <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;WindowStart&gt;</span>2014-02-06T12:00:00-07:00<span class="nt">&lt;/WindowStart&gt;</span>
+    <span class="nt">&lt;WindowEnd&gt;</span>2016-01-01T07:00:00-07:00<span class="nt">&lt;/WindowEnd&gt;</span>
+    <span class="nt">&lt;LaunchDetails&gt;</span>
+      <span class="nt">&lt;Quality&gt;</span>SD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;/LaunchDetails&gt;</span>
+  <span class="nt">&lt;/FreeOffer&gt;</span>
+  <span class="nt">&lt;SubscriptionOffer&gt;</span>
+    <span class="nt">&lt;Regions&gt;</span>
+      <span class="nt">&lt;Country&gt;</span>CA<span class="nt">&lt;/Country&gt;</span>
+    <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;LaunchDetails&gt;</span>
+      <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;/LaunchDetails&gt;</span>
+  <span class="nt">&lt;/SubscriptionOffer&gt;</span>
+<span class="nt">&lt;/Offers&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="OriginalAirDate">OriginalAirDate</h2>
+
+<p>The date and time when a work was originally televised. The year portion of this value should match the <a href="#ReleaseYear">ReleaseYear</a>, if that optional element is present. This information is useful in matching this work to content in other catalogs. A match allows us to show a single listing for a work that shows all of its available sources rather than having multiple search results for same thing.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>An XML <em>dateTime</em> value. This value takes the form YYYY-MM-DDThh:mm:ss where YYYY-MM-DD is the year, month, and date and hh:mm:ss is the hour, minute, and second. The ‘T’ separates the two portions. The entire value is required, from the year down to the second. If the time value is unknown to you, simply use 00:00:00. You can also add an offset from UTC to the end of the value to account for a particular time zone.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvSpecial&gt;</span>
+  ...
+  <span class="nt">&lt;OriginalAirDate&gt;</span>2012-05-13T00:00:00<span class="nt">&lt;/OriginalAirDate&gt;</span>
+<span class="nt">&lt;/TvSpecial&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Partner">Partner</h2>
+
+<p>Identifies you as the provider of this catalog. There is no required format, but it should be human-readable. As a good convention, use your app’s name as it is seen in the Amazon Appstore. You might also use your full provider name. Each catalog file must contain a single Partner element.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Catalog</span> <span class="na">xmlns=</span><span class="s">"http://www.amazon.com/FireTv/2014-04-11/ingestion"</span> <span class="na">version=</span><span class="s">"FireTv-v1.3"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Partner&gt;</span>Everything Ever Made Filmworks<span class="nt">&lt;/Partner&gt;</span>
+  ...
+<span class="nt">&lt;Catalog&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Price">Price</h2>
+
+<p>The cost to rent or purchase a work.</p>
+
+<p><strong>Required in PurchaseOffer and RentalOffer:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#PurchaseOffer">PurchaseOffer</a>, <a href="#RentalOffer">RentalOffer</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>currency</td>
+      <td>USD <br /> GBP <br /> JPY <br /> EUR</td>
+      <td><strong>Required</strong>. The currency in which the price is given. Only one currency can be specified per offer type: dollar, pound, yen, or euro.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;PurchaseOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  <span class="nt">&lt;Price</span> <span class="na">currency=</span><span class="s">"USD"</span><span class="nt">&gt;</span>1.99<span class="nt">&lt;/Price&gt;</span>
+<span class="nt">&lt;/PurchaseOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="PurchaseOffer">PurchaseOffer</h2>
+
+<p>One of the four offer types. Under this offer, the work can be purchased for a one-time payment to own and watch anytime. If necessary, you can have multiple PurchaseOffer elements under Offers. </p>
+
+<p><strong>Optional, though at least one offer type is required under Offers:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Offers">Offers</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>Required: <a href="#Regions">Regions</a>, <a href="#Price">Price</a> <br /> Optional: <a href="#LaunchDetails">LaunchDetails</a>, <a href="#Quality">Quality</a> (deprecated), <a href="#WindowStart">WindowStart</a>, <a href="#WindowEnd">WindowEnd</a></td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;PurchaseOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  <span class="nt">&lt;LaunchDetails&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>en-US<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>fr<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>es<span class="nt">&lt;/Subtitle&gt;</span>
+  <span class="nt">&lt;/LaunchDetails&gt;</span>
+  <span class="nt">&lt;Price</span> <span class="na">currency=</span><span class="s">"USD"</span><span class="nt">&gt;</span>1.99<span class="nt">&lt;/Price&gt;</span>
+<span class="nt">&lt;/PurchaseOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Quality">Quality</h2>
+
+<p>The visual quality of the work: standard definition (SD), high definition (HD), and ultra high definition (UHD). A work can be offered with multiple visual quality options.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> There are two elements named Quality. The first, a direct child of each offer type, was deprecated in CDF v1.2. The second is a child of LaunchDetails, and therefore a grandchild of each offer type. This newer, non-deprecated Quality element is the one we discuss here, although other than their parent elements, the two are identical in form and content.</div>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.2</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#LaunchDetails">LaunchDetails</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>SD <br /> HD <br /> UHD</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;FreeOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  <span class="nt">&lt;LaunchDetails&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>UHD<span class="nt">&lt;/Quality&gt;</span>
+  <span class="nt">&lt;/LaunchDetails&gt;</span>
+<span class="nt">&lt;/FreeOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Rank">Rank</h2>
+
+<p>A numerical popularity score relative to the other items in your catalog. The highest rank is defined as 1. How you determine the rankings is up to you, but it is acceptable for multiple items to have the same rank. A work can have only a single Rank element.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  ...
+  <span class="nt">&lt;Rank&gt;</span>36<span class="nt">&lt;/Rank&gt;</span>
+  ...
+<span class="nt">&lt;/TvShow&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Regions">Regions</h2>
+
+<p>Contains the countries in which a given offer is available. Each offer type can contain only a single Regions element.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#SubscriptionOffer">SubscriptionOffer</a>, <a href="#FreeOffer">FreeOffer</a>, <a href="#PurchaseOffer">PurchaseOffer</a>, <a href="#RentalOffer">RentalOffer</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#Country">Country</a> (at least one required)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;FreeOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>CA<span class="nt">&lt;/Country&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>MX<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+<span class="nt">&lt;/FreeOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="RelatesToExternalID">RelatesToExternalID</h2>
+
+<p>Used to specify another work (such as a movie) with which an Extra (such as a trailer for that movie) is associated. RelatesToExternalID specifies an identifier by which that other work (such as the movie) is known in an external classificiation such as IMDb. RelatesToExternalID is used when the associated work is not a part of your catalog. You have the option of using <a href="#RelatesToID">RelatesToID</a> or RelatesToExternalID to specify the association, but not both. Use RelatesToExternalID <em>only</em> in the absence of RelatesToID.</p>
+
+<p>Do not confuse RelatesToExternalID with <a href="#ExternalID">ExternalID</a>. ExternalID refers to the Extra itself, while RelatesToExternalID refers to the work that it’s associated with.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Extra">Extra</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Description</td>
+      <td>Accepted Values</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>scheme</td>
+      <td><strong>Required</strong>. The external source that provided this ID.</td>
+      <td>imdb <br /> tms <br /> isan <br /> ean <br /> upc</td>
+    </tr>
+    <tr>
+      <td>Comments <br />(the values represent these sources)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Value</td>
+      <td>Description</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>imdb</td>
+      <td>The Internet Movie Database (IMDb). IDs can be found as part of the URL of a given page.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>tms</td>
+      <td>The ID used in the Gracenote™ database.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>isan</td>
+      <td>The International Standard Audiovisual Number (ISAN), an alphanumeric strings of 26 characters, usually presented broken by dashes.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ean</td>
+      <td>The International Article Number (EAN), a barcode normally expressed in 13-digits.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>upc</td>
+      <td>The Universal Product Code (UPC), a barcode normally expressed in 12-digits.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Extra&gt;</span>
+  ...
+  <span class="nt">&lt;Type&gt;</span>trailer<span class="nt">&lt;/Type&gt;</span>
+  <span class="nt">&lt;RelatesToExternalID</span> <span class="na">scheme=</span><span class="s">"imdb"</span><span class="nt">&gt;</span>tt0000000<span class="nt">&lt;/RelatesToExternalID&gt;</span>
+  <span class="nt">&lt;RelatesToExternalID</span> <span class="na">scheme=</span><span class="s">"tms"</span><span class="nt">&gt;</span>MV000000000000<span class="nt">&lt;/RelatesToExternalID&gt;</span>
+  <span class="nt">&lt;RelatesToExternalID</span> <span class="na">scheme=</span><span class="s">"isan"</span><span class="nt">&gt;</span>0000-0000-0F00-0000-X-0000-0000-Y<span class="nt">&lt;/RelatesToExternalID&gt;</span>
+  <span class="nt">&lt;RelatesToExternalID</span> <span class="na">scheme=</span><span class="s">"ean"</span><span class="nt">&gt;</span>0011559514120<span class="nt">&lt;/RelatesToExternalID&gt;</span>
+  <span class="nt">&lt;RelatesToExternalID</span> <span class="na">scheme=</span><span class="s">"upc"</span><span class="nt">&gt;</span>123456789990<span class="nt">&lt;/RelatesToExternalID&gt;</span>
+<span class="nt">&lt;/Extra&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="RelatesToID">RelatesToID</h2>
+
+<p>Used to specify another work (such as a movie) with which an Extra (such as a trailer for that movie) is associated. The work with this <a href="#ID">ID</a> must be present in the same catalog as this Extra. You have the option of using RelatesToID or <a href="#RelatesToExternalID">RelatesToExternalID</a> to specify the associated work, but not both. RelatesToID should always be used when the associated work is in your catalog.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>TV123456<span class="nt">&lt;/ID&gt;</span>
+  ...
+<span class="nt">&lt;/TvShow&gt;</span>
+<span class="nt">&lt;Extra&gt;</span>
+  ...
+  <span class="nt">&lt;Type&gt;</span>trailer<span class="nt">&lt;/Type&gt;</span>
+  <span class="nt">&lt;RelatesToID&gt;</span>TV123456<span class="nt">&lt;/RelatesToID&gt;</span>
+<span class="nt">&lt;/Extra&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ReleaseCountry">ReleaseCountry (deprecated)</h2>
+
+<p><strong>Deprecated, do not use.</strong> This element has no replacement.</p>
+
+<p>The country that originally released the work.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Deprecated</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#ReleaseInfo">ReleaseInfo</a> (deprecated)</td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>The following subset of <a href="http://www.iso.org/iso/country_codes.htm">ISO 3166 country codes</a>: <br /> AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BQ BA BW BV BR IO BN BG BF BI KH CM CA CV KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE ET FK FO FJ FI FR GF PF TF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT HM VA HN HK HU IS IN ID IR IQ IE IM IL IT JM JP JE JO KZ KE KI KP KR KW KG LA LV LB LS LR LY LI LT LU MO MK MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS SS ES LK SD SR SJ SZ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VE VN VG VI WF EH YE ZM ZW</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;ReleaseInfo&gt;</span>
+    <span class="nt">&lt;ReleaseDate&gt;</span>2002-02-20<span class="nt">&lt;/ReleaseDate&gt;</span>
+    <span class="nt">&lt;ReleaseCountry&gt;</span>BT<span class="nt">&lt;/ReleaseCountry&gt;</span>
+  <span class="nt">&lt;/ReleaseInfo&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ReleaseDate">ReleaseDate</h2>
+
+<p>The date and time when the work was originally released to the public, or the first air date in the case of television. The year portion of this value should match the <a href="#ReleaseYear">ReleaseYear</a>, if that optional element is present. This information is particularly useful in matching this work to content in other catalogs. A match allows us to show a single listing for a work that shows all of its available sources rather than having multiple search results for same thing.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> For the deprecated element of the same name, see <a href="#ReleaseDateDep">ReleaseDate (deprecated)</a>.</div>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#MiniSeries">MiniSeries</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>An XML <em>dateTime</em> value. This value takes the form YYYY-MM-DDThh:mm:ss where YYYY-MM-DD is the year, month, and date and hh:mm:ss is the hour, minute, and second. The ‘T’ separates the two portions. The entire value is required, from the year down to the second. If the time value is unknown to you, simply use 00:00:00. You can also add an offset from UTC to the end of the value to account for a particular time zone.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  ...
+  <span class="nt">&lt;ReleaseDate&gt;</span>2012-05-13T00:00:00<span class="nt">&lt;/ReleaseDate&gt;</span>
+<span class="nt">&lt;/TvShow&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ReleaseDateDep">ReleaseDate (deprecated)</h2>
+
+<p><strong>Deprecated, do not use</strong>. Use <a href="#ReleaseDate">ReleaseDate</a> (same name, different location and data type) or <a href="#OriginalAirDate">OriginalAirDate</a> instead.</p>
+
+<p>The date when the work was originally released to the public, or the first air date in the case of television. The year portion of this value should match the <a href="#ReleaseYear">ReleaseYear</a>, if that optional element is present. This information is particularly useful in matching this work to content in other catalogs. A match allows us to show a single listing for a work that shows all of its available sources rather than having multiple search results for same thing.</p>
+
+<p><strong>Required in ReleaseInfo:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Deprecated</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#ReleaseInfo">ReleaseInfo</a> (deprecated)</td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>An XML <em>date</em> value. This value takes the form YYYY-MM-DD (year, month, and date).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  ...
+  <span class="nt">&lt;ReleaseInfo&gt;</span>
+    <span class="nt">&lt;ReleaseDate&gt;</span>2012-05-13<span class="nt">&lt;/ReleaseDate&gt;</span>
+  <span class="nt">&lt;/ReleaseInfo&gt;</span>
+<span class="nt">&lt;/TvShow&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ReleaseInfo">ReleaseInfo (deprecated)</h2>
+
+<p><strong>Deprecated, do not use</strong>. For release date information, use <a href="#ReleaseDate">ReleaseDate</a> or <a href="#OriginalAirDate">OriginalAirDate</a> as appropriate to the work type. Release country information is no longer used.</p>
+
+<p>Contains elements that specify a work’s country of release and release date.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#ReleaseDateDep">ReleaseDate</a> (required, deprecated), <a href="#ReleaseCountry">ReleaseCountry</a> (optional, deprecated)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;ReleaseInfo&gt;</span>
+    <span class="nt">&lt;ReleaseDate&gt;</span>2002-02-20<span class="nt">&lt;/ReleaseDate&gt;</span>
+    <span class="nt">&lt;ReleaseCountry&gt;</span>BT<span class="nt">&lt;/ReleaseCountry&gt;</span>
+  <span class="nt">&lt;/ReleaseInfo&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ReleaseYear">ReleaseYear</h2>
+
+<p>The year in which the work was originally released to the public, or the first air date in the case of television. Note that this value should match the year given in the same work’s <a href="#ReleaseDate">ReleaseDate</a> or <a href="#OriginalAirDate">OriginalAirDate</a> element.</p>
+
+<p><strong>Optional, but highly recommended:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Comments</td>
+      <td>While this element is optional, we recommend that you include it. This value is particularly helpful in allowing us to match this work with the same work from other providers, which improves the customer search experience by bundling all offers for the work into a single search result. That, in turn, improves the discoverability of your particular offer.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;ReleaseYear&gt;</span>1959<span class="nt">&lt;/Releaseyear&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="RentalOffer">RentalOffer</h2>
+
+<p>One of the four offer types. Under this offer, the work can be viewed for a limited amount of time for a one-time payment. If necessary, you can have multiple RentalOffer elements under Offers.</p>
+
+<p><strong>Optional, though at least one offer type is required under Offers:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Offers">Offers</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>Required: <a href="#Regions">Regions</a>, <a href="#Price">Price</a>, <a href="#Duration">Duration</a> <br /> Optional: <a href="#LaunchDetails">LaunchDetails</a>, <a href="#Quality">Quality</a> (deprecated), <a href="#WindowStart">WindowStart</a>, <a href="#WindowEnd">WindowEnd</a></td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;RentalOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  <span class="nt">&lt;LaunchDetails&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>en-US<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>fr<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>es<span class="nt">&lt;/Subtitle&gt;</span>
+  <span class="nt">&lt;/LaunchDetails&gt;</span>
+  <span class="nt">&lt;Price</span> <span class="na">currency=</span><span class="s">"USD"</span><span class="nt">&gt;</span>1.99<span class="nt">&lt;/Price&gt;</span>
+  <span class="nt">&lt;Duration&gt;</span>120<span class="nt">&lt;/Duration&gt;</span>
+<span class="nt">&lt;/RentalOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Role">Role</h2>
+
+<p>The character’s name in a work, as played by a CastMember. Examples are Robin Hood, Sir Lancelot du Lac, Athena, or Self. Do not use “actor” (all CastMember entries are actors) or “unknown” for this value. A CastMember element can contain multiple Role elements if that person played multiple roles.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#CastMember">CastMember</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s language setting under which to use this string.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Credits&gt;</span>
+  <span class="nt">&lt;CastMember&gt;</span>
+    <span class="nt">&lt;Name</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Alan Smithee<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;ExternalID</span> <span class="na">scheme=</span><span class="s">"imdb"</span><span class="nt">&gt;</span>tt0000000<span class="nt">&lt;/ExternalID&gt;</span>
+    <span class="nt">&lt;Role</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Robin Hood<span class="nt">&lt;/Role&gt;</span>
+    <span class="nt">&lt;Role</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Self<span class="nt">&lt;/Role&gt;</span>
+  <span class="nt">&lt;/CastMember&gt;</span>
+<span class="nt">&lt;/Credits&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="RuntimeMinutes">RuntimeMinutes</h2>
+
+<p>The overall running time of the content, in minutes. This is a non-negative number and is expected to be less than 2880, though there may be instances that legitimately exceed that value. Each work can have only one RuntimeMinutes element.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;RuntimeMinutes&gt;</span>37<span class="nt">&lt;/RuntimeMinutes&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Score">Score</h2>
+
+<p>An average score (rating) for a work based on customer feedback. How you gather that information is up to you, as well as setting the <a href="#MaxValue">MaxValue</a> to give a scale to the rating system. You can add an optional <a href="#Count">Count</a> of how many votes contributed to the Score. A CustomerRating can contain only a single Score.</p>
+
+<p><strong>Required in CustomerRating:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#CustomerRating">CustomerRating</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Example</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CustomerRating&gt;</span>
+  <span class="nt">&lt;Score&gt;</span>8.2<span class="nt">&lt;/Score&gt;</span>
+  <span class="nt">&lt;MaxValue&gt;</span>10<span class="nt">&lt;/MaxValue&gt;</span>
+  <span class="nt">&lt;Count&gt;</span>512<span class="nt">&lt;/Count&gt;</span>
+<span class="nt">&lt;/CustomerRating&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="SeasonID">SeasonID</h2>
+
+<p>The ID of the season of which a TVEpisode is a part. The <a href="#TVSeason">TVSeason</a> with this <a href="#ID">ID</a> must be present in the same catalog as this TvEpisode. You have the option of using SeasonID or <a href="#SeasonInShow">SeasonInShow</a> to specify the season, but not both. SeasonID should always be used when the season is in your catalog. If is not in your catalog, consider creating a TvSeason entry.</p>
+
+<p><strong>Required if no SeasonInShow element is present:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#TvEpisode">TvEpisode</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Example</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvSeason&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>SEA-2329880<span class="nt">&lt;/ID&gt;</span>
+  ...
+<span class="nt">&lt;/TvSeason&gt;</span>
+<span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;SeasonID&gt;</span>SEA-2329880<span class="nt">&lt;/SeasonID&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="SeasonInShow">SeasonInShow</h2>
+
+<p>The number of a season that a TVEpisode is a part of, when that season is not part of your catalog. SeasonInShow is simply a number for use in the UI and is not required to match anything. You have the option of using <a href="#SeasonID">SeasonID</a> or SeasonInShow to specify the season, but not both. Use SeasonInShow <em>only</em> in the absence of SeasonID, which should be a rare occurrance.</p>
+
+<p><strong>Required if no SeasonID element is present:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#TvEpisode">TvEpisode</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;SeasonInShow&gt;</span>2<span class="nt">&lt;/SeasonInShow&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="SeasonTitle">SeasonTitle</h2>
+
+<p>A title for the season in which a TvEpisode appeared, such as “Season 2”. Note that if the corresponding TvSeason element is included in your catalog, this value is not required to match its <a href="#Title">Title</a>, though it should. Each TvEpisode can have only one SeasonTitle.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#TvEpisode">TvEpisode</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s language setting under which to use this string.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;SeasonInShow&gt;</span>2<span class="nt">&lt;/SeasonInShow&gt;</span>
+  <span class="nt">&lt;SeasonTitle</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Season 2<span class="nt">&lt;/SeasonTitle&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ShortDescription">ShortDescription</h2>
+
+<p>A two- or three-line description of a work’s content. Do not use information included elsewhere, such as the work’s title, for the ShortDescription. Each work can contain multiple ShortDescription elements for the purpose of providing localized descriptions. To provide a longer, more detailed description, use the <a href="#Synopsis">Synopsis</a> element.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s l anguage setting under which to use this string.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvSpecial&gt;</span>
+  ...
+  <span class="nt">&lt;ShortDescription</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Alan shows us some trees and sings songs about them.<span class="nt">&lt;/ShortDescription&gt;</span>
+  ...
+<span class="nt">&lt;/TvSpecial&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ShowID">ShowID</h2>
+
+<p>Used to tie a TvEpisode, TvSeason, or TvSpecial to a TvShow in your catalog. This value must match the <a href="#ID">ID</a> value in a TvShow element. You have the option of using ShowID or <a href="#ShowTitle">ShowTitle</a> to specify the show, but not both. Always use ShowID when the TvShow is in your catalog.</p>
+
+<p><strong>Required in the absence of ShowTitle for TvEpisode and TvSeason:</strong><br />
+<strong>Optional for TvSpecial:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>TV-2329880<span class="nt">&lt;/ID&gt;</span>
+  ...
+<span class="nt">&lt;/TvShow&gt;</span>
+<span class="nt">&lt;TvSeason&gt;</span>
+  ...
+  <span class="nt">&lt;ShowID&gt;</span>TV-2329880<span class="nt">&lt;/ShowID&gt;</span>
+  ...
+<span class="nt">&lt;/TvSeason&gt;</span>
+<span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;ShowID&gt;</span>TV-2329880<span class="nt">&lt;/ShowID&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="ShowTitle">ShowTitle</h2>
+
+<p>Used to tie a TvEpisode, TvSeason, or TvSpecial to a TvShow in your catalog. This value is simply a string for use in the UI and is not required to match any title in your catalog. You have the option of using <a href="#ShowID">ShowID</a> or ShowTitle to specify the show, but not both. Use ShowTitle <em>only</em> in the absence of ShowID.</p>
+
+<p><strong>Required in the absence of ShowID for TvEpisode and TvSeason:</strong><br />
+<strong>Optional for TvSpecial:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s language setting under which to use this string.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvSeason&gt;</span>
+  ...
+  <span class="nt">&lt;ShowTitle</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Depth of Field<span class="nt">&lt;/ShowTitle&gt;</span>
+  ...
+<span class="nt">&lt;/TvSeason&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Source">Source</h2>
+
+<p>Where the work originated. Each work can have only one Source.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>original <br /> licensed <br /> unknown <br /> other</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Comments <br />(the values represent these sources)</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Value</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>original</td>
+      <td>The provider of this catalog produced or created this content.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>licensed</td>
+      <td>The provider of this catalog has licensed the work from another party.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>unknown</td>
+      <td>The source of this content is unknown.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>other</td>
+      <td>The source of the work is known but is neither original nor licensed.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;MiniSeriesEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;Source&gt;</span>licensed<span class="nt">&lt;/Source&gt;</span>
+  ...
+<span class="nt">&lt;/MiniSeriesEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Studio">Studio</h2>
+
+<p>The studio that produced the work. A work can have multiple Studio entries.</p>
+
+<p><strong>Required in the optional Studios element:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Studios">Studios</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Example</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;Studios&gt;</span>
+    <span class="nt">&lt;Studio&gt;</span>Amazon Studios<span class="nt">&lt;/Studio&gt;</span>
+    <span class="nt">&lt;Studio&gt;</span>Another Production Company<span class="nt">&lt;/Studio&gt;</span>
+  <span class="nt">&lt;/Studios&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Studios">Studios</h2>
+
+<p>Contains one or more Studio elements that identify the studio(s) that produced the work.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#Studio">Studio</a> (at least one required)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;Studios&gt;</span>
+    <span class="nt">&lt;Studio&gt;</span>Amazon Studios<span class="nt">&lt;/Studio&gt;</span>
+    <span class="nt">&lt;Studio&gt;</span>Another Production Company<span class="nt">&lt;/Studio&gt;</span>
+  <span class="nt">&lt;/Studios&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="SubscriptionOffer">SubscriptionOffer</h2>
+
+<p>One of the four offer types. Under this offer, the work can be watched by subscribers to the provider’s service. If necessary, you can have multiple SubscriptionOffer elements under Offers.</p>
+
+<p><strong>Optional, though at least one offer type is required under Offers:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Offers">Offers</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>Required: <a href="#Regions">Regions</a> <br /> Optional: <a href="#LaunchDetails">LaunchDetails</a>, <a href="#Quality">Quality</a> (deprecated), <a href="#WindowStart">WindowStart</a>, <a href="#WindowEnd">WindowEnd</a></td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>CA<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  <span class="nt">&lt;WindowStart&gt;</span>2014-02-06T12:00:00-07:00<span class="nt">&lt;/WindowStart&gt;</span>
+  <span class="nt">&lt;WindowEnd&gt;</span>2016-01-01T07:00:00-07:00<span class="nt">&lt;/WindowEnd&gt;</span>
+  <span class="nt">&lt;LaunchDetails&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>en-US<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>en-US<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>fr<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>es<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;LaunchId&gt;</span>EXTRA-11113_HD_en-US<span class="nt">&lt;/LaunchId&gt;</span>
+  <span class="nt">&lt;/LaunchDetails&gt;</span>
+<span class="nt">&lt;/SubscriptionOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Subtitle">Subtitle</h2>
+
+<p>A language option for the work’s subtitles. A work can have multiple subtitle options.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.2</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#LaunchDetails">LaunchDetails</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;Regions&gt;</span>
+    <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+  <span class="nt">&lt;/Regions&gt;</span>
+  <span class="nt">&lt;LaunchDetails&gt;</span>
+    <span class="nt">&lt;Quality&gt;</span>HD<span class="nt">&lt;/Quality&gt;</span>
+    <span class="nt">&lt;AudioLanguage&gt;</span>en-US<span class="nt">&lt;/AudioLanguage&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>fr<span class="nt">&lt;/Subtitle&gt;</span>
+    <span class="nt">&lt;Subtitle&gt;</span>es<span class="nt">&lt;/Subtitle&gt;</span>
+  <span class="nt">&lt;/LaunchDetails&gt;</span>
+<span class="nt">&lt;/SubscriptionOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Synopsis">Synopsis</h2>
+
+<p>A description of a work’s content. Synopsis is intended to give more detail than <a href="#ShortDescription">ShortDescription</a>. Do not use the ShortDescription or the work’s <a href="#Title">Title</a> as the Synopsis. Each work can contain multiple Synopsis elements for the purpose of providing localized descriptions.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s language setting under which to use this string.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvSpecial&gt;</span>
+  ...
+  <span class="nt">&lt;ShortDescription</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Alan shows us some trees and sings songs about them.<span class="nt">&lt;/ShortDescription&gt;</span>
+  <span class="nt">&lt;Synopsis</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Alan Smithee, man about town and fervent urban arborist, takes us on a
+    musical journey around his home town, stopping by some favorite trees to sing about them. As
+    expected from Mr. Smithee, no path runs straight and his plans meander as he encounters guest
+    stars and battles a lumberjack with a literal ax to grind.<span class="nt">&lt;/Synopsis&gt;</span>
+  ...
+<span class="nt">&lt;/TvSpecial&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="System">System</h2>
+
+<p>The rating system, normally an official organization, that determined a work’s rating. Each rating can have only one System.</p>
+
+<p><strong>Required in ContentRating:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#ContentRating">ContentRating</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ContentRatings&gt;</span>
+  <span class="nt">&lt;ContentRating&gt;</span>
+    <span class="nt">&lt;System&gt;</span>MPAA<span class="nt">&lt;/System&gt;</span>
+    <span class="nt">&lt;Certification&gt;</span>G<span class="nt">&lt;/Certification&gt;</span>
+  <span class="nt">&lt;/ContentRating&gt;</span>
+<span class="nt">&lt;/ContentRatings&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Title">Title</h2>
+
+<p>A work’s title. Each work can contain multiple Title elements for the purpose of providing localized titles.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Attribute</td>
+      <td>Accepted Values</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>locale</td>
+      <td>Standard XML/HTML language codes, such as en, en-US, fr, or fr-FR</td>
+      <td><strong>Required</strong>. The device or software’s language setting under which to use this string.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pronunciation</td>
+      <td>String</td>
+      <td><strong>Optional</strong>. Used when the element’s text is given in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from the kanji) rather than characters. The <em>pronunciation</em> attribute provides that information, typically using hiragana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>TV123456<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;Title</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Office Factor<span class="nt">&lt;/Title&gt;</span>
+  ...
+<span class="nt">&lt;/TvShow&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="TvEpisode">TvEpisode</h2>
+
+<p>One of the basic work types, a TvEpisode is a single episode of a TvShow, normally also associated with a TvSeason.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Common to All Work Types</td>
+      <td>Required: <a href="#ID">ID</a>, <a href="#Offers">Offers</a>, <a href="#Title">Title</a> <br /> Optional: <a href="#AdultProduct">AdultProduct</a> (deprecated), <a href="#Color">Color</a>, <a href="#ContentRatings">ContentRatings</a>, <a href="#JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a>, <a href="#Copyright">Copyright</a>, <a href="#Credits">Credits</a>, <a href="#CustomerRating">CustomerRating</a>, <a href="#ExternalID">ExternalID</a>, <a href="#Genres">Genres</a>, <a href="#ImageUrl">ImageUrl</a>, <a href="#Language">Language</a>, <a href="#Rank">Rank</a>, <a href="#ReleaseInfo">ReleaseInfo</a> (deprecated), <a href="#ShortDescription">ShortDescription</a>, <a href="#ReleaseYear">ReleaseYear</a>, <a href="#RuntimeMinutes">RuntimeMinutes</a>, <a href="#Source">Source</a>, <a href="#Studios">Studios</a>, <a href="#Synopsis">Synopsis</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements <br />Specific to TvEpisode</td>
+      <td>Required: <a href="#ShowID">ShowID</a> or <a href="#ShowTitle">ShowTitle</a>, but not both <br /> Required: <a href="#SeasonID">SeasonID</a> or <a href="#SeasonInShow">SeasonInShow</a>, but not both <br /> Required: <a href="#EpisodeInSeason">EpisodeInSeason</a> <br /> Optional: <a href="#SeasonTitle">SeasonTitle</a>, <a href="#OriginalAirDate">OriginalAirDate</a></td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>ABC-123457<span class="nt">&lt;/ID&gt;</span>
+  ...
+<span class="nt">&lt;/TvShow&gt;</span>
+<span class="nt">&lt;TvSeason&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>TVS-987654<span class="nt">&lt;/ID&gt;</span>
+  ...
+<span class="nt">&lt;/TvSeason&gt;</span>
+<span class="nt">&lt;TvEpisode&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>TVE2329880<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;Title</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>What's in a Name?<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;Offers&gt;</span>
+    <span class="nt">&lt;SubscriptionOffer&gt;</span>
+      <span class="nt">&lt;Regions&gt;</span>
+        <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+      <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;/SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;/Offers&gt;</span>
+  <span class="nt">&lt;ShowID&gt;</span>ABC-123457<span class="nt">&lt;/ShowID&gt;</span>
+  <span class="nt">&lt;SeasonID&gt;</span>TVS-987654<span class="nt">&lt;/SeasonInShow&gt;</span>
+  <span class="nt">&lt;EpisodeInSeason&gt;</span>5<span class="nt">&lt;/EpisodeInSeason&gt;</span>
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="TvSeason">TvSeason</h2>
+
+<p>One of the basic work types, a TvSeason is a single season of a TvShow. When a TvEpisode’s <a href="#SeasonID">SeasonID</a> value is the same as the TvSeason’s <a href="#ID">ID</a>, that episode declares itself part of the season.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Common to All Work Types</td>
+      <td>Required: <a href="#ID">ID</a>, <a href="#Offers">Offers</a>, <a href="#Title">Title</a> <br /> Optional: <a href="#AdultProduct">AdultProduct</a> (deprecated), <a href="#Color">Color</a>, <a href="#ContentRatings">ContentRatings</a>, <a href="#JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a>, <a href="#Copyright">Copyright</a>, <a href="#Credits">Credits</a>, <a href="#CustomerRating">CustomerRating</a>, <a href="#ExternalID">ExternalID</a>, <a href="#Genres">Genres</a>, <a href="#ImageUrl">ImageUrl</a>, <a href="#Language">Language</a>, <a href="#Rank">Rank</a>, <a href="#ReleaseInfo">ReleaseInfo</a> (deprecated), <a href="#ShortDescription">ShortDescription</a>, <a href="#ReleaseYear">ReleaseYear</a>, <a href="#RuntimeMinutes">RuntimeMinutes</a>, <a href="#Source">Source</a>, <a href="#Studios">Studios</a>, <a href="#Synopsis">Synopsis</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Specific to TvSeason</td>
+      <td>Required: <a href="#ShowID">ShowID</a> or <a href="#ShowTitle">ShowTitle</a>, but not both <br /> Required: <a href="#SeasonInShow">SeasonInShow</a></td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>ABC-123457<span class="nt">&lt;/ID&gt;</span>
+  ...
+<span class="nt">&lt;/TvShow&gt;</span>
+<span class="nt">&lt;TvSeason&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>TVS2329880<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;Title</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Season Five<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;Offers&gt;</span>
+    <span class="nt">&lt;SubscriptionOffer&gt;</span>
+      <span class="nt">&lt;Regions&gt;</span>
+        <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+      <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;/SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;/Offers&gt;</span>
+  <span class="nt">&lt;ShowID&gt;</span>ABC-123457<span class="nt">&lt;/ShowID&gt;</span>
+  <span class="nt">&lt;SeasonInShow&gt;</span>5<span class="nt">&lt;/SeasonInShow&gt;</span>
+<span class="nt">&lt;/TvSeason&gt;</span>
+<span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;ShowID&gt;</span>ABC-123457<span class="nt">&lt;/ShowID&gt;</span>
+  <span class="nt">&lt;SeasonID&gt;</span>TVS2329880<span class="nt">&lt;/SeasonID&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="TvShow">TvShow</h2>
+
+<p>One of the basic work types, a TvShow is a televised series made up of seasons and episodes. It can also have associated specials outside of the regular sequence of episodes. When a TvSeason, TvEpisode, or TvSpecial’s <a href="#ShowID">ShowID</a> value is the same as the TvShow’s <a href="#ID">ID</a>, that season, episode, or special declares itself part of the show.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Common to All Work Types</td>
+      <td>Required: <a href="#ID">ID</a>, <a href="#Offers">Offers</a>, <a href="#Title">Title</a> <br />Optional: <a href="#AdultProduct">AdultProduct</a> (deprecated), <a href="#Color">Color</a>, <a href="#ContentRatings">ContentRatings</a>, <a href="#JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a>, <a href="#Copyright">Copyright</a>, <a href="#Credits">Credits</a>, <a href="#CustomerRating">CustomerRating</a>, <a href="#ExternalID">ExternalID</a>, <a href="#Genres">Genres</a>, <a href="#ImageUrl">ImageUrl</a>, <a href="#Language">Language</a>, <a href="#Rank">Rank</a>, <a href="#ReleaseInfo">ReleaseInfo</a> (deprecated), <a href="#ShortDescription">ShortDescription</a>, <a href="#ReleaseYear">ReleaseYear</a>, <a href="#RuntimeMinutes">RuntimeMinutes</a>, <a href="#Source">Source</a>, <a href="#Studios">Studios</a>, <a href="#Synopsis">Synopsis</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Specific to TvShow</td>
+      <td><a href="#ReleaseDate">ReleaseDate</a> (optional)</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvShow&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>RS-2329880<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;Title</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Office Factor<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;Offers&gt;</span>
+    <span class="nt">&lt;SubscriptionOffer&gt;</span>
+      <span class="nt">&lt;Regions&gt;</span>
+        <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+      <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;/SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;/Offers&gt;</span>
+<span class="nt">&lt;/TvShow&gt;</span>
+<span class="nt">&lt;TvSeason&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>TVS2329880<span class="nt">&lt;/ID&gt;</span>
+  ...
+  <span class="nt">&lt;ShowID&gt;</span>RS-2329880<span class="nt">&lt;/ShowID&gt;</span>
+  ...
+<span class="nt">&lt;/TvSeason&gt;</span>
+<span class="nt">&lt;TvEpisode&gt;</span>
+  ...
+  <span class="nt">&lt;ShowID&gt;</span>RS-2329880<span class="nt">&lt;/ShowID&gt;</span>
+  <span class="nt">&lt;SeasonID&gt;</span>TVS2329880<span class="nt">&lt;/SeasonID&gt;</span>
+  ...
+<span class="nt">&lt;/TvEpisode&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="TvSpecial">TvSpecial</h2>
+
+<p>One of the basic work types, TvSpecial is used for televised events that don’t belong to the traditional show-season-episode television hierarchy. These can be one-time events such as a holiday special, or they can account for programs in which each episode has a unique airdate rather than an episode number (news programs, for instance). A TvSpecial can be associated with a TvShow (though not a TvSeason) or it can be a standalone event. Some other examples are awards programs, televised concerts, and retrospectives.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Common to All Work Types</td>
+      <td>Required: <a href="#ID">ID</a>, <a href="#Offers">Offers</a>, <a href="#Title">Title</a> <br /> Optional: <a href="#AdultProduct">AdultProduct</a> (deprecated), <a href="#Color">Color</a>, <a href="#ContentRatings">ContentRatings</a>, <a href="#JP_Require18PlusAgeConfirmation">JP_Require18PlusAgeConfirmation</a>, <a href="#Copyright">Copyright</a>, <a href="#Credits">Credits</a>, <a href="#CustomerRating">CustomerRating</a>, <a href="#ExternalID">ExternalID</a>, <a href="#Genres">Genres</a>, <a href="#ImageUrl">ImageUrl</a>, <a href="#Language">Language</a>, <a href="#Rank">Rank</a>, <a href="#ReleaseInfo">ReleaseInfo</a> (deprecated), <a href="#ShortDescription">ShortDescription</a>, <a href="#ReleaseYear">ReleaseYear</a>, <a href="#RuntimeMinutes">RuntimeMinutes</a>, <a href="#Source">Source</a>, <a href="#Studios">Studios</a>, <a href="#Synopsis">Synopsis</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements Specific to TvShow</td>
+      <td>Required: <a href="#OriginalAirDate">OriginalAirDate</a> (added in CDF v1.3)</td>
+    </tr>
+    <tr>
+      <td>Optional: <a href="#ShowID">ShowID</a> or <a href="#ShowTitle">ShowTitle</a>, but not both (added in CDF v1.3)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;TvSpecial&gt;</span>
+  <span class="nt">&lt;ID&gt;</span>SP-2329880<span class="nt">&lt;/ID&gt;</span>
+  <span class="nt">&lt;Title</span> <span class="na">locale=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>Cheese: Friend or Enemy?<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;Offers&gt;</span>
+    <span class="nt">&lt;SubscriptionOffer&gt;</span>
+      <span class="nt">&lt;Regions&gt;</span>
+        <span class="nt">&lt;Country&gt;</span>US<span class="nt">&lt;/Country&gt;</span>
+      <span class="nt">&lt;/Regions&gt;</span>
+    <span class="nt">&lt;/SubscriptionOffer&gt;</span>
+  <span class="nt">&lt;/Offers&gt;</span>
+  <span class="nt">&lt;OriginalAirDate&gt;</span>2005-04-29T20:00:00<span class="nt">&lt;/OriginalAirDate&gt;</span>
+<span class="nt">&lt;/TvSpecial&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Type">Type</h2>
+
+<p>Specifies an Extra as a trailer (preview) or a clip. You can regard anything that isn’t a trailer as a clip, though it might be something as extensive as a making-of documentary about the Extra’s associated Movie. Each Extra can have only one Type.</p>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.3</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>clip <br /> trailer</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Extra&gt;</span>
+  ..
+  <span class="nt">&lt;Type&gt;</span>trailer<span class="nt">&lt;/Type&gt;</span>
+  ...
+<span class="nt">&lt;/Extra&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="WindowEnd">WindowEnd</h2>
+
+<p>The date and time after which the work will no longer be available under a particular offer. Each offer can have only one WindowEnd. Using <a href="#WindowStart">WindowStart</a> and WindowEnd, you can declare an offer to be available only for a specific window of time. After the time specified by WindowEnd, the offer is no longer presented to the viewer. If all offers have expired, the work itself is not shown to the viewer.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#SubscriptionOffer">SubscriptionOffer</a>, <a href="#FreeOffer">FreeOffer</a>, <a href="#PurchaseOffer">PurchaseOffer</a>, <a href="#RentalOffer">RentalOffer</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>An XML <em>dateTime</em> value. This value takes the form YYYY-MM-DDThh:mm:ss where YYYY-MM-DD is the year, month, and date and hh:mm:ss is the hour, minute, and second. The ‘T’ separates the two portions. The entire value is required, from the year down to the second. You can also add an offset from UTC to the end of the value to account for a particular time zone.</td>
+    </tr>
+    <tr>
+      <td>Comments</td>
+      <td>WindowsStart and WindowsEnd can be used together or separately to control a work’s availablility under an offer. <br /><br />• WindowsStart only: The work is available indefinitely from that time forward unless it is removed from the catalog. <br /><br />• WindowsEnd only: The work is available immediately, but only until that time. <br /><br />• WindowsStart + WindowsEnd: The work is available only in that window of time. <br /><br />• Neither WindowsStart nor WindowsEnd: The work is immediately available and always will be unless it is removed from the catalog</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;FreeOffer&gt;</span>
+  ...
+  <span class="nt">&lt;WindowStart&gt;</span>2014-02-06T12:00:00-07:00<span class="nt">&lt;/WindowStart&gt;</span>
+  <span class="nt">&lt;WindowEnd&gt;</span>2016-01-01T07:00:00-07:00<span class="nt">&lt;/WindowEnd&gt;</span>
+  ...
+<span class="nt">&lt;/FreeOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="WindowStart">WindowStart</h2>
+
+<p>The date and time after which the work becomes available under a particular offer. Using WindowStart and <a href="#WindowEnd">WindowEnd</a>, you can declare an offer to be available only for a specific window of time. Before and after that window, that offer is not shown to the viewer. If no offer is available at the time, the work itself is not shown to the viewer. Each offer can have only one WindowStart.</p>
+
+<p><strong>Optional:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#SubscriptionOffer">SubscriptionOffer</a>, <a href="#FreeOffer">FreeOffer</a>, <a href="#PurchaseOffer">PurchaseOffer</a>, <a href="#RentalOffer">RentalOffer</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td>An XML <em>dateTime</em> value. This value takes the form YYYY-MM-DDThh:mm:ss where YYYY-MM-DD is the year, month, and date and hh:mm:ss is the hour, minute, and second. The ‘T’ separates the two portions. The entire value is required, from the year down to the second. You can also add an offset from UTC to the end of the value to account for a particular time zone.</td>
+    </tr>
+    <tr>
+      <td>Comments</td>
+      <td>WindowsStart and WindowsEnd can be used together or separately to control a work’s availablility under an offer. <br /><br />• WindowsStart only: The work is available indefinitely after that time unless it is removed from the catalog. <br /><br />• WindowsEnd only: The work is available immediately, but only until that time <br /><br />• WindowsStart + WindowsEnd: The work is available only in that window of time <br /><br />• Neither WindowsStart nor WindowsEnd: The work is available immediately and always will be unless it is removed from the catalog</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;FreeOffer&gt;</span>
+  ...
+  <span class="nt">&lt;WindowStart&gt;</span>2014-02-06T12:00:00-07:00<span class="nt">&lt;/WindowStart&gt;</span>
+  <span class="nt">&lt;WindowEnd&gt;</span>2016-01-01T07:00:00-07:00<span class="nt">&lt;/WindowEnd&gt;</span>
+  ...
+<span class="nt">&lt;/FreeOffer&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="Works">Works</h2>
+
+<p>Contains all of the individual entriesin your catalog: movies, TV shows, seasons, specials, mini-series, episodes, and extras. Each catalog file must contain a single Works element. The Works element can contain as many work entries as needed, and as many of each type as needed.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> In CDF v1.0 to v1.2, the Works element was required to contain at least a single work. As of CDF v1.3, it can be empty. This will have the effect of removing your catalog’s contents from Amazon Fire TV’s universal browse and search.</div>
+
+<p><strong>Required:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Added</td>
+      <td>CDF version 1.0</td>
+    </tr>
+    <tr>
+      <td>Parent Elements</td>
+      <td><a href="#Catalog">Catalog</a></td>
+    </tr>
+    <tr>
+      <td>Child Elements</td>
+      <td><a href="#Movie">Movie</a>, <a href="#TvShow">TvShow</a>, <a href="#TvSeason">TvSeason</a>, <a href="#TvEpisode">TvEpisode</a>, <a href="#TvSpecial">TvSpecial</a>, <a href="#MiniSeries">MiniSeries</a>, <a href="#MiniSeriesEpisode">MiniSeriesEpisode</a>, <a href="#Extra">Extra</a></td>
+    </tr>
+    <tr>
+      <td>Attributes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Accepted values</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Catalog&gt;</span>
+  <span class="nt">&lt;Partner&gt;</span>Everything Ever Made Filmworks<span class="nt">&lt;/Partner&gt;</span>
+  <span class="nt">&lt;Works&gt;</span>
+    ...
+  <span class="nt">&lt;/Works&gt;</span>
+<span class="nt">&lt;/Catalog&gt;</span>
+</code></pre>
+</div>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

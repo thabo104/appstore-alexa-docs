@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fire TV開発とAndroid TV開発の違い | Fire TV</title>
+    <base target="_self">
+    <meta name="description" content="Fire TVとAndroid TVは、どちらもAndroidが使用されているため、開発したAndroidアプリをAmazonアプリストアとGoogle Playストアの両方で配信することができます。AmazonストアとGoogleストアの両方で配信することによって、アプリの知名度とダウンロード件数を大幅に向上させることができます。 ただし、Fire TVにはコードの中で考慮すべき違いがいくつかあります。これらの違いは、たとえばハードウェアやサービスを構成する独自の要素に起因しています。一方のサービスには存在する機能がもう一方のサービスにはない場合もあります。異なるサービスではあるものの、同等の働きをするものもあります。 コードの中でこうした違いに対応するためには、Amazon Fire TV端末を特定し、条件分岐させることで、それに応じた動作をコーディングする必要があります。  Fire TVとは何か、Android TVとは何か Android TVとFire TVの違い  Leanback Support Library <a href="#音声検索"... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Amazon Fire TV用アプリとゲームを開発するための準備</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV端末の仕様</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Amazon Fire TV開発フレームワークの比較</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="amazon-fire-tv-differences-from-android-tv-development.html">Fire TV開発とAndroid TV開発の違い</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">Fire TV開発における最新情報</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Amazon Fire TVのよくある質問 (FAQ)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">AmazonアプリストアへのFire TVアプリの申請</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">開発環境のセットアップ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">ADBを使用してFire TVに接続する</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">アプリのインストールと実行</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-on-amazon-fire-tv.html">コントローラの概要</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">リモート入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">ゲームコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Unityによるコントローラ入力</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">コントローラの識別</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">コントローラ動作のガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">コントローラ画像アセット</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">その他のリソース</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> > Fire TV > </div>
+                    <h1>Fire TV開発とAndroid TV開発の違い</h1>
+
+                    
+
+                    <p>Fire TVとAndroid TVは、どちらもAndroidが使用されているため、開発したAndroidアプリをAmazonアプリストアとGoogle Playストアの両方で配信することができます。AmazonストアとGoogleストアの両方で配信することによって、アプリの知名度とダウンロード件数を大幅に向上させることができます。</p>
+
+<p>ただし、Fire TVにはコードの中で考慮すべき違いがいくつかあります。これらの違いは、たとえばハードウェアやサービスを構成する独自の要素に起因しています。一方のサービスには存在する機能がもう一方のサービスにはない場合もあります。異なるサービスではあるものの、同等の働きをするものもあります。</p>
+
+<p>コードの中でこうした違いに対応するためには、<a href="identifying-amazon-fire-tv-devices">Amazon Fire TV端末を特定</a>し、条件分岐させることで、それに応じた動作をコーディングする必要があります。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#fire-tvとは何かandroid-tvとは何か" id="markdown-toc-fire-tvとは何かandroid-tvとは何か">Fire TVとは何か、Android TVとは何か</a></li>
+  <li><a href="#android-tvとfire-tvの違い" id="markdown-toc-android-tvとfire-tvの違い">Android TVとFire TVの違い</a>    <ul>
+      <li><a href="#leanback-support-library" id="markdown-toc-leanback-support-library">Leanback Support Library</a></li>
+      <li><a href="#音声検索" id="markdown-toc-音声検索">音声検索</a></li>
+      <li><a href="#グローバル検索" id="markdown-toc-グローバル検索">グローバル検索</a></li>
+      <li><a href="#早送りボタン早戻しボタンメニューボタン" id="markdown-toc-早送りボタン早戻しボタンメニューボタン">早送りボタン、早戻しボタン、メニューボタン</a></li>
+      <li><a href="#googleのサービス" id="markdown-toc-googleのサービス">Googleのサービス</a></li>
+      <li><a href="#アプリ内課金" id="markdown-toc-アプリ内課金">アプリ内課金</a></li>
+      <li><a href="#firebase-analytics" id="markdown-toc-firebase-analytics">Firebase Analytics</a></li>
+      <li><a href="#sdkレベル" id="markdown-toc-sdkレベル">SDKレベル</a></li>
+      <li><a href="#おすすめの表示" id="markdown-toc-おすすめの表示">おすすめの表示</a></li>
+      <li><a href="#エミュレータ" id="markdown-toc-エミュレータ">エミュレータ</a></li>
+      <li><a href="#通知api" id="markdown-toc-通知api">通知API</a></li>
+      <li><a href="#ユーザー補助" id="markdown-toc-ユーザー補助">ユーザー補助</a></li>
+      <li><a href="#アプリストア" id="markdown-toc-アプリストア">アプリストア</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="fire-tvとは何かandroid-tvとは何か">Fire TVとは何か、Android TVとは何か</h2>
+
+<p>まず、Android TVとFire TVとは何かを明確にしておきましょう。</p>
+
+<ul>
+  <li><strong>Android TV</strong>とは、テレビ用に最適化されたAndroidオペレーティングシステムをいいます (Lollipop以降)。Android LollipopとLeanback Support Libraryには、テレビのプラットフォームにAndroidを最適化する機能が備わっています。Android TVは、テレビ端末単体でネイティブOSとして実行できるほか、テレビからセットトップボックスを介してAndroidを実行することができます。Android TVの詳細については、<a href="https://en.wikipedia.org/wiki/Android_TV">Wikipedia</a>を参照してください。</li>
+  <li><strong>Fire TV</strong>とは、ご使用のテレビでFireオペレーティングシステム (OS) を実行するFire TVセットトップボックスまたはFire TV Stickを指します。Fire OSは、Amazonのハードウェアとサービスに対応したAndroidフォークです。Fire OSは、最新のAndroidリリースにほぼ足並みを合わせる形で進化していますが、拡張範囲はLollipopおよびバックポートされたMarshmallowコードまでです(Fire OSはFireタブレットでも使用されていますが、テレビプラットフォームでの “10 フィートエクスペリエンス” に主眼を置いた機能はFireタブレットでは利用されません)。</li>
+</ul>
+
+<p>重要な点は、Android TVとFire TVはどちらもAndroidをベースにしており、アプリ開発において開発者が実装する技術は、相違点よりも共通点の方がはるかに多いということです。</p>
+
+<h2 id="android-tvとfire-tvの違い">Android TVとFire TVの違い</h2>
+
+<p>以降のセクションでは、Fire TVでの使用を予定しているコードの中で考慮に入れるべき相違点を見ていきます。</p>
+
+<h3 id="leanback-support-library">Leanback Support Library</h3>
+
+<p>Fire TVでは、AndroidのLeanback Support Libraryが一部サポートされています。Fire TVではLeanbackに含まれているテレビ用のUIコンポーネントが使用されており、Leanbackのウィジェットも動作しますが、Leanbackランチャーのアクティビティをタグで定義しても、アクティビティは動作しません。具体的には、アクティビティカテゴリ<a href="https://developer.android.com/reference/android/content/Intent.html#CATEGORY_LEANBACK_LAUNCHER"><code class="highlighter-rouge">CATEGORY_LEANBACK_LAUNCHER</code></a>がFire TVでは認識されません。</p>
+
+<h3 id="音声検索">音声検索</h3>
+
+<p>音声検索に関しては、Android TVではLeanback APIを利用した<em>アプリコントロール</em>が使用されています (<a href="https://developer.android.com/reference/android/support/v17/leanback/app/SearchFragment.html">SearchFragment</a>による音声認識など)。一方、Fire TVでの音声検索には、Amazon独自の<em>システムコントロール</em>が使用されています。</p>
+
+<p>ユーザーはFire TV上の任意の操作画面 (ランチャー、アプリ内など) で、音声対応リモコンのマイクボタンを押し、目的のテレビ番組やAlexaアクションを声に出して言うと、そのアクションによって<em>グローバル検索</em>が開始されます。このときに使用されるのはAlexaクラウドサービスであり、Leanbackライブラリの音声認識APIは使用されません。音声によるメディアリクエストでは、常にFire TVカタログからコンテンツが返されます。詳細については、「<a href="implementing-search-fire-tv">Implementing Search in Fire TV</a>」を参照してください。</p>
+
+<h3 id="グローバル検索">グローバル検索</h3>
+
+<p>Android TVでは、目的のコンテンツをグローバル検索に統合したい場合、検索結果のContentProviderをアプリから使用してローカルに実現できます。</p>
+
+<p>一方、Fire TVでグローバル検索の結果にコンテンツを表示させるには、<a href="integrating-your-catalog-with-fire-tv.html">メディアのコンテンツをFire TVカタログに統合</a>する必要があります。カタログへの送信は、(アプリ内からローカルにではなく) クラウドベースモデルで実現されます。</p>
+
+<h3 id="早送りボタン早戻しボタンメニューボタン">早送りボタン、早戻しボタン、メニューボタン</h3>
+
+<p>Android TVとFire TVにはどちらも、4 方向のD-Padボタン、D-Pad のCenter/選択ボタン、戻るボタン、再生/一時停止ボタンが備わっています。ただし、Fire TVにはさらに、早戻しボタン、早送りボタン、メニューボタンが備わっています。</p>
+
+<p>Fire TVの [Menu] ボタンを押すと、Androidのコンテキストメニューが起動し、画面の中央にメニューアイテムのリストが表示されます。[Menu] ボタンをオーバーライドして、独自のカスタムメニューユーザーインターフェースを提供するなどの目的に使用できます。</p>
+
+<p>メニューアイテムが 1 つだけ必要な場合は、単純な切り替えスイッチ (たとえば、クローズドキャプションのオン/オフ) として [Menu] ボタンを使用し、この機能をユーザーに知らせるためにヒントを画面に表示することもできます。</p>
+
+<h3 id="googleのサービス">Googleのサービス</h3>
+
+<p>Google固有のサービスに依存するAPI (位置情報サービスなど) は、Fire TVでは利用できません。<a href="https://developer.amazon.com/public/apis/experience/maps">Amazon Maps API</a>や<a href="https://developer.amazon.com/public/apis/earn/mobile-ads">Amazonモバイル広告API</a>は存在しますが、まだFire TVではサポートされていません。</p>
+
+<h3 id="アプリ内課金">アプリ内課金</h3>
+
+<p>Android TVでのアプリ内課金には、通常、Googleのアプリ内課金機能 (Google In-App Billing) を使用します。Fire TVでのアプリ内課金には、Amazonの<a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing">アプリ内課金 (IAP) API</a>を使用します。詳細については、<a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/migrating-from-googles-iab-to-amazons-iap">両者の詳しい機能比較を参照</a>してください。</p>
+
+<h3 id="firebase-analytics">Firebase Analytics</h3>
+
+<p>Android TVでは、分析ソリューションとしてFirebaseが使用されています。Fire TVでは、<a href="https://aws.amazon.com/mobileanalytics/">Amazon Mobile Analytics</a>やその他の分析パッケージ (Google Analytics、Flurry Analytics、Crashlyticsなど) を使用できます。</p>
+
+<h3 id="sdkレベル">SDKレベル</h3>
+
+<p>Android TVでは最新のSDK (Nougat) が使用できるのに対し、Fire TVではLollipopのみが最小SDKレベルとして使用されます(特定のアプリをサポートするために、Fire OSにはMarshmallowの一部のAPIがバックポートされています)。</p>
+
+<h3 id="おすすめの表示">おすすめの表示</h3>
+
+<p>Android TVでは、アプリからランチャーでおすすめの表示を行うことができます。Fire TVにはRecommendations APIが存在するものの、現時点では機能しません。つまり、Fire TVランチャー上のコンテンツをアプリから制御することはできません (ランチャーのおすすめカテゴリに対する登録は、一部の限られたアプリで間もなく対応予定となっていますが、現時点では実装されていません)。</p>
+
+<h3 id="エミュレータ">エミュレータ</h3>
+
+<p>開発したFire TVアプリのコードをテストするときに使用するのは、通常、仮想エミュレータではなく実際のFire TV端末です。詳細については、「<a href="fire-app-builder-connecting-adb-to-fire-tv.html">ADBを使用してFire TVに接続する</a>」を参照してください。</p>
+
+<h3 id="通知api">通知API</h3>
+
+<p>Fire TVアプリで通知を作成するには、標準の<a href="http://developer.android.com/reference/android/app/Notification.html">Android通知API</a>を使用します。Fire TVには、Android TVと同じトースト通知と永続化モデルが備わっています。ただし、Fire TVはトーストの他にもHeads up (高優先度) 通知に対応しており、それらの通知にはインタラクティブなボタンが利用できます。さらに、古い通知は、通知ドロワーには格納されずに通知センターに保存されます。詳細については、「<a href="notifications-for-amazon-fire-tv.html">Notifications for Amazon Fire TV</a>」を参照してください。</p>
+
+<h3 id="ユーザー補助">ユーザー補助</h3>
+
+<p>Fire TVには<a href="https://www.amazon.com/b?node=14100715011">VoiceView</a>が備わっており、目の不自由な方でも利用しやすいようにアプリを開発することができます。VoiceViewとユーザー補助の詳細については、次のページを参照してください。</p>
+
+<ul>
+  <li><a href="https://developer.amazon.com/appsandservices/solutions/platforms/fire-os/docs/implementing-accessibility-in-fireos">Understanding Assistive Technologies for Fire OS</a></li>
+  <li><a href="https://developer.amazon.com/appsandservices/solutions/platforms/fire-os/docs/implementing-accessibility-in-fireos">Implementing Accessibility in Fire OS</a></li>
+</ul>
+
+<h3 id="アプリストア">アプリストア</h3>
+
+<p>Android TV端末では、Google Playストアが使用されます。これに対してFire TVでは、Amazonアプリストアが使用されます。Google Playストアへのリンクはすべて、Amazonアプリストアへのリンクに変更する必要があります。</p>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li>Fire TV</li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

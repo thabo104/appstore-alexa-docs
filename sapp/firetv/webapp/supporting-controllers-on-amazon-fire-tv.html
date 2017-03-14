@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Controllers Overview | Fire TV</title>
+    
+    <base target="_self">
+    <meta name="description" content="The Amazon Fire TV platform supports user input from the Amazon Fire TV Remote, the Fire TV Voice Remote, the Fire game controller, and other game controllers that support the Bluetooth... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- TOC generator-->
+    <script src="assets/js/toc.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/getting_started/Controllers in Android Apps/supporting-controllers-on-amazon-fire-tv.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-firetv.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Overview</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Get Started Developing Apps and Games for Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="device-and-platform-specifications.html">Fire TV Device Specifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-development-framework-comparison.html">Fire TV Development Frameworks: WASK and FireBuilder</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-differences-from-android-tv-development.html">How Fire TV Development Differs from Android TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="design-and-user-experience-guidelines.html">TV App Design UX Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-fire-os-overview.html">What Is Fire OS?</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="whats-new-in-the-fire-tv-sdk.html">What's New in Fire TV Development</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-sdk-frequently-asked-questions.html">Fire TV FAQs</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="submitting-your-fire-tv-app-to-the-amazon-appstore.html">Submitting Your Fire TV App to the Appstore</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Set Up Your Development Environment</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-development-environment.html">Set Up Your Development Environment</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="connecting-adb-to-fire-tv-device.html">Connect to Fire TV through ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="installing-and-running-your-app.html">Install and Run Your Fire TV App</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Controllers in Android Apps</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="supporting-controllers-on-amazon-fire-tv.html">Controllers Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-remote-input.html">Remote Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-game-controller-input.html">Game Controller Input</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-input-with-unity.html">Controller Input with Unity</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-controllers.html">Identifying Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-behavior-guidelines.html">Controller Behavior Guidelines</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="controller-image-assets.html">Controller Image Assets</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Development Best Practices</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-mouse-pointer.html">Mouse Pointers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="display-and-layout.html">Display and Layout</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-agent-strings.html">User Agent Strings</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="managing-audio-focus.html">Managing Audio Focus</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-media-players.html">Media Players</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="amazon-fire-tv-dolby-integration-guidelines.html">Dolby Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="identifying-amazon-fire-tv-devices.html">Identifying Fire TV Devices</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-handling-hdmi-events.html">HDMI Events</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-4k-ultra-hd.html">4K Ultra HD Videos</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="user-interface.html">Android Menu and ActionBar widgets</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dial-integration.html">DIAL Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="implementing-search-fire-tv.html">Search</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="notifications-for-amazon-fire-tv.html">Notifications</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="specifying-installation-location.html">App Installation Location</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-advertising-id.html">Advertising ID</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-international-locales.html">Resources for International Locales</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Troubleshooting Fire TV Issues with Developer Tools</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-developer-tools.html">Developer Tool Options</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray.html">System X-Ray</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-system-xray-customized-metrics.html">Customize System X-Ray</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Accessibility</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-assistive-technologies.html">Understanding Assistive Technologies for Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-accessibility.html">Implementing Accessibility in Fire OS</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-preview-future-voiceview-accessibility-features.html">PREVIEW: Implementing Future VoiceView Accessibility Features</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Recommendations</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-overview.html">Recommendations Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-send-recommendations.html">Send Recommendations that Include Amazon Enhancements</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-testing.html">Test Your Recommendations</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-recommendations-best-practices.html">Best Practices with Recommendations</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Build Webapps for Fire TV</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-with-web-apps-for-fire-tv.html">Get Started with Web Apps</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="supporting-controllers-in-web-apps.html">Web App Controllers</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="the-web-app-starter-kit-for-fire-tv.html">Web App Starter Kit</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="customizing-your-fire-tv-web-app.html">Customize your App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="migrating-your-web-app-to-fire-tv.html">Migrate Your App to Fire TV</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-web-app-faq.html">Web App FAQ</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/integrating-your-catalog-with-fire-tv.html">Fire TV Catalog Integration</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/app-testing-service">App Testing Service</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission.html">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap.html">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire TV </div>
+
+                    <h1>Controllers Overview</h1>
+
+                    <p>The Amazon Fire TV platform supports user input from the Amazon Fire TV Remote, the Fire TV Voice Remote, the Fire game controller, and other game controllers that support the Bluetooth HID gamepad profile. All controllers must be paired with the device to be used.</p>
+
+<p>All the Amazon Fire TV controllers are Android input devices. You use the same techniques and APIs to manage input from those devices as you would any other Android input device.</p>
+
+<p>In particular, simple input from any controller such as navigation or selection can be managed through key events in the same way you would handle input from a keyboard or a button pad.</p>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>

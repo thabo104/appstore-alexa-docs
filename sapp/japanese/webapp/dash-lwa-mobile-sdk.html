@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>LWA モバイル SDK を使用 (DRS) | </title>
+    <base target="_self">
+    <meta name="description" content="概要 Dash Replenishment Service（DRS、Dash 補充サービス）にアクセスするには、DRS を有効化した貴殿/貴社の製品が「Amazon にログイン」アクセストークンを取得する必要があり、それは個々のリクエストと一緒に送信されます。 本書では Android または iOS 用の 「Amazon にログイン」 SDK を使用してアクセストークンを取得する方法を説明します。 前提条件 LWA SDK を貴殿/貴社のコンパニオンアプリに統合する前に、貴殿/貴社の製品はコードベリファイアを生成しコードチャレンジを作成できなければなりません。 コードチャレンジ方式によるこれらの値は、トークンが交換される前に貴殿/貴社の製品からのリクエストを検証するため LWA により使用されます。 LWA による対称型の所有証明（proof of possession）の実装は <a... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+
+
+    <!-- Load sidebar component -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- Load jquery.cookie plugin (optional) -->
+    <script type="text/javascript" src="assets/js/jquery.cookie.min.js"></script>
+    <!-- Load jquery.navgoco plugin js and css files -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/toc.js"></script>
+    <script src="assets/js/anchor.min.js"></script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--stylesheets / link tags loaded here-->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "目次"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle topnav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/support" class="noCrossRef">サポート</a></li>
+                    
+                    
+                    
+                    <li><a href="https://developer.amazon.com/blogs" class="noCrossRef">ブログ</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="グローバル検索 ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="navbarbottom">-->
+        <!--<div class="container">-->
+        <!--
+
+-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar -->
+
+<div class="sidebarSearchBar">
+<form action="search-dash_ja.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="製品検索 ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Dash Replenishment Service</div>
+<p class="external">
+    <a href="#" id="collapseAll">すべてを折りたたむ</a> | <a href="#" id="expandAll">すべて展開</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Getting Started</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-replenishment-service.html">文書およびリソース</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-customer-experience-guidelines.html">お客様体験（CX）ガイドライン</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-create-a-security-profile.html">LWA セキュリティプロフィールを作成</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-create-an-sns-topic.html">SNS トピックを作成</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-device-management-and-settings.html">デバイス管理および設定</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-teaser-page.html">ティザーページ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-glossary.html">用語集</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">LWA Integration</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-web-api.html">LWA ウェブ API の使用</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items open"><a href="dash-lwa-mobile-sdk.html">LWA モバイル SDK を使用</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-mobile-sdk-android.html">LWA モバイル SDK を使用</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-lwa-mobile-sdk-ios.html">LWA モバイル SDK を使用</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Notifications & Workflows</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-notification-messages.html">SNS 通知メッセージ</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-amazon-order-resolution-flow.html">Amazon 発注解決手順</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-test-device-purchases.html">テストデバイス購入</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">API Endpoints</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="dash-replenish-endpoint.html">Replenishmentエンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-slotstatus-endpoint.html">SlotStatus エンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-devicestatus-endpoint.html">DeviceStatus エンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-deregistration-endpoint.html">解除登録エンドポイント</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="dash-getsubscriptioninfo-endpoint.html">SubscriptionInfo エンドポイント</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Related Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/dash-faqs.html">よくある質問</a></li>
+        
+        <li><a class="noCrossRef" href="https://forums.developer.amazon.com/spaces/61/Dash+Replenishment+Service.html">Forum</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/dash-replenishment-service/getting-started">Get Started (Self-Service Portal)</a></li>
+        
+        <li><a class="noCrossRef" href="https://developer.amazon.com/dash-replenishment/index.html">Device Wizard (Self-Service Portal)</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+                
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> 自宅</a> > <a href="index.html" class="noCrossRef productSubtitle"> ドキュメンテーション</a> >  > </div>
+                    <h1>LWA モバイル SDK を使用 (DRS)</h1>
+
+                    
+
+                    <h2 id="概要">概要</h2>
+
+<p>Dash Replenishment Service（DRS、Dash 補充サービス）にアクセスするには、DRS を有効化した貴殿/貴社の製品が「Amazon にログイン」アクセストークンを取得する必要があり、それは個々のリクエストと一緒に送信されます。 本書では Android または iOS 用の 「Amazon にログイン」 SDK を使用してアクセストークンを取得する方法を説明します。</p>
+
+<h2 id="前提条件">前提条件</h2>
+
+<p>LWA SDK を貴殿/貴社のコンパニオンアプリに統合する前に、貴殿/貴社の製品はコードベリファイアを生成しコードチャレンジを作成できなければなりません。 コードチャレンジ方式によるこれらの値は、トークンが交換される前に貴殿/貴社の製品からのリクエストを検証するため LWA により使用されます。 LWA による対称型の所有証明（proof of possession）の実装は <a href="https://tools.ietf.org/html/rfc7636">OAuth 公共クライアントによるコード交換用証明鍵</a>に基きます。</p>
+
+<ul>
+  <li><strong>コードベリファイア</strong></li>
+</ul>
+
+<p>コードベリファイアとは貴殿/貴社の製品が生成する暗号学的にランダムなストリングで、ハッシュ値（SHA256）として貴殿/貴社のコンパニオンアプリに引き継がれます。 ストリングは43～128の文字数を含み、URL からの文字およびファイル名として安全な英数字（[A-Z]、[a-z]、[0-9]、「-」、「_」、「.」、「~」）から構成されています。</p>
+
+<p><strong>コードベリファイアは機密データであり、決して貴殿/貴社の製品から転送してはなりません。</strong></p>
+
+<ul>
+  <li><strong>コードチャレンジ</strong></li>
+</ul>
+
+<p>貴殿/貴社のクライアント/製品はコードベリファイアの以下の変換のひとつを用いてコードベリファイア由来のコードチャレンジを作成することになります。変換にはSHA-256 が推奨されます。</p>
+
+<ul>
+  <li>
+    <p>平文
+コードチャレンジ＝コードベリファイア</p>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> 平文（plain）は S256 変換を使用できない既存のシステムおよび制約の多い環境との互換性のためです。</div>
+  </li>
+  <li>
+    <p><strong>S256</strong>
+貴殿/貴社のコードベリファイアの SHA256 ハッシュ値の Base64url コード化。 Base64url コード化したストリングは以下の文字を含めません。 「＝」、「＋」、または「/」。</p>
+  </li>
+</ul>
+
+<p>Base64url コード化の実装に関する詳細は <a href="https://tools.ietf.org/html/rfc7636#appendix-A">OAuth 公共クライアントによるコード交換用証明鍵、付録 A</a>を参照してください。</p>
+
+<ul>
+  <li><strong>コードチャレンジ方式</strong></li>
+</ul>
+
+<p>コードチャレンジを派生させるのに使用される方式。 LWA は平文および SHA-256 を受け付けます。</p>
+
+<h2 id="amazon-にログイン-sdk-の使用">Amazon にログイン SDK の使用</h2>
+
+<p>次の項では DRSで Android または iOS 用 Amazon にログイン SDK を使用するための手引を提供します。</p>
+
+<p>以下のタブを使用し貴殿/貴社のモバイル・オペレーティングシステムを選択してください。</p>
+
+<p>以下の指示に従い Android 用 Amazon にログイン SDK を使用し、Amazon にログイン認可コードを貴殿/貴社の製品に渡してください。貴殿/貴社の製品はそれを使用して DRS へのコールに必要なリフレッシュおよびアクセストークンを取得することができます。</p>
+
+<ul>
+  <li><a href="http://login.amazon.com/android">Android 用 Amazon にログインのスタート</a> に移動し、ステップの1～4を実行してください。</li>
+  <li>次の各ステップを完了し、DRS へのコールに使用されるアクセスおよびリフレッシュトークンを取得します。</li>
+</ul>
+
+<ol>
+  <li>Amazon にログイン API をソースファイルにインポートしてください。 Amazon にログインAPI をインポートするには、ソースファイルに次のインポート用コマンド文を追加します。</li>
+  <li>
+    <p>AmazonAuthorizationManagerの初期化</p>
+
+    <p>AmazonAuthorizationManager 変数を宣言し、クラスの新規インスタンスを作成する必要があります。 新規のインスタンスの作成に必要なのは、現在のアプリケーション・コンテキストと空のバンドルだけです。 AmazonAuthorizationManager をイニシャライズするのに最良の場所は貴殿/貴社のアクティビティの onCreate 方式内です。 一例</p>
+  </li>
+  <li>
+    <p>AuthorizeListener を作成。</p>
+
+    <p>AuthorizeListener は AuthorizationListener のインターフェースを実装し、認可コールの結果を処理します。 これには onSuccess、onError、 onCancel の3方式があります。 各方式がバンドルまたは AuthError オブジェクトを受け取ります。</p>
+  </li>
+  <li>
+    <p>AmazonAuthorizationManager.authorize コール。</p>
+
+    <p>貴殿/貴社の「Amazon にログイン」ボタン用 onClick ハンドラー内で authorize をコールし、ユーザーにログインし貴殿/貴社のアプリケーションを認可するよう促します。 この方式は次の方法のひとつでお客様を認可する役割を担います。</p>
+
+    <ul>
+      <li>システムブラウザに切り替わり、お客様にサインインしリクエストされた情報に同意してもらう</li>
+      <li>安全なコンテキストでWebViewに切り替わり、お客様にサインインしリクエストされた情報に同意してもらう</li>
+    </ul>
+
+    <p><strong>上記2点目</strong> の「安全なコンテキスト」は現在 Android 端末上の Amazon ショッピングアプリとして実現しています。 Fire OS（Kindle タブレットおよび Fire TVなど）が稼働している Amazon デバイスでは、デバイス上に Amazon ショッピングアプリがない場合でも常にこのオプションを使用しています。 このためお客様がすでに Amazon ショッピングアプリにサインインしている場合は、この API はサインインページを省略しますから、お客様にとってはシングルサインオン体験となります。</p>
+
+    <p>貴殿/貴社のアプリケーションが認可されると、スコープとして知られるひとつまたは複数のデータセットに認可されます。 一つ目のパラメータは貴殿/貴社が Amazon にログインからリクエストしているユーザーデータを含むスコープの配列です。 ユーザーが初めて貴殿/貴社のアプリにログインすると、貴殿/貴社がリクエストしているデータの一覧が表示され、承認を求められます。 DRS で使用する Amazon にログインは現在 dash:replenish スコープをサポートしています。</p>
+
+    <p>authorizeをコールする最良の方法は非同期による方法で、この場合 UI スレッドをブロックしたりご自身のワーカースレッドを作成する必要がありません。 authorize に非同期でコールするためには、AuthorizationListener インターフェースをサポートするオブジェクトを最後のパラメータに指定します。</p>
+
+    <p>上記のコードに次のオプションを追加します。</p>
+
+    <ul>
+      <li>scope_data はデバイスモデル、デバイス識別子、およびデバイスがテストデバイスかどうかを含む追加のデータです。</li>
+    </ul>
+
+    <p>パラメータ オプション</p>
+
+    <p>クライアントがレスポンスに認可コードを取得したい場合は「真」でなければならないブール値。</p>
+
+    <p>認可リクエストを呼び出すのに貴殿/貴社のデバイスが生成する SPOP コードチャレンジ。 このパラメータは AuthzConstants.BUNDLE_KEY.GET_AUTH_CODE.val が真に設定されている場合は常に必要です。そうでなければSDK はエラーを返します。</p>
+
+    <p>以前のステップでコードチャレンジの生成に使用した SPOP コードチャレンジ方式。 現在 LWA は2つのコードチャレンジ方式をサポートしています。 「平文」および「S256」（SHA-256）。 ただし、コードチャレンジ方式の指定がなければ、LWA は規定値として平文として扱います。</p>
+  </li>
+</ol>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> 登録はWebView内で取り扱います。 LWA 認可 API が起動されると、お客様はこのWebViewにリダイレクトされます。 お客様は登録の際にデバイスとスロットを構成（および ASIN の選択）します。 選択が完了した時点で貴殿/貴社のアプリまたはクラウドサービスは DRS API を使用できるようになります。</div>
+
+<ol>
+  <li>
+    <p>貴殿/貴社の AuthorizeListener に onSuccess を実装してください。</p>
+
+    <p>onSuccess で AmazonAuthorizationManager.getToken をコールしアクセストークンを取得します。 getToken は authorize と同様、非同期リスナーインターフェースを使用します。 getToken ではそのインターフェースは APIListener であり、AuthorizationListener ではありません。</p>
+  </li>
+  <li>AuthorizeListener に onError を実装してください。</li>
+  <li>
+    <p>AmazonAuthorizationManager の貴殿/貴社のインスタンスから getRedirectUri() および getClientId() をコールし、保存したのち貴殿/貴社の製品に送信します。</p>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> client_id はアクセスおよびリフレッシュトークンの取得のために使用されます。 このクライアント識別子は貴殿/貴社のセキュリティプロフィールページから得られる識別子とは異なります。</div>
+  </li>
+  <li>SSL を使用してリフレッシュトークン、クライアント ID、およびリダイレクト URI を安全に貴殿/貴社の製品に送信してください。</li>
+  <li>
+    <p>製品が認可コード、クライアント ID、およびリダイレクト URI を受領した後、Amazon にログインにコールし、認可コードをリフレッシュおよびアクセストークンと交換する必要があります。 製品はコール時に POST リクエストを https://api.amazon.com/auth/O2/token に送信し、次のパラメータを指定する必要があります。</p>
+
+    <ul>
+      <li>grant_type: authorization_code</li>
+      <li>code: Android アプリから受信した認可コード。</li>
+      <li>redirect_uri: Android アプリから受信したリダイレクト URI。</li>
+      <li>client_id: Android アプリから受信したクライアント ID。</li>
+      <li>code_verifier: 初期に製品が生成したコードベリファイア。</li>
+    </ul>
+
+    <p>レスポンスは次の値を含みます。</p>
+
+    <ul>
+      <li>access_token: アクセストークン。</li>
+      <li>refresh_token: リフレッシュトークン。</li>
+      <li>token_type: ベアラー</li>
+      <li>expires_in: アクセストークンが引き続き有効である秒数。</li>
+    </ul>
+  </li>
+  <li>
+    <p>アクセストークンが時間切れになったとき、またはなりつつあるとき、リフレッシュトークンを新規のアクセストークンと交換できます。 交換を行うには、https://api.amazon.com/auth/O2/token に POST し、次のパラメータを送信します。</p>
+
+    <ul>
+      <li>grant_type: refresh_token</li>
+      <li>refresh_token: リフレッシュトークン。</li>
+      <li>client_id: Android アプリから受信したクライアント ID。</li>
+    </ul>
+
+    <p>レスポンスは次の値を含みます。</p>
+
+    <ul>
+      <li>access_token: アクセストークン。</li>
+      <li>refresh_token: リフレッシュトークン。</li>
+      <li>token_type: ベアラー\</li>
+      <li>expires_in: アクセストークンが引き続き有効である秒数。</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="lwa-が正常に設定されたことを確かめてください">LWA が正常に設定されたことを確かめてください</h2>
+
+<p>貴殿/貴社のアプリケーションがお客様を LWA へのログインに誘導できるようになり、かつお客様が LWA を使用して自身のデバイスを登録でき、貴殿/貴社のアプリケーションがリフレッシュトークンおよびアクセストークンを受信したときにLWA リクエストは完了です。 LWA の統合が正常に完了すると、以下の情報が表示されます。</p>
+
+<ul>
+  <li>client_id</li>
+  <li>client_secret</li>
+  <li>access_code</li>
+  <li>access_token</li>
+  <li>refresh_token</li>
+</ul>
+
+<!-- common links -->
+
+
+                    <div class="toc-main-column">
+                        
+
+                    </div>
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <!--<li><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> </li><li> <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a></li><li></li>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, and more. </p>
+                <p><i class="fa fa-map-pin"></i> 1120 Enterprise Way, Sunnyvale, California</p>
+                <p><i class="fa fa-envelope"></i> E-mail : someemail@amazon.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Doc index</a></li>
+                    <li><a href="#"> Blog</a></li>
+                    <li><a href="#"> Developer.amazon.com</a></li>
+                    <li><a href="#"> AWS docs</a></li>
+                    <li><a href="#"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Developer.amazon.com blog</a></li>
+                    <li><a href="#">AWS blog</a></li>
+                    <li><a href="#">Amazon newsroom</a></li>
+                    <li><a href="#">Other Amazon blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">Amazon Underground</a></li>
+                    <li><a href="#">General Android</a></li>
+                    <li><a href="#">Amazon Dash Replenishment</a></li>
+                    <li><a href="#">Merch by Amazon</a></li>
+                    <li><a href="#">Alexa</a></li>
+                    <li><a href="#">Amazon Fire Devices</a></li>
+                    <li><a href="#">Appstore</a></li>
+                    <li><a href="#">Mobile APIs and Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 -  Amazon</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+
+
+</body>
+
+</html>

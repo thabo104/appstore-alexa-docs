@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Testing Launcher Integration with ADB | Fire TV Catalog</title>
+    
+    <base target="_self">
+    <meta name="description" content="After integrating your app with the Fire TV Home Screen Launcher (see Integrating Your App with the Fire TV Home Screen Launcher), you can use Android Debug Bridge (ADB)... " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <link rel="icon"  type="image/x-icon" href="favicon.ico">
+<!--
+    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at http://aws.amazon.com/apache2.0/ or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This site also includes third-party software subject to various copyrights. The licenses for these third party components are referenced in the NOTICE file.
+-->
+
+    <!-- FontAwesome -->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Navgoco -->
+    <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- TOC generator-->
+    <script src="assets/js/toc.js"></script>
+    <!-- Anchor JS -->
+    
+        <script src="assets/js/anchor.min.js"></script>
+    
+
+    <script>
+        $( document ).ready(function() {
+            $("#docnavsidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'open', // open
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#docnavsidebar").navgoco('toggle', true);
+            });
+        });
+
+    </script>
+    <script src="assets/js/customscripts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function() {
+                $('.row-offcanvas').toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <!--Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        ul#markdown-toc::before  {
+        content: "Table of Contents"
+         }
+    </style>
+
+</head>
+<body class="default">
+<div class="page-container">
+
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container topnavlinks">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <button type="button" class="navbar-toggle toggle-sidebar-button"  data-toggle="offcanvas" data-target=".sidebar-nav">
+                    <span class="sidebarToggle fa fa-columns fa-2x"></span>
+                </button>
+
+                <a class="navbar-brand noCrossRef" href="https://developer.amazon.com/">
+                    <img class="navbar-logo" src="amazonlogowhite.png"/>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+
+                    <!-- single item nav items appear here -->
+
+                    
+                    
+                    
+                    
+                    <li><a href="index.html">Documentation Home</a></li>
+                    
+                    
+                    <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">Log Doc Issue</a></li>
+                    <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/_docs/firetv/catalog/testing-launcher-integration-with-adb.md" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a></li>
+                    
+                    <li><a href="https://forums.developer.amazon.com/spaces/43/index.html" class="editButton noCrossRef">Fire TV Forum</a></li>
+                    
+                    
+                    
+
+                    <!-- drop-down nav items appear here -->
+
+                    
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!--start search -->
+                        <!--
+                        <div id="search-demo-container">
+                            <form action="search.html" method="get">
+                                <input type="text" id="search-input" placeholder="Global Search ..." name="query">
+                            </form>
+                        </div>
+                        -->
+                        <!-- end search-->
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!-- sidebar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                
+
+
+<div class="mydocsidebar">
+<div class="sidebar-inner">
+<!-- search bar - uses Lunr.js  -->
+
+<div class="sidebarSearchBar">
+<form action="search-catalog.html" method="get">
+  <div class="input-group search">
+    <input type="text" id="search-box" name="query" class="form-control" placeholder="Product Search ...">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" value="search">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- end search bar -->
+
+
+<div class="productTitle">Fire TV Catalog Integration</div>
+<p class="external">
+    <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+</p>
+
+
+
+    <ul id="docnavsidebar" class="docnav">
+    
+    <li class="level1"><a href="#">Getting Started</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="integrating-your-catalog-with-fire-tv.html">Catalog Integration Overview</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="understanding-fire-tv-catalog-integration.html">Understanding Catalog Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="getting-started-catalog-integration.html">Getting Started with Catalog Integration</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="about-the-cdf.html">About the Catalog Data Format (CDF)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="setting-up-your-aws-account-for-fire-tv-catalog-integration.html">Setting Up Your AWS Account</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="fire-tv-catalog-integration-faqs.html">Catalog Integration FAQs</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Integration</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="uploading-your-catalog.html">Uploading Your Catalog</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="receiving-and-understanding-the-catalog-ingestion-report.html">Catalog Ingestion Reports</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="launcher-integration.html">Integrating with the Launcher</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="test-cases-for-verifying-deep-links-from-your-fire-tv-catalog.html">Verifying Fire TV Deep Links</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Testing</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items open"><a href="testing-launcher-integration-with-adb.html">Testing Launcher Integration with ADB</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="testing-launcher-integration-with-the-test-app.html">Testing Launcher Integration with the Test App</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a href="catalog-data-format-ingestion-report-messages.html">Ingestion Report Messages</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Migration</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="migrating-a-cdf-file-to-the-latest-version.html">Migrating CDF Versions</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+    <li class="level1"><a href="#">Catalog Data Format Reference</a>
+        <ul>
+            
+
+            
+            
+            <li class="level1items"><a href="catalog-data-format-schema-reference.html">CDF Schema Reference</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://s3.amazonaws.com/com.amazon.aftb.cdf/catalog.xsd">CDF Schema Definition (XSD)</a></li>
+            
+            
+
+            
+
+            
+
+            
+            
+            <li class="level1items"><a  class="noCrossRef" href="https://s3.amazonaws.com/com.amazon.aftb.cdf/cdf-examples.zip">CDF Examples (ZIP)</a></li>
+            
+            
+
+            
+
+            
+        </ul>
+
+        
+
+    </li>
+</ul>
+
+<hr class="resourceSeparator"></hr>
+<div class="relatedResources">Other Resources</div>
+<ul id="entrypages">
+        
+        <li><a class="noCrossRef" href="/getting-started-developing-apps-and-games-for-amazon-fire-tv.html">Fire TV</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-app-builder-overview.html">Fire App Builder</a></li>
+        
+        <li><a class="noCrossRef" href="/setting-up-your-development-environment-for-fire-tablets.html">Fire Tablets</a></li>
+        
+        <li><a class="noCrossRef" href="/fire-os-overview.html">Fire OS</a></li>
+        
+        <li><a class="noCrossRef" href="/environment.html">HTML5 Web API</a></li>
+        
+        <li><a class="noCrossRef" href="/appstore-understanding-submission">Appstore Publishing</a></li>
+        
+        <li><a class="noCrossRef" href="/getting-started-with-iap">In-App Purchasing API</a></li>
+        
+        <li><a class="noCrossRef" href="/understanding-the-amazon-fling-service">Fling SDK</a></li>
+        
+        <li><a class="noCrossRef" href="/obtaining-an-access-token-for-the-developer-publishing-api">Developer Publishing API</a></li>
+        
+        <li><a class="noCrossRef" href="">Developer Portal Forums</a></li>
+        
+    </li>
+</ul>
+</div>
+</div>
+<script>$("li.open").parents('li').toggleClass("open");</script>
+
+
+
+
+
+
+            </div>
+
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9 main">
+
+                    <div class="subtitle"><a href="http://developer.amazon.com" class="noCrossRef productSubtitle"> Home</a> > <a href="index.html" class="noCrossRef productSubtitle"> Documentation</a> > Fire TV Catalog </div>
+
+                    <h1>Testing Launcher Integration with ADB</h1>
+
+                    <p>After integrating your app with the Fire TV Home Screen Launcher (see <a href="launcher-integration.html">Integrating Your App with the Fire TV Home Screen Launcher</a>), you can use Android Debug Bridge (ADB) to test your app and ensure that it responds correctly to sign in and playback intents.</p>
+
+<p>Use this testing option when you have not yet completed development on your app or have not yet implemented the code to respond to Intents from the launcher (see <a href="launcher-integration.html">Integrating Your App with the Fire TV Home Screen Launcher</a>). You will also need a Fire TV device to be able to test your app’s launcher integration.</p>
+
+<p>If you want to test launcher integration but haven’t completed your app yet or at least haven’t implemented the code to respond to Intents, use the Test App option. See <a href="testing-launcher-integration-with-the-test-app.html">Testing Fire TV Launcher Integration with the Integration Test App</a>.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> ADB is provided by the Android Open Source Project, not by Amazon. Any links to ADB reference materials re-direct you to the Android developer website.</div>
+
+<ul id="markdown-toc">
+  <li><a href="#process-overview" id="markdown-toc-process-overview">Process Overview</a></li>
+  <li><a href="#step-1-install-your-app-to-a-fire-tv-device-using-adb" id="markdown-toc-step-1-install-your-app-to-a-fire-tv-device-using-adb">Step 1: Install Your App to a Fire TV Device using ADB</a></li>
+  <li><a href="#step-2-testing-sign-in-requests" id="markdown-toc-step-2-testing-sign-in-requests">Step 2: Testing Sign In Requests</a>    <ul>
+      <li><a href="#command-options" id="markdown-toc-command-options">Command Options</a></li>
+      <li><a href="#examples" id="markdown-toc-examples">Examples</a></li>
+    </ul>
+  </li>
+  <li><a href="#step-3-testing-playback-requests" id="markdown-toc-step-3-testing-playback-requests">Step 3: Testing Playback Requests</a>    <ul>
+      <li><a href="#command-options-1" id="markdown-toc-command-options-1">Command Options</a></li>
+      <li><a href="#examples-1" id="markdown-toc-examples-1">Examples</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="process-overview">Process Overview</h2>
+
+<p>Use the following high-level process to test your Fire TV launcher integration using ADB:</p>
+
+<ol>
+  <li>Install your app to a Fire TV device using ADB.</li>
+  <li>Test your sign-in requests for your app.</li>
+  <li>Test playback requests for your app.</li>
+</ol>
+
+<h2 id="step-1-install-your-app-to-a-fire-tv-device-using-adb">Step 1: Install Your App to a Fire TV Device using ADB</h2>
+
+<p>Before you can test your app, you will need to install your app to a Fire TV device.</p>
+
+<p>To install your app to a Fire TV Device:</p>
+
+<ol>
+  <li>Use ADB to connect the Fire TV device to your development computer. (See <a href="connecting-adb-to-fire-tv-device.html">Connecting ADB to Your Fire TV Device</a>.)</li>
+  <li>Sideload your app onto the device for testing. (See <a href="installing-and-running-your-app.html">Installing and Running Your App</a>).</li>
+</ol>
+
+<p>All of the <code class="highlighter-rouge">adb</code> commands on this page use the Android activity manager (<code class="highlighter-rouge">am</code>) to send Intents to your app. For more information on the syntax and options for <code class="highlighter-rouge">am</code>, see <a href="http://developer.android.com/tools/help/adb.html">Android Debug Bridge</a> on the Android developer website.</p>
+
+<h2 id="step-2-testing-sign-in-requests">Step 2: Testing Sign In Requests</h2>
+
+<p>Sign-in requests from the Fire TV Launcher include both the request itself and a reference to the requested content, which should play immediately after the user signs in. The content reference may be a URI or a data extra name/value pair, depending on your implementation.</p>
+
+<p>To test sign-in requests:</p>
+
+<ol>
+  <li>On the computer that you have connected to the Fire TV device via ADB, open a terminal window so that you can access the command line.</li>
+  <li>At the shell prompt (indicated by the “$”), type one of the following commands:
+    <ul>
+      <li>
+        <p>If your content is specified by URI, enter:</p>
+
+        <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>adb shell am start -a &lt;signin_intent_action&gt;  -n &lt;signin_component&gt; -f &lt;signin_intent_flags&gt; -d &lt;content_uri&gt;
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>If your content is specified by a data extra, enter:</p>
+
+        <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>adb shell am start -a &lt;signin_intent_action&gt;  -n &lt;signin_component&gt; -f &lt;signin_intent_flags&gt; -e &lt;data_extra_name&gt; &lt;content_id&gt;
+</code></pre>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="command-options">Command Options</h3>
+
+<p>The following table describes the available options for these two commands. Replace the text in the <angle brackets=""> with the correct values for your app:</angle></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">-a &lt;signin_intent_action&gt;</code></td>
+      <td>Your sign-in Intent action, from the <code class="highlighter-rouge">SIGNIN_INTENT_ACTION</code> extra. <br /><br />Example: <code class="highlighter-rouge">com.yourcompany.player.SIGN_IN</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">-n &lt;signin_component&gt;</code></td>
+      <td>The full component name of your sign-in Activity, which consists of the package and class names separated by a slash. These values are from the <code class="highlighter-rouge">SIGNIN_INTENT_PACKAGE</code> and <code class="highlighter-rouge">SIGNIN_INTENT_CLASS</code> extras, respectively. <br /><br />Example: <code class="highlighter-rouge">com.yourcompany.player/com.yourcompany.player.MainActivity</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">-f &lt;signin_intent_flags&gt;</code></td>
+      <td>The Intent flags that you specified in the <code class="highlighter-rouge">SIGNIN_INTENT_FLAGS</code> extraas a decimal value and combined with the appropriate default launcher flags. By default, the launcher sends the following flags: <br /><br />• <code class="highlighter-rouge">Intent.FLAG_ACTIVITY_NEW_TASK</code> <br /><br />• <code class="highlighter-rouge">Intent.FLAG_INCLUDE_STOPPED_PACKAGES</code> <br /><br />• <code class="highlighter-rouge">Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code> <br /><br />Example decimal: 270532640</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">-d &lt;content_uri&gt;</code></td>
+      <td>URI, if the link to your content is specified by URI. Do not use the <code class="highlighter-rouge">-e</code> option if you use the -d option.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">-e &lt;data_extra_name&gt;</code><br /><code class="highlighter-rouge">&lt;content_id&gt;</code></td>
+      <td>If the link to your content is specified in a way other than a URI, this is the key/value pair for that content. The key is from the <code class="highlighter-rouge">DATA_EXTRA_NAME</code> extra. Do not use the <code class="highlighter-rouge">-d</code> option if you use the -e option.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="examples">Examples</h3>
+
+<p>The following example shows the command that you might type for a sign-in Intent if your content is specified by URI:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ adb shell am start -a com.yourcompany.player.SIGN_IN  -n com.yourcompany.player/com.yourcompany.player.MainActivity -f 270532640 -d myplayer://content/12345`
+</code></pre>
+</div>
+
+<p>The following command shows the command that you might type for a sign-in Intent if your content is specified in some way other than by URI:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ adb shell am start -a com.yourcompany.player.SIGN_IN  -n com.yourcompany.player/com.yourcompany.player.MainActivity -f 270532640 -e content_id 12345`
+</code></pre>
+</div>
+
+<h2 id="step-3-testing-playback-requests">Step 3: Testing Playback Requests</h2>
+
+<p>As with sign-in requests, playback requests use the data you supply to the launcher during the capability exchange. Playback requests include a content reference, which may either be a URI or a data extra name/value pair, depending on your implementation.</p>
+
+<p>To playback requests:</p>
+
+<ol>
+  <li>On the computer that you have connected to the Fire TV device via ADB, open a terminal window so that you can access the command line.</li>
+  <li>At the shell prompt (indicated by the “$”), type one of the following commands:
+    <ul>
+      <li>
+        <p>If your content is specified by URI, enter:</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>adb shell am start -a &lt;playback_intent_action&gt;  -n &lt;playback_component&gt; -f &lt;playback_intent_flags&gt; -d &lt;content_uri&gt;
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>If your content is specified by a data extra key/value pair, enter:</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>adb shell am start -a &lt;playback_intent_action&gt;  -n &lt;playback_component&gt; -f &lt;playback_intent_flags&gt; -e &lt;data_extra_name&gt; &lt;content_id&gt;`
+</code></pre>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="command-options-1">Command Options</h3>
+
+<p>The following table describes the available options for these two commands. Replace the text in the <angle brackets=""> with the correct values for your app:</angle></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;playback_intent_action&gt;</code></td>
+      <td>Your playback Intent action, from the <code class="highlighter-rouge">PLAY_INTENT_ACTION</code> extra. <br /> Example: <code class="highlighter-rouge">com.yourcompany.player.PLAY</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;playback_component&gt;</code></td>
+      <td>The full component name of your playback Activity, which consists of package and class names separated by a slash. These values are from the <code class="highlighter-rouge">PLAY_INTENT_PACKAGE</code> and <code class="highlighter-rouge">PLAY_INTENT_CLASS</code> extras, respectively. <br /> Example: <code class="highlighter-rouge">com.yourcompany.player/com.yourcompany.player.MainActivity</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;playback_intent_flags&gt;</code></td>
+      <td>The Intent flags that you specified in the <code class="highlighter-rouge">PLAYBACK_INTENT_FLAGS</code> extra as a decimal value and combined with the appropriate default launcher flags. By default, the launcher sends the following flags: <br /><br />• <code class="highlighter-rouge">Intent.FLAG_ACTIVITY_NEW_TASK</code> <br /><br />• <code class="highlighter-rouge">Intent.FLAG_INCLUDE_STOPPED_PACKAGES</code> <br /><br />• <code class="highlighter-rouge">Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code> <br /><br /> Example decimal: 270532640.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;content_uri&gt;</code></td>
+      <td>URI, if the link to your content is specified by URI. Do not use the <code class="highlighter-rouge">-e</code> option if you use the -d option.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;data_extra_name&gt;</code><br /><code class="highlighter-rouge">&lt;content_id&gt;</code></td>
+      <td>If the link to your content is specified in a way other than a URI, this is the key/value pair for that content. The key is from the <code class="highlighter-rouge">DATA_EXTRA_NAME</code> extra. Do not use the <code class="highlighter-rouge">-d</code> option if you use the -e option.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="examples-1">Examples</h3>
+
+<p>The following example shows the command that you might type for a playback Intent if your content is specified by URI:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ adb shell am start -a com.yourcompany.player.PLAY  -n com.yourcompany.player/com.yourcompany.player.MainActivity -f 270532640 -d myplayer://content/12345
+</code></pre>
+</div>
+
+<p>The following command shows the command that you might type for a playback Intent if your content is specified in some way other than by URI:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ adb shell am start -a com.yourcompany.player.PLAY  -n com.yourcompany.player/com.yourcompany.player.MainActivity -f 270532640 -e content_id 12345`
+</code></pre>
+</div>
+
+
+
+
+            </div>
+        </div><!--/.container-->
+
+
+    </div><!--/.page-container-->
+    
+    <div class="footertop">
+    <div class="container">
+        <div class="col-md-6">
+            <p></p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> About the Developer Portal</div>
+                <p>The Amazon Developer Portal provides documentation for developers creating apps for the Amazon
+                    appstore, including Alexa skills. Apps include streaming media apps, game apps, skills, and more. </p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Links</h6>
+                <ul class="footer-ul">
+                    <li><a class="noCrossRef" href="https://developer.amazon.com/"> Developer Portal</a></li>
+                    <li><a class="noCrossRef" href="/index.html">Documentation Home</a></li>
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/support"> Support</a></li>
+                    <li class="noCrossRef"><a href="https://aws.amazon.com/documentation/"> AWS docs</a></li>
+                    <li class="noCrossRef"><a href="https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011"> Amazon Appstore</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Amazon News</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://developer.amazon.com/blogs"> Blog</a></li>
+                    <li class="noCrossRef"><a href="https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ"> YouTube</a></li>
+                    <li class="noCrossRef"><a href="https://twitter.com/AmazonAppDev"> Twitter</a></li>
+                    <li class="noCrossRef"><a href="http://phx.corporate-ir.net/phoenix.zhtml?p=irol-mediahome&c=176060"> Amazon Press Room</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Forums</h6>
+                <ul class="footer-ul">
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/23/index.html"> Alexa Skills Kit</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/33/index.html"> Smart Home Skill API</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/38/index.html"> Alexa Voice Service</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/167/index.html"> Appstore</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/12/index.html"> Underground</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/166/index.html"> Fire Devices</a></li>
+                    <li class="noCrossRef"><a href="https://forums.developer.amazon.com/spaces/61/index.html"> Dash</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!--subfooter start from here -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p>© 1996-2017, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!--scripts loaded here-->
+
+
+
+</body>
+
+</html>
