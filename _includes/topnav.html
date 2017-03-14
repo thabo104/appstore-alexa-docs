@@ -26,8 +26,6 @@
     <script type="text/javascript" src="assets/js/jquery.navgoco.min.js"></script>
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- TOC generator-->
-    <script src="assets/js/toc.js"></script>
     <!-- Anchor JS -->
     {% unless page.layout == "homepage" or page.type == "search" %}
         <script src="assets/js/anchor.min.js"></script>
@@ -122,7 +120,7 @@
                     <li><a href="https://github.com/amzn/appstore-alexa-docs/issues" class="noCrossRef">{{site.uistring.log_doc_issue}}</a></li>
                     <li><a target="_blank" href="https://github.com/amzn/appstore-alexa-docs/blob/github-docs/{{page.path}}" class="editButton noCrossRef"><i class="fa fa-github fa-lg"></i> {{site.uistring.github_edit_button_text}}</a></li>{% endif %}
                     {% unless page.type == "homepage" or page.type == "search" or page.type == "404" %}
-                    <li><a href="{{ site.data[page.sidebar].forum.forum_link }}" class="editButton noCrossRef">{{ site.data[page.sidebar].forum.forum_name }}</a></li>
+                    <li><a target="_blank" href="{{ site.data[page.sidebar].forum.forum_link }}" class="editButton noCrossRef">{{ site.data[page.sidebar].forum.forum_name }}</a></li>
                     {% endunless %}
                     {% endfor %}
                     {% endfor %}
