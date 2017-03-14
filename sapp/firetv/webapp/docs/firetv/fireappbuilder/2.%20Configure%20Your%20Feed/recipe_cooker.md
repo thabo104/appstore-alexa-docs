@@ -1,1 +1,0 @@
-Defines which utility will take the parameters defined in the recipe and execute the logic. In other words, the cooker "cooks" the recipe. Leave it at the default value: `DynamicParser`.
