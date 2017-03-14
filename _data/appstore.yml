@@ -34,6 +34,25 @@ owner: michrose
 
 folders:
 
+- title: Getting Started with App Submission
+  folderitems:
+
+  - title: Getting Started with App Submission
+    hurl: https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-getting-started
+    jurl: /appstore-getting-started.html
+    ref: appstore-getting-started
+
+  - title: Understanding Amazon Appstore Submission
+    hurl: https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-understanding-submission
+    jurl: /appstore-understanding-submission.html
+    ref: appstore-understanding-submission
+
+  - title: Appstore Publishing FAQ
+    hurl: https://developer.amazon.com/public/support/submitting-your-app/tech-docs/faq-submission
+    jurl: /faq-submission.html
+    ref: faq-submission
+    bookmarks: [policy_intellectual_property, policy_guidelines, account_permissions, web_apps, pc_mac_software, international_distribution]
+
 - title: Preparing Your App for Submission
   folderitems:
 
@@ -42,20 +61,10 @@ folders:
     jurl: /appstore-presubmission-checklist.html
     ref: appstore-presubmission-checklist
 
-  - title: Understanding Amazon Appstore Submission
-    hurl: https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-understanding-submission
-    jurl: /appstore-understanding-submission.html
-    ref: appstore-understanding-submission
-
   - title: Migrating An Existing App to the Amazon Appstore
     hurl: https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-migrate-existing-app
     jurl: /appstore-migrate-existing-app.html
     ref: appstore-migrate-existing-app
-
-  - title: Avoiding Compile Errors When Submitting Your App
-    hurl: https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-avoid-compile-errors
-    jurl: /appstore-avoid-compile-errors.html
-    ref: appstore-avoid-compile-errors
 
   - title: Taking Screenshots on Fire Devices
     hurl: https://developer.amazon.com/public/support/submitting-your-app/tech-docs/taking-screenshots
@@ -152,11 +161,6 @@ folders:
 - title: Submitting Your App
   folderitems:
 
-  - title: Quick Start Links for Submitting Apps
-    hurl: https://developer.amazon.com/public/support/submitting-your-app
-    jurl: /submitting-your-app.html
-    ref: submitting-your-app
-
   - title: Submitting Apps to the Amazon Appstore
     hurl: https://developer.amazon.com/public/support/submitting-your-app/tech-docs/submitting-apps-to-amazon-appstore
     jurl: /submitting-apps-to-amazon-appstore.html
@@ -182,12 +186,6 @@ folders:
     hurl: https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-unlist-app
     jurl: /appstore-unlist-app.html
     ref: appstore-unlist-app
-
-  - title: Appstore Publishing FAQ
-    hurl: https://developer.amazon.com/public/support/faq
-    jurl: /faq.html
-    ref: faq
-    bookmarks: [policy_intellectual_property, policy_guidelines, account_permissions, web_apps, pc_mac_software, international_distribution]
 
 - title: Getting Paid for Your Apps
   folderitems:

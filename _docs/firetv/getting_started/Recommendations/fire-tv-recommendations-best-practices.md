@@ -4,7 +4,7 @@ permalink: fire-tv-recommendations-best-practices.html
 sidebar: firetv
 product: Fire TV
 reviewers: Murtaza
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -26,11 +26,9 @@ Recommendations are most effective when you personalize them based on user profi
 
 ## Delete stale cards
 
-Keep your recommendations relevant by deleting old or stale cards. Additionally, avoid creating new instances of cards that are already stale.
+Keep your recommendations fresh and inviting by deleting old cards. Track what content has been shown and visited before so you can delete it later. For example, if the user finishes watching the recommended content, delete it from the recommendation row.
 
-Track what content has been shown and visited before so you can delete it later. For example, if the user finishes watching the recommended content, delete it from the recommendation row.
-
-If you continue to send stale recommendations, users might turn off your recommendations or uninstall your app.
+If you continue to send stale recommendations, users might actually uninstall your app.
 
 ## Don't exceed the notifications limit
 
