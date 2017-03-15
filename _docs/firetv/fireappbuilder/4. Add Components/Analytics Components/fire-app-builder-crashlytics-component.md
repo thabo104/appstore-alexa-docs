@@ -48,9 +48,9 @@ These instructions assume you're in the Android view.
 
 2.  Load the Crashlytics component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
 
-    {% include note.html content="Initially you will see an error message after you click Sync Gradle and Gradle tries to get the necessary resources. This is because Crashlytics requires a valid API key entered into its AndroidManifest.xml file &mdash; but the CrashlyticsComponent directory won't be visible in your Android project until you sync Gradle. Disregard the Gradle build error for now." %}
+    {% include warning.html content="Initially you will see an error message after you click Sync Gradle and Gradle tries to get the necessary resources. This is because Crashlytics requires a valid API key entered into its AndroidManifest.xml file &mdash; but the CrashlyticsComponent directory won't be visible in your Android project until you sync Gradle. Disregard the Gradle build error for now." %}
 
-3.  Uncomment the code as indicated by the "//Uncomment when using CrashlyticsComponent" comments. The following code sample shows the code correctly uncommented:
+3.  In the Android view, expand **Gradle Scripts** and open the **build.gradle (Module: app)**. Uncomment the code as indicated by the `//Uncomment when using CrashlyticsComponent` comments. The following code sample shows the code correctly uncommented:
 
     <pre>
     <span class="red">// Uncomment when using CrashlyticsComponent</span>
@@ -78,11 +78,12 @@ These instructions assume you're in the Android view.
 
 5.  Go to **CrashlyticsComponent > manifests** and open the **AndroidManifest.xml** file. Insert your Crashlytics key in the `value` property:
 
-    ```xml
+    ```java
+    android:name="io.fabric.ApiKey"
     android:value="your_fabric_api_account_key"/>
     ```
 
-6.  Go to **CrashlyticsComponent > res > values > values.xml**. Insert your Crashlytics key in the `your_api_key` string:
+6.  Go to **CrashlyticsComponent > res > values** and open  **values.xml**. Insert your Crashlytics key in the `your_api_key` string:
 
     ```xml
     <string name="your_api_key">your_api_key</string>
