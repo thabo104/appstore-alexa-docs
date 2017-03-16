@@ -16,7 +16,7 @@ github: true
 
 ## 開発者ツールメニューを起動する
 
-{% include content/{{site.language}}/firetv-enabledevtools.md %}
+{% include content/{{site.language}}/fire/firetv-enabledevtools.md %}
 
 以下のスクリーンショットは開発者ツールメニューのオプションを示しています。
 
