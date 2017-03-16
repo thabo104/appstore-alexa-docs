@@ -6,6 +6,6 @@ hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fir
 product: Fire TV
 ---
 
-{% include content/{{site.language}}/fire-os-overview.md device="firetv" %}
+{% include content/{{site.language}}/fire/fire-os-overview.md device="firetv" %}
 
 {% include links.html %}
