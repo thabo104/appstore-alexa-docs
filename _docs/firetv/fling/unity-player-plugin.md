@@ -5,7 +5,7 @@ product: Fling SDK
 permalink: unity-player-plugin.html
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 This page will walk you through the steps of setting up your Unity project to include the Amazon Fling Player Unity Plugin. It will also provide instruction on how to use the plugin. For additional information see the FlingPlayerSampleApp in the samples folder of the plugins SDK.

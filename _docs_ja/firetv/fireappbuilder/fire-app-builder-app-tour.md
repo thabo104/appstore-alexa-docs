@@ -1,9 +1,10 @@
 ---
 タイトル: アプリの概要を確認する
 permalink: fire-app-builder-app-tour.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 [アプリの作成][fire-app-builder-download-and-build]が無事終了したら、少し時間を割いて、さまざまな画面を見てみましょう。以降のセクションでは、Fire App Builderのサンプルアプリの各画面について説明します。
@@ -229,7 +230,7 @@ AndroidManifest.xmlファイルは、アプリの起動時に`SplashActivity`ア
     </tr>
   </tbody>
 </table>
- 
+
 {% include note.html content="Fire App BuilderをAndroid Studioで開いた場合、このアプリが作業アプリとなるため、\"Android\" ビューではフォルダーが \"app\" と表示されます。\"Project\" ビューに切り替えると、appフォルダーの実際の名前が [Application] であることがわかります。" %}
 
 ## サブフォルダーの内容

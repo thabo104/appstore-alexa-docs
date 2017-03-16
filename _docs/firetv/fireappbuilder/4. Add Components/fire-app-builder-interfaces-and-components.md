@@ -3,7 +3,7 @@ title: Components Overview
 permalink: fire-app-builder-interfaces-and-components.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

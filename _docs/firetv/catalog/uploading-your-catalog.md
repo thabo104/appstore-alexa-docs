@@ -3,7 +3,7 @@ title: Uploading Your Catalog to Amazon
 permalink: uploading-your-catalog.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -14,7 +14,9 @@ This page describes how to validate and upload your Catalog Data Format (CDF) fi
 
 ## Prerequisites
 
-Before uploading your catalog to Amazon, you will need to set up your AWS account, and give your 12-digit AWS Account ID to your Amazon Fire TV representative. Your Fire TV representative will create your AWS S3 bucket for catalog ingestion and provide you with access to your bucket. Because Amazon creates the S3 bucket, the bucket will not appear in your AWS S3 console. However, you should be able to access the bucket via the Command Line Interface (CLI) to view the bucket contents and upload files to the bucket. The commands used to interact with your S3 bucket are given in the next sections of this page.
+Before uploading your catalog to Amazon, you will need to set up your AWS account, and give your 12-digit AWS Account ID to your Amazon Fire TV representative. Your Fire TV representative will create your AWS S3 bucket for catalog ingestion and provide you with access to your bucket.
+
+Because Amazon creates the S3 bucket, the bucket will not appear in your AWS S3 console. However, you should be able to access the bucket via the Command Line Interface (CLI) to view the bucket contents and upload files to the bucket. The commands used to interact with your S3 bucket are given in the next sections of this page.
 
 See [Setting Up Your AWS Account for Fire TV Catalog Integration][setting-up-your-aws-account-for-fire-tv-catalog-integration] for details.
 

@@ -1,9 +1,10 @@
 ---
 title: JSONでクエリを実行する
 permalink: fire-app-builder-querying-json.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 [レシピのセットアップ][fire-app-builder-set-up-recipes-overview]では、`query`パラメータにJayway JsonPath構文を使用しました。JSONクエリ構文の詳細については、[Jayway JsonPath](https://github.com/jayway/JsonPath)を参照してください。
@@ -17,15 +18,15 @@ toc: false
 
 ### JSON Pathクエリの例 1
 
-この例では、Jayway JsonPathクエリについて詳しく説明します。 
+この例では、Jayway JsonPathクエリについて詳しく説明します。
 
 1.  **urlFile.json** (app > assetsにあります) を開きます。
 2.  最初のURLをコピーします。
-    
+
     ```html
     http://www.lightcast.com/api/firetv/channels.php?app_id=257&app_key=0ojbgtfcsq12&action=channels_videos
     ```
-    
+
 3.  このURLをブラウザにコピーし、**Return**キーを押して内容を表示します。
 4.  内容をコピーし、[jsonprettyprint.com](http://jsonprettyprint.com/)などのツールを使用してJSONを整形します。
 5.  整形されたJSONをコピーし、[Jayway JsonPath Evaluator](http://jsonpath.herokuapp.com/)に貼り付けます。
@@ -34,11 +35,11 @@ toc: false
     ```
     $..categories[*]
     ```
-    
+
 7.  [**Go!**] をクリックします。
 
-    フィードのすべてのカテゴリが結果に表示されます。 
-    
+    フィードのすべてのカテゴリが結果に表示されます。
+
     ```json
     [
        "Bahamas Islands",
@@ -71,7 +72,7 @@ toc: false
        "Bahamas Underwater"
     ]
     ```
-    
+
     このフィードの各メディアオブジェクトには、カテゴリのリストがあります。そのため、クエリを実行すると「Bahamas Islands」という結果が多数 (このカテゴリが含まれているメディアオブジェクトごとに 1 つずつ) 表示されます。
 
     {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_jsonpath_evaluator" type="png" alt="JsonPath Evaluatorの例" caption="Jayway JsonPathクエリ構文を使用した、フィードのすべてのカテゴリの抽出" %}
@@ -79,11 +80,11 @@ toc: false
     `$..categories[*]` という構文は、ルートディレクトリ (`$`) から開始し、すべてのサブディレクトリ (`..`) でキー`categories`を検索することを意味しています。このキーには配列 (`[]`) が含まれている必要がありますが、配列の内容は任意 (`*`) です。
 
     クエリを`$..title[*]` に変更すると何も一致しません。フィード内のtitleは配列を含んでいるキーではないためです。すべてのtitleを取得するには、`$..title`を使用します。
-    
+
     Fire App BuilderコードのDynamicParserクラスによって、これらのカテゴリがマップに配置される際に重複が排除されます。
 
     {% include tip.html content="フィード内の特定の要素をターゲットにする際に使用できるさまざまなクエリの詳細については、JsonPathドキュメントの「[Path Examples](https://github.com/jayway/JsonPath#path-examples)」を参照してください。" %}
-    
+
 ### JSON Pathクエリの例 2
 
 メディアのフィード構造の別の例を以下に示します。
@@ -129,7 +130,7 @@ toc: false
          "media:fullimage":"http:\/\/example.com\/videos\/1234\/thumbnail3.jpg",
          "media:keywords":"some, sample, keywords,random"
       }
-      
+
    ]
 }
 ```
@@ -238,7 +239,7 @@ $..results[*].media:thumbnail
     ```
 
     このクエリの意味は以下のとおりです。
-    
+
     | クエリ構文 | 意味 |
     |----|----|
     | `$`| ルートレベルから開始する|
@@ -250,15 +251,15 @@ $..results[*].media:thumbnail
 3. [**Go!**] をクリックします。
 
     結果として以下のcatが取得されます。
-    
+
     ```
     [
        "romance",
        "adventure"
     ]
     ```
-    
-    
+
+
 ## 例 4
 
 
@@ -316,6 +317,6 @@ $..results[*].media:thumbnail
 ```
 $..vidcategory
 ```
- 
+
 
 {% include links.html %}

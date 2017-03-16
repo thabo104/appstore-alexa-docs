@@ -3,7 +3,7 @@ title: Display and Layout
 permalink: display-and-layout.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

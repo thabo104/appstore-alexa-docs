@@ -3,11 +3,11 @@ title: About the Catalog Data Format (CDF)
 permalink: about-the-cdf.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 
-A Catalog Data Format (CDF) file, or "catalog file", is an XML file that uses the schema defined in the CDF XSD file. The CDF file contains the metadata (title, length, release year, etc.) for your app's media content (movies, TV shows, specials, mini-series, and extras). 
+A Catalog Data Format (CDF) file, or "catalog file", is an XML file that uses the schema defined in the CDF XSD file. The CDF file contains the metadata (title, length, release year, etc.) for your app's media content (movies, TV shows, specials, mini-series, and extras).
 
 The CDF file is used to integrate that metadata into Amazon Fire TV's universal browse and search, which enables a user to perform a search or browse for content through the Fire TV home screen rather than having to search in or browse through individual apps. See [Getting Started with Fire TV Catalog Integration][getting-started-catalog-integration] for an overview of the entire integration process.
 
@@ -59,24 +59,64 @@ The top-level outline of a catalog file can be represented as:
 
 [Works][catalog-data-format-schema-reference#Works] (**required**) contains the bulk of the file: all of the movies and TV shows in your library, as much information as you choose to provide about each entry, and the offers that enable the user to view them.
 
-The Works element can contain any number of child elements, each representing an individual work such as a movie or a TV show. If the Works element contains no child elements, we infer that all of your content is no longer available and we will remove it from our index.
+The `Works` element can contain any number of child elements, each representing an individual work such as a movie or a TV show. If the `Works` element contains no child elements, we infer that all of your content is no longer available and we will remove it from our index.
 
 The available work type elements are:
 
-| [Movie][catalog-data-format-schema-reference#Movie] | A theatrical or made-for-TV movie. |
-| [TvSpecial][catalog-data-format-schema-reference#TvSpecial] | A standalone TV show, which can be a special event or a show associated with a series but not part of its normal sequence of episodes |
-| [TvShow][catalog-data-format-schema-reference#TvShow] | A sequential TV presentation, normally presented in episodes grouped by seasons |
-| [TvSeason][catalog-data-format-schema-reference#TvSeason] | A single season of a TV show
-| [TvEpisode][catalog-data-format-schema-reference#TvEpisode] | A single episode in a single season of a TV show |
-| [MiniSeries][catalog-data-format-schema-reference#MiniSeries] | A TV series consisting of a small number of sequential episodes |
-| [MiniSeriesEpisode][catalog-data-format-schema-reference#MiniSeriesEpisode] | A single episode in a mini-series |
-| [Extra][catalog-data-format-schema-reference#Extra] | A clip or trailer, often related to another work |
+<table class="grid">
+<colgroup>
+   <col width="30%" />
+   <col width="70%" />
+</colgroup>
+<thead>
+   <tr>
+      <th markdown="span">Element</th>
+      <th markdown="span">Description</th>
+   </tr>
+</thead>
+  <tbody>
+    <tr>
+      <td markdown="span">[`Movie`][catalog-data-format-schema-reference#Movie]</td>
+      <td markdown="span">A theatrical or made-for-TV movie.</td>
+    </tr>
+    <tr>
+      <td markdown="span">[`TvSpecial`][catalog-data-format-schema-reference#TvSpecial]</td>
+      <td markdown="span">A standalone TV show, which can be a special event or a show associated with a series but not part of its normal sequence of episodes</td>
+    </tr>
+    <tr>
+      <td markdown="span">[`TvShow`][catalog-data-format-schema-reference#TvShow]</td>
+      <td markdown="span">A sequential TV presentation, normally presented in episodes grouped by seasons</td>
+    </tr>
+    <tr>
+    <td markdown="span">[`TvSeason`][catalog-data-format-schema-reference#TvSeason]</td>
+      <td markdown="span">A single season of a TV show</td>
+    </tr>
+    <tr>
+      <td markdown="span">[`TvEpisode`][catalog-data-format-schema-reference#TvEpisode]</td>
+      <td markdown="span">A single episode in a single season of a TV show</td>
+    </tr>
+    <tr>
+      <td markdown="span">[`MiniSeries`][catalog-data-format-schema-reference#MiniSeries]</td>
+      <td markdown="span">A TV series consisting of a small number of sequential episodes</td>
+    </tr>
+    <tr>
+      <td markdown="span">[`MiniSeriesEpisode`][catalog-data-format-schema-reference#MiniSeriesEpisode]</td>
+      <td markdown="span">A single episode in a mini-series</td>
+    </tr>
+    <tr>
+      <td markdown="span">[`Extra`][catalog-data-format-schema-reference#Extra]</td>
+      <td markdown="span">A clip or trailer, often related to another work</td>
+    </tr>
+  </tbody>
+</table>
 
 Movies are stand-alone elements. TV shows, seasons, and episodes are separate elements that are tied together by IDs, as are mini-series and mini-series episodes. TV specials and extras can be stand-alone elements, but can also be tied to other works. See [Tying Shows, Seasons, and Episodes Together](#tying) for details.
 
 ## Common Elements for All Works
 
-All of the work types listed above are built on a core of common elements, extended in each case with only 1-5 type-specific elements. Only a small subset of the common elements are required. The vast majority of elements available to you in the CDF schema are optional, but providing additional metadata both helps the user to find your content more easily and helps us [match][understanding-fire-tv-catalog-integration#matching] your content to that of other content providers for a better user search and browse experience.
+All of the work types listed above are built on a core of common elements, extended in each case with only 1-5 type-specific elements. Only a small subset of the common elements are required.
+
+The vast majority of elements available to you in the CDF schema are optional, but providing additional metadata both helps the user to find your content more easily and helps us [match][understanding-fire-tv-catalog-integration#matching] your content to that of other content providers for a better user search and browse experience.
 
 The outline of a work element can be represented as:
 
@@ -88,16 +128,42 @@ The outline of a work element can be represented as:
 </_WorkType_>
 ```
 
-[ID][catalog-data-format-schema-reference#ID] (**required**) is an identifier of your choosing for the work. Each work's ID must be unique within your catalog and it should never change as long as you offer that work. The ID element is also used in associating work elements, for instance to specify a TV episode as part of a TV show and season.
+[`ID`][catalog-data-format-schema-reference#ID] (**required**) is an identifier of your choosing for the work. Each work's ID must be unique within your catalog and it should never change as long as you offer that work. The ID element is also used in associating work elements, for instance to specify a TV episode as part of a TV show and season.
 
-[Title][catalog-data-format-schema-reference#Title] (**required**) is, of course, the work's title. You can provide the title in multiple languages.
+[`Title`][catalog-data-format-schema-reference#Title] (**required**) is, of course, the work's title. You can provide the title in multiple languages.
 
-[Offers][catalog-data-format-schema-reference#Offers] (**required**) contains the methods through which the customer can view the work: for free, by rental or purchase, or through subscription. Offers can be limited by time or by region. The Offers element must contain at least one offer, but can contain as many as necessary. There are four offer types:
+[`Offers`][catalog-data-format-schema-reference#Offers] (**required**) contains the methods through which the customer can view the work: for free, by rental or purchase, or through subscription. Offers can be limited by time or by region. The Offers element must contain at least one offer, but can contain as many as necessary. There are four offer types:
 
-| [FreeOffer][catalog-data-format-schema-reference#FreeOffer] | The work is free to view at any time |
-| [SubscriptionOffer][catalog-data-format-schema-reference#SubscriptionOffer] | The work requires a subscription to your service to view |
-| [PurchaseOffer][catalog-data-format-schema-reference#PurchaseOffer] | The work requires a one-time payment, after which it can be viewed at any time |
-| [RentalOffer][catalog-data-format-schema-reference#RentalOffer] | The work requires a one-time payment and can be viewed for only a limited time after that |
+<table class="grid">
+<colgroup>
+   <col width="30%" />
+   <col width="70%" />
+</colgroup>
+<thead>
+   <tr>
+      <th markdown="span">Offer Type</th>
+      <th markdown="span">Description</th>
+   </tr>
+</thead>
+  <tbody>
+    <tr>
+      <td markdown="span">[`FreeOffer`][catalog-data-format-schema-reference#FreeOffer]</td>
+      <td markdown="span">The work is free to view at any time</td>
+    </tr>
+    <tr>
+      <td markdown="span">[`SubscriptionOffer`][catalog-data-format-schema-reference#SubscriptionOffer]</td>
+      <td markdown="span">The work requires a subscription to your service to view</td>
+    </tr>
+    <tr>
+      <td markdown="span">[`PurchaseOffer`][catalog-data-format-schema-reference#PurchaseOffer]</td>
+      <td markdown="span">The work requires a one-time payment, after which it can be viewed at any time</td>
+    </tr>
+    <tr>
+      <td markdown="span">[`RentalOffer`][catalog-data-format-schema-reference#RentalOffer]</td>
+      <td markdown="span">The work requires a one-time payment and can be viewed for only a limited time after that</td>
+    </tr>
+  </tbody>
+</table>
 
 The outline of an offer, including optional elements, can be represented as:
 
@@ -112,13 +178,15 @@ The outline of an offer, including optional elements, can be represented as:
 </_OfferType_>
 ```
 
-[Regions][catalog-data-format-schema-reference#Regions] (**required**) specifies the countries in which this offer is valid. Regions is **required** and must contain at least one [Country][catalog-data-format-schema-reference#Country].
+[`Regions`][catalog-data-format-schema-reference#Regions] (**required**) specifies the countries in which this offer is valid. Regions is **required** and must contain at least one [Country][catalog-data-format-schema-reference#Country].
 
-[WindowStart][catalog-data-format-schema-reference#WindowStart] and [WindowEnd][catalog-data-format-schema-reference#WindowEnd] (both **optional**) can be used together or separately to specify the time when this offer is valid. Before WindowStart and after WindowsEnd, the offer is not shown to the user.
+[`WindowStart`][catalog-data-format-schema-reference#WindowStart] and [WindowEnd][catalog-data-format-schema-reference#WindowEnd] (both **optional**) can be used together or separately to specify the time when this offer is valid. Before WindowStart and after WindowsEnd, the offer is not shown to the user.
 
-[LaunchDetails][catalog-data-format-schema-reference#LaunchDetails] (**optional**) enables you to specify options for visual quality, audio language, and subtitles under this offer. It also allows you to define a special ID that can be used to directly launch a work with a predetermined configuration of those options.
+[`LaunchDetails`][catalog-data-format-schema-reference#LaunchDetails] (**optional**) enables you to specify options for visual quality, audio language, and subtitles under this offer. It also allows you to define a special ID that can be used to directly launch a work with a predetermined configuration of those options.
 
-[Price][catalog-data-format-schema-reference#Price] is the cost to rent or buy the work, and is **required** for RentalOffer and PurchaseOffer. It can be specified in one of four currencies: US dollar, British pound, Japanese yen, and euro. [Duration][catalog-data-format-schema-reference#Duration] is the number of hours that a rental lasts, and is **required** for RentalOffer.
+[`Price`][catalog-data-format-schema-reference#Price] is the cost to rent or buy the work, and is **required** for RentalOffer and PurchaseOffer. It can be specified in one of four currencies: US dollar, British pound, Japanese yen, and euro.
+
+[`Duration`][catalog-data-format-schema-reference#Duration] is the number of hours that a rental lasts, and is **required** for RentalOffer.
 
 If the availability of a given work changes, you must submit an updated catalog file with the new offer information.
 
@@ -130,23 +198,27 @@ The detail page for a movie, extra, or TV show displays all of the available off
 
 ### Common Optional Elements for All Works
 
-So far, we've discussed the common required elements and a handful of common optional elements. Using those alone, you have the knowledge to construct a valid CDF file. However, those elements account for only about one-third of the total available to you. All the rest of the common elements are optional and are used to provide more information about the work. For example, there are elements for genre, certification, cast and crew, plot description, studio, images, and customer rating. For a full list, see the [Fire TV Catalog Data Format (CDF) Schema][catalog-data-format-schema-reference].
+So far, we've discussed the common required elements and a handful of common optional elements. Using those alone, you have the knowledge to construct a valid CDF file.
+
+However, those elements account for only about one-third of the total available to you. All the rest of the common elements are optional and are used to provide more information about the work.
+
+For example, there are elements for genre, certification, cast and crew, plot description, studio, images, and customer rating. For a full list, see the [Fire TV Catalog Data Format (CDF) Schema][catalog-data-format-schema-reference].
 
 ### A Note About Strings
 
-Some string data in the CDF schema, such as a work's title and description, are defined as the custom LocalizedString type. Localized strings allow you to provide the same content in different languages, to be used according to the user's device language setting. These strings have the required attribute _locale_ (of standard type xsd:language). Here is an example:
+Some string data in the CDF schema, such as a work's title and description, are defined as the custom LocalizedString type. Localized strings allow you to provide the same content in different languages, to be used according to the user's device language setting. These strings have the required attribute `locale` (of standard type `xsd:language`). Here is an example:
 
 ```xml
 <Title locale="en-US">Edison Kinetoscopic Record of a Sneeze</Title>
 ```
 
-Localized strings also have an optional attribute _pronunciation_ (of standard type xsd:string). This attribute is provided for Japanese catalog entries that specify string text in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from kanji) rather than characters. The _pronunciation_ attribute provides that information, typically using hiragana.
+Localized strings also have an optional attribute `pronunciation` (of standard type `xsd:string`). This attribute is provided for Japanese catalog entries that specify string text in kanji. The expected sort order in Japanese is based on pronunciation (which cannot be determined from kanji) rather than characters. The `pronunciation` attribute provides that information, typically using hiragana.
 
 ## Elements Specific to the Work Type
 
 In addition to the common elements, each work type has from one to five elements specific to that work type alone. In general, these elements have two uses: (1) to specify an original release or air date and (2) to tie works together, such as a TV episode to a TV show.
 
-Release dates are **optional** but recommended, and are specified by either a [ReleaseDate][catalog-data-format-schema-reference#ReleaseDate] (for movies, TV shows, or mini-series) or [OriginalAirDate][catalog-data-format-schema-reference#OriginalAirdate] (for TV and mini-series episodes, and TV specials).
+Release dates are **optional** but recommended, and are specified by either a [`ReleaseDate`][catalog-data-format-schema-reference#ReleaseDate] (for movies, TV shows, or mini-series) or [`OriginalAirDate`][catalog-data-format-schema-reference#OriginalAirdate] (for TV and mini-series episodes, and TV specials).
 
 The elements that bundle shows, seasons, and episodes are **required**, and are discussed in more detail in the next section.
 
@@ -160,16 +232,54 @@ In general, you can associate one work with another by either ID or title. An ID
 
 The following table shows these elements for each work type:
 
-| Work Type | Link Elements |
-|------|-------|
-| TvEpisode | [ShowID][catalog-data-format-schema-reference#ShowID] or [ShowTitle][catalog-data-format-schema-reference#Showtitle] <br/> [SeasonID][catalog-data-format-schema-reference#SeasonID] or [SeasonInShow][catalog-data-format-schema-reference#SeasonInShow] <br/> **Note**: TvEpisode also has a [SeasonTitle][catalog-data-format-schema-reference#SeasonTitle] element, but it is not used for grouping. |
-| TvSeason | [ShowID][catalog-data-format-schema-reference#ShowID] or [ShowTitle][catalog-data-format-schema-reference#ShowTitle] |
-| TvShow | None |
-| TvSpecial | [ShowID][catalog-data-format-schema-reference#ShowID] or [ShowTitle][catalog-data-format-schema-reference#ShowTitle] |
-| MiniSeries | None |
-| MiniSeriesEpisode | [MiniSeriesID][catalog-data-format-schema-reference#MiniseriesID] or [MiniSeriesTitle][catalog-data-format-schema-reference#MiniSeriesTitle] |
-| Extra | [RelatesToID][catalog-data-format-schema-reference#RelatesToID] or [RelatesToExternalID][catalog-data-format-schema-reference#RelatesToExternalID] |
-| Movie | None |
+<table class="grid">
+<colgroup>
+   <col width="30%" />
+   <col width="70%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Work Type</th>
+      <th>Link Elements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td markdown="span">`TvEpisode`</td>
+      <td markdown="span">[ShowID][catalog-data-format-schema-reference#ShowID] or [`ShowTitle`][catalog-data-format-schema-reference#ShowTitle] <br /> [`SeasonID`][catalog-data-format-schema-reference#SeasonID] or [`SeasonInShow`][catalog-data-format-schema-reference#SeasonInShow] <br /> <strong>Note</strong>: `TvEpisode` also has a [`SeasonTitle`][catalog-data-format-schema-reference#SeasonTitle] element, but it is not used for grouping.</td>
+    </tr>
+    <tr>
+      <td markdown="span">`TvSeason`</td>
+      <td markdown="span">[`ShowID`][catalog-data-format-schema-reference#ShowID]</a> or [`ShowTitle`][catalog-data-format-schema-reference#ShowTitle]</a></td>
+    </tr>
+    <tr>
+      <td markdown="span">`TvShow`</td>
+      <td markdown="span">None</td>
+    </tr>
+    <tr>
+      <td markdown="span">`TvSpecial`</td>
+      <td markdown="span">[`ShowID`][catalog-data-format-schema-reference#ShowID] or [`ShowTitle`][catalog-data-format-schema-reference#ShowTitle]</td>
+    </tr>
+    <tr>
+      <td markdown="span">`MiniSeries`</td>
+      <td markdown="span">None</td>
+    </tr>
+    <tr>
+      <td markdown="span">`MiniSeriesEpisode`</td>
+      <td markdown="span">[`MiniSeriesID`][catalog-data-format-schema-reference#MiniSeriesID] or [`MiniSeriesTitle`][catalog-data-format-schema-reference#MiniSeriesTitle]</td>
+    </tr>
+    <tr>
+      <td markdown="span">`Extra`</td>
+      <td markdown="span">[`RelatesToID`][catalog-data-format-schema-reference#RelatesToID] or [`RelatesToExternalID`][catalog-data-format-schema-reference#RelatesToExternalID]</td>
+    </tr>
+    <tr>
+      <td markdown="span">`Movie`</td>
+      <td markdown="span">None</td>
+    </tr>
+  </tbody>
+</table>
+
+Rather than a title, TvEpisode uses a number to specify a season not in your catalog and Extra uses a link to an external ID scheme, such as IMDb. Also, while you can choose which to use,
 
 Rather than a title, TvEpisode uses a number to specify a season not in your catalog and Extra uses a link to an external ID scheme, such as IMDb. Also, while you can choose which to use, one in each element link pair is **required** for TvEpisode, TvSeason, and MiniSeriesEpisode. The link value is **optional** for TvSpecial and Extra, which can be standalone works.
 
@@ -177,28 +287,82 @@ The following illustration shows how the various elements and values are matched
 
 {% include image.html caption="Diagram showing the relations between the IDs of TV shows, seasons, episodes, and specials" file="firetv/catalog/images/catalog_RelatingShowsSeasonsSpecialsAndEpisodes" type="png" %}
 
-For instance, if a TvShow had an ID of "TV-123456", the ShowID values in TvEpisode and TvSeason would also equal "TV-123456". Download the [Catalog Data Format Examples](https://s3.amazonaws.com/com.amazon.aftb.cdf/cdf-examples.zip) to see fully implemented catalogs illustrating these concepts.
+For instance, if a `TvShow` had an ID of `TV-123456`, the `ShowID` values in `TvEpisode` and `TvSeason` would also equal `TV-123456`. Download the [Catalog Data Format Examples](https://s3.amazonaws.com/com.amazon.aftb.cdf/cdf-examples.zip) to see fully implemented catalogs illustrating these concepts.
 
 ## Requirements for Box Art Images (ImageUrl)
 
-The [ImageUrl][catalog-data-format-schema-reference#ImageUrl] element, one of the optional elements common to all works, provides the URL of an image that represents the work, sometimes called the "box art." If you don't include ImageUrl, we attempt to use art available from other sources such as IMDb, if we can make a [match][understanding-fire-tv-catalog-integration#matching], or we might use a generic placeholder image.
+The [`ImageUrl`][catalog-data-format-schema-reference#ImageUrl] element, one of the optional elements common to all works, provides the URL of an image that represents the work, sometimes called the "box art." If you don't include ImageUrl, we attempt to use art available from other sources such as IMDb, if we can make a [match][understanding-fire-tv-catalog-integration#matching], or we might use a generic placeholder image.
 
 {% include note.html content="Your catalog must provide valid images for at least 50% of its entries or the integration process will fail and the entire catalog will be rejected." %}
 
 ### Image requirements
 
-| Type | JPG (preferred) or PNG | Other image types will not be used |
-| Aspect Ratio | Between 1:3 and 3:1 (1:2 and 2:1 preferred) | Images with aspect ratios less than 1:3 or greater than 3:1 will not be used <br/>Images with aspect ratios between 1:2 and 1:3 are cropped to 1:2 <br/> Images with aspect ratios between 2:1 and 3:1 are cropped to 2:1 |
-| Size | Height greater than 240 px (480 px preferred) | Images less than 480 px in height generate a warning in the [ingestion report][receiving-and-understanding-the-catalog-ingestion-report], but those between 240 px and 480 px are accepted without counting toward the total number of invalid images. Images less than 240 px in height will not be used. For optimal quality, we prefer large images (no image size is too big) that we can scale as needed. <br/><br/>**Note**: If we crop your image because of its aspect ratio, the cropped version must still meet this height requirement regardless of its original dimensions. |
+<table class="grid">
+<colgroup>
+   <col width="25%" />
+   <col width="25%" />
+   <col width="50%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Requirement</th>
+      <th>Image</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Type</td>
+      <td>JPG (preferred) or PNG</td>
+      <td>Other image types will not be used</td>
+    </tr>
+    <tr>
+      <td>Aspect Ratio</td>
+      <td>Between 1:3 and 3:1 (1:2 and 2:1 preferred)</td>
+      <td>Images with aspect ratios less than 1:3 or greater than 3:1 will not be used <br />Images with aspect ratios between 1:2 and 1:3 are cropped to 1:2 <br /> Images with aspect ratios between 2:1 and 3:1 are cropped to 2:1</td>
+    </tr>
+    <tr>
+      <td>Size</td>
+      <td>Height greater than 240 px (480 px preferred)</td>
+      <td markdown="span">Images less than 480 px in height generate a warning in the [ingestion report][receiving-and-understanding-the-catalog-ingestion-report], but those between 240 px and 480 px are accepted without counting toward the total number of invalid images. Images less than 240 px in height will not be used. For optimal quality, we prefer large images (no image size is too big) that we can scale as needed. <br /><br /><strong>Note</strong>: If we crop your image because of its aspect ratio, the cropped version must still meet this height requirement regardless of its original dimensions.</td>
+    </tr>
+  </tbody>
+</table>
 
 
 At a minimum, we recommend that your images meet the specifications in the following table. Note that this refers to the box art image, not the work itself.
 
-| Media | Aspect Ratio | Minimum Size |
-|----|-----|-----|
-| Movies | 3:4 | 360 px by 480 px |
-| TV episodes, seasons, shows, and specials <br/>Mini-series and mini-series episodes | 16:10 | 768 px by 480 px |
-| TV episodes, seasons, shows, and specials <br/>Mini-series and mini-series episodes | 16:9 | 853 px by 480 px |
+<table>
+<colgroup>
+   <col width="50%" />
+   <col width="25%" />
+   <col width="25%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Media</th>
+      <th>Aspect Ratio</th>
+      <th>Minimum Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Movies</td>
+      <td>3:4</td>
+      <td>360 px by 480 px</td>
+    </tr>
+    <tr>
+      <td>TV episodes, seasons, shows, and specials <br />Mini-series and mini-series episodes</td>
+      <td>16:10</td>
+      <td>768 px by 480 px</td>
+    </tr>
+    <tr>
+      <td>TV episodes, seasons, shows, and specials <br />Mini-series and mini-series episodes</td>
+      <td>16:9</td>
+      <td>853 px by 480 px</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Validating the CDF File Against the Schema {#validating}
 

@@ -5,7 +5,7 @@ product: Fling SDK
 permalink: integrating-amazon-fling-into-your-ios-app.html
 reviewers: jeffersd
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 This service provides an asynchronous discovery and control mechanism for your iOS app in the form of a framework. See [Understanding the Amazon Fling Service][understanding-the-amazon-fling-service] for a high-level overview of the features and functions this service provides. See also the "FlingSample" sample app, part of the SDK, for a sample controller implementation for iOS.  

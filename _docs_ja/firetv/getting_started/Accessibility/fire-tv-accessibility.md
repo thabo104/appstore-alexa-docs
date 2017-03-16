@@ -8,7 +8,7 @@ toc: false
 github: true
 ---
 
-{% include content/{{site.language}}/accessibility-in-fire-os.md device="firetv" %}
+{% include content/{{site.language}}/fire/accessibility-in-fire-os.md device="firetv" %}
 
 ## 関連リソース
 

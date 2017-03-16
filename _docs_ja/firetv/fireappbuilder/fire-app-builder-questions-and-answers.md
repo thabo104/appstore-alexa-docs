@@ -1,13 +1,13 @@
 ---
 title: よくある質問
 permalink: fire-app-builder-questions-and-answers.html
-toc: false
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
-Fire App Builderに関する一般的な質問を以下に示します。 
+Fire App Builderに関するよくある質問をご紹介しています。
 
 Fire App Builderで作成されたアプリは、スマートフォン端末とタブレットでも動作しますか。それともテレビでしか動作しませんか。
 :   現時点では、Fire App Builderで作成されたアプリは、Fire TVと他のAndroid TVプラットフォームでのみ動作します。今後の機能拡張により、Fire App Builderで作成されたアプリは他の端末でも動作するようになる予定です。ツールキットの名前が「Fire TV App Builder」ではなく「Fire App Builder」であるのはこのためです。

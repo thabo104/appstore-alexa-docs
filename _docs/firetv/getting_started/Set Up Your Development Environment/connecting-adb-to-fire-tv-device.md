@@ -3,11 +3,11 @@ title: Connecting to Fire TV Through ADB
 permalink: connecting-adb-to-fire-tv-device.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/adb.md %}
+{% include content/{{site.language}}/fire/adb.md %}
 
 
 ## Next Steps

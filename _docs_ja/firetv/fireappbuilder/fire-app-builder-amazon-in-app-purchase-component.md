@@ -1,14 +1,16 @@
 ---
 title: Amazonアプリ内課金のコンポーネント
 permalink: fire-app-builder-amazon-in-app-purchase-component.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 Amazonアプリ内課金コンポーネントでは、Amazonの[アプリ内課金](https://developer.amazon.com/public/apis/earn/in-app-purchasing) (IAP) APIを使用して、アプリに次の 2 つの購入オプションを組み込みます。
 
-* **Daily Pass**: ユーザーは 1 日間 (購入時から 24 時間) アプリ内のメディアを視聴できます。これは 24 時間見放題の映画レンタルに似たオプションです。* **Go Premium**: ユーザーは定期購読料を払って購読期間中にアプリ内のすべてのメディアを視聴できます。購読期間は開発者がAmazon開発者コンソールでアプリ内アイテムを設定する際に定義します。
+* **Daily Pass**: ユーザーは 1 日間 (購入時から 24 時間) アプリ内のメディアを視聴できます。これは 24 時間見放題の映画レンタルに似たオプションです。
+* **Go Premium**: ユーザーは定期購読料を払って購読期間中にアプリ内のすべてのメディアを視聴できます。購読期間は開発者がAmazon開発者コンソールでアプリ内アイテムを設定する際に定義します。
 
 アプリ内課金コンポーネントを使用すると、ユーザートランザクションの処理を気にする必要がありません。ユーザーはAmazonアカウントを通じて購入を行います。このアカウントはユーザーがFire TVを設定する際にセットアップします。アプリ内のトランザクションの詳細はアプリ内課金APIによって処理されます。
 
@@ -21,7 +23,7 @@ Amazonアプリ内課金コンポーネントでは、Amazonの[アプリ内課�
 
 Amazonアプリ内課金コンポーネントをアプリに実装すると、ユーザーには [Content Details] 画面に ([Watch Now] ボタンの代わりに) [Daily Pass] ボタンと [Go Premium] ボタンが表示されます。  
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_iapprompt" type="png" caption="<b>図 1.</b> [Content Details] 画面に、定期購読するか 1 日限りのパスを購入するかを選択するボタンが表示されます。%}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_iapprompt" type="png" caption="<b>図 1.</b> [Content Details] 画面に、定期購読するか 1 日限りのパスを購入するかを選択するボタンが表示されます。" %}
 
 ユーザーが [Go Premium] ボタンか [Daily Pass] ボタンをクリックすると、Fire TVアカウントを使用して購入するための画面が表示されます。たとえば、ユーザーが [Go Premium] をクリックすると、次の画面が表示されます。
 

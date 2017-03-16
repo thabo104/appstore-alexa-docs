@@ -1,9 +1,10 @@
 ---
 title: Fire TVカタログにメディアを組み込む
 permalink: fire-app-builder-catalog-integration.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 Fire TVのどの画面を表示しているときでも、音声対応リモコンのマイクボタンを押すと、Alexaクラウドサービスを使用したグローバル検索が起動します (アプリのLeanbackライブラリは使用されません)。
@@ -13,11 +14,11 @@ Fire TVのどの画面を表示しているときでも、音声対応リモコ�
 
 ## 音声によるメディアのリクエスト
 
-音声でメディアをリクエストすると (たとえば、見たいテレビ番組を言うと)、Fire TVカタログからコンテンツが返されます。カタログ内の検索は、アプリではなく、クラウドで実行されます。 
+音声でメディアをリクエストすると (たとえば、見たいテレビ番組を言うと)、Fire TVカタログからコンテンツが返されます。カタログ内の検索は、アプリではなく、クラウドで実行されます。
 
 詳細については、Fire TVに検索機能を実装する方法については、[こちら][implementing-search-fire-tv]を参照してください。また、エンドユーザーの視点から見た、Fire TVのAlexa音声機能の詳細については、「[Alexa on Fire TV](https://www.amazon.com/gp/help/customer/display.html?nodeId=201859020)」を参照してください。
 
-グローバル検索の結果にアプリのメディアを表示する場合は、Fire TVカタログにメディアを組み込む必要があります。Fire TVカタログには、Fire TVのすべてのメディアコンテンツのインデックスが含まれています。 
+グローバル検索の結果にアプリのメディアを表示する場合は、Fire TVカタログにメディアを組み込む必要があります。Fire TVカタログには、Fire TVのすべてのメディアコンテンツのインデックスが含まれています。
 
 アプリのコンテンツをカタログに組み込むための処理を "カタログ統合" と呼びます。カタログ統合では、コンテンツをカタログサービスに定期的にプッシュする必要があります (カタログサービスでは、フィードからの読み取りは行われません)。これは、開発者が構成する必要のあるタスクです。Fire App Builderはカタログ統合を自動的には実行しません。詳細については、「[カタログとFire TVの統合][integrating-your-catalog-with-fire-tv]」を参照してください。
 
@@ -34,7 +35,7 @@ Fire App Builderプロジェクトでは、「[アプリとFire TVホーム画�
 
 ## b. フィードとカタログ申請にコンテンツIDを含める
 
-カタログの詳細には、コンテンツアイテムごとに一意のIDが必要です。この一意のコンテンツIDは、メディアフィードのコンテンツIDと一致している必要があります。各メディアコンテンツアイテムの一意のIDがメディアフィードに含まれてない場合は、追加する必要があります。 
+カタログの詳細には、コンテンツアイテムごとに一意のIDが必要です。この一意のコンテンツIDは、メディアフィードのコンテンツIDと一致している必要があります。各メディアコンテンツアイテムの一意のIDがメディアフィードに含まれてない場合は、追加する必要があります。
 
 また、クラウドにあるカタログの詳細と (アプリに組み込まれる) メディアフィードは、常に同期している必要があります。
 
@@ -44,11 +45,11 @@ Fire App Builderプロジェクトでは、「[アプリとFire TVホーム画�
 
 1.  Android Studioで、アプリのフォルダーにある **manifests**を展開し、**AndroidManifest.xml**を開きます。
 2.  "Launcher Integration intents" セクションのコメントを解除します。
-    
+
     ```xml
     <!-- Launcher integration intents -->
     <!-- Uncomment the below intent filters to enable launcher integration -->
-    
+
     <intent-filter>
         <action android:name="PLAY_CONTENT_FROM_LAUNCHER"/>
         <category android:name="android.intent.category.DEFAULT"/>
@@ -58,10 +59,10 @@ Fire App Builderプロジェクトでは、「[アプリとFire TVホーム画�
         <category android:name="android.intent.category.DEFAULT"/>
     </intent-filter>
     ```
-    
+
 3.  **ContentBrowser > manifests**に移動して、**AndroidManifest.xml**ファイルを開きます。
 4.  ランチャー統合セクションのコメントを解除します。
-    
+
     ```xml
     <!-- Uncomment the below receiver to enable launcher integration -->
     <receiver android:name="com.amazon.android.contentbrowser.helper.LauncherIntegrationBroadcastReceiver" >

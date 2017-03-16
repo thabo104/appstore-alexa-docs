@@ -1,9 +1,10 @@
 ---
 title: Navigatorの構成について
 permalink: fire-app-builder-configure-navigator.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 アプリのユーザーインターフェース要素のタイプ、要素が相互に通信する方法、アプリに関連付けるアクティビティ、レイアウトなどは、Navigator.jsonファイル (**app > assets**にあります) で定義します。

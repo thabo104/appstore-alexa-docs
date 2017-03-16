@@ -3,7 +3,7 @@ title: GameController API (Deprecated)
 permalink: gamecontroller-api.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

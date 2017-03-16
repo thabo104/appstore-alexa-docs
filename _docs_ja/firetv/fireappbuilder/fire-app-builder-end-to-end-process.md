@@ -1,11 +1,12 @@
 ---
 title: アプリを作成するための一連のプロセス
-toc: false
 permalink: fire-app-builder-end-to-end-process.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
+
 <style>
 th {
 background-color: #444;
@@ -41,6 +42,6 @@ font-weight: bold;
 |---|
 | a. [コンポーネントの概要][fire-app-builder-interfaces-and-components] | Fire App Builderのインターフェースを実装する、すでにコーディングされたコンポーネントをロードすることで、認証、アプリ内課金、分析、広告、またはMedia Playerを設定します。|
 
-アプリの開発が完了し、Amazonアプリストアにそのアプリを申請する準備ができたら、「[Understanding Amazon Appstore Submission][appstore-understanding-submission]」を参照してください。アプリの公開を準備する場合は、[さまざまなスクリーンショットを撮影](/support/submitting-your-app/tech-docs/04-taking-screenshots)し、[Fire TVの画像アセット][asset-guidelines-for-app-submission#firetvassets]を収集する必要があります。
+アプリの開発が完了し、Amazonアプリストアにそのアプリを申請する準備ができたら、「[Understanding Amazon Appstore Submission][appstore-understanding-submission]」を参照してください。アプリの公開を準備する場合は、[さまざまなスクリーンショットを撮影](/support/submitting-your-app/tech-docs/taking-screenshots)し、[Fire TVの画像アセット][asset-guidelines-for-app-submission#firetvassets]を収集する必要があります。
 
 {% include links.html %}

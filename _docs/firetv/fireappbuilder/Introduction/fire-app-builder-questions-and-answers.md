@@ -3,7 +3,7 @@ title: Miscellaneous Questions
 permalink: fire-app-builder-questions-and-answers.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -1,9 +1,10 @@
 ---
 title: Fire App Builderをダウンロードして、アプリをビルドする
 permalink: fire-app-builder-download-and-build.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 Fire App Builderを使用してサンプルアプリをビルドするには、以下のセクションの手順を完了します。

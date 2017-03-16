@@ -1,9 +1,10 @@
 ---
 title: AmazonアプリストアへのFire TV対応アプリの申請
 permalink: submitting-your-fire-tv-app-to-the-amazon-appstore.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 
@@ -15,4 +16,3 @@ toc: false
 * [Device Targetingの使用][getting-started-with-device-targeting]: 複数のプラットフォームまたは端末 (たとえば、Kindle FireタブレットとAmazon Fire TV端末) を対象にするアプリを開発した場合、Device Targetingを使用することにより、アプリを一度だけ申請して複数のバイナリAPKを提供することができます。このページでは、アプリ申請用にDevice Targetingを管理する方法と、Fire TV APKを既存のタブレットアプリに追加する方法について説明しています。
 
 {% include links.html %}
-

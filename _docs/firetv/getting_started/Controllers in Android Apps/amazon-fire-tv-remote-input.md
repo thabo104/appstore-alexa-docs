@@ -3,7 +3,7 @@ title: Remote Input
 permalink: amazon-fire-tv-remote-input.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

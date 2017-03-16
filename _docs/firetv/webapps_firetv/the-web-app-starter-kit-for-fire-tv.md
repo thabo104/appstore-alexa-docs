@@ -4,7 +4,7 @@ permalink: the-web-app-starter-kit-for-fire-tv.html
 sidebar: firetv
 product: Fire TV
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 The Web App Starter Kit for Fire TV, available on Github at [github.com/amzn/web-app-starter-kit-for-fire-tv](https://github.com/amzn/web-app-starter-kit-for-fire-tv), includes the Fire TV web app template and associated text files. The Fire TV web app template is both an illustration of best practices for developing a web app for Fire TV and a starting point for developing your own web app.
@@ -13,6 +13,12 @@ The Web App Starter Kit for Fire TV, available on Github at [github.com/amzn/web
 
 * TOC
 {:toc}
+
+## Video Tutorial
+
+For a video tutorial on creating a WASK app from a YouTube feed, see the following webinar recording:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/LJw0B_l_rso" frameborder="0" allowfullscreen></iframe>
 
 ## Working with WASK
 

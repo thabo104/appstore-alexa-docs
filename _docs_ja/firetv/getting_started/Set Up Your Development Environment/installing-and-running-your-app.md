@@ -1,13 +1,14 @@
 ---
 title: アプリのインストールと実行
 permalink: installing-and-running-your-app.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 Amazonアプリストアに申請するFire TV対応アプリは、事前にテストとデバッグを済ませる必要があります。この作業にはAndroid Debug Bridge (ADB) を使用し、Fire TV端末にアプリをインストールして実行します。開発したアプリを (アプリストアを介さずに) インストールすることを、アプリを "サイドロードする" とも
-言います。 
+言います。
 
 作業を行う前に、Fire TV端末がADB経由で開発コンピューターにあらかじめ接続されている必要があります。詳細については、「[ADBを使用してFire TVに接続する][connecting-adb-to-fire-tv-device]」を参照してください。
 

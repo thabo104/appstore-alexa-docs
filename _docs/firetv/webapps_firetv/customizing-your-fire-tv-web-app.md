@@ -4,7 +4,7 @@ permalink: customizing-your-fire-tv-web-app.html
 sidebar: firetv
 product: Fire TV 
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 You can customize your web app for Fire TV in the following ways:

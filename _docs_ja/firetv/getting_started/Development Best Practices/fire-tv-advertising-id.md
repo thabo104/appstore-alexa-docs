@@ -8,4 +8,4 @@ github: true
 reviewer: Anuj Chadha
 ---
 
-{% include content/{{site.language}}/advertising-id.md device="firetv" %}
+{% include content/{{site.language}}/fire/advertising-id.md device="firetv" %}

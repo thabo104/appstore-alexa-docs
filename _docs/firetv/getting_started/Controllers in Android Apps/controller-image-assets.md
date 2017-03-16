@@ -3,7 +3,7 @@ title: Controller Image Assets
 permalink: controller-image-assets.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

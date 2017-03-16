@@ -3,7 +3,7 @@ title: Configure Navigator -- Open Feeds
 permalink: fire-app-builder-configure-navigator-open-feeds.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

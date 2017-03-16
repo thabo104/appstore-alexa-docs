@@ -3,7 +3,7 @@ title: Pull Updates from Github
 permalink: fire-app-builder-pulling-updates-from-github.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

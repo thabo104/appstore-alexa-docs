@@ -3,7 +3,7 @@ title: Troubleshooting
 permalink: fire-app-builder-troubleshooting.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

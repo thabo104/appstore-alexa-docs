@@ -18,7 +18,7 @@
    owner: tomjoht
 
  - title: Fire TV Catalog Integration
-   link: 01-device-and-feature-specifications.html
+   link: integrating-your-catalog-with-fire-tv.html
    group: Fire Devices
    shortname: catalog
    owner: tomjoht

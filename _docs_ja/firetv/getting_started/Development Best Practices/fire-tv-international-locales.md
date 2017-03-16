@@ -6,4 +6,4 @@ hippourl: https://developer.amazon.com/public/solutions/devices/fire-tablets/app
 product: Fire TV
 ---
 
-{% include content/{{site.language}}/international-locales.md device="firetv" %}
+{% include content/{{site.language}}/fire/international-locales.md device="firetv" %}

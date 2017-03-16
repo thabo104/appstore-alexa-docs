@@ -3,7 +3,7 @@ title: Recipe Configuration Overview
 permalink: fire-app-builder-set-up-recipes-overview.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: User Agent Strings for Fire TV
 permalink: user-agent-strings.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

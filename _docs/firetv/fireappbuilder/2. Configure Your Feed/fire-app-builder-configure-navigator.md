@@ -3,7 +3,7 @@ title: Navigator Configuration Overview
 permalink: fire-app-builder-configure-navigator.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: Configure Navigator -- Token-based Feeds
 permalink: fire-app-builder-configure-navigator-token-feeds.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

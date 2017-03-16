@@ -36,7 +36,7 @@ Windowsが実行されているコンピューターをUSBケーブルでFire TV
 2.  **FireDevices_Drivers**をダブルクリックします。
 3.  ダイアログボックスの指示に従ってインストールを実行します。
 
-{% include note.html content="このUSBドライバはWindows 8.1 に対してのみ認定されています。Windows 10 をご利用の場合は、\"信頼されていない発行元\"からのインストールに明示的に同意する必要があります。" %}
+{% include note.html content="このUSBドライバはWindows 8.1 に対してのみ認証されています。Windows 10 をご利用の場合は、\"信頼されていない発行元\"からのインストールに明示的に同意する必要があります。" %}
 
 ## 手順 3. 環境変数パスにAndroid Debug Bridgeを追加する {#addadbpath}
 

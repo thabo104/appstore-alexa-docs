@@ -1,18 +1,18 @@
 ---
 title: Fire TV端末の仕様
 permalink: device-and-platform-specifications.html
-toc: false
 navtabs: true
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 {% if site.target == "hippo" %}
-<style> 
-ul#profileTabs.nav.nav-tabs li { 
-    margin: 5px; 
-} 
+<style>
+ul#profileTabs.nav.nav-tabs li {
+    margin: 5px;
+}
 
 ul#profileTabs.nav:after, ul#profileTabs.nav:before {
     display: inline-table !important;
@@ -22,8 +22,8 @@ ul#profileTabs.nav:after, ul#profileTabs.nav:before {
 ul#profileTabs.nav-tabs>li.active>a, ul#profileTabs.nav-tabs>li.active>a:focus, ul#profileTabs.nav-tabs>li.active>a:hover {
 font-weight: bold;
 }
-    
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) 
+
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
 { @media {
 ul#profileTabs.nav.nav:after, ul#profileTabs.nav.nav:before {
     display: inline-table !important;
@@ -70,7 +70,7 @@ margin-bottom: 30px;
 
 {% include_relative specs_firetvstickgen2.md %}
 </div>
-  
+
 <div role="tabpanel" class="tab-pane" id="firetvgen2">
 {% include_relative specs_firetvgen2.md %}
 </div>
@@ -150,7 +150,7 @@ margin-bottom: 30px;
   </tbody>
 </table>
 
-### 端末のリリース日
+### 端末のリリース日（米国）
 
 <table class="grid">
    <colgroup>
@@ -166,7 +166,7 @@ margin-bottom: 30px;
   <tbody>
     <tr>
       <td>Fire TV Stick (第 2 世代) </td>
-      <td>2016 年 9 月 </td>
+      <td>2016 年 9 月　※日本は2017 年4 月 </td>
     </tr>
     <tr>
       <td>Fire TV (第 2 世代)  </td>

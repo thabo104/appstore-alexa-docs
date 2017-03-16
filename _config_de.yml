@@ -49,7 +49,7 @@ defaults:
     values:
       layout: default
       topnav: topnav_de
-      toc: false
+      toc-style: kramdown
       github_button: false
       search: false
 
@@ -75,7 +75,6 @@ uistring:
     title: Jekyll Dokumentation Theme # Displays as site title on top nav bar and on site metadata
     description: Dokumentationsthema für Jekyll-Webseiten # Displays as site description meta
     search_placeholder: Suche ...
-    minitoc_title: Inhaltsverzeichnis
     github_edit_button_text: Bearbeiten Sie diese Seite
     search_results_page_title: Suchergebnisse
     search_placeholder_global: G Oba l Sayre rch ...

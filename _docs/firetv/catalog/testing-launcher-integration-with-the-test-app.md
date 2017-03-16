@@ -3,7 +3,7 @@ title: Testing Fire TV Launcher Integration with the Integration Test App
 permalink: testing-launcher-integration-with-the-test-app.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 

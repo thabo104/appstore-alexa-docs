@@ -1,12 +1,11 @@
 ---
 title: Amazon Fire TV開発フレームワークの比較
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 permalink: fire-tv-development-framework-comparison.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-development-framework-comparison
-reviewers: Russell Beattie, Mihir Choudhary, Jonathan Richardson, Pete Schwab, Mary Galvin, Chris DeNamur, Mario Mancia, Luca Sale, Stephen Whitney, Alexander Budyszewick
-last_updated: 12-13-2016
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 Amazon Fire TVを対象としたメディアベースのアプリ開発を検討している方のために、Amazonでは、アプリ開発を強力に支援する 2 つのフレームワークを用意しています。それぞれのフレームワークは、特定のスキルを持った開発者が対象となっています。
@@ -39,7 +38,7 @@ WASKテンプレートには、アプリ申請プロセスでAmazonアプリス�
 
 申請したアプリはその後、Amazonのインジェストサービスを経ることになります。アプリが公開されると申請者に通知が送られます。
 
-詳細については、「[Fire TV用ウェブアプリスターターキット][the-web-app-starter-kit-for-fire-tv]」を参照してください。WASKを使って作成されたFire TV対応アプリの例としては、[Acorn TV][acorn-tv]、[Urban Movie Channel][urban-movie-channel]、[Euronews][euronews]があります。
+詳細については、「[Fire TV用ウェブアプリスターターキット](https://developer.amazon.com/public/ja/solutions/platforms/webapps/docs/the-web-app-starter-kit-for-fire-tv)」を参照してください。WASKを使って作成されたFire TV対応アプリの例としては、[Acorn TV][acorn-tv]、[Urban Movie Channel][urban-movie-channel]、[Euronews][euronews]があります。
 
 ## Fire App Builder {#fab}
 
@@ -231,7 +230,7 @@ Fire App Builderでは、メディアフィードとして、JSONまたはXMLを
 </tr>
 <tr>
   <td class="white"><b>グローバルカタログ検索</b></td>
-  <td class="white" markdown="span">[Fire TVカタログ][integrating-your-catalog-with-fire-tv]統合によるグローバル音声検索</td>
+  <td class="white" markdown="span">[Fire TVカタログ][integrating-your-catalog-with-fire-tv] 統合によるグローバル音声検索</td>
   <td class="white">{{site.data.code.check}}</td>
   <td class="white"></td>
 </tr>

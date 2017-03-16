@@ -3,7 +3,7 @@ title: Querying JSON
 permalink: fire-app-builder-querying-json.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

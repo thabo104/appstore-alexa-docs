@@ -4,10 +4,10 @@ permalink: specifying-installation-location.html
 sidebar: firetv
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/specifying-installation-location
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 
-{% include content/{{site.language}}/installation-location.md device="firetv" %}
+{% include content/{{site.language}}/fire/installation-location.md device="firetv" %}
 
 {% include links.html %}

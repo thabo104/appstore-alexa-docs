@@ -1,10 +1,10 @@
 ---
 title: Beginning-to-End Process for Building an App
-toc: false
+toc-style: kramdown
 permalink: fire-app-builder-end-to-end-process.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 <style>

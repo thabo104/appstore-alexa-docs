@@ -1,12 +1,13 @@
 ---
 title: メディアフィードをロードする
 permalink: fire-app-builder-load-media-feed.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
-メディアフィードはアプリの核となる部分です。このフィードは、各メディアオブジェクトのタイトル、説明、サムネイル、その他の詳細情報が含まれたビデオコンテンツで構成されています。 
+メディアフィードはアプリの核となる部分です。このフィードは、各メディアオブジェクトのタイトル、説明、サムネイル、その他の詳細情報が含まれたビデオコンテンツで構成されています。
 
 メディアフィードごとに構造 (および各種プロパティや要素を指す用語) が異なるため、Fire App Builderでは、メディアフィードに対して必要なコンポーネントを問い合わせ、その結果をFire App Builderのコンテンツモデルに合致した構造と用語に変換します。その問い合わせ用のクエリを記述する ([カテゴリ][fire-app-builder-set-up-recipes-categories]レシピと[コンテンツ][fire-app-builder-set-up-recipes-content]レシピでクエリを指定する) には、まず、ここで説明する手順に従ってメディアフィードをロードする必要があります。
 
@@ -24,19 +25,19 @@ toc: false
 
 ### トークンベースのフィードをロードする {#tokenbasedconfiguration}
 
-トークンによってアクセスが制限されているウェブフィードでメディアの詳細を公開する場合は、以下の手順に従います。 
+トークンによってアクセスが制限されているウェブフィードでメディアの詳細を公開する場合は、以下の手順に従います。
 
 1.  **DataLoadManagerConfig.json**ファイル (**app > assets > configurations**にあります) を開きます。
-    
-    {% include tip.html content="Android Studioでは、フォルダーを参照する代わりに**Shift**キーを 2 回押してからファイル名を入力すると、すばやくファイルを検索できます。" %} 
-    
+
+    {% include tip.html content="Android Studioでは、フォルダーを参照する代わりに**Shift**キーを 2 回押してからファイル名を入力すると、すばやくファイルを検索できます。" %}
+
 2.  **data_downloader.impl**オプションの値は`com.amazon.dataloader.datadownloader.BasicHttpBasedDataDownloader`のままにしておきます。
 2.  必要に応じて、以下の 2 つのプロパティのオプションを更新します。
     * `is_cache_manager_enabled`: フィードをアプリでキャッシュするかどうかを指定します。フィードをキャッシュすると、取得したメディアによる画面のロード時間は短縮しますが、フィードに対する最新の更新は、データローダーが更新されるかフィードの有効期限が切れるまで反映されません。選択肢は`true`または`false`です。通常は`true`のままにしておきます。
     * `data_updater.duration`: データローダーがフィードを更新して最新の更新データを取得する間隔 (秒単位) を指定します。データローダーで更新が行われると、キャッシュは消去されます。デフォルト値は 2000 秒または 5.5 時間です。
-    
+
     {% include note.html content="アプリのキャッシュは、ユーザーがアプリを起動するたびに自動的に消去され、フィードが更新されます。" %}
-    
+
 3.  **BasicHttpBasedDownloaderConfig.json**ファイル (**app > assets > configurations**にあります) を開き、値を`com.amazon.dataloader.datadownloader.BasicFileBasedUrlGenerator`から`com.amazon.dataloader.datadownloader.BasicTokenBasedUrlGenerator`に変更します。
 
     ```json
@@ -44,7 +45,7 @@ toc: false
       "url_generator_impl": "com.amazon.dataloader.datadownloader.BasicTokenBasedUrlGenerator"
     }
     ```
-    
+
 4.  **app > assets > configurations**に**BasicTokenBasedUrlGeneratorConfig.json**というファイルを作成します。ファイル内に、次のような 2 つのキーと値のペアを含むJSONオブジェクトを作成します。
 
     ```json
@@ -53,7 +54,7 @@ toc: false
       "token_generation_url" : "http://yourcompany.com/url_to_generate_token"
     }
     ```
-        
+
 5.  会社で使用している実際の値で`base_url`と`token_generation_url`の両方の値をカスタマイズします。
 
     `base_url`はメディアフィードへのURLです。`token_generation_url`には、このURLにアクセスするためのトークンを生成するURLへのリンクを含めます。
@@ -64,14 +65,14 @@ toc: false
 
 ### オープンフィードをロードする {#filebasedconfiguration}
 
-オープンで無制限なウェブフィード、つまりメディアへのアクセスにトークンを必要としないウェブフィードでメディアの詳細を公開する場合は、以下の手順に従います。 
+オープンで無制限なウェブフィード、つまりメディアへのアクセスにトークンを必要としないウェブフィードでメディアの詳細を公開する場合は、以下の手順に従います。
 
 1.  **DataLoadManagerConfig.json**ファイル (**app > assets > configurations**にあります) を開きます。
-    
-    {% include tip.html content="Android Studioでは、フォルダーを参照する代わりに**Shift**キーを 2 回押してからファイル名を入力すると、すばやくファイルを検索できます。"%} 
-    
+
+    {% include tip.html content="Android Studioでは、フォルダーを参照する代わりに**Shift**キーを 2 回押してからファイル名を入力すると、すばやくファイルを検索できます。"%}
+
 2.  **data_downloader.impl**オプションの値が`com.amazon.dataloader.datadownloader.BasicHttpBasedDataDownloader`であることを確認します。
-    
+
     ```json
     {
       "data_downloader.impl": "com.amazon.dataloader.datadownloader.BasicHttpBasedDataDownloader",
@@ -79,15 +80,15 @@ toc: false
       "data_updater.duration": 14400
     }
     ```
-    
+
 2.  **BasicHttpBasedDownloaderConfig.json**ファイル (**app > assets > configurations**にあります) を開き、`url_generator_impl`の値が`com.amazon.dataloader.datadownloader.BasicFileBasedUrlGenerator`であることを確認します。
-    
+
     ```json
     {
       "url_generator_impl" : "com.amazon.dataloader.datadownloader.BasicFileBasedUrlGenerator"
     }
     ```
-    
+
 3.  **BasicFileBasedUrlGeneratorConfig.json**ファイル (**app > assets > configurations**にあります) を開き、その内容が以下のコードと一致することを確認します。このファイルは、メディアフィードが格納される`url_file`の場所を指定しています。簡略化のために、ファイル名はデフォルトのままにします。
 
     ```json
@@ -95,9 +96,9 @@ toc: false
       "url_file" : "urlFile.json"
     }
     ```
-    
+
 6.  **urlFile.json** (**app > assets**にあります) を開き、メディアフィードのURLをリストに加えます。
-    
+
     ```json
     {
       "urls": [
@@ -108,7 +109,7 @@ toc: false
       ]
     }
     ```
-    
+
 ## その他のフィードをロードする方法
 
 ここで紹介したどの方法でもフィードをロードできない場合は、Dataloaderインターフェースを実装するクラスをDataLoaderフォルダーに追加することで、独自のデータローダーを作成できます。また、フィードがRESTエンドポイントから生成されている場合は、データダウンローダーも自分で作成する必要があります。
@@ -127,13 +128,13 @@ toc: false
 2.  **data_downloader.impl**の値を`com.amazon.dataloader.datadownloader.BasicFileBasedDownloaderConfig`に変更します。
 3.  **BasicFileBasedDownloaderConfig.json**ファイル (**app > assets > configurations**にあります) を開きます。
 4.  XMLファイルの名前は、次のように必要に応じて変更できます。
-    
+
     ```xml
     {
       "data_file_path": "GenericMediaData.xml"
     }
     ```
-    
+
 5.  フィードファイルを**app > assets**フォルダー内に配置します。
 
 ## 次のステップ

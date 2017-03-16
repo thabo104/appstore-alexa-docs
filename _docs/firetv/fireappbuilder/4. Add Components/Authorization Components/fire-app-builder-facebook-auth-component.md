@@ -3,7 +3,7 @@ title: Facebook Authorization Component
 permalink: fire-app-builder-facebook-auth-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

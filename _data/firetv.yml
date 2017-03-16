@@ -206,11 +206,11 @@ folders:
 
   - title: App Installation Location
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/specifying-installation-location
-    jurl: /specifying-installation-location.html
+    jurl: /fire-tspecifying-installation-location.html
     ref: specifying-installation-location
 
   - title: Advertising ID
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-os-advertising-id
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-advertising-id
     jurl: /fire-tv-advertising-id.html
     ref: fire-tv-advertising-id
 
@@ -254,6 +254,29 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-preview-future-voiceview-accessibility-features
     jurl: /fire-tv-preview-future-voiceview-accessibility-features.html
     ref: fire-tv-preview-future-voiceview-accessibility-features
+
+- title: Recommendations
+  folderitems:
+  - title: Recommendations Overview
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-overview
+    jurl: /fire-tv-recommendations-overview.html
+    ref: fire-tv-recommendations-overview
+
+  - title: Send Recommendations that Include Amazon Enhancements
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-send-recommendations
+    jurl: /fire-tv-recommendations-send-recommendations.html
+    ref: fire-tv-recommendations-send-recommendations
+    bookmarks: [amazon-enhancements]
+
+  - title: Test Your Recommendations
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-testing
+    jurl: /fire-tv-recommendations-testing.html
+    ref: fire-tv-recommendations-testing
+
+  - title: Best Practices with Recommendations
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-best-practices
+    jurl: /fire-tv-recommendations-best-practices.html
+    ref: fire-tv-recommendations-best-practices
 
 - title: Build Webapps for Fire TV
   folderitems:

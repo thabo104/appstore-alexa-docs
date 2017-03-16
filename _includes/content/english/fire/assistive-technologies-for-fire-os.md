@@ -13,7 +13,7 @@ Accessible systems have three major components:
 
 Assistive technologies help a person with a disability accomplish a task or use a product. Examples of assistive technologies include screen reading software for blind users, screen magnification software for users with low vision, or wheel chairs for users who are unable to walk.
 
-This page provides a conceptual over view of the assistive techonologies that are available from Amazon for your Fire OS apps.
+This page provides a conceptual over view of the assistive technologies that are available from Amazon for your Fire OS apps.
 
 ## Available Fire OS Assistive Technologies
 

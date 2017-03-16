@@ -6,7 +6,7 @@ permalink: fire-tv-development-framework-comparison.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-development-framework-comparison
 reviewers: Russell Beattie, Mihir Choudhary, Jonathan Richardson, Pete Schwab, Mary Galvin, Chris DeNamur, Mario Mancia, Luca Sale, Stephen Whitney, Alexander Budyszewick
 last_updated: 12-13-2016
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -39,6 +39,10 @@ When your app is ready, you can use the Amazon Developer Portal to submit your a
 After signing up online, filling in the basic app details, and uploading thumbnail and preview images, you have a choice about where to host your app. You can either host the app's asset files on your own web server and submit just the URL, or you can upload the assets to Amazon's servers, where it will be bundled into a standalone packaged app.
 
 After you have submitted your app, it will go through an Amazon ingestion service, and you will be notified when your app is published.
+
+For a video tutorial on creating a WASK app from a YouTube feed, see the following video:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/LJw0B_l_rso" frameborder="0" allowfullscreen></iframe>
 
 To learn more, see [The Web App Starter Kit for Fire TV][the-web-app-starter-kit-for-fire-tv]. Some examples of Fire TV apps built using WASK include [Acorn TV][acorn-tv], [Urban Movie Channel][urban-movie-channel], and [Euronews][euronews].
 

@@ -1,9 +1,10 @@
 ---
 title: アプリのルックアンドフィールをカスタマイズする
 permalink: fire-app-builder-customize-look-and-feel.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 アプリのcustom.xmlファイル (**res > values**にあります) とnavigator.json (**app > assets**にあります) を使用して、アプリのルックアンドフィールのほとんどをカスタマイズできます。簡単に変更できるアプリの要素を次に示します。
@@ -280,7 +281,7 @@ bg_generic.png画像は次のようになります。
 
 このデフォルトの画像を変更するには、使用する画像ファイルを同じサイズで作成します。既存の画像のように、右上隅を透明にします。このファイルに**bg_generic.png**という名前を付け、**TVUIComponent > res > drawable**の既存のファイルと置き換えます。
 
-画像を簡単にカスタマイズする方法として、[Photoshopファイルをダウンロード](https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/firetv/fireappbuilder/bg_generic.psd_V523835574_.zip)し、これを使用して画像を作成できます。Photoshopで画像のレイヤーを表示し、塗りつぶしツールを使用して、2 つのレイヤーに新しい色を適用します。ダウンロードファイルでは、色が黒から青に変更されており、識別しやすくなっています。
+画像を簡単にカスタマイズする方法として、[Photoshopファイルをダウンロード](https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/firetv/fireappbuilder/bg_generic.psd._V523835574_.zip)し、これを使用して画像を作成できます。Photoshopで画像のレイヤーを表示し、塗りつぶしツールを使用して、2 つのレイヤーに新しい色を適用します。ダウンロードファイルでは、色が黒から青に変更されており、識別しやすくなっています。
 
 フルブラウズレイアウトの場合も、同様の方法でこの画像を変更できます。具体的には、**TVUIComponent > res > drawable**にあるbg_generic_nopreview.pngを置き換えるか、独自の画像ファイルを作成して、アプリケーションのcustom.xmlファイルでその画像ファイルへの参照を更新します。
 

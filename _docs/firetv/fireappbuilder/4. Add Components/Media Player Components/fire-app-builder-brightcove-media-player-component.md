@@ -3,7 +3,7 @@ title: Brightcove Media Player Component
 permalink: fire-app-builder-brightcove-media-player-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -1,9 +1,10 @@
 ---
 title: "Android TVエミュレーターを使用してアプリを実行する"
 permalink: fire-app-builder-use-an-android-tv-emulator.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 Fire App Builderでアプリを開発する際は、実際のFire TV端末を使用してアプリをテストする必要があります。詳細については、「[ADBを使用してFire TVに接続する][connecting-adb-to-fire-tv-device]」を参照してください。ただし、エミュレーターしか使用できない場合でも、いくつかある制限事項を許容できれば、エミュレーターでテストすることもできます。エミュレーターも問題なく機能しますが、マウスでメディアプレーヤーボタンをクリックすることができません。

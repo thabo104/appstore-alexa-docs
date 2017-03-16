@@ -3,7 +3,7 @@ title: Nächste Version des Dokumentationsthemas für Jekyll
 permalink: index.html
 sidebar: null
 topnav: topnav_de
-toc: false
+toc-style: kramdown
 search: false
 layout: homepage
 type: homepage

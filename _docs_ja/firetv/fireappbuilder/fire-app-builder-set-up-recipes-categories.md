@@ -1,9 +1,10 @@
 ---
 タイトル: カテゴリレシピをセットアップする
 permalink: fire-app-builder-set-up-recipes-categories.html
-sidebar: fireappbuilder
+sidebar: fireappbuilder_ja
 product: Fire App Builder
-toc: false
+toc-style: kramdown
+github: true
 ---
 
 ここでは、フィードにカテゴリを問い合わせる手順を説明します。カテゴリを使用すると、メディアをさまざまなコレクションやチャネルにグループ化できます。カテゴリでメディアを整理すれば、すべてのビデオを 1 つの長いリストで保持せずに済みます。レシピ構成の全般的な概要については、「[レシピの構成について][fire-app-builder-set-up-recipes-overview]」を参照してください。
@@ -58,21 +59,21 @@ toc: false
     <td markdown="1">{% include_relative recipe_modeltype.md %}
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`query`
     </td>
-    <td markdown="1">{% include_relative recipe_query.md type="categories" %} 
+    <td markdown="1">{% include_relative recipe_query.md type="categories" %}
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`queryResultType`
     </td>
     <td markdown="1">{% include_relative recipe_queryresulttype.md %}
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`matchList`
     </td>
@@ -88,7 +89,7 @@ toc: false
     </tbody>
     </table>
 
-### queryパラメータ{#queryparameter}
+### queryパラメータ {#queryparameter}
 
 使用する構文は、JSONとXMLで異なります。実際のフィードに該当するセクションを参照してください。
 
@@ -101,10 +102,10 @@ Fire App Builderのサンプルアプリでは、JSON形式を使用する汎用
 
 | クエリ構文 | 照合する対象 |
 |----|----|
-| `$` | 検索の開始位置としてルートディレクトリを指定します。| 
-| `..` | ルートのすべてのディレクトリとサブディレクトリを対象に再帰検索を行うことを指定します。| 
-| `categories[]` | "categories" という名前の配列を検索することを指定します。| 
-| `*` | すべての内容に一致します (ワイルドカード)。| 
+| `$` | 検索の開始位置としてルートディレクトリを指定します。|
+| `..` | ルートのすべてのディレクトリとサブディレクトリを対象に再帰検索を行うことを指定します。|
+| `categories[]` | "categories" という名前の配列を検索することを指定します。|
+| `*` | すべての内容に一致します (ワイルドカード)。|
 
 これらをまとめると、`$..categories[*]` になります。ルート (`$`) で開始し、すべてのディレクトリとサブディレクトリを再帰的に検索し (`..`)、`categories`という名前の配列 (内容は任意 (`*`)) に一致します。
 
@@ -153,7 +154,7 @@ Fire App Builderのサンプルアプリで、このクエリ (`$..categories[*]
 
 (Fire App Builderでは、クエリ結果から重複項目が削除されます。)
 
-Fire App Builderは、オブジェクトの配列を取得してハッシュマップに変換し、Javaクラスで処理できるようにする必要があります。そのため、次のパラメータ (`queryResultType`) を使用して、文字列の配列をオブジェクトの配列に変換します。 
+Fire App Builderは、オブジェクトの配列を取得してハッシュマップに変換し、Javaクラスで処理できるようにする必要があります。そのため、次のパラメータ (`queryResultType`) を使用して、文字列の配列をオブジェクトの配列に変換します。
 
 ```
 "queryResultType": "[]$",
@@ -161,9 +162,9 @@ Fire App Builderは、オブジェクトの配列を取得してハッシュマ�
 
 Jayway JsonPathクエリの作成方法の詳細については、「[JSONでクエリを実行する][fire-app-builder-querying-json]」を参照してください。また、Jayway JsonPath全般の詳細については、「[Jayway JsonPath](https://github.com/jayway/JsonPath)」を参照してください。
 
-#### XMLフィード{#categoryxml}
+#### XMLフィード {#categoryxml}
 
-フィードがXMLの場合は、Jayway JsonPathを使用する代わりに、[XPath式](http://www.w3schools.com/xsl/xpath_syntax.asp)を使用して、フィードの各要素をターゲットに指定する必要があります。XPathでは、XML文書が "ノード" と呼ばれるさまざまなアイテムを用いた構造に変換されます。XPath構文は各ノードの位置を指定するための構文です。 
+フィードがXMLの場合は、Jayway JsonPathを使用する代わりに、[XPath式](http://www.w3schools.com/xsl/xpath_syntax.asp)を使用して、フィードの各要素をターゲットに指定する必要があります。XPathでは、XML文書が "ノード" と呼ばれるさまざまなアイテムを用いた構造に変換されます。XPath構文は各ノードの位置を指定するための構文です。
 
 XMLフィードに次のような構造が含まれているとします。
 
@@ -199,7 +200,7 @@ Text='Gadgets'
 
 (`Text=`の部分は無視してください。これは単にXPath Tester/Evaluatorの表示の一部で、クエリで一致した内容ではありません。)
 
-iTunesフィードの場合は、フィードの一般カテゴリ (`<itunes:category text="Technology">`など) と、各アイテムのカテゴリ (`<category>Technology</category>`) があることに注意してください。レシピのカテゴリをターゲットにする際は、フィードの一般カテゴリではなく、フィード内の各アイテムのカテゴリを指定する必要があります。 
+iTunesフィードの場合は、フィードの一般カテゴリ (`<itunes:category text="Technology">`など) と、各アイテムのカテゴリ (`<category>Technology</category>`) があることに注意してください。レシピのカテゴリをターゲットにする際は、フィードの一般カテゴリではなく、フィード内の各アイテムのカテゴリを指定する必要があります。
 
 XMLフィードを[XPath Tester/Evaluator](http://www.freeformatter.com/xpath-tester.html)にコピーし、同じ構文を使用してカテゴリを選択してみてください。
 
@@ -213,12 +214,12 @@ XMLフィードを[XPath Tester/Evaluator](http://www.freeformatter.com/xpath-te
 
 `matchList`で使用される構文は、Jayway JsonPath式やXPath式ではなく、クエリ結果内の特定の要素をターゲットにするカスタムのFire App Builder構文です(そのため、JSONとXMLの手順は、同じセクションに集約されています)。
 
-Fire App Builderのサンプルアプリでは、カテゴリレシピの値は`StringKey@name`です。 
+Fire App Builderのサンプルアプリでは、カテゴリレシピの値は`StringKey@name`です。
 
-この構文の構成は次のとおりです。アンパサンド (`@`) の左側に、クエリの結果でターゲットにするプロパティを設定します (`StringKey`は文字列のリストを選択します)。アンパサンド (`@`) の右側には、プロパティのマップ先となるFire App Builder要素を設定します (`name`)。 
+この構文の構成は次のとおりです。アンパサンド (`@`) の左側に、クエリの結果でターゲットにするプロパティを設定します (`StringKey`は文字列のリストを選択します)。アンパサンド (`@`) の右側には、プロパティのマップ先となるFire App Builder要素を設定します (`name`)。
 
 **カテゴリレシピ**の場合は、`matchList`パラメータでフィードのカテゴリを`name`にマップする必要があります。
- 
+
 Fire App Builderのサンプルアプリでは、クエリの結果が文字列のリストであるため、`StringKey`を使用して文字列を照合します。ただし、クエリの結果セットに次のようなJSONオブジェクトが含まれている場合:
 
 ```json
@@ -226,7 +227,7 @@ Fire App Builderのサンプルアプリでは、クエリの結果が文字列�
 ```
 
 `My category title`に対して照合を行い、`name`に変換するには、次の値を使用します。
- 
+
 ```
 list/title@name
 ```
@@ -291,7 +292,7 @@ Fire App Builderのクエリの結果は文字列のリストです。そのた�
 container/assets@keyDataPath
 ```
 
-`matchList`パラメータと同様、`keyDataType`クエリでもJayway JsonPath構文は使用しません。代わりに、ノード名の後に `/` を付けて次のレベルに移動し、各ノードを照合します。`container/assets`では、このレベルのすべてのアイテムが照合されます。 
+`matchList`パラメータと同様、`keyDataType`クエリでもJayway JsonPath構文は使用しません。代わりに、ノード名の後に `/` を付けて次のレベルに移動し、各ノードを照合します。`container/assets`では、このレベルのすべてのアイテムが照合されます。
 
 アンパサンド`@`の右側にある`keyDataPath`キーは、Fire App Builderでこれらのメディアオブジェクトを保存および使用する方法を示しています。`@keyDataPath`を使用することで、アイテムをFire App Builderコンテンツモデルと一致させることができます。
 
@@ -304,4 +305,3 @@ container/assets@keyDataPath
 アプリのメディアフィードのカテゴリを構成できたところで、続いては、コンテンツを構成する必要があります。「[コンテンツレシピをセットアップする][fire-app-builder-set-up-recipes-content]」を参照してください。
 
 {% include links.html %}
-

@@ -3,7 +3,7 @@ title: Migrating a Catalog Data Format (CDF) File to the Latest Version
 permalink: migrating-a-cdf-file-to-the-latest-version.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -13,9 +13,9 @@ This page describes changes involved in each version of the Fire TV CDF schema b
 * TOC
 {:toc}
 
-## Migration Overview 
+## Migration Overview
 
-Amazon Fire TV occasionally updates its Catalog Data Format (CDF) XML schema to accept new metadata, remove unused information, or clarify the catalog structure. These changes do not cause existing CDF files to become invalid, but some data in older tags might be ignored or used in new ways, and deprecation warnings will appear in the [ingestion report][receiving-and-understanding-the-catalog-ingestion-report]. 
+Amazon Fire TV occasionally updates its Catalog Data Format (CDF) XML schema to accept new metadata, remove unused information, or clarify the catalog structure. These changes do not cause existing CDF files to become invalid, but some data in older tags might be ignored or used in new ways, and deprecation warnings will appear in the [ingestion report][receiving-and-understanding-the-catalog-ingestion-report].
 
 In the future, Amazon could potentially stop supporting older schemas. For the best customer experience, Amazon recommends always creating your catalog file against the latest CDF schema version.
 
@@ -38,11 +38,41 @@ This topic assumes that you are familiar with XML and the [CDF schema][about-the
 
 Here are the differences between CDF v1.0 and v1.1:
 
-
-| Item | Type | Change | Notes |
-|----|-----|----|-----|
-| _WorkType_.Source | Element | Added | Optional. Specifies the origin of the work. Accepted values are: <br/><br/>&bull; _original_: A work produced by your company. For example, Amazon would specify this value for the Amazon original series Transparent.<br/><br/>&bull; _licensed_: A work that your company licensed from another source.<br/><br/>&bull; _other_: The original source is known, but can't be classified as _original_ or _licensed_.<br/><br/>&bull; _unknown_: The original source is not known. |
-| _WorkType_.AdultProduct | Element | Deprecated | This value is no longer used and the element should be removed. Adult content can be identified through the ContentRatings element. In Japan, you can use the `JP_Require18PlusAge`<br/>`Confirmation` element added in v1.2. |
+<table>
+<colgroup>
+   <col width="20%" />
+   <col width="15%" />
+  <col width="15%" />
+  <col width="50%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Type</th>
+      <th>Change</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>WorkType.Source</code></td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Optional. Specifies the origin of the work. Accepted values are: <ul>
+      <li><b><code>original</code></b>: A work produced by your company. For example, Amazon would specify this value for the Amazon original series Transparent.</li>
+      <li><b><code>licensed</code></b>: A work that your company licensed from another source.</li>
+      <li><b><code>other</code></b>: The original source is known, but can’t be classified as <code>original</code> or <code>licensed</code>.</li>
+      <li><b><code>unknown</code></b>: The original source is not known.</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><code>WorkType.AdultProduct</code></td>
+      <td>Element</td>
+      <td>Deprecated</td>
+      <td>This value is no longer used and the element should be removed. Adult content can be identified through the ContentRatings element. In Japan, you can use the <code class="highlighter-rouge">JP_Require18PlusAge</code><br /><code class="highlighter-rouge">Confirmation</code> element added in v1.2.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### To update a CDF file from v1.0 to v1.1
 
@@ -53,13 +83,64 @@ Here are the differences between CDF v1.0 and v1.1:
 
 Here are the differences between CDF v1.1 and v1.2:
 
-| Item | Type | Change | Notes |
-| Catalog.version | Attribute | Added | Optional. Use this attribute so that others who work with the file will know which CDF version it was created against. Accepted values are: <br/><br/>&bull; FireTv-v1.2<br/><br/>&bull; FireTv-v1.3 |
-| _OfferType_.LaunchDetails | Element | Added | Optional. Includes these child elements in the given order. <br/><br/>&bull; Quality: Optional. This is the new location of the _OfferType_.Quality element used to specify video quality. It is otherwise identical to the older version. Accepted values are SD, HD, and UHD. <br/><br/>&bull; AudioLanguage: Optional. A language option for the work's original or dubbed audio. <br/><br/>&bull; Subtitle: Optional. A language option for the work's subtitles. <br/><br/>&bull; LaunchId: Optional. An identifier used to launch this content with a specified quality, audio, and subtitle combination. This lets you use a single identifier for content that differs in audio encoding (dubbing), visual quality, and subtitle language, but otherwise shares the same metadata. There is no specific format to this string; it only needs to be understood by your app. <br/> <br/>Each instance of LaunchDetails can contain as many Quality, AudioLanguage, and Subtitle elements as necessary, but only one LaunchId. To specify a different LaunchId, create another copy of the LaunchDetails element. See the example below.|
-| _OfferType_.Quality | Element | Deprecated/Moved | This element is now a child element of _OfferType_.LaunchDetails (see above). It can be moved to the new location otherwise unchanged. |
-| CustomerRating.Count | Element | Added | Optional. Allows you to specify the number of ratings from which the final rating was averaged. Placed as the last element under CustomerRating. |
-| JP_Require18PlusAgeConfirmation | Element | Added | Optional. Only used by Japanese content providers. Accepted values are true and false. When true, viewers of this content in Japan are presented with a dialog in which they must confirm that their age is 18 or above, in accordance with Japanese law. This element should, at a minimum, be added it to those works that Japanese regulators regard as not to be viewed by anyone under 18\. This element's placement depends on the work type. |
-| CastMember.Role | Element | Now optional | This element, which specifies the name of the character played by the cast member, was required in v1.1 but can now be omitted. |
+<table>
+<colgroup>
+   <col width="20%" />
+   <col width="15%" />
+  <col width="15%" />
+  <col width="50%" />
+</colgroup>
+  <tbody>
+    <tr>
+      <td>Item</td>
+      <td>Type</td>
+      <td>Change</td>
+      <td>Notes</td>
+    </tr>
+    <tr>
+      <td><code>Catalog.version</code></td>
+      <td>Attribute</td>
+      <td>Added</td>
+      <td>Optional. Use this attribute so that others who work with the file will know which CDF version it was created against. Accepted values are <code>FireTv-v1.2</code> and <code>FireTv-v1.3</code></td>
+    </tr>
+    <tr>
+      <td><em>OfferType</em>.LaunchDetails</td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Optional. Includes these child elements in the given order.
+      <ul>
+      <li><b><code>Quality</code>:</b> Optional. This is the new location of the <em>OfferType</em>.Quality element used to specify video quality. It is otherwise identical to the older version. Accepted values are SD, HD, and UHD. </li>
+      <li><b><code>AudioLanguage</code>:</b> Optional. A language option for the work’s original or dubbed audio.</li>
+      <li><b><code>Subtitle</code>:</b> Optional. A language option for the work’s subtitles. </li>
+      <li><b><code>LaunchId</code>:</b> Optional. An identifier used to launch this content with a specified quality, audio, and subtitle combination. This lets you use a single identifier for content that differs in audio encoding (dubbing), visual quality, and subtitle language, but otherwise shares the same metadata. There is no specific format to this string; it only needs to be understood by your app. <p>Each instance of LaunchDetails can contain as many Quality, AudioLanguage, and Subtitle elements as necessary, but only one LaunchId. To specify a different LaunchId, create another copy of the LaunchDetails element. See the example below.</p></li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><code>OfferType.Quality</code></td>
+      <td>Element</td>
+      <td>Deprecated/Moved</td>
+      <td>This element is now a child element of <em>OfferType</em>.LaunchDetails (see above). It can be moved to the new location otherwise unchanged.</td>
+    </tr>
+    <tr>
+      <td><code>CustomerRating.Count</code></td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Optional. Allows you to specify the number of ratings from which the final rating was averaged. Placed as the last element under CustomerRating.</td>
+    </tr>
+    <tr>
+      <td><code>JP_Require18PlusAgeConfirmation</code></td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Optional. Only used by Japanese content providers. Accepted values are true and false. When true, viewers of this content in Japan are presented with a dialog in which they must confirm that their age is 18 or above, in accordance with Japanese law. This element should, at a minimum, be added it to those works that Japanese regulators regard as not to be viewed by anyone under 18. This element’s placement depends on the work type.</td>
+    </tr>
+    <tr>
+      <td><code>CastMember.Role</code></td>
+      <td>Element</td>
+      <td>Now optional</td>
+      <td>This element, which specifies the name of the character played by the cast member, was required in v1.1 but can now be omitted.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### To update a CDF file from v1.1 to v1.2
 
@@ -138,21 +219,101 @@ Here are the differences between CDF v1.1 and v1.2:
 
 Here are the differences between CDF v1.2 and v1.3
 
-| Item | Type | Change | Notes |
-|----|-----|-----|-----|
-| MiniSeries | Element | Added | A mini-series is loosely defined as a TV show limited to a small number of ordered episodes, without seasons.
- |
-| MiniSeriesEpisode | Element | Added | An individual episode in a mini-series, used in the same manner as a TvEpisode in relation to a TvShow. |
-| Extra | Element | Added | Supplementary material, often to accompany a work. Accepted values are: <br/><br/>&bull; _clip_: This can be anything from a short scene from the work to a documentary about the work's cinematographer. Think of it as an bonus feature on a DVD. <br/><br/>&bull; _trailer_: An official preview of the work or an associated work. |
-| ReleaseInfo | Element | Deprecated/Moved | This element contained two child elements:<br/><br/>&bull; ReleaseCountry: This information is no longer used <br/><br/>&bull; ReleaseDate: This information has been moved to these locations:  _WorkType_.ReleaseDate (for Movie, TvShow, and MiniSeries), and _WorkType_.OriginalAirDate (for TvEpisode, TvSpecial, and MiniSeriesEpisode) <br/><br/>Note that the original value was in the XML _date_ format (YYYY-MM-DD) while the new values are in the _dateTime_ format (YYYY-MM-DDThh:mm:ss). You cannot simply move the element into its new location; you must also update each value. Also, while ReleaseInfo.ReleaseDate was optional, OriginalAirDate for TvSpecial is required. The others remain optional. |
-| Movie.ReleaseDate | Element | Added | Optional. This is the new location of the deprecated Movie.ReleaseInfo.ReleaseDate. See the ReleaseInfo entry above for details. |
-| TvShow.ReleaseDate | Element | Added | Optional. This is the new location of the deprecated TvShow.ReleaseInfo.ReleaseDate. See the ReleaseInfo entry above for details. |
-| TvEpisode.OriginalAirDate | Element | Added | Optional. This is the new location of the deprecated TvEpisode.ReleaseInfo.ReleaseDate. See the ReleaseInfo entry above for details. |
-| TvSpecial.OriginalAirDate | Element | Added | Required. This is the new location of the deprecated TvSpecial.ReleaseInfo.ReleaseDate. See the ReleaseInfo entry above for details. |
-| TvSpecial.ShowID | Element | Added | Optional. This element allows you to attach a special to a specific show, in the situation where the special was an event outside of the regular run of a series. This value must match a TvShow.ID value in your catalog. You cannot include both this value and TvSpecial.ShowTitle. |
-| TvSpecial.ShowTitle | Element | Added | Optional. This element allows you to attach a special to a show not included in your catalog. The ShowTitle string isn't required to match any title in your catalog. It is used to create the illusion of an attachment without the underlying structure. Use this value _only_ when you cannot use ShowID. |
-| Works | Element | Can now be empty | Previously this would have caused your catalog to be invalid. Now, an empty Works element has the effect of removing all of your content from Amazon Fire TV's universal browse and search. |
-| _WorkType_.ID | Element | Must now be at least one character in length | The element itself (a unique identifier for each work) was always required, but now it requires a value as well. Given that this is an extremely important piece of information, used in everything from tying episodes to seasons and shows to reporting where to find an error in the file, it should always be present and unique. |
+<table>
+<colgroup>
+   <col width="20%" />
+   <col width="15%" />
+  <col width="15%" />
+  <col width="50%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Type</th>
+      <th>Change</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>MiniSeries</td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>A mini-series is loosely defined as a TV show limited to a small number of ordered episodes, without seasons.</td>
+    </tr>
+    <tr>
+      <td><code>MiniSeriesEpisode</td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>An individual episode in a mini-series, used in the same manner as a TvEpisode in relation to a TvShow.</td>
+    </tr>
+    <tr>
+      <td><code><code>Extra</td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Supplementary material, often to accompany a work. Accepted values are: <br /><br /><li><em>clip</em>: This can be anything from a short scene from the work to a documentary about the work’s cinematographer. Think of it as an bonus feature on a DVD. <br /><br /><li><em>trailer</em>: An official preview of the work or an associated work.</td>
+    </tr>
+    <tr>
+      <td><code>ReleaseInfo</code></td>
+      <td>Element</td>
+      <td>Deprecated/Moved</td>
+      <td>This element contained two child elements:
+      <ul>
+      <li>ReleaseCountry: This information is no longer used </li>
+      <li>ReleaseDate: This information has been moved to these locations:  <code>WorkType.ReleaseDate</code> (for Movie, TvShow, and MiniSeries), and <code>WorkType.OriginalAirDate</code> (for <code>TvEpisode</code>, <code>TvSpecial</code>, and <code>MiniSeriesEpisode</code>). <p>Note that the original value was in the XML <code>date</code> format (YYYY-MM-DD) while the new values are in the <code>dateTime</code> format (YYYY-MM-DDThh:mm:ss). You cannot simply move the element into its new location; you must also update each value. Also, while <code>ReleaseInfo.ReleaseDate</code> was optional, <code>OriginalAirDate</code> for <code>TvSpecial</code> is required. The others remain optional.</p></li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><code>Movie.ReleaseDate</code></td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Optional. This is the new location of the deprecated <code>Movie.ReleaseInfo.ReleaseDate</code>. See the <code>ReleaseInfo</code> entry above for details.</td>
+    </tr>
+    <tr>
+      <td><code>TvShow.ReleaseDate</code></td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Optional. This is the new location of the deprecated <code>TvShow.ReleaseInfo.ReleaseDate</code>. See the ReleaseInfo entry above for details.</td>
+    </tr>
+    <tr>
+      <td><code>TvEpisode.OriginalAirDate</code></td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Optional. This is the new location of the deprecated <code>TvEpisode.ReleaseInfo.ReleaseDate. See the <code>ReleaseInfo</code> entry above for details.</td>
+    </tr>
+    <tr>
+      <td><code>TvSpecial.OriginalAirDate</code></td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Required. This is the new location of the deprecated <code>TvSpecial.ReleaseInfo.ReleaseDate</code>. See the <code>ReleaseInfo</code> entry above for details.</td>
+    </tr>
+    <tr>
+      <td><code>TvSpecial.ShowID</code></td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Optional. This element allows you to attach a special to a specific show, in the situation where the special was an event outside of the regular run of a series. This value must match a <code>TvShow.ID</code> value in your catalog. You cannot include both this value and <code>TvSpecial.ShowTitle</code>.</td>
+    </tr>
+    <tr>
+      <td><code>TvSpecial.ShowTitle</code></td>
+      <td>Element</td>
+      <td>Added</td>
+      <td>Optional. This element allows you to attach a special to a show not included in your catalog. The ShowTitle string isn’t required to match any title in your catalog. It is used to create the illusion of an attachment without the underlying structure. Use this value <em>only</em> when you cannot use ShowID.</td>
+    </tr>
+    <tr>
+      <td><code>Works</code></td>
+      <td>Element</td>
+      <td>Can now be empty</td>
+      <td>Previously this would have caused your catalog to be invalid. Now, an empty Works element has the effect of removing all of your content from Amazon Fire TV’s universal browse and search.</td>
+    </tr>
+    <tr>
+      <td><code>WorkType.ID</code></td>
+      <td>Element</td>
+      <td>Must now be at least one character in length</td>
+      <td>The element itself (a unique identifier for each work) was always required, but now it requires a value as well. Given that this is an extremely important piece of information, used in everything from tying episodes to seasons and shows to reporting where to find an error in the file, it should always be present and unique.</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ### To update a CDF file from v1.2 to v1.3
 
@@ -200,8 +361,8 @@ Here are the differences between CDF v1.2 and v1.3
         </TvSpecial>
         ```
 
-2.  Delete all instances of the ReleaseInfo element, including any ReleaseDate and ReleaseCountry elements that they contain.
-3.  Ensure that you don't have any empty _WorkType_.ID elements (it's unlikely). If you do, assign those works a unique ID.
+2.  Delete all instances of the `ReleaseInfo` element, including any `ReleaseDate` and `ReleaseCountry` elements that they contain.
+3.  Ensure that you don't have any empty `WorkType.ID` elements (it's unlikely). If you do, assign those works a unique ID.
 
     Example:
 
@@ -224,9 +385,9 @@ Here are the differences between CDF v1.2 and v1.3
      </TvShow>
     ```
 
-4.  Optional. If you have existing content that would be more accurately described as a MiniSeries, move that information into the new MiniSeries and MiniSeriesEpisode work types.
-5.  Optional. If you have existing content that would be more accurately described as an Extra, move that information into the new Extra work type.
-6.  Optional, but recommended. Add or update the _version_ attribute found in the Catalog element at the top of your CDF file to FireTv-v1.3.
+4.  Optional. If you have existing content that would be more accurately described as a `MiniSeries`, move that information into the new `MiniSeries` and `MiniSeriesEpisode` work types.
+5.  Optional. If you have existing content that would be more accurately described as an `Extra`, move that information into the new `Extra` work type.
+6.  Optional, but recommended. Add or update the `version` attribute found in the Catalog element at the top of your CDF file to `FireTv-v1.3`.
 
     Example:
 
@@ -234,8 +395,8 @@ Here are the differences between CDF v1.2 and v1.3
     <Catalog xmlns="http://www.amazon.com/FireTv/2014-04-11/ingestion" version="FireTv-v1.3">
     ```
 
-7.  Optional, but recommended where applicable. Add either a ShowID (preferred) or ShowTitle element to each TvSpecial to connect that special to a show. For those specials that are standalone works, these elements can be omitted.
-8.  Optional. Add an OriginalAirDate element and value for each TvSpecial or TvEpisode that didn't have a ReleaseInfo.ReleaseDate element.
-9.  Optional. Add a ReleaseDate element and value for each Movie or TvShow that didn't have a ReleaseInfo.ReleaseDate element.
+7.  Optional, but recommended where applicable. Add either a `ShowID` (preferred) or `ShowTitle` element to each `TvSpecial` to connect that special to a show. For those specials that are standalone works, these elements can be omitted.
+8.  Optional. Add an OriginalAirDate element and value for each `TvSpecial` or `TvEpisode` that didn't have a `ReleaseInfo.ReleaseDate` element.
+9.  Optional. Add a `ReleaseDate` element and value for each Movie or TvShow that didn't have a `ReleaseInfo.ReleaseDate` element.
 
 {% include links.html %}

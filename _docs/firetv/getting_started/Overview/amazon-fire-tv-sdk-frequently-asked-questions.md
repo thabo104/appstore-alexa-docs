@@ -3,7 +3,7 @@ title: Amazon Fire TV Frequently Asked Questions (FAQs)
 permalink: amazon-fire-tv-sdk-frequently-asked-questions.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -88,7 +88,7 @@ Q:  How do I take screen shots on Amazon Fire TV?
     adb pull /sdcard/filename.png /tmp
     adb shell rm /sdcard/filename.png
     ```
-    See [Taking Screenshots of your Fire TV App](/support/submitting-your-app/tech-docs/04-taking-screenshots#firetv) for more details.
+    See [Taking Screenshots of your Fire TV App](/support/submitting-your-app/tech-docs/taking-screenshots#firetv) for more details.
 
 Q: My app uses Google’s in-app purchasing technology. Will it work on the Amazon Fire TV platform?
 :   No. Services such as Google’s in-app purchasing API require access to Google Mobile Services, which do not work on the Amazon Fire TV platform. For in-app purchasing, Amazon offers an In-App Purchasing API that makes it easy for you to offer digital content and subscriptions in your apps.

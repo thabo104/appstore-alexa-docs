@@ -3,7 +3,7 @@ title: Understanding Fire TV Catalog Integration
 permalink: understanding-fire-tv-catalog-integration.html
 sidebar: catalog
 product: Fire TV Catalog
-toc: false
+toc-style: kramdown
 github: true
 ---
 
@@ -75,11 +75,11 @@ When a content item, such as a movie, is included in the integrated catalogs of 
 
 The following image shows the results of a search for the fictional movie "Argoneum", offered by three different providers, without content matching. The user would have to select each result in turn to determine the provider and whether the movie is available for free, rental, purchase, or through subscription from that provider.
 
-{% include image.html caption="Search results with 3 instances of the movie and 2 instances of a secondary result" file="catalog/catalog_ArgoneumWithoutMatching" type="png" %}
+{% include image.html caption="Search results with 3 instances of the movie and 2 instances of a secondary result" file="firetv/catalog/images/catalog_ArgoneumWithoutMatching" type="png" %}
 
 With content matching, the user is presented with a cleaner set of results:
 
-{% include image.html caption="Search resuts with 1 instance of the movie and 1 instance of a secondary result" file="catalog/catalog_ArgoneumWithMatching" type="png" %}
+{% include image.html caption="Search resuts with 1 instance of the movie and 1 instance of a secondary result" file="firetv/catalog/images/catalog_ArgoneumWithMatching" type="png" %}
 
 When the user selects the single "Argoneum" entry, they are then shown the three providers and the viewing options for each, all in one place.
 

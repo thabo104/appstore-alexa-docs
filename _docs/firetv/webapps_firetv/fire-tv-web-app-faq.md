@@ -1,11 +1,11 @@
 ---
 title: Fire TV Web App FAQ
 permalink: fire-tv-web-app-faq.html
-toc: false
+toc-style: kramdown
 sidebar: firetv
 product: Fire TV 
 github: true
-toc: false
+toc-style: kramdown
 ---
 
 The following are frequently asked questions about Fire TV Web Apps.

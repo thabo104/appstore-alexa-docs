@@ -3,7 +3,7 @@ title:  Freewheel Ads Component
 permalink: fire-app-builder-freewheel-ads-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
-toc: false
+toc-style: kramdown
 github: true
 ---
 
