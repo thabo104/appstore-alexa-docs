@@ -20,8 +20,10 @@ Two Fire App Builder components are used to load and configure the media feed: D
 
 You can load the following types of feeds:
 
-* [Token-based Feeds](#tokenbasedconfiguration)
-* [Open Feeds](#filebasedconfiguration)
+* [Token-based Feeds](#tokenbasedconfiguration): Feeds that require a token to access.
+* [Open Feeds](#filebasedconfiguration): Feeds that are openly accessible without a token.
+
+{% include tip.html content="If your feed is a standard MRSS feed (which uses XML), see the tutorial on [configuring MRSS feeds][fire-app-builder-configure-mrss-feed]." %}
 
 ### Load Token-based Feeds {#tokenbasedconfiguration}
 
@@ -97,7 +99,7 @@ Use these instructions if you publish your media details in a web feed that is o
     }
     ```
 
-6.  Open the **urlFile.json** (located in **app > assets**) and list your media feed URLs.
+6.  Open the **urlFile.json** (located in **app > assets**) and list your media feed URLs, replacing the lightcast feeds:
 
     ```json
     {
@@ -125,7 +127,7 @@ For testing purposes, you may want to load a static feed that is packaged within
 To load a static feed that is packaged inside your app:
 
 1.  Open the **DataLoadManagerConfig.json** file (located in **app > assets > configurations**).
-2.  Change the value for **data_downloader.impl** to `com.amazon.dataloader.datadownloader.BasicFileBasedDownloaderConfig`.
+2.  Change the value for **data_downloader.impl** to `com.amazon.dataloader.datadownloader.BasicFileBasedDataDownloader`.
 3.  Open the **BasicFileBasedDownloaderConfig.json** file (located in **app > assets > configurations**).
 4.  If desired, you can rename the XML file:
 

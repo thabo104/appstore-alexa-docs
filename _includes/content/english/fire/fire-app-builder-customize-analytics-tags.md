@@ -2,7 +2,7 @@
 
 You can customize the names of the analytics tags. (Tags are action or attribute names). Customizing the names can make it easier to identify activities you're interested in.
 
-The complete list of analytics tags are available in `AnalyticsInterface > java > com.amazon.analytics > AnalyticsTags > AnalyticsTags.java`.
+The complete list of analytics tags are available in `AnalyticsInterface > java > com.amazon.analytics > AnalyticsTags.java`.
 
 Here's an example tag:
 

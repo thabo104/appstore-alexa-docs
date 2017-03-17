@@ -81,7 +81,7 @@ Click these links to install the missing tools and rebuild the project. Simply k
 You can also open the Standalone SDK Manager and install all the tool and SDK requirements ahead of time. To install the necessary tools:
 
 1.  Go to **Tools > Android > SDK Manager** (or simply click the **SDK Manager** button {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_androidsdkmanagericon" type="png" %}).
-2.  On the **SDK Tools** tab, exand **Android SDK Build-Tools** and select the following:
+2.  On the **SDK Tools** tab, expand **Android SDK Build-Tools** and select the following:
     *  24.0.1
     *  24.0.3
     *  25.0.0

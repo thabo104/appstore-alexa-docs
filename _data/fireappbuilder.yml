@@ -114,6 +114,11 @@ folders:
     ref: fire-app-builder-configure-navigator-open-feeds
     bookmarks: [hardcodingcategories]
 
+  - title: Configure a Media RSS (MRSS) Feed
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-configure-mrss-feed
+    jurl: /fire-app-builder-configure-mrss-feed.html
+    ref: fire-app-builder-configure-mrss-feed
+
 - title: 3. Customize the Appearance
   folderitems:
 

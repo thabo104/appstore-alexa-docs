@@ -18,7 +18,7 @@ If you require users to log in before playing media, users will see the followin
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_loginprompt" type="png" caption="Login prompt when verifyScreenAccess is set to true for the PlaybackActivity" %}
 
-If a user clicks **Later**, he or is able to watch media without logging into Facebook. (Currently, there isn't a later prompt that asks the user again.)
+If a user clicks **Later**, the user can watch media without logging into Facebook. The login prompt won't re-appear, but the user can log in at any time by clicking the **Login** button at the bottom of the app.
 
 If a user clicks **Now**, he or she is prompted to log into Facebook via a computer browser:
 

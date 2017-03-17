@@ -7,24 +7,93 @@ toc-style: kramdown
 github: true
 ---
 
-You can customize much of the app's look and feel through the custom.xml file (located in **res > values**) and navigator.json file (in **app > assets**). Here's a list of what you can easily change in the app:
-
-* Fonts
-* Splash screen
-* Recommended content
-* Background colors
-* Content cards
-* Buttons
-* Search bar
-* Content reload times
-* Homepage layout
-* App icon
-* Terms of use
+You can customize much of the app's look and feel through the custom.xml file (located in **res > values**) and navigator.json file (in **app > assets**).
 
 {% include note.html content="Although you can dig into the Fire App Builder code and alter the layouts in deeper ways, major revamping of the user interface is not supported through simple edits to XML files (nor is documentation available for more extensive changes). Do not expect to completely change the interface in ways beyond what is described here." %}
 
 * TOC
 {:toc}
+
+## Change the Logo {#changelogo}
+
+1.  Inside your app's **assets > res** directory, create a new folder called **drawable**.
+2.  Add your logo image into this folder.
+
+    The app logo's dimensions should be approximately 356px wide x 108px tall and have a transparent background. Larger images will be scaled down to fit the space (but smaller images won't be scaled up). The resizing preserves the image's dimensions without performing any cropping. If your logo is tall, it may look somewhat tiny when fit into a space that is 108px tall because the aspect ratio will be preserved. (Logos that are wide look better in the Fire App Builder layout.)
+
+    Your logo appears as an overlay on top of the app background, so make sure the combination looks good. A light logo on a dark background will have good contrast.
+
+    To access your drawable folder, you can either right-click the folder within Android Studio and choose **Reveal in Finder** (on a Mac). Or you can manually browse the source files by going to **Application > app > src > main > res > drawable**. (The Android view in Android Studio doesn't reflect the actual structure of your folders.)
+
+3.  In your app's **custom.xml** file (inside your app's **res > values** folder), customize the file names within the following elements:
+
+    ```xml
+    <drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
+
+    <drawable name="company_logo">@drawable/fire_app_builder_white2</drawable>
+    ```
+
+    The `splash_logo` element determines the logo that appears on the Splash page. The `company_logo` element determines the logo that appears in the upper-left corner of the app.
+
+    You can use the same logo on both screens, or you can vary the two. You don't need to include the file extension in the image file name.
+
+## Customize the Splash Screen
+
+By default, the sample app in Fire App Builder shows the following Splash screen:
+
+{% include image.html file="firetv/fireappbuilder/images/firetv_splashscreen" type="png" alt="Splash screen" %}
+
+The following sections describe each element you can customize.
+
+<h3> {% include inline_image.html file="firetv/fireappbuilder/images/firetv_one" type="png" %} Logo </h3>
+
+The logo for your app. The logo is defined by the following element in your app's custom.xml:
+
+```xml
+<drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
+```
+
+See the previous section, [Change the Logo](#changelogo), for details on changing the Splash screen's logo.
+
+<h3> {% include inline_image.html file="firetv/fireappbuilder/images/firetv_two" type="png" %} Loading text </h3>
+
+To update the word "Loading" that appears on the Splash screen, go to **TVUIComponent > res > strings.xml > strings.xml** and update the following element:
+
+```xml
+<string name="feed_loading">Loading</string>
+```
+
+<h3> {% include inline_image.html file="firetv/fireappbuilder/images/firetv_three" type="png" %} Loading spinner </h3>
+
+You can change the color of the loading spinner that appears on the Splash screen by updating this element in your app's custom.xml file:
+
+```xml
+<color name="spinner_color">#FFFFFFFF</color>
+```
+
+<h3> {% include inline_image.html file="firetv/fireappbuilder/images/firetv_four" type="png" %} Copyright </h3>
+
+To customize the Copyright text on the Splash screen, see the **strings.xml** folder inside your app's **res > values > strings.xml** folder.
+
+```xml
+<string name="copyright">Copyright 2016. All Rights Reserved.</string>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} Background color </h3>
+
+To change the background color of the app, update the hex value in the following element in custom.xml:
+
+```xml
+<color name="background">#22282E</color>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_six" type="png" %} Text color </h3>
+
+To change the color of the text on the splash screen, button text, and read-more text on the Content Details screen, update the hex in the following element in custom.xml:
+
+```xml
+<color name="primary_text">#E6FFFFFF</color>
+```
 
 ## Change the Font
 
@@ -110,68 +179,6 @@ In addition to using different device fonts, you can also use custom fonts. If y
     "boldFont" : "fonts/Proxima-Nova-Light.tff",
     "regularFont" : "fonts/Proxima-Nova-Light.tff"
   }
-```
-
-## Customize the Splash Screen
-
-By default, the sample app in Fire App Builder shows the following Splash screen:
-
-{% include image.html file="firetv/fireappbuilder/images/firetv_splashscreen" type="png" alt="Splash screen" %}
-
-You can adjust the Splash screen logo in your app's custom.xml file. The following sections describe each element you can customize.
-
-<h3> {% include inline_image.html file="firetv/fireappbuilder/images/firetv_one" type="png" %} Logo </h3>
-
-The logo for your app. The logo is defined by the following element:
-
-```xml
-<drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
-```
-
-The references to `@drawable` refer to images in **TVUIComponent > res > drawable** (in the Android view). Add your own image file in this folder. Use a unique file name and update the reference in the custom.xml file to point to your images.
-
-Your app logo should be on a transparent background. The logo image size in the sample application is 356 x 108px, but you can use a larger image if you want. The image will be scaled down automatically.
-
-Your logo appears as an overlay on top of the splash screen's background image, so if you're customizing the images, make sure the combination looks good. A light logo on a dark background will have good contrast.
-
-<h3> {% include inline_image.html file="firetv/fireappbuilder/images/firetv_two" type="png" %} Loading text </h3>
-
-The word "Loading" that appears on the Splash screen. To update this text, (in the Android view) go to **TVUIComponent > res > strings.xml > strings.xml** and update the following element:
-
-```xml
-<string name="feed_loading">Loading</string>
-```
-
-<h3> {% include inline_image.html file="firetv/fireappbuilder/images/firetv_three" type="png" %} Loading spinner </h3>
-
-The loading spinner that appears on the Splash screen. You can change the color of the spinner through this element in custom.xml:
-
-```xml
-<color name="spinner_color">#FFFFFFFF</color>
-```
-
-<h3> {% include inline_image.html file="firetv/fireappbuilder/images/firetv_four" type="png" %} Copyright </h3>
-
-To customize the Copyright text on the Splash screen, see the **strings.xml** folder inside your app's **res > values > strings.xml** folder.
-
-```xml
-<string name="copyright">Copyright 2016. All Rights Reserved.</string>
-```
-
-<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} Background color </h3>
-
-The background color of the screens. Changing this background will change it on other screens (e.g., homepage) as well.
-
-```xml
-<color name="background">#22282E</color>
-```
-
-<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_six" type="png" %} Text color </h3>
-
-The color of the text on the splash screen, button text, and read more text on the Content Details screen.
-
-```xml
-<color name="primary_text">#E6FFFFFF</color>
 ```
 
 ## Customize the Recommended Content Section {#recommendations}

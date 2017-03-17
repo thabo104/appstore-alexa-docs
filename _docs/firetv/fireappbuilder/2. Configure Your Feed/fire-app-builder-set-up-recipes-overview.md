@@ -12,7 +12,7 @@ After you [load the media feed][fire-app-builder-load-media-feed], you need to c
 *  **[Categories recipe][fire-app-builder-set-up-recipes-categories]**: Provides different containers to group your media.
 *  **[Contents recipe][fire-app-builder-set-up-recipes-categories]**:  Maps the properties from your media feed, such as the titles, descriptions, video URLs, and images, to Fire App Builder's content model.
 
-If you look at the Home screen with the default Lightcast feed, you'll see that the media is organized in different rows. On the default home screen, you can see that media is grouped under "Jamaica Attractions" and "The Country Jamaica," among other groups.
+If you look at the Home screen with the default Lightcast feed, you'll see that the media is organized in different rows. On the default home screen, you can see that media is grouped under "Jamaica Attractions," "The Country Jamaica," and other groups.
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_home" type="png" alt="Alternative Home screen" caption="Categories providing groupings for media." %}
 
