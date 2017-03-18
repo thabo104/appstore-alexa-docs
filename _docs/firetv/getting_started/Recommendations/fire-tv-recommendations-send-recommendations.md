@@ -132,7 +132,7 @@ Follow these guidelines when using the [ContentRecommendation.Builder](https://d
                <li>Title: Embedded within image</li>
                <li>Transparency: No transparency</li>
             </ul>
-            <p>Recommendations without images either won't be displayed or will receive a default placeholder instead. Recommendations with an aspect ratio other than 16:9 will be letterboxed. (Letterboxing means black bars will appear along the sides or top to compensate for the empty space.)</p></p>
+            <p>Recommendations without images either won't be displayed or will receive a default placeholder instead. Images with an aspect ratio other than 16:9 will be letterboxed. (Letterboxing means black bars will appear along the sides or top to compensate for the empty space.)</p></p>
          </td>
          <td>Yes</td>
       </tr>
