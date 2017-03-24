@@ -7,18 +7,14 @@ toc-style: kramdown
 github: true
 ---
 
-Related recommendations are sent when a specific video is watched. Similar to global recommendations, Fire App Builder reads the list of global recommendations from your media feed. Every six hours, Fire App Builder refreshes and will resend any related recommendations based on videos the user is viewing.
-
-If a user clicks a video on the Recommended By Your App row and completely watches a video (not just partially), Fire App Builder marks that video as watched and deletes the recommendation for that item. This information is saved in Fire App Builder's database.
-
-However, when six hours pass and Fire App Builder refreshes, these same related recommendations will again be sent when the user views a video, even if users have already watched the content.
+Similar to global recommendations, Fire App Builder gets related recommendations from your media feed. Whereas global recommendations are sent when the app starts, related recommendations are sent when a user watches a video that includes recommendations in the media item's details.
 
 * TOC
 {:toc}
 
 ## Configure Related Recommendations
 
-1.  In your **Navigator.json** file (in your app's **assets** folder), in the `config` object, specify how many related recommendations you want to send through the `numberOfRelatedRecommendations` property:
+1.  In the **Navigator.json** file (in your app's **assets** folder), specify the max number of related recommendations that your app can send through the `numberOfRelatedRecommendations` property. Place this property in the `config` object:
 
     ```json
     "config": {
@@ -30,10 +26,13 @@ However, when six hours pass and Fire App Builder refreshes, these same related 
     }
     ```
 
-    Fire TV must receive at least 5 recommendations from all apps combined in order to display the Recommended By Your Apps row to users. If you don't specify a number of related recommendations here, 5 is used as the default.
+    This number limits the number of related recommendations your app can send. After this number of recommendations is reached, your app won't send any more related recommendations until the refresh period.
 
+    Note that Fire TV must receive at least 5 recommendations from all apps combined in order to display the Recommended By Your Apps row to users. If you don't specify a number of related recommendations here, 5 is used as the default.
 
-2.  In your feed, add a `recommendations` property that within each item. The recommendations property should point to a list of content ID strings. For example, if your feed is in JSON, it might look like this:
+2.  In your feed, add a `recommendations` property within each item where you want to send recommendations. The recommendations property should point to a list of content ID strings.
+
+    For example, if your feed is in JSON, a media item containing related recommendations might look like this:
 
     ```
     ...
@@ -79,14 +78,14 @@ However, when six hours pass and Fire App Builder refreshes, these same related 
               <guid>162264</guid>
             </recommendations>
          </item>
-      ...
-      ```
+    ...
+    ```
 
-      Note that the recommendations should be included in a specific item's details, since each item will have its own recommendations to send. Presumably the recommended IDs are related to the item by theme, genre, or episode numbers.
+    Related recommendations should be included in a specific item's details, since each item will have its own recommendations to send. The recommended IDs should be related to the item by theme, genre, episodes, or some other connection.
 
-      The recommendations property can appear anywhere within the items details, and it can use a different name than `recommendations`. In the following steps, you'll write a query in a recipe to target the values this recommendations element contains.
+    The recommendations property can appear anywhere within the items details, and it can use a different name other than `recommendations`. In the following steps, you'll write a query in a recipe to target the values that your recommendations element contains.
 
-      Note that if you have an MRSS feed that conforms to iTunes specifications, adding custom elements may require more coding, since you'll need to define custom namespaces to use and target in your XML. (Instructions on adding custom namespaces in XML is beyond the scope of this documentation.)
+    Note that if you have an [MRSS feed][fire-app-builder-configure-mrss-feed] that conforms to iTunes specifications, adding custom elements may require more coding, since you'll need to define custom namespaces to use in your XML. (Instructions on adding custom namespaces in XML is beyond the scope of this documentation.)
 
 3.  In your app's **assets > recipes** folder, open your contents recipe file. (You most likely renamed this file when you [set up your contents recipe][fire-app-builder-set-up-recipes-content]. Originally the file was called LightCastContentsRecipe.json.)
 4.  In the `matchList` parameter, add a match for the `recommendations` element. For example, the `matchList` parameter might look like this:
@@ -112,8 +111,111 @@ However, when six hours pass and Fire App Builder refreshes, these same related 
     }
     ```
 
-    For more details on the `query` parameter here, see the [query Parameter][fire-app-builder-set-up-recipes-content#queryparameter] section in the [Set Up the Contents Recipe][fire-app-builder-set-up-recipes-content]. Since you already have a recipe that targets your items, you just have to match the newly added `recommendations` element within the items.
+    For more details on the `query` parameter here, see the [query Parameter][fire-app-builder-set-up-recipes-content#queryparameter] section in the [Set Up the Contents Recipe][fire-app-builder-set-up-recipes-content]. Since you already have a recipe that targets your items, you just have to match the newly added `recommendations` element within the items. You don't have to define a new query to target your items
+
+    If you named your recommendations element something else, such as `related_recommendations`, you would match the element like this:
+
+    ```
+    related_recommendations@recommendations
+    ```
+
+    The left side of the `@` contains your feed name; the right side contains the Fire App Builder UI element.
+
+## Sending Amazon Extras in Your Recommendations
+
+Amazon allows you to send extra values with your recommendations. These extras allow you to customize your recommendations to better fit the Fire TV platform. You can read about the Amazon extras here: [Send Recommendations that Include Amazon Extras][fire-tv-recommendations-send-recommendations#amazon-enhancements].
+
+You include the extras in with the item details (not within the recommendations tags). The recommendations simply lists content IDs. When Fire App Builder builds and sends the recommendation, it will include any additional information matching the Amazon extras.
+
+The following table lists the extras you can send. The title, description, thumbnail, etc. aren't mentioned here because they are matched already.
+
+The values for these matching tags are stored in the **Content.java** file (in ContentModel > src > main > java > com > android > model > content). This file maps these tags to the Amazon extras.
+
+<table>
+   <colgroup>
+      <col width="50%" />
+      <col width="50%" />
+   </colgroup>
+   <thead>
+      <tr>
+         <th>Fire App Builder Tag</th>
+         <th><code>Amazon Extra</code></th>
+      </tr>
+   </thead>
+   <tbody>
+   <tr>
+      <td><code>maturityRating</code></td>
+      <td><code>com.amazon.extra.MATURITY_RATING</code></td>
+   </tr>
+      <tr>
+         <td><code>live</td>
+         <td><code>com.amazon.extra.LIVE_CONTENT</td>
+      </tr>
+      <tr>
+         <td><code>startTime</td>
+         <td><code>com.amazon.extra.CONTENT_START_TIME</td>
+      </tr>
+      <tr>
+         <td><code>endTime</td>
+         <td><code>com.amazon.extra.CONTENT_END_TIME</td>
+      </tr>
+      <tr>
+         <td><code>videoPreviewUrl</td>
+         <td><code>com.amazon.extra.PREVIEW_URL</td>
+      </tr>
+      <tr>
+         <td><code>imdbId</td>
+         <td><code>com.amazon.extra.IMDB_ID</td>
+      </tr>
+      <tr>
+         <td><code>closeCaptionUrls</td>
+         <td><code>com.amazon.extra.CONTENT_CAPTION_AVAILABILITY</td>
+      </tr>
+      <tr>
+         <td><code>videoPreviewUrl</td>
+         <td><code>com.amazon.extra.PREVIEW_URL</td>
+      </tr>
+      <tr>
+         <td><code>genres</td>
+         <td><code>setGenres</td>
+      </tr>
+   </tbody>
+</table>
+
+In your contents recipe, you would
+
+```
+```json
+{
+  "cooker": "DynamicParser",
+  "format": "json",
+  "model": "com.amazon.android.model.content.Content",
+  "translator": "ContentTranslator",
+  "modelType": "array",
+  "query": "$.items[?(@.categories[0] in [$$par0$$])]",
+  "matchList": [
+    "title@title",
+    "id@id",
+    "description@description",
+    "videoURL@url",
+    "imgURL@cardImageUrl",
+    "imgURL@backgroundImageUrl",
+    "channel_id@channelId",
+    "recommendations@recommendations"
+    "maturityRating@maturityRating"
+    "live@live"
+    "startTime@startTime"
+    "endTime@endTime"
+    "videoPreviewUrl@videoPreviewUrl"
+    "imdbId@imdbId"
+    "closeCaptionUrls@closeCaptionUrls"
+    "videoPreviewUrl@videoPreviewUrl"
+    "genres@genres"
+  ]
+}
+```
+
 
 ## Test Your Global Recommendations
 
-To test your recommendations, see the general instructions in Fire TV documentation: [Test Your Recommendations](fire-tv-recommendations-testing). With related recommendations, you must watch the videos that have recommended content in order for Fire App Builder to send those recommendation IDs to the "Recommended By Your Apps" row.
+To test your recommendations, see the general instructions in Fire TV documentation: [Test Your Recommendations](fire-tv-recommendations-testing). With related recommendations, you must partially watch the videos that have recommended content in order for Fire App Builder to send those recommendation IDs to the Recommended By Your Apps row.

@@ -219,6 +219,24 @@ folders:
         jurl: /fire-app-builder-amazon-media-player-component.html
         ref: fire-app-builder-amazon-media-player-component
 
+- title: Recommendations
+  folderitems:
+
+  - title: Recommendations in Fire App Builder Overview
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-recommendations-overview
+    jurl: /fire-app-builder-recommendations-overview.html
+    ref: fire-app-builder-recommendations-overview
+
+  - title: Send Global Recommendations
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-recommendations-global
+    jurl: /fire-app-builder-recommendations-global.html
+    ref: fire-app-builder-recommendations-global
+
+  - title: Send Related Recommendations
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-related-recommendations
+    jurl: /fire-app-builder-related-recommendations.html
+    ref: fire-app-builder-related-recommendations
+
 - title: Other Development Topics
   folderitems:
 

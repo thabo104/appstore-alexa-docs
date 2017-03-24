@@ -77,7 +77,7 @@ Use these instructions if you publish your media details in a web feed that is o
 
     ```json
     {
-      "data_downloader.impl": "com.amazon.dataloader.datadownloader.BasicFileBasedDownloaderConfig",
+      "data_downloader.impl": "com.amazon.dataloader.datadownloader.BasicHttpBasedDataDownloader",
       "is_cache_manager_enabled": true,
       "data_updater.duration": 14400
     }
