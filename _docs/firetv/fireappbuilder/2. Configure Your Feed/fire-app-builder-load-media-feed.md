@@ -133,7 +133,7 @@ To load a static feed that is packaged inside your app:
 
     ```xml
     {
-      "data_file_path": "GenericMediaData.xml"
+      "data_file_path": "sample_feed_with_recommendations.json"
     }
     ```
 

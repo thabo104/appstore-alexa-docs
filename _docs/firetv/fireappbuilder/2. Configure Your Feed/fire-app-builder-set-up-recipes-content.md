@@ -148,7 +148,7 @@ Let's take a step back to unpack this syntax with more clarity, because you'll n
 Plug this feed into the [Jayway JsonPath Evaluator](http://jsonpath.herokuapp.com/). Then run the following query:
 
 ```
-$[?(@.categories in ["The Country Jamaica"]")]
+$[?(@.categories[0] in ["The Country Jamaica"])]
 ```
 
 This query returns the following:
@@ -173,10 +173,28 @@ This query returns the following:
 
 Here's what this query syntax retrieves:
 
-| Query Syntax | What It Matches |
-|---|----|
-| `$[` | Starts at the root and selects the unnamed array. |
-| `?(@.categories[0] in ["The Country Jamaica"]` | Creates a filter for all `categories` arrays that contain `["The Country Jamaica"]` in the `0` index position.|
+<table>
+<colgroup>
+   <col width="40%" />
+   <col width="60%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Query Syntax</th>
+      <th>What It Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>$[</code></td>
+      <td>Starts at the root and selects the unnamed array.</td>
+    </tr>
+    <tr>
+      <td><code>?(@.categories[0] in ["The Country Jamaica"])]</code></td>
+      <td>Creates a filter for all <code>categories</code> arrays that contain <code>["The Country Jamaica"]</code> in the <code>0</code> index position.</td>
+    </tr>
+  </tbody>
+</table>
 
 Now there's one difference in query syntax used in the sample Fire App Builder app. Instead of `["The Country Jamaica"]`, the `query` parameter uses `$$par0$$` instead:
 
@@ -253,10 +271,28 @@ $.titles.video[?(@.category in [$$par0$$])]
 
 Here's a summary:
 
-| Query Syntax | What It Matches |
-|---|----|
-| `$.titles.video[` | Selects the `title` object and the `video` array.|
-| `?(@.category in [$$par0$$]` | Filters the array to match on all items that have `category`. |
+<table>
+<colgroup>
+   <col width="40%" />
+   <col width="60%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Query Syntax</th>
+      <th>What It Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>$.titles.video[</code></td>
+      <td>Selects the <code>title</code> object and the <code>video</code> array.</td>
+    </tr>
+    <tr>
+      <td><code>?(@.category in [$$par0$$]</code></td>
+      <td>Filters the array to match on all items that have <code>category</code>.</td>
+    </tr>
+  </tbody>
+</table>
 
 Note that when you add in `[$$par0$$]` in the Jayway JsonPath Evaluator, it will not understand this syntax because it's specific to Fire App Builder rather than being part of Jayway JsonPath.
 

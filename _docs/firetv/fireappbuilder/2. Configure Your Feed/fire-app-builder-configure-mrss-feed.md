@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-If you have an [Media RSS (MRSS) feed][mrss], which follows a formal specification used for services such as iTunes, you can follow an example configuration to simplify the setup. The sample MRSS feed in Fire App Builder uses a feed for a This Week in Tech (TWIT) podcast called [Ham Nation](https://twit.tv/shows/ham-nation), whose feed is publicly available [here](http://feeds.twit.tv/hn_video_hd.xml).
+If you have an [Media RSS (MRSS) feed][mrss], which follows a [formal specification][mrss-spec] used for services such as iTunes, you can follow an example configuration to simplify the setup. The sample MRSS feed in Fire App Builder uses a feed for a This Week in Tech (TWIT) podcast called [Ham Nation](https://twit.tv/shows/ham-nation), whose feed is publicly available [here](http://feeds.twit.tv/hn_video_hd.xml).
 
 If your feed contains the same elements as the example feed, your setup can be as simple as swapping in your own feed URL and using the existing TWIT category and content recipes.
 
@@ -131,5 +131,6 @@ For information on how to change the look and feel of the app, including how to 
 
 
 [mrss]: https://en.wikipedia.org/wiki/Media_RSS
+[mrss-spec]: http://www.rssboard.org/media-rss
 
 {% include links.html %}

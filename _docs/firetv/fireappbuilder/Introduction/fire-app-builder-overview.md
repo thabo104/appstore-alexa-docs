@@ -36,7 +36,7 @@ The sample app in Fire App Builder contains a generic video feed from Lightcast 
 
 Fire App Builder is designed for companies with streaming media assets (similar to Netflix or Hulu) who want to make their content available online through Fire TV and other Android TV platforms. You would be a good fit if you have a video feed where your media assets (movies, shows, or other video content) are published.
 
-The media feed can be JSON or XML, but it must be its own feed rather than a Youtube or Vimeo channel. (If it's XML, it can be a media RSS feed, such as what you submit to iTunes.) The feed can be in any structure &mdash; you'll use query syntax to select the categories and contents from your feed.
+The media feed can be JSON or XML, but it must be its own feed rather than a Youtube or Vimeo channel. (If it's XML, it can be a [media RSS feed](fire-app-builder-configure-mrss-feed), for example, such as what you submit to iTunes.) The feed can be in any structure &mdash; you'll use query syntax to select the categories and contents from your feed.
 
 Additionally, Fire App Builder requires you to configure files using Android Studio, so it's geared toward developer types who prefer to create their app using Java-based Android (instead of HTML5 web technologies). You can also build on top of the Fire App Builder framework to create more sophisticated apps. Essentially Fire App Builder is the Fire TV SDK for Android Java developers.
 

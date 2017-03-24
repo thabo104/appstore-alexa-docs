@@ -7,6 +7,14 @@ toc-style: kramdown
 github: true
 ---
 
+## Version 1.0.2
+
+- live content. resume show now works for more than just 1 item
+- recommendations
+- appearance
+- recommended content is now related content
+- related content is now constrained by category
+
 ## Version 1.0.0
 
 ### Features
