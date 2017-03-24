@@ -127,12 +127,12 @@ Follow these guidelines when using the [ContentRecommendation.Builder](https://d
          <td><code><a href="http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setContentImage%28android.graphics.Bitmap%29">setContentImage</a>(<a href="http://developer.android.com/reference/android/graphics/Bitmap.html">Bitmap image</a>)</code></td>
          <td><i>Sets the recommendation image.</i><p>Use the following specifications for the large icon image:
             <ul>
-               <li>Height: 252px</li>
+               <li>Dimensions: 336px wide x 189px tall</li>
                <li>Aspect ratio: 16:9 </li>
                <li>Title: Embedded within image</li>
                <li>Transparency: No transparency</li>
             </ul>
-            <p>Recommendations without images either won't be displayed or will receive a default placeholder instead. Images with an aspect ratio other than 16:9 will be letterboxed. (Letterboxing means black bars will appear along the sides or top to compensate for the empty space.)</p></p>
+            <p>Recommendations without images either won't be displayed or will receive a default placeholder instead. Images with an aspect ratio other than 16:9 will be letterboxed. (Letterboxing means black bars will appear along the sides or top to compensate for the empty space.) Images larger than the specified dimensions will be scaled down to fit the space, preserving the 16:9 aspect ratio.</p></p>
          </td>
          <td>Yes</td>
       </tr>
@@ -165,7 +165,7 @@ Follow these guidelines when using the [ContentRecommendation.Builder](https://d
       </tr>
       <tr>
          <td><code><a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBackgroundImageUri%28java.lang.String%29">setBackgroundImageUri</a>(String imageUri)</code> </td>
-         <td><i>Sets the Content URI that will be used to retrieve the background image for the recommendation.</i><p>A 1080P / 16:9 image is required. <b>Note: Recommendations with an aspect ratio other than 16:9 will be dropped. Also, the image size cannot be taller than 1080px or wider than 1920px.</b></p></td>
+         <td><i>Sets the Content URI that will be used to retrieve the background image for the recommendation.</i><p>A 960px wide x 540px tall image (aspect ratio 16:9) is required. <b>Note: Recommendations with an aspect ratio other than 16:9 will be dropped. Larger images will be scaled down to fit the space, but note that the image size cannot be taller than 1080px or wider than 1920px.</b></p></td>
          <td>Yes</td>
       </tr>
       <tr>
