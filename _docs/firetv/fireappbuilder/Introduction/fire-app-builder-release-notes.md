@@ -26,7 +26,7 @@ The app includes more than a dozen components that allow you to quickly add anal
 
 ### Known Issues {#known_issues}
 
-*  *Recommended Content*. Recommended content matches (which are based on tags in the feed) will match unlimited content if many items have the same tags. (The content matches should have an item limit.)
+*  *Related Content*. Related content matches (which are based on tags in the feed) will match unlimited content if many items have the same tags. (The content matches should have an item limit.)
 *  *In-App Purchasing Component.* With the [In-App Purchasing Component][fire-app-builder-amazon-in-app-purchase-component], purchases made on other devices won't be acknowledged in the app until a user either restarts the app or attempts to play the content. (The app should refresh purchased items when the state goes to the background.)
 *  *Splash screen.* Loading the feed initially can take some time on splash screen. (The initial load time should be faster.)
 

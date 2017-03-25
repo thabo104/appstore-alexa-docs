@@ -452,7 +452,7 @@ Required
 <tr>
 <td markdown="1">`tags`
 </td>
-<td markdown="1">Used to associate recommended content. See [Recommend Content Through Tags](#tags) for more information.
+<td markdown="1">Used to associate related content. See [Related Content (Through Tags)](#tags) for more information.
 </td>
 <td markdown="1">
 Optional
@@ -667,13 +667,13 @@ The recommended image sizes (width x height) are as follows:
 
 When Fire App Builder does image cropping, it preserves the aspect ratio of the image by cropping the sides of the image (thus focusing on the center).
 
-#### Recommended Content (Through Tags) {#tags}
+#### Related Content (Through Tags) {#tags}
 
-Below the video is a Recommended Content section that shows other videos with the same tags:
+Below the video is a Related Content section that shows other videos with the same tags:
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="png" alt="Recommended content" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="png" alt="Related content" %}
 
-To populate the [Recommended Content section in the app][fire-app-builder-customize-look-and-feel#recommendations], you need to match your tags in the `matchList` parameter. For example:
+To populate the [Related Content section in the app][fire-app-builder-customize-look-and-feel#relatedcontent], you need to match your tags in the `matchList` parameter. For example:
 
 ```json
 common/tags@tags
@@ -681,23 +681,23 @@ common/tags@tags
 
 Here the `tags` element appears inside a `common` element. This syntax converts `common/tags` to `tags` so Fire App Builder can read it and display related media objects.
 
-Note that the LightCast feed in the Fire App Builder sample app doesn't include tags. However, there's a fallback parameter that you can set to `true` if you want to show recommended content, but you don't have tags in your feed.
+Note that the LightCast feed in the Fire App Builder sample app doesn't include tags. However, there's a fallback parameter that you can set to `true` if you want to show related content, but you don't have tags in your feed.
 
-In your Navigator.json file (located in your app's **assets** folder), the `config` object has a property called `categoryDefaultRecommendation`:
+In your **Navigator.json** file (located in your app's **assets** folder), the `config` object has a property called `useCategoryAsDefaultRelatedContent`:
 
-<pre>
+```json
   "config": {
-    <span class="red">"showRecommendedContent": true</span>,
-    "categoryDefaultRecommendation": true,
+    "showRelatedContent": true,
+    "useCategoryAsDefaultRelatedContent": true,
     "searchAlgo": "basic"
   }
-</pre>
+```
 
-If you set `categoryDefaultRecommendation` to `true`, Fire App Builder will use other media assets from the same category for the recommended content (rather than pulling content with the same tags).
+If you set `useCategoryAsDefaultRelatedContent` to `true`, Fire App Builder will use other media assets from the same category for the related content (rather than pulling content with the same tags).
 
-{% include note.html content="Currently, Recommended Content matches (which are based on tags in the feed) will match unlimited content if many items have the same tags. This is a known limitation/bug." %}
+{% include note.html content="Currently, Related Content matches (which are based on tags in the feed) will match unlimited content if many items have the same tags. This is a known limitation." %}
 
-To turn off the Recommended Content section, you can set `showRecommendedContent` to false in Navigator.json.
+To turn off the Related Content section, you can set `showRelatedContent` to false in **Navigator.json**.
 
 ## Next Steps
 

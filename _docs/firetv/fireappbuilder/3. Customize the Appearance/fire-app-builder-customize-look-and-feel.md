@@ -96,7 +96,7 @@ You can change the color of the category titles. Changing this color also change
 <color name="tertiary_text">#99FFFFFF</color>
 ```
 
-This element also controls the color of the "Recommended Content" text, which appears below videos on the preview screen and the media playback screen.
+This element also controls the color of the "Related Content" text, which appears below videos on the preview screen and the media playback screen.
 
 <h3> {% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} Card video title color </h3>
 
@@ -224,9 +224,9 @@ For example, if you changed this color to blue, it would look as follows:
 
 {% include image.html  file="firetv/fireappbuilder/images/fireappbuilder_progressbar3" type="png" %}
 
-<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} Recommended Text Color</h3>
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} Related Text Color</h3>
 
-You can change the color of the "Recommended Text" title. This element is grouped with other "tertiary_element" colors. Updating this color will also change the color of the category titles on the home screen. To change the color, in your app's **custom.xml** file, update the following element:
+You can change the color of the "Related Content" title. This element is grouped with other "tertiary_element" colors. Updating this color will also change the color of the category titles on the home screen. To change the color, in your app's **custom.xml** file, update the following element:
 
 ```xml
  <color name="tertiary_text">#f2f408</color>
@@ -376,13 +376,13 @@ In addition to using different device fonts, you can also use custom fonts. If y
   }
 ```
 
-## Customize the Recommended Content Section {#recommendations}
+## Customize the Related Content Section {#relatedcontent}
 
-On the Content Details screen, a list of "Recommended Content" appears below the content preview.
+On the Content Details screen, a list of "Related Content" appears below the content preview.
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_reccontent" type="png" alt="Recommended content" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_reccontent" type="png" alt="Related content" %}
 
-You populate this section by matching certain tags in your feed. For more details on configuring Recommended Content, see ["Recommended Content (Through Tags)"][fire-app-builder-set-up-recipes-content#tags] in Set Up the Content Recipe.
+You populate this section by matching certain tags in your feed. For more details on configuring Related Content, see ["Related Content (Through Tags)"][fire-app-builder-set-up-recipes-content#tags] in Set Up the Content Recipe.
 
 
 ## Customize the App Icon

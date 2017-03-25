@@ -90,13 +90,13 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-categories
     jurl: /fire-app-builder-set-up-recipes-categories.html
     ref: fire-app-builder-set-up-recipes-categories
-    bookmarks: [matchlistparameter]
+    bookmarks: [matchlistparameter, queryparameter]
 
   - title: Set Up the Contents Recipe
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-contents
     jurl: /fire-app-builder-set-up-recipes-content.html
     ref: fire-app-builder-set-up-recipes-content
-    bookmarks: [matchlistparameter, tags]
+    bookmarks: [matchlistparameter, tags, queryparameter]
 
   - title: Navigator Configuration Overview
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-configure-navigator
@@ -126,7 +126,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-customize-look-and-feel
     jurl: /fire-app-builder-customize-look-and-feel.html
     ref: fire-app-builder-customize-look-and-feel
-    bookmarks: [recommendations]
+    bookmarks: [relatedcontent]
 
 - title: 4. Add Components
   folderitems:
@@ -222,7 +222,7 @@ folders:
 - title: Recommendations
   folderitems:
 
-  - title: Recommendations in Fire App Builder Overview
+  - title: Recommendations in Fire App Builder
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-recommendations-overview
     jurl: /fire-app-builder-recommendations-overview.html
     ref: fire-app-builder-recommendations-overview
@@ -236,6 +236,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-related-recommendations
     jurl: /fire-app-builder-related-recommendations.html
     ref: fire-app-builder-related-recommendations
+    bookmarks: amazon-extras
 
 - title: Other Development Topics
   folderitems:

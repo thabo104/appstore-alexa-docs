@@ -9,12 +9,14 @@ github: true
 
 Similar to global recommendations, Fire App Builder gets related recommendations from your media feed. Whereas global recommendations are sent when the app starts, related recommendations are sent when a user watches a video that includes recommendations in the media item's details.
 
+For more general information about recommendations, see [Recommendations in Fire App Builder][fire-app-builder-recommendations-overview].
+
 * TOC
 {:toc}
 
 ## Configure Related Recommendations
 
-1.  In the **Navigator.json** file (in your app's **assets** folder), specify the max number of related recommendations that your app can send through the `numberOfRelatedRecommendations` property. Place this property in the `config` object:
+1.  In the **Navigator.json** file (in your app's **assets** folder), use the `numberOfRelatedRecommendations` property to specify the max number of related recommendations that your app can send. Place this property in the `config` object:
 
     ```json
     "config": {
@@ -28,13 +30,13 @@ Similar to global recommendations, Fire App Builder gets related recommendations
 
     This number limits the number of related recommendations your app can send. After this number of recommendations is reached, your app won't send any more related recommendations until the refresh period.
 
-    Note that Fire TV must receive at least 5 recommendations from all apps combined in order to display the Recommended By Your Apps row to users. If you don't specify a number of related recommendations here, 5 is used as the default.
+    Note that Fire TV must receive at least 5 recommendations from all apps combined in order to display the Recommended By Your Apps row to users. If you don't specify the number of related recommendations here, 5 is used as the default.
 
 2.  In your feed, add a `recommendations` property within each item where you want to send recommendations. The recommendations property should point to a list of content ID strings.
 
     For example, if your feed is in JSON, a media item containing related recommendations might look like this:
 
-    ```
+    ```json
     ...
 
      {
@@ -81,13 +83,13 @@ Similar to global recommendations, Fire App Builder gets related recommendations
     ...
     ```
 
-    Related recommendations should be included in a specific item's details, since each item will have its own recommendations to send. The recommended IDs should be related to the item by theme, genre, episodes, or some other connection.
+    Related recommendations should be included in a specific item's details because each item will have its own recommendations to send. The recommended IDs should be related to the item by theme, genre, episodes, or some other connection.
 
     The recommendations property can appear anywhere within the items details, and it can use a different name other than `recommendations`. In the following steps, you'll write a query in a recipe to target the values that your recommendations element contains.
 
     Note that if you have an [MRSS feed][fire-app-builder-configure-mrss-feed] that conforms to iTunes specifications, adding custom elements may require more coding, since you'll need to define custom namespaces to use in your XML. (Instructions on adding custom namespaces in XML is beyond the scope of this documentation.)
 
-3.  In your app's **assets > recipes** folder, open your contents recipe file. (You most likely renamed this file when you [set up your contents recipe][fire-app-builder-set-up-recipes-content]. Originally the file was called LightCastContentsRecipe.json.)
+3.  In your app's **assets > recipes** folder, open your app's contents recipe file. (You most likely renamed this file when you [set up your contents recipe][fire-app-builder-set-up-recipes-content]. Originally the file was called LightCastContentsRecipe.json.)
 4.  In the `matchList` parameter, add a match for the `recommendations` element. For example, the `matchList` parameter might look like this:
 
     ```json
@@ -111,7 +113,7 @@ Similar to global recommendations, Fire App Builder gets related recommendations
     }
     ```
 
-    For more details on the `query` parameter here, see the [query Parameter][fire-app-builder-set-up-recipes-content#queryparameter] section in the [Set Up the Contents Recipe][fire-app-builder-set-up-recipes-content]. Since you already have a recipe that targets your items, you just have to match the newly added `recommendations` element within the items. You don't have to define a new query to target your items
+    For more details on the `query` parameter here, see the [query Parameter][fire-app-builder-set-up-recipes-content#queryparameter] section in [Set Up the Contents Recipe][fire-app-builder-set-up-recipes-content]. Because you already have a recipe that targets the items in your feed, you just have to match the newly added `recommendations` element within the items. You don't have to define a new query to target the recommendations.
 
     If you named your recommendations element something else, such as `related_recommendations`, you would match the element like this:
 
@@ -119,15 +121,15 @@ Similar to global recommendations, Fire App Builder gets related recommendations
     related_recommendations@recommendations
     ```
 
-    The left side of the `@` contains your feed name; the right side contains the Fire App Builder UI element.
+    The left side of the `@` contains the property name in your feed; the right side contains the Fire App Builder UI element.
 
-## Sending Amazon Extras in Your Recommendations
+## Sending Amazon Extras in Your Recommendations {#amazon-extras}
 
 Amazon allows you to send extra values with your recommendations. These extras allow you to customize your recommendations to better fit the Fire TV platform. You can read about the Amazon extras here: [Send Recommendations that Include Amazon Extras][fire-tv-recommendations-send-recommendations#amazon-enhancements].
 
-You include the extras in with the item details (not within the recommendations tags). The recommendations simply lists content IDs. When Fire App Builder builds and sends the recommendation, it will include any additional information matching the Amazon extras.
+You include the extras with the item details in your feed (but not inside the recommendations tags &mdash; the recommendations simply list an array of content IDs). When Fire App Builder builds and sends the related recommendations, any additional information matching the Amazon extras will also be sent.
 
-The following table lists the extras you can send. The title, description, thumbnail, etc. aren't mentioned here because they are matched already.
+The following table lists the extras you can send. (Note that the `title`, `id`, `description`, `url`, `cardImageUrl`, and `backgroundImageUrl` aren't mentioned because they are matched already. Fire App Builder will already send this info with the recommendations.
 
 The values for these matching tags are stored in the **Content.java** file (in ContentModel > src > main > java > com > android > model > content). This file maps these tags to the Amazon extras.
 
@@ -139,7 +141,7 @@ The values for these matching tags are stored in the **Content.java** file (in C
    <thead>
       <tr>
          <th>Fire App Builder Tag</th>
-         <th><code>Amazon Extra</code></th>
+         <th>Amazon Extra</th>
       </tr>
    </thead>
    <tbody>
@@ -148,43 +150,42 @@ The values for these matching tags are stored in the **Content.java** file (in C
       <td><code>com.amazon.extra.MATURITY_RATING</code></td>
    </tr>
       <tr>
-         <td><code>live</td>
-         <td><code>com.amazon.extra.LIVE_CONTENT</td>
+         <td><code>live</code></td>
+         <td><code>com.amazon.extra.LIVE_CONTENT</code></td>
       </tr>
       <tr>
-         <td><code>startTime</td>
-         <td><code>com.amazon.extra.CONTENT_START_TIME</td>
+         <td><code>startTime</code></td>
+         <td><code>com.amazon.extra.CONTENT_START_TIME</code></td>
       </tr>
       <tr>
-         <td><code>endTime</td>
-         <td><code>com.amazon.extra.CONTENT_END_TIME</td>
+         <td><code>endTime</code></td>
+         <td><code>com.amazon.extra.CONTENT_END_TIME</code></td>
       </tr>
       <tr>
-         <td><code>videoPreviewUrl</td>
-         <td><code>com.amazon.extra.PREVIEW_URL</td>
+         <td><code>videoPreviewUrl</code></td>
+         <td><code>com.amazon.extra.PREVIEW_URL</code></td>
       </tr>
       <tr>
-         <td><code>imdbId</td>
-         <td><code>com.amazon.extra.IMDB_ID</td>
+         <td><code>imdbId</code></td>
+         <td><code>com.amazon.extra.IMDB_ID</code></td>
       </tr>
       <tr>
-         <td><code>closeCaptionUrls</td>
-         <td><code>com.amazon.extra.CONTENT_CAPTION_AVAILABILITY</td>
+         <td><code>closeCaptionUrls</code></td>
+         <td><code>com.amazon.extra.CONTENT_CAPTION_AVAILABILITY</code></td>
       </tr>
       <tr>
-         <td><code>videoPreviewUrl</td>
-         <td><code>com.amazon.extra.PREVIEW_URL</td>
+         <td><code>videoPreviewUrl</code></td>
+         <td><code>com.amazon.extra.PREVIEW_URL</code></td>
       </tr>
       <tr>
-         <td><code>genres</td>
-         <td><code>setGenres</td>
+         <td><code>genres</code></td>
+         <td><code>setGenres</code></td>
       </tr>
    </tbody>
 </table>
 
-In your contents recipe, you would
+In your contents recipe, you include these Amazon extras in the same way you match on recommendations. For example:
 
-```
 ```json
 {
   "cooker": "DynamicParser",
@@ -209,13 +210,57 @@ In your contents recipe, you would
     "videoPreviewUrl@videoPreviewUrl"
     "imdbId@imdbId"
     "closeCaptionUrls@closeCaptionUrls"
-    "videoPreviewUrl@videoPreviewUrl"
     "genres@genres"
   ]
 }
 ```
 
+On the left of the ampersand `&` is your property's name in your feed; on the right is the UI element name in Fire App Builder.
+
+The above code assumes that you have all of these elements in your feed. For example, a feed that contains all of these extras might look like this:
+
+```json
+{
+     "id": "162270",
+     "title": "Thai Recipes - Thai Chicken Noodles Recipe",
+     "description": "Thai Recipes - Thai Chicken Noodles Recipe",
+     "duration": "355",
+     "thumbURL": "http:\/\/l2.cdn01.net\/_thumbs\/0000162\/0162270\/0162270__015f.jpg",
+     "imgURL": "http:\/\/l2.cdn01.net\/_thumbs\/0000162\/0162270\/0162270__015f.jpg",
+     "videoURL": "http:\/\/media.cdn01.net\/802E1F\/process\/encoded\/video_1880k\/0000162\/0162270\/D8HFLX0AC.mp4?source=firetv&channel_id=6341",
+     "categories": [
+       "International Cuisine"
+     ],
+     "channel_id": "6341",
+     "recommendations": [
+       "162269",
+       "162266",
+       "162265",
+       "162264"
+     ],
+     "maturityRating": "PG",
+     "live": "1",
+     "startTime": 1490393748,
+     "endTime": 1490397347,
+     "videoPreviewUrl": "http://mywebsite.com/some/url/to/the/video.mp4",
+     "imdbId": "tt2417148",
+     "closeCaptionUrls": "1",
+     "genres": "DRAMA"    
+}
+```
+
+For the full details on each Amazon extra parameter, including the data types, see the [Amazon Enhancements to Recommendations][fire-tv-recommendations-send-recommendations#amazon-enhancements] section in the Fire TV recommendations documentation.
 
 ## Test Your Global Recommendations
 
-To test your recommendations, see the general instructions in Fire TV documentation: [Test Your Recommendations](fire-tv-recommendations-testing). With related recommendations, you must partially watch the videos that have recommended content in order for Fire App Builder to send those recommendation IDs to the Recommended By Your Apps row.
+To test your recommendations, see the general instructions in Fire TV documentation: [Test Your Recommendations](fire-tv-recommendations-testing). With related recommendations, you must partially watch the videos that have related content in order for Fire App Builder to send those recommendation IDs to the Recommended By Your Apps row.
+
+Note that in your tests, your app will not send more than limit you set in Navigator.json file. For example, suppose you have the following:
+
+```
+"numberOfRelatedRecommendations": 3
+```
+
+With this setting, you won't see any more than 3 recommendations sent within a six-hour period.
+
+{% include links.html %}
