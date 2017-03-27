@@ -20,7 +20,7 @@ Amazon Fire TVを対象としたメディアベースのアプリ開発を検討
 
 ## Fire TV用ウェブアプリスターターキット {#wask}
 
-Fire TV用ウェブアプリスターターキット ([Github](https://github.com/amzn/web-app-starter-kit-for-fire-tv)からダウンロード可能) は、HTML5 やCSS3、JavaScriptでFire TV対象のメディア向けアプリを開発する際に、基礎となるキットです。このキットで開発したウェブアプリをAmazon開発者ポータルでパッケージ化することで、Fire TV対応アプリを作成することができます。ネイティブアプリとまったく同様に、Amazonアプリストアで公開可能です。
+Fire TV用ウェブアプリスターターキット ([Github](https://github.com/amzn/web-app-starter-kit-for-fire-tv)からダウンロード可能) は、Fire TVを対象とするメディア向けアプリを、HTML5やCSS3、JavaScriptで開発する際に基礎となるキットです。このキットで開発したウェブアプリをAmazon開発者ポータルでパッケージ化することで、Fire TV対応アプリを作成することができます。ネイティブアプリとまったく同様に、Amazonアプリストアで公開可能です。
 
 Fire TV用ウェブアプリスターターキット (WASK) を使用した開発は、アプリテンプレートを基にして行います。Media RSSフィードやJSONフィードのサポート、オンラインビデオプロバイダー (YouTube、Brightcoveなど) のサポートなど、各種メディア機能がテンプレートに含まれています。標準的なウェブテクノロジー (JavaScript、HTML5、CSS3) でテンプレートをカスタマイズできるので、拡張機能の追加、設定ファイルの変更などを適宜行ってください。
 
