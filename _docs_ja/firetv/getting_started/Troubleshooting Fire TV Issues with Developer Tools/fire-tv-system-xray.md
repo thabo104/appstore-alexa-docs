@@ -17,9 +17,9 @@ System X-Rayは、Fire OSバージョン 5.0.2 以降を搭載しているすべ
 
 ## System X-Rayを有効にする
 
-{% include content/{{site.language}}/firetv-enabledevtools.md %}
+{% include content/{{site.language}}/fire/firetv-enabledevtools.md %}
 
-[開発者ツールメニュー] ダイアログボックスが表示されたら、System X-Rayを [**オン**] にします。 
+[開発者ツールメニュー] ダイアログボックスが表示されたら、System X-Rayを [**オン**] にします。
 
 {% include image.html file="firetv/getting_started/images/xray-devtooloptions" type="png" max-width="500px" %}
 
