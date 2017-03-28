@@ -1,10 +1,9 @@
 ---
 title: ゲームコントローラー入力
 permalink: amazon-fire-game-controller-input.html
-sidebar: firetv_ja
+sidebar: firetv
 product: Fire TV
-toc-style: kramdown
-github: true
+toc: false
 ---
 
 Amazon Fire TVゲームコントローラー (Bluetooth HIDゲームパッドプロファイルに準拠したコントローラー全般) には、各種ボタン、Androidモーション、キーイベント定数があります。アプリ内で発生した入力イベントは、これらの情報を使用してキャプチャします。
