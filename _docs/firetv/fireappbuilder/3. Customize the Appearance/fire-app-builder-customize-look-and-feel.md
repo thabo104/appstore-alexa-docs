@@ -133,19 +133,55 @@ You can control the size of the preview image in the upper-right corner. In your
 
 <h3> {% include inline_image.html file="firetv/getting_started/images/firetv_eight" type="png" %} Search button icon and search background</h3>
 
-You can change the icon and background of the search button. This button is drawn with two images.
+See the following section, [Customize the Search Button](#searchbuttoncustomization) for information on how to customize the search. Customizations to the search button change the button's appearance on the home screen and the search screen.
+
+## Customize the Search Button {#searchbuttoncustomization}
+
+You can customize the search button icon, background color, and form field color. The search button color and background also appear on the home screen.
+
+{% include image.html file="firetv/fireappbuilder/images/firetv_search" type="png" %}
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} Search button icon</h3>
+
+To change the search button icon:
 
 1.  If you haven't already created a drawable folder in your app, inside your app's **assets > res** directory, create a new folder called **drawable**.
 2.  Open your **drawable** folder via Finder or Explorer.
-3.  Add your images for the search icon and background into this folder.
-4.  In your app's **custom.xml** file, update the file names for the following elements:
+3.  Add your image for the search icon and background into this folder.
+
+    You can copy the original **ic_search.png** image as an example. You can find this image in **TVUIComponent > res > drawable**. Or if you want to browse the file directory structure, go to **TVUICopmonent > res > drawable > drawable-xhdpi**. The search icon is a 34px x 34px transparent PNG image. The icon is white in order to contrast with a dark background.
+
+4.  In your app's **custom.xml** file, update the following file name to correspond to your new search icon:
 
     ```xml
     <drawable name="search_icon">@drawable/ic_search</drawable>
-    <drawable name="search_background">@drawable/bg_gradient_search</drawable>
     ```
 
-To get the exact size and dimensions of these icons, look in the **TVUIComponent > res > drawable** folder for the original two images.
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} Search button background color</h3>
+
+To change the background color of the search button, adjust the following element in your app's **custom.xml** file:
+
+```xml
+<color name="accent">#EE962D</color>
+```
+
+The accent color also changes the color of button highlights and widgets.
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} Search Form Background Color</h3>
+
+The search form background appears on the search screen when you start typing your search query. This color is controlled through an image file (rather than a hex code) to achieve a gradient. To change the color of the search form background:
+
+1.  If you haven't already created a drawable folder in your app, inside your app's **assets > res** directory, create a new folder called **drawable**.
+2.  Open your **drawable** folder via Finder or Explorer.
+3.  Add your image for the search form background into this folder.
+
+    You can copy the original **bg_gradient_search** image as an example. You can find this image in **TVUIComponent > res > drawable**. Or if you want to browse the file directory structure, go to **TVUIComponent > res > drawable > drawable-xhdpi**. The file name is **bg_gradient_search.9.png**. It's a 3px wide by 1082px tall image. It repeats horizontally to fill the search background form space.
+
+4.  In your app's **custom.xml** file, update the following file name to correspond to your new search background image:
+
+    ```xml
+    <drawable name="search_background">@drawable/bg_gradient_search</drawable>
+    ```
 
 ## Change the Visual Properties in the "Full Browse" Homepage Layout
 
