@@ -3,7 +3,7 @@ title: コントローラー動作のガイドライン
 permalink: controller-behavior-guidelines.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 ---
 
 Amazon Fire TVプラットフォーム向けのアプリを開発する際、各種コントローラーからの入力をサポートできます。各種コントローラーには、Amazon Fire TVリモコンと音声認識リモコン、Amazon Fire TVゲームコントローラー、Bluetooth HIDゲームパッドプロファイルをサポートするその他のコントローラーが含まれます。

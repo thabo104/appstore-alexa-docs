@@ -3,7 +3,7 @@ title: Amazon Fire TV端末を識別する
 permalink: identifying-amazon-fire-tv-devices.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

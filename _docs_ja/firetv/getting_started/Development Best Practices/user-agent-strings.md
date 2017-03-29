@@ -3,7 +3,7 @@ title: Fire TVのユーザーエージェント文字列
 permalink: user-agent-strings.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

@@ -3,7 +3,7 @@ title: Fire TVの広告ID
 permalink: fire-tv-advertising-id.html
 sidebar: firetv
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 reviewer: Anuj Chadha
 ---
