@@ -1,5 +1,5 @@
 ---
-title: Fire TVのSystem X-Rayオーバーレイ
+title: Fire TVのSystem X-Ray
 permalink: fire-tv-system-xray.html
 sidebar: firetv_ja
 product: Fire TV
