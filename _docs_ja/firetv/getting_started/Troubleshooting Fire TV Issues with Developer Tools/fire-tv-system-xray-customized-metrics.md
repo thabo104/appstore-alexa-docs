@@ -1,7 +1,7 @@
 ---
 title: System X-Rayメトリックをカスタマイズする
 permalink: fire-tv-system-xray-customized-metrics.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 reviewers: Dongjun Huang (primary), Andy Halverson (SA)
 toc-style: kramdown

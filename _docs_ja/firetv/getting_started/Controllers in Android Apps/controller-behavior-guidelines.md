@@ -1,7 +1,7 @@
 ---
 title: コントローラー動作のガイドライン
 permalink: controller-behavior-guidelines.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
 ---

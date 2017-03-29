@@ -1,7 +1,7 @@
 ---
 title: Fire TVの広告ID
 permalink: fire-tv-advertising-id.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
 github: true

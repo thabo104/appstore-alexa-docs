@@ -1,7 +1,7 @@
 ---
 title: Fire TVのSystem X-Rayオーバーレイ
 permalink: fire-tv-system-xray.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 reviewers: Dongjun Huang (primary), Andy Halverson (SA)
 toc-style: kramdown

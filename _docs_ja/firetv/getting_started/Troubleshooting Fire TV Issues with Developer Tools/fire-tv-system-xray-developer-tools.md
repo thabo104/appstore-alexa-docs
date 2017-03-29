@@ -1,7 +1,7 @@
 ---
 title: 開発者ツールのオプション
 permalink: fire-tv-system-xray-developer-tools.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 reviewers: Dongjun Huang (primary), Andy Halverson (SA)
 wikipage: https://wiki.labcollab.net/confluence/display/DEVTECH/DevTech+System+X-Ray

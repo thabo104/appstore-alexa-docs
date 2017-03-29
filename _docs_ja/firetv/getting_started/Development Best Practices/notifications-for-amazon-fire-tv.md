@@ -1,7 +1,7 @@
 ---
 title: Amazon Fire TVの通知機能
 permalink: notifications-for-amazon-fire-tv.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 SMEs: Mike Miller, David Goehring, Mustafa Hakim, Stephen Whitney. 
 toc-style: kramdown

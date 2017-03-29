@@ -1,6 +1,6 @@
 ---
 title: ユーザー補助機能 - Fire TV
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 permalink: fire-tv-assistive-technologies.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-assistive-technologies

@@ -1,7 +1,7 @@
 ---
 title: Fire TV対応のメディアプレーヤー
 permalink: fire-tv-media-players.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
 github: true

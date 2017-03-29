@@ -1,7 +1,7 @@
 ---
 title: コントローラーの概要
 permalink: supporting-controllers-on-amazon-fire-tv.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
 ---

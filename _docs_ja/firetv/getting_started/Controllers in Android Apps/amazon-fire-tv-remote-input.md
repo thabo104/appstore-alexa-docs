@@ -1,7 +1,7 @@
 ---
 title: リモコン入力
 permalink: amazon-fire-tv-remote-input.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
 ---

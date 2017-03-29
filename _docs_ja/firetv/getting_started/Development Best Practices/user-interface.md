@@ -1,7 +1,7 @@
 ---
 title: AndroidのMenuとActionBarウィジェット
 permalink: user-interface.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
 github: true

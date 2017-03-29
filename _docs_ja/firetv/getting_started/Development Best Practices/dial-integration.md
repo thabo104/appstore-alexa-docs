@@ -1,7 +1,7 @@
 ---
 title: DIALの統合
 permalink: dial-integration.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
 github: true

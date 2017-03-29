@@ -1,7 +1,7 @@
 ---
 title: ゲームコントローラー入力
 permalink: amazon-fire-game-controller-input.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
 ---
