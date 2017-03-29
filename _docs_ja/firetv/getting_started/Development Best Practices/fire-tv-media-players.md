@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-Androidのメディア再生APIおよびメディア暗号化API (MediaCodec`、`MediaCrypto`、`AudioTrack`クラスなど) を使用しているメディアプレーヤーは、いずれもAmazon Fire TVプラットフォームで動作します。無料と有料の推奨プレーヤーの一部を以下に示します。
+Androidのメディア再生APIおよびメディア暗号化API (`MediaCodec`、`MediaCrypto`、`AudioTrack`クラスなど) を使用しているメディアプレーヤーは、いずれもAmazon Fire TVプラットフォームで動作します。無料と有料の推奨プレーヤーの一部を以下に示します。
 
 **無料**:
 
