@@ -84,6 +84,8 @@ To configure Fire App Builder with your own MRSS feed, just swap it in place of 
     }
     ```
 
+    {% include note.html content="If you have multiple feeds, list them in this same code block above (separated out by commas, with each feed listed on a new line). You will need to add multiple DataLoaderRecipe files, each loading a separate feed at a different `url_index` position (for example, 0, 1, 2, etc.). You also need to list out these additional DataLoaderRecipes in your Navigator.json file. See the instructions in [Navigator Configuration Overview][fire-app-builder-configure-navigator] for more details. Specifically, see either the info for [open feeds][fire-app-builder-configure-navigator-open-feeds] [token-based feeds][fire-app-builder-configure-navigator-token-feeds]." %}
+
 3.  If you followed the instructions in the previous section and renamed **Navigator_TwitTv.json** (in your app's **assets** folder) to **Navigator.json**, then rename **Navigator.json** back to **Navigator_TwitTv.json**.
 4.  If you have a file called **Navigator.json** (in your app's **assets** folder), change its name to **Navigator_original.json** (or something similar).
 3.  Duplicate **Navigator_TwitTv.json** and name it **Navigator.json**.

@@ -55,6 +55,20 @@ folders:
     ref: fire-app-builder-questions-and-answers
     bookmarks: [translator]
 
+    subfolders:
+    - title: Release Notes
+      subfolderitems:
+
+      - title: Version 1.0.2 Release Notes
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-2
+        jurl: /fire-app-builder-release-notes-version-1-0-2.html
+        ref: fire-app-builder-release-notes-version-1-0-2
+
+      - title: Version 1.0.0 Release Notes
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-0
+        jurl: /fire-app-builder-release-notes-version-1-0-0.html
+        ref: fire-app-builder-release-notes-version-1-0-0
+
 - title: 1. Get Set Up
   folderitems:
 
@@ -62,7 +76,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-download-and-build
     jurl: /fire-app-builder-download-and-build.html
     ref: fire-app-builder-download-and-build
-    bookmarks: customize
+    bookmarks: [customize]
 
   - title: Connect to Fire TV Through ADB
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-connecting-adb-to-fire-tv
@@ -169,21 +183,30 @@ folders:
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-crashlytics-component
         jurl: /fire-app-builder-crashlytics-component.html
         ref: fire-app-builder-crashlytics-component
+        bookmarks: [customtagnames]
 
       - title: Flurry Analytics Component
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-flurry-analytics-component
         jurl: /fire-app-builder-flurry-analytics-component.html
         ref: fire-app-builder-flurry-analytics-component
+        bookmarks: [customtagnames]
 
       - title: Google Analytics Component
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-google-analytics-component
         jurl: /fire-app-builder-google-analytics-component.html
         ref: fire-app-builder-google-analytics-component
+        bookmarks: [customtagnames]
 
       - title: Omniture Analytics Component
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-omniture-analytics-component
         jurl: /fire-app-builder-omniture-analytics-component.html
         ref: fire-app-builder-omniture-analytics-component
+        bookmarks: [customtagnames]
+
+      - title: Track Feed Attributes That Aren't Used in Fire App Builder
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-track-additional-attributes
+        jurl: /fire-app-builder-track-additional-attributes.html
+        ref: fire-app-builder-track-additional-attributes
 
     - title: Authorization components
       subfolderitems:
@@ -192,6 +215,7 @@ folders:
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-adobe-pass-auth-component
         jurl: /fire-app-builder-adobe-pass-auth-component.html
         ref: fire-app-builder-adobe-pass-auth-component
+        bookmarks: [loggedinprovider]
 
       - title: Facebook Authorization Component
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-facebook-auth-component

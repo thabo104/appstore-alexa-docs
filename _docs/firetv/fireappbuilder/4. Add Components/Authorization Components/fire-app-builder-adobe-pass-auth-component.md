@@ -311,7 +311,7 @@ To configure which screens require authentication:
     }
     ```
 
-## Show the Content Provider Logo to Users
+## Show the Content Provider Logo to Users {}#loggedinprovider}
 
 When a user logs in to a provider through Adobe Pass, you can show the provider logo on the screen of the app. You do this by supplying an MVPD URL that contains the MVPD (multichannel video programming distributor) along with the MVPD's logo.
 

@@ -1,28 +1,22 @@
 ---
-title: Release Notes
-permalink: fire-app-builder-release-notes.html
+title: "Version 1.0.0 Release Notes"
+permalink: fire-app-builder-release-notes-version-1-0-0.html
 sidebar: fireappbuilder
 product: Fire App Builder
 toc-style: kramdown
 github: true
 ---
 
-## Version 1.0.2
+Version 1.0.0 was released on October 1, 2016.
 
-- live content. resume show now works for more than just 1 item
-- recommendations
-- appearance
-- recommended content is now related content
-- related content is now constrained by category
+* TOC
+{:toc}
 
-## Version 1.0.0
+### New Features
 
-### Features
-
-The first release of Fire App Builder was published to Github on October 1, 2016. The first release includes a fully functional Java-based Android TV app that can parse media feeds and play media.
+The first release includes a fully functional Java-based Android TV app that can parse media feeds and play media.
 
 The app includes more than a dozen components that allow you to quickly add analytics, in-app purchasing, ads, and media player components in your app. You can also customize the look and feel of your app, including the font, images, colors, and layout, by setting values in XML and JSON files.
-
 
 ### Known Issues {#known_issues}
 

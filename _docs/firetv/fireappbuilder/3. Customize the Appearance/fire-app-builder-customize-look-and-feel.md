@@ -145,7 +145,7 @@ You can customize the search button icon, background color, and form field color
 
 To change the search button icon:
 
-1.  If you haven't already created a drawable folder in your app, inside your app's **assets > res** directory, create a new folder called **drawable**.
+1.  If you haven't already created a drawable folder in your app, create a new folder called **drawable** inside your app's **assets > res** directory.
 2.  Open your **drawable** folder via Finder or Explorer.
 3.  Add your image for the search icon and background into this folder.
 
@@ -165,13 +165,11 @@ To change the background color of the search button, adjust the following elemen
 <color name="accent">#EE962D</color>
 ```
 
-The accent color also changes the color of button highlights and widgets.
-
 <h3> {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} Search Form Background Color</h3>
 
 The search form background appears on the search screen when you start typing your search query. This color is controlled through an image file (rather than a hex code) to achieve a gradient. To change the color of the search form background:
 
-1.  If you haven't already created a drawable folder in your app, inside your app's **assets > res** directory, create a new folder called **drawable**.
+1.  If you haven't already created a drawable folder in your app, create a new folder called **drawable** inside your app's **assets > res** directory.
 2.  Open your **drawable** folder via Finder or Explorer.
 3.  Add your image for the search form background into this folder.
 
