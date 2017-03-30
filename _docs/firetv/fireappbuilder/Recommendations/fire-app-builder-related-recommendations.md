@@ -107,7 +107,6 @@ For more general information about recommendations, see [Recommendations in Fire
         "videoURL@url",
         "imgURL@cardImageUrl",
         "imgURL@backgroundImageUrl",
-        "channel_id@channelId",
         "recommendations@recommendations"
       ]
     }
@@ -123,66 +122,17 @@ For more general information about recommendations, see [Recommendations in Fire
 
     The left side of the `@` contains the property name in your feed; the right side contains the Fire App Builder UI element.
 
+    In order to build its content model (and app UI), Fire App Builder requires you to map content to these tags: `title`, `id`, `description`, `url`, `cardImageUrl`, and `backgroundImageUrl`. When sending recommendations, Fire App Builder uses some of these basic tags in building the recommendations. These tags correspond with content required by the standard Android recommendations API (see [ContentRecommendation.Builder](https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html)). However, you can send additional information (if desired) to better customize the recommendation for Fire TV.
+
 ## Sending Amazon Extras in Your Recommendations {#amazon-extras}
 
-Amazon allows you to send extra values with your recommendations. These extras allow you to customize your recommendations to better fit the Fire TV platform. You can read about the Amazon extras here: [Send Recommendations that Include Amazon Extras][fire-tv-recommendations-send-recommendations#amazon-enhancements].
+Amazon allows you to send extra values with your recommendations. These extras allow you to customize your recommendations to better fit the Fire TV platform. You can read about the Amazon extras in the general Fire TV documentation here: [Send Recommendations that Include Amazon Extras][fire-tv-recommendations-send-recommendations#amazon-enhancements].
 
-You include the extras with the item details in your feed (but not inside the recommendations tags &mdash; the recommendations simply list an array of content IDs). When Fire App Builder builds and sends the related recommendations, any additional information matching the Amazon extras will also be sent.
+You include the extras with the item details in your feed (but not inside the recommendations tags &mdash; the recommendation tag should simply list an array of content IDs). When Fire App Builder builds and sends the related recommendations, any additional information matching the Amazon extras will also be sent.
 
-The following table lists the extras you can send. (Note that the `title`, `id`, `description`, `url`, `cardImageUrl`, and `backgroundImageUrl` aren't mentioned because they are matched already. Fire App Builder will already send this info with the recommendations.
+The way the Amazon extras map to Fire App Builder's content model is defined in the **Content.java** file (in ContentModel > src > main > java > com > android > model > content). This file maps the Amazon extras to Fire App Builder tags.
 
-The values for these matching tags are stored in the **Content.java** file (in ContentModel > src > main > java > com > android > model > content). This file maps these tags to the Amazon extras.
-
-<table>
-   <colgroup>
-      <col width="50%" />
-      <col width="50%" />
-   </colgroup>
-   <thead>
-      <tr>
-         <th>Fire App Builder Tag</th>
-         <th>Amazon Extra</th>
-      </tr>
-   </thead>
-   <tbody>
-   <tr>
-      <td><code>maturityRating</code></td>
-      <td><code>com.amazon.extra.MATURITY_RATING</code></td>
-   </tr>
-      <tr>
-         <td><code>live</code></td>
-         <td><code>com.amazon.extra.LIVE_CONTENT</code></td>
-      </tr>
-      <tr>
-         <td><code>startTime</code></td>
-         <td><code>com.amazon.extra.CONTENT_START_TIME</code></td>
-      </tr>
-      <tr>
-         <td><code>endTime</code></td>
-         <td><code>com.amazon.extra.CONTENT_END_TIME</code></td>
-      </tr>
-      <tr>
-         <td><code>videoPreviewUrl</code></td>
-         <td><code>com.amazon.extra.PREVIEW_URL</code></td>
-      </tr>
-      <tr>
-         <td><code>imdbId</code></td>
-         <td><code>com.amazon.extra.IMDB_ID</code></td>
-      </tr>
-      <tr>
-         <td><code>closeCaptionUrls</code></td>
-         <td><code>com.amazon.extra.CONTENT_CAPTION_AVAILABILITY</code></td>
-      </tr>
-      <tr>
-         <td><code>videoPreviewUrl</code></td>
-         <td><code>com.amazon.extra.PREVIEW_URL</code></td>
-      </tr>
-      <tr>
-         <td><code>genres</code></td>
-         <td><code>setGenres</code></td>
-      </tr>
-   </tbody>
-</table>
+{% include content/{{site.language}}/fire/amazon_recommendations_enhancements.md scenario="fab" %}
 
 In your contents recipe, you include these Amazon extras in the same way you match on recommendations. For example:
 
@@ -202,15 +152,15 @@ In your contents recipe, you include these Amazon extras in the same way you mat
     "imgURL@cardImageUrl",
     "imgURL@backgroundImageUrl",
     "channel_id@channelId",
-    "recommendations@recommendations"
-    "maturityRating@maturityRating"
-    "live@live"
-    "startTime@startTime"
-    "endTime@endTime"
-    "videoPreviewUrl@videoPreviewUrl"
-    "imdbId@imdbId"
-    "closeCaptionUrls@closeCaptionUrls"
-    "genres@genres"
+    "recommendations@recommendations",
+    "maturityRating@maturityRating",
+    "live@live",
+    "startTime@startTime",
+    "endTime@endTime",
+    "videoPreviewUrl@videoPreviewUrl",
+    "imdbId@imdbId",
+    "closeCaptionUrls@closeCaptionUrls",
+    "genres@genres",
   ]
 }
 ```
@@ -255,12 +205,21 @@ For the full details on each Amazon extra parameter, including the data types, s
 
 To test your recommendations, see the general instructions in Fire TV documentation: [Test Your Recommendations](fire-tv-recommendations-testing). With related recommendations, you must partially watch the videos that have related content in order for Fire App Builder to send those recommendation IDs to the Recommended By Your Apps row.
 
+Keep in mind that the Recommended By Your Apps row on Fire TV is outside of the control of the Fire App Builder app. However, you can see that your app is building and sending recommendations by looking in the Android Studio logs.
+
+After starting your app, if you look at the logs in Android Studio (click **Android Monitor** at the bottom of the screen and then filter on the word **recommendation**), you'll see logs indicating that related recommendations have been built and sent. The logs will look something like this:
+
+```
+03-24 18:39:09.365 18717-18757/com.amazon.android.calypso D/RecommendationTable: record updated in database: RecommendationRecord{mContentId='99570', mRecommendationId=4, mType='Related'}
+03-24 18:39:09.368 18717-18757/com.amazon.android.calypso D/RecommendationSender: Built recommendation - Consuming Passions Chips Recipe | Belgian Style
+```
+
 Note that in your tests, your app will not send more than limit you set in Navigator.json file. For example, suppose you have the following:
 
 ```
 "numberOfRelatedRecommendations": 3
 ```
 
-With this setting, you won't see any more than 3 recommendations sent within a six-hour period.
+With this setting, you won't see any more than 3 recommendations sent.
 
 {% include links.html %}

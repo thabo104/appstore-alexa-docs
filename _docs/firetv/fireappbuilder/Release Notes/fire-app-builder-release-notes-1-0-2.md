@@ -59,7 +59,7 @@ Related video content (which uses tags in your feed to surface a group of relate
 
 *  **Pausing live content works for more than 1 video.** When users who are watching live content videos pause the video, a button appears that says "Resume." Previously, the Resume button would appear for the most recently watched live content video only. Now the Resume button can appear for any number of live content videos the user may have paused.
 
-* **Crashes show "Service Unavailable" instead of crashing.** If the app fails to load and parse your feed (because an empty data object was served to the parser), instead of just crashing because the feed link returned no data, the app displays a screen that says "Service Unavailable."
+* **Crashes show "Service is unavailable" instead of crashing.** If the app fails to load and parse your feed (because an empty data object was served to the parser), instead of just crashing because the feed link returned no data, the app displays a screen that says "Service is unavailable. Please try again later."
 
 * **Old search icon removed from alt home screen**. In the `FullContentBrowseActivity` (the home screen providing a more compressed layout), the wrong search icon was showing up behind the search widget. This old icon has been removed.
 

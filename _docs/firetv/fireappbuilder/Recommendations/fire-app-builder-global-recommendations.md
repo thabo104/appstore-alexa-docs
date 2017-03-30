@@ -36,24 +36,36 @@ For more general information about recommendations, see [Recommendations in Fire
 
     ```json
     ...
-    "recommendationRecipes": [
-        {
-          "contents": {
-            "dataLoader": "recipes/FileBasedDataLoaderRecipe.json",
-            "dynamicParser": "recipes/<App name>GlobalRecParserRecipe.json"
-            }
-          }
-    ],
+    "globalRecipes": [
+       {
+         "categories": {
+           "dataLoader": "recipes/LightCastDataLoaderRecipe1.json",
+           "dynamicParser": "recipes/LightCastCategoriesRecipe.json"
+         },
+         "contents": {
+           "dataLoader": "recipes/LightCastDataLoaderRecipe1.json",
+           "dynamicParser": "recipes/LightCastContentsRecipe.json"
+         }
+       }
+     ],
+     "recommendationRecipes": [
+       {
+         "contents": {
+           "dataLoader": "recipes/LightCastDataLoaderRecipe1.json",
+           "dynamicParser": "recipes/LightCastGlobalRecParserRecipe.json"
+         }
+       }
+     ],
     ...
     ```
 
-    (Note that in code samples, ellipses `...` indicate truncated code. Do not copy ellipses into your code.)
+    (Note that in code samples, ellipses `...` indicate that this is an excerpt and the rest of the code is truncated. Do not copy ellipses into your code.)
 
     The file referenced in the `dynamicParser` property specifies the recipe used to identify and process global recommendations in your feed.
 
-    In place of `<App name>` insert your app's name. For example, `AcmeGlobalRecParserRecipe.json`.
+    In place of `LightCastGlobalRecParserRecipe` you can use your own file name (for example, `AcmeGlobalRecParserRecipe.json`). Or you can just customize the existing file.
 
-2.  In your feed, add a `globalRecommendations` property that points to a list of content ID strings. The content ID strings should relate to the media you want to recommend.
+2.  In your feed, add a single `globalRecommendations` property for the entire feed that points to **an array** of content ID strings. The array of content ID strings should relate to the media you want to recommend.
 
     For example, if your feed is in JSON, the `globalRecommendations` property might look like this:
 
@@ -121,14 +133,14 @@ For more general information about recommendations, see [Recommendations in Fire
       ...
       ```
 
-      The global recommendations object should not be included in a specific item's details &mdash; there is just one set of global recommendations for the entire feed. Within each item, you can have [related recommendations][fire-app-builder-related-recommendations] that are sent when that specific video is watched. However, in this tutorial, we're just configuring *global recommendations* (which are sent when the app starts, not when a specific video plays).
+      The global recommendations object should not be included in a specific item's details &mdash; there is just one set of global recommendations for the entire feed. Within each item, you can have [related recommendations][fire-app-builder-related-recommendations] that are sent when that specific video is watched. However, in this task, we're configuring *global recommendations* (which are sent when the app starts, not when a specific video plays).
 
-      The global recommendations property can appear anywhere in your feed, and it can use a name other than `globalRecommendations`. In the following steps, you'll write a query in a recipe to target this element.
+      The global recommendations property can appear anywhere in your feed, and it can use a name other than `globalRecommendations`. But the content should be an array of strings. In the following steps, you'll write a query in a recipe to target this element.
 
       Note that if you have an MRSS feed that conforms to iTunes specifications, adding custom elements may require more coding, since you'll need to define custom namespaces to use in your XML. (Instructions on adding custom namespaces in XML is beyond the scope of this documentation.)
 
-3.  In your app's **assets > recipes** folder, add a new file called **&lt;App name&gt;GlobalRecParserRecipe.json**, using the same `<App name>` that you used earlier in step 2. (For example, AcmeGlobalRecParserRecipe.json.)
-4.  Add the following recipe to your **&lt;App name&gt;GlobalRecParserRecipe.json** file:
+3.  In your app's **assets > recipes** folder, either customize the **LightCastGlobalRecParserRecipe.json** file if you used this same name earlier (in step 2), or create a new file that uses the same name you used earlier (for example, AcmeGlobalRecParserRecipe.json).
+4.  Add the following recipe to your **"LightCastGlobalRecParserRecipe.json"** (or "AcmeGlobalRecParserRecipe.json", etc.) file:
 
     ```json
     {
@@ -174,6 +186,23 @@ For more general information about recommendations, see [Recommendations in Fire
 ## Test Your Global Recommendations
 
 To test your recommendations, see the general instructions in Fire TV documentation: [Test Your Recommendations](fire-tv-recommendations-testing).
+
+Keep in mind that the Recommended By Your Apps row on Fire TV is outside of the control of the Fire App Builder app. However, you can see that your app is building and sending recommendations by looking in the Android Studio logs.
+
+After starting your app, if you look at the logs in Android Studio (click **Android Monitor** at the bottom of the screen and then filter on the word **recommendation**), you'll see logs indicating that global recommendations have been built and sent. The logs will look something like this:
+
+```
+03-24 18:39:09.365 18717-18757/com.amazon.android.calypso D/RecommendationTable: record updated in database: RecommendationRecord{mContentId='99570', mRecommendationId=4, mType='Global'}
+03-24 18:39:09.368 18717-18757/com.amazon.android.calypso D/RecommendationSender: Built recommendation - Consuming Passions Chips Recipe | Belgian Style
+```
+
+Note that in your tests, your app will not send more than limit you set in Navigator.json file. For example, suppose you have the following:
+
+```
+"numberOfGlobalRecommendations": 3
+```
+
+With this setting, you won't see any more than 3 recommendations sent.
 
 ## Removing Stale Recommendations
 
