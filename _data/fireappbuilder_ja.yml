@@ -265,6 +265,10 @@ related_resources_list:
   hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv
   jurl: /getting-started-developing-apps-and-games-for-amazon-fire-tv.html
 
+- title: Fire TV 用ウェブアプリの準備
+  hurl: https://developer.amazon.com/public/ja/solutions/platforms/webapps/docs/getting-started-with-web-apps-for-fire-tv
+  jurl: getting-started-with-web-apps-for-fire-tv
+
 - title: Fire TVカタログ統合
   hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/overview/integrating-your-catalog-with-fire-tv
   jurl: integrating-your-catalog-with-fire-tv
