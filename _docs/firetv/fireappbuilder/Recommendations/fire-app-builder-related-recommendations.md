@@ -124,82 +124,8 @@ For more general information about recommendations, see [Recommendations in Fire
 
     In order to build its content model (and app UI), Fire App Builder requires you to map content to these tags: `title`, `id`, `description`, `url`, `cardImageUrl`, and `backgroundImageUrl`. When sending recommendations, Fire App Builder uses some of these basic tags in building the recommendations. These tags correspond with content required by the standard Android recommendations API (see [ContentRecommendation.Builder](https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html)). However, you can send additional information (if desired) to better customize the recommendation for Fire TV.
 
-## Sending Amazon Extras in Your Recommendations {#amazon-extras}
 
-Amazon allows you to send extra values with your recommendations. These extras allow you to customize your recommendations to better fit the Fire TV platform. You can read about the Amazon extras in the general Fire TV documentation here: [Send Recommendations that Include Amazon Extras][fire-tv-recommendations-send-recommendations#amazon-enhancements].
-
-You include the extras with the item details in your feed (but not inside the recommendations tags &mdash; the recommendation tag should simply list an array of content IDs). When Fire App Builder builds and sends the related recommendations, any additional information matching the Amazon extras will also be sent.
-
-The way the Amazon extras map to Fire App Builder's content model is defined in the **Content.java** file (in ContentModel > src > main > java > com > android > model > content). This file maps the Amazon extras to Fire App Builder tags.
-
-{% include content/{{site.language}}/fire/amazon_recommendations_enhancements.md scenario="fab" %}
-
-In your contents recipe, you include these Amazon extras in the same way you match on recommendations. For example:
-
-```json
-{
-  "cooker": "DynamicParser",
-  "format": "json",
-  "model": "com.amazon.android.model.content.Content",
-  "translator": "ContentTranslator",
-  "modelType": "array",
-  "query": "$.items[?(@.categories[0] in [$$par0$$])]",
-  "matchList": [
-    "title@title",
-    "id@id",
-    "description@description",
-    "videoURL@url",
-    "imgURL@cardImageUrl",
-    "imgURL@backgroundImageUrl",
-    "channel_id@channelId",
-    "recommendations@recommendations",
-    "maturityRating@maturityRating",
-    "live@live",
-    "startTime@startTime",
-    "endTime@endTime",
-    "videoPreviewUrl@videoPreviewUrl",
-    "imdbId@imdbId",
-    "closeCaptionUrls@closeCaptionUrls",
-    "genres@genres",
-  ]
-}
-```
-
-On the left of the ampersand `&` is your property's name in your feed; on the right is the UI element name in Fire App Builder.
-
-The above code assumes that you have all of these elements in your feed. For example, a feed that contains all of these extras might look like this:
-
-```json
-{
-     "id": "162270",
-     "title": "Thai Recipes - Thai Chicken Noodles Recipe",
-     "description": "Thai Recipes - Thai Chicken Noodles Recipe",
-     "duration": "355",
-     "thumbURL": "http:\/\/l2.cdn01.net\/_thumbs\/0000162\/0162270\/0162270__015f.jpg",
-     "imgURL": "http:\/\/l2.cdn01.net\/_thumbs\/0000162\/0162270\/0162270__015f.jpg",
-     "videoURL": "http:\/\/media.cdn01.net\/802E1F\/process\/encoded\/video_1880k\/0000162\/0162270\/D8HFLX0AC.mp4?source=firetv&channel_id=6341",
-     "categories": [
-       "International Cuisine"
-     ],
-     "channel_id": "6341",
-     "recommendations": [
-       "162269",
-       "162266",
-       "162265",
-       "162264"
-     ],
-     "maturityRating": "PG",
-     "live": "1",
-     "startTime": 1490393748,
-     "endTime": 1490397347,
-     "videoPreviewUrl": "http://mywebsite.com/some/url/to/the/video.mp4",
-     "imdbId": "tt2417148",
-     "closeCaptionUrls": "1",
-     "genres": "DRAMA"    
-}
-```
-
-For the full details on each Amazon extra parameter, including the data types, see the [Amazon Enhancements to Recommendations][fire-tv-recommendations-send-recommendations#amazon-enhancements] section in the Fire TV recommendations documentation.
+{% include tip.html content="You can also include addition information in your recommendations ([Amazon extras][fire-tv-recommendations-send-recommendations#amazon-enhancements]) that are specific to Amazon Fire TV." %}
 
 ## Test Your Global Recommendations
 

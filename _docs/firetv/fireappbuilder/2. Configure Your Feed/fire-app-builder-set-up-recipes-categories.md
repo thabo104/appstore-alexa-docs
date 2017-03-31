@@ -50,7 +50,7 @@ In this step, you will query for the categories from your feed. Categories group
     <tr>
     <td markdown="1">`model`
     </td>
-    <td markdown="1">Specifies the content model for the data. The content model provides the structure for your content and maps it into the Fire App Builder UI. Leave it at the default: `com.amazon.android.model.content.ContentContainer`. 
+    <td markdown="1">Specifies the content model for the data. The content model provides the structure for your content and maps it into the Fire App Builder UI. Leave it at the default: `com.amazon.android.model.content.ContentContainer`.
     </td>
     </tr>
     <tr>
@@ -59,21 +59,21 @@ In this step, you will query for the categories from your feed. Categories group
     <td markdown="1">{% include_relative recipe_modeltype.md %}
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`query`
     </td>
-    <td markdown="1">{% include_relative recipe_query.md type="categories" %} 
+    <td markdown="1">{% include_relative recipe_query.md type="categories" %}
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`queryResultType`
     </td>
     <td markdown="1">{% include_relative recipe_queryresulttype.md %}
     </td>
     </tr>
-    
+
     <tr>
     <td markdown="1">`matchList`
     </td>
@@ -102,10 +102,10 @@ The sample app in Fire App Builder reads from a generic LightCast media feed tha
 
 | Query Syntax | What It Matches |
 |----|----|
-| `$` | Specifies the root directory as the beginning of the search.| 
-| `..` | Indicates a recursive search in every directory and subdirectory of the root for matches.| 
-| `categories[]` | Says to look for the named array called “categories”.| 
-| `*` | Matches any contents (wildcard).| 
+| `$` | Specifies the root directory as the beginning of the search.|
+| `..` | Indicates a recursive search in every directory and subdirectory of the root for matches.|
+| `categories[]` | Says to look for the named array called “categories”.|
+| `*` | Matches any contents (wildcard).|
 
 Putting it all together: `$..categories[*]` Starts at the root (`$`), looks in every directory and subdirectory recursively for matches (`..`), and looks to match on a named array called `categories`, with any contents in the array (`*`).
 
@@ -154,7 +154,7 @@ With the sample app in Fire App Builder, if you run this query (`$..categories[*
 
 (Fire App Builder will remove duplicates from the query result.)
 
-Fire App Builder needs to take the array of objects and convert the array to a hashmap to process in a Java class. So the next parameter (`queryResultType`) is used to convert the array of strings into an array of objects. 
+Fire App Builder needs to take the array of objects and convert the array to a hashmap to process in a Java class. So the next parameter (`queryResultType`) is used to convert the array of strings into an array of objects.
 
 ```
 "queryResultType": "[]$",
@@ -164,7 +164,7 @@ See [Querying JSON][fire-app-builder-querying-json] for more details about const
 
 #### XML Feeds {#categoryxml}
 
-If your feed is XML, instead of using Jayway JsonPath, you must use [XPath expressions](https://www.w3schools.com/xml/xpath_syntax.asp) to target the specific elements in your feed. XPath reduces your XML document into various items called "nodes." The XPath syntax targets the location of specific nodes. 
+If your feed is XML, instead of using Jayway JsonPath, you must use [XPath expressions](https://www.w3schools.com/xml/xpath_syntax.asp) to target the specific elements in your feed. XPath reduces your XML document into various items called "nodes." The XPath syntax targets the location of specific nodes.
 
 Suppose your XML feed contains a structure like this:
 
@@ -200,7 +200,7 @@ Text='Gadgets'
 
 (You can ignore the `Text=` part. This is just part of the XPath Tester/Evaluator's display, not what was matched in the query.)
 
-Note that with iTunes feeds, there's a general category for the feed (such as `<itunes:category text="Technology">`) as well as categories for each item (`<category>Technology</category>`). When you target categories for your recipe, you want to target the categories for each item in the feed, not the general feed categories. 
+Note that with iTunes feeds, there's a general category for the feed (such as `<itunes:category text="Technology">`) as well as categories for each item (`<category>Technology</category>`). When you target categories for your recipe, you want to target the categories for each item in the feed, not the general feed categories.
 
 Try copying your XML feed into the [XPath Tester/Evaluator](http://www.freeformatter.com/xpath-tester.html) and selecting the categories using a similar syntax.
 
@@ -214,12 +214,12 @@ The purpose of the `matchList` parameter is to select specific properties from t
 
 The syntax used by `matchList` is not Jayway JsonPath or XPath expressions but rather custom Fire App Builder syntax that targets specific elements in the query result. (Hence the JSON and XML instructions are combined in the same sections.)
 
-In the sample app in Fire App Builder, the value for the Categories recipe is `StringKey@name`. 
+In the sample app in Fire App Builder, the value for the Categories recipe is `StringKey@name`.
 
-Here's how this syntax works. On the left of the ampersand (`@`) you put the property you want to target in the query result (`StringKey` selects the list of strings). On the right of the ampersand (`@`), you put the Fire App Builder element you want to map the property to (`name`). 
+Here's how this syntax works. On the left of the `@` symbol you put the property you want to target in the query result (`StringKey` selects the list of strings). On the right of the `@` symbol you put the Fire App Builder element you want to map the property to (`name`). 
 
 For the **Categories recipe**, your `matchList` parameter should map your feed's categories to `name`.
- 
+
 In the Fire App Builder sample app, since the query result is a list of strings, `StringKey` is used to match the strings. But suppose the result set from your query contained a JSON object such as the following:
 
 ```json
@@ -227,7 +227,7 @@ In the Fire App Builder sample app, since the query result is a list of strings,
 ```
 
 To match on `My category title` and convert it to `name`, you would use the following:
- 
+
 ```
 list/title@name
 ```
@@ -286,13 +286,13 @@ However, suppose your media objects were listed inside an `assets` node that in 
 }
 ```
 
-To get the media objects, you would write the query like this: 
+To get the media objects, you would write the query like this:
 
 ```
 container/assets@keyDataPath
 ```
 
-Similar to the `matchList` parameter, the `keyDataType` query does not use Jayway JsonPath syntax either. Instead, you match each node by writing the node name followed by `/` to move into the next level. `container/assets` matches all the items at this level. 
+Similar to the `matchList` parameter, the `keyDataType` query does not use Jayway JsonPath syntax either. Instead, you match each node by writing the node name followed by `/` to move into the next level. `container/assets` matches all the items at this level.
 
 On the right of the ampersand `@`, the `keyDataPath` key is how these media objects are stored and used by Fire App Builder. The `@keyDataPath` helps match up the items with the Fire App Builder content model.
 
@@ -305,4 +305,3 @@ If your feed lacks categories but you have separate feeds for each category, you
 Now that you've configured the categories for your app's media feed, you need to configure the contents. See [Set Up your Content Recipe][fire-app-builder-set-up-recipes-content].
 
 {% include links.html %}
-

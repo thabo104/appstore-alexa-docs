@@ -1,18 +1,19 @@
-{{include.scenario}}
 <table class="grid">
 {% if include.scenario == "ftv" %}
    <colgroup>
-   <col width="35%" />
-   <col width="15%" />
+   <col width="30%" />
+   <col width="10%" />
    <col width="50%" />
+   <col width="10%" />
    </colgroup>
 {% endif %}
 {% if include.scenario == "tab" %}
    <colgroup>
-   <col width="30%" />
-   <col width="10%" />
+   <col width="15%" />
+   <col width="5%" />
    <col width="40%" />
-    <col width="20%" />
+   <col width="5%" />
+   <col width="35%" />
    </colgroup>
 {% endif %}
    <thead>
@@ -20,6 +21,7 @@
          <th>Extra name</th>
          <th>Data type</th>
          <th>Details</th>
+         <th>Used*</th>
          {% if include.scenario == "fab" %}
          <th>Fire App Builder</th>
          {% endif %}
@@ -29,9 +31,10 @@
       <tr>
          <td><code>com.amazon.extra.DISPLAY_NAME</code></td>
          <td>String</td>
-         <td>A shorter app name displayed in the Launch menu (which appears when you press the **menu** button while a recommendation is selected). The length limit is 15 characters. Additional characters are truncated without showing an ellipses for the truncated characters.</td>
+         <td>A shorter app name displayed in the Launch menu (which appears when you press the <b>menu</b> button while a recommendation is selected). The length limit is 15 characters. Additional characters are truncated without showing an ellipses for the truncated characters.</td>
+         <td>Yes</td>
          {% if include.scenario == "fab" %}
-         <td>Not available to change. Fire TV will automatically truncate your app title if it extends beyond 15 characters.</td>
+         <td>Instead of mapping a <code>DISPLAY_NAME</code> in each feed item, you set this value in your app's strings.xml file. See <a href="#customizeappname">Customizing the App Display Name in Recommendations</a> for details.</td>
          {% endif %}
       </tr>
       <tr>
@@ -46,6 +49,7 @@
             <li><b>Japan Marketplace:</b> <code>EIRIN_G</code>, <code>EIRIN_PG12</code>, <code>EIRIN_R15</code>, <code>EIRIN_18</code></li>
             </ul>
             </td>
+            <td>Yes</td>
             {% if include.scenario == "fab" %}
             <td>Map to the tag <code>maturityRating</code></td>
             {% endif %}
@@ -54,6 +58,7 @@
                <td><code>com.amazon.extra.RANK</code></td>
                <td>int</td>
                <td>Specifies the app's preferred ordering of recommendations. Fire TV's selection algorithm selects recommendations with lower rank numbers more often than higher numbers. Note that there is no guarantee for the sort order of recommendations displayed from different apps.</td>
+               <td>No</td>
                {% if include.scenario == "fab" %}
                <td>Not available to change. Fire App Builder sends a rank of <code>0.5</code> for every video.</td>
                {% endif %}
@@ -80,6 +85,7 @@
                    </ul>
                    <p>If no value is provided, the default action will be <code>Open</code>.</p>
               </td>
+              <td>Yes</td>
               {% if include.scenario == "fab" %}
               <td>Not available to change. Fire App Builder uses <code>1</code> for every video.</td>
               {% endif %}
@@ -92,27 +98,30 @@
              <li><code>0</code>: Not a Live content</li>
              <li><code>1</code>: Live Content</li>
             </ul>
+            <td>No</td>
           </td>
           {% if include.scenario == "fab" %}
-          <td>Map to the tag <code>live</code></td>
+          <td>Map to the tag <code>liveContent</code></td>
           {% endif %}
       </tr>
       <tr>
          <td><code>com.amazon.extra.CONTENT_RELEASE_DATE</code></td>
          <td>String</td>
-         <td>Content release year. Example: 2016, 2015, 1977 etc. </td>
+         <td>Content release year. Example: 2016, 2015, 1977 etc.</td>
+         <td>No</td>
          {% if include.scenario == "fab" %}
-         <td>Not supported</td>
+         <td>Map to the tag to <code>contentReleaseDate</code> </td>
          {% endif %}
       </tr>
       <tr>
          <td><code>com.amazon.extra.CONTENT_CAPTION_AVAILABILITY</code></td>
-         <td>String</td>
+         <td>Array of strings</td>
          <td>Caption availability of content.
              <ul>
              <li><b>0</b>: Caption not available for content</li>
              <li><b>1</b>: Caption available for content</li>
              </ul>
+             <td>No</td>
              </td>
              {% if include.scenario == "fab" %}
              <td>Map to the tag <code>closeCaptionUrls</code></td>
@@ -122,6 +131,7 @@
          <td><code>com.amazon.extra.IMDB_ID</code></td>
          <td>String</td>
          <td>IMDB ID of content.</td>
+         <td>No</td>
          {% if include.scenario == "fab" %}
          <td>Map to the tag <code>imdbId</code></td>
          {% endif %}
@@ -130,6 +140,7 @@
          <td><code>com.amazon.extra.CONTENT_START_TIME</code></td>
          <td>long</td>
          <td>Start time of live content in milliseconds (EPOCH).</td>
+         <td>No</td>
          {% if include.scenario == "fab" %}
          <td>Map to the tag <code>startTime</code></td>
          {% endif %}
@@ -138,6 +149,7 @@
          <td><code>com.amazon.extra.CONTENT_END_TIME</code></td>
          <td>long</td>
          <td>End time of live content in milliseconds (EPOCH).</td>
+         <td>No</td>
          {% if include.scenario == "fab" %}
          <td>Map to the tag <code>endTime</code></td>
          {% endif %}
@@ -150,6 +162,7 @@
              <li>0: Text not embedded</li>
              <li>1: Text embedded</li>
         </ul>
+        <td>No</td>
         </td>
         {% if include.scenario == "fab" %}
         <td>Not supported</td>
@@ -159,14 +172,16 @@
         <td><code>com.amazon.extra.LONG_DESCRIPTION</code></td>
         <td>String</td>
         <td>Long description of a recommendation. Length is limited to 512 characters.</td>
+        <td>Yes</td>
         {% if include.scenario == "fab" %}
-        <td>Not supported</td>
+        <td>Fire App Builder passes the regular `description` to this extra.</td>
         {% endif %}
       </tr>
       <tr>
         <td><code>com.amazon.extra.LAST_WATCHED_DATETIME</code></td>
         <td>long</td>
         <td>Last watched time of the recommended content in milliseconds (EPOCH).</td>
+        <td>No</td>
         {% if include.scenario == "fab" %}
         <td>Not supported</td>
         {% endif %}
@@ -175,9 +190,12 @@
         <td><code>com.amazon.extra.PREVIEW_URL</code></td>
         <td>String</td>
         <td>Preview video or image URL for the recommendation.</td>
+        <td>No</td>
         {% if include.scenario == "fab" %}
         <td>Map to the tag <code>videoPreviewUrl</code></td>
         {% endif %}
       </tr>
    </tbody>
 </table>
+
+\* "Used" indicates whether Fire TV currently makes use of this data in the Fire TV recommendations display. If an extra isn't used now, it may be used in the future with upcoming Fire TV releases.

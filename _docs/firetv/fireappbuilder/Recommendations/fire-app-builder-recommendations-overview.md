@@ -7,7 +7,9 @@ toc-style: kramdown
 github: true
 ---
 
-You can send recommendations to users about the content in your feed you want them to watch. Recommendations appear on a “Recommended By Your Apps” row on the Fire TV home screen.
+You can send recommendations to users about the content in your feed you want them to watch. Recommendations appear on a “Recommended By Your Apps” row on the Fire TV home screen. By appearing on the Fire TV home screen, recommendations are visible within the user’s regular view and encourage users to engage with your app. To learn more about recommendations, see the [Recommendations Overview][fire-tv-recommendations-overview] in the Fire TV documentation.
+
+Fire App Builder has everything set up to send recommendations. You just have to include the recommendations information in your feed and configure some recipes in Fire App Builder to target your feed's recommendations elements.
 
 * TOC
 {:toc}
@@ -22,22 +24,14 @@ The Recommended By Your Apps row appears below Netflix or HBO Go rows if you hav
 
 The Recommended By Your Apps row shows all recommendations from apps the user has currently installed (and opened at least once). Some top apps, like Netflix and HBO Go, get their own recommendations row all to themselves. But all other apps share space in the same "Recommended By Your Apps" row.
 
-## Why Send Recommendations
-
-Recommendations encourage users to engage with your app. By appearing on the Fire TV home screen, recommendations are visible within the user’s regular view. The recommendation cards entice users back into your app with minimal effort.
-
-To learn more about recommendations, see the [Recommendations Overview][fire-tv-recommendations-overview] in the Fire TV documentation. Recommendations in Fire TV use the standard Android [recommendations API](https://developer.android.com/training/tv/discovery/recommendations.html). You can also include addition information in your recommendations ([Amazon extras][fire-tv-recommendations-send-recommendations#amazon-enhancements]) that are specific to Amazon Fire TV.
-
 ## Two Types of Recommendations
-
-Fire App Builder has everything set up to send recommendations. You just have to include the recommendations information in your feed and configure some recipes in Fire App Builder to target your feed's recommendations elements.
-
-If your feed does not already contain recommendations information, you will need to add it. Each video in your feed will need a unique ID to work with the recommendations
 
 Fire App Builder has two types of recommendations:
 
 * **Global recommendations**: Sent when the app is started. See [Send Global Recommendations](fire-app-builder-global-recommendations) for more details.
 * **Related recommendations**: Sent when a specific video is watched. See [Send Related Recommendations](fire-app-builder-related-recommendations) for more details.
+
+If your feed does not already contain recommendations information, you will need to add this information. Each video in your feed will need a unique ID to work with the recommendations.
 
 {% include note.html content="Recommendations aren't the same as \"Related Content.\" Related content appears as cards under the video on the media playback screen and shows other videos in the same category. Recommendations and Related Content aren't related." %}
 
@@ -53,7 +47,7 @@ The "Recommended By Your Apps" row hasn't been rolled out to mainstream users on
 
 When you build the sample Fire App Builder app that uses the LightCast feed, recommendations aren't sent because the LightCast feeds don't contain any recommendations info, nor is the default Navigator.json file configured with recommendations recipes.
 
-If you want to try out recommendations on the sample Fire App Builder app using the LightCast feed, we've included a modified feed that contains recommendations information. This feed is hard-coded in a file packaged with the app. Follow these steps to implement it:
+If you want to see how recommendations works using the sample Fire App Builder app and LightCast feed, we've included a modified feed that contains recommendations information. This feed is hard-coded in a file included with the app. Follow these steps to implement it:
 
 1.  In your app directory, rename **Navigator.json** to something like **Navigator_original.json**. Rename **navigator_with_recommendations.json** to **Navigator.json**.
 
@@ -149,7 +143,7 @@ Look to see if any of your recommendations appear in this row. If the recommenda
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_samplerectestingrow" type="png" caption="This video is the Consuming Passions Chips Recipe \| Belgian Style." %}
 
-You can click the video to launch the media playback screen directly. Or you can click the **menu** button on your remote to launch a context menu in the lower-right corner of Fire TV. The context menu gives you the option to either watch the video or open the app.
+To watch the video, you can click the video to launch it directly. Or you can click the **menu** button on your remote to launch a context menu in the lower-right corner of Fire TV. The context menu gives you the option to either watch the video or open the app.
 
 All videos have the same priority in the recommendation settings, so their order in the recommendations row will be somewhat random.
 

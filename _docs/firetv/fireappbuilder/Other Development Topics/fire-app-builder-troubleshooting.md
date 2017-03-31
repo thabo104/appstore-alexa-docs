@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-First consult the [Known Issues][fire-app-builder-release-notes#known_issues] section to see if any bugs you're experiencing are known. 
+First consult the [Known Issues][fire-app-builder-release-notes#known_issues] section to see if any bugs you're experiencing are known.
 
 If you can't resolve your issue, see the [Fire TV and Fire TV Stick](https://forums.developer.amazon.com/spaces/43/Fire+TV+and+Fire+TV+Stick.html) categories on the Support Forums.
 
@@ -24,9 +24,27 @@ This error is related to Windows. When you cloned the Github repo, git didn't ha
 **Resolution**: Configure git to use symbolic links:
 
 ```
-git config –global core.symlinks true 
+git config –global core.symlinks true
 ```
 
 Then re-clone the repo and build the project again. You can verify that symlinks are working by looking at the strings.xml file in **Utils > src > main > res > values > strings.xml > strings.xml (en-rUS)**. If you see normal content, symlinks are working. In contrast, if there's just a short reference and nothing else, symlinks aren't working.
+
+**Problem**: You get this error message when building your app:
+
+```
+E/ContentBrowser: Recipe chain failed: com.amazon.dynamicparser.DynamicParser$InvalidParserRecipeException: Recipe cannot be null or empty
+```
+**Resolution**:
+
+Check your recipe file to make sure your JSON is valid. An extra comma that makes it invalid can cause this error.
+
+
+**Problem**: You get this error message when building your app.
+
+```
+E/NavigatorModelParser: Navigator parsing failed!!! com.fasterxml.jackson.databind.JsonMappingException: Unexpected character ('}' (code 125)): was expecting double-quote to start field name
+```
+
+Check your Navigator.json file to make sure the JSON is valid. An extra comma that makes it invalid can cause this error.
 
 {% include links.html %}

@@ -262,6 +262,11 @@ folders:
     ref: fire-app-builder-related-recommendations
     bookmarks: amazon-extras
 
+  - title: Customize the recommendations with Amazon extras
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-amazon-extras
+    jurl: /fire-app-builder-amazon-extras.html
+    ref: fire-app-builder-amazon-extras
+
 - title: Other Development Topics
   folderitems:
 
