@@ -60,8 +60,8 @@ folders:
 
   - title: Fire OSとは？
     jurl: /fire-os-overview.html
-    hurl: https://developer.amazon.com/public/ja/solutions/platforms/fire-os/docs/fire-os-overview
-    ref: fire-os-overview
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-fire-os-overview
+    ref: fire-tv-fire-os-overview
 
   - title: Fire TV開発における最新情報
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/whats-new-in-the-fire-tv-sdk
