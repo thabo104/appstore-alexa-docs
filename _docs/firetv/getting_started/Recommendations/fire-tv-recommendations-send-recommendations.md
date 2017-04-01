@@ -179,7 +179,7 @@ Follow these guidelines when using the [ContentRecommendation.Builder](https://d
 
 The following table lists extras that you can add to your notification objects.
 
-{% include content/{{site.language}}/fire/amazon_recommendations_enhancements.md scenario="ftv" %}
+{% include content/{{site.language}}/fire/amazon-recommendations-enhancements.md scenario="ftv" %}
 
 ## Configuring the Manifest
 

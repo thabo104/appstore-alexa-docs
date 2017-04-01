@@ -7,16 +7,16 @@ toc-style: kramdown
 github: true
 ---
 
-You can send recommendations to users about the content in your feed you want them to watch. Recommendations appear on a “Recommended By Your Apps” row on the Fire TV home screen. By appearing on the Fire TV home screen, recommendations are visible within the user’s regular view and encourage users to engage with your app. To learn more about recommendations, see the [Recommendations Overview][fire-tv-recommendations-overview] in the Fire TV documentation.
+You can send recommendations to users about the content in your feed you want them to watch. Recommendations appear on a “Recommended By Your Apps” row on the Fire TV home screen. Because they appear on the Fire TV home screen, recommendations encourage users to engage with your app with minimal effort.
 
-Fire App Builder has everything set up to send recommendations. You just have to include the recommendations information in your feed and configure some recipes in Fire App Builder to target your feed's recommendations elements.
+To learn more about recommendations, see the [Recommendations Overview][fire-tv-recommendations-overview] in the Fire TV documentation. Fire App Builder has all the necessary Android code set up to send recommendations. You just have to include the recommendations information in your feed and configure some recipes in Fire App Builder to target your feed's recommendations elements.
 
 * TOC
 {:toc}
 
 ## Recommended By Your Apps Row
 
-The following screenshot shows the Recommended By Your Apps row:
+The following screenshot shows the Recommended By Your Apps row on the Fire TV home screen:
 
 {% include image.html  file="firetv/fireappbuilder/images/fireappbuilder-recommendations" type="png" %}
 
@@ -28,22 +28,22 @@ The Recommended By Your Apps row shows all recommendations from apps the user ha
 
 Fire App Builder has two types of recommendations:
 
-* **Global recommendations**: Sent when the app is started. See [Send Global Recommendations](fire-app-builder-global-recommendations) for more details.
-* **Related recommendations**: Sent when a specific video is watched. See [Send Related Recommendations](fire-app-builder-related-recommendations) for more details.
+* **Global recommendations**: These recommendations are sent when the app is started. See [Send Global Recommendations](fire-app-builder-global-recommendations) for more details.
+* **Related recommendations**: These recommendations are sent when a specific video is watched. See [Send Related Recommendations](fire-app-builder-related-recommendations) for more details.
 
-If your feed does not already contain recommendations information, you will need to add this information. Each video in your feed will need a unique ID to work with the recommendations.
+If your feed does not already contain recommendations information, you will need to add this information to your feed. Each video in your feed must have a unique ID to work with the recommendations.
 
-{% include note.html content="Recommendations aren't the same as \"Related Content.\" Related content appears as cards under the video on the media playback screen and shows other videos in the same category. Recommendations and Related Content aren't related." %}
+{% include note.html content="Recommendations aren't the same as \"Related Content.\" Related content appears as cards under the video on the media playback screen and shows other videos in the same category. Recommendations are video IDs that are specifically noted in your feed, regardless of any category grouping." %}
 
 ## Recommendations Requirements
 
-Fire TV requires at least 5 recommendations to be sent (from all apps combined) in order for the Recommended By Your Apps row to appear to users. However, Android has a limit of 50 recommendations max that can be sent by an app, so do not exceed 50. (See [Best Practices for Recommendations][fire-tv-recommendations-best-practices.html#dont-exceed-the-notifications-limit] for more details.)
+Fire TV requires at least 5 recommendations to be sent (from all apps combined) in order for the Recommended By Your Apps row to appear to users. However, Android has a limit of 50 recommendations max that can be sent by an app, so do not exceed 50. (See [Best Practices for Recommendations][fire-tv-recommendations-best-practices#dont-exceed-the-notifications-limit] for more details.)
 
-## Release Dates
+## Release Dates for the Recommended By Your Apps Row
 
 The "Recommended By Your Apps" row hasn't been rolled out to mainstream users on Fire TV yet. It's still in development. You can [activate a feature in Developer Options][fire-tv-recommendations-testing] to test the row before this feature is released. (We promote this feature to developers now so that when it is rolled out, the row will be populated with recommendations apps are already sending.)
 
-## Try Out Recommendations
+## See How Recommendations Works with the Sample LightCast Feed
 
 When you build the sample Fire App Builder app that uses the LightCast feed, recommendations aren't sent because the LightCast feeds don't contain any recommendations info, nor is the default Navigator.json file configured with recommendations recipes.
 
@@ -104,6 +104,15 @@ If you want to see how recommendations works using the sample Fire App Builder a
     ]
     ```
 
+    You can see the recommendations info in the logs in Android Studio. If you click **Android Monitor** at the bottom of the screen and then filter on the word **recommendation**, you'll see logs indicating that recommendations have been built and sent. The logs will look something like this:
+
+    ```
+    03-24 18:39:09.365 18717-18757/com.amazon.android.calypso D/RecommendationTable: record updated in database: RecommendationRecord{mContentId='99570', mRecommendationId=4, mType='Global'}
+    03-24 18:39:09.368 18717-18757/com.amazon.android.calypso D/RecommendationSender: Built recommendation - Consuming Passions Chips Recipe | Belgian Style
+    ```
+
+    The `mType='Global'` indicates that this is a global recommendation.
+
 9.  In the app, browse to the first video, **Thai Recipes - Thai Chicken Noodles Recipe** and play it for several minutes. This video has related recommendations included in its details:
 
     ```json
@@ -135,6 +144,8 @@ If you want to see how recommendations works using the sample Fire App Builder a
     * 162265: "Homemade Chicken Pad Thai"
     * 162264: "Thai Peanut Chicken Tenders"
 
+    In the logs, you'll see `mType='Related'` for related recommendations instead of `mType='Global'`.
+
 10.  Press the home button and return to the Fire TV home screen. Refresh the home screen by navigating to **Settings**, wait a few seconds, and then go back to the home screen.
 
 11. Look for a row called "Recommendations Testing Row."
@@ -143,23 +154,14 @@ Look to see if any of your recommendations appear in this row. If the recommenda
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_samplerectestingrow" type="png" caption="This video is the Consuming Passions Chips Recipe \| Belgian Style." %}
 
+{% include note.html content="If you don't see any videos in the row, most likely the Fire TV home screen needs some more time to refresh and update the recommendations row. Check back later." %}
+
 To watch the video, you can click the video to launch it directly. Or you can click the **menu** button on your remote to launch a context menu in the lower-right corner of Fire TV. The context menu gives you the option to either watch the video or open the app.
 
 All videos have the same priority in the recommendation settings, so their order in the recommendations row will be somewhat random.
 
-If you don't see any videos in the row, most likely the Fire TV home screen needs some more time to refresh and update the recommendations row. Check back later.
+Fire App Builder contains a database and creates a record for the recommendation. If a user completely finishes watching this video, a delete request will be sent for that recommendation to remove it from the recommendation row. However, after the app refreshes in 6 hours, this watch history from the database is no longer retained. The same global or related recommendations will again be sent.
 
-## Checking the Logs
-
-If you look at the logs in Android Studio (click **Android Monitor** at the bottom of the screen and then filter on the word **recommendation**), you'll see logs indicating that recommendations have been built and sent. The logs will look something like this:
-
-```
-03-24 18:39:09.365 18717-18757/com.amazon.android.calypso D/RecommendationTable: record updated in database: RecommendationRecord{mContentId='99570', mRecommendationId=4, mType='Global'}
-03-24 18:39:09.368 18717-18757/com.amazon.android.calypso D/RecommendationSender: Built recommendation - Consuming Passions Chips Recipe | Belgian Style
-```
-
-The database creates a record for the recommendation. If a user completely finishes watching this video, a delete request will be sent for that recommendation to remove it from the recommendation row. However, after the app refreshes in 6 hours, this history is no longer retained.
-
-After you're done trying out recommendations, revert some of the changes you made to the way Fire App Builder loads feeds. Either undo the steps above, or see [Load Your Media Feed][fire-app-builder-load-media-feed] for the proper settings for the data loader files.
+After you're done trying out recommendations, revert some of the changes you made to the way Fire App Builder loads feeds. In particular, undo step 2 or your web-based feeds won't load properly, or see [Load Your Media Feed][fire-app-builder-load-media-feed] for the proper settings for the data loader files.
 
 {% include links.html %}

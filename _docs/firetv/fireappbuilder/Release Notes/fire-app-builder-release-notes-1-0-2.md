@@ -20,7 +20,7 @@ Fire TV recently [announced support for recommendations][fire-tv-recommendations
 
 ### Customization of the app's appearance
 
-You can customize the appearance of the Fire TV by setting values in your app's custom.xml file. In this release, the elements for customization have been both enhanced and simplified. CSS3 is used instead of images for most gradients and backgrounds. Elements are grouped into primary, secondary, and tertiary styles to thematically alter groups of elements at the same time. Additional elements for adjusting the media playback, splash screen, search button, and homepage have been enhanced. For details, see [Customize the Look and Feel of Your App][fire-app-builder-customize-look-and-feel].
+You can customize the appearance of the Fire TV by setting values in your app's custom.xml file. In this release, the elements for customization have been both enhanced and simplified. CSS is used instead of images for most gradients and backgrounds. Elements are grouped into primary, secondary, and tertiary styles to thematically alter groups of elements at the same time. Additional elements for adjusting the media playback, splash screen, search button, and homepage have been enhanced. For details, see [Customize the Look and Feel of Your App][fire-app-builder-customize-look-and-feel].
 
 ### Additional events tracked in analytics
 
@@ -55,9 +55,9 @@ The Logout button is now aware of the user's session. If user is not logged in, 
 
 Related video content (which uses tags in your feed to surface a group of related videos) appears below each video when users watch media. Previously, this section was called "Recommended Content." To avoid confusion with video titles promoted by recommendations, this section is now called "Related Content." (Note that videos in Recommendations and videos in Related Content are not connected.)
 
-## Bug Fixes
-
 *  **Pausing live content works for more than 1 video.** When users who are watching live content videos pause the video, a button appears that says "Resume." Previously, the Resume button would appear for the most recently watched live content video only. Now the Resume button can appear for any number of live content videos the user may have paused.
+
+## Bug Fixes
 
 * **Crashes show "Service is unavailable" instead of crashing.** If the app fails to load and parse your feed (because an empty data object was served to the parser), instead of just crashing because the feed link returned no data, the app displays a screen that says "Service is unavailable. Please try again later."
 
@@ -65,12 +65,13 @@ Related video content (which uses tags in your feed to surface a group of relate
 
 * **Videoid in content model now treated as string**. In the content model, the video ID element is now treated as a string rather than an integer. (When you upgrade your app, you may need to uninstall your existing app to just clean your data to refresh for this update.)
 
-Other fixes were also made but are not significant enough to list here.
+Various other bug fixes for stability and performance were also made.
 
 ## Known Issues {#known_issues}
 
-(Note: These are the same known issues from [version 1.0.0][fire-app-builder-release-notes-version-1-0-0].)
+(Note: Some of these issues are the same known issues from [version 1.0.0][fire-app-builder-release-notes-version-1-0-0].)
 
+*  *Login with Amazon component*. The [Login with Amazon component][fire-app-builder-login-with-amazon-component] is not working correctly. The issue is currently being investigated.
 *  *Related Content*. Related content matches (which are based on tags in the feed) will match unlimited content if many items have the same tags. (The content matches should have an item limit.)
 *  *In-App Purchasing Component.* With the [In-App Purchasing Component][fire-app-builder-amazon-in-app-purchase-component], purchases made on other devices won't be acknowledged in the app until a user either restarts the app or attempts to play the content. (The app should refresh purchased items when the state goes to the background.)
 *  *Splash screen.* Loading the feed initially can take some time on splash screen. (The initial load time should be faster.)
