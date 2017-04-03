@@ -210,14 +210,14 @@ folders:
     ref: specifying-installation-location
 
   - title: Fire TVの広告ID
-    hurl: https://developer.amazon.com/public/ja/solutions/platforms/fire-os/docs/fire-os-advertising-id
-    jurl: /fire-os-advertising-id.html
-    ref: fire-os-advertising-id
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-advertising-id
+    jurl: /fire-tv-advertising-id.html
+    ref: fire-tv-advertising-id
 
   - title: 各種ロケール用のリソース
-    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tablets/app-development/07-resources-for-international-locales
-    jurl: /07-resources-for-international-locales.html
-    ref: 07-resources-for-international-locales
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-international-locales
+    jurl: /fire-tv-international-locales.html
+    ref: fire-tv-international-locales
 
 - title: 開発者ツールを使用したトラブルシューティング
   folderitems:
