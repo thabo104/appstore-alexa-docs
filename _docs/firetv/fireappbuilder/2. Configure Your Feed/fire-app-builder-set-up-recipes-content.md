@@ -91,11 +91,11 @@ The syntax for JSON feeds differs significantly from the syntax for XML feeds, s
 * [JSON Feeds](#queryjson)
 * [XML Feeds](#queryxml)
 
-{% include tip.html content="Although the `query` syntax in this section might seem a little complex, remember that Fire App Builder lets you use any feed structure you want, without limiting you to a specific order or specification (such as Media RSS). With this flexibility, it's unavoidable that you'll need to use more advanced query syntax to target the elements in your feed." %}
+{% include tip.html content="Although the `query` syntax in this section might seem a little complex, remember that Fire App Builder lets you use any feed structure you want, without limiting you to a specific order or specification. With this flexibility, it's unavoidable that you'll need to use more advanced query syntax to target the elements in your feed." %}
 
 #### JSON Feeds {#queryjson}
 
-In the sample app in Fire App Builder, the value for `query` is `$[?(@.categories[0] in [$$par0$$])]`. As with the `query` parameter in the Categories recipe, this is (mostly) [Jayway JsonPath](https://github.com/jayway/JsonPath) syntax. This syntax uses a [Jayway JsonPath filter operator](https://github.com/jayway/JsonPath#filter-operators) to select the items inside the `categories` array that have at least one item at the 0 position.
+In the sample app in Fire App Builder, the value for `query` is `$[?(@.categories[0] in [$$par0$$])]`. As with the `query` parameter in the Categories recipe, this syntax is (mostly) [Jayway JsonPath](https://github.com/jayway/JsonPath) syntax. This syntax uses a [Jayway JsonPath filter operator](https://github.com/jayway/JsonPath#filter-operators) to select the items inside the `categories` array that have at least one item at the 0 position.
 
 Let's take a step back to unpack this syntax with more clarity, because you'll need to customize this query to fit your own feed syntax. A sample [Lightcast feed](http://www.lightcast.com/api/firetv/channels.php?app_id=263&app_key=4rghy65dcsqa&action=channels_videos) (which is what the sample Fire App Builder uses) looks like this:
 
@@ -202,7 +202,7 @@ Now there's one difference in query syntax used in the sample Fire App Builder a
 "query": "$[?(@.categories[0] in [$$par0$$])]"
 ```
 
-`$$par0$$` is a variable defined in Fire App Builder that stores all the items retrieved by the query, and this is where the syntax differs from Jayway JsonPath. In the code, the `keyDataType` from the categories recipe actually populates the `$par0$$` variable with categories.
+`$$par0$$` is a variable defined in Fire App Builder that stores all the items retrieved by the query, and this is where the syntax differs from Jayway JsonPath. In the code, the `keyDataType` from the categories recipe actually populates the `$par0$$` variable in the contents recipe with categories.
 
 Let's go through one more example. Suppose your JSON looks like this:
 
@@ -269,7 +269,7 @@ Now add the `in [$$par0$$]` variable:
 $.titles.video[?(@.category in [$$par0$$])]
 ```
 
-Here's a summary:
+Here's a summary of the syntax:
 
 <table>
 <colgroup>
@@ -289,12 +289,12 @@ Here's a summary:
     </tr>
     <tr>
       <td><code>?(@.category in [$$par0$$]</code></td>
-      <td>Filters the array to match on all items that have <code>category</code>.</td>
+      <td>Filters the array to match on all items that have a <code>category</code>.</td>
     </tr>
   </tbody>
 </table>
 
-Note that when you add in `[$$par0$$]` in the Jayway JsonPath Evaluator, it will not understand this syntax because it's specific to Fire App Builder rather than being part of Jayway JsonPath.
+Note that when you add in `[$$par0$$]` in the Jayway JsonPath Evaluator, the Evaluator will not understand this syntax because it's specific to Fire App Builder rather than being part of Jayway JsonPath.
 
 Your query will look different based on your feed and the syntax necessary to match the content objects. For example, here's a more complex query:
 
@@ -302,45 +302,127 @@ Your query will look different based on your feed and the syntax necessary to ma
 $.assets[?(@.type == 'movie.Container' && @.assetId in $$par0$$)]
 ```
 
-This query says to start at the root (`$`), look in the first directory level (`.`) to the object named `assets`, and filter the array to `type` objects that are equal to `movie.Container` and which contain an `assetId` element.
+This query says to start at the root (`$`), look in the first directory level (`.`) to the object named `assets`, and filter the array to `type` objects that are equal to `movie.Container` and which contain an `assetId` element. Jayway JsonPath is powerful &mdash; you can use it to target the elements of almost any feed structure.
 
 #### XML Feeds {#queryxml}
 
-If your feed is XML, instead of using Jayway JsonPath you will use [XPath expressions](https://www.w3schools.com/xml/xpath_syntax.asp) to target the specific elements in your feed. XPath reduces your XML document into various items called "nodes." The XPath syntax allows you to target the location of specific nodes.
+If your feed is XML, instead of using Jayway JsonPath, you will use [XPath expressions](https://www.w3schools.com/xml/xpath_syntax.asp) to target the specific elements in your feed. XPath reduces your XML document into various items called "nodes." The XPath syntax allows you to target the location of specific nodes.
 
-Unlike with the Jayway JsonPath syntax, the syntax for XML feeds is much simpler.
+In the [sample MRSS XML app][fire-app-builder-configure-mrss-feed], the value for the `query` parameter in the contents recipe is as follows:
 
-Suppose your feed looked like this:
+```json
+"query": "//item[./category='$$par0$$']"
+```
+
+Let's take a step back to unpack this syntax with more clarity, because you'll need to customize this query to fit your own feed syntax.
+
+A sample XML feed looks like this:
 
 ```xml
 <rss>
     <channel>
         <item>
-        <title>Sample Title 1</title>
-        <pubDate>Wed, 26 Oct 2016 20:34:22 PDT</pubDate>
-        <link>https://example.com/myshow/episodes/110</link>
-        <author>Sample Author name</author>
-        <category>Gadgets</category>
+            <title>Sample Title 1</title>
+            <pubDate>Wed, 26 Oct 2016 20:34:22 PDT</pubDate>
+            <link>https://example.com/myshow/episodes/110</link>
+            <author>Sample Author name</author>
+            <category>Gadgets</category>
         </item>
 
         <item>
-        <title>Sample Title 2</title>
-        <pubDate>Mon, 24 Oct 2016 09:24:12 PDT</pubDate>
-        <link>https://example.com/myshow/episodes/109</link>
-        <author>Sample Author name</author>
-        <category>Technology</category>
+            <title>Sample Title 2</title>
+            <pubDate>Mon, 24 Oct 2016 09:24:12 PDT</pubDate>
+            <link>https://example.com/myshow/episodes/109</link>
+            <author>Sample Author name</author>
+            <category>Technology</category>
         </item>
     </channel>
 </rss>
 ```
 
-The `query` for your content would look like this:
+With this feed structure, the `query` for your content recipe would be as follows:
 
 ```
-//item
+//item[./category='$$par0$$']
 ```
 
-In XPath, the `//item` will match any instances of the `item` element regardless of its position in the XML structure. (There's no need for the `[$$par0$$]` with the XML.)
+Plug this sample XML feed into the [XPath Tester](http://www.freeformatter.com/xpath-tester.html). Then run the following query:
+
+```
+//item[./category='Technology']
+```
+
+The result is as follows:
+
+```
+Element='<item>
+        <title>Sample Title 2</title>
+        <pubDate>Mon, 24 Oct 2016 09:24:12 PDT</pubDate>
+        <link>https://example.com/myshow/episodes/109</link>
+        <author>Sample Author name</author>
+        <category>Technology</category>
+        </item>'
+```
+
+Here's what this query syntax retrieves:
+
+<table>
+<colgroup>
+   <col width="40%" />
+   <col width="60%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Query Syntax</th>
+      <th>What It Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>//item</code></td>
+      <td>Match all instances of the <code>item</code> element regardless of its position in the XML structure. </td>
+    </tr>
+    <tr>
+      <td><code>?[./category='Technology']</code></td>
+      <td>Selects all <code>categories</code> that are attributes of the <code>item</code> element where the category is equal to <code>Technology</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+Now there’s one difference in query syntax used in the sample Fire App Builder app. Instead of `["Technology"]`, the query parameter uses `$$par0$$` instead:
+
+```json
+"query": "//item[./category='$$par0$$']"
+```
+
+`$$par0$$` is a variable defined in Fire App Builder that stores all the items retrieved by the query, and this is where the syntax differs from XPath expressions. In the code, the `keyDataType` from the categories recipe actually populates the `$par0$$` variable in the contents recipe with categories.
+
+After you confirm that your query targets a specific category of items in your feed, replace your category (e.g., `Technology`) with the variable `$$par0$$`.
+
+Here's a summary of the syntax:
+
+<table>
+<colgroup>
+   <col width="40%" />
+   <col width="60%" />
+</colgroup>
+  <thead>
+    <tr>
+      <th>Query Syntax</th>
+      <th>What It Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>//item</code></td>
+      <td>Selects all the <code>item</code> elements in the feed.</td>
+    </tr>
+    <tr>
+      <td><code>[./category='$$par0$$']</code></td>
+      <td>Filters the selection to match on all items that have a <code>category</code>.</td>
+    </tr>
+  </tbody>
+</table>
 
 See [Querying XML][fire-app-builder-querying-xml] for more details about constructing XPath queries.
 

@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-Version 1.0.2 was released on April 2, 2017.
+Version 1.0.2 was released on April 4, 2017.
 
 * TOC
 {:toc}
@@ -46,7 +46,6 @@ Fire App Builder requires you to use at least one authorization component. Previ
 
 When a user logs in to a provider through Adobe Pass, you can show the provider logo on the screen of the app. You do this by supplying an MVPD URL that contains the MVPD (multichannel video programming distributor) along with the MVPD’s logo. See [Show the Content Provider Logo to Users][fire-app-builder-adobe-pass-auth-component#loggedinprovider] in the Adobe Pass Authorization Component topic.
 
-
 ### "Login" button toggles to "Log In" or "Log Out" depending on session
 
 The Logout button is now aware of the user's session. If user is not logged in, the Login button says "Log in." If user is logged in, it says "Log out."
@@ -55,11 +54,15 @@ The Logout button is now aware of the user's session. If user is not logged in, 
 
 Related video content (which uses tags in your feed to surface a group of related videos) appears below each video when users watch media. Previously, this section was called "Recommended Content." To avoid confusion with video titles promoted by recommendations, this section is now called "Related Content." (Note that videos in Recommendations and videos in Related Content are not connected.)
 
-*  **Pausing live content works for more than 1 video.** When users who are watching live content videos pause the video, a button appears that says "Resume." Previously, the Resume button would appear for the most recently watched live content video only. Now the Resume button can appear for any number of live content videos the user may have paused.
+### Pausing live content works for more than 1 video
+
+When users who are watching live content videos pause the video, a button appears that says "Resume." Previously, the Resume button would appear for the most recently watched live content video only. Now the Resume button can appear for any number of live content videos the user may have paused.
+
+### Crashes show "Service is unavailable" instead of crashing.
+
+If the app fails to load and parse your feed (because an empty data object was served to the parser), instead of just crashing because the feed link returned no data, the app displays a screen that says "Service is unavailable. Please try again later."
 
 ## Bug Fixes
-
-* **Crashes show "Service is unavailable" instead of crashing.** If the app fails to load and parse your feed (because an empty data object was served to the parser), instead of just crashing because the feed link returned no data, the app displays a screen that says "Service is unavailable. Please try again later."
 
 * **Old search icon removed from alt home screen**. In the `FullContentBrowseActivity` (the home screen providing a more compressed layout), the wrong search icon was showing up behind the search widget. This old icon has been removed.
 

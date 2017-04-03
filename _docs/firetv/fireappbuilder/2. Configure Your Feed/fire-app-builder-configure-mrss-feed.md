@@ -9,12 +9,17 @@ github: true
 
 If you have an [Media RSS (MRSS) feed][mrss], which follows a [formal specification][mrss-spec] used for services such as iTunes, you can follow an example configuration to simplify the setup. The sample MRSS feed in Fire App Builder uses a feed for a This Week in Tech (TWIT) podcast called [Ham Nation](https://twit.tv/shows/ham-nation), whose feed is publicly available [here](http://feeds.twit.tv/hn_video_hd.xml).
 
+* TOC
+{:toc}
+
+## MRSS Configuration Overview
+
 If your feed contains the same elements as the example feed, your setup can be as simple as swapping in your own feed URL and using the existing TWIT category and content recipes.
 
 Note that MRSS feeds have a variety of potential elements. In the sample TWIT feed, the content elements in the feed are matched through an XPath query with the [`query` and `matchList` parameters in the contents recipe][fire-app-builder-set-up-recipes-content]. The matched MRSS elements include `title`, `guid`, `itunes:subtitle`, `<media:content url`, and `<media:content> <media:thumbnail>`. You can see the logic to match these elements in the **TwitTvContentRecipe.json** file (in your app's **assets > recipes** folder):
 
 ```json
-"query": "//item",
+"query": "//item[./category='$$par0$$']",
 "matchList": [
   "title/#text@title",
   "guid/#text@id",

@@ -38,12 +38,6 @@ folders:
     ref: fire-app-builder-overview
     bookmarks: [requirements]
 
-  - title: Release Notes
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes
-    jurl: /fire-app-builder-release-notes.html
-    ref: fire-app-builder-release-notes
-    bookmarks: [known_issues]
-
   - title: Beginning-to-End Process Overview
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-end-to-end-process
     jurl: /fire-app-builder-end-to-end-process.html
@@ -63,11 +57,13 @@ folders:
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-2
         jurl: /fire-app-builder-release-notes-version-1-0-2.html
         ref: fire-app-builder-release-notes-version-1-0-2
+        bookmarks: [known_issues]
 
       - title: Version 1.0.0 Release Notes
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-0
         jurl: /fire-app-builder-release-notes-version-1-0-0.html
         ref: fire-app-builder-release-notes-version-1-0-0
+        bookmarks: [known_issues]
 
 - title: 1. Get Set Up
   folderitems:
