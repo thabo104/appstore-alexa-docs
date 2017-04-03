@@ -241,12 +241,12 @@ folders:
   folderitems:
 
   - title: Fire OS向けのユーザー補助機能について
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-assistive-technologies
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-assistive-technologies
     jurl: /fire-tv-assistive-technologies.html
     ref: fire-tv-assistive-technologies
 
   - title: Fire OSにアクセシビリティを実装する
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-accessibility
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-accessibility
     jurl: /fire-tv-accessibility.html
     ref: fire-tv-accessibility
 
