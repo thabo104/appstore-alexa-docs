@@ -322,8 +322,8 @@ related_resources_title: その他のリソース
 related_resources_list:
 
 - title: Fire App Builder
-  hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv
-  jurl: /getting-started-developing-apps-and-games-for-amazon-fire-tv.html
+  hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-overview
+  jurl: /fire-app-builder-overview.html
 
 - title: Fire TV 用ウェブアプリの準備
   hurl: https://developer.amazon.com/public/ja/solutions/platforms/webapps/docs/getting-started-with-web-apps-for-fire-tv
