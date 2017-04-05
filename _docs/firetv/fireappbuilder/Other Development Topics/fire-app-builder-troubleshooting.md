@@ -11,7 +11,7 @@ First consult the [Known Issues][fire-app-builder-release-notes#known_issues] se
 
 If you can't resolve your issue, see the [Fire TV and Fire TV Stick](https://forums.developer.amazon.com/spaces/43/Fire+TV+and+Fire+TV+Stick.html) categories on the Support Forums.
 
-## Build Errors
+## Error: Content not allowed in prolog
 
 **Problem**: You try to build the project but get an error that says:
 
@@ -29,14 +29,22 @@ git config –global core.symlinks true
 
 Then re-clone the repo and build the project again. You can verify that symlinks are working by looking at the strings.xml file in **Utils > src > main > res > values > strings.xml > strings.xml (en-rUS)**. If you see normal content, symlinks are working. In contrast, if there's just a short reference and nothing else, symlinks aren't working.
 
+### Errors: Recipe chain fails
+
 **Problem**: You get this error message when building your app:
 
 ```
 E/ContentBrowser: Recipe chain failed: com.amazon.dynamicparser.DynamicParser$InvalidParserRecipeException: Recipe cannot be null or empty
 ```
+
+Or you see this:
+
+```
+Recipe chain failed: java.lang.Exception: com.amazon.dataloader.datadownloader.AUrlGenerator$UrlGeneratorException: Could not read url at index 0 in file null
+```
 **Resolution**:
 
-Check your recipe file to make sure your JSON is valid. An extra comma that makes it invalid can cause this error.
+Check your recipe file to make sure your JSON is valid. An extra comma that makes it invalid can cause this error. Also see that the Navigator.json file in your app's **assets > recipes** folder points to the correct files, and that your data loader file is loading the correct recipe.
 
 
 **Problem**: You get this error message when building your app.

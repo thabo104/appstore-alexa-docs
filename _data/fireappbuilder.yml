@@ -84,6 +84,11 @@ folders:
     jurl: /fire-app-builder-app-tour.html
     ref: fire-app-builder-app-tour
 
+  - title: Customize the Fire App Builder Sample Project
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-customize-the-application-project
+    jurl: /fire-app-builder-customize-the-application-project.html
+    ref: fire-app-builder-customize-the-application-project
+
 - title: 2. Configure Your Feed
   folderitems:
   - title: Load Your Media Feed
@@ -238,6 +243,17 @@ folders:
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-amazon-media-player-component
         jurl: /fire-app-builder-amazon-media-player-component.html
         ref: fire-app-builder-amazon-media-player-component
+
+- title: Submit Your App
+  folderitems:
+
+  - title: Submit Your App to the Appstore
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-submit-your-app
+    jurl: /fire-app-builder-submit-your-app.html
+    ref: fire-app-builder-submit-your-app
+
+title:
+permalink:
 
 - title: Recommendations
   folderitems:

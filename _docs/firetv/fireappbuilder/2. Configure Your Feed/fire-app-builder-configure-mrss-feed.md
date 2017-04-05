@@ -79,6 +79,13 @@ To configure Fire App Builder with your own MRSS feed, just swap it in place of 
 
 1.  Duplicate the **twitTvUrlFile.json** file (in your app's **assets** folder) and give it a unique name, such as **AcmeUrlFile.json**.
 1.  Open **BasicFileBasedUrlGeneratorConfig.json** (in your app's **assets > configurations** folder). Change the value for the `url_file` to the name of the file you created in the previous step (such as "AcmeUrlFile.json").
+
+    ```json
+    {
+       "url_file": "AcmeUrlFile.json"
+    }
+    ```
+
 2.  Open the "AcmeUrlFile.json" file and replace the URL with your own MRSS feed URL:
 
     ```json

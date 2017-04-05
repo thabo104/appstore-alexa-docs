@@ -352,8 +352,12 @@ ul#markdown-toc::before  {
 /* end mini toc */
 
 
-.number_legend img.inline {
-  margin-bottom: 2px;
+.number_legend > img.inline {
+  margin-bottom: -3px;
+}
+
+img.inline {
+  margin-bottom: 3px;
 }
 
 .endpointParam {

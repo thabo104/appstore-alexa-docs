@@ -47,9 +47,9 @@ You need the Java Development Kit (JDK) from Oracle to compile Java apps on your
 First check to see if you already have the JDK. Open Terminal or Command Prompt and type `java -version`. If you have the JDK, the response should be something like this:
 
 ```
-java version "1.8.0_101"
-Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
-Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
+java version "1.8.0_121"
+Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode
 ```
 
 On Windows you can also manually look in a directory such as `C:\Program Files\Java\jdk1.8.0\` to see if the JDK is there.
@@ -68,9 +68,7 @@ To work with Fire App Builder, you need to install [Android Studio](https://deve
 
 See [Getting Started with Android Studio](https://developer.android.com/sdk/installing/studio.html) and [Install Android Studio](https://developer.android.com/sdk/installing/index.html) for information about setting up the Android Studio development environment on your machine.
 
-The Fire App Builder project requires you to have certain SDK tools and APIs installed with Android Studio. Selecting these tools from the Standalone SDK Manager ahead of time isn't necessary.
-
-When you open the Fire App Builder project (as described in the next section, [Open the Sample App](#openFireAppBuilder)), Android Studio will prompt you to install any build tools or APIs that you're missing. For example, you might see messages such as the following:
+The Fire App Builder project requires you to have certain SDK tools and APIs installed with Android Studio. Selecting these tools from the Standalone SDK Manager ahead of time isn't necessary. When you open the Fire App Builder project (as described in the next section, [Open the Sample App](#openFireAppBuilder)), Android Studio will prompt you to install any build tools or APIs that you're missing. For example, you might see messages such as the following:
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_sdktoolsneeded" max-width="70%" type="png" border="true" %}
 
@@ -78,11 +76,9 @@ Or you may see the following in the Gradle Console:
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_androidprompts"  max-width="70%" type="png" %}
 
-Click these links to install the missing tools and rebuild the project. Simply keep opening the project and installing any missing tools as prompted until Android Studio no longer complains.
+If you see these messages, click these links to install the missing tools. Simply keep opening the project and installing any missing tools as prompted until Android Studio no longer complains.
 
-You can also open the Standalone SDK Manager and install all the tool and SDK requirements ahead of time.
-
-**To install the necessary SDKs and tools:**
+You can also open the Standalone SDK Manager and install all the tool and SDK requirements ahead of time. To install the necessary SDKs and tools:
 
 1.  Go to **Tools > Android > SDK Manager** (or simply click the **SDK Manager** button {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_androidsdkmanagericon" type="png" %}).
 2.  On the **SDK Tools** tab, expand **Android SDK Build-Tools** and select the following:
@@ -110,7 +106,7 @@ In this step, you will open the "Application" project from Fire App Builder in A
 
     {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_androidstudiowelcome" type="png" max-width="75%" %}
 
-    Note that if you don't see this welcome screen, you most likely have not configured Android Studio with the JDK or any Android SDKs.
+    Note that if you don't see this welcome screen with these specific options, you probably haven't configured Android Studio with the JDK or any Android SDKs.
 
 3.  Inside the Fire App Builder project folder, select the **Application** folder, and then click **OK**.
 
@@ -151,40 +147,6 @@ In this step, you will open the "Application" project from Fire App Builder in A
     If you close the app on your Fire TV, you can relaunch it using the Fire TV UI by going to **Settings > Applications > Manage Installed Applications > Fire App Builder** with your remote control.
 
     Note that ADB builds the app on your connected device in a *temporary* folder. When you disconnect your device, the app will no longer be available on the Fire TV. If you want to permanently install the app onto your Fire TV, you will need to sideload the app onto your device. See [Installing and Running Your App][installing-and-running-your-app].  
-
-## (Optional) Step 5. Customize the Fire App Builder Sample Project {#customize}
-
-The first step in creating your app is to customize the "Application" folder. The Application folder contains the sample app created with Fire App Builder. You have two options for customizing the Application folder. The option you choose depends on how you want to handle later updates that you might pull from the Github repo:
-
-*  **Option 1: Duplicate the Application folder and its files**: When you run `git pull` to get later updates from the Fire App Builder repo, you won't have to resolve any merge conflicts for potential updates to Application's files. However, if there are updates to the Application folder and its contents, you won't be prompted to merge them into your project. Additionally, if code in other folders requires updates to the Application folder, your project may break without these updates.
-*  **Option 2: Directly customize the Application folder and its files**: When you run `git pull` to get later updates from the Fire App Builder repo, you will be prompted with merge conflicts that you'll have to sort through. It will be more tedious to get the updates, and you'll need to be familiar with how to resolve merge conflicts with git repos. However, you will be sure not to miss any updates to the Application folder and its files.
-
-**To customize the Application folder:**
-
-1.  In Android Studio, close the Fire App Builder project by going to **File > Close Project.**
-2.  Using Finder (Mac) or your File Explorer (Windows), browse to the directory where you downloaded Fire App Builder. Do one of the following:
-     * Duplicate the Application folder (option 1). Then rename the copy (for example, "Gizmoapp").
-     * Directly rename the Application folder (option 2) (for example, "Gizmoapp").
-4.  Inside your customized Application folder ("Gizmoapp"), delete the **build** folder (which stores the generated app).
-5.  In Android Studio, from the Welcome screen that is displayed, click **Open an existing Android Studio project**. Select your customized Application folder ("Gizmoapp") within the Fire App Builder folder, and click **OK**.
-6.  If prompted about upgrading Gradle plugin settings, click **Don't remind me again for this project.**
-7.  Expand the **Project** pane (but not the Project view) in the upper-left corner to view the files.
-5.  In the **app** folder, expand **res > values** and open the **strings.xml** files.
-6.  In the **app_name** string, type the name of your app.
-
-    Note that the AndroidManifest.xml file (inside **app > manifests**) reads the name of the application from the string you just edited. (In Android Manifest, the code referencing the string is `android:label="@string/app_name"`. This is how most of Fire App Builder is set up &mdash; code that you customize is extracted out into XML files so you don't have to directly edit Java.)
-
-9.  Open your app's **AndroidManifest.xml** file (located in **app > manifests**) and update the **com.amazon.android.calypso** package name to a package name that reflects your app's new name. For example, if your app was named "Gizmoapp," you might change it to the following:
-
-    ```xml
-    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.amazon.android.gizmoapp">
-    ```
-
-    The sample app in Fire App Builder doesn't have any classes in the `com.amazon.android.calypso` package, but you can add custom classes to overwrite existing Fire App Builder functionality or add to it.
-
-10. Go to **Build > Clean Project** to clean up any artifacts from the previous app. (This process takes several minutes.)
-11. Build your new app by clicking the **Run 'app'** button {% include inline_image.html alt="Run 'app' button" file="firetv/fireappbuilder/images/fireappbuilder_runappbutton" type="png" %}.
 
 ## Next Steps
 

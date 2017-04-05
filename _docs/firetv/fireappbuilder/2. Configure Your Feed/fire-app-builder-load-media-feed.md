@@ -99,7 +99,7 @@ Use these instructions if you publish your media details in a web feed that is o
     }
     ```
 
-6.  Open the **urlFile.json** (located in **app > assets**) and list your media feed URLs, replacing the lightcast feeds:
+6.  Open the **urlFile.json** (located in **app > assets**) and list your media feed URLs, replacing the Lightcast feeds:
 
     ```json
     {

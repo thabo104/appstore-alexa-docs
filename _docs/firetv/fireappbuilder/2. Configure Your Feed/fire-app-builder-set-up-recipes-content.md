@@ -753,11 +753,11 @@ When Fire App Builder does image cropping, it preserves the aspect ratio of the 
 
 Below the video is a Related Content section that shows other videos with the same tags:
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="png" alt="Related content" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_reccontent" type="png" alt="Related content" %}
 
 To populate the [Related Content section in the app][fire-app-builder-customize-look-and-feel#relatedcontent], you need to match your tags in the `matchList` parameter. For example:
 
-```json
+```
 common/tags@tags
 ```
 

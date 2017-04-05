@@ -10,9 +10,63 @@ github: true
 You can customize much of the app's look and feel through the custom.xml file (located in **res > values**) and navigator.json file (in **app > assets**). You can change colors, fonts, and other properties by updating hex, dp, or other values.
 
 * TOC
-{:toc}
+{:toc max_level=3 }
 
-## Customize the Homepage Layout
+## Change the App Logo {#changelogo} (Required)
+
+The logo appears in the upper-left corner as well as on the splash screen. This is an element you must change as you customize your app. To change the app logo:
+
+1.  Inside your app's **assets > res** directory, create a new directory called **drawable**.
+2.  Open your **drawable** directory via Finder or Explorer.
+
+    To access your drawable directory, you can either right-click the folder within Android Studio and choose **Reveal in Finder** (on a Mac). Or you can manually browse the source files by going to **Application > app > src > main > res > drawable**. (The Android view in Android Studio doesn't reflect the actual structure of your folders.)
+
+3.  Add your logo image (356px wide x 108px) into this folder.
+
+    The app logo's dimensions should be approximately 356px wide x 108px tall and have a transparent background. Larger images will be scaled down to fit the space (but smaller images won't be scaled up).
+
+    The resizing preserves the image's dimensions without performing any cropping. If your logo is tall and narrow, it may look tiny when fit into a space that is 108px tall because the aspect ratio will be preserved. (Logos that are wide look better in the Fire App Builder layout.)
+
+    Your logo appears as an overlay on top of the app background. A light logo on a dark background will have good contrast.
+
+4.  In your app's **custom.xml** file (inside your app's **res > values** folder), customize the file names within the following elements:
+
+    ```xml
+    <drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
+
+    <drawable name="company_logo">@drawable/fire_app_builder_white2</drawable>
+    ```
+
+    The `splash_logo` element determines the logo that appears on the Splash page. The `company_logo` element determines the logo that appears in the upper-left corner of the app.
+
+    You can use the same logo on both screens, or you can vary the two. You don't need to include the file extension in the image file name. Android will automatically detect it.
+
+{% include tip.html content="Fire App Builder has various custom.xml files in the other component directories. However, your app's custom.xml file will override the values in any other custom.xml file." %}
+
+## Customize the App Icon (Required)
+
+You can change the app icon. This is the image thumbnail that appears in your list of apps on Fire TV and appears when you are testing your device.
+
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_launchicon" type="png" alt="App icon" %}
+
+Additionally, this image appears as the image tile in the [Appstore's website on amazon.com][appstoreportal].
+
+However, when you submit your app into the Amazon Appstore, you're required to submit an app icon that is 1280 x 720px (PNG). This is the actual icon that will be used in the Fire TV user interface.
+
+To update this file, change the **ic_launcher.png** files. Switch to the **Project** view, and then look in your app's **src > main > res** folder. There are 4 app icon files, each corresponding to different screen sizes:
+
+* mipmap-hdpi (72x72px)
+* mipmap-mdpi (48x48px)
+* mipmap-xhdpi (96x96px)
+* mipmap-xxhdpi (144x144px)
+
+The app icon has a transparent background. Either replace the source images or update your app's custom.xml file with updated reference to your launcher file:
+
+```xml
+<drawable name="app_logo">@mipmap/ic_launcher</drawable>
+```
+
+## Customize the Homepage Layout (Optional)
 
 The default home screen layout uses the `ContentBrowseActivity`. This layout is referred to as the "Homepage Browse layout."
 
@@ -39,41 +93,15 @@ To change the homepage to the Full Browse layout:
 
 3.  Change `com.amazon.android.tv.tenfoot.ui.activities.ContentBrowseActivity` to `com.amazon.android.tv.tenfoot.ui.activities.FullContentBrowseActivity`.
 
-## Change the Homepage's Visual Elements
+## Change the Homepage's Visual Elements (Optional)
 
 The following diagram shows the visual properties you can customize on the homepage's Browse layout (the default):
 
 {% include image.html file="firetv/fireappbuilder/images/firetv_homepage" type="png" %}
 
-
 <h3 id="changelogo"> {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} Logo </h3>
 
-The logo appears in the upper-left corner as well as on the splash screen. This is an element you should definitely change as you customize your app. To change the logo:
-
-1.  Inside your app's **assets > res** directory, create a new folder called **drawable**.
-2.  Open your **drawable** folder via Finder or Explorer.
-
-    To access your drawable folder, you can either right-click the folder within Android Studio and choose **Reveal in Finder** (on a Mac). Or you can manually browse the source files by going to **Application > app > src > main > res > drawable**. (The Android view in Android Studio doesn't reflect the actual structure of your folders.)
-
-3.  Add your logo image (356px wide x 108px) into this folder.
-
-    The app logo's dimensions should be approximately 356px wide x 108px tall and have a transparent background. Larger images will be scaled down to fit the space (but smaller images won't be scaled up).
-
-    The resizing preserves the image's dimensions without performing any cropping. If your logo is tall and narrow, it may look tiny when fit into a space that is 108px tall because the aspect ratio will be preserved. (Logos that are wide look better in the Fire App Builder layout.)
-
-    Your logo appears as an overlay on top of the app background. A light logo on a dark background will have good contrast.
-
-4.  In your app's **custom.xml** file (inside your app's **res > values** folder), customize the file names within the following elements:
-
-    ```xml
-    <drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
-
-    <drawable name="company_logo">@drawable/fire_app_builder_white2</drawable>
-    ```
-
-    The `splash_logo` element determines the logo that appears on the Splash page. The `company_logo` element determines the logo that appears in the upper-left corner of the app.
-
-    You can use the same logo on both screens, or you can vary the two. You don't need to include the file extension in the image file name. Android will automatically detect it.
+See the section, [Change the App Logo](#changelogo) for details.
 
 <h3> {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} Video title and description </h3>
 
@@ -135,7 +163,7 @@ You can control the size of the preview image in the upper-right corner. In your
 
 See the following section, [Customize the Search Button](#searchbuttoncustomization) for information on how to customize the search. Customizations to the search button change the button's appearance on the home screen and the search screen.
 
-## Customize the Search Button {#searchbuttoncustomization}
+## Customize the Search Button (Optional) {#searchbuttoncustomization}
 
 You can customize the search button icon, background color, and form field color. The search button color and background also appear on the home screen.
 
@@ -181,7 +209,7 @@ The search form background appears on the search screen when you start typing yo
     <drawable name="search_background">@drawable/bg_gradient_search</drawable>
     ```
 
-## Change the Visual Properties in the "Full Browse" Homepage Layout
+## Change the Visual Properties in the "Full Browse" Homepage Layout (Optional)
 
 The full browse layout shows a left sidebar navigation. You can customize the color of the sidebar and the category titles that appear there.
 
@@ -206,7 +234,7 @@ In your app's **custom.xml** file, updated the following element:
 
 Note that for the default homepage layout ("Browse"), this element controls the category title above the videos rows. For the Full Browse layout, it changes the color of the category titles in the left navigation bar.
 
-## Change the Elements on the Playback Screen
+## Change the Elements on the Playback Screen (Optional)
 
 You can control the look and feel of the elements on the playback screen.
 
@@ -266,7 +294,7 @@ You can change the color of the "Related Content" title. This element is grouped
  <color name="tertiary_text">#f2f408</color>
 ```
 
-## Customize the Splash Screen
+## Customize the Splash Screen (Optional)
 
 By default, the sample app in Fire App Builder shows the following Splash screen:
 
@@ -282,7 +310,7 @@ The logo for your app. The logo is defined by the following element in your app'
 <drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
 ```
 
-See the earlier section, [Logo](#changelogo), for details on changing the Splash screen's logo.
+See the earlier section, [Change the App Logo](#changelogo), for details on changing the Splash screen's logo.
 
 <h3> {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} Loading text </h3>
 
@@ -324,7 +352,7 @@ To change the color of the text on the splash screen, button text, and read-more
 <color name="primary_text">#E6FFFFFF</color>
 ```
 
-## Change the Font {#changefont}
+## Change the Font (Optional) {#changefont}
 
 You can change your app's fonts through the `branding` object in **Navigator.json** (inside **app > assets**):
 
@@ -410,7 +438,7 @@ In addition to using different device fonts, you can also use custom fonts. If y
   }
 ```
 
-## Customize the Related Content Section {#relatedcontent}
+## Customize the Related Content Section (Optional) {#relatedcontent}
 
 On the Content Details screen, a list of "Related Content" appears below the content preview.
 
@@ -418,27 +446,7 @@ On the Content Details screen, a list of "Related Content" appears below the con
 
 You populate this section by matching certain tags in your feed. For more details on configuring Related Content, see ["Related Content (Through Tags)"][fire-app-builder-set-up-recipes-content#tags] in Set Up the Content Recipe.
 
-
-## Customize the App Icon
-
-You can change the app icon. This is the image thumbnail that appears in your list of apps on Fire TV.
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_launchicon" type="png" alt="App icon" %}
-
-To update this file, change the **ic_launcher.svg** files. Switch to the **Project** view, and then look in your app's **src > main > res** folder. There are 4 app icon files, each corresponding to different screen sizes:
-
-* mipmap-hdpi (72x72px)
-* mipmap-mdpi (48x48px)
-* mipmap-xhdpi (96x96px)
-* mipmap-xxhdpi (96x96px)
-
-The app icon has a transparent background. Either replace the source images or update your app's custom.xml file with updated reference to your launcher file:
-
-```xml
-<drawable name="app_logo">@mipmap/ic_launcher</drawable>
-```
-
-## Update the Terms of Use
+## Update the Terms of Use (Optional)
 
 The Terms of Use section appears in the footer of the app and links to the terms_of_use.html file (located in **app > assets**).
 
@@ -454,7 +462,7 @@ The Terms of Use file is a sample file that you should edit before distributing 
 
 The Terms of Use file also includes notices for open source components that are built in to the sample app by default. These notices are provided as a convenience only. Amazon makes no representations as to their accuracy or completeness and will not be responsible for any inaccuracies or incompleteness.
 
-## Customize the Content Reload Time
+## Customize the Content Reload Time (Optional)
 
 You can customize the time it takes for content to reload (content refers to  the videos and other details that your app loads from the media feed). By default the reload time is 14400000 milliseconds, or 4 hours. After this time expires, the Navigator.js file (located in **app > assets > resources**) will reload the recipes and data loader settings.
 
@@ -475,3 +483,5 @@ Although you can dig into the Fire App Builder code and alter the layouts in dee
 To use components that leverage authentication, ads, in-app purchasing, or analytics, see [Components Overview][fire-app-builder-interfaces-and-components].
 
 {% include links.html %}
+
+[appstoreportal]: https://www.amazon.com/s/ref=lp_2350149011_nr_p_n_feature_sixteen__1?fst=as%3Aoff&rh=n%3A2350149011%2Cp_n_feature_sixteen_browse-bin%3A9842739011&bbn=2350149011&ie=UTF8&qid=1491337288&rnid=9433728011
