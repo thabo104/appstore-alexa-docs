@@ -74,11 +74,15 @@ Various other bug fixes for stability and performance were also made.
 
 (Note: Some of these issues are the same known issues from [version 1.0.0][fire-app-builder-release-notes-version-1-0-0].)
 
-* *In-app purchasing tag added to apps*. Fire App Builder contains a default [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component]. Unfortunately, there's not a dummy purchasing component you can substitute in place of IAP. As a result, when you submit your app into the Appstore, it will be tagged as containing in-app purchases. An upcoming Fire App Builder release will add a dummy purchasing component instead of IAP so that this tag is not added to apps.
-*  *Login with Amazon component*. The [Login with Amazon component][fire-app-builder-login-with-amazon-component] is not working correctly. The issue is currently being investigated.
-*  *Related Content*. Related content matches (which are based on tags in the feed) will match unlimited content if many items have the same tags. (The content matches should have an item limit.)
-*  *In-App Purchasing Component.* With the [In-App Purchasing Component][fire-app-builder-amazon-in-app-purchase-component], purchases made on other devices won't be acknowledged in the app until a user either restarts the app or attempts to play the content. (The app should refresh purchased items when the state goes to the background.)
-*  *Splash screen.* Loading the feed initially can take some time on splash screen. (The initial load time should be faster.)
+**In-app purchasing tag added to apps**. Fire App Builder contains a default [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component]. Unfortunately, there's not a dummy purchasing component you can substitute in place of IAP. As a result, when you submit your app into the Appstore, it will be tagged as containing in-app purchases. An upcoming Fire App Builder release will add a dummy purchasing component instead of IAP so that this tag is not added to apps.
+
+**Login with Amazon component**. The [Login with Amazon component][fire-app-builder-login-with-amazon-component] is not working correctly. The issue is currently being investigated.
+
+**Related Content**. Related content matches (which are based on tags in the feed) will match unlimited content if many items have the same tags. (The content matches should have an item limit.)
+
+**In-App Purchasing Component.** With the [In-App Purchasing Component][fire-app-builder-amazon-in-app-purchase-component], purchases made on other devices won't be acknowledged in the app until a user either restarts the app or attempts to play the content. (The app should refresh purchased items when the state goes to the background.)
+
+**Splash screen.** Loading the feed initially can take some time on splash screen. (The initial load time should be faster.)
 
 
 {% include links.html %}

@@ -29,7 +29,7 @@ git config –global core.symlinks true
 
 Then re-clone the repo and build the project again. You can verify that symlinks are working by looking at the strings.xml file in **Utils > src > main > res > values > strings.xml > strings.xml (en-rUS)**. If you see normal content, symlinks are working. In contrast, if there's just a short reference and nothing else, symlinks aren't working.
 
-### Errors: Recipe chain fails
+## Errors: Recipe chain fails
 
 **Problem**: You get this error message when building your app:
 
@@ -42,17 +42,16 @@ Or you see this:
 ```
 Recipe chain failed: java.lang.Exception: com.amazon.dataloader.datadownloader.AUrlGenerator$UrlGeneratorException: Could not read url at index 0 in file null
 ```
-**Resolution**:
+**Resolution**: Check your recipe file to make sure your JSON is valid. An extra comma that makes it invalid can cause this error. Also see that the Navigator.json file in your app's **assets > recipes** folder points to the correct files, and that your data loader file is loading the correct recipe.
 
-Check your recipe file to make sure your JSON is valid. An extra comma that makes it invalid can cause this error. Also see that the Navigator.json file in your app's **assets > recipes** folder points to the correct files, and that your data loader file is loading the correct recipe.
+## Navigator parsing fails
 
-
-**Problem**: You get this error message when building your app.
+**Problem**: You get a Navigator parsing failed message when building your app.
 
 ```
 E/NavigatorModelParser: Navigator parsing failed!!! com.fasterxml.jackson.databind.JsonMappingException: Unexpected character ('}' (code 125)): was expecting double-quote to start field name
 ```
 
-Check your Navigator.json file to make sure the JSON is valid. An extra comma that makes it invalid can cause this error.
+**Solution**: Check your Navigator.json file to make sure the JSON is valid. An extra comma that makes it invalid can cause this error.
 
 {% include links.html %}

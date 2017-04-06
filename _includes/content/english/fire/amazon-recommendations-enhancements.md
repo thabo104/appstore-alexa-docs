@@ -1,14 +1,12 @@
 {% include note.html content ="\"Used\" (the column on the far right) indicates whether Fire TV currently makes use of this data in the Fire TV recommendations display on the home screen. Even if an extra isn't used now, it may be used in the future with upcoming Fire TV releases." %}
 
 <table class="grid">
-{% if include.scenario == "ftv" %}
    <colgroup>
    <col width="30%" />
    <col width="10%" />
    <col width="50%" />
    <col width="10%" />
    </colgroup>
-{% endif %}
    <thead>
       <tr>
          <th>Extra name</th>

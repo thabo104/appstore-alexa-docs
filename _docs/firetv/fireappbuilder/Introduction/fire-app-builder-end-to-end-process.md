@@ -46,7 +46,7 @@ The following steps show the beginning-to-end process for building an app with F
 
 | 5. Submit Your App |
 |---|
-| a. [Submit Your App to the Appstore][fire-app-builder-submit-your-app] | After you finish building your app, you're now ready to generate a signed APK file, gather image assets, and submit it to the Amazon Appstore. |
+| a. [Submit Your Fire App Builder App to the Appstore][fire-app-builder-submit-your-app] | After you finish building your app, you're now ready to generate a signed APK file, gather image assets, and submit it to the Amazon Appstore. |
 
 
 {% include links.html %}
