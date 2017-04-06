@@ -23,6 +23,8 @@ The following steps show the beginning-to-end process for building an app with F
 | a. [Download Fire App Builder and Build the Sample App][fire-app-builder-download-and-build] | Download the Fire App Builder code and build the "Application" in Fire App Builder. Then clone Fire App Builder to create your own app. |
 | b. [Connect to Fire TV Through ADB][fire-app-builder-connecting-adb-to-fire-tv] | Connect your computer to your Fire TV device using ADB so you can test your app. |
 | c. [Take an App Tour][fire-app-builder-app-tour] | Get more familiar with the basic features and screens in the sample app in Fire App Builder. |
+| d. [Customize the Fire App Builder Sample Project][fire-app-builder-customize-the-application-project] | Customize the sample project (called "application") and files with your own app name. |
+
 
 | 2. Configure Your Feed |
 |---|
@@ -42,7 +44,9 @@ The following steps show the beginning-to-end process for building an app with F
 |---|
 | a. [Components Overview][fire-app-builder-interfaces-and-components] | Set up authentication, in-app purchasing, analytics, ads, or the media player by loading already coded components that implement interfaces in Fire App Builder. |
 
-When you finish building your app and are ready to submit it to the Amazon Appstore, see [Publishing Android Apps to 
-the Amazon Appstore][appstore-understanding-submission]. As you prepare your app for publishing, you will need to [take various screenshots](/support/submitting-your-app/tech-docs/04-taking-screenshots) and gather [Fire TV image assets][asset-guidelines-for-app-submission#firetvassets].
+| 5. Submit Your App |
+|---|
+| a. [Submit Your App to the Appstore][fire-app-builder-submit-your-app] | After you finish building your app, you're now ready to generate a signed APK file, gather image assets, and submit it to the Amazon Appstore. |
+
 
 {% include links.html %}

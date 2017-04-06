@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-When you [set up your recipes][fire-app-builder-set-up-recipes-overview], you used XML query syntax for the `query` parameter. XML queries use XPath expressions. You can learn more about the [XPath syntax here](http://www.w3schools.com/xsl/xpath_syntax.asp). You can also test out your XPath expressions using this [XPath Tester / Evaluator](http://www.freeformatter.com/xpath-tester.html).
+When you [set up your recipes][fire-app-builder-set-up-recipes-overview], you used XML query syntax for the `query` parameter. XML queries use XPath expressions. You can learn more about the [XPath syntax here](https://www.w3schools.com/xml/xpath_syntax.asp). You can also test out your XPath expressions using this [XPath Tester / Evaluator](http://www.freeformatter.com/xpath-tester.html).
 
 Once you get the result from XPath, you use `matchList` selectors to select specific elements in the query result. The `matchList` selectors don't use XPath syntax but rather a custom Amazon syntax to target the right elements. The purpose of the `matchList` selector is to correlate an element in your feed with the Fire App Builder content model so that the right item can be displayed in the Fire App Builder UI.
 

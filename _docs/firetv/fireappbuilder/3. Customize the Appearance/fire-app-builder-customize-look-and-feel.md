@@ -7,26 +7,358 @@ toc-style: kramdown
 github: true
 ---
 
-You can customize much of the app's look and feel through your app's custom.xml file (located in **res > values**) as well as navigator.json (in **app > assets**). Here's a list of what you can easily change in the app:
-
-* Fonts
-* Splash screen
-* Recommended content
-* Background colors
-* Content cards
-* Buttons
-* Search bar
-* Content reload times
-* Homepage layout
-* App icon
-* Terms of use
+You can customize much of the app's look and feel through the custom.xml file (located in **res > values**) and navigator.json file (in **app > assets**). You can change colors, fonts, and other properties by updating hex, dp, or other values.
 
 * TOC
-{:toc}
+{:toc max_level=3 }
 
-## Change the Font
+## Change the App Logo (Required) {#changelogo}
 
-You can change your app's fonts through the `branding` object in Navigator.json (inside **app > assets**):
+The logo appears in the upper-left corner as well as on the splash screen. This is an element you must change as you customize your app.
+
+{% include image.html  file="fireappbuilder-home-logo" type="png" alt="Changing the app logo" %}
+
+To change the app logo:
+
+1.  Inside your app's **assets > res** directory, create a new directory called **drawable**.
+2.  Open your **drawable** directory via Finder or Explorer.
+
+    To access your drawable directory, you can either right-click the folder within Android Studio and choose **Reveal in Finder** (on a Mac). Or you can manually browse the source files by going to **Application > app > src > main > res > drawable**. (The Android view in Android Studio doesn't reflect the actual structure of your folders.)
+
+3.  Add your logo image (356px wide x 108px) into this folder.
+
+    The app logo's dimensions should be approximately 356px wide x 108px tall and have a transparent background. Larger images will be scaled down to fit the space (but smaller images won't be scaled up).
+
+    The resizing preserves the image's dimensions without performing any cropping. If your logo is tall and narrow, it may look tiny when fit into a space that is 108px tall because the aspect ratio will be preserved. (Logos that are wide look better in the Fire App Builder layout.)
+
+    Your logo appears as an overlay on top of the app background. A light logo on a dark background will have good contrast.
+
+4.  In your app's **custom.xml** file (inside your app's **res > values** folder), customize the file names within the following elements:
+
+    ```xml
+    <drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
+
+    <drawable name="company_logo">@drawable/fire_app_builder_white2</drawable>
+    ```
+
+    The `splash_logo` element determines the logo that appears on the Splash page. The `company_logo` element determines the logo that appears in the upper-left corner of the app.
+
+    You can use the same logo on both screens, or you can vary the two. You don't need to include the file extension in the image file name. Android will automatically detect it.
+
+{% include tip.html content="Fire App Builder has various custom.xml files in the other component directories. However, your app's custom.xml file will override the values in any other custom.xml file." %}
+
+## Customize the App Icon
+
+You can change the app icon. This is the image thumbnail that appears in your list of apps on Fire TV and appears when you are testing your device.
+
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_launchicon" type="png" alt="App icon" %}
+
+Additionally, this image appears as the image tile in the [Appstore's website on amazon.com][appstoreportal].
+
+However, when you submit your app into the Amazon Appstore, you're required to submit an app icon that is 1280 x 720px (PNG). This is the actual icon that will be used in the Fire TV user interface.
+
+To update this file, change the **ic_launcher.png** files. Switch to the **Project** view, and then look in your app's **src > main > res** folder. There are 4 app icon files, each corresponding to different screen sizes:
+
+* mipmap-hdpi (72x72px)
+* mipmap-mdpi (48x48px)
+* mipmap-xhdpi (96x96px)
+* mipmap-xxhdpi (144x144px)
+
+The app icon has a transparent background. Either replace the source images or update your app's custom.xml file with updated reference to your launcher file:
+
+```xml
+<drawable name="app_logo">@mipmap/ic_launcher</drawable>
+```
+
+## Customize the Homepage Layout (Optional)
+
+The default home screen layout uses the `ContentBrowseActivity`. This layout is referred to as the "Homepage Browse layout."
+
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_home" type="png" alt="Home" caption="<b>Home with the <code>ContentBrowseActivity</code></b>. This view arranges the videos in various channels or groups. When you view a channel, the first video in that channel group appears as the featured background image, with its title and description in the upper-left." %}
+
+You can change the homepage layout to a more compressed view by using the `FullContentBrowseActivity` instead. This alternative homepage layout is referred to as the "Full Browse" homepage layout.
+
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_fullbrowse" type="png" alt="Home with FullContentBrowseActivity" caption="<b>Home with <code>FullContentBrowseActivity</code></b>. With this activity, all the videos appear in a more compressed grid, with the channels listed on the left in a sidebar. None of the videos are superimposed as large featured images in the background. The app appears in the upper-right corner." %}
+
+The left sidebar can collapse in when the user is browsing through the video titles. This gives more space and focus to your video content.
+
+To change the homepage to the Full Browse layout:
+
+1.  Open the **Navigator.json** file (located in **app > assets**).
+2.  In the `graph` object, locate the `CONTENT_HOME_SCREEN`:
+
+    ```json
+    "com.amazon.android.tv.tenfoot.ui.activities.ContentBrowseActivity": {
+          "verifyScreenAccess": false,
+          "verifyNetworkConnection": true,
+          "onAction": "CONTENT_HOME_SCREEN"
+        }
+    ```
+
+3.  Change `com.amazon.android.tv.tenfoot.ui.activities.ContentBrowseActivity` to `com.amazon.android.tv.tenfoot.ui.activities.FullContentBrowseActivity`.
+
+## Change the Homepage's Visual Elements (Optional)
+
+The following diagram shows the visual properties you can customize on the homepage's Browse layout (the default):
+
+{% include image.html file="firetv/fireappbuilder/images/firetv_homepage" type="png" %}
+
+<h3 id="changelogo"> {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} Logo </h3>
+
+See the section, [Change the App Logo](#changelogo) for details.
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} Video title and description </h3>
+
+You can change the color of the video title and description. In your app's **custom.xml** file, update the following element:
+
+```xml
+<color name="primary_text">#f4084f</color>
+<!-- red Used for the text on the card views and playback progress bar text. -->
+```
+
+This element also controls the color of the video title and description on the preview screen (which appears when you click a video but haven't started media playback). It also controls the color of the text on the buttons, such as "Watch Now" and "Resume Playback."
+
+For details on how to change the font itself for these elements, see [Change the Font](#changefont).
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} Category title color </h3>
+
+You can change the color of the category titles. Changing this color also changes the text color in left navigation in Full Browse layout. In your app's **custom.xml** file, update the following element:
+
+```xml
+<color name="tertiary_text">#99FFFFFF</color>
+```
+
+This element also controls the color of the "Related Content" text, which appears below videos on the preview screen and the media playback screen.
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} Card video title color </h3>
+
+You can change the color of the video title on cards. Changing this color also changes the text color on the progress bar during video playback. In your app's **custom.xml** file, update the following element:
+
+```xml
+<color name="secondary_text">#FFFFFFFF</color>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} Background color </h3>
+
+You can change the background color of the app. This property affects all screens. In your app's **custom.xml** file, change the following element:
+
+```xml
+<color name="background">#22282E</color>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_six" type="png" %} Gradient width</h3>
+
+You can control the size of the gradient between the background and the preview image. In your app's **custom.xml** file, adjust the dp value for the following element:
+
+```xml
+<dimen name="content_image_gradient_size">100dp</dimen>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_seven" type="png" %} Preview image size</h3>
+
+You can control the size of the preview image in the upper-right corner. In your app's **custom.xml** file, adjust the dp value for the following elements:
+
+```xml
+<dimen name="content_image_height">350dp</dimen>
+<dimen name="content_image_width">540dp</dimen>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_eight" type="png" %} Search button icon and search background</h3>
+
+See the following section, [Customize the Search Button](#searchbuttoncustomization) for information on how to customize the search. Customizations to the search button change the button's appearance on the home screen and the search screen.
+
+## Customize the Search Button (Optional) {#searchbuttoncustomization}
+
+You can customize the search button icon, background color, and form field color. The search button color and background also appear on the home screen.
+
+{% include image.html file="firetv/fireappbuilder/images/firetv_search" type="png" %}
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} Search button icon</h3>
+
+To change the search button icon:
+
+1.  If you haven't already created a drawable folder in your app, create a new folder called **drawable** inside your app's **assets > res** directory.
+2.  Open your **drawable** folder via Finder or Explorer.
+3.  Add your image for the search icon and background into this folder.
+
+    You can copy the original **ic_search.png** image as an example. You can find this image in **TVUIComponent > res > drawable**. Or if you want to browse the file directory structure, go to **TVUICopmonent > res > drawable > drawable-xhdpi**. The search icon is a 34px x 34px transparent PNG image. The icon is white in order to contrast with a dark background.
+
+4.  In your app's **custom.xml** file, update the following file name to correspond to your new search icon:
+
+    ```xml
+    <drawable name="search_icon">@drawable/ic_search</drawable>
+    ```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} Search button background color</h3>
+
+To change the background color of the search button, adjust the following element in your app's **custom.xml** file:
+
+```xml
+<color name="accent">#EE962D</color>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} Search Form Background Color</h3>
+
+The search form background appears on the search screen when you start typing your search query. This color is controlled through an image file (rather than a hex code) to achieve a gradient. To change the color of the search form background:
+
+1.  If you haven't already created a drawable folder in your app, create a new folder called **drawable** inside your app's **assets > res** directory.
+2.  Open your **drawable** folder via Finder or Explorer.
+3.  Add your image for the search form background into this folder.
+
+    You can copy the original **bg_gradient_search** image as an example. You can find this image in **TVUIComponent > res > drawable**. Or if you want to browse the file directory structure, go to **TVUIComponent > res > drawable > drawable-xhdpi**. The file name is **bg_gradient_search.9.png**. It's a 3px wide by 1082px tall image. It repeats horizontally to fill the search background form space.
+
+4.  In your app's **custom.xml** file, update the following file name to correspond to your new search background image:
+
+    ```xml
+    <drawable name="search_background">@drawable/bg_gradient_search</drawable>
+    ```
+
+## Change the Visual Properties in the "Full Browse" Homepage Layout (Optional)
+
+The full browse layout shows a left sidebar navigation. You can customize the color of the sidebar and the category titles that appear there.
+
+{% include image.html file="firetv/fireappbuilder/images/firetv_fullbrowselayout" type="png" %}
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} Sidebar color </h3>
+
+You can change the color of the left navigation bar. In your app's **custom.xml** file, update the following element:
+
+```xml
+<color name="browse_headers_bar">#ff69b4</color>
+```
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} Category titles and subtitles in sidebar</h3>
+
+You can change the category titles that appear in the sidebar. Both the selected and non-selected category titles receive this color. The selected category titles are bold, and the non-selected category titles are softer and muted.
+
+In your app's **custom.xml** file, updated the following element:
+
+```xml
+<color name="tertiary_text">#99FFFFFF</color>
+```
+
+Note that for the default homepage layout ("Browse"), this element controls the category title above the videos rows. For the Full Browse layout, it changes the color of the category titles in the left navigation bar.
+
+## Change the Elements on the Playback Screen (Optional)
+
+You can control the look and feel of the elements on the playback screen.
+
+{% include image.html file="firetv/fireappbuilder/images/firetv_playback" type="png" %}
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} Video title </h3>
+
+You can change the color of the video title on the playback screen. In your app's **custom.xml** file, update the following element:
+
+```xml
+<color name="primary_text">#E6FFFFFF</color>
+```
+
+This element also controls the color of the video titles and subtitles on the homepage screen.
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} Progress bar color</h3>
+
+The progress bar refers to the sliding marker that indicates where you're at in the timeline of the video. To change its color, in your app's **custom.xml** file, update the following element:
+
+```xml
+<color name="progress_bar">#99FFFFFF</color>
+```
+
+For example, if you changed this color to red, it would look as follows:
+
+{% include image.html  file="firetv/fireappbuilder/images/fireappbuilder_progressbar1" type="png" %}
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} Color of buffered progress bar</h3>
+
+The buffered progress bar shows how much video has been downloaded. To change its color, in your app's **custom.xml** file, update the following element:
+
+```xml
+<color name="playback_buffered_progress">#FF5A5A5A</color>
+```
+
+For example, if you changed this color to green, it would look as follows:
+
+{% include image.html  file="firetv/fireappbuilder/images/fireappbuilder_progressbar2" type="png" %}
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} Background color of progress bar</h3>
+
+The progress bar refers to the entire bar where the video loading slider appears. To change its color, in your app's **custom.xml** file, update the following element:
+
+```xml
+<color name="playback_background_progress_bar">#FF373737</color>
+```
+
+For example, if you changed this color to blue, it would look as follows:
+
+{% include image.html  file="firetv/fireappbuilder/images/fireappbuilder_progressbar3" type="png" %}
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} Related Text Color</h3>
+
+You can change the color of the "Related Content" title. This element is grouped with other "tertiary_element" colors. Updating this color will also change the color of the category titles on the home screen. To change the color, in your app's **custom.xml** file, update the following element:
+
+```xml
+ <color name="tertiary_text">#f2f408</color>
+```
+
+## Customize the Splash Screen (Optional)
+
+By default, the sample app in Fire App Builder shows the following Splash screen:
+
+{% include image.html file="firetv/fireappbuilder/images/firetv_splashscreen" type="png" alt="Splash screen" %}
+
+The following sections describe each element you can customize.
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} Logo </h3>
+
+The logo for your app. The logo is defined by the following element in your app's custom.xml:
+
+```xml
+<drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
+```
+
+See the earlier section, [Change the App Logo](#changelogo), for details on changing the Splash screen's logo.
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} Loading text </h3>
+
+To update the word "Loading" that appears on the Splash screen, go to **TVUIComponent > res > strings.xml > strings.xml** and update the following element:
+
+```xml
+<string name="feed_loading">Loading</string>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} Loading spinner </h3>
+
+You can change the color of the loading spinner that appears on the Splash screen by updating this element in your app's **custom.xml** file:
+
+```xml
+<color name="spinner_color">#FFFFFFFF</color>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} Copyright </h3>
+
+To customize the Copyright text on the Splash screen, see the **strings.xml** folder inside your app's **res > values > strings.xml** folder.
+
+```xml
+<string name="copyright">Copyright 2016. All Rights Reserved.</string>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} Background color </h3>
+
+To change the background color of the app, update the following element in your app's **custom.xml**:
+
+```xml
+<color name="background">#22282E</color>
+```
+
+<h3> {% include inline_image.html file="firetv/getting_started/images/firetv_six" type="png" %} Text color </h3>
+
+To change the color of the text on the splash screen, button text, and read-more text on the Content Details screen, update the following element in custom.xml:
+
+```xml
+<color name="primary_text">#E6FFFFFF</color>
+```
+
+## Change the Font (Optional) {#changefont}
+
+You can change your app's fonts through the `branding` object in **Navigator.json** (inside **app > assets**):
 
 ```json
 "branding": {
@@ -39,11 +371,32 @@ You can change your app's fonts through the `branding` object in Navigator.json 
 
 Here's how the fonts are used:
 
-| Property | Where It's Used |
-|----|-----|
-| `lightFont` | Used in description and body text. |
-| `boldFont` | Used in titles. |
-| `regularFont` | Used in buttons and subtitles.|
+<table>
+   <colgroup>
+      <col width="30%" />
+      <col width="70%" />
+   </colgroup>
+   <thead>
+      <tr>
+         <th markdown="span">Property</th>
+         <th markdown="span">Where It's Used </th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td markdown="span">`lightFont`</td>
+         <td markdown="span">Used in description and body text.</td>
+      </tr>
+      <tr>
+         <td markdown="span">`boldFont`</td>
+         <td markdown="span">Used in titles.</td>
+      </tr>
+      <tr>
+         <td markdown="span">`regularFont`</td>
+         <td markdown="span">Used in buttons and subtitles.</td>
+      </tr>
+   </tbody>
+</table>
 
 (With the `globalTheme` property, there aren't other values you can select.)
 
@@ -78,7 +431,7 @@ And this:
 
 These Amazon Ember fonts will be used in the titles, subtitles, descriptions, body, and buttons.
 
-Beyond using different device fonts, you can also use custom fonts. If you use a custom font, store the font in your app's **assets/fonts** directory. Then provide the path to the font in the `branding` object, such as `fonts/Proxima-Nova-Light.tff` (instead of just entering `Proxima Nova Light`):
+In addition to using different device fonts, you can also use custom fonts. If you use a custom font, store the font in your app's **assets/fonts** directory. Then provide the path to the font in the `branding` object, such as `fonts/Proxima-Nova-Light.tff` (instead of just entering `Proxima Nova Light`):
 
 ```json
   "branding": {
@@ -89,312 +442,31 @@ Beyond using different device fonts, you can also use custom fonts. If you use a
   }
 ```
 
-## Customize the Splash Screen
+## Customize the Related Content Section (Optional) {#relatedcontent}
 
-By default, the sample app in Fire App Builder shows the following Splash screen:
+On the Content Details screen, a list of "Related Content" appears below the content preview.
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_splashdiagram" type="svg" alt="Splash screen" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_reccontent" type="png" alt="Related content" %}
 
-You can adjust the Splash screen settings in the custom.xml file:
+You populate this section by matching certain tags in your feed. For more details on configuring Related Content, see ["Related Content (Through Tags)"][fire-app-builder-set-up-recipes-content#tags] in Set Up the Content Recipe.
 
-```xml
-<!-- Splash Screen Customization -->
+## Update the Terms of Use (Optional)
 
-<!-- Background to display on Splash Screen -->
-<drawable name="splash_background">@drawable/bg_generic_nopreview</drawable>
-<!-- Company logo to show on Splash Screen -->
-<drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
-<!-- Copyright string text color -->
-<color name="copyright">#E6FFFFFF</color>
+The Terms of Use section appears in the footer of the app and links to the terms_of_use.html file (located in **app > assets**).
 
-<!-- End of Splash Screen Customization -->
-```
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_termsofusefile" type="png" alt="Terms of Use diagram" %}
 
-The references to `@drawable` refer to images in **TVUIComponent > res > drawable**. Either replace these images with your own customized images, or add unique image files and update the references in the XML to point to your images.
-
-The `bg_generic_nopreview` image is just a 1900 x 1080px black image. This same background is used for the fullbrowse homepage layout, but you can specify a different image reference here if you want.
-
-The `splash_logo` should contain your logo on a transparent background. The logo image size in the sample application is 356 x 108px, but you can use a larger image if you want. The image will be scaled down automatically.
-
-Your logo appears as an overlay on top of the splash screen's background image, so if you're customizing the images, make sure the combination looks good. A light logo on a dark background will have the necessary contrast.
-
-To customize the Copyright text on the Splash screen, see the **strings.xml** folder inside your app's **res > values > strings.xml** folder.
+You can adjust the target for this link in your custom.xml file:
 
 ```xml
-<!-- Copyright string -->
-<string name="copyright">Copyright 2016. All Rights Reserved.</string>
+<string name="terms_of_use_file">terms_of_use.html</string>
 ```
 
-## Customize the Recommended Content Section {#recommendations}
+The Terms of Use file is a sample file that you should edit before distributing your app.  For instance, you might choose to include terms of use, an end user license agreement, privacy notices, and/or other legal notices in this file.
 
-On the Content Details screen, a list of "Recommended Content" appears below the content preview.
+The Terms of Use file also includes notices for open source components that are built in to the sample app by default. These notices are provided as a convenience only. Amazon makes no representations as to their accuracy or completeness and will not be responsible for any inaccuracies or incompleteness.
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="svg" alt="Recommended content" %}
-
-For more details on configuring Recommended Content, see ["Recommended Content (Through Tags)"][fire-app-builder-set-up-recipes-content#tags] in Set Up the Content Recipe.
-
-## Customize the Homepage Layout
-
-The default home screen layout uses the `ContentBrowseActivity`. This layout is referred to as the "Homepage Browse layout."
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_home" type="png" alt="Home" caption="<b>Home with the <code>ContentBrowseActivity</code></b>. This view arranges the videos in various channels or groups. When you view a channel, the first video in that channel group appears as the featured background image, with its title and description in the upper-left." %}
-
-You can change the homepage layout to a more compressed view by using the `FullContentBrowseActivity` instead. This alternative homepage layout is referred to as the "Homepage Full Browse layout."
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_fullbrowse" type="png" alt="Home with FullContentBrowseActivity" caption="<b>Home with <code>FullContentBrowseActivity</code></b>. With this activity, all the videos appear in a more compressed grid, with the channels listed on the left. None of the videos are superimposed as large featured images in the background." %}
-
-The left sidebar can collapse in when the user is browsing through the video titles. This gives more space and focus to your video content.
-
-To change the homepage to the more compressed, Full Browse layout:
-
-1.  Open the **Navigator.json** file (located in **app > assets**).
-2.  In the `graph` object, locate the **CONTENT_HOME_SCREEN**:
-
-    ```json
-    "com.amazon.android.tv.tenfoot.ui.activities.ContentBrowseActivity": {
-          "verifyScreenAccess": false,
-          "verifyNetworkConnection": true,
-          "onAction": "CONTENT_HOME_SCREEN"
-        }
-    ```
-
-3.  Change `ContentBrowseActivity` to `FullContentBrowseActivity`.
-
-The following diagram shows the properties you can customize on the homepage's Browse layout (the default):
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_homepagediagram" type="svg" %}
-
-The <code>browse_background</code> property is set through the TVUIComponent's custom.xml file and references an image rather than a hex value.
-
-The following diagram shows the properties for the homepage's Full Browse layout:
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_althomepagediagram" type="svg" %}
-
-The following code in your app's custom.xml shows where these homepage options are set:
-
-```xml
-    <!-- Browse Customization -->
-
-    <!-- The background gradient color, if no background drawable is provided.
-         Used in default_background.xml -->
-    <color name="background_gradient_start">#000000</color>
-    <color name="background_gradient_end">#DDDDDD</color>
-    <!-- The header's bar color (left-hand navigation bar) -->
-    <color name="browse_headers_bar">#0DFFFFFF</color>
-    <!-- Selected header text color -->
-    <color name="browse_header_selected">#FFFFFFFF</color>
-    <!-- Non-selected header text color -->
-    <color name="browse_header">#CCD8D8D8</color>
-    <!-- Header color when left-hand navigation bar is closed
-         and rows are showing full screen -->
-    <color name="browse_row_header">#99FFFFFF</color>
-    <!-- Search orb color (the circle shape around the search icon) -->
-    <color name="search_orb">#EE962D</color>
-    <!-- Header text size -->
-    <dimen name="browse_header_text">16sp</dimen>
-    <!-- Company logo -->
-    <drawable name="company_logo">@drawable/fire_app_builder_white_2</drawable>
-
-    <drawable name="browse_bg_color">@drawable/bg_generic_nopreview</drawable>
-    <!-- End of Browse Customization -->
-```
-{% include note.html content="Disregard the comments in the Browse Customization section in the application's custom.xml file above. Some of the comments are out of date, and some of the elements aren't properly configured. See the following table to understand what each element does." %}
-
-<table class="grid">
-   <colgroup>
-      <col width="40%" />
-      <col width="60%" />
-   </colgroup>
-   <thead>
-      <tr>
-         <th>Element</th>
-         <th>Description</th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-         <td><code>background_gradient_start</code></td>
-         <td>Does nothing. Ignore.</td>
-      </tr>
-      <tr>
-         <td><code>background_gradient_end</code></td>
-         <td>Does nothing. Ignore.</td>
-      </tr>
-      <tr>
-         <td><code>browse_headers_bar</code></td>
-         <td>Changes the color of the left navigation bar when you're in the compressed homepage layout.</td>
-      </tr>
-      <tr>
-         <td><code>browse_header_selected</code></td>
-         <td>Does nothing. Ignore.</td>
-      </tr>
-      <tr>
-         <td><code>browse_header</code></td>
-         <td>Does nothing. Ignore.</td>
-      </tr>
-      <tr>
-         <td><code>browse_row_header</code></td>
-         <td>For the homepage Browse layout, changes the category title above the videos rows. For the Full Browse layout, changes the color of the category titles in the left navigation bar. Both the selected and non-selected category titles receive this color. The selected category titles are bold, and the non-selected category titles are softer and muted.</td>
-      </tr>
-      <tr>
-         <td><code>search_orb</code></td>
-         <td>Does nothing. Ignore.</td>
-      </tr>
-      <tr>
-         <td><code>browse_header_text</code></td>
-         <td>Changes the size of the category titles.</td>
-      </tr>
-      <tr>
-         <td><code>company_logo</code></td>
-         <td>This image is stored in <b>TVUIComponent > res > drawable</b>. Replace the image with your own logo. The image should be transparent and at least 356px wide by 108px tall. You can use a larger image &mdash; it will be scaled down in the app.</td>
-      </tr>
-      <tr>
-         <td><code>browse_bg_color</code></td>
-         <td>The background image used for both the Full Browse layout and the Splash screen. This image is stored in <b>TVUIComponent > res > drawable</b>. The image is a 1900 x 1080px PNG image with a black color.</td>
-      </tr>
-      <tr>
-         <td><code>browse_background</code></td>
-         <td>This element isn't included in application's custom.xml file &mdash; Ignore. You can simply add the line. This element controls the background image used for the homepage <i>Browse</i> layout. More details about this image are listed below.</td>
-      </tr>
-      <tr>
-         <td><code>browse_bg_color</code></td>
-         <td>This element isn't included in application's custom.xml file &mdash; Ignore. You can simply add the line. This element controls the background image used for the homepage <i>Full Browse</i> layout. More details about this image are listed below.</td>
-      </tr>
-   </tbody>
-</table>
-
-### Background Image for Homepage Browse Layout
-
-The background color for the homepage Browse layout (the default) isn't configurable through the custom.xml values above because there's a line missing in custom.xml:
-
-```
-    <drawable name="browse_background">@drawable/bg_generic</drawable>
-```
-
-You can add this line to your application's custom.xml file and control your background image file used here. Alternatively, you can edit the custom.xml inside **TVUIComponent > res > values > custom.xml**. (The custom.xml file in your app just overwrites the other values in XML files, so setting the property in either file will work. But as a best practice, leave the component files unedited and just edit your application's config.xml file.)
-
-Like the `browse_bg_color` element, the drawable image referenced here is stored in **TVUIComponent > res > drawable** (assuming you're browsing in the Android view).
-
-The bg_generic.png image looks like this:
-
-{% include image.html url="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/firetv/fireappbuilder/bg_generic.png" file="firetv/fireappbuilder/images/bg_generic" type="png" caption="<b>bg_generic.png</b>. The image is a 1900 x 1080px PNG image with transparency in the upper-right area." max-width="80%" %}
-
-To change this default image, create your own image file with the same dimensions. Make the upper-right corner transparent, similar to the existing image. Name it **bg_generic.png** and replace the existing file in **TVUIComponent > res > drawable**.
-
-To make it easy to customize the image, you can [download the Photoshop file](https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/firetv/fireappbuilder/bg_generic.psd._V523835574_.zip) used to create the image. In Photoshop, view the image's layers and use the Paint Bucket tool to apply a new color to the two layers. In the downloadable file, the color has been changed from black to blue to make the colors more apparent.
-
-For the Full Browse layout, you change this image in a similar way &mdash; by replacing the bg_generic_nopreview.png in **TVUIComponent > res > drawable** or by creating a unique image file and updating the reference to it in your application's custom.xml file.
-
-## Customize the Content Cards
-
-You can customize the background colors and dimensions of the content cards. The "cards" refers to the rectangular thumbnails that show the media details. For example, the Home screen displays a row of content cards under the "Jamaican Attractions" title.
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_moviecardsdiagram" type="svg" alt="Fire App Builder cards home" %}
-
-The following code shows the available settings to customize the appearance of these cards:
-
-```xml
-<!-- Movie Info Card Customization -->
-
-<!-- Background color of the card info -->
-<color name="card_info_bg">#2B2B2B</color>
-<!-- Card info title text color -->
-<color name="card_info_title_text">#E6FFFFFF</color>
-<!-- Card info content text color -->
-<color name="card_info_content_text">#FFFFFFFF</color>
-<dimen name="card_info_title_text">8sp</dimen>
-<!-- Card info content text size -->
-<dimen name="card_info_content_text">12sp</dimen>
-<!-- Card info selected title text size -->
-<dimen name="card_info_selected_title_text">10sp</dimen>
-<!-- Card info selected content text size -->
-<dimen name="card_info_selected_content_text">15sp</dimen>
-
-<!-- End of Movie Info Card Customization -->
-```
-
-## Customize the Content Details
-
-You can customize various elements on the Content Details screen:
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_contentdetailsdiagram" type="svg" %}
-
-The relevant code in the custom.xml file is as follows:
-
-```xml
-<!-- Details Customization -->
-
-<!-- Text color for unfocused action button -->
-<color name="action_button_text_color">#E6FFFFFF</color>
-<!-- Text color for focused action button -->
-<color name="action_button_text_color_focused">#E6FFFFFF</color>
-<!-- Background color for focused action button -->
-<drawable name="action_button_focused">@drawable/btn_generic_focused</drawable>
-<!-- Background color for normal state of action button -->
-<drawable name="action_button_normal">@drawable/btn_normal</drawable>
-<!-- Details description title text color -->
-<color name="details_description_title">#E6FFFFFF</color>
-<!-- Details description body text color -->
-<color name="details_description_body">#FFFFFFFF</color>
-<!-- Action button text size -->
-<dimen name="action_text">14sp</dimen>
-<!-- Details description title text size -->
-<dimen name="details_description_title_text">24sp</dimen>
-<!-- Details description body text size -->
-<dimen name="details_description_body_text">16sp</dimen>
-
-<!-- End of Details Customization -->
-```
-
-## Customize the Playback Overlay
-
-You can customize the playback overlay on the Content Renderer screen:
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_contentrendererdiagram" type="svg" alt="Content renderer screen" %}
-
-```xml
-<!-- Playback Overlay Customization -->
-
-<!-- Background color of the playback overlay -->
-<color name="playback_background">#9922262A</color>
-<!-- Background color of the progress bar -->
-<color name="playback_background_progress_bar">#FF373737</color>
-<!-- Color of buffered progress bar -->
-<color name="playback_buffered_progress">#FF5A5A5A</color>
-<!-- Color of the progress bar -->
-<color name="progress_bar">#FFDADADA</color>
-<!-- Text color of the playback time -->
-<color name="playback_time_text">#FFFFFFFF</color>
-<!-- Hide More options status activation status-->
-<bool name="hide_more_options">true</bool>
-<!-- End of Playback Overlay Customization -->
-```
-
-## Customize the Search Bar
-
-You can customize the background color and text used in the search bar.
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_searchscreendiagram" type="svg" alt="Search screen diagram" %}
-
-The relevant code in custom.xml is as follows:
-
-```xml
-
-<!-- Search Bar Customization -->
-
-<!-- Background color of search orb -->
-<color name="search_orb_background">#EE962D</color>
-<!-- Icon to display inside of search orb -->
-<drawable name="search_icon">@drawable/ic_search</drawable>
-<!-- Background color of Search screen -->
-<drawable name="search_background">@drawable/bg_gradient_search</drawable>
-<!-- Search hint text -->
-<string name="search_bar_hint">I\'m looking for…</string>
-
-<!-- End of Search Bar Customization -->
-```
-
-## Customize the Content Reload Time
+## Customize the Content Reload Time (Optional)
 
 You can customize the time it takes for content to reload (content refers to  the videos and other details that your app loads from the media feed). By default the reload time is 14400000 milliseconds, or 4 hours. After this time expires, the Navigator.js file (located in **app > assets > resources**) will reload the recipes and data loader settings.
 
@@ -406,33 +478,14 @@ You can customize the time it takes for content to reload (content refers to  th
 <!-- End Content Reload time in milliseconds -->
 ```
 
-## Customize the App Icon
+## More Extensive Customizations
 
-You can change the app icon. This is the image thumbnail that appears in your list of apps on Fire TV.
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_appicondiagram" type="svg" alt="App icon" %}
-
-To update this file, change the ic_launcher.svg files. Switch to the **Project** view, and then look in **app > src > main > res**. There are 4 app icon files, each corresponding to different screen sizes:
-
-* mipmap-hdpi (72x72px)
-* mipmap-mdpi (48x48px)
-* mipmap-xhdpi (96x96px)
-* mipmap-xxhdpi (96x96px)
-
-The app icon has a transparent background.
-
-## Update the Terms of Use
-
-The Terms of Use section appears in the footer of the app and links to the terms_of_use.html file (located in **app > assets**).
-
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_termsofusediagram" type="svg" alt="Terms of Use diagram" %}
-
-The Terms of Use file is a sample file that you should edit before distributing your app.  For instance, you might choose to include terms of use, an end user license agreement, privacy notices, and/or other legal notices in this file.
-
-The Terms of Use file also includes notices for open source components that are built in to the sample app by default. These notices are provided as a convenience only. Amazon makes no representations as to their accuracy or completeness and will not be responsible for any inaccuracies or incompleteness.
+Although you can dig into the Fire App Builder code and alter the layouts in deeper ways, major revamping of the user interface is not supported through simple edits to XML files (nor is documentation available for more extensive changes). Do not expect to completely change the interface in ways beyond what is described here.
 
 ## Next Steps
 
 To use components that leverage authentication, ads, in-app purchasing, or analytics, see [Components Overview][fire-app-builder-interfaces-and-components].
 
 {% include links.html %}
+
+[appstoreportal]: https://www.amazon.com/s/ref=lp_2350149011_nr_p_n_feature_sixteen__1?fst=as%3Aoff&rh=n%3A2350149011%2Cp_n_feature_sixteen_browse-bin%3A9842739011&bbn=2350149011&ie=UTF8&qid=1491337288&rnid=9433728011

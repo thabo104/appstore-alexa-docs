@@ -5,9 +5,10 @@ sidebar: fireappbuilder
 product: Fire App Builder
 toc-style: kramdown
 github: true
+published: false
 ---
 
-By default the Amazon Media Player is configured in Fire App Builder. However, if you have a specific need to use the BrightCove MediaPlayer, you can also choose to use this media player instead. There aren't any feature differences between the two. If your media or app infrastructure is somehow coupled closely with BrightCove, you can simply choose to load it instead of Amazon Media Player.
+By default the Amazon Media Player is configured in Fire App Builder. However, if you have a specific need to use the BrightCove Media Player, you can also choose to use this media player instead. There aren't any feature differences between the two. If your media or app infrastructure is coupled closely with BrightCove, you can simply choose to load it instead of Amazon Media Player.
 
 When the user clicks the Watch Now button on the Content Renderer screen, the BrightCove Media Player plays the content:
 

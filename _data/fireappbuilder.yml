@@ -38,12 +38,6 @@ folders:
     ref: fire-app-builder-overview
     bookmarks: [requirements]
 
-  - title: Release Notes
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes
-    jurl: /fire-app-builder-release-notes.html
-    ref: fire-app-builder-release-notes
-    bookmarks: [known_issues]
-
   - title: Beginning-to-End Process Overview
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-end-to-end-process
     jurl: /fire-app-builder-end-to-end-process.html
@@ -55,6 +49,22 @@ folders:
     ref: fire-app-builder-questions-and-answers
     bookmarks: [translator]
 
+    subfolders:
+    - title: Release Notes
+      subfolderitems:
+
+      - title: Version 1.0.2 Release Notes
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-2
+        jurl: /fire-app-builder-release-notes-version-1-0-2.html
+        ref: fire-app-builder-release-notes-version-1-0-2
+        bookmarks: [known_issues]
+
+      - title: Version 1.0.0 Release Notes
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-0
+        jurl: /fire-app-builder-release-notes-version-1-0-0.html
+        ref: fire-app-builder-release-notes-version-1-0-0
+        bookmarks: [known_issues]
+
 - title: 1. Get Set Up
   folderitems:
 
@@ -62,7 +72,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-download-and-build
     jurl: /fire-app-builder-download-and-build.html
     ref: fire-app-builder-download-and-build
-    bookmarks: customize
+    bookmarks: [customize]
 
   - title: Connect to Fire TV Through ADB
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-connecting-adb-to-fire-tv
@@ -73,6 +83,11 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-app-tour
     jurl: /fire-app-builder-app-tour.html
     ref: fire-app-builder-app-tour
+
+  - title: Customize the Fire App Builder Sample Project
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-customize-the-application-project
+    jurl: /fire-app-builder-customize-the-application-project.html
+    ref: fire-app-builder-customize-the-application-project
 
 - title: 2. Configure Your Feed
   folderitems:
@@ -90,13 +105,13 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-categories
     jurl: /fire-app-builder-set-up-recipes-categories.html
     ref: fire-app-builder-set-up-recipes-categories
-    bookmarks: [matchlistparameter]
+    bookmarks: [matchlistparameter, queryparameter]
 
   - title: Set Up the Contents Recipe
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-set-up-recipes-contents
     jurl: /fire-app-builder-set-up-recipes-content.html
     ref: fire-app-builder-set-up-recipes-content
-    bookmarks: [matchlistparameter, tags]
+    bookmarks: [matchlistparameter, tags, queryparameter]
 
   - title: Navigator Configuration Overview
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-configure-navigator
@@ -114,6 +129,11 @@ folders:
     ref: fire-app-builder-configure-navigator-open-feeds
     bookmarks: [hardcodingcategories]
 
+  - title: Configure a Media RSS (MRSS) Feed
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-configure-mrss-feed
+    jurl: /fire-app-builder-configure-mrss-feed.html
+    ref: fire-app-builder-configure-mrss-feed
+
 - title: 3. Customize the Appearance
   folderitems:
 
@@ -121,7 +141,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-customize-look-and-feel
     jurl: /fire-app-builder-customize-look-and-feel.html
     ref: fire-app-builder-customize-look-and-feel
-    bookmarks: [recommendations]
+    bookmarks: [relatedcontent]
 
 - title: 4. Add Components
   folderitems:
@@ -164,21 +184,30 @@ folders:
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-crashlytics-component
         jurl: /fire-app-builder-crashlytics-component.html
         ref: fire-app-builder-crashlytics-component
+        bookmarks: [customtagnames]
 
       - title: Flurry Analytics Component
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-flurry-analytics-component
         jurl: /fire-app-builder-flurry-analytics-component.html
         ref: fire-app-builder-flurry-analytics-component
+        bookmarks: [customtagnames]
 
       - title: Google Analytics Component
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-google-analytics-component
         jurl: /fire-app-builder-google-analytics-component.html
         ref: fire-app-builder-google-analytics-component
+        bookmarks: [customtagnames]
 
       - title: Omniture Analytics Component
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-omniture-analytics-component
         jurl: /fire-app-builder-omniture-analytics-component.html
         ref: fire-app-builder-omniture-analytics-component
+        bookmarks: [customtagnames]
+
+      - title: Track Feed Attributes That Aren't Used in Fire App Builder
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-track-additional-attributes
+        jurl: /fire-app-builder-track-additional-attributes.html
+        ref: fire-app-builder-track-additional-attributes
 
     - title: Authorization components
       subfolderitems:
@@ -187,6 +216,7 @@ folders:
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-adobe-pass-auth-component
         jurl: /fire-app-builder-adobe-pass-auth-component.html
         ref: fire-app-builder-adobe-pass-auth-component
+        bookmarks: [loggedinprovider]
 
       - title: Facebook Authorization Component
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-facebook-auth-component
@@ -213,6 +243,38 @@ folders:
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-amazon-media-player-component
         jurl: /fire-app-builder-amazon-media-player-component.html
         ref: fire-app-builder-amazon-media-player-component
+
+- title: 5. Submit Your App
+  folderitems:
+
+  - title: Submit Your Fire App Builder App to the Appstore
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-submit-your-app
+    jurl: /fire-app-builder-submit-your-app.html
+    ref: fire-app-builder-submit-your-app
+
+- title: Recommendations
+  folderitems:
+
+  - title: Recommendations in Fire App Builder
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-recommendations-overview
+    jurl: /fire-app-builder-recommendations-overview.html
+    ref: fire-app-builder-recommendations-overview
+
+  - title: Send Global Recommendations
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-recommendations-global
+    jurl: /fire-app-builder-recommendations-global.html
+    ref: fire-app-builder-recommendations-global
+
+  - title: Send Related Recommendations
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-related-recommendations
+    jurl: /fire-app-builder-related-recommendations.html
+    ref: fire-app-builder-related-recommendations
+    bookmarks: amazon-extras
+
+  - title: Customize the recommendations with Amazon extras
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-amazon-extras
+    jurl: /fire-app-builder-amazon-extras.html
+    ref: fire-app-builder-amazon-extras
 
 - title: Other Development Topics
   folderitems:

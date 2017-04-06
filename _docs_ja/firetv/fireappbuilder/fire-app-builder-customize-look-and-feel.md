@@ -125,13 +125,13 @@ Droid Sans Mono、Kindle Symbol、MotoyaLMaru W3 mono、MT Chinese Surrogates、
 <string name="copyright">Copyright 2016. All Rights Reserved.</string>
 ```
 
-## [おすすめコンテンツ] セクションをカスタマイズする {#recommendations}
+## [おすすめコンテンツ] セクションをカスタマイズする {#relatedcontent}
 
 [Content Details] 画面では、コンテンツのプレビューの下に "おすすめコンテンツ" の一覧が表示されます。
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_recommendedcontentdiagram" type="svg" alt="[おすすめコンテンツ]" %}
 
-[Recommended Content] の設定方法の詳細については、「コンテンツレシピをセットアップする」の「["おすすめコンテンツ (タグを使用)"][fire-app-builder-set-up-recipes-content#tags]」を参照してください。
+[Related Content] の設定方法の詳細については、「コンテンツレシピをセットアップする」の「["おすすめコンテンツ (タグを使用)"][fire-app-builder-set-up-recipes-content#tags]」を参照してください。
 
 ## ホームページのレイアウトをカスタマイズする
 
