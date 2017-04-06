@@ -89,15 +89,15 @@ Use these instructions if you have media feeds that are token-based. In this ste
          }
     ]
     ```
-    
-    Remember to separate items in the array with commas. 
-    
+
+    Remember to separate items in the array with commas.
+
 3.  If you haven't already done so, update the LightCastDataLoaderRecipe file names to increment each time (LightCastDataLoaderRecipe1.json, LightCastDataLoaderRecipe2.json, LightCastDataLoaderRecipe3.json, LightCastDataLoaderRecipe4.json) for each CategoriesRecipe and ContentsRecipe instance. This is because the DataLoaderRecipe can only load one URL at a time, so if you have 4 URLs in your URL file, you need 4 DataLoaderRecipe files to load all the feeds.
-    
+
     {% include note.html content="Optionally, you can rename the files to a name that more closely reflects your app, or you can leave them as LightCast." %}
-    
-5.  Open each of your LightCastDataLoaderRecipe.json files and replace the contents with the following:
-    
+
+5.  Open each of your **LightCastDataLoaderRecipe.json** files and replace the contents with the following:
+
     ```json
     {
       "task" : "cache_data",
@@ -108,7 +108,7 @@ Use these instructions if you have media feeds that are token-based. In this ste
       }
     }
     ```
-    
+
 6.  In each of your DataLoaderRecipe files, configure the `base_url` and `token_generation_url` with the same values you used in **BasicTokenBasedUrlGeneratorConfig.json** (inside **assets > configurations**). However, for each LightCastDataLoaderRecipe, load a different media feed URL, so that each `base_url` value is unique.
 
 {% include_relative navigator_configuration_common.md %}

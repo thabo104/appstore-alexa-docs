@@ -1,8 +1,8 @@
-## Customize the Tag Names
+## Customize the Tag Names {#customtagnames}
 
 You can customize the names of the analytics tags. (Tags are action or attribute names). Customizing the names can make it easier to identify activities you're interested in.
 
-The complete list of analytics tags are available in `AnalyticsInterface > java > com.amazon.analytics > AnalyticsTags > AnalyticsTags.java`.
+The complete list of analytics tags are available in `AnalyticsInterface > java > com.amazon.analytics > AnalyticsTags.java`.
 
 Here's an example tag:
 
@@ -37,3 +37,5 @@ public static final String ACTION_START_APP = "ACTION_START_APP";
     The values on the left map to the analytics tags in AnalyticsTags.java. The values on the right map to the new values for the tags.
 
     If you add a tag that is not customizable, you will see a warning in the logs indicating that the tag cannot be customized. The customization will be ignored.
+
+{% include tip.html content="If you want to track additional attributes from your feed that aren't used in the Fire Builder UI, see [Track Feed Attributes That Aren't Used in Fire App Builder][fire-app-builder-track-additional-attributes]." %}

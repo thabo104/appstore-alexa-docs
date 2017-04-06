@@ -180,6 +180,7 @@ Follow these guidelines when using the [ContentRecommendation.Builder](https://d
 
 The following table lists extras that you can add to your notification objects.
 
+<<<<<<< HEAD
 <table class="grid">
    <colgroup>
    <col width="35%" />
@@ -309,6 +310,9 @@ The following table lists extras that you can add to your notification objects.
       </tr>
    </tbody>
 </table>
+=======
+{% include content/{{site.language}}/fire/amazon-recommendations-enhancements.md scenario="ftv" %}
+>>>>>>> tomdev-fab102release
 
 ## Configuring the Manifest
 

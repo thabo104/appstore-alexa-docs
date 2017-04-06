@@ -42,9 +42,9 @@ When you play media, the Renderer screen appears.
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_contentrenderer" type="jpg" alt="Renderer" caption="<b>Renderer</b>. This screen appears when you play media." %}
 
-When the controls display on the video, Recommended Content appears below the controls below a dim overlay. If you click the down arrow on your remote, the recommended content shifts into prominent view without the dim overlay.
+When the controls display on the video, Related Content appears below the controls below a dim overlay. If you click the down arrow on your remote, the related content shifts into prominent view without the dim overlay.
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_contentrecexpanded" type="jpg" alt="Recommended Content" caption="Recommended Content selected and displayed" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_contentrecexpanded" type="jpg" alt="Related Content" caption="Related Content selected and displayed" %}
 
 If you've already played the media, a different set of controls appears below the video when you view the content details.
 

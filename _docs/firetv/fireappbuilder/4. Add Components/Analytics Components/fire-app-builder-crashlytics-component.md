@@ -28,7 +28,7 @@ Assuming you don't already have a Crashlytics account, sign up for one and provi
 
     {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_fabricgettingstarted" type="png" caption="Instead of downloading and installing the Fabric plugin with these 3 steps, ignore this screen entirely. You do not need to install the Fabric plugin in Android Studio to install or configure the Crashlytics component. This plugin simply ensures you have made updates to your code that allow Crashlytics to work. In the steps that follow, you will be making adjustments to the Fire App Builder code that will accomplish a similar end." %}
 
-4.  Go to the [Install Crashlytics via Gradle](https://fabric.io/kits/android/crashlytics/install) page and look in the "Add Your API Key" section.
+4.  Go to the [Install Crashlytics via Gradle](https://fabric.io/kits/android/crashlytics/install) page and look in the **Add Your API Key** section.
 
     Assuming you're still logged in, you'll see your API key automatically populated in the code sample:
 
@@ -42,84 +42,59 @@ Assuming you don't already have a Crashlytics account, sign up for one and provi
 
 These instructions assume you're in the Android view.
 
-1.  Load the Crashlytics component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
-2.  Remove any other analytics components that are loaded in your app (such as FlurryAnalyticsComponent, OmnitureAnalyticsComponent, or LoggerAnalyticsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.    
+1.  Remove any other analytics components that are loaded in your app (such as FlurryAnalyticsComponent, OmnitureAnalyticsComponent, GoogleAnalyticsComponent, or LoggerAnalyticsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.  
 
     {% include_relative componentnote_analytics.html %}
 
-3.  Expand **Gradle Scripts** and and open the **build.gradle (Project: Application)** file. (Your app will not be named "Fire App Builder," but open the build.gradle file for your app's name.)
-4.  Uncomment the code as noted in the Crashlytics code comments. The following code sample shows the code correctly uncommented:
+2.  Load the Crashlytics component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
+
+    {% include warning.html content="Initially you will see an error message after you click Sync Gradle and Gradle tries to get the necessary resources. This is because Crashlytics requires a valid API key entered into its AndroidManifest.xml file &mdash; but the CrashlyticsComponent directory won't be visible in your Android project until you sync Gradle. Disregard the Gradle build error for now." %}
+
+3.  In the Android view, expand **Gradle Scripts** and open the **build.gradle (Module: app)**. Uncomment the code as indicated by the `//Uncomment when using CrashlyticsComponent` comments. The following code sample shows the code correctly uncommented:
 
     <pre>
+    <span class="red">// Uncomment when using CrashlyticsComponent</span>
+    apply plugin: 'io.fabric'
+    apply from: "../artifacts.gradle"
+
+    repositories {
+        <span class="red">// Uncomment when using CrashlyticsComponent</span>
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
     buildscript {
         repositories {
-            mavenCentral()
             jcenter()
             <span class="red">// Uncomment when using CrashlyticsComponent</span>
             maven { url 'https://maven.fabric.io/public' }
         }
         dependencies {
-            classpath 'com.android.tools.build:gradle:1.5.0'
             classpath 'me.tatarka:gradle-retrolambda:3.2.3'
-        <span class="red">// Uncomment when using CrashlyticsComponent</span>
-            classpath 'io.fabric.tools:gradle:1.+'
-        //         NOTE: Do not place your application dependencies here; they belong
-        //         in the individual module build.gradle files
-        }
-    }
-
-    allprojects {
-        repositories {
-            jcenter()
-            mavenCentral()
-            maven { url 'http://repo.brightcove.com/releases' }
             <span class="red">// Uncomment when using CrashlyticsComponent</span>
-            maven { url 'https://maven.fabric.io/public' }
+            classpath 'io.fabric.tools:gradle:1.+'
         }
     }
     </pre>
 
-7.  Go to **CrashlyticsComponent > manifests** and open the **AndroidManifest.xml** file.
-8.  Insert your Crashlytics key in the `value` property:
+5.  Go to **CrashlyticsComponent > manifests** and open the **AndroidManifest.xml** file. Insert your Crashlytics key in the `value` property:
 
-    ```xml
+    ```java
     android:name="io.fabric.ApiKey"
-    android:value="0c508f569dc758c937d5c0046a17871dcccce2c8"/>
+    android:value="your_fabric_api_account_key"/>
     ```
 
-    {% include note.html content="There's a string named `your_api_key` in **CrashlyticsComponent > res > values > strings.xml**. However, you don't need to do anything with this string. The comment above the code instructs you to insert the Crashlytics key in the AndroidManifest.xml file instead." %}
+6.  Go to **CrashlyticsComponent > res > values** and open  **values.xml**. Insert your Crashlytics key in the `your_api_key` string:
 
-9.  Expand the **Gradle Scripts** folder and open the **build.gradle (Module: app)** file.
-10. Uncomment the line as indicated by the Crashlytics comment:
+    ```xml
+    <string name="your_api_key">your_api_key</string>
+    ```
 
-    <pre>
-    <span class="red">// Uncomment when using CrashlyticsComponent</span>
-    apply plugin: 'io.fabric'
-    </pre>
-
-11. Expand the **Gradle Scripts** folder open the **build.gradle (Module: app)** file.
-12. Uncomment the lines as indicated in the Crashlytics comment:
-
-    <pre>
-      androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.3.1'
-
-        compile project(':TVUIComponent')
-        compile project(':UAMP')
-        compile project(':AMZNMediaPlayerComponent')
-        compile project(':PassThroughAdsComponent')
-        compile project(':FacebookAuthComponent')
-        compile project(':AmazonInAppPurchaseComponent')
-        compile project(':LoggerAnalyticsComponent')
-        <span class="red">// Uncomment when using CrashlyticsComponent</span>
-        compile('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
-            transitive = true;
-        }
-    </pre>
-13.  Build and run your app.
+7.  Click the **Sync Gradle button** {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_syncgradlebutton" type="png" %}.
+8.  Build and run your app.
 
 When you build and run your app, Crashlytics will detect that your code is correctly configured. At this point, you will no longer be blocked at the [Crashlytics onboarding screen](https://www.fabric.io/onboard/pending) and will be able to proceed to your Crashlytics dashboard.
 
-{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_crashlyticsonboardsuccess" type="png" caption="When fabric detects that your Crashlytics configuration is correct (based on you building your app), you see a screen like this that lets you proceed to your Dashboard, where you can view your crash analytics." url="https://www.fabric.io/onboard/pending" %}
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder_crashlyticsonboardsuccess" type="png" caption="When Fabric detects that your Crashlytics configuration is correct (based on you building your app), you see a screen like this that lets you proceed to your Dashboard, where you can view your crash analytics." url="https://www.fabric.io/onboard/pending" %}
 
 ## Step 3. Make a Test Crash {#step3}
 
@@ -153,5 +128,8 @@ After you have set up the code, run the app, and caused a crash, Crashlytics wil
 3.  View the information and settings on the Dashboard.
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_crashlytics_dashboard" type="png" caption="Sample crash appearing in the Crashlytics Dashboard" %}
+
+{% include content/{{site.language}}/fire/fire-app-builder-customize-analytics-tags.md filename="CrashlyticsCustomAnalyticsTags.json" %}
+
 
 {% include links.html %}

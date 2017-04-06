@@ -7,6 +7,8 @@ toc-style: kramdown
 github: true
 ---
 
+{% include warning.html content="This component is currently broken and unavailable. Developers are investigating the issue. When the Login with Amazon component is fixed, we will add a note in the release notes and remove this note here." %}
+
 The Login with Amazon Component allows you to prompt users to log in to your Amazon Fire TV app using their Amazon account credentials before they perform a specific action, such as watching media. To learn more, see [Login with Amazon](https://developer.amazon.com/public/apis/engage/login-with-amazon).
 
 Since Amazon Fire TV already requires users to log in with their Amazon accounts when they set up and register their Fire TV, the real benefit of the component isn't that it allows users to log in with their Amazon account. The component's benefit is that it prompts users to consent to share their Amazon name and email address with your app. This allows you to get a better sense of your audience.
@@ -115,7 +117,7 @@ To get the MD5 and SHA-256 values from your signature, you use a Java utility ca
        For Windows users, use Windows methods for adding tools to your PATH.
 
 2.  With keytool in your PATH, browse to the folder where the `debug.keystore` resides. This path is as follows:
-    
+
     ```
     /Users/<your username>/.android/debug.keystore
     ```

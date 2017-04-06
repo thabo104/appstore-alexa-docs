@@ -277,6 +277,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-best-practices
     jurl: /fire-tv-recommendations-best-practices.html
     ref: fire-tv-recommendations-best-practices
+    bookmarks: [dont-exceed-the-notifications-limit]
 
 - title: Build Webapps for Fire TV
   folderitems:

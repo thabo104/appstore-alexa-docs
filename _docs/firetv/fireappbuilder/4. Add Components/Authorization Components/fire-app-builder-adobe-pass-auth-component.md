@@ -311,4 +311,49 @@ To configure which screens require authentication:
     }
     ```
 
+## Show the Content Provider Logo to Users {}#loggedinprovider}
+
+When a user logs in to a provider through Adobe Pass, you can show the provider logo on the screen of the app. You do this by supplying an MVPD URL that contains the MVPD (multichannel video programming distributor) along with the MVPD's logo.
+
+Here's an example with Hallmark app, which has the Adobe Pass component integrated. In this first screen, the user is *not* logged in, so no provider logo appears.
+
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder-nomvplogo" type="png" max-width="600px" alt="No MVP logo" %}
+
+After the user logs in, the provider logo ("Quantum Vu") appears to the right of the app logo.
+
+{% include image.html file="firetv/fireappbuilder/images/fireappbuilder-mvplogo" type="png" max-width="600px" alt="No MVP logo" %}
+
+**To add the provider's logo for logged-in users**:
+
+In your app's **custom.xml** file, add a string called `mvpd_url` pointing to your MVPD data, like this:
+
+```xml
+<string name="mvpd_url">http://somedomain.com/where/my/mvpd/details/reside</string>
+```
+
+The MVPD URL must include data in the following JSON format:
+
+```json
+{
+   "mvpdWhitelist":[
+      {
+         "mvpd":"xyz123",
+         "loggedInImage":"http://www.xyz123.mysite.com/content/myimage.png"
+      },
+      {
+         "mvpd":"qrs456",
+         "loggedInImage":"http://www.qrs456.mysite.com/content/myfile.png"
+      }
+   ]
+}
+```
+
+Although your MVPD data will most likely contain more values, only the properties above are necessary for Fire App Builder to display the provider logo.
+
+You can test the provider logo feature by logging in and out of your app using the Login / Logout button at the bottom of the app.
+
+{% include note.html content="The provider logo should have a transparent background so that it blends in nicely with your app's background." %}
+
+
+
 {% include links.html %}

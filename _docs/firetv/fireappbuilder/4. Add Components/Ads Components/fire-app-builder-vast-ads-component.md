@@ -18,7 +18,7 @@ Fire App Builder supports the VAST ads template (Video Ad Serving Template). VAS
 
 >VAST is a Video Ad Serving Template for structuring ad tags that serve ads to video players. Using an XML schema, VAST transfers important metadata about an ad from the ad server to a video player. Initially launched in 2008, VAST has since played an important role in the growth of the digital video marketplace. [Digital Video Ad Serving Template (VAST) 4.0](http://www.iab.com/guidelines/digital-video-ad-serving-template-vast-4-0/)
 
-If you want to show DoubleClick ads in your app, you can do so through the VAST Ads Component. However, note that Fire App Builder supports only a subset of VAST features.
+If you want to show DoubleClick ads in your app, you can do so through the VAST Ads Component. VAST has a long list of potential features. However, note that Fire App Builder supports only a subset of VAST features. *Only the features listed in the documentation are officially supported by Fire App Builder*. 
 
 * TOC
 {:toc}
@@ -133,18 +133,18 @@ To configure VAST Ads:
 
 1.  Load the VAST ads component into your app. See the [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
 2.  Remove any other ad components that are loaded in your app (such as FreeWheelAdsCompnent or PassThroughAdsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
-    
+
     {% include_relative componentnote_ads.html %}
-    
+
 2.  Go to **VastAdsComponent > res > values** and open **strings.xml**. Copy the `vast_preroll_tag` string and paste it into your own app's **custom.xml** file (inside res > values):
-    
+
     ```xml
     <string name="vast_preroll_tag">"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&amp;iu=/124319096/external/single_ad_samples&amp;ciu_szs=300x250&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vast&amp;unviewed_position_start=1&amp;cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&amp;correlator="</string>
     ```
-    
+
 3.  Customize value for the `vast_preroll_tag` string with your own VAST ads tag.
 
-    Note that in your VAST tag, the following characters must be encoded: 
+    Note that in your VAST tag, the following characters must be encoded:
 
     <table class="small">
       <thead>
@@ -178,4 +178,3 @@ To configure VAST Ads:
     </table>
 
 {% include links.html %}
-

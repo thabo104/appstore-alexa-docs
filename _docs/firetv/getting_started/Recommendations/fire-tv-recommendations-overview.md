@@ -117,7 +117,7 @@ Can I view metrics to see clicks on recommendations from the Fire TV home screen
 Can users turn recommendations off?
 :  No. Although users can turn notifications off for specific apps, they cannot turn recommendations off.
 
-For more background reading on recommendations, see [Android TV Recommendations: What's in it for my app or game?][6] from NVIDIA.
+For more background reading on recommendations, see [Android TV Recommendations: What's in it for my app or game?][6].
 
 ## Next steps
 

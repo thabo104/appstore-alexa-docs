@@ -30,7 +30,7 @@ Keep your recommendations fresh and inviting by deleting old cards. Track what c
 
 If you continue to send stale recommendations, users might actually uninstall your app.
 
-## Don't exceed the notifications limit
+## Don't exceed the notifications limit {#dont-exceed-the-notifications-limit}
 
 Android enforces a [maximum limit of 50 notifications][1] for each package. This limit includes both recommendations and [other notifications][notifications-for-amazon-fire-tv] your app sends.
 

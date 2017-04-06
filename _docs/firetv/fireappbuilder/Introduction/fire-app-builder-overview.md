@@ -7,9 +7,9 @@ github: true
 toc-style: kramdown
 ---
 
-Fire App Builder provides a Java-based framework that you can use to easily and quickly build streaming media Android apps for Amazon Fire TV. 
+Fire App Builder provides a Java-based framework that you can use to easily and quickly build streaming media Android apps for Amazon Fire TV.
 
-Fire App Builder lets you build an engaging, high-quality media experience on Fire TV following best practices and techniques &mdash; without having to develop all the code yourself. Fire App Builder's code is Java-based and uses Android Studio, Gradle, and other tools common to Android app development. 
+Fire App Builder lets you build an engaging, high-quality media experience on Fire TV following best practices and techniques &mdash; without having to develop all the code yourself. Fire App Builder's code is Java-based and uses Android Studio, Gradle, and other tools common to Android app development.
 
 Fire App Builder is released as an open source project on Github ([github.com/amzn/fire-app-builder](https://github.com/amzn/fire-app-builder)) under the Apache 2.0 license.
 
@@ -20,9 +20,9 @@ Fire App Builder is released as an open source project on Github ([github.com/am
 
 When you create an app with Fire App Builder, you configure the settings for your data feed, screen layouts, and functionality through a series of JSON files. You also construct query syntax to get the categories and contents from your media feed.
 
-For authentication, ads, analytics, or in-app purchasing, you can use a variety of pluggable components that implement interfaces. To customize the look and feel of your app, including font, colors, logos, layouts, and other details, you simply update some values in XML or JSON files (rather than coding directly in Java). 
+For authentication, ads, analytics, or in-app purchasing, you can use a variety of pluggable components that implement interfaces. To customize the look and feel of your app, including font, colors, logos, layouts, and other details, you simply update some values in XML or JSON files (rather than coding directly in Java).
 
-Overall, Fire App Builder allows you to quickly develop a high quality app without doing Java programming. If you want to extend Fire App Builder with more advanced functionality, you can use Fire App Builder as the underlying framework and build on top of it, since most of Fire App Builder's components are modular. 
+Overall, Fire App Builder allows you to quickly develop a high quality app without doing Java programming. If you want to extend Fire App Builder with more advanced functionality, you can use Fire App Builder as the underlying framework and build on top of it, since most of Fire App Builder's components are modular.
 
 ## Sample App from Fire App Builder
 
@@ -34,12 +34,12 @@ The sample app in Fire App Builder contains a generic video feed from Lightcast 
 
 ## Who Fire App Builder Is For
 
-Fire App Builder is designed for companies with streaming media assets (similar to Netflix or Hulu) who want to make their content available online through Fire TV and other Android TV platforms. You would be a good fit if you have a video feed where your media assets (movies, shows, or other video content) are published. 
+Fire App Builder is designed for companies with streaming media assets (similar to Netflix or Hulu) who want to make their content available online through Fire TV and other Android TV platforms. You would be a good fit if you have a video feed where your media assets (movies, shows, or other video content) are published.
 
-The media feed can be JSON or XML, but it must be its own feed rather than a Youtube or Vimeo channel. (If it's XML, it can be a media RSS feed, such as what you submit to iTunes.) The feed can be in any structure &mdash; you'll use query syntax to select the categories and contents from your feed. 
+The media feed can be JSON or XML, but it must be its own feed rather than a Youtube or Vimeo channel. (If it's XML, it can be a [media RSS feed](fire-app-builder-configure-mrss-feed), for example, such as what you submit to iTunes.) The feed can be in any structure &mdash; you'll use query syntax to select the categories and contents from your feed.
 
 Additionally, Fire App Builder requires you to configure files using Android Studio, so it's geared toward developer types who prefer to create their app using Java-based Android (instead of HTML5 web technologies). You can also build on top of the Fire App Builder framework to create more sophisticated apps. Essentially Fire App Builder is the Fire TV SDK for Android Java developers.
- 
+
 If you're more of a content creator instead of a coder, or you just want to build a Fire TV app for your Youtube videos, or if you're not comfortable working in Android Studio with code (even though no programming skills are required), consider using the [Web App Starter Kit for Fire TV](the-web-app-starter-kit-for-fire-tv) instead.
 
 ## Requirements to Work with Fire App Builder {#requirements}
@@ -53,6 +53,12 @@ To develop with Fire App Builder, you will need the following:
 * **A-to-A USB cable**. If you're using Fire TV (not the stick) and connecting your computer to Fire TV through USB (instead of through a wireless network), you will need an A-to-A USB cable. Instead of using a cable, you can also connect to Fire TV devices through a network. (See [Connecting to Fire TV Through ADB][fire-app-builder-connecting-adb-to-fire-tv].)
 * **Media feed with necessary elements.** You will need a media feed (in either JSON or XML format) with video assets as well as the following feed elements: title, ID, description, URL, card image, background image. (The same image can be used for both the card and background.) Any video format supported by [Exoplayer](https://google.github.io/ExoPlayer/supported-formats.html) is compatible with Fire App Builder.
 
+## Changing the App Appearance
+
+When you build your app, you can customize the look and feel by changing colors, fonts, and images. To customize the images, you will need at least the following image assets: logo, splash screen logo, and app icon.
+
+More customization is possible, including the layout. See [Customize the Look and Feel of Your App][fire-app-builder-customize-look-and-feel] for details.
+
 ## Fire App Builder Features
 
 Fire App Builder provides the following features:
@@ -64,9 +70,9 @@ Fire App Builder provides the following features:
 
 ## Fire TV Terminology and Devices
 
-"[Fire TV](https://www.amazon.com/dp/B00U3FPN4U)" refers to the Fire TV box, while "[Fire TV Stick](https://www.amazon.com/dp/B00ZV9RDKK)" refers to the stick version. 
+"[Fire TV](https://www.amazon.com/dp/B00U3FPN4U)" refers to the Fire TV box, while "[Fire TV Stick](https://www.amazon.com/dp/B00ZV9RDKK)" refers to the stick version.
 
-You can compare the specifications across devices at [Fire TV Device Specifications][device-and-platform-specifications]. The Fire TV has more power and faster performance, but the two devices run the same Fire OS and are more or less identical from an end-user's perspective. Each device has two generations &mdash; Generation 2 is the latest. 
+You can compare the specifications across devices at [Fire TV Device Specifications][device-and-platform-specifications]. The Fire TV has more power and faster performance, but the two devices run the same Fire OS and are more or less identical from an end-user's perspective. Each device has two generations &mdash; Generation 2 is the latest.
 
 Fire TV also optionally comes in a [Gaming Edition](https://www.amazon.com/Amazon-Fire-TV-Gaming-Edition-Streaming-Media-Player/dp/B00XNQECFM). You can also buy a [game controller](https://www.amazon.com/Amazon-Fire-Game-Controller-Alexa/dp/B00NO8LX7E) on its own and use it with Fire TV stick. Fire TV Stick (Generation 2) includes the voice remote by default, whereas Fire TV Stick (Generation 1) optionally provided the voice remote.
 
