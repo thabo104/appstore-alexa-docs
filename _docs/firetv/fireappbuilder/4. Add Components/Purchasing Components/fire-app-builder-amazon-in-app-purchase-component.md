@@ -7,7 +7,16 @@ toc-style: kramdown
 github: true
 ---
 
-The Amazon In-App Purchasing Component uses Amazon's [In-App Purchasing](https://developer.amazon.com/public/apis/earn/in-app-purchasing) (IAP) API to integrate two different purchasing options in your app:
+The Amazon In-App Purchasing Component uses Amazon's [In-App Purchasing](https://developer.amazon.com/public/apis/earn/in-app-purchasing) (IAP) API to integrate purchasing options in your app.
+
+{% include note.html content="When you download Fire App Builder, the default configuration includes the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. As a result, when you submit your app into the Appstore, it will be tagged as containing in-app purchases. If you're not using IAP, simply [remove the component][fire-app-builder-load-a-component] from your app before submitting it to the Appstore." %}
+
+* TOC
+{:toc}
+
+## Available Purchasing Options
+
+The In-App Purchasing Component offers two different purchasing options in your app:
 
 * **Daily Pass**: Allows uses to watch any media in your app for a day (starting from the time of purchase for 24 hours). This is similar to an unlimited movie rental for 24 hours.
 * **Go Premium**: Allows users to pay a subscription fee to watch any media in your app during the subscription time period. You define the subscription time period when you set up the in-app items in the Amazon Developer Console.
@@ -15,9 +24,6 @@ The Amazon In-App Purchasing Component uses Amazon's [In-App Purchasing](https:/
 With the In-App Purchasing Component, you don't have to worry about handling transactions with users. Users make purchases through their Amazon account, which they set up when they configure their Fire TV. The In-App Purchasing API takes care of all of the transaction details within your app.
 
 {% include note.html content="You can customize the button text that says \"Daily Pass\" or \"Go Premium.\" More details about how to customize the UI strings are provided in [\"Customize the Button Text.\"](#buttontext)" %}
-
-* TOC
-{:toc}
 
 ## The User Experience with Amazon In-App Purchasing Component
 

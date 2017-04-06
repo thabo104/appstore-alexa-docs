@@ -152,11 +152,11 @@ folders:
     ref: fire-app-builder-interfaces-and-components
     bookmarks: [componentgroups]
 
-  - title: Load a Component
+  - title: Add or Remove a Component
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-load-a-component
     jurl: /fire-app-builder-load-a-component.html
     ref: fire-app-builder-load-a-component
-    bookmarks: [removeacomponent]
+    bookmarks: [loadcomponent]
 
   - title: Create Your Own Fire App Builder Component
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-create-a-new-component

@@ -10,7 +10,7 @@ On Fire TV, users can manage the Advertising ID by going to **Settings > System 
 * TOC
 {:toc}
 
-## When to Use the Advertising ID 
+## When to Use the Advertising ID
 
 You should use the Advertising ID (when supported by the device) if your app does the following:
 
@@ -20,7 +20,7 @@ You should use the Advertising ID (when supported by the device) if your app doe
 
 When available, use the Advertising ID over any other ID. Ensure that if you use a third-party ad service in your app, the service follows the requirements around the user's choice.
 
-## Developer Expectations 
+## Developer Expectations
 
 When you use the Advertising ID, follow these principles:
 
@@ -47,10 +47,10 @@ try {
     ContentResolver cr = getContentResolver();
 
     // get user's tracking preference
-    limitAdTracking = (Secure.getInt(cr, "limit\_ad\_tracking") == 0) ? false : true;
+    limitAdTracking = (Secure.getInt(cr, "limit_ad_tracking") == 0) ? false : true;
 
     // get advertising
-    advertisingID = Secure.getString(cr, "advertising\_id");
+    advertisingID = Secure.getString(cr, "advertising_id");
 } catch (SettingNotFoundException ex) {
     // not supported
 
@@ -61,7 +61,7 @@ The code first gets the user's ad tracking preference. Then depending on the ad 
 
 {% if include.device == "firetablets" %}
 
-*  If the user has allowed ad tracking, the value for `limit_ad_tracking` will be `false`. 
+*  If the user has allowed ad tracking, the value for `limit_ad_tracking` will be `false`.
 *  If the user has disabled ad tracking, the value for `limit_ad_tracking` will be `true`. 
 *  The Advertising ID gets stored in the `advertisingID` variable. A sample Advertising ID value might be `df07c7dc-cea7-4a89-b328-810ff5acb15d`. (For child profiles, the `advertisingID` will be `00000000-0000-0000-0000-00000000000`.)
 *  If the system doesn't return any value for `limit_ad_tracking` (such as for non-Fire-OS devices or Fire Devices running older versions of FireOS), a `SettingNotFoundException` gets thrown. You can handle this exception as desired.
@@ -70,7 +70,7 @@ The code first gets the user's ad tracking preference. Then depending on the ad 
 
 {% if include.device == "firetv" %}
 
-*  If the user has allowed ad tracking, the value for `limit_ad_tracking` will be `false`. 
+*  If the user has allowed ad tracking, the value for `limit_ad_tracking` will be `false`.
 *  If the user has disabled ad tracking, the value for `limit_ad_tracking` will be `00000000-0000-0000-0000-000000000000`. (Note: This is a bug. In the future, the value will be `true`, similar to the response for Fire tablets. ) 
 *  The Advertising ID gets stored in the `advertisingID` variable. A sample Advertising ID value might be `df07c7dc-cea7-4a89-b328-810ff5acb15d`. (For child profiles, the `advertisingID` will be `00000000-0000-0000-0000-00000000000`.)
 *  If the system doesn't return any value for `limit_ad_tracking` (such as for non-Fire-OS devices or Fire Devices running older versions of FireOS), a `SettingNotFoundException` gets thrown. You can handle this exception as desired.

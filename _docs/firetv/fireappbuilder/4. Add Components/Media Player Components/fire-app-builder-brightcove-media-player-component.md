@@ -14,9 +14,9 @@ When the user clicks the Watch Now button on the Content Renderer screen, the Br
 
 ## Configure the BrightCove Media Player
 
-There aren’t any options to customize the BrightCove Media Player Component. You simply load the component following the general instructions here: [Load a Component in Your App][fire-app-builder-load-a-component]
+There aren’t any options to customize the BrightCove Media Player Component. You simply load the component following the general instructions here: [Add or Remove a Component][fire-app-builder-load-a-component]
 
-You most likely already have the Amazon Media Player Component (AMZNMediaPlayerComponen) loaded in your app. You must remove this component from your app to load the BrightCove Media Player. See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
+You most likely already have the Amazon Media Player Component (AMZNMediaPlayerComponen) loaded in your app. You must remove this component from your app to load the BrightCove Media Player. See [Add or Remove a Component][fire-app-builder-load-a-component] for details.
 
 {% include_relative componentnote_mediaplayer.html %}
 

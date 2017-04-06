@@ -42,11 +42,11 @@ Assuming you don't already have a Crashlytics account, sign up for one and provi
 
 These instructions assume you're in the Android view.
 
-1.  Remove any other analytics components that are loaded in your app (such as FlurryAnalyticsComponent, OmnitureAnalyticsComponent, GoogleAnalyticsComponent, or LoggerAnalyticsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.  
+1.  Remove any other analytics components that are loaded in your app (such as FlurryAnalyticsComponent, OmnitureAnalyticsComponent, GoogleAnalyticsComponent, or LoggerAnalyticsComponent). See [Add or Remove a Component][fire-app-builder-load-a-component] for details.  
 
     {% include_relative componentnote_analytics.html %}
 
-2.  Load the Crashlytics component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
+2.  Load the Crashlytics component into your app. See [Add or Remove a Component][fire-app-builder-load-a-component] for details about how to load a component into your app.
 
     {% include warning.html content="Initially you will see an error message after you click Sync Gradle and Gradle tries to get the necessary resources. This is because Crashlytics requires a valid API key entered into its AndroidManifest.xml file &mdash; but the CrashlyticsComponent directory won't be visible in your Android project until you sync Gradle. Disregard the Gradle build error for now." %}
 

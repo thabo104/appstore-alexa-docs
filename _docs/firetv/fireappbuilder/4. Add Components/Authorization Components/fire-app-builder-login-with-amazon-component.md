@@ -54,8 +54,8 @@ To configure the Login with Amazon Component, follow these steps:
 
 To configure the Login with Amazon Component:
 
-1.  As with other components, follow the general instructions to [Load a Component in Your App][fire-app-builder-load-a-component].
-2.  Remove any other authentication components that are loaded in your app (such as AdobepassAuthComponent or FacebookAuthComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
+1.  As with other components, follow the general instructions to [Add or Remove a Component][fire-app-builder-load-a-component].
+2.  Remove any other authentication components that are loaded in your app (such as AdobepassAuthComponent or FacebookAuthComponent). See [Add or Remove a Component][fire-app-builder-load-a-component] for details.
 
     {% include_relative componentnote_authentication.html %}
 

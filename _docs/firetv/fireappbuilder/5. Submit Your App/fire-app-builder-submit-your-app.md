@@ -34,9 +34,11 @@ The `versionCode` (an integer) provides an internal numbering for your app's ver
 
 The `versionName` (a string) is the version that users see. See [`android:versionName`](https://developer.android.com/guide/topics/manifest/manifest-element.html#vname) for more details.
 
+The settings in your app's build.gradle file will overwrite any similar settings in your app's manifest.
+
 ## Target Fire TV Devices in Your Manifest
 
-In your app's **AndroidManifest.xml** file (in **manifests** folder), you can target Fire TV devices with the `uses-feature` element as follows:
+In your app's **AndroidManifest.xml** file (in **manifests** folder), you can [theoretically] target Fire TV devices with the `uses-feature` element as follows:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -53,9 +55,11 @@ Fire TV devices do not support touchscreens and multi-touch capabilities. In an 
 
 {% include note.html content="Currently, Fire App Builder works only on Fire TV devices, not on Fire tablets. However, compatibility with Fire tablets is on the long-term roadmap." %}
 
-When you upload your APK into the Appstore, the Appstore will indicate which devices your APK supports. Unfortunately, this feature is not working correctly right now, so the initial info will probably indicate the following:
+When you upload your APK into the Appstore, the Appstore is supposed to indicate which devices your APK supports. Unfortunately, this feature is not working correctly right now for Fire TV apps, so the initial info will probably indicate the following:
 
 {% include image.html  file="firetv/fireappbuilder/images/fireappbuilder-devicesupport" type="png" alt="Device Support" %}
+
+{% include note.html content="Even though Fire TV device targeting isn't working correctly now, the Appstore team plans to fix this in the future, so it's a best practice to leave this code in your manifest." %}
 
 After uploading your file, you will need to click **Edit device support** and make manual adjustments to indicate support for Fire TV. After you click **Edit Device Support**, you'll see a dialog window as follows:
 
@@ -71,6 +75,20 @@ The names in the submission interface differ from the device names in the docume
 * Fire TV Stick with Alexa Voice Remote = Fire TV Stick Generation 2
 
 For more info about the different features across devices, see the [specifications for Fire TV devices][device-and-platform-specifications].
+
+While you're configuring your manifest, if you have set up [recommendations][fire-app-builder-recommendations-overview], make sure you set the install location to `internalOnly`.
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.amazon.android.acmemedia"
+          android:installLocation="internalOnly">
+```
+
+## Remove the IAP Component If Unused
+
+Fire App Builder contains the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. If you leave this component in your app, when you submit it to the Appstore your app will be tagged as containing in-app purchases. The Appstore will also appends a note about in-app purchases at the end of your Short Description.
+
+If you're not using the IAP component, simply [remove the component][fire-app-builder-load-a-component] from your app. (Unlike the other components, you don't need to include a dummy purchasing component.)
 
 ## Test Your App
 
@@ -95,7 +113,7 @@ Make sure you app conforms to [Amazon's Content Policy requirements](https://dev
 
 Intellectual property infringement is especially relevant to media apps. Make sure you respect the copyright, trademark, and publicity rights of any third-party content. The same applies for any graphics or images used in your app logo or splash screen.
 
-## Generate a Signed APK File
+## Generate a Signed APK File {#signedapk}
 
 While you're developing and testing your app, Android Studio builds your APK file in your app's **build > outputs > apk** directory. The file name specified in the **gradle.properties (Project Properties)** file in the **Gradle Scripts** folder.
 
@@ -106,14 +124,6 @@ To build a release version of your app, you must generate a signed APK file. You
 {% include image.html  file="firetv/fireappbuilder/images/fireappbuilder-generatesignedapk" type="png" max-width="700px" alt="Generate a signed APK" %}
 
 One of the fields in the APK wizard is the destination folder for the release APK file. By default, Android puts the release build APK in your app's directory. After you build the signed APK, the APK file will be named something like **ACME-release-1.0.0-unaligned.apk**. You can later upload this version of the APK into the Amazon Appstore (on the Binary File(s) tab).
-
-Note that when you build your signed APK, you may see an error that says the following:
-
-```
-Error:(49) Error: "terms_of_use_file" is not translated in "de" (German), "en" (English), "en-US" (English: United States), "ja" (Japanese) [MissingTranslation]."
-```
-
-You can disregard this message. The Terms of Use file is not been translated yet.
 
 {% include note.html content="When you submit your app, Amazon removes the signature you used to sign your app and re-signs it with an Amazon signature that is unique to you, does not change, and is the same for all apps in your account. You can find the Amazon signature hashes for your account by selecting any application in the developer console and navigating to the Binary File(s) tab. The SHA-1 and MD5 hashes for your account are listed in the Appstore Certificate Hashes section. <br/><br/>Even if you lose the keystore you created to sign your release builds, it won't affect your ability to push out updates to your app because your app's signature is associated with your Amazon developer account." %}
 
@@ -186,7 +196,7 @@ Make sure you have both an [Amazon.com account](https://amazon.com) and an [Amaz
 
 When you create a developer account, if you plan to monetize your app, you'll need to complete some tax identity information and other details.
 
-## Set Your Company Profile
+## Set Your Company Profile Name
 
 In your developer account, the "Developer name or company name" in your Company Profile (under Settings > [Company Profile](https://developer.amazon.com/settings/profile/detail.html) in the Developer Portal) will appear below your app's name on both your Appstore web page and in the Fire TV user interface.
 
@@ -215,14 +225,6 @@ For details, follow the steps in [Submitting Apps to the Amazon Appstore](https:
 
 {% include tip.html content="If you want to let a small group of users beta test your app before releasing it into the Appstore, see [Live App Testing](https://developer.amazon.com/live-app-testing)." %}
 
-## Note About Automatic In-app Purchasing Tag {#iapnote}
-
-Fire App Builder contains a default [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component]. Unfortunately, there's not a dummy purchasing component you can substitute in place of IAP. As a result, when you submit your app into the Appstore, it will be tagged as containing in-app purchases.
-
-This in-app purchases tag adds a note on the details about your app saying in-app purchases are offered. It also appends a more detailed note about this at the end of your Short description. Due to the volume of apps processed by the Appstore, the Appstore ingestion team cannot manually remove this tag.
-
-An upcoming Fire App Builder release will add a dummy purchasing component instead of IAP so that this tag is not automatically added to apps.
-
 ## After You Submit Your App
 
 After you submit your app, you'll get a confirmation email about the submission. Usually it takes 1-2 days for your app to be approved. If your app does not meet one of Amazon’s acceptance criteria, or if the Appstore testers have a question about your app during the review process, they will notify you by using the email address associated with your account.
@@ -242,5 +244,31 @@ Getting your app into the Appstore is just the first step. For your app to be su
 
 {% include tip.html content="If you haven't implemented [recommendations][fire-app-builder-recommendations-overview], be sure to do so. Sending recommendations to the \"Recommended By Your Apps Row\" can get your content on the user's home screen so they are more likely to engage with your app." %}
 
+## Submit a New Version of Your App
+
+When you make updates to your app, you'll need to uninstall any other versions of your app from your Fire TV device first. (Fire TV won't allow two different apps containing identical package names to be installed on the same device.)
+
+You can uninstall your app by going to **Settings > Applications > Manage Installed Applications**. Select your app, and then select **Uninstall**.
+
+To update details about your app but not your binary/APK file:
+
+1.  Sign in to the Amazon Developer Console. On the Dashboard, select your app.
+2.  Make the updates you want on the various tabs.
+3.  Click **Submit**.
+
+To update your binary/APK file:
+
+1.  After making the changes to your code in Android Studio, expand your **Gradle Scripts** folder, open **build.gradle (Module: app)**, and update the `versionCode` (required) and `versionName`. (If you upload a binary with the same `versionCode` as a previous binary, the Appstore will reject it.)
+
+    {% include note.html content="Do not change the package name of your app." %}
+
+2.  [Generate a signed release APK](#signedapk).
+3.  Sign in to the [Amazon Developer Console](https://developer.amazon.com). On the Dashboard, select your app.
+4.  In the menu directly underneath your app title, click the **Add Upcoming Version** link.
+5.  On the **Binary File(s)** tab, in the **Binary file** section, click the X icon to delete the previous version of the APK file, and then click OK to confirm deletion.
+6.  Click **Upload Binary** and upload the new version of your APK file.
+7.  Click **Save**.
+7.  On the **Release Notes** tab, add some information about what's new in the release.
+8.  Click **Submit App**.
 
 {% include links.html %}

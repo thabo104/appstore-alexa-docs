@@ -16,8 +16,8 @@ Omniture gives you a JAR file to integrate into your app (instead of relying on 
 
 {% include note.html content="These instructions assume you have the **Project** view selected in Android Studio." %}
 
-1.  Load the Omniture Analytics component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
-2. Remove any other analytics components that are loaded in your app (such as FlurryAnalyticsComponent, CrashlyticsComponent, or LoggerAnalyticsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.    
+1.  Load the Omniture Analytics component into your app. See [Add or Remove a Component][fire-app-builder-load-a-component] for details about how to load a component into your app.
+2. Remove any other analytics components that are loaded in your app (such as FlurryAnalyticsComponent, CrashlyticsComponent, or LoggerAnalyticsComponent). See [Add or Remove a Component][fire-app-builder-load-a-component] for details.    
 
     {% include_relative componentnote_analytics.html %}
 
