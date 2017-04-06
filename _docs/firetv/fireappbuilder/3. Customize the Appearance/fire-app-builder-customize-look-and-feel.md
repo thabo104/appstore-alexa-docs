@@ -16,7 +16,7 @@ You can customize much of the app's look and feel through the custom.xml file (l
 
 The logo appears in the upper-left corner as well as on the splash screen. This is an element you must change as you customize your app.
 
-{% include image.html  file="fireappbuilder-home-logo" type="png" alt="Changing the app logo" %}
+{% include image.html  file="firetv/fireappbuilder/images/fireappbuilder-home-logo" type="png" alt="Changing the app logo" %}
 
 To change the app logo:
 

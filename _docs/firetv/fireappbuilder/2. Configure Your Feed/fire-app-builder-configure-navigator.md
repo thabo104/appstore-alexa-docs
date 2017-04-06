@@ -22,7 +22,7 @@ The DataLoaderRecipe file loads a media feed URL. Because DataLoaderRecipe can l
 
 The approaches for configuring Navigator differ for token or non-token-based feeds. See one of the following:
 
-* [Configure Navigator -- Token-based Feeds](fire-app-builder-configure-navigator-token-feeds): Use these instructions if you publish your media details in a media feed whose access is restricted by a token.
-* [Configure Navigator -- Open Feeds](fire-app-builder-configure-navigator-open-feeds): Use these instructions if you publish your media details in a media feed that is open and unrestricted.
+* [Configure Navigator -- Token-based Feeds][fire-app-builder-configure-navigator-token-feeds]: Use these instructions if you publish your media details in a media feed whose access is restricted by a token.
+* [Configure Navigator -- Open Feeds][fire-app-builder-configure-navigator-open-feeds]: Use these instructions if you publish your media details in a media feed that is open and unrestricted.
 
 {% include links.html %}

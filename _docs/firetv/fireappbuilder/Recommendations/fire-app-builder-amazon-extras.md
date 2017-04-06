@@ -50,7 +50,7 @@ The following table describes how Fire App Builder handles each tag, how to map 
       </tr>
         <tr>
            <td><code>com.amazon.extra.ACTIONS</code></td>
-           <td>Fire App Builder sends an empty list and accepts the defaults from Fire TV. By default, Fire TV will use the terms <code>Open</code> and <code>Launch &lt;App Name&gt;</code> in the launch context menu.</td>  
+           <td>Fire App Builder sends an empty list and accepts the defaults from Fire TV. By default, Fire TV will use the terms <code>Open</code> and <code>Launch &lt;App Name&gt;</code> in the launch context menu. To customize what Fire App Builder sends, map to the tag <code>actions</code> in your contents recipe.</td>  
         </tr>
       <tr>
          <td><code>com.amazon.extra.LIVE_CONTENT</code></td>
@@ -161,6 +161,7 @@ In your contents recipe, you map these extras in the same way you map your other
     "videoPreviewUrl@videoPreviewUrl",
     "imdbId@imdbId",
     "genres@genres",
+    "actions@actions"
   ]
 }
 ```
