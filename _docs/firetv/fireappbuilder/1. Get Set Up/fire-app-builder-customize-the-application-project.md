@@ -53,7 +53,7 @@ Follow these steps regardless of whether you prefer option 1 or option 2.
 
     Note that the AndroidManifest.xml file (inside **app > manifests**) reads the name of the application from the string you just edited. (In Android Manifest, the code referencing the string is `android:label="@string/app_name"`. This is how most of Fire App Builder is set up &mdash; code that you customize is extracted out into XML files so you don't have to directly edit Java.)
 
-    There are multiple strings.xml files here to support different locales for your app. If someone from a German locale opens your app (assuming your app is available in that market), the "strings.xml (de)" file will be used. If someone from Japan opens your app, the "strings.xml (ja)" file will be used, and so on.
+    There are multiple strings.xml files here to support different locales for your app. If someone from a German locale opens your app (assuming your app is available in that market), the "strings.xml (de)" file will be used. If someone from Japan opens your app, the "strings.xml (ja)" file will be used, and so on. If a strings.xml file
 
 2.  If you're [sending recommendations][fire-app-builder-recommendations-overview] and your app name is longer than 15 characters, add a shortened app name in these same strings.xml files using the `` property:
 
@@ -87,6 +87,14 @@ Follow these steps regardless of whether you prefer option 1 or option 2.
     ```
 
     {% include note.html content="In this documentation, unless otherwise noted, paths to files are described using the [Android view(https://developer.android.com/studio/projects/index.html#ProjectFiles)." %}
+
+5.  In this same **build.gradle (Module: app)** file, update the `versionCode` and `versionName` values as desired.
+
+    The `versionCode` (an integer) is an internal numbering scheme for your app's version. See [`android:versionCode`](https://developer.android.com/guide/topics/manifest/manifest-element.html#vcode) in the Android docs for more details.
+
+    The `versionName` (a string) is the version that users see. See [`android:versionName`](https://developer.android.com/guide/topics/manifest/manifest-element.html#vname) in the Android docs for more details.
+
+    Note that you do not need these elements in your app's manifest. When you upload your APK into the Amazon Appstore, the Appstore will read the information from this "build.gradle (Module: app)" file instead of the AndroidManifest.xml.
 
 5.  Expand the **Gradle Scripts** folder and open the **local.properties (SDK Location)** file. Customize the `applicationName` to your app's name. Android Studio uses this name in the APK file.
 

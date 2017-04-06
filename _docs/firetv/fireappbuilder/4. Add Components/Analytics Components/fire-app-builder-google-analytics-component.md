@@ -58,14 +58,25 @@ According to [Google Analytics' documentation](https://support.google.com/analyt
     {
       "ATTRIBUTE_PLATFORM": "1",
       "ATTRIBUTE_SEARCH_TERM": "2",
-      "ATTRIBUTE_PLAY_SOURCE": "3",
-      "ATTRIBUTE_ERROR_MSG": "10",
-      "ATTRIBUTE_PURCHASE_TYPE": "7",
-      "ATTRIBUTE_PURCHASE_RESULT": "8",
-      "ATTRIBUTE_PURCHASE_SKU": "9",
-      "ATTRIBUTE_TITLE": "4",
-      "ATTRIBUTE_SUBTITLE": "5",
-      "ATTRIBUTE_VIDEO_TYPE": "6"
+      "ATTRIBUTE_ERROR_MSG": "3",
+      "ATTRIBUTE_PLAY_SOURCE": "4",
+      "ATTRIBUTE_PURCHASE_RESULT": "5",
+      "ATTRIBUTE_PURCHASE_SKU": "6",
+      "ATTRIBUTE_TITLE": "7",
+      "ATTRIBUTE_SUBTITLE": "8",
+      "ATTRIBUTE_VIDEO_TYPE": "9",
+      "ATTRIBUTE_PURCHASE_TYPE": "10",
+      "ATTRIBUTE_PURCHASE_SOURCE": "11",
+      "ATTRIBUTE_APP_NAME": "12",
+      "ATTRIBUTE_APP_AUTHENTICATION_SOURCE": "13",
+      "ATTRIBUTE_LOGIN_FAILURE_REASON": "14",
+      "ATTRIBUTE_LOGOUT_FAILURE_REASON": "15",
+      "ATTRIBUTE_AIRDATE": "16",
+      "ATTRIBUTE_PUBLISHER_NAME": "17",
+      "ATTRIBUTE_APP_AUTHENTICATION_STATUS": "18",
+      "ATTRIBUTE_VIDEO_ID": "19",
+      "ATTRIBUTE_CONTENT_AVAILABLE": "20",
+      "ATTRIBUTE_REQUEST_SOURCE": "21"
     }
     ```
 2.  Copy the file's contents and create a similarly named file in your app's **assets > configurations** folder. (Any files in your app will overwrite similar files in the component. This will help you apply updates to Fire App Builder later on.)
@@ -73,14 +84,14 @@ According to [Google Analytics' documentation](https://support.google.com/analyt
     You will be creating dimensions in Google Analytics that correspond with the dimensions and indexes here. (You don't need to do anything with the code here just yet. Just leave the file open to adjust later.)
 
 3.  Sign in to your [Google Analytics Dashboard](https://analytics.google.com/).
-4.  Click **Admin** on the top navigation row.
+4.  Click **Admin** in the lower-left corner.
 5.  In the **Property** column (the middle column), click **Custom Definitions > Custom Dimensions**.
 
     {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_custom_dimensions" type="png" %}
 
 6.  Click the **New Custom Dimension** button.
 
-    {% include warning.html content="You can create only 20 dimensions. Also, you cannot edit a dimension once you create it, so be careful here. If you make a mistake and need to change things, you may need to sign in with a different Google account." %}
+    {% include warning.html content="You can create only 20 dimensions, so you'll omit one from the above list of dimensions. Also, you cannot edit a dimension after you create it, so be careful here. If you make a mistake and need to change things, you may need to sign in with a different Google account." %}
 
 7.  Type a friendly name for the first dimension. For example, type "Platform" instead of "ATTRIBUTE_PLATFORM".
 8.  Leave the **Scope** as **Hit** (the default).
@@ -90,22 +101,11 @@ According to [Google Analytics' documentation](https://support.google.com/analyt
     {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_google_dimensions" type="png" %}
 
 11. Click **Done**.
-12. Repeat this process until you have created a custom dimension for all of the following values:
-    * Platform
-    * Search Term
-    * Error Message
-    * Playback Source
-    * Purchase Source
-    * Purchase Result
-    * Purchase SKU
-    * Title
-    * Subtitle
-    * Video Type
-    * Purchase Type
+12. Repeat this process until you have created a custom dimension for all of the dimensions you want to track (up to 20).
 
     {% include note.html content="The names here (for example, \"Platform\") do not need to match up with the names in the `GoogleCustomDimensionsTags.json` file (for example, \"ATTRIBUTE_PLATFORM\"). Google will match up the dimensions based on the index values." %}
 
-13. In the **GoogleCustomDimensionsTags.json** file (inside your app's **assets > configurations** folder), change the index numbers to correspond with the auto-created dimension index numbers (highlighted in yellow in the screenshot below) in your Google Analytics Dashboard.
+13. In the **GoogleCustomDimensionsTags.json** file (inside your app's **assets > configurations** folder), change the index numbers to correspond with the auto-created dimension index numbers (the column is highlighted in yellow in the screenshot below) in your Google Analytics Dashboard.
 
     {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_index_values" type="png" %}
 
@@ -113,20 +113,30 @@ According to [Google Analytics' documentation](https://support.google.com/analyt
 
     ```json
     {
-    "ATTRIBUTE_PLATFORM": "1",
-    "ATTRIBUTE_SEARCH_TERM": "2",
-    "ATTRIBUTE_PLAY_SOURCE": "3",
-    "ATTRIBUTE_ERROR_MSG": "10",
-    "ATTRIBUTE_PURCHASE_TYPE": "7",
-    "ATTRIBUTE_PURCHASE_RESULT": "8",
-    "ATTRIBUTE_PURCHASE_SKU": "9",
-    "ATTRIBUTE_TITLE": "4",
-    "ATTRIBUTE_SUBTITLE": "5",
-    "ATTRIBUTE_VIDEO_TYPE": "6"
+      "ATTRIBUTE_PLATFORM": "1",
+      "ATTRIBUTE_SEARCH_TERM": "2",
+      "ATTRIBUTE_ERROR_MSG": "3",
+      "ATTRIBUTE_PLAY_SOURCE": "4",
+      "ATTRIBUTE_PURCHASE_RESULT": "5",
+      "ATTRIBUTE_PURCHASE_SKU": "6",
+      "ATTRIBUTE_TITLE": "7",
+      "ATTRIBUTE_SUBTITLE": "8",
+      "ATTRIBUTE_VIDEO_TYPE": "9",
+      "ATTRIBUTE_PURCHASE_TYPE": "10",
+      "ATTRIBUTE_PURCHASE_SOURCE": "11",
+      "ATTRIBUTE_APP_NAME": "12",
+      "ATTRIBUTE_APP_AUTHENTICATION_SOURCE": "13",
+      "ATTRIBUTE_LOGIN_FAILURE_REASON": "14",
+      "ATTRIBUTE_LOGOUT_FAILURE_REASON": "15",
+      "ATTRIBUTE_AIRDATE": "16",
+      "ATTRIBUTE_PUBLISHER_NAME": "17",
+      "ATTRIBUTE_APP_AUTHENTICATION_STATUS": "18",
+      "ATTRIBUTE_VIDEO_ID": "19",
+      "ATTRIBUTE_CONTENT_AVAILABLE": "20"
     }
     ```
 
-    Unless you created the dimensions in Google in the exact same order, it's likely that your index values will be somewhat different. Just make sure each dimension you created in Google Analytics (for example, Error Message, 10) corresponds with the dimensions and indexes in your component (for example, `"ATTRIBUTE_ERROR_MSG": "10"`).
+    Unless you created the dimensions in Google in the exact same order, it's likely that your index values will be somewhat different. Just make sure each dimension you created in Google Analytics (for example, Error Message, 3) corresponds with the dimensions and indexes in your component (for example, `"ATTRIBUTE_ERROR_MSG": "3"`).
 
 ## Step 4. Set Up Metric Indexes {#step4}
 
@@ -138,8 +148,11 @@ In this section, you'll do the same thing you did in the previous section but wi
     {
       "ATTRIBUTE_AD_SECONDS_WATCHED": "1",
       "ATTRIBUTE_VIDEO_SECONDS_WATCHED": "2",
-      "ATTRIBUTE_VIDEO_ID": "3",
-      "ATTRIBUTE_AD_ID": "4"
+      "ATTRIBUTE_VIDEO_CURRENT_POSITION": "3",
+      "ATTRIBUTE_AD_ID": "4",
+      "ATTRIBUTE_VIDEO_DURATION": "11",
+      "ATTRIBUTE_EXPIRED_RECOMMENDATIONS_COUNT": "12",
+      "ATTRIBUTE_RECOMMENDATION_ID": "13"
     }
     ```
 
@@ -158,11 +171,7 @@ In this section, you'll do the same thing you did in the previous section but wi
 8.  Leave the other values (Scope, Formatting Type, Minimum Value, Maximum Value, and Active) at the defaults unless you specifically want to adjust these values.
 10. Click **Create**.   
 11. Click **Done**.
-12. Repeat this process until you have created a custom dimension for all of the following values:
-    * Ad Seconds Watched
-    * Video Seconds Watched
-    * Video ID
-    * Ad ID
+12. Repeat this process with the other metrics for all the metrics you want to track.
 
     {% include note.html content="As before, the names here (for example, \"Ad Seconds Watched\") do not need to match up with the names in the `GoogleCustomMetricTags.json` file (for example, \"ATTRIBUTE_VIDEO_SECONDS_WATCHED\"). Google will match up the metrics based on the index values." %}
 

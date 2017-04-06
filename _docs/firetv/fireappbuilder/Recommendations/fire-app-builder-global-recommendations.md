@@ -86,7 +86,7 @@ For more general information about recommendations, see [Recommendations in Fire
       ...
       ```
 
-      {% include note.html content="The global recommendations object should not be included in a specific item's details &mdash; there should be just *one* set of global recommendations for the entire feed. Within each item, you can have [related recommendations][fire-app-builder-related-recommendations] that are sent when that specific video is watched. However, in this task, we're configuring *global* recommendations (which are sent when the app starts, not when a specific video plays)." %}
+      {% include note.html content="The global recommendations object should not be included in a specific item's details &mdash; there should be just *one* set of global recommendations for the entire feed. Within each item, you can have [related recommendations][fire-app-builder-related-recommendations] that are sent when that specific content is watched. However, in this task, we're configuring *global* recommendations (which are sent when the app starts, not when a specific video plays)." %}
 
       The global recommendations property can appear anywhere in your feed, and it can use a name other than `globalRecommendations`. But the content should be an array of strings. In the following steps, you'll write a query in a recipe to target this element.
 
@@ -139,7 +139,7 @@ For more general information about recommendations, see [Recommendations in Fire
 
     This number limits the total number of global recommendations your app can send. After this number of recommendations is reached, your app won't send any more global recommendations until the refresh period (every six hours, or every time your app is restarted).
 
-    Note that Fire TV must receive at least 5 recommendations from all apps combined in order to display the Recommended By Your Apps row to users. If you don't specify the number of related recommendations here, 5 is used as the default.
+    Note that Fire TV must receive at least 5 recommendations from all apps combined in order to display the Recommended By Your Apps row to users. If you don't specify the number of global recommendations here, 5 is used as the default.
 
 6.  Open the global recommendations parser recipe (for example, AcmeGlobalRecParserRecipe.json) that you created in step 5 and insert the following recipe:
 
@@ -161,11 +161,11 @@ For more general information about recommendations, see [Recommendations in Fire
     * The `format` this recipe expects is `json`. (If your feed format is XML, change the value for `format` to from `json` to `xml`.)
     * The `model` this recipe is expecting is a `String`.
     * With `modelType` set to `array`, Fire App Builder expects this recipe to return an array of strings.
-    * After the `query` returns a list of strings, the `matchList` parameter will directly match the strings by using `StringKey`. Fire App Builder will map these strings to its content model.
+    * After the `query` returns a list of strings, the `matchList` parameter will directly match the strings by using `StringKey`. Fire App Builder will map these strings to its model.
 
     (These settings aren't important as long as your global recommendations query matches an array of strings in JSON format. If this isn't the case, you can adjust the recipe settings accordingly. See [Recipe Configuration Overview][fire-app-builder-set-up-recipes-overview] for details.)
 
-6.  Customize the `query` value to target the global recommendations property in your feed.
+7.  Customize the `query` value to target the global recommendations property in your feed.
 
     If you're using JSON, your query will use [Jayway JsonPath](https://github.com/jayway/JsonPath) syntax. If your feed is XML, you'll use [XPath expressions](https://www.w3schools.com/xml/xpath_syntax.asp).
 
@@ -173,12 +173,12 @@ For more general information about recommendations, see [Recommendations in Fire
 
     In the sample `query` shown above, the `$.globalRecommendations[*]` query starts in the root directory, finds the `globalRecommendations` array and selects everything inside of the array. (If you were using XML with the sample XML feed above, your query would be `//globalrecommendations/guid/text()`.) If you want the query to look recursively in every folder for the `globalRecommendations` object, use `$..globalRecommendations[*]`.
 
-7.  To ensure that your query correctly targets the `globalRecommendations` element, test the query in online evaluators:
+8.  To ensure that your query correctly targets the `globalRecommendations` element, test the query in online evaluators:
 
     * For JSON feeds, test your query with the [Jayway JsonPath Evaluator](https://jsonpath.herokuapp.com/).
     * For XML feeds, test your query with the [XPath evaluator](http://www.freeformatter.com/xpath-tester.html).
 
-    The result from the query should be a list of strings containing IDs for the videos. Fire App Builder will use these video IDs when it builds the recommendation.
+    The result from the query should be a list of strings containing IDs for the content. Fire App Builder will use these content IDs when it builds the recommendation.
 
     If your items contain [Amazon extras][fire-app-builder-amazon-extras] (such as maturity rating), these extras will be sent with the recommendations.
 
@@ -199,13 +199,13 @@ After starting your app, in Android Studio click **Android Monitor** at the bott
 
 `mType='Global'` indicates that the recommendation sent is a global recommendation.
 
-Note that in your tests, your app will not send more than limit you set in Navigator.json file. For example, suppose you have the following in Navigator.json:
+Note that in your tests, your app will not send more than the limit you set in Navigator.json file. For example, suppose you have the following in Navigator.json:
 
 ```
 "numberOfGlobalRecommendations": 3
 ```
 
-But your list of `globalRecommendations` contains 5 video IDs. In this case, only 3 recommendations will be sent.
+But your list of `globalRecommendations` contains 5 content IDs. In this case, only 3 recommendations will be sent.
 
 ## Removing Stale Recommendations
 

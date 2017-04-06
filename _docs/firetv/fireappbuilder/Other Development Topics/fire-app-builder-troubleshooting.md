@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-First consult the [Known Issues][fire-app-builder-release-notes#known_issues] section to see if any bugs you're experiencing are known.
+First consult the [Known Issues][fire-app-builder-release-notes-version-1-0-2] section in the release notes to see if any bugs you're experiencing are known.
 
 If you can't resolve your issue, see the [Fire TV and Fire TV Stick](https://forums.developer.amazon.com/spaces/43/Fire+TV+and+Fire+TV+Stick.html) categories on the Support Forums.
 

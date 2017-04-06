@@ -12,9 +12,13 @@ You can customize much of the app's look and feel through the custom.xml file (l
 * TOC
 {:toc max_level=3 }
 
-## Change the App Logo {#changelogo} (Required)
+## Change the App Logo (Required) {#changelogo}
 
-The logo appears in the upper-left corner as well as on the splash screen. This is an element you must change as you customize your app. To change the app logo:
+The logo appears in the upper-left corner as well as on the splash screen. This is an element you must change as you customize your app.
+
+{% include image.html  file="fireappbuilder-home-logo" type="png" alt="Changing the app logo" %}
+
+To change the app logo:
 
 1.  Inside your app's **assets > res** directory, create a new directory called **drawable**.
 2.  Open your **drawable** directory via Finder or Explorer.
@@ -43,7 +47,7 @@ The logo appears in the upper-left corner as well as on the splash screen. This 
 
 {% include tip.html content="Fire App Builder has various custom.xml files in the other component directories. However, your app's custom.xml file will override the values in any other custom.xml file." %}
 
-## Customize the App Icon (Required)
+## Customize the App Icon
 
 You can change the app icon. This is the image thumbnail that appears in your list of apps on Fire TV and appears when you are testing your device.
 

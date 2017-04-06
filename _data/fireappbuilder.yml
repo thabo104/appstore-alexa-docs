@@ -244,16 +244,13 @@ folders:
         jurl: /fire-app-builder-amazon-media-player-component.html
         ref: fire-app-builder-amazon-media-player-component
 
-- title: Submit Your App
+- title: 5. Submit Your App
   folderitems:
 
-  - title: Submit Your App to the Appstore
+  - title: Submit Your Fire App Builder App to the Appstore
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-submit-your-app
     jurl: /fire-app-builder-submit-your-app.html
     ref: fire-app-builder-submit-your-app
-
-title:
-permalink:
 
 - title: Recommendations
   folderitems:

@@ -64,7 +64,7 @@
                    <li><code>7</code>: Listen with <code>&lt;App name&gt;</code></li>
                    <li><code>107</code>: Listen</li>
                    </ul>
-                   <p>If no value is provided, the default action will be <code>Open</code>.</p>
+                   <p>If no value is provided, the default action will be <code>Open</code> and below that, <code>Launch &lt;App Name&gt;</code>.</p>
               </td>
               <td>Yes</td>  
             </tr>

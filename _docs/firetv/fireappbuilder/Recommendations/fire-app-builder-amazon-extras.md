@@ -46,23 +46,23 @@ The following table describes how Fire App Builder handles each tag, how to map 
       </tr>
       <tr>
            <td><code>com.amazon.extra.RANK</code></td>
-           <td>Not available to change. Fire App Builder sends a rank of <code>0.5</code> for every video.</td>
+           <td>Not available to change. Fire App Builder sends a rank of <code>0</code> (the highest priority) for every content item.</td>
       </tr>
         <tr>
            <td><code>com.amazon.extra.ACTIONS</code></td>
-           <td>Fire App Builder uses <code>1</code> and <code>101</code> for every video by default. If you want to submit custom <code>actions</code> value, map your element to <code>actions</code>.</td>  
+           <td>Fire App Builder sends an empty list and accepts the defaults from Fire TV. By default, Fire TV will use the terms <code>Open</code> and <code>Launch &lt;App Name&gt;</code> in the launch context menu.</td>  
         </tr>
       <tr>
          <td><code>com.amazon.extra.LIVE_CONTENT</code></td>
-         <td markdown="span">Not supported. If you have live content, you can remove the "Watch from Beginning" text from media playback buttons by following the instructions in [Configure Live Streams][fire-app-builder-live-stream-configuration]. {% comment %}Map to the tag <code>live</code> in your contents recipe. Also, the value for this element must be a boolean of <code>true</code> or <code>false</code> rather than an integer of <code>0</code> or <code>1</code>.{% endcomment %}</td>
+         <td markdown="span">Map this element to the tag <code>live</code> in your contents recipe. Also, note that the value for <code>live</code> must be a Boolean (<code>true</code> or <code>false</code>) rather than an integer of <code>0</code> or <code>1</code> (the Fire TV extras require the integer data type). Fire App Builder will actually convert the Boolean to an integer when sending the recommendation. For more details, see [Configure Live Streams][fire-app-builder-live-stream-configuration]. If your content is live, the "Watch from Beginning" button will be omitted from the media playback screen. </td>
         </tr>
       <tr>
          <td><code>com.amazon.extra.CONTENT_RELEASE_DATE</code></td>
-         <td>Not supported.</td>
+         <td>Map to the tag <code>availableDate</code> in your contents recipe.</td>
       </tr>
       <tr>
          <td><code>com.amazon.extra.CONTENT_CAPTION_AVAILABILITY</code></td>
-         <td>Not supported. {% comment %}Map to the tag <code>closeCaptionUrls</code> in your contents recipe. The value for this element must be a list of strings. For example, <code>"closeCaptionUrls": ["http:\/\/mywebsite.com\/some\/url\/to\/the\/video1.mp4", "http:\/\/mywebsite.com\/some\/url\/to\/the\/video2.mp4"]</code>.  {% endcomment %}</td>
+         <td>Content caption availability will be automatically detected if the content has it. You don't need to map this element in your contents recipe. If your content has closed caption availability, Fire App Builder passes a <code>1</code> when sending the recommendation. If not, it passes <code>0</code>. </td>
       </tr>
       <tr>
          <td><code>com.amazon.extra.IMDB_ID</code></td>
@@ -70,11 +70,11 @@ The following table describes how Fire App Builder handles each tag, how to map 
       </tr>
       <tr>
          <td><code>com.amazon.extra.CONTENT_START_TIME</code></td>
-         <td>Map to the tag <code>startTime</code> in your contents recipe.</td>
+         <td>Map to the tag <code>startTime</code> in your contents recipe. Only valid for live content.</td>
       </tr>
       <tr>
          <td><code>com.amazon.extra.CONTENT_END_TIME</code></td>
-         <td>Map to the tag <code>endTime</code> in your contents recipe.</td>
+         <td>Map to the tag <code>endTime</code> in your contents recipe. Only valid for live content.</td>
       </tr>
       <tr>
          <td><code>com.amazon.extra.TEXT_EMBEDDED_IMAGE</code></td>
@@ -86,7 +86,7 @@ The following table describes how Fire App Builder handles each tag, how to map 
         </tr>
       <tr>
         <td><code>com.amazon.extra.LAST_WATCHED_DATETIME</code></td>
-        <td>Map to the tag <code>lastWatchedDateTime</code>.</td>
+        <td>Fire App Builder automatically picks up this value by looking at the records in its database for the content. Fire App Builder stores the last time every content is watched. There's no need to map this value in your contents recipe.</td>
       </tr>
       <tr>
         <td><code>com.amazon.extra.PREVIEW_URL</code></td>
@@ -125,6 +125,7 @@ Here's an example of an item in a feed that includes all the extras:
        "162264"
      ],
      "maturityRating": "PG",
+     "live": true,
      "startTime": 1490393748,
      "endTime": 1490397347,
      "videoPreviewUrl": "http://mywebsite.com/some/url/to/the/video.mp4",
@@ -154,6 +155,7 @@ In your contents recipe, you map these extras in the same way you map your other
     "channel_id@channelId",
     "recommendations@recommendations",
     "maturityRating@maturityRating",
+    "live@live",
     "startTime@startTime",
     "endTime@endTime",
     "videoPreviewUrl@videoPreviewUrl",

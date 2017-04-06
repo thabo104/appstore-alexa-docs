@@ -28,20 +28,28 @@ The Recommended By Your Apps row shows all recommendations from apps the user ha
 
 Fire App Builder has two types of recommendations:
 
-* **Global recommendations**: These recommendations are sent when the app is started. See [Send Global Recommendations](fire-app-builder-global-recommendations) for more details.
+* **Global recommendations**: These recommendations are sent periodically, such as when the app is started. See [Send Global Recommendations](fire-app-builder-global-recommendations) for more details.
 * **Related recommendations**: These recommendations are sent when a specific video is watched. See [Send Related Recommendations](fire-app-builder-related-recommendations) for more details.
 
 If your feed does not already contain recommendations information, you will need to add this information to your feed. Each video in your feed must have a unique ID to work with the recommendations.
 
-{% include note.html content="Recommendations aren't the same as \"Related Content.\" Related content appears as cards under the video on the media playback screen and shows other videos in the same category. Recommendations are video IDs that are specifically noted in your feed, regardless of any category grouping." %}
+{% include note.html content="Recommendations aren't the same as \"Related Content.\" Related content appears as cards under the video on the media playback screen and shows other videos in the same category. Recommendations are content IDs that are specifically noted in your feed, regardless of any category grouping." %}
 
 ## Recommendations Requirements
 
 Fire TV requires at least 5 recommendations to be sent (from all apps combined) in order for the Recommended By Your Apps row to appear to users. However, Android has a limit of 50 recommendations max that can be sent by an app, so do not exceed 50. (See [Best Practices for Recommendations][fire-tv-recommendations-best-practices#dont-exceed-the-notifications-limit] for more details.)
 
+Additionally, in your app's manifest indicate that the `installLocation` uses `internalOnly` storage, like this:
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.amazon.android.acmemedia"
+          android:installLocation="internalOnly">
+```
+
 ## Release Dates for the Recommended By Your Apps Row
 
-The "Recommended By Your Apps" row hasn't been rolled out to mainstream users on Fire TV yet. It's still in development. You can [activate a feature in Developer Options][fire-tv-recommendations-testing] to test the row before this feature is released. (We promote this feature to developers now so that when it is rolled out, the row will be populated with recommendations apps are already sending.)
+The "Recommended By Your Apps" row hasn't been rolled out to mainstream users on Fire TV yet. It's only been rolled out to a small group of users but will be rolled out mainstream shortly. You can [activate a feature in Developer Options][fire-tv-recommendations-testing] to test the row before this feature is released. (We promote this feature to developers now so that when it is rolled out, the row will be populated with recommendations apps are already sending.)
 
 ## See How Recommendations Works with the Sample LightCast Feed
 
@@ -160,7 +168,7 @@ To watch the video, you can click the video to launch it directly. Or you can cl
 
 All videos have the same priority in the recommendation settings, so their order in the recommendations row will be somewhat random.
 
-Fire App Builder contains a database and creates a record for the recommendation. If a user completely finishes watching this video, a delete request will be sent for that recommendation to remove it from the recommendation row. However, after the app refreshes in 6 hours, this watch history from the database is no longer retained. The same global or related recommendations will again be sent.
+Fire App Builder contains a database and creates a record for the recommendation. Fire App Builder retains a watch history for 12 days, but currently there isn't any logic that filters out recommendations for items the user already been watched. If your feed isn't updated with new recommendations, the same recommendations will be sent for items previously watched. Later versions of Fire App Builder might implement more advanced filtering logic.
 
 After you're done trying out recommendations, revert some of the changes you made to the way Fire App Builder loads feeds. In particular, undo step 2 or your web-based feeds won't load properly, or see [Load Your Media Feed][fire-app-builder-load-media-feed] for the proper settings for the data loader files.
 
