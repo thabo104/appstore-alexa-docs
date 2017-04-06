@@ -1,5 +1,5 @@
 ---
-title: Load a Component in Your App
+title: Add or Remove Component in Your App
 permalink: fire-app-builder-load-a-component.html
 sidebar: fireappbuilder
 product: Fire App Builder
@@ -12,29 +12,23 @@ For an overview of the available components, see [Components Overview][fire-app-
 * TOC
 {:toc}
 
-## Remove a Component {#removeacomponent}
+## Component Requirements
 
 With the exception of analytics components, you can load only one component per interface. For example, you cannot load both the VAST Ads component and the Freewheel Ads component, because both components use the same `IAds` interface.
 
-However, all components require you to have a component loaded in your app for that interface. Because of this requirement, some components are dummy components that simply fulfill the requirements of having a component. The following are dummy components:
+However, all components (except the purchasing component) require you to have a component loaded in your app for that interface. Because of this requirement, some components are dummy components that simply fulfill the requirements of having a component. The following are dummy components:
 
 *  LoggerAnalyticsComponent
 *  PassThroughAdsComponent
+*  PassThroughLoginComponent
 
 These dummy components don't do anything. For a list of the component interface groups, see [Available Components and Interfaces][fire-app-builder-interfaces-and-components#componentgroups] in Components Overview.
 
 Before you load a component in your app, check to make sure you have only one component for that interface. If another component is already loaded (as is probably the case, even if it's just a dummy component) you must remove it.
 
-To remove a component from your app, follow the same steps as listed in the next section, "Load a Component in Your App," but do the opposite in each step. For example, instead of adding a reference to something like `FacebookAuthComponent`, you would remove the reference.
+Adding or removing a component follows the same general steps. When adding a component, you add a component name. When removing a component, you remove the component name.
 
-## Load a Component in Your App {#loadcomponent}
-
-To load a component in your app:
-
-*  [1. Define and Compile the Component](#define)
-*  [2. Configure the Component's Values](#configure)
-
-### 1. Define and Compile the Component {#define}
+## Add or Remove a Component in Your App {#loadcomponent}
 
 {% include note.html content="These instructions assume you're in the Android view." %}
 
@@ -108,7 +102,6 @@ First you need to first define the implemented components in the "settings.gradl
     *  VastAdsComponent
     *  AmazonInAppPurchasingComponent
     *  AMZNMediaPlayerComponent
-{% comment %}*  BrightCoveMediaPlayerComponent {% endcomment %}
 
     In the the sample app in Fire App Builder, the following components are implemented by default: AMZNMediaPlayerComponent, PassThroughAdsComponent, LoggerAnalyticsComponent, PassThroughLoginComponent, and AmazonInAppPurchaseComponent.
 
@@ -131,7 +124,7 @@ First you need to first define the implemented components in the "settings.gradl
 
     Add or remove the components you want to implement following the same pattern as before.
 
-5.  Resync your project with Gradle by clicking the **Resync Project with Gradle Files** button {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_syncgradlebutton" type="png" %}.
+5.  Resync your project with Gradle by either clicking **Sync Now** (which appears in the upper-right corner when Android Studio detects a change int he Gradle files) or by clicking the **Resync Project with Gradle Files** button {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_syncgradlebutton" type="png" %}.
 
     If you're prompted that some modules are no longer imported from Gradle anymore, click **OK**.
 
@@ -141,7 +134,7 @@ First you need to first define the implemented components in the "settings.gradl
 
 6.  You can remove old build artifacts from previous components by going to **Build > Rebuild Project** .
 
-### 2. Configure the Component's Values {#configure}
+## Configure the Component's Values
 
 Each component has a list of customizable strings that have been extracted out into an XML file. Because of this, to customize a component with your app, you merely need supply the right values for the strings. You don't need to modify the Java classes.
 

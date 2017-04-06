@@ -58,7 +58,7 @@ Related video content (which uses tags in your feed to surface a group of relate
 
 When users who are watching live content videos pause the video, a button appears that says "Resume." Previously, the Resume button would appear for the most recently watched live content video only. Now the Resume button can appear for any number of live content videos the user may have paused.
 
-### Crashes show "Service is unavailable" instead of crashing.
+### Crashes show "Service is unavailable" instead of crashing
 
 If the app fails to load and parse your feed (because an empty data object was served to the parser), instead of just crashing because the feed link returned no data, the app displays a screen that says "Service is unavailable. Please try again later."
 
@@ -74,7 +74,7 @@ Various other bug fixes for stability and performance were also made.
 
 (Note: Some of these issues are the same known issues from [version 1.0.0][fire-app-builder-release-notes-version-1-0-0].)
 
-**In-app purchasing tag added to apps**. Fire App Builder contains a default [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component]. Unfortunately, there's not a dummy purchasing component you can substitute in place of IAP. As a result, when you submit your app into the Appstore, it will be tagged as containing in-app purchases. An upcoming Fire App Builder release will add a dummy purchasing component instead of IAP so that this tag is not added to apps.
+**In-app purchasing tag added to apps**. Fire App Builder contains a the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. As a result, when you submit your app into the Appstore, it will be tagged as containing in-app purchases. If you're not using IAP, simply [remove the component][fire-app-builder-load-a-component] from your app before submitting it to the Appstore to avoid receiving this tag.
 
 **Login with Amazon component**. The [Login with Amazon component][fire-app-builder-login-with-amazon-component] is not working correctly. The issue is currently being investigated.
 

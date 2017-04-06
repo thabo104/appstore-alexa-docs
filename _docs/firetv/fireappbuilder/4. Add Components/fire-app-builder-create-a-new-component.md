@@ -71,6 +71,6 @@ In addition to using the existing components, you can create your own components
 
     }
     ```
-6.  After you finish creating the component, you can load the component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component]. 
+6.  After you finish creating the component, you can load the component into your app. See [Add or Remove a Component][fire-app-builder-load-a-component]. 
 
 {% include links.html %}

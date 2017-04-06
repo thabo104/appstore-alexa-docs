@@ -140,9 +140,9 @@ If you don't want to use any of the authentication components listed in the prec
 
 ## Purchasing Components {#purchasingcomponents}
 
-Purchasing components allow users to make payments to either rent or subscribe to content in your app. The purchasing components implement the `IPurchase` interface in the PurchaseInterface folder. Loading a purchasing component is required. If you don't want this component active, however, you can
+Purchasing components allow users to make payments to either rent or subscribe to content in your app. The purchasing components implement the `IPurchase` interface in the PurchaseInterface folder. Unlike the other components, loading a purchasing component is not actually required.
 
-The following purchasing components are available.
+Only one purchasing components is available:
 
 <table>
 <colgroup>
@@ -162,6 +162,8 @@ The following purchasing components are available.
     </tr>
   </tbody>
 </table>
+
+{% include note.html content="When you download Fire App Builder, the default configuration includes the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. As a result, when you submit your app into the Appstore, it will be tagged as containing in-app purchases. If you're not using IAP, simply [remove the component][fire-app-builder-load-a-component] from your app before submitting it to the Appstore." %}
 
 
 ## Media Player Components {#mediaplayercomponents}

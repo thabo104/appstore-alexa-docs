@@ -23,9 +23,9 @@ Follow the sections below to configure Flurry Analytics.
 
 ## Step 2. Configure the Flurry Analytics Component {#step2}
 
-1.  Load the Flurry Analytics Component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component].
+1.  Load the Flurry Analytics Component into your app. See [Add or Remove a Component][fire-app-builder-load-a-component].
 
-2.  Remove any other analytics components that are loaded in your app (such as Crashlytics, OmnitureAnalyticsComponent, or LoggerAnalyticsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
+2.  Remove any other analytics components that are loaded in your app (such as Crashlytics, OmnitureAnalyticsComponent, or LoggerAnalyticsComponent). See [Add or Remove a Component][fire-app-builder-load-a-component] for details.
 
     {% include_relative componentnote_analytics.html %}
 

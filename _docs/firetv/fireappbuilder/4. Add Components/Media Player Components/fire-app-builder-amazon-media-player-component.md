@@ -15,9 +15,9 @@ The aim with Amazon Media Player is to develop higher level player APIs that abs
 
 ## Configure Amazon Media Player Component
 
-There aren't any options to customize the Amazon Media Player Component. You simply load the component following the general instructions here: [Load a Component in Your App][fire-app-builder-load-a-component].
+There aren't any options to customize the Amazon Media Player Component. You simply load the component following the general instructions here: [Add or Remove a Component][fire-app-builder-load-a-component].
 
-If you have another media player component already loaded, you must remove it. See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
+If you have another media player component already loaded, you must remove it. See [Add or Remove a Component][fire-app-builder-load-a-component] for details.
 
 {% include_relative componentnote_mediaplayer.html %}
 

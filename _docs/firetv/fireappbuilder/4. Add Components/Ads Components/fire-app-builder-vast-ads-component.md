@@ -131,8 +131,8 @@ After the video ads, the user's selected media begins to play.
 
 To configure VAST Ads:
 
-1.  Load the VAST ads component into your app. See the [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
-2.  Remove any other ad components that are loaded in your app (such as FreeWheelAdsCompnent or PassThroughAdsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
+1.  Load the VAST ads component into your app. See the [Add or Remove a Component][fire-app-builder-load-a-component] for details about how to load a component into your app.
+2.  Remove any other ad components that are loaded in your app (such as FreeWheelAdsCompnent or PassThroughAdsComponent). See [Add or Remove a Component][fire-app-builder-load-a-component] for details.
 
     {% include_relative componentnote_ads.html %}
 

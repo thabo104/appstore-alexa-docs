@@ -22,9 +22,9 @@ After the video ads end, the media that the user selected starts playing.
 
 ## Configure Freewheel
 
-1.  Load the Freewheel component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
+1.  Load the Freewheel component into your app. See [Add or Remove a Component][fire-app-builder-load-a-component] for details about how to load a component into your app.
 
-2.  Remove any other ads components that are loaded in your app (such as VastAdsComponent or PassThroughAdsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.    
+2.  Remove any other ads components that are loaded in your app (such as VastAdsComponent or PassThroughAdsComponent). See [Add or Remove a Component][fire-app-builder-load-a-component] for details.    
     
     {% include_relative componentnote_ads.html %}
     

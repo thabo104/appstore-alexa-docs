@@ -54,4 +54,10 @@ E/NavigatorModelParser: Navigator parsing failed!!! com.fasterxml.jackson.datab
 
 **Solution**: Check your Navigator.json file to make sure the JSON is valid. An extra comma that makes it invalid can cause this error.
 
+## Your Free App Gets Tagged with In-App Purchasing
+
+**Problem**: When you submit your free app to the Appstore, it receives the in-app purchases tag and note.
+
+**Solution**: The [In-App Purchasing component][fire-app-builder-interfaces-and-components] causes the Appstore to automatically include this tag. If you're not using IAP, simply [remove the component][fire-app-builder-load-a-component] from your app. (Unlike the other components, you don't need to include a dummy purchasing component.)
+
 {% include links.html %}

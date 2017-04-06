@@ -69,8 +69,8 @@ To create a Facebook app:
 
 The Facebook Auth Component should already be loaded in the sample app in Fire App Builder, but you will need to configure the component.
 
-1.  The Facebook Auth Component is already loaded in the sample app built with Fire App Builder. If it isn't loaded due to updates you've made, see [Load a Component in Your App][fire-app-builder-load-a-component].
-2.  Remove any other authentication components that are loaded in your app (such as AdobepassAuthComponent or LoginWithAmazonComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
+1.  The Facebook Auth Component is already loaded in the sample app built with Fire App Builder. If it isn't loaded due to updates you've made, see [Add or Remove a Component][fire-app-builder-load-a-component].
+2.  Remove any other authentication components that are loaded in your app (such as AdobepassAuthComponent or LoginWithAmazonComponent). See [Add or Remove a Component][fire-app-builder-load-a-component] for details.
 
     {% include_relative componentnote_authentication.html %}
 

@@ -187,7 +187,7 @@ To set a shorter title for the 15-character recommendation space, you can custom
 2.  In this file, add the following element with the app name you want:
 
     ```xml
-    <string name="">FireAppBuilder</string>
+    <string name="app_name_short">FireAppBuilder</string>
     ```
 
 When Fire App Builder builds the recommendation, it will use the value included here and pass it as the `com.amazon.extra.DISPLAY_NAME`.

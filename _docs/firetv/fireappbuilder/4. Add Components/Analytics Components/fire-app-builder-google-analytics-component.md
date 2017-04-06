@@ -18,11 +18,11 @@ To configure the Google Analytics Component, complete each of the following sect
 
 ## Step 1. Configure the Google Analytics Component {#step1}
 
-1.  Remove any other analytics components that are loaded in your app (such as Crashlytics, FlurryAnalyticsComponent, OmnitureAnalyticsComponent, or LoggerAnalyticsComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
+1.  Remove any other analytics components that are loaded in your app (such as Crashlytics, FlurryAnalyticsComponent, OmnitureAnalyticsComponent, or LoggerAnalyticsComponent). See [Add or Remove a Component][fire-app-builder-load-a-component] for details.
 
     {% include_relative componentnote_analytics.html %}
 
-2.  Load the Google Analytics component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
+2.  Load the Google Analytics component into your app. See [Add or Remove a Component][fire-app-builder-load-a-component] for details about how to load a component into your app.
 
 3.  Click the **Sync Gradle button** {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_syncgradlebutton" type="png" %}.
 

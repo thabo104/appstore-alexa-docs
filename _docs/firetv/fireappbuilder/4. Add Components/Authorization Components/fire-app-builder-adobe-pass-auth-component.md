@@ -52,8 +52,8 @@ The Adobe Pass Auth Component provides three separate groups of files you can cu
 
 To configure the Adobe Pass Authorization Component:
 
-1.  Load the Adobe Pass Authorization component into your app. See [Load a Component in Your App][fire-app-builder-load-a-component] for details about how to load a component into your app.
-2.  Remove any other authentication components that are loaded in your app (such as FacebookAuthComponent or LoginWithAmazonComponent). See [Remove a Component][fire-app-builder-load-a-component#removeacomponent] for details.
+1.  Load the Adobe Pass Authorization component into your app. See [Add or Remove a Component][fire-app-builder-load-a-component] for details about how to load a component into your app.
+2.  Remove any other authentication components that are loaded in your app (such as FacebookAuthComponent or LoginWithAmazonComponent). See [Add or Remove a Component][fire-app-builder-load-a-component] for details.
 
     {% include note.html content="You can load only *one* component per interface. For example, you cannot load both the Adobe Pass Auth component *and* the Pass Through Login component, because both components use the same `IAuthentication` interface. For a list of the components by interface, see [Components Overview][fire-app-builder-interfaces-and-components]." %}
 
