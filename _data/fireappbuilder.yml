@@ -137,7 +137,7 @@ folders:
 - title: 3. Customize the Appearance
   folderitems:
 
-  - title: Customize the Look and Feel
+  - title: Customize the Look and Feel of Your App
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-customize-look-and-feel
     jurl: /fire-app-builder-customize-look-and-feel.html
     ref: fire-app-builder-customize-look-and-feel
@@ -271,7 +271,7 @@ folders:
     ref: fire-app-builder-related-recommendations
     bookmarks: amazon-extras
 
-  - title: Customize the recommendations with Amazon extras
+  - title: Customize the recommendations with Amazon Extras
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-amazon-extras
     jurl: /fire-app-builder-amazon-extras.html
     ref: fire-app-builder-amazon-extras
