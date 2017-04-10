@@ -1,0 +1,154 @@
+sidebarTitle: Dash Replenishment Service
+
+folders:
+- title: Getting Started
+  folderitems:
+
+folders:
+- title: Getting Started
+  titleja: Getting Started
+  folderitems:
+
+  - title: Overview
+    jurl: /dash-replenishment-service.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/
+    ref: dash-replenishment-service
+
+  - title: CX Guidelines
+    jurl: /dash-customer-experience-guidelines.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-customer-experience-guidelines
+    ref: dash-customer-experience-guidelines
+
+  - title: Create an LWA Security Profile
+    jurl: /dash-create-a-security-profile.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-create-a-security-profile
+    ref: dash-create-a-security-profile
+
+  - title: Create an SNS Topic
+    jurl: /dash-create-an-sns-topic.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-create-an-sns-topic
+    ref: dash-create-an-sns-topic
+
+  - title: Device Management and Settings
+    jurl: /dash-device-management-and-settings.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-device-management-and-settings
+    ref: dash-device-management-and-settings
+
+  - title: DRS Teaser Page
+    jurl: /dash-teaser-page.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-teaser-page
+    ref: dash-teaser-page
+
+#  - title: Add a Device for EU Marketplaces
+#    jurl: /dash-overview.html#eu-marketplaces
+#    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-eu-marketplaces
+#    ref: dash-eu-marketplaces
+
+  - title: Glossary
+    jurl: /dash-glossary.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-glossary
+    ref: dash-glossary
+
+- title: LWA Integration
+  folderitems:
+
+  - title: LWA Overview
+    jurl: /dash-lwa-overview.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-overview
+    ref: dash-lwa-overview
+
+  - title: Using the LWA Web API
+    jurl: /dash-lwa-web-api.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-web-api
+    ref: dash-lwa-web-api
+
+  - title: LWA Mobile SDK Overview
+    jurl: /dash-lwa-mobile-sdk.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-mobile-sdk
+    ref: dash-lwa-mobile-sdk
+
+  - title: Use LWA Mobile SDK with Android
+    jurl: /dash-lwa-mobile-sdk-android.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-mobile-sdk-android
+    ref: dash-lwa-mobile-sdk-android
+
+  - title: Use LWA Mobile SDK with iOS
+    jurl: /dash-lwa-mobile-sdk-ios.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-mobile-sdk-ios
+    ref: dash-lwa-mobile-sdk-ios
+
+- title: Notifications & Workflows
+  folderitems:
+
+  - title: SNS Notification Messages
+    jurl: /dash-notification-messages.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-notification-messages
+    ref: dash-notification-messages
+    bookmarks: device-deregistered
+
+  - title: Order Resolution Flow
+    jurl: /dash-amazon-order-resolution-flow.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-amazon-order-resolution-flow
+    ref: dash-amazon-order-resolution-flow
+
+  - title: Test Device Purchases
+    jurl: /dash-test-device-purchases.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-test-device-purchases
+    ref: dash-test-device-purchases
+
+- title: API Endpoints
+  folderitems:
+
+  - title: Replenish
+    jurl: /dash-replenish-endpoint.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-replenish-endpoint
+    ref: dash-replenish-endpoint
+
+  - title: SlotStatus
+    jurl: /dash-slotstatus-endpoint.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-slotstatus-endpoint
+    ref: dash-slotstatus-endpoint
+
+  - title: DeviceStatus
+    jurl: /dash-devicestatus-endpoint.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-devicestatus-endpoint
+    ref: dash-devicestatus-endpoint
+
+  - title: Deregistration
+    jurl: /dash-deregistration-endpoint.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-deregistration-endpoint
+    ref: dash-deregistration-endpoint
+
+  - title: SubscriptionInfo
+    jurl: /dash-getsubscriptioninfo-endpoint.html
+    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-getsubscriptioninfo-endpoint
+    ref: dash-getsubscriptioninfo-endpoint
+
+
+related_resources_title: Related Resources
+
+related_resources_list:
+
+- title: FAQs
+  jurl: /dash-faqs.html
+  hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-faqs
+  ref: dash-faqs
+
+- title: Forum
+  jurl: https://forums.developer.amazon.com/spaces/61/Dash+Replenishment+Service.html
+  hurl: https://forums.developer.amazon.com/spaces/61/Dash+Replenishment+Service.html
+  ref: forum
+
+- title: Get Started (Self-Service Portal)
+  jurl: https://developer.amazon.com/dash-replenishment-service/getting-started
+  hurl: https://developer.amazon.com/dash-replenishment-service/getting-started
+  ref: get-started
+
+- title: Device Wizard (Self-Service Portal)
+  jurl: https://developer.amazon.com/dash-replenishment/index.html
+  hurl: https://developer.amazon.com/dash-replenishment/index.html
+  ref: device-wizard
+
+forum:
+  forum_link: https://forums.developer.amazon.com/spaces/61/index.html
+  forum_name: Amazon Dash Replenishment Forum
