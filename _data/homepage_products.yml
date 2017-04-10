@@ -32,6 +32,12 @@
    shortname: fling
    owner: tomjoht
 
+ - title: Dash Replenishment Service
+   link: dash-replenishment-service.html
+   group: Appstore
+   shortname: dash
+   owner: tomjoht
+
 ## Other
 
  - shortname: appstore
