@@ -58,10 +58,10 @@ folders:
     jurl: /design-and-user-experience-guidelines.html
     ref: design-and-user-experience-guidelines
 
-#  - title: What Is Fire OS?
-#    jurl: /fire-os-overview.html
-#    hurl: https://developer.amazon.com/public/ja/solutions/platforms/fire-os/docs/fire-os-overview
-#    ref: fire-os-overview
+  - title: Fire OSとは？
+    jurl: /fire-os-overview.html
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-fire-os-overview
+    ref: fire-tv-fire-os-overview
 
   - title: Fire TV開発における最新情報
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/whats-new-in-the-fire-tv-sdk
@@ -134,122 +134,122 @@ folders:
     jurl: /controller-image-assets.html
     ref: controller-image-assets
 
-#- title: 開発に関するベストプラクティス
-#  folderitems:
-#  - title: Mouse Pointers
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/customizing-mouse-pointer
-#    jurl: /customizing-mouse-pointer.html
-#    ref: customizing-mouse-pointer
-#
-#  - title: Display and Layout
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/display-and-layout
-#    jurl: /display-and-layout.html
-#    ref: display-and-layout
-#
-#  - title: User Agent Strings
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/user-agent-strings
-#    jurl: /user-agent-strings.html
-#    ref: user-agent-strings
-#
+- title: 開発に関するベストプラクティス
+  folderitems:
+  - title: マウスポインタのカスタマイズ
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/customizing-mouse-pointer
+    jurl: /customizing-mouse-pointer.html
+    ref: customizing-mouse-pointer
+
+  - title: 表示とレイアウト
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/display-and-layout
+    jurl: /display-and-layout.html
+    ref: display-and-layout
+
+  - title: ユーザーエージェント文字列
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/user-agent-strings
+    jurl: /user-agent-strings.html
+    ref: user-agent-strings
+
 #  - title: Managing Audio Focus
 #    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/managing-audio-focus
 #    jurl: /managing-audio-focus.html
 #    ref: managing-audio-focus
 #    bookmarks: [audiofocusvoice]
 #
-#  - title: Media Players
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-media-players
-#    jurl: /fire-tv-media-players.html
-#    ref: fire-tv-media-players
-#    bookmarks: [exoplayer]
-#
+  - title: Fire TV対応のメディアプレーヤー
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-media-players
+    jurl: /fire-tv-media-players.html
+    ref: fire-tv-media-players
+    bookmarks: [exoplayer]
+
 #  - title: Dolby Integration
 #    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/amazon-fire-tv-dolby-integration-guidelines
 #    jurl: /amazon-fire-tv-dolby-integration-guidelines.html
 #    ref: amazon-fire-tv-dolby-integration-guidelines
 #
-#  - title: Identifying Fire TV Devices
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/identifying-amazon-fire-tv-devices
-#    jurl: /identifying-amazon-fire-tv-devices.html
-#    ref: identifying-amazon-fire-tv-devices
-#
-#  - title: HDMI Events
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-handling-hdmi-events
-#    jurl: /fire-tv-handling-hdmi-events.html
-#    ref: fire-tv-handling-hdmi-events
-#
+  - title: Amazon Fire TV端末を識別する
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/identifying-amazon-fire-tv-devices
+    jurl: /identifying-amazon-fire-tv-devices.html
+    ref: identifying-amazon-fire-tv-devices
+
+  - title: HDMIイベントの処理
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-handling-hdmi-events
+    jurl: /fire-tv-handling-hdmi-events.html
+    ref: fire-tv-handling-hdmi-events
+
 #  - title: 4K Ultra HD Videos
 #    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-4k-ultra-hd
 #    jurl: /fire-tv-4k-ultra-hd.html
 #    ref: fire-tv-4k-ultra-hd
 #
-#  - title: User Interface
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/user-interface
-#    jurl: /user-interface.html
-#    ref: user-interface
-#
-#  - title: DIAL Integration
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/dial-integration
-#    jurl: /dial-integration.html
-#    ref: dial-integration
-#
-#  - title: Search
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/implementing-search-fire-tv
-#    jurl: /implementing-search-fire-tv.html
-#    ref: implementing-search-fire-tv
-#    bookmarks: [voicesearch]
-#
-#  - title: Notifications
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/notifications-for-amazon-fire-tv
-#    jurl: /notifications-for-amazon-fire-tv.html
-#    ref: notifications-for-amazon-fire-tv
-#
-#  - title: App Installation Location
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/specifying-installation-location
-#    jurl: /specifying-installation-location.html
-#    ref: specifying-installation-location
-#
-#  - title: Advertising ID
-#    hurl: https://developer.amazon.com/public/ja/solutions/platforms/fire-os/docs/fire-os-advertising-id
-#    jurl: /fire-os-advertising-id.html
-#    ref: fire-os-advertising-id
-#
-#  - title: Resources for International Locales
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tablets/app-development/07-resources-for-international-locales
-#    jurl: /07-resources-for-international-locales.html
-#    ref: 07-resources-for-international-locales
-#
-#- title: 開発者ツールを使用したFire TVに関する問題のトラブルシューティング
-#  folderitems:
-#
-#  - title: Developer Tool Options
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-system-xray-developer-tools
-#    jurl: /fire-tv-system-xray-developer-tools.html
-#    ref: fire-tv-system-xray-developer-tools
-#
-#  - title: System X-Ray
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-system-xray
-#    jurl: /fire-tv-system-xray.html
-#    ref: fire-tv-system-xray
-#
-#  - title: Customize System X-Ray
-#    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-system-xray-customized-metrics
-#    jurl: /fire-tv-system-xray-customized-metrics.html
-#    ref: fire-tv-system-xray-customized-metrics
-#
-#- title: >ユーザー補助機能
-#  folderitems:
-#
-#  - title: Understanding Assistive Technologies for Fire OS
-#    hurl: https://developer.amazon.com/public/ja/solutions/platforms/fire-os/docs/understanding-assistive-technologies-for-fireos
-#    jurl: /understanding-assistive-technologies-for-fireos.html
-#    ref: understanding-assistive-technologies-for-fireos
-#
-#  - title: Implementing Accessibility in Fire OS
-#    hurl: https://developer.amazon.com/public/ja/solutions/platforms/fire-os/docs/implementing-accessibility-in-fireos
-#    jurl: /implementing-accessibility-in-fireos.html
-#    ref: implementing-accessibility-in-fireos
-#
+  - title: AndroidのMenuとActionBarウィジェット
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/user-interface
+    jurl: /user-interface.html
+    ref: user-interface
+
+  - title: DIALの統合
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/dial-integration
+    jurl: /dial-integration.html
+    ref: dial-integration
+
+  - title: Fire TVに検索機能を実装する
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/implementing-search-fire-tv
+    jurl: /implementing-search-fire-tv.html
+    ref: implementing-search-fire-tv
+    bookmarks: [voicesearch]
+
+  - title: Fire TVの通知機能
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/notifications-for-amazon-fire-tv
+    jurl: /notifications-for-amazon-fire-tv.html
+    ref: notifications-for-amazon-fire-tv
+
+  - title: Fire TVアプリのインストール場所を指定する
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/specifying-installation-location
+    jurl: /specifying-installation-location.html
+    ref: specifying-installation-location
+
+  - title: Fire TVの広告ID
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-advertising-id
+    jurl: /fire-tv-advertising-id.html
+    ref: fire-tv-advertising-id
+
+  - title: 各種ロケール用のリソース
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-international-locales
+    jurl: /fire-tv-international-locales.html
+    ref: fire-tv-international-locales
+
+- title: 開発者ツールを使用したトラブルシューティング
+  folderitems:
+
+  - title: 開発者ツールのオプション
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-system-xray-developer-tools
+    jurl: /fire-tv-system-xray-developer-tools.html
+    ref: fire-tv-system-xray-developer-tools
+
+  - title: Fire TVのSystem X-Rayオーバーレイ
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-system-xray
+    jurl: /fire-tv-system-xray.html
+    ref: fire-tv-system-xray
+
+  - title: System X-Rayをカスタマイズする
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-system-xray-customized-metrics
+    jurl: /fire-tv-system-xray-customized-metrics.html
+    ref: fire-tv-system-xray-customized-metrics
+
+- title: アクセシビリティ
+  folderitems:
+
+  - title: Fire OS向けのユーザー補助機能について
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-assistive-technologies
+    jurl: /fire-tv-assistive-technologies.html
+    ref: fire-tv-assistive-technologies
+
+  - title: Fire OSにアクセシビリティを実装する
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-tv-accessibility
+    jurl: /fire-tv-accessibility.html
+    ref: fire-tv-accessibility
+
 #  - title: Implementing VoiceView Accessibility Features
 #    hurl: https://developer.amazon.com/public/ja/solutions/platforms/fire-os/docs/implementing-future-voiceview-accessibility-features
 #    jurl: /implementing-future-voiceview-accessibility-features.html
@@ -321,9 +321,13 @@ related_resources_title: その他のリソース
 
 related_resources_list:
 
-- title: Fire TV
-  hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv
-  jurl: /getting-started-developing-apps-and-games-for-amazon-fire-tv.html
+- title: Fire App Builder
+  hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/fire-app-builder-overview
+  jurl: /fire-app-builder-overview.html
+
+- title: Fire TV 用ウェブアプリの準備
+  hurl: https://developer.amazon.com/public/ja/solutions/platforms/webapps/docs/getting-started-with-web-apps-for-fire-tv
+  jurl: getting-started-with-web-apps-for-fire-tv
 
 - title: Fire TVカタログ統合
   hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/overview/integrating-your-catalog-with-fire-tv

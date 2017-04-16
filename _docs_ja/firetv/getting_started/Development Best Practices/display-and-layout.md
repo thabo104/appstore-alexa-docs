@@ -1,9 +1,9 @@
 ---
 title: 表示とレイアウト
 permalink: display-and-layout.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

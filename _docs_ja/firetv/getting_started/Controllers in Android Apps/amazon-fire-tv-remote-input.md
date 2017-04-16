@@ -1,9 +1,9 @@
 ---
 title: リモコン入力
 permalink: amazon-fire-tv-remote-input.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 ---
 
 すべてのボタン、Androidイベント、および動作のガイドラインは、音声認識 (マイク) ボタンを除いて、すべてのリモコンで同じです。音声認識 (マイク) ボタンは一部のリモコンでしか利用できません。

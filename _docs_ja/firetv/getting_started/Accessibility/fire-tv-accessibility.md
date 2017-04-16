@@ -1,10 +1,10 @@
 ---
 title: アクセシビリティ - Fire TV
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
 permalink: fire-tv-accessibility.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-accessibility
-toc: false
+toc-style: kramdown
 github: true
 ---
 

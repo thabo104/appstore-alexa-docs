@@ -1,9 +1,9 @@
 ---
 title: Fire TVに検索機能を実装する
 permalink: implementing-search-fire-tv.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 

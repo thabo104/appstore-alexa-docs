@@ -1,9 +1,9 @@
 ---
 title: マウスポインタのカスタマイズ
 permalink: customizing-mouse-pointer.html
-sidebar: firetv
+sidebar: firetv_ja
 product: Fire TV
-toc: false
+toc-style: kramdown
 github: true
 ---
 
