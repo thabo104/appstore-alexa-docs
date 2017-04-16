@@ -73,7 +73,7 @@ Use these instructions if you publish your media details in a web feed that is o
 
     {% include tip.html content="In Android Studio, instead of browsing folders, you can press **Shift** key twice and then type the file name to quickly find a file." %}
 
-2.  Ensure the value for the **data_downloader.impl** option is `com.amazon.dataloader.datadownloader.BasicHttpBasedDataDownloader`:
+2.  Ensure the value for the **data_downloader.impl** option is as follows:
 
     ```json
     {
@@ -83,7 +83,7 @@ Use these instructions if you publish your media details in a web feed that is o
     }
     ```
 
-2.  Open the **BasicHttpBasedDownloaderConfig.json** file (located in **app > assets > configurations**) and ensure the value for `url_generator_impl` is `com.amazon.dataloader.datadownloader.BasicFileBasedUrlGenerator`:
+2.  Open the **BasicHttpBasedDownloaderConfig.json** file (located in **app > assets > configurations**) and ensure the value for `url_generator_impl` is as follows:
 
     ```json
     {

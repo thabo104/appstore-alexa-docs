@@ -96,7 +96,7 @@ Follow these steps regardless of whether you prefer option 1 or option 2.
 
     Note that you do not need these elements in your app's manifest. When you upload your APK into the Amazon Appstore, the Appstore will read the information from this "build.gradle (Module: app)" file instead of the AndroidManifest.xml.
 
-5.  Expand the **Gradle Scripts** folder and open the **gradle.properties (Project Properties)** file. Customize the `applicationName` to your app's name. Android Studio uses this name in the APK file.
+5.  Expand the **Gradle Scripts** folder and open the **gradle.properties (Project Properties)** file. Customize the `applicationName` to your app's name without using spaces. Android Studio uses this name in the APK file.
 
 ## Clean and Build the Project
 

@@ -14,9 +14,9 @@ After you have [set up your recipes][fire-app-builder-set-up-recipes-overview], 
 * TOC
 {:toc}
 
-## DataLoaderRecipe
+## Data Loader Recipe
 
-The DataLoaderRecipe file loads a media feed URL. Because DataLoaderRecipe can load only one media feed URL at a time, if you have multiple media feed URLs, you will have to create multiple DataLoaderRecipe files, each time referencing the same category and contents recipes. This can be somewhat manual to set this up, but once set up, you won't need to touch it again.
+The Data Loader Recipe file loads a media feed URL. Because the Data Loader Recipe can load only one media feed URL at a time, if you have multiple media feed URLs, you will have to create multiple Data Loader Recipe files, each time referencing the same category and contents recipes. This can be somewhat manual to set this up, but once set up, you won't need to touch it again.
 
 ## Two Kinds of Feeds
 

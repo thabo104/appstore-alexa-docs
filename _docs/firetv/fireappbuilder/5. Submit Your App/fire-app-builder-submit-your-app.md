@@ -84,11 +84,21 @@ While you're configuring your manifest, if you have set up [recommendations][fir
           android:installLocation="internalOnly">
 ```
 
-## Remove the IAP Component If Unused
+## Remove the IAP Component If Unused {#commentoutiap}
 
 Fire App Builder contains the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. If you leave this component in your app, when you submit it to the Appstore your app will be tagged as containing in-app purchases. The Appstore will also appends a note about in-app purchases at the end of your Short Description.
 
 If you're not using the IAP component, simply [remove the component][fire-app-builder-load-a-component] from your app. (Unlike the other components, you don't need to include a dummy purchasing component.)
+
+Additionally, go to **PurchaseComponent > manifests** and open the **AndroidManifest.xml** file. Comment out the following lines, like this:
+
+```xml
+<!-- <intent-filter>
+     <action
+             android:name="com.amazon.inapp.purchasing.NOTIFY"
+             android:permission="com.amazon.inapp.purchasing.Permission.NOTIFY"/>
+ </intent-filter> -->
+```
 
 ## Test Your App
 
@@ -246,29 +256,50 @@ Getting your app into the Appstore is just the first step. For your app to be su
 
 ## Submit a New Version of Your App
 
-When you make updates to your app, you'll need to uninstall any other versions of your app from your Fire TV device first. (Fire TV won't allow two different apps containing identical package names to be installed on the same device.)
+When you make and test updates to your app, uninstall any other versions of your app from your Fire TV device. If you're testing your app on a device where you've already downloaded and installed your app from the Appstore, the Appstore version will conflict with your local version. (Fire TV won't allow two different apps containing identical package names to be installed on the same device.)
 
 You can uninstall your app by going to **Settings > Applications > Manage Installed Applications**. Select your app, and then select **Uninstall**.
 
-To update details about your app but not your binary/APK file:
+To update details about your app that don't include updating your APK file:
 
-1.  Sign in to the Amazon Developer Console. On the Dashboard, select your app.
-2.  Make the updates you want on the various tabs.
+1.  Sign in to the [Amazon Developer Console](https://developer.amazon.com/login.html).
+2.  On the **Dashboard** tab, scroll down to the **Dashboard** section and click your app.
+2.  Make the updates you want on the various tabs. (Click Save before switching tabs.)
 3.  Click **Submit**.
 
 To update your binary/APK file:
 
-1.  After making the changes to your code in Android Studio, expand your **Gradle Scripts** folder, open **build.gradle (Module: app)**, and update the `versionCode` (required) and `versionName`. (If you upload a binary with the same `versionCode` as a previous binary, the Appstore will reject it.)
+1.  After making the changes to your code in Android Studio, expand your **Gradle Scripts** folder, open **build.gradle (Module: app)**, and update the [android:versionCode](https://developer.android.com/guide/topics/manifest/manifest-element.html#vcode)(required) and `versionName` (optional). (If you upload a binary with the same [android:versionName](https://developer.android.com/guide/topics/manifest/manifest-element.html#vname) as a previous binary, the Appstore will reject it.)
 
     {% include note.html content="Do not change the package name of your app." %}
 
 2.  [Generate a signed release APK](#signedapk).
-3.  Sign in to the [Amazon Developer Console](https://developer.amazon.com). On the Dashboard, select your app.
-4.  In the menu directly underneath your app title, click the **Add Upcoming Version** link.
-5.  On the **Binary File(s)** tab, in the **Binary file** section, click the X icon to delete the previous version of the APK file, and then click OK to confirm deletion.
-6.  Click **Upload Binary** and upload the new version of your APK file.
-7.  Click **Save**.
-7.  On the **Release Notes** tab, add some information about what's new in the release.
-8.  Click **Submit App**.
+3.  Sign in to the [Amazon Developer Console](https://developer.amazon.com/login.html).
+4.  On the **Dashboard** tab, scroll down to the **Dashboard** section and click your app.
+5.  In the menu directly underneath your app title, click the **Add Upcoming Version** link.
+
+    {% include image.html  file="fireappbuilder_add_new_version" type="png" alt="Add Upcoming Version" %}
+
+6.  When prompted about whether you want to create a new version, click **OK**.  
+7.  Click the **Binary File(s)** tab.
+8.  In the **Binary file** section, click the X icon to delete the previous version of the APK file, and then click OK to confirm deletion.
+
+    {% include image.html  file="fireappbuilder_removebinary" type="png" alt="Remove binary file" %}
+
+9.  When prompted to "Permanently delete this binary?", click **OK**.
+10.  Click **Upload Binary** and upload the new version of your APK file.
+
+    Because you're just uploading a new version, the Appstore remembers your previous choices about device support and other details.
+
+11.  Click **Save**.
+12.  Click the **Release Notes** tab, click **Edit**, and then add some information about what's new in the release. Then click **Save**..
+
+    The information you type here will be displayed to users in the Notification Center when users see an update for your app.
+
+    {% include tip.html content="Remember that your app's users might not be developers. Don't type developer jargon about the updates you made. Keep the information readable for a non-technical audience." %}
+
+13.  Click **Submit App**.
+
+    Your app is submitted to the Appstore and goes through the same testing and approval process as before.
 
 {% include links.html %}
