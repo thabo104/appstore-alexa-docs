@@ -278,13 +278,13 @@ To update your binary/APK file:
 4.  On the **Dashboard** tab, scroll down to the **Dashboard** section and click your app.
 5.  In the menu directly underneath your app title, click the **Add Upcoming Version** link.
 
-    {% include image.html  file="fireappbuilder_add_new_version" type="png" alt="Add Upcoming Version" %}
+    {% include image.html  file="firetv/fireappbuilder/images/fireappbuilder_add_new_version" type="png" alt="Add Upcoming Version" %}
 
 6.  When prompted about whether you want to create a new version, click **OK**.  
 7.  Click the **Binary File(s)** tab.
 8.  In the **Binary file** section, click the X icon to delete the previous version of the APK file, and then click OK to confirm deletion.
 
-    {% include image.html  file="fireappbuilder_removebinary" type="png" alt="Remove binary file" %}
+    {% include image.html  file="firetv/fireappbuilder/images/fireappbuilder_removebinary" type="png" alt="Remove binary file" %}
 
 9.  When prompted to "Permanently delete this binary?", click **OK**.
 10.  Click **Upload Binary** and upload the new version of your APK file.
