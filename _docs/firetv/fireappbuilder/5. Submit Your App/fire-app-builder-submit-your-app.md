@@ -260,14 +260,18 @@ When you make and test updates to your app, uninstall any other versions of your
 
 You can uninstall your app by going to **Settings > Applications > Manage Installed Applications**. Select your app, and then select **Uninstall**.
 
-To update details about your app that don't include updating your APK file:
+### Update details about your app that don't include updating your APK file
+
+If you only want to update your app description or some other detail, but leave the APK as is, do the following:
 
 1.  Sign in to the [Amazon Developer Console](https://developer.amazon.com/login.html).
 2.  On the **Dashboard** tab, scroll down to the **Dashboard** section and click your app.
 2.  Make the updates you want on the various tabs. (Click Save before switching tabs.)
 3.  Click **Submit**.
 
-To update your binary/APK file:
+### Update your APK file
+
+If you want to submit a new version of your APK file, do the following:
 
 1.  After making the changes to your code in Android Studio, expand your **Gradle Scripts** folder, open **build.gradle (Module: app)**, and update the [android:versionCode](https://developer.android.com/guide/topics/manifest/manifest-element.html#vcode)(required) and `versionName` (optional). (If you upload a binary with the same [android:versionName](https://developer.android.com/guide/topics/manifest/manifest-element.html#vname) as a previous binary, the Appstore will reject it.)
 
@@ -282,23 +286,23 @@ To update your binary/APK file:
 
 6.  When prompted about whether you want to create a new version, click **OK**.  
 7.  Click the **Binary File(s)** tab.
-8.  In the **Binary file** section, click the X icon to delete the previous version of the APK file, and then click OK to confirm deletion.
+8.  In the **Binary file** section, click the **X** icon to delete the previous version of the APK file, and then click OK to confirm deletion.
 
     {% include image.html  file="firetv/fireappbuilder/images/fireappbuilder_removebinary" type="png" alt="Remove binary file" %}
 
 9.  When prompted to "Permanently delete this binary?", click **OK**.
-10.  Click **Upload Binary** and upload the new version of your APK file.
+10. Click **Upload Binary** and upload the new version of your APK file.
 
     Because you're just uploading a new version, the Appstore remembers your previous choices about device support and other details.
 
-11.  Click **Save**.
-12.  Click the **Release Notes** tab, click **Edit**, and then add some information about what's new in the release. Then click **Save**..
+11. Click **Save**.
+12. Click the **Release Notes** tab, click **Edit**, and then add some information about what's new in the release. Then click **Save**.
 
     The information you type here will be displayed to users in the Notification Center when users see an update for your app.
 
     {% include tip.html content="Remember that your app's users might not be developers. Don't type developer jargon about the updates you made. Keep the information readable for a non-technical audience." %}
 
-13.  Click **Submit App**.
+13. Click **Submit App**.
 
     Your app is submitted to the Appstore and goes through the same testing and approval process as before.
 
