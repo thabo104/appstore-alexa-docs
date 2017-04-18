@@ -28,7 +28,7 @@ Q: テストのためにアプリをAmazon Fire TVにサイドロードする�
 Q: 開発者向けにAmazon Fire TVのテスト端末は提供されていますか?
 :   開発者向けのテスト端末は、Amazonでは提供していません。
 
-    Amazon Fire TV端末は、[米国](http://www.amazon.com/Fire-TV-streaming-media-player/dp/B00CX5P8FC)、[英国](http://www.amazon.co.uk/dp/B00KQEJBSW)、[ドイツ](http://www.amazon.de/dp/B00KQEIMY6)のAmazonリテールサイトで販売されています。国ごとの販売状況については、商品詳細ページを参照してください。
+    Amazon Fire TV端末は、[日本](https://www.amazon.co.jp/Amazon-DV83YW-Fire-TV/dp/B00UH6MXT8)、[米国](http://www.amazon.com/Fire-TV-streaming-media-player/dp/B00CX5P8FC)、[英国](http://www.amazon.co.uk/dp/B00KQEJBSW)、[ドイツ](http://www.amazon.de/dp/B00KQEIMY6)など、各国のAmazonリテールサイトで販売されています。国ごとの販売状況については、商品詳細ページを参照してください。
 
 Q: Amazon Fire TVプラットフォームでは、具体的にどのような機能がサポートされていますか?
 :   端末と機能の仕様について詳しくは、[Fire TV端末の仕様](/solutions/devices/fire-tv/docs/device-and-platform-specifications)および「[Fireタブレット](https://developer.amazon.com/public/solutions/devices/fire-tablets "https://developer.amazon.com/sdk/fire.html")」を参照してください。
