@@ -47,7 +47,7 @@ Fire TV関連のドキュメントが以下のように更新されています�
 | 2016 年 9 月 5 日 | [Getting the Advertising ID on Fire TV][fire-os-advertising-id] | 広告IDの取得について詳しく説明するページが追加されました。|
 | 2016 年 9 月 1 日 | [Playing 4K Ultra HD Videos on Fire TV][fire-tv-4k-ultra-hd] | 4Kアプリ開発のガイドラインとFire TV用の拡張サポートライブラリに関するページが追加されました。|
 | 2016 年 8 月 30 日 | [Amazon Fire TVホームページ](/solutions/devices/fire-tv) | 新しいバージョンの開発者ポータルサイトにホームページを移行しました (順次展開予定)。|
-| 2016 年 8 月 5 日 | [Identifying Amazon Fire TV Devices][identifying-amazon-fire-tv-devices]|  Fire TV端末を識別するための新しい方法 (モデル + 製造業者ではなく機能の有無を調べる) について説明しています。|
+| 2016 年 8 月 5 日 | [Amazon Fire TV端末を識別する][identifying-amazon-fire-tv-devices]|  Fire TV端末を識別するための新しい方法 (モデル + 製造業者ではなく機能の有無を調べる) について説明しています。|
 | 2016 年 7 月 23 日 | [Fire TV端末の仕様][device-and-platform-specifications] | H.265 の詳細やWidevineサポートなどの情報を更新しました。|
 | 2016 年 7 月 22 日 | [Dolby Integration Guidelines][amazon-fire-tv-dolby-integration-guidelines] | Dolby Audioをサポートするための技術的な情報について詳しく説明するページが追加されました。|
 | 2016 年 7 月 1 日 | [Media Players for Amazon Fire TV][fire-tv-media-players] | サポートされるメディアプレーヤーについての情報を更新するとともに、ExoplayerのAmazon向けポートについて詳しい説明が追加されました。|
