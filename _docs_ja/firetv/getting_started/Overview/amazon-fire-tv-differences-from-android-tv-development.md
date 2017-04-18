@@ -79,7 +79,7 @@ Android TVでは、アプリからランチャーでおすすめの表示を行�
 
 ### 通知API
 
-Fire TV対応アプリで通知を作成するには、標準の[Android通知API](http://developer.android.com/reference/android/app/Notification.html)を使用します。Fire TVには、Android TVと同じトースト通知と永続化モデルが備わっています。ただし、Fire TVはトーストの他にもHeads up (高優先度) 通知に対応しており、それらの通知にはインタラクティブなボタンが利用できます。さらに、古い通知は、通知ドロワーには格納されずに通知センターに保存されます。詳細については、「[Notifications for Amazon Fire TV][notifications-for-amazon-fire-tv]」を参照してください。
+Fire TV対応アプリで通知を作成するには、標準の[Android通知API](http://developer.android.com/reference/android/app/Notification.html)を使用します。Fire TVには、Android TVと同じトースト通知と永続化モデルが備わっています。ただし、Fire TVはトーストの他にもHeads up (高優先度) 通知に対応しており、それらの通知にはインタラクティブなボタンが利用できます。さらに、古い通知は、通知ドロワーには格納されずに通知センターに保存されます。詳細については、「[Fire TVの通知機能][notifications-for-amazon-fire-tv]」を参照してください。
 
 ### ユーザー補助
 
