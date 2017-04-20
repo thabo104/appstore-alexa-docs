@@ -36,7 +36,7 @@ Use these instructions if you publish your media details in a web feed whose acc
 2.  Leave the value for the **data_downloader.impl** option as is: `com.amazon.dataloader.datadownloader.BasicHttpBasedDataDownloader`.
 2.  If desired, update the options for these two properties:
     * `is_cache_manager_enabled`: Whether your feed is cached in the app. Caching your feeds speeds up screen loading with the media retrieved, but the cache will not reflect the latest updates to the feed until the data loader is updated or until the feed is expired. Options are `true` or `false`. Usually leave this as `true`.
-    * `data_updater.duration`: The interval (in seconds) when the data loader refreshes your feed and retrieves the latest updates. When the data loader updates, the cache gets purged. The default is 2000 seconds, or 5.5 hours.
+    * `data_updater.duration`: The interval (in seconds) when the data loader refreshes your feed and retrieves the latest updates. When the data loader updates, the cache gets purged. The default is 14400 seconds, or 4 hours.
 
     {% include note.html content="Each time users start the app, your app's cache is automatically purged and the feed is refreshed." %}
 
