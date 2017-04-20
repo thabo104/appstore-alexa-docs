@@ -233,7 +233,7 @@ To submit your app, sign in to your [Developer.amazon.com](https://developer.ama
 
 For details, follow the steps in [Submitting Apps to the Amazon Appstore](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/submitting-apps-to-amazon-appstore).
 
-{% include tip.html content="If you want to let a small group of users beta test your app before releasing it into the Appstore, see [Live App Testing](https://developer.amazon.com/live-app-testing)." %}
+{% include tip.html content="If you want to let a small group of users beta test your app before releasing it into the Appstore, see [Live App Testing](https://developer.amazon.com/live-app-testing). Live app testing " %}
 
 ## After You Submit Your App
 
