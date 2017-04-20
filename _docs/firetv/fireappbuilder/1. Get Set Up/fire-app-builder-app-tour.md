@@ -255,7 +255,7 @@ Within each folder in Fire App Builder, you usually see the same pattern of subf
     </tr>
     <tr>
       <td>libs</td>
-      <td>If this subfolder is included, it contains external libraries required by a component or other external service. Do not edit files in this folder. Other times the libraries required by a component are referenced as dependencies in the build.gradle file and retrieved when the project builds.</td>
+      <td>If this subfolder is included, it contains external libraries required by a component or other external service. Do not edit files in this folder. Often times the libraries required by a component are referenced as dependencies in the build.gradle file and retrieved when the project builds.</td>
     </tr>
     <tr>
       <td>src</td>
