@@ -38,8 +38,7 @@ How do I use reflection rather than translation when Fire App Builder maps the o
 
 {: #captions608}
 How can I enable the CEA-608 captions that are available in my HLS live stream?
-: No, Fire App Builder does not support CEA-608. Fire App Builder passes the responsibility to render captions to [AMZNMediaPlayer][fire-app-builder-amazon-media-player-component], which supports CEA-608 (see the [relevant code lines here][github-code-reference]). However, Fire App Builder only does so for `vtt` and `xml` extensions. CEA captions have a `m3u8` extension, so Fire App Builder ignores this extension and does not inform AMZNMediaPlayer to render the captions.
+: Fire App Builder does not support CEA-608. Fire App Builder passes the responsibility to render captions to [AMZNMediaPlayer][fire-app-builder-amazon-media-player-component], which supports CEA-608 (see the [relevant code lines here][github-code-reference]). However, Fire App Builder only does so for `vtt` and `xml` extensions. CEA captions have a `m3u8` extension, so Fire App Builder ignores this extension and does not inform AMZNMediaPlayer to render the captions.
 
-[github-code-reference]: https://github.com/amzn/fire-app-builder/blob/master/TVUIComponent/lib/src/main/java/com/amazon/android/uamp/ui/PlaybackActivity.java#L1070-L1080
-
+[github-code-reference]: https://github.com/amzn/fire-app-builder/blob/master/TVUIComponent/lib/src/main/java/com/amazon/android/uamp/ui/PlaybackActivity.java##L1165-L1175
 {% include links.html %}
