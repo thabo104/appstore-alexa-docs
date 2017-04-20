@@ -32,22 +32,22 @@ Fire TV関連のドキュメントが以下のように更新されています�
 | 日付 | ページ | 詳細 |
 |-----|-----|------|
 | 2016 年 12 月 14 日 | [Amazon Fire TV開発フレームワークの比較][fire-tv-development-framework-comparison] | Fire TV向けウェブアプリスターターキット (WASK) とFire App Builderとの違いについて詳しい説明が追加されました。|
-| 2016 年 11 月 29 日 | [Notifications for Amazon Fire TV][notifications-for-amazon-fire-tv] | Fire TVのUIアップデート時に追加される予定の通知センター機能に関する説明が追加されました。|
+| 2016 年 11 月 29 日 | [Fire TVの通知機能][notifications-for-amazon-fire-tv] | Fire TVのUIアップデート時に追加される予定の通知センター機能に関する説明が追加されました。|
 | 2016 年 11 月 23 日 | [アプリのインストール場所の指定][specifying-installation-location] | アプリのインストールで外部ストレージを優先する点が強調されました。各種プラットフォームにおけるアプリのインストールについての記述も追加されています。|
-| 2016 年 10 月 25 日 | [Image Guidelines for App Submission](/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets) | [Fire TV Assets] セクションのグラフィックと手順を更新しました。汎用的な図を廃止し、コンテンツセーフ領域に表示される実際のサンプルグラフィックを追加し、色分けによる説明を追加しました。|
+| 2016 年 10 月 25 日 | [Fire TV アプリ申請のアセットガイドライン](/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets) | [Fire TV Assets] セクションのグラフィックと手順を更新しました。汎用的な図を廃止し、コンテンツセーフ領域に表示される実際のサンプルグラフィックを追加し、色分けによる説明を追加しました。|
 | 2016 年 10 月 20 日 | [Amazon Fire TV用アプリとゲームを開発するための準備][getting-started-developing-apps-and-games-for-amazon-fire-tv]  | セクションを展開したり折りたたんだりするための新しいサイドバーナビゲーションが右側に追加されました。 |
-| 2016 年 10 月 2 日 | [Fire App Builder: A Starter Kit for Java-based Amazon Fire TV and Android Apps][fire-app-builder-overview] | Fire TV向けにJavaベースのAndroid TVアプリをFire App Builderで作成する方法について詳しく (30 ページ超) 解説したドキュメントです。|
-| 2016 年 9 月 29 日 | [Identifying Amazon Fire TV Devices][identifying-amazon-fire-tv-devices] | Fire TV Stick (第 2 世代) の機能IDが追加されました。 |
-| 2016 年 9 月 28 日 | [Image Guidelines for App Submission](/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets) | アプリの申請時に使用する [Images & Multimedia] タブの [Fire TV Assets] セクションに関して、画像アセットのガイドラインが追加されました。|
+| 2016 年 10 月 2 日 | [Fire App Builder: JavaベースのAmazon Fire TV・Androidアプリ向けスターターキット][fire-app-builder-overview] | Fire TV向けにJavaベースのAndroid TVアプリをFire App Builderで作成する方法について詳しく (30 ページ超) 解説したドキュメントです。|
+| 2016 年 9 月 29 日 | [Amazon Fire TV端末を識別する][identifying-amazon-fire-tv-devices] | Fire TV Stick (第 2 世代) の機能IDが追加されました。 |
+| 2016 年 9 月 28 日 | [Fire TV アプリ申請のアセットガイドライン](/solutions/devices/fire-tv/docs/asset-guidelines-for-app-submission#firetvassets) | アプリの申請時に使用する [Images & Multimedia] タブの [Fire TV Assets] セクションに関して、画像アセットのガイドラインが追加されました。|
 | 2016 年 9 月 28 日 | [Fire TV端末の仕様][device-and-platform-specifications] | Fire TV Stick (第 2 世代) の仕様が追加されました。また、同じページに、対応する「メディアの仕様」の内容も追加されています (情報を一元化、統合するため)。ナビゲーションタブで切り替えて情報を表示できます。|
-| 2016 年 9 月 28 日 | [Image Guidelines for App Submission][asset-guidelines-for-app-submission] | 近く予定されているFire TVのUIアップデートに合わせて、Fire TV画像アセットについて説明する新しいセクションが追加されました。|
+| 2016 年 9 月 28 日 | [Fire TV アプリ申請のアセットガイドライン][asset-guidelines-for-app-submission] | 近く予定されているFire TVのUIアップデートに合わせて、Fire TV画像アセットについて説明する新しいセクションが追加されました。|
 | 2016 年 9 月 16 日 | [Fire TV開発とAndroid TV開発の違い][amazon-fire-tv-differences-from-android-tv-development] | Fire TV向けアプリの開発時に考慮すべき点についてのページが追加されました。|
 | 2016 年 9 月 14 日 | [Amazon Fire TV用アプリとゲームを開発するための準備][getting-started-developing-apps-and-games-for-amazon-fire-tv] | 新しいサイトワークフローに基づいて改訂されました。 |
-| 2016 年 9 月 10 日 | [Using System X-Ray on Fire TV][amazon-fire-tv-system-xray] | System Xrayオーバーレイを使用したアプリの問題のトラブルシューティングについて詳しく説明するページが追加されました。|
+| 2016 年 9 月 10 日 | [Fire TVのSystem X-Ray][amazon-fire-tv-system-xray] | System Xrayオーバーレイを使用したアプリの問題のトラブルシューティングについて詳しく説明するページが追加されました。|
 | 2016 年 9 月 5 日 | [Getting the Advertising ID on Fire TV][fire-os-advertising-id] | 広告IDの取得について詳しく説明するページが追加されました。|
 | 2016 年 9 月 1 日 | [Playing 4K Ultra HD Videos on Fire TV][fire-tv-4k-ultra-hd] | 4Kアプリ開発のガイドラインとFire TV用の拡張サポートライブラリに関するページが追加されました。|
 | 2016 年 8 月 30 日 | [Amazon Fire TVホームページ](/solutions/devices/fire-tv) | 新しいバージョンの開発者ポータルサイトにホームページを移行しました (順次展開予定)。|
-| 2016 年 8 月 5 日 | [Identifying Amazon Fire TV Devices][identifying-amazon-fire-tv-devices]|  Fire TV端末を識別するための新しい方法 (モデル + 製造業者ではなく機能の有無を調べる) について説明しています。|
+| 2016 年 8 月 5 日 | [Amazon Fire TV端末を識別する][identifying-amazon-fire-tv-devices]|  Fire TV端末を識別するための新しい方法 (モデル + 製造業者ではなく機能の有無を調べる) について説明しています。|
 | 2016 年 7 月 23 日 | [Fire TV端末の仕様][device-and-platform-specifications] | H.265 の詳細やWidevineサポートなどの情報を更新しました。|
 | 2016 年 7 月 22 日 | [Dolby Integration Guidelines][amazon-fire-tv-dolby-integration-guidelines] | Dolby Audioをサポートするための技術的な情報について詳しく説明するページが追加されました。|
 | 2016 年 7 月 1 日 | [Media Players for Amazon Fire TV][fire-tv-media-players] | サポートされるメディアプレーヤーについての情報を更新するとともに、ExoplayerのAmazon向けポートについて詳しい説明が追加されました。|

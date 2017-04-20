@@ -97,9 +97,9 @@ folders:
     jurl: /installing-and-running-your-app.html
     ref: installing-and-running-your-app
 
-- title: Androidアプリのコントローラ
+- title: Androidアプリのコントローラー
   folderitems:
-  - title: コントローラの概要
+  - title: コントローラーの概要
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/supporting-controllers-on-amazon-fire-tv
     jurl: /supporting-controllers-on-amazon-fire-tv.html
     ref: supporting-controllers-on-amazon-fire-tv
@@ -109,27 +109,27 @@ folders:
     jurl: /amazon-fire-tv-remote-input.html
     ref: amazon-fire-tv-remote-input
 
-  - title: ゲームコントローラ入力
+  - title: ゲームコントローラー入力
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/amazon-fire-game-controller-input
     jurl: /amazon-fire-game-controller-input.html
     ref: amazon-fire-game-controller-input
 
-  - title: Unityによるコントローラ入力
+  - title: Unityによるコントローラー入力
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/controller-input-with-unity
     jurl: /controller-input-with-unity.html
     ref: controller-input-with-unity
 
-  - title: コントローラの識別
+  - title: コントローラーの識別
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/identifying-controllers
     jurl: /identifying-controllers.html
     ref: identifying-controllers
 
-  - title: コントローラ動作のガイドライン
+  - title: コントローラー動作のガイドライン
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/controller-behavior-guidelines
     jurl: /controller-behavior-guidelines.html
     ref: controller-behavior-guidelines
 
-  - title: コントローラ画像アセット
+  - title: コントローラー画像アセット
     hurl: https://developer.amazon.com/public/ja/solutions/devices/fire-tv/docs/controller-image-assets
     jurl: /controller-image-assets.html
     ref: controller-image-assets
