@@ -36,7 +36,7 @@ The `versionName` (a string) is the version that users see. See [`android:versio
 
 The settings in your app's build.gradle file will overwrite any similar settings in your app's manifest.
 
-## Target Fire TV Devices in Your Manifest
+## Target Fire TV Devices in Your App Manifest
 
 In your app's **AndroidManifest.xml** file (in **manifests** folder), you can [theoretically] target Fire TV devices with the `uses-feature` element as follows:
 
@@ -76,28 +76,22 @@ The names in the submission interface differ from the device names in the docume
 
 For more info about the different features across devices, see the [specifications for Fire TV devices][device-and-platform-specifications].
 
-While you're configuring your manifest, if you have set up [recommendations][fire-app-builder-recommendations-overview], make sure you set the install location to `internalOnly`.
-
-```xml
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.amazon.android.acmemedia"
-          android:installLocation="internalOnly">
-```
-
 ## Remove the IAP Component If Unused {#commentoutiap}
 
 Fire App Builder contains the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. If you leave this component in your app, when you submit it to the Appstore your app will be tagged as containing in-app purchases. The Appstore will also appends a note about in-app purchases at the end of your Short Description.
 
-If you're not using the IAP component, simply [remove the component][fire-app-builder-load-a-component] from your app. (Unlike the other components, you don't need to include a dummy purchasing component.)
+If you're not using the IAP component, [remove the component][fire-app-builder-load-a-component] from your app. (Unlike the other components, you don't need to include a dummy purchasing component.)
 
-Additionally, go to **PurchaseComponent > manifests** and open the **AndroidManifest.xml** file. Comment out the following lines, like this:
+Additionally, go to **PurchaseComponent > manifests** and open the **AndroidManifest.xml** file. Comment out the following lines:
 
 ```xml
-<!-- <intent-filter>
-     <action
-             android:name="com.amazon.inapp.purchasing.NOTIFY"
-             android:permission="com.amazon.inapp.purchasing.Permission.NOTIFY"/>
- </intent-filter> -->
+<receiver android:name="com.amazon.device.iap.ResponseReceiver">
+   <intent-filter>
+        <action
+                android:name="com.amazon.inapp.purchasing.NOTIFY"
+                android:permission="com.amazon.inapp.purchasing.Permission.NOTIFY"/>
+    </intent-filter>
+</receiver>
 ```
 
 ## Test Your App
@@ -137,9 +131,11 @@ One of the fields in the APK wizard is the destination folder for the release AP
 
 {% include note.html content="When you submit your app, Amazon removes the signature you used to sign your app and re-signs it with an Amazon signature that is unique to you, does not change, and is the same for all apps in your account. You can find the Amazon signature hashes for your account by selecting any application in the developer console and navigating to the Binary File(s) tab. The SHA-1 and MD5 hashes for your account are listed in the Appstore Certificate Hashes section. <br/><br/>Even if you lose the keystore you created to sign your release builds, it won't affect your ability to push out updates to your app because your app's signature is associated with your Amazon developer account." %}
 
-## Gather Image Assets of Your App
+## Gather Image Assets for Your App
 
-You need a variety of image assets (in many different sizes) when you submit your app. The image assets are described in two sections in [Image Guidelines for App Submission](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/asset-guidelines-for-app-submission). The image submission guidelines describe two sets of images:
+You need a variety of image assets (in many different sizes) when you submit your app. These images assets are used to promote your app in both the online Appstore and the device Appstore.
+
+The image assets are described in two sections in [Image Guidelines for App Submission](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/asset-guidelines-for-app-submission). The image submission guidelines describe two sets of images:
 
 * The [General Assets](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/asset-guidelines-for-app-submission#generalassets) section describes image assets required for general Fire apps, display on the web, and older devices.
 * The [Fire TV assets](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/asset-guidelines-for-app-submission#firetvassets) section describes images required for the [new user interface for Fire TV](http://phx.corporate-ir.net/phoenix.zhtml?c=176060&p=irol-newsArticle&ID=2206525) that was released in the Fall of 2016.
@@ -148,9 +144,7 @@ You need to submit the required images in both of these sections. Gather up the 
 
 {% include tip.html content="As you prepare these images, include the dimensions in the file name (e.g., acme_app_logo_114x114.png). This will make it easier to upload the correct images on the Images tab in the submission process." %}
 
-Screenshots are among the required image assets. See [Taking Screenshots on Fire Devices](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/taking-screenshots#firetv) for details on how to take screenshots of your Fire TV app.
-
-Note that the background image does not merely contain your logo but rather a cinematic scene or image with the character or other element positioned on the right.
+Screenshots are among the required image assets. See [Taking Screenshots on Fire Devices](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/taking-screenshots#firetv) for details on how to
 
 ## Decide on Your App's Category
 
@@ -176,7 +170,7 @@ You can edit these descriptions after your app is released, but any changes you 
 
 The following descriptions are required:
 
-**Short description**: A shorter version of your app description for use on mobile devices. Maximum characters: 1200. When users browse your app on a Fire TV device, this description appears in *one continuous paragraph*. Even if you include paragraph breaks in the description form field, the breaks are stripped out in the Fire TV interface's display. Keep this section readable by making it short (3-5 sentences).
+**Short description**: A short version of your app description for use on mobile devices. Maximum characters: 1200. When users browse your app on a Fire TV device, this description appears in *one continuous paragraph*. Even if you include paragraph breaks in the description form field, the breaks are stripped out in the Fire TV interface's display. Keep this section readable by making it short (3-5 sentences).
 
 For example, here's the short description in the Fire TV interface:
 
@@ -186,17 +180,19 @@ If you click the ellipses [**...**], more text appears, but it appears as one lo
 
 {% include image.html  file="firetv/fireappbuilder/images/fireappbuilder-appdescription2ndscreen" type="png" alt="Second screen of short description" %}
 
-Keep readability in mind as you write this description. Additionally, if you offer purchasing within your app, Amazon will append the following note at the end of your description:
+This is why your short description should typically be 3-5 sentences. Additionally, if you offer purchasing within your app, Amazon will append the following note at the end of your description:
 
 >PLEASE NOTE: This app contains in-app purchasing, which allow you to buy items within the app using actual money. On Amazon devices, you can configure parental controls from the device Settings menu by selecting Parental Controls.
 
 {% include tip.html content="For tips on writing descriptions, see [Writing an Effective App Description](https://developer.amazon.com/blogs/post/Tx1461GEX9QNBFB/Writing-an-Effective-App-Description-Marketing-Tip-of-the-Day-1.html) on the Amazon Developer Blog." %}
 
-**Long description**: A description of your app for use on the Amazon.com website. Maximum characters: 4000. Unlike the Short description, the Long description preserves your paragraph breaks. The Long description is published in the "Product description" section on the Appstore web page for your app. You can view examples of "Product descriptions" on any app in the [Appstore](https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011).
+**Long description**: A longer description of your app for use on the Amazon.com website. Maximum characters: 4000. Unlike the Short description, the Long description preserves your paragraph breaks. The Long description is published in the "Product description" section on the Appstore web page for your app. You can view examples of "Product descriptions" on any app in the [Appstore](https://www.amazon.com/mobile-apps/b?ie=UTF8&node=2350149011).
 
-**Product feature bullets**: Three to five concise app features, each on a new line. These lines (which get formatted as bullet points) appear on your app's Appstore web page in a section called "Product features."
+**Product feature bullets**: 3-5 concise app features, each on a new line. These lines (which get formatted as bullet points) appear on your app's Appstore web page in a section called "Product features."
 
 **Keywords**: Search terms used to increase the discoverability of your app. Use a comma or white space to separate your terms. These keywords influence searches on the Amazon.com website as well as searches that use Fire TV's search feature.
+
+Although [voice search][implementing-search-fire-tv#voicesearch] won't target your app unless you add it to the [Fire TV catalog][integrating-your-catalog-with-fire-tv], voice search will look at the keywords here and surface your app if relevant. These keywords can be especially helpful if your app name contains phonetics that speech recognition can't easily parse (for example, "writing" might be interpreted as "riding").
 
 {% include tip.html content="Keep in mind that your app's discoverability often depends on the text you use in your descriptions and keywords. Target words your users will search for." %}
 
