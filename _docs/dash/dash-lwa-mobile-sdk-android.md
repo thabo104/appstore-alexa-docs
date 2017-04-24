@@ -223,6 +223,6 @@ The response includes the following values:
 ```
 
 
-[1]: http://login.amazon.com/android-sdk-upgrade
+[1]: https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/upgrade_android_sdk
 
 {% include links.html %}
