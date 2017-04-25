@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-Amazon Fire TVプラットフォームを対象にAndroidベースのFire TV対応アプリ開発を行うには、あらかじめ開発環境をセットアップしておく必要があります。
+Amazon Fire TVプラットフォームを対象にしてAndroidベースのアプリ開発を行うには、あらかじめ開発環境をセットアップしておく必要があります。
 
 * TOC
 {:toc}
