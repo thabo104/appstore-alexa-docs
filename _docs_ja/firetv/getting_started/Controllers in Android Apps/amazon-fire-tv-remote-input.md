@@ -56,9 +56,9 @@ return handled || super.onKeyDown(keyCode, event);
 
 ## 入力イベントリファレンス
 
-次の表に、ボタンとそのAndroid [`KeyEvent`](http://developer.android.com/reference/android/view/KeyEvent.html)定数、各ボタンのデフォルトの動作を示します。Amazon Fire TVリモコンはいずれも、(Android [`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html)クラスからの) モーションイベントを生成しません。
+次の表は、ボタンとそのAndroid [`KeyEvent`](http://developer.android.com/reference/android/view/KeyEvent.html)定数、各ボタンのデフォルトの動作についてです。Amazon Fire TVリモコンはいずれも、(Android [`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html)クラスからの) モーションイベントを生成しません。
 
-アプリが特定の入力イベントをキャプチャしないと、デフォルトの動作が発生します。
+入力イベントをキャプチャしていない場合は、デフォルトの動作が発生します。
 
 <table>
 <colgroup>
