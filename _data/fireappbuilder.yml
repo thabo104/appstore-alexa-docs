@@ -53,17 +53,26 @@ folders:
     - title: Release Notes
       subfolderitems:
 
+      - title: Version 1.0.3 Release Notes
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes
+        jurl: /fire-app-builder-release-notes.html
+        ref: fire-app-builder-release-notes
+
       - title: Version 1.0.2 Release Notes
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-2
         jurl: /fire-app-builder-release-notes-version-1-0-2.html
         ref: fire-app-builder-release-notes-version-1-0-2
-        bookmarks: [known_issues]
 
       - title: Version 1.0.0 Release Notes
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-0
         jurl: /fire-app-builder-release-notes-version-1-0-0.html
         ref: fire-app-builder-release-notes-version-1-0-0
-        bookmarks: [known_issues]
+
+      - title: Known Issues (Latest version)
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-known-issues
+        jurl: /fire-app-builder-known-issues.html
+        ref: fire-app-builder-known-issues
+
 
 - title: 1. Get Set Up
   folderitems:
@@ -251,6 +260,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-submit-your-app
     jurl: /fire-app-builder-submit-your-app.html
     ref: fire-app-builder-submit-your-app
+    bookmarks: [commentoutiap]
 
 - title: Recommendations
   folderitems:

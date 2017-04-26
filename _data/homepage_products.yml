@@ -17,6 +17,12 @@
    shortname: fireappbuilder
    owner: tomjoht
 
+ - title: Channel Creator
+   link: channel-creator-overview.html
+   group: Fire Devices
+   shortname: channelcreator
+   owner: tomjoht
+
  - title: Fire TV Catalog Integration
    link: integrating-your-catalog-with-fire-tv.html
    group: Fire Devices

@@ -12,14 +12,21 @@ To build the sample app with Fire App Builder, complete the instructions in the 
 * TOC
 {:toc}
 
-## Step 1. Clone the Fire App Builder Project {#clone}
+## Step 1. Fork the Fire App Builder Repo {#fork}
 
-Fire App Builder is available in a Github repository ([https://github.com/amzn/fire-app-builder](https://github.com/amzn/fire-app-builder)) that you can download or clone. Cloning a repo allows you to get updates from the repository when they become available.
+Fire App Builder is available in a Github repository ([https://github.com/amzn/fire-app-builder](https://github.com/amzn/fire-app-builder)) that you can download, fork, or clone. Choose the option that makes sense for your development environment.
 
-To clone the repo:
+For example, if you plan to manage your app code in another GitHub repo, choose **Fork**. If you plan to manage your code outside of Git or GitHub, choose **Download**. Forking a repo is recommended because it creates a copy of the code in your own repo, where you can manage your code with pushes and pulls.
+
+To fork the Fire App Builder repo:
 
 1.  Get [git](https://git-scm.com/downloads), if you don't already have it.
-2.  If you use Windows, configure git to allow symbolic links (symlinks):
+2.  If you don't already have a GitHub account, [create one](https://github.com/join). Then sign into your account.
+4.  Go to [https://github.com/amzn/fire-app-builder](https://github.com/amzn/fire-app-builder).
+5.  Click **Fork** in the upper-right corner and (if prompted) select the GitHub account you want the repo forked to.
+
+    Forking a repo creates a copy of the repo in your own GitHub account. The path to your forked repo will be `github.com/<your github username>/fire-app-builder`.
+6.  If you use Windows, configure git to allow symbolic links (symlinks):
 
     ```bash
     git config –global core.symlinks true
@@ -27,18 +34,45 @@ To clone the repo:
 
     {% include warning.html content="On Windows, if you clone the repo without git's symbolic linking configured to `true`, Fire App Builder won't build." %}
 
-3.  Go to [https://github.com/amzn/fire-app-builder](https://github.com/amzn/fire-app-builder).
-4.  Click **Clone or Download**, and then copy the clone URL: `https://github.com/amzn/fire-app-builder.git`
-5.  Open your command line and browse to a convenient directory for the project.
-6.  Clone the project:
+6.  Click **Clone or Download**, and then copy the clone URL.
+7.  Open your command line and browse to a convenient directory for the project. (The default terminal directory is usually a good option unless it opens to a shared network drive.)
+8.  Clone the project with the `git clone` command, replacing `<your github username>` with your actual username:
 
     ```
-    git clone https://github.com/amzn/fire-app-builder.git
+    git clone https://github.com/<your github username>/fire-app-builder.git
     ```
 
     git is initialized in a directory called fire-app-builder and the Fire App Builder project is downloaded.
 
-    {% include tip.html content="If you want to clone the repo into an existing (empty) folder, first browse to the folder on the command line and then run `git clone https://github.com/amzn/fire-app-builder.git .` to copy the repo into the existing folder. Or `git clone https://github.com/amzn/fire-app-builder.git myspecialfolder` to download the project into a folder called `myspecialfolder`." %}
+9.  When Amazon pushes out updates to Fire App Builder, you'll want to pull these updates into your own repo. You do this by adding a [remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) to your existing GitHub repo. From the command line, `cd` to your new `fire-app-builder` directory and then type the following:
+
+    ```
+    git remote add amzn-fab https://github.com/amzn/fire-app-builder.git
+    ```
+
+    This adds a remote called "amzn-fab" to your repo. (You can name the remote whatever you want.)
+
+10. Do a test pull from the Amazon remote, specifying the master branch:
+
+    ```
+    git pull amzn-fab master
+    ```
+
+    The response should be as follows:
+
+    ```
+    From https://github.com/amzn/fire-app-builder
+     * branch            master     -> FETCH_HEAD
+    Already up-to-date.
+    ```
+
+    There's nothing to pull because your repo already has the latest changes from the amzn/fire-app-builder remote.
+
+11. Stay updated with changes the Amazon team pushes out:
+    * Go to [github.com/amzn/fire-app-builder](https://github.com/amzn/fire-app-builder) and click **Watch** in the upper-right corner.
+    * Click the **star** button to see the updates in your GitHub activity feed.
+
+    When the Fire App Builder pushes out a new commit, you'll receive an email notification. You can then run `git pull amzn-fab master` to get the latest updates. See [Pull Updates from Github][fire-app-builder-pulling-updates-from-github] for details on how to apply the updates.
 
 ## Step 2. Set Up the JDK {#jdk}
 

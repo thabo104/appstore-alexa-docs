@@ -39,14 +39,6 @@ If your feed does not already contain recommendations information, you will need
 
 Fire TV requires at least 5 recommendations to be sent (from all apps combined) in order for the Recommended By Your Apps row to appear to users. However, Android has a limit of 50 recommendations max that can be sent by an app, so do not exceed 50. (See [Best Practices for Recommendations][fire-tv-recommendations-best-practices#dont-exceed-the-notifications-limit] for more details.)
 
-Additionally, in your app's manifest indicate that the `installLocation` uses `internalOnly` storage, like this:
-
-```xml
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.amazon.android.acmemedia"
-          android:installLocation="internalOnly">
-```
-
 ## Release Dates for the Recommended By Your Apps Row
 
 The "Recommended By Your Apps" row hasn't been rolled out to mainstream users on Fire TV yet. It's only been rolled out to a small group of users but will be rolled out mainstream shortly. You can [activate a feature in Developer Options][fire-tv-recommendations-testing] to test the row before this feature is released. (We promote this feature to developers now so that when it is rolled out, the row will be populated with recommendations apps are already sending.)

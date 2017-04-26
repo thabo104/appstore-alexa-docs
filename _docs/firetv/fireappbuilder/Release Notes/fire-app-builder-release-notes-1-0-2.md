@@ -68,21 +68,10 @@ If the app fails to load and parse your feed (because an empty data object was s
 
 * **Videoid in content model now treated as string**. In the content model, the video ID element is now treated as a string rather than an integer. (When you upgrade your app, you may need to uninstall your existing app to just clean your data to refresh for this update.)
 
-Various other bug fixes for stability and performance were also made.
+Various other bug fixes for stability and performance were also made. (Note that version 1.0.1 was an internal release only, hence there are no external release notes published.)
 
-## Known Issues {#known_issues}
+See [Known Issues][fire-app-builder-known-issues] for a list of known bugs.
 
-(Note: Some of these issues are the same known issues from [version 1.0.0][fire-app-builder-release-notes-version-1-0-0].)
-
-**In-app purchasing tag added to apps**. Fire App Builder contains a the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. As a result, when you submit your app into the Appstore, it will be tagged as containing in-app purchases. If you're not using IAP, simply [remove the component][fire-app-builder-load-a-component] from your app before submitting it to the Appstore to avoid receiving this tag.
-
-**Login with Amazon component**. The [Login with Amazon component][fire-app-builder-login-with-amazon-component] is not working correctly. The issue is currently being investigated.
-
-**Related Content**. Related content matches (which are based on tags in the feed) will match unlimited content if many items have the same tags. (The content matches should have an item limit.)
-
-**In-App Purchasing Component.** With the [In-App Purchasing Component][fire-app-builder-amazon-in-app-purchase-component], purchases made on other devices won't be acknowledged in the app until a user either restarts the app or attempts to play the content. (The app should refresh purchased items when the state goes to the background.)
-
-**Splash screen.** Loading the feed initially can take some time on splash screen. (The initial load time should be faster.)
-
+{% include tip.html content="See [Pull Updates from Github][fire-app-builder-pulling-updates-from-github] for details on how to get the latest changes into your own repo." %}
 
 {% include links.html %}
