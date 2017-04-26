@@ -1,0 +1,21 @@
+sidebarTitle: Channel Creator
+owner: tomjoht
+
+folders:
+- title: Getting Started
+ folderitems:
+
+ - title: Channel Creator Overview
+   jurl: /channel-creator-overview.html
+   hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-overview
+   ref: channel-creator-overview
+
+ - title: Use a YouTube Channel to Configure Channel Creator
+   jurl: /channel-creator-youtube.html
+   hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-youtube
+   ref: channel-creator-youtube
+
+ - title:  Use an MRSS Feed to Configure Channel Creator
+   jurl: /channel-creator-mrss.html
+   hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-mrss
+   ref: channel-creator-mrss
