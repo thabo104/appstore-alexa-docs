@@ -1,13 +1,13 @@
-Fire OSは、AmazonのFire TVやFireタブレットなどのデバイスで動作するオペレーティングシステムです。Fire OSはAndroid 5.1 (Lollipop、APIレベル 22) のフォークです。そのため、ほとんどのAndroidアプリはAmazonのFireデバイスで動作します。
+Fire OSは、AmazonのFire TVやFireタブレットなどのデバイスで動作するオペレーティングシステムです。Fire OSはAndroid 5.1 (Lollipop、APIレベル 22) のフォークです。そのため、ほとんどのAndroidアプリはAmazonのFireデバイスでそのまま動作します。
 
-開発者の方は、Androidコードを一切調整しなくても、アプリをAmazonのプラットフォームで公開できる可能性があります。[こちら][app-testing-service-understanding]のページを参考にアプリをテストして、動作に問題がないかを確認できます。
+Androidコードを一切調整しなくても、アプリをAmazonのプラットフォームで公開できる場合があります。[こちら][app-testing-service-understanding]のページを参考にテストすることで、問題なくアプリが動くかどうかを確認できます。
 
 * TOC
 {:toc}
 
 ## サービスの違い
 
-Fire OSとAndroidはサービスが異なります。Fire OSでは、ブラウズ、位置情報、メッセージング、支払いなどのアクティビティにGoogleのサービスではなくAmazonのサービスが使用されます。最も顕著な違いは、アプリの一覧を表示するために、AmazonではAmazonアプリストアを使用するのに対し、GoogleではGoogle Playを使用します。
+Fire OSとAndroidの違いは、サービスにあります。Fire OSでは、ブラウズ、位置情報、メッセージング、支払いなどのアクティビティにGoogleのサービスではなくAmazonのサービスが使用されます。最も大きな違いは、アプリを掲載するために、GoogleではGoogle Playを利用するのに対し、AmazonではAmazonアプリストアを利用することです。
 
 AndroidアプリでGoogleのサービスのエコシステムに接続している場合は、AndroidアプリをFire OSプラットフォームに移植する際、Amazonのサービスのエコシステムを利用する必要があります。また、Fire OSではAndroid Lollipop (APIレベル 22) のみをサポートしています。
 
