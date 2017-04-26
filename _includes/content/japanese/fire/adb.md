@@ -1,8 +1,8 @@
-Android Debug Bridge (ADB) を使用すると、Amazon Fire TV端末またはAmazon Fire TV Stickに開発コンピューターを接続して、アプリのインストール、テスト、デバッグを行うことができます。
+Android Debug Bridge (ADB) を使用すると、Amazon Fire TVまたはAmazon Fire TV Stickに開発コンピューターを接続して、アプリのインストール、テスト、デバッグを行うことができます。
 
 ADBでFire TVまたはFire TV Stickに接続する際は、あらかじめ以下のセクションをお読みください。
 
-{% include note.html content="[Android Debug Bridge](https://developer.android.com/studio/command-line/adb.html)は、Amazonではなく、Android Open Source Projectにより提供されます。"%}
+{% include note.html content="[Android Debug Bridge](https://developer.android.com/studio/command-line/adb.html)は、Amazonではなく、Android Open Source Projectが提供しています。"%}
 
 * TOC
 {:toc}
@@ -100,13 +100,14 @@ Windowsで環境変数PATHにADBを追加するには:
 
 ADBを使用してFire TVまたはFire TV Stickをコンピューターに接続するには、次の 2 つの方法を利用できます。
 
-*   [ネットワーク経由でADBを接続する](#networkconnect)。有線イーサネットまたはWiFiネットワーク接続を使用した接続方法です。ネットワークADB接続が機能するには、コンピューターとFire TV端末が同じネットワーク上に存在する必要があります。*   [USB経由でADBを接続する](#usbconnect)。USBケーブル (A-to-A) を使用して直接USB接続を確立する方法です。
+*   [ネットワーク経由でADBを接続する](#networkconnect)。有線イーサネットまたはWiFiネットワーク接続を使用した接続方法です。ネットワークADB接続が機能するには、コンピューターとFire TV端末が同じネットワーク上に存在する必要があります。
+*   [USB経由でADBを接続する](#usbconnect)。USBケーブル (A-to-A) を使用して直接USB接続を確立する方法です。
 
-{% include note.html content="以降の手順は、ユーザーインターフェースが刷新された第 2 世代の端末を想定して書かれています。第 1 世代の端末をご使用の場合は、メニューの場所が若干異なります。"%} 
+{% include note.html content="以下の手順は、ユーザーインターフェースが刷新された第 2 世代の端末を想定して書かれています。第 1 世代の端末をご使用の場合は、メニューの場所が若干異なります。"%} 
 
 ### ネットワーク経由でADBを接続する {#networkconnect}
 
-Fire TV端末にADBを接続するには、ネットワークにあるFire TV端末のIPアドレスが必要となります。
+Fire TV端末にADBを接続するには、ネットワークに環境にあるFire TV端末のIPアドレスが必要となります。
 
 1.  まだ接続していない場合は、Fire TV端末をネットワークに接続します (対象のコンピューターと同じネットワークに接続すること)。Fire TVのホーム画面で [**設定**] > [**ネットワーク**] の順に選択して目的のネットワークを選択してください。2.  Fire TVのホーム画面で [**設定**] を選択します。
 3.  [**端末 (古いバージョンではシステム)**] > [**バージョン情報**] > [**ネットワーク**] の順に移動します。画面に表示されるIPアドレスをメモします。
