@@ -10,12 +10,19 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-overview
     ref: channel-creator-overview
 
+  - title: Create an App
+    jurl: /channel-creator-create-an-app.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-create-an-app
+    ref: channel-creator-create-an-appss
+
   - title: Use a YouTube Channel to Configure Channel Creator
     jurl: /channel-creator-youtube.html
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-youtube
     ref: channel-creator-youtube
+    bookmarks: [getchannelid]
 
   - title:  Use an MRSS Feed to Configure Channel Creator
     jurl: /channel-creator-mrss.html
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-mrss
     ref: channel-creator-mrss
+    bookmarks: [samplemrssfeed]
