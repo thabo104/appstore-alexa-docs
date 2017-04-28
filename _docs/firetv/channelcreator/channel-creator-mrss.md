@@ -79,3 +79,8 @@ This MRSS feed has just two items in it, each identified through the `item` elem
 When you insert the URL to your MRSS feed into Channel Creator, it reads the elements and attempts to map them to different elements in the web app. In some cases (for example, with `media:credit role="author"`), you may need to select from a drop-down menu to identify how the elements should be mapped.
 
 Not all of the elements in an MRSS feed are actually used in the web app. Specifically, only the elements matched when Channel Creator validates your feed are used.
+
+## Size of thumbnails in the feed
+
+
+{% include links.html %}

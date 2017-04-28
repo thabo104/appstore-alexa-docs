@@ -11,18 +11,42 @@ folders:
     ref: channel-creator-overview
 
   - title: Create an App
-    jurl: /channel-creator-create-an-app.html
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-create-an-app
-    ref: channel-creator-create-an-appss
+    jurl: /channel-creator-create-your-app.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-create-your-app
+    ref: channel-creator-create-your-app
 
-  - title: Use a YouTube Channel to Configure Channel Creator
-    jurl: /channel-creator-youtube.html
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-youtube
-    ref: channel-creator-youtube
-    bookmarks: [getchannelid,getdevkey]
+    subfolders:
+    - title: Video Source Options
+      subfolderitems:
 
-  - title:  Use an MRSS Feed to Configure Channel Creator
-    jurl: /channel-creator-mrss.html
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-mrss
-    ref: channel-creator-mrss
-    bookmarks: [samplemrssfeed]
+      - title: Use a YouTube Channel
+        jurl: /channel-creator-youtube.html
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-youtube
+        ref: channel-creator-youtube
+        bookmarks: [getchannelid, getdevkey]
+#
+      - title:  Use an MRSS Feed 
+        jurl: /channel-creator-mrss.html
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-mrss
+        ref: channel-creator-mrss
+        bookmarks: [samplemrssfeed]
+
+  - title:  Submit Your App
+    jurl: /channel-creator-submit-your-app.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-submit-your-app
+    ref: channel-creator-submit-your-app
+
+  - title:  Update Your Live App
+    jurl: /channel-creator-update-your-live-app.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-update-your-app
+    ref: channel-creator-update-your-app
+
+  - title:  Localize Your App
+    jurl: /channel-creator-localize-your-app.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-update-your-app
+    ref: channel-creator-update-your-app
+
+  - title:  Frequently Asked Questions (Channel Creator)
+    jurl: /channel-creator-faq.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-faq
+    ref: channel-creator-faq

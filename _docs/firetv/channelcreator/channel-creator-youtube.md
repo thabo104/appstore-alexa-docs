@@ -17,32 +17,33 @@ You can configure your Channel Creator app using a YouTube channel as the source
 
 ## Get Your YouTube Channel ID {#getchannelid}
 
-Channel Creator displays all the videos contained within your YouTube channel. You will need your Channel ID to configure Channel Creator. To get your Channel ID:
+Channel Creator displays all the videos contained within your YouTube channel. You need your Channel ID to configure Channel Creator. To get your Channel ID:
 
 1.  Log into [YouTube](https://www.youtube.com/).
 2.  In the upper-left corner, click the 3-bar icon {% include inline_image.html file="channel-creator-hamburger" type="png" %}. Then select **My Channel**.
 
     {% include image.html  file="channel-creator-my-channel" type="png" alt="My Channel" %}
+
 3.  Copy the ID that appears in the address bar:
 
     {% include image.html  file="channel-creator-channel-id" type="png" alt="YouTube Channel ID" %}
 
-You can also view your YouTube Channel ID from your [Advanced Settings page](https://www.youtube.com/account_advanced).
+You can also view your YouTube Channel ID from your [Advanced Settings page](https://www.youtube.com/account_advanced). To get to Adanced Settings, click your profile icon in the upper-right corner, click the **YouTube Settings** icon {% include inline_image.html file="channel-creator-youtube-settings" type="png" %}, and then click **Advanced** in the Name section. Your channel ID appears in the Account information section.
 
-## Get the Developer API Key {#getdevkey}
+## Get the YouTube Developer API Key {#getdevkey}
 
-Channel Creator needs an API key in order to access your YouTube videos. To get the API key:
+Channel Creator needs an API key in order to access your YouTube videos. The API key also ensures that other users can't create apps that pull in your video content. To get the API key:
 
 1.  Go to the Google Developer Console at [console.developers.google.com](https://console.developers.google.com).
 2.  Log into your Google account using the same login that you use for your YouTube account.
 
-    If you don't have any existing projects, you're directed to the Library tab:
+    If you don't have any existing projects, you're directed to the Library tab (shown in the left sidebar):
 
     {% include image.html  file="google-developer-console-no-projects" type="png" max-width="600" url="https://console.developers.google.com" caption="Google Developer Console Dashboard" alt="Google Developer Console Dashboard" %}
 
     If you already have a project, you're directed to the Dashboard tab for the most recent project.
 
-3.  In the upper-left corner, click the **Select a Project** drop-down menu; then click the **+** (plus) button to create a new project. (If you already have an existing project, the drop-down menu will display a project name instead of **Select a Project**.)
+3.  In the upper-left corner, click the **Select a Project** drop-down menu. (If you already have an existing project, the drop-down menu will display a project name instead of **Select a Project**.) Then click the **+** (plus) button on the right side of the dialog box to create a new project.
 
     {% include image.html  file="channel-creator-create-project-fresh" type="png" %}
 
@@ -55,7 +56,7 @@ Channel Creator needs an API key in order to access your YouTube videos. To get 
 
     {% include image.html file="channel-creator-create-credentials-screen" type="png" alt="Create Credentials screen" %}
 
-7.  Click the **Create Credentials** drop-down menu and select **API Key**.
+7.  Click the blue **Create Credentials** drop-down menu and select **API Key**.
 
     {% include image.html  file="channel-creator-credentials-api-key" type="png" alt="API key" %}
 
@@ -78,7 +79,28 @@ Channel Creator needs an API key in order to access your YouTube videos. To get 
 
 ## Configure Your Channel with the Videos You Want
 
-By default, Channel Creator gets the latest 50 videos in reverse chronological order from your channel. If you want all the videos in your channel to appear in your app, great, leave all the videos in your channel as is. On the other hand, if you only want some videos in your channel included in your app, you can create another channel (within your same YouTube account) that includes only the videos you want in your Fire TV app. See [Manage multiple channels](https://support.google.com/youtube/topic/4627509?hl=en&ref_topic=3024173) in Google's documentation for full details on setting up multiple channels. In short, to create additional channels:
+By default, Channel Creator gets the latest 50 videos in reverse chronological order from your channel. If you want all the videos in your channel to appear in your app, great, leave all the videos in your channel as is.
+
+On the other hand, if you only want some videos in your channel included in your app, you have two options:
+
+* [Block Specific Videos from Your App through Channel Creator](#blockvideos)
+* [Create Multiple Channels in Your YouTube Account](#createmultiplechannels)
+
+### Block Specific Videos from Your App through Channel Creator {#blockvideos}
+
+After you submit your app, you can edit your app and block videos from appearing in the app by specifying the video IDs you want to block.
+
+1.  [Create your app][channel-creator-create-your-app]. After you click Finish, you'll see this screen:
+
+2.  Enter the IDs of the videos you want to block.
+
+  {% include image.html  file="channel-creator-block-videos" type="png" alt="Blocking videos" %}
+
+
+
+### Create Multiple Channels in Your YouTube Account {#createmultiplechannels}
+
+You can create another channel (within your same YouTube account) that includes only the videos you want in your Fire TV app. See [Manage multiple channels](https://support.google.com/youtube/topic/4627509?hl=en&ref_topic=3024173) in Google's documentation for full details on setting up multiple channels. In short, to create additional channels:
 
 1.   From [YouTube](https://www.youtube.com/), click your profile icon in the upper-right corner and select the Youtube settings icon {% include inline_image.html file="gearicon" type="png" %}. Alternatively, go directly to  your [YouTube Account settings](https://www.youtube.com/account) page.
 2.  Click **See all my channels or create a new channel.**
@@ -120,10 +142,4 @@ To group your videos into different playlists in your YouTube channel:
 
     Note that only playlists will appear in the category selector. Most other section types (for example, "Recent Activities") will not appear.
 
-## See Updates to Your App
-
-After you make changes to your YouTube channel, your app will automatically reflect the changes, since the app pulls its data dynamically from your YouTube channel each time it loads. However, to see a recent change you made to your YouTube channel in your app, you need to clear your app's cache and data from Fire TV:
-
-1.  On Fire TV, go to **Settings > Applications > Manage Installed Applications** and click your app.
-2.  Select **Clear data** (twice) and also **Clear cache**.
-3.  Relaunch your app.
+{% include links.html %}
