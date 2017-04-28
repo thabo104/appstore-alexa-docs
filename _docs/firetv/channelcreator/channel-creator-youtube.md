@@ -7,6 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
+
 You can configure your Channel Creator app using a YouTube channel as the source for your video content. YouTube approach gives you a robust, free platform for hosting and serving your video. You can group your videos into different channels within the same account. Channel Creator will require you to supply a developer API key in order to access the videos.
 
 {% include warning.html content="Many of these instructions relate to managing your videos on YouTube. These instructions were last updated on April 27, 2017. If YouTube has changed its interface or workflow, these instructions may be out of date. Always consult YouTube's documentation to get the latest information." %}
@@ -28,7 +29,7 @@ Channel Creator displays all the videos contained within your YouTube channel. Y
 
 You can also view your YouTube Channel ID from your [Advanced Settings page](https://www.youtube.com/account_advanced).
 
-## Get the Developer API Key
+## Get the Developer API Key {#getdevkey}
 
 Channel Creator needs an API key in order to access your YouTube videos. To get the API key:
 

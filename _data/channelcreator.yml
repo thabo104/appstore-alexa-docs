@@ -19,7 +19,7 @@ folders:
     jurl: /channel-creator-youtube.html
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-youtube
     ref: channel-creator-youtube
-    bookmarks: [getchannelid]
+    bookmarks: [getchannelid,getdevkey]
 
   - title:  Use an MRSS Feed to Configure Channel Creator
     jurl: /channel-creator-mrss.html

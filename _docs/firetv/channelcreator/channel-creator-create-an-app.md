@@ -30,6 +30,21 @@ To create an app:
 
 6.  If you selected **Media RSS**, enter your MRSS feed URL in the text box. See [Sample Media RSS Feed][channel-creator-mrss#samplemrssfeed] for details.
 
-    Channel Creator attempts to validate the MRSS feed. 
+    Channel Creator attempts to validate the MRSS feed. It will auto-map the app elements to the elements in your feed. If the mapping doesn't identify the right element, you can use select the right element from drop-down menus.
 
 6.  Click **Create**.
+
+    A preview of your web app appears in the browser. Use the on-screen controls to play and navigate the videos.
+
+    {% include note.html content="The drop-down selector that lets you choose a different category won't work in the preview. This selector works only on Fire TV devices." %}
+
+7.  To modify the appearance of the app, click **Edit**.
+
+8.  In the **Logo** section, click **Choose a file** and upload a 500px x 500px size image for your logo.
+9.  Adjust the colors and background images for your app as desired.
+
+    Note that because the category selector doesn't work in the preview, any changes you make to the Title Bar/Navigation won't be easy to see.
+10. Click **Preview** to see any changes. You can view the site as this preview link.
+11. Click **Finish**.
+12. If you selected YouTube as the source, enter your YouTube Developer key. See [Get the Developer API Key][channel-creator-youtube#getdevkey] for details.
+13. To submit the app directly into the Amazon Appstore, click **Submit** and complete the submission details. Alternatively, you can click **Download** to download the app as a zip file. You can then go to the [Developer Portal](https://developer.amazon.com/) and submit the app following the traditional submission process. See [Submitting Apps to the Amazon Appstore](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/submitting-apps-to-amazon-appstore) for details.
