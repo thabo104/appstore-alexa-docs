@@ -80,7 +80,19 @@ When you insert the URL to your MRSS feed into Channel Creator, it reads the ele
 
 Not all of the elements in an MRSS feed are actually used in the web app. Specifically, only the elements matched when Channel Creator validates your feed are used.
 
+## Setting Categories for Items
+
+This influences the Latest navigation bar.
+
 ## Size of thumbnails in the feed
+
+TBD
+
+## Troubleshooting
+
+If you have invalid MRSS feed, parser won't work.
+
+dimensions for app logo, thumbnails?
 
 
 {% include links.html %}
