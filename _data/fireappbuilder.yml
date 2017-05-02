@@ -53,10 +53,15 @@ folders:
     - title: Release Notes
       subfolderitems:
 
+      - title: Version 1.0.4 Release Notes
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-4
+        jurl: /fire-app-builder-release-notes-version-1-0-4.html
+        ref: fire-app-builder-release-notes-version-1-0-4
+
       - title: Version 1.0.3 Release Notes
-        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes
-        jurl: /fire-app-builder-release-notes.html
-        ref: fire-app-builder-release-notes
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-3
+        jurl: /fire-app-builder-release-notes-version-1-0-3.html
+        ref: fire-app-builder-release-notes-version-1-0-3
 
       - title: Version 1.0.2 Release Notes
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-app-builder-release-notes-version-1-0-2

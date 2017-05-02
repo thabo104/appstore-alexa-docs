@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-You can stay updated about the latest commits to Fire App Builder by watching and starring the project in Github. You can also periodically check the [Release Notes][fire-app-builder-release-notes] page in the documentation.
+You can stay updated about the latest commits to Fire App Builder by watching and starring the project in Github. You can also periodically check the Release Notes in the documentation.
 
 {% include note.html content="If this is the first time you're forking and building the project, see [Download Fire App Builder and Build an App][fire-app-builder-download-and-build] instead of this topic. (This topic addresses how to apply updates to an existing project.)" %}
 

@@ -76,24 +76,6 @@ For more info about the different features across devices, see the [specificatio
 
 {% include note.html content="Currently, Fire App Builder works only on Fire TV devices, not on Fire tablets. However, compatibility with Fire tablets is on the long-term roadmap." %}
 
-## Remove the IAP Component If Unused {#commentoutiap}
-
-Fire App Builder contains the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. If you leave this component in your app, when you submit it to the Appstore your app will be tagged as containing in-app purchases. The Appstore will also appends a note about in-app purchases at the end of your Short Description.
-
-If you're not using the IAP component, [remove the component][fire-app-builder-load-a-component] from your app. (Unlike the other components, you don't need to include a dummy purchasing component.)
-
-Additionally, go to **PurchaseComponent > manifests** and open the **AndroidManifest.xml** file. Comment out the following lines:
-
-```xml
-<receiver android:name="com.amazon.device.iap.ResponseReceiver">
-   <intent-filter>
-        <action
-                android:name="com.amazon.inapp.purchasing.NOTIFY"
-                android:permission="com.amazon.inapp.purchasing.Permission.NOTIFY"/>
-    </intent-filter>
-</receiver>
-```
-
 ## Test Your App
 
 As a best practice, test your app on both Fire TV and Fire TV Stick devices. See the [Test Criteria for Amazon Appstore Apps](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-test-criteria) to see the full list of tests that your app must pass.
