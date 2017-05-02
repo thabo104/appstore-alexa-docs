@@ -134,9 +134,9 @@ Windows
 
 Snippet tool.
 
-## Removing Your App from the Appstore
+## Delete Your App from the Appstore
 
-If you want to remove your app from the Appstore:
+Apps you submit to the Appstore can't be deleted -- they can only be suppressed. If you want to suppress your app from the Appstore:
 
 1.  Click **Manage Channels**.
 2.  Click **Delete**, and then confirm the removal.

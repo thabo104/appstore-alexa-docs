@@ -96,8 +96,6 @@ After you submit your app, you can edit your app and block videos from appearing
 
   {% include image.html  file="channel-creator-block-videos" type="png" alt="Blocking videos" %}
 
-
-
 ### Create Multiple Channels in Your YouTube Account {#createmultiplechannels}
 
 You can create another channel (within your same YouTube account) that includes only the videos you want in your Fire TV app. See [Manage multiple channels](https://support.google.com/youtube/topic/4627509?hl=en&ref_topic=3024173) in Google's documentation for full details on setting up multiple channels. In short, to create additional channels:
@@ -113,15 +111,17 @@ You can create another channel (within your same YouTube account) that includes 
 
     You can transfer the videos by first downloading your videos from one channel and then uploading them into another channel. To download a video, click your profile icon in the upper-right, select **Creator Studio**, then expand **Video Manager** in the left sidebar. Click the drop-down arrow next to a video and select **Download MP4**. After you transfer videos across channels, delete the videos from the old channel so you don't have duplicate video content across channels.
 
-## Group Videos into Different Playlists
+## Group Videos into Different Playlists In Your App
 
 By default, Channel Creator organizes all your videos into a "Latest" category.
 
 {% include image.html  file="channel-creator-latest" type="png" alt="Latest grouping" %}
 
-It will also truncate the names to size with an ellipsis if they are too long to fit in the menu.
+Channel Creator also truncates the names to size with an ellipsis if they are too long to fit in the menu.
 
-If you have different playlist-based "sections" configured in your YouTube channel, Channel Creator will add those sections to the Category filter. This will allow users to select the playlist/section they want.
+If you have different "sections" configured in your YouTube channel (sections based on playlists), Channel Creator will add those sections to the Category filter in the app's navigation bar. This will allow users to select the playlist/section they want. Here's an example:
+
+{% include image.html file="" %}
 
 To group your videos into different playlists in your YouTube channel:
 
@@ -140,6 +140,18 @@ To group your videos into different playlists in your YouTube channel:
     d.  In the **Choose a Playlist** menu that appears, select **Enter playlist URL**.
     e.  To find the playlist URL, open another tab and go to **My channel**. In the middle column, click **Playlists**. Select one of your playlists and copy the URL that appears. Paste this into the **Enter playlist URL** text box on the previous tab, and then click **Add** and **Done**.
 
-    Note that only playlists will appear in the category selector. Most other section types (for example, "Recent Activities") will not appear.
+Note that YouTube allows you to add a variety of section types to your channel, but not all section types will display in your app. The following are the section options available in YouTube:
+
+{% include image.html  file="channel-creator-section-options" type="png" alt="Section options" %}
+
+Only the following section types are relevant for Channel Creator apps:
+
+* Single playlist
+* Uploads
+* Popular Uploads
+* Multiple playlists
+* Posted playlists (displays as "All Playlists")
+
+Other section types will be ignored by Channel Creator and not included in the CC Channel Categories navigation bar.
 
 {% include links.html %}
