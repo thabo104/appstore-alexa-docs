@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-アプリのcustom.xmlファイル (**res > values**にあります) とnavigator.json (**app > assets**にあります) を使用して、アプリのルックアンドフィールのほとんどをカスタマイズできます。簡単に変更できるアプリの要素を次に示します。
+アプリのcustom.xmlファイル (**res > values**にあります) とnavigator.json (**app > assets**にあります) を使用すれば、アプリのルックアンドフィールのほとんどをカスタマイズできます。変更可能なアプリの要素は次のとおりです。
 
 * フォント
 * スプラッシュ画面
@@ -37,7 +37,7 @@ Navigator.json (**app > assets**にあります) の`branding`オブジェクト
   }
 ```
 
-フォントの使用方法を次に示します。
+フォントの使用方法は次のとおりです。
 
 | プロパティ | 使用する場所 |
 |----|-----|
@@ -49,7 +49,7 @@ Navigator.json (**app > assets**にあります) の`branding`オブジェクト
 
 これら 3 つのフォントオプションには、有効なデバイスフォントのほか、カスタムフォントを割り当てることもできます。たとえば、必要に応じて`Roboto Bold`を 3 つのフォントすべてに適用できます。
 
-使用できるデバイスフォントは次のとおりです。
+下記のデバイスフォントが使用可能です。
 
 * **Amazon Emberフォント**: Amazon Ember、Amazon Ember Bold、Amazon Ember Bold Italic、Amazon Ember Italic、Amazon Ember Light、Amazon Ember Light Italic、Amazon Ember Medium、Amazon Ember Medium Italic、Amazon Ember Thin、Amazon Ember Thin Italic、AndroidClock Regular、AndroidClock-Large Regular
 * **Robotoフォント**: Roboto Black、Roboto Black Italic、Roboto Bold、Roboto Bold Italic、Roboto Condensed Bold、Roboto Condensed Bold Italic、Roboto Condensed Italic、Roboto Condensed Light、Roboto Condensed Light Italic、Roboto Condensed Regular、Roboto Italic、Roboto Light、Roboto Light Italic、Roboto Medium、Roboto Medium Italic、Roboto Regular、Roboto Thin、Roboto Thin Italic
@@ -110,7 +110,7 @@ Droid Sans Mono、Kindle Symbol、MotoyaLMaru W3 mono、MT Chinese Surrogates、
 <!-- End of Splash Screen Customization -->
 ```
 
-`@drawable`への参照は、**TVUIComponent > res > drawable**の画像を参照します。これらの画像をカスタマイズした画像に置き換えるか、独自の画像ファイルを追加してそれをポイントするようXMLの参照を更新します。
+`@drawable`を参照するには、**TVUIComponent > res > drawable**の画像にアクセスします。これらの画像をカスタマイズした画像に置き換えるか、独自の画像ファイルを追加してそれをポイントするようXMLを更新します。
 
 `bg_generic_nopreview`は 1900 x 1080 pxの真っ黒な画像です。これと同じ背景がフルブラウズのホームページレイアウトに使用されますが、必要に応じてここに別の画像参照を指定できます。
 
