@@ -76,24 +76,6 @@ For more info about the different features across devices, see the [specificatio
 
 {% include note.html content="Currently, Fire App Builder works only on Fire TV devices, not on Fire tablets. However, compatibility with Fire tablets is on the long-term roadmap." %}
 
-## Remove the IAP Component If Unused {#commentoutiap}
-
-Fire App Builder contains the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. If you leave this component in your app, when you submit it to the Appstore your app will be tagged as containing in-app purchases. The Appstore will also appends a note about in-app purchases at the end of your Short Description.
-
-If you're not using the IAP component, [remove the component][fire-app-builder-load-a-component] from your app. (Unlike the other components, you don't need to include a dummy purchasing component.)
-
-Additionally, go to **PurchaseComponent > manifests** and open the **AndroidManifest.xml** file. Comment out the following lines:
-
-```xml
-<receiver android:name="com.amazon.device.iap.ResponseReceiver">
-   <intent-filter>
-        <action
-                android:name="com.amazon.inapp.purchasing.NOTIFY"
-                android:permission="com.amazon.inapp.purchasing.Permission.NOTIFY"/>
-    </intent-filter>
-</receiver>
-```
-
 ## Test Your App
 
 As a best practice, test your app on both Fire TV and Fire TV Stick devices. See the [Test Criteria for Amazon Appstore Apps](https://developer.amazon.com/public/support/submitting-your-app/tech-docs/appstore-test-criteria) to see the full list of tests that your app must pass.
@@ -129,7 +111,7 @@ To build a release version of your app, you must generate a signed APK file. You
 
 One of the fields in the APK wizard is the destination folder for the release APK file. By default, Android puts the release build APK in your app's directory. After you build the signed APK, the APK file will be named something like **ACME-release-1.0.0-unaligned.apk**. You can later upload this version of the APK into the Amazon Appstore (on the Binary File(s) tab).
 
-{% include note.html content="When you submit your app, Amazon removes the signature you used to sign your app and re-signs it with an Amazon signature that is unique to you, does not change, and is the same for all apps in your account. You can find the Amazon signature hashes for your account by selecting any application in the developer console and navigating to the Binary File(s) tab. The SHA-1 and MD5 hashes for your account are listed in the Appstore Certificate Hashes section. <br/><br/>Even if you lose the keystore you created to sign your release builds, it won't affect your ability to push out updates to your app because your app's signature is associated with your Amazon developer account." %}
+{% include note.html content="When you submit your app, Amazon removes the signature you used to sign your app and re-signs it with an Amazon signature that is unique to you, does not change, and is the same for all apps in your account. You can find the Amazon signature hashes for your account by selecting any application in the developer console and navigating to the Binary File(s) tab. The SHA-1 and MD5 hashes for your account are listed in the Appstore Certificate Hashes section. Even if you lose the keystore you created to sign your release builds, it won't affect your ability to push out updates to your app because your app's signature is associated with your Amazon developer account." %}
 
 ## Gather Image Assets for Your App
 

@@ -279,6 +279,11 @@ folders:
     ref: fire-tv-recommendations-best-practices
     bookmarks: [dont-exceed-the-notifications-limit]
 
+  - title:  Show Your User's Recent Content on Home
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-recent-row
+    jurl: /fire-tv-recommendations-recent-row.html
+    ref: fire-tv-recommendations-recent-row
+  
 - title: Build Webapps for Fire TV
   folderitems:
   - title: Get Started with Web Apps

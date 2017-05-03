@@ -9,8 +9,6 @@ github: true
 
 The Amazon In-App Purchasing Component uses Amazon's [In-App Purchasing](https://developer.amazon.com/public/apis/earn/in-app-purchasing) (IAP) API to integrate purchasing options in your app.
 
-{% include note.html content="When you download Fire App Builder, the default configuration includes the [In-App Purchasing component][fire-app-builder-amazon-in-app-purchase-component] by default. As a result, when you submit your app into the Appstore, it will be tagged as containing in-app purchases. If you're not using IAP, [remove the component][fire-app-builder-load-a-component] as well as the `receiver` elements from the PurchaseComponent's manifest. See [Remove the IAP Component If Unused][fire-app-builder-submit-your-app#commentoutiap] for details." %}
-
 * TOC
 {:toc}
 
