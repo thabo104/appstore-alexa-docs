@@ -7,7 +7,7 @@ toc-style: kramdown
 github: true
 ---
 
-Version 1.0.3 was released on April 6, 2017.
+Version 1.0.3 was released on April 14, 2017.
 
 ## Bug Fixes
 
