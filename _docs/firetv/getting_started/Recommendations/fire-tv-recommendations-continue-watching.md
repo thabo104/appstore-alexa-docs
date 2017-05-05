@@ -13,22 +13,24 @@ If the content is an episode in a series (and the user finished the episode), th
 
 You send Continue Watching recommendations to the Recent row the same way you [normally send recommendations][fire-tv-recommendations-send-recommendations], except that you also use the [`setProgress()`](https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setProgress%28int,%20int%29) method to include details about the user's progress.
 
+{% include note.html content="Continue Watching recommendations are a feature currently in development. Depending on feedback gathered from beta testing, some of the details may change when the feature is officially rolled out. The timeline for rollout is not yet announced." %}
+
 * TOC
 {:toc}
 
 ## Example of Continue Watching Recommendations
 
-Without sending Continue Watching recommendations, users who were watching a video (for example, Bosch) would see the general app icon on the Recent row on Fire TV's home screen.
+Without sending Continue Watching recommendations, users who were watching a video (for example, "CatVidz") would see the general app icon on the Recent row on Fire TV's home screen.
 
-{% include image.html file="firetv/getting_started/images/fire-tv-recommendations-no-continue-watching" type="png" alt="Recent row not watched content" max-width="700px" %}
+{% include image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-app-icon" type="png" alt="Recent row not watched content" max-width="700px" %}
 
-However, if your app sends Continue Watching recommendations, the same users will see the content they were watching as well as a progress indicator showing how much time remains to finish the content. The app logo will appear as an overlay on the content tile. The following screenshot shows an example.
+However, if your app sends Continue Watching recommendations, the same users will see a tile representing the content they were watching as well as a progress indicator showing how much time remains to finish the content. Your app logo will appear as an overlay on the content tile. The following screenshot shows an example.
 
-{% include image.html file="firetv/getting_started/images/fire-tv-recommendations-continue-watching" type="png" alt="Recent row showing progress" max-width="700px" %}
-
-The Continue Watching recommendations deep link to the content within your app, allowing users to pick up where they left off with one click.
+{% include image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-season-tile" type="png" alt="Recent row showing progress" max-width="700px" %}
 
 Your app can have up to 5 Recent recommendation tiles in the Recent row, assuming users watched 5 separate media items from your app and did not finish them. If a user finishes an episode in a series, you can show the next episode. However, do not show content for more than one episode *in the same series*.
+
+Note that if you want your app icon (instead of a content tile) to appear in the Recent row, just do not send Continue Watching recommendations.
 
 ## Requirements for Continue Watching Recommendations
 
@@ -36,11 +38,11 @@ To send content to the Recent row, your media must be integrated into the [Fire 
 
 Additionally, your app must be whitelisted. To request whitelisting, submit a request through the [Contact Us](https://developer.amazon.com/public/support/contact/contact-us) form and select "Signup and Contract" for the Subject.
 
-## How to Send Continue Watching Recommendations
+## How to Send Continue Watching Recommendations {#howtosend}
 
 You send Continue Watching recommendations the same way you [send recommendations][fire-tv-recommendations-send-recommendations]. However, in addition to the normal recommendation parameters (title, text, content image, etc.), you must also use the [`setProgress`](https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setProgress%28int,%20int%29) method.
 
-Below is a sample Continue Watching recommendation for a TV show episode. The annotations describe the fields that are visible to users.
+Below is a sample Continue Watching recommendation for a TV show episode. The annotations describe the fields visible to users.
 
 {% include image.html  file="firetv/getting_started/images/firetv_continuewatching" type="png" %}
 
@@ -50,7 +52,7 @@ Below is a sample Continue Watching recommendation for a TV show episode. The an
 {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setText%28java.lang.String%29"><code>setText(text)</code></a>. <i>Required</i>. The description for this recommendation. If the recommendation is a TV show, include the season and episode number. <br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBackgroundImageUri%28java.lang.String%29"><code>setBackgroundImageUri(imageUrl)</code></a>. <i>Required</i>. A URL to the background image to show in the details pane. <br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setContentImage%28android.graphics.Bitmap%29"><code>setContentImage(image)</code></a>. <i>Required</i>. The image that will be drawn for the recommendation in the Recent row. <br/>
-{% include inline_image.html file="firetv/getting_started/images/firetv_six" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBadgeIcon%28int%29"><code>setBadgeIcon(icon)</code></a>. <i>Required</i>. The icon that lets users know which app the recommendation comes from. Use a simple icon with a transparent background to help users identify your app. The icon appears in the bottom-left corner. Maximum height: 52 px. <br/>
+{% include inline_image.html file="firetv/getting_started/images/firetv_six" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBadgeIcon%28int%29"><code>setBadgeIcon(icon)</code></a>. <i>Optional</i>. The icon that lets users know which app the recommendation comes from. Use a simple icon with a transparent background to help users identify your app. The icon appears in the bottom-left corner. Maximum height: 52 px. If your content tile already includes your app's logo, don't send use this method in your recommendation. <br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_seven" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setProgress%28int,%20int%29"><code>setProgress(duration, progress)</code></a>. <i>Required</i>. The progress specified will be used to draw the progress bar on the recommendation. <br/>
 </div>
 
@@ -159,12 +161,30 @@ Ensure that your app shows just one TV show episode per series. Do not send mult
 </style>
 <div class="imageContainer">
 
-{% include inline_image.html  file="firetv/getting_started/images/fire-tv-recommendations-good-side" type="png"  %}
+{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-season-tile-green-check" type="png" border="true" %}
 
-{% include inline_image.html  file="firetv/getting_started/images/fire-tv-recommendations-badside" type="png"  %}
+{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-two-episodes" type="png" border="true" %}
 
 </div>
 
-<div style="clear:float"></div>
+<div style="clear:float; margin-top:15px;"></div>
+
+## Frequently Asked Questions
+
+Q: Do I need to provide any extra assets (background images/screenshots) other than what I already provide for catalog integration?
+:  The only assets required are those described in the section [How to Send Continue Watching Recommendations](#howtosend).
+
+Q: If a user has parental controls enabled, will the Continue Watching recommendation still show on the Recent row ?
+:  Yes, the content will still appear even if the user has parental controls enabled. However, clicking on the content will show the pin-protect screen for app launches.
+
+Q: Is there a limit to the number of tiles an app can occupy on the Recent row ?
+:  A maximum of five recommendations will be shown on the Recent row per app. It is not necessary to send any more recommendations than that.
+
+Q: What happens to the tile in the Recent row if the user has uninstalled the app from the device or if the content is no longer exists within the app?
+:  Just like Android notifications, the recommendations will be removed if an app is uninstalled or if the content is removed.
+
+Q: What happens when a user finishes watching a *movie* instead of a TV series? What will be available as a next suggestion? A movie similar to the one he has watched in terms of the genre or cast?
+:  No, if the user finishes the movie, the Recent row just shows the app icon, as with other apps the user recently used. Continue Watching recommendations are generally meant for episodic content in a TV series, or to finish watching the same content. To recommended *related content* in the same genre, [send a regular recommendation][fire-tv-recommendations-send-recommendations] instead. Recommendations appear in the [Recommended By Your Apps row][fire-tv-recommendations-overview].
+
 
 {% include links.html %}

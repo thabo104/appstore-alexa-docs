@@ -30,6 +30,25 @@ owner: tomjoht
 
 
 folders:
+
+- title: Frontmatter
+  jurl: /frontmatter.html
+  type: frontmatter
+  pdf: true
+  folderitems:
+
+  - title: Title page
+    jurl: /pdf_title_page.html
+    pdf: true
+
+  - title: Copyright page
+    jurl: /pdf_copyright_page.html
+    #pdf: true
+
+  - title: TOC page
+    jurl: /pdf_toc_page.html
+    #pdf: true
+
 - title: Overview
   folderitems:
 
@@ -256,6 +275,8 @@ folders:
     ref: fire-tv-preview-future-voiceview-accessibility-features
 
 - title: Recommendations
+  jurl: /fire-tv-recommendations-minitoc.html
+  pdf: true
   folderitems:
   - title: Recommendations Overview
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-overview
@@ -283,6 +304,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-continue-watching
     jurl: /fire-tv-recommendations-continue-watching.html
     ref: fire-tv-recommendations-continue-watching
+    pdf: true
 
   - title: Recommendations FAQ
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-faq

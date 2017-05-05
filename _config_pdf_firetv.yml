@@ -1,0 +1,50 @@
+print_title: "Fire TV: Continue Watching Recommendations"
+print_subtitle: Version 1.0
+sidebar: firetv
+folder_path: /Users/tomjoht/projects/Appstore-alexa-docs-gitfarm/_site
+
+language: english
+target: jekyll
+format: pdf
+
+destination: _site
+port: 4000
+highlighter: rouge
+exclude:
+  - mobi
+  - pdf
+  - _docs/appstore
+  - _docs/firetv/catalog
+  - _docs/firetv/channelcreator
+  - _docs/firetv/fling
+  - _docs/firetv/webapps_firetv
+
+
+image_path: docs
+markdown: kramdown
+kramdown:
+ input: GFM
+ auto_ids: true
+ hard_wrap: false
+ syntax_highlighter: rouge
+
+collections:
+  docs:
+    output: true
+
+sass:
+    style: compressed
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: printpdf
+  -
+    scope:
+      path: ""
+      type: docs
+    values:
+      layout: printpdf

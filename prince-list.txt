@@ -1,0 +1,34 @@
+---
+layout: null
+---
+{% assign sidebar = site.data[site.sidebar].folders %}
+{% assign folderPath = site.folder_path %}
+
+{% for folder in sidebar %}
+{% unless folder.type == "frontmatter" %}
+{% if folder.pdf == true %}
+{{ folder.jurl | prepend: folderPath }}
+{% endif %}
+{% endunless %}
+{% for folderitem in folder.folderitems %}
+{% if folderitem.pdf == true %}
+{{ folderitem.jurl | prepend: folderPath }}
+{% endif %}
+{% for subfolder in folderitem.subfolders %}
+{{ subfolder.jurl | prepend: folderPath }}
+{% for subfolderitem in subfolder.subfolderitems %}
+{% if subfolderitem.pdf == true %}
+{{ subfolderitem.jurl | prepend: folderPath }}
+{% endif %}
+{% for subsubfolder in subfolderitem.subsubfolders %}
+{{ subsubfolder.jurl | prepend: folderPath }}
+{% for subsubfolderitem in subsubfolder.subsubfolderitems %}
+{% if subsubfolderitem.pdf == true %}
+{{ subsubfolderitem.jurl | prepend: folderPath }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
