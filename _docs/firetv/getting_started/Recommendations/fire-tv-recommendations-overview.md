@@ -82,11 +82,13 @@ Recommendations should show content that is **relevant** to the user. For exampl
 
 * New episodes for shows the user watched earlier
 * Similar shows related to the user's viewing history
-* Encouragement to resume watching a show the user didn't finish
+* Content with similar tags as other shows the user has watched
 
 You will need to create the logic that determines which recommendations are shown to which users.
 
 Make sure the content you recommend is appropriate for the audience. See [Best Practices for Recommendations][fire-tv-recommendations-best-practices] for more details.
+
+{% include tip.html content="If you want to recommend that users continue watching a show they didn't finish (or that they continue onto the next episode in a series), send a [\"Continue Watching\" recommendation][fire-tv-recommendations-continue-watching]. Continue Watching recommendations appear in the Recent row (rather than the Recommended By Your Apps row)." %}
 
 ## Send Recommendations
 

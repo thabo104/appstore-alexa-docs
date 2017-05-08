@@ -13,7 +13,6 @@ You create recommendations by creating `ContentRecommendation` objects through t
 * TOC
 {:toc}
 
-
 ## Creating Recommendations
 
 Amazon's recommendations use the standard Android `ContentRecommendation.Builder` API. For full details, see the Android documentation on [Recommending TV Content](https://developer.android.com/training/tv/discovery/recommendations.html) and the [`ContentRecommendation.Builder`](http://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html) class.
@@ -324,7 +323,7 @@ To receive the broadcast, add the following permission (to your Android Manifest
 <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 ```
 
-The initial launch point for supporting recommendations is to create a subclass of `BroadcastReceiver`. In the manifest, register the receiver as handling the `ACTION_BOOT_COMPLETED` intent. When the system first boots up, all applications that are interested will get an initial 'ping' to generate their recommendations.
+The initial launch point for supporting recommendations is to create a subclass of `BroadcastReceiver`. In the manifest, register the receiver as handling the `ACTION_BOOT_COMPLETED` intent. When the system first boots up, all applications that are interested will get an initial 'ping' to generate their recommendations. For more details, see this [How to Start an Application at Device Bootup in Android](http://stacktips.com/tutorials/android/how-to-start-an-application-at-device-bootup-in-android) tutorial on Stacktips.com.
 
 For the broadcast to work reliably, make sure your app is not installed on external storage.  Refer to the following for more details about storage locations:
 
