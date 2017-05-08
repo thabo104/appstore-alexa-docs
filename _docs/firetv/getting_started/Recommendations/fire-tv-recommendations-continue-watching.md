@@ -9,7 +9,7 @@ github: true
 
 The Fire TV Home screen includes a "Recent" row that shows the apps you recently opened. By default, only app icons appear in the Recent row. In an upcoming release, rather than just showing the app icon, Amazon will enable apps to indicate the actual content the user recently watched, along with a progress bar indicating the remaining time to finish the content.
 
-If the content is an episode in a series (and the user finished the episode), the Recent row can show the next episode. "Continue Watching" recommendations (as they are called) allow users to easily engage with your app by continuing to watch where they left off.
+If the content is an episode in a series (and the user finished the episode), the Recent row can show the next episode. "Continue Watching" recommendations allow users to easily engage with your app by continuing to watch where they left off.
 
 You send Continue Watching recommendations to the Recent row the same way you [normally send recommendations][fire-tv-recommendations-send-recommendations], except that you also use the [`setProgress()`](https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setProgress%28int,%20int%29) method to include details about the user's progress.
 
@@ -50,9 +50,9 @@ Below is a sample Continue Watching recommendation for a TV show episode. The an
 {% include inline_image.html file="firetv/getting_started/images/firetv_one" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setTitle%28java.lang.String%29"><code>setTitle(title)</code></a>. <i>Required</i>. If the recommendation is a movie, include the movie title here. If the recommendation is for a TV show, include the title of the TV show series, not the individual episode.<br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_two" type="png" %} <a class="noCrossRef" href="https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-recommendations-send-recommendations#amazon-enhancements"><code>com.amazon.extra.MATURITY_RATING</code></a> (an Amazon extra). <i>Optional</i>. This badge will be drawn according to the specified maturity rating. <br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_three" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setText%28java.lang.String%29"><code>setText(text)</code></a>. <i>Required</i>. The description for this recommendation. If the recommendation is a TV show, include the season and episode number. <br/>
-{% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBackgroundImageUri%28java.lang.String%29"><code>setBackgroundImageUri(imageUrl)</code></a>. <i>Required</i>. A URL to the background image to show in the details pane. <br/>
-{% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setContentImage%28android.graphics.Bitmap%29"><code>setContentImage(image)</code></a>. <i>Required</i>. The image that will be drawn for the recommendation in the Recent row. <br/>
-{% include inline_image.html file="firetv/getting_started/images/firetv_six" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBadgeIcon%28int%29"><code>setBadgeIcon(icon)</code></a>. <i>Optional</i>. The icon that lets users know which app the recommendation comes from. Use a simple icon with a transparent background to help users identify your app. The icon appears in the bottom-left corner. Maximum height: 52 px. If your content tile already includes your app's logo, don't send use this method in your recommendation. <br/>
+{% include inline_image.html file="firetv/getting_started/images/firetv_four" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBackgroundImageUri%28java.lang.String%29"><code>setBackgroundImageUri(imageUrl)</code></a>. <i>Optional</i>. A URL to the background image to show in the details pane. <br/>
+{% include inline_image.html file="firetv/getting_started/images/firetv_five" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setContentImage%28android.graphics.Bitmap%29"><code>setContentImage(image)</code></a>. <i>Required</i>. The image that will be drawn for the recommendation in the Recent row. The badge icon will appear over this tile, so your app logo should not be included in this image. <br/>
+{% include inline_image.html file="firetv/getting_started/images/firetv_six" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setBadgeIcon%28int%29"><code>setBadgeIcon(icon)</code></a>. <i>Required</i>. The icon that lets users know which app the recommendation comes from. Use a simple icon with a transparent background to help users identify your app. The icon appears in the bottom-left corner. Maximum height: 52 px. <br/>
 {% include inline_image.html file="firetv/getting_started/images/firetv_seven" type="png" %} <a href="https://developer.android.com/reference/android/support/app/recommendation/ContentRecommendation.Builder.html#setProgress%28int,%20int%29"><code>setProgress(duration, progress)</code></a>. <i>Required</i>. The progress specified will be used to draw the progress bar on the recommendation. <br/>
 </div>
 
@@ -88,6 +88,8 @@ When a user finishes a TV show episode, send the next episode in the series as a
 {% include tip.html content="When recommending the next episode, keep in mind that users don't always watch the credits at the end of an episode (and so never fully finish the episode). It may make sense to recommend the next episode in a TV series when the current episode is close to completion, even if it is not 100% complete." %}
 
 ## How to Build a Recent Recommendation
+
+{% include note.html content="Before creating recommendations, you must add the [Application Recommendation Support Library for TV](https://developer.android.com/topic/libraries/support-library/packages.html#recommendation) to the `dependencies` block of your app's **build.gradle** file." %}
 
 The following code sample shows a `ContentRecommendation` API call:
 
@@ -152,22 +154,41 @@ Remember to remove recommendations when a user completes a movie or a TV show.
 
 Ensure that your app shows just one TV show episode per series. Do not send multiple episodes for the *same series*.
 
+{% unless site.format == "pdf" %}
 <style>
 .imageContainer img {
   float: left;
-  max-width: 340px;
   margin: 10px;
 }
 </style>
 <div class="imageContainer">
 
-{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-season-tile-green-check" type="png" border="true" %}
+{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-season-tile-green-check" type="png" max-width="280px" %}
 
-{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-two-episodes" type="png" border="true" %}
+{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-two-episodes" type="png"  max-width="280px" %}
 
 </div>
 
-<div style="clear:float; margin-top:15px;"></div>
+<div style="clear:both; margin-top:15px;"></div>
+{% endunless %}
+
+{% if site.format == "pdf" %}
+<style>
+.imageContainer img {
+  float: left;
+  margin: 10px;
+}
+</style>
+<div class="imageContainer">
+
+{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-season-tile-green-check-pdf" type="png"  %}
+
+{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-two-episodes-pdf" type="png" %}
+
+</div>
+
+<div style="clear:both; margin-top:15px;"></div>
+{% endif %}
 
 ## Frequently Asked Questions
 

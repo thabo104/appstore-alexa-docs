@@ -30,10 +30,12 @@
 
     <ul id="docnavsidebar" class="docnav">
     {% for folder in sidebar.folders %}
+      {% unless folder.type == "frontmatter" %}
     <li class="level1"><a href="#">{{ folder.title }}</a>
+      {% endunless %}
         <ul>
             {% for folderitem in folder.folderitems %}
-
+            {% unless folderitem.type == "frontmatter" %}
             {% if folderitem.title %}
             {% if page.url == folderitem.jurl %}
             <li class="level1items open"><a href="{{folderitem.jurl | remove: "/" }}">{{folderitem.title}}</a></li>
@@ -43,13 +45,15 @@
             <li class="level1items"><a href="{{folderitem.jurl | remove: "/" }}">{{folderitem.title}}</a></li>
             {% endif %}
             {% endif %}
+            {% endunless %}
+
 
             {% for subfolder in folderitem.subfolders %}
 
             <li class="level2"><a class="subfoldersTitle" href="#">{{ subfolder.title }}</a>
                 <ul style="display:none;">
                     {% for subfolderitem in subfolder.subfolderitems %}
-
+                    {% unless subfolderitem.type == "frontmatter" %}
                     {% if subfolderitem.title %}
                     {% if page.url == subfolderitem.jurl %}
                     <li class="level2items open"><a href="{{subfolderitem.jurl | remove: "/" }}">{{subfolderitem.title}}</a></li>
@@ -59,12 +63,13 @@
                     <li class="level2items"><a href="{{subfolderitem.jurl | remove: "/" }}">{{subfolderitem.title}}</a></li>
                     {% endif %}
                     {% endif %}
+                    {% endunless %}
 
                     {% for subsubfolder in subfolderitem.subsubfolders %}
                     <li class="level3"><a class="subfoldersTitle" href="#">{{ subsubfolder.title }}</a>
                         <ul style="display:none;">
                             {% for subsubfolderitem in subsubfolder.subsubfolderitems %}
-
+                            {% unless subsubfolder.type == "frontmatter" %}
                             {% if subsubfolderitem.title %}
                             {% if page.url == subsubfolderitem.jurl %}
                             <li class="level3items open"><a href="{{subsubfolderitem.jurl | remove: "/" }}">{{subsubfolderitem.title}}</a></li>
@@ -74,6 +79,7 @@
                             <li class="level3items"><a href="{{subsubfolderitem.jurl | remove: "/" }}">{{subsubfolderitem.title}}</a></li>
                             {% endif %}
                             {% endif %}
+                            {% endunless %}
 
                             {% endfor %}
                         </ul>
