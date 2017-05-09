@@ -469,7 +469,7 @@ Fire App Builderに用意された`DefaultReceiptVerificationService`は、`ARec
 
 Receipt Verification Serviceの呼び出しの詳細については、「[Receipt Verification Service](https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/verifying-receipts-in-iap-2.0)」を参照してください。
 
-{% include note.html content="実装するセキュリティレベルは、正当なトランザクションの確認に費やすリソースによって異なります。お使いのサーバーでレシートを確認することが適切である (サーバー管理コストが収益を上回らない) 場合に、Receipt Verification Serviceを使用したこのセキュリティ強化を実装してください。アプリの収益がサーバー管理のコストや手間に見合わない場合は、この追加の設定を省略できます。"%}
+{% include note.html content="実装するセキュリティのレベルは、トランザクションが問題なく行われているかを確認するのに、どこまでリソースを費やすかによって変わります。ご自身のサーバーでレシートを確認する方が良い (サーバー管理コストが収益を上回らない) 場合は、Receipt Verification Serviceを使用したセキュリティ強化を実装してください。アプリの収益がサーバー管理のコストや手間に見合わない場合は、この追加の設定を省略できます。"%}
 
 ## アプリ内アイテムを本番環境に申請する
 

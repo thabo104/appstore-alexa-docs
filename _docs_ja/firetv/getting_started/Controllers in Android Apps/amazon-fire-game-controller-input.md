@@ -8,7 +8,7 @@ toc-style: kramdown
 
 Amazon Fire TVゲームコントローラー (Bluetooth HIDゲームパッドプロファイルに準拠したコントローラー全般) には、各種ボタン、Androidモーション、キーイベント定数があります。アプリ内で発生した入力イベントは、これらの情報を使用してキャプチャします。
 
-サポートされるすべてのコントローラーにおけるボタンの動作に関するガイドラインについては、「[コントローラー動作のガイドライン][controller-behavior-guidelines]」を参照してください。Amazon Fire TVリモコンの入力を処理する方法の詳細については、「[Amazon Fire TVリモコン入力][amazon-fire-tv-remote-input]」を参照してください。
+サポート対象となるコントローラーのボタン動作については、「[コントローラー動作のガイドライン][controller-behavior-guidelines]」を参照してください。Amazon Fire TVリモコンの入力を処理する方法の詳細については、「[Amazon Fire TVリモコン入力][amazon-fire-tv-remote-input]」を参照してください。
 
 * TOC
 {:toc}
