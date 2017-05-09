@@ -20,15 +20,15 @@ You can configure your Channel Creator app using a YouTube channel as the source
 Channel Creator displays all the videos contained within your YouTube channel. You need your Channel ID to configure Channel Creator. To get your Channel ID:
 
 1.  Log into [YouTube](https://www.youtube.com/).
-2.  In the upper-left corner, click the 3-bar icon {% include inline_image.html file="channel-creator-hamburger" type="png" %}. Then select **My Channel**.
+2.  In the upper-left corner, click the 3-bar icon {% include inline_image.html file="firetv/channelcreator/images/channel-creator-hamburger" type="png" %}. Then select **My Channel**.
 
-    {% include image.html  file="channel-creator-my-channel" type="png" alt="My Channel" %}
+    {% include image.html  file="firetv/channelcreator/images/channel-creator-my-channel" type="png" alt="My Channel" %}
 
 3.  Copy the ID that appears in the address bar:
 
-    {% include image.html  file="channel-creator-channel-id" type="png" alt="YouTube Channel ID" %}
+    {% include image.html  file="firetv/channelcreator/images/channel-creator-channel-id" type="png" alt="YouTube Channel ID" %}
 
-You can also view your YouTube Channel ID from your [Advanced Settings page](https://www.youtube.com/account_advanced). To get to Adanced Settings, click your profile icon in the upper-right corner, click the **YouTube Settings** icon {% include inline_image.html file="channel-creator-youtube-settings" type="png" %}, and then click **Advanced** in the Name section. Your channel ID appears in the Account information section.
+You can also view your YouTube Channel ID from your [Advanced Settings page](https://www.youtube.com/account_advanced). To get to Adanced Settings, click your profile icon in the upper-right corner, click the **YouTube Settings** icon {% include inline_image.html file="firetv/channelcreator/images/channel-creator-youtube-settings" type="png" %}, and then click **Advanced** in the Name section. Your channel ID appears in the Account information section.
 
 ## Get the YouTube Developer API Key {#getdevkey}
 
@@ -45,35 +45,35 @@ Channel Creator needs an API key in order to access your YouTube videos. The API
 
 3.  In the upper-left corner, click the **Select a Project** drop-down menu. (If you already have an existing project, the drop-down menu will display a project name instead of **Select a Project**.) Then click the **+** (plus) button on the right side of the dialog box to create a new project.
 
-    {% include image.html  file="channel-creator-create-project-fresh" type="png" %}
+    {% include image.html  file="firetv/channelcreator/images/channel-creator-create-project-fresh" type="png" %}
 
 4.  Type a project name, complete any other options presented, and then click **Create**.
 
-    {% include image.html file="channel-creator-new-project" type="png" %}
+    {% include image.html file="firetv/channelcreator/images/channel-creator-new-project" type="png" %}
 
 5.  After the project gets created (it takes a few seconds), you're directed to the **Library** tab.
 6.  In the left sidebar, click the **Credentials** tab:
 
-    {% include image.html file="channel-creator-create-credentials-screen" type="png" alt="Create Credentials screen" %}
+    {% include image.html file="firetv/channelcreator/images/channel-creator-create-credentials-screen" type="png" alt="Create Credentials screen" %}
 
 7.  Click the blue **Create Credentials** drop-down menu and select **API Key**.
 
-    {% include image.html  file="channel-creator-credentials-api-key" type="png" alt="API key" %}
+    {% include image.html  file="firetv/channelcreator/images/channel-creator-credentials-api-key" type="png" alt="API key" %}
 
     (If prompted to name your key, give it a name.)
 
 8.  Copy the API key that appears, and then click **Close**. (You don’t need to restrict your key.)
 
-    {% include image.html  file="channel-creator-credentials-api-key" type="png" alt="API key" %}
+    {% include image.html  file="firetv/channelcreator/images/channel-creator-credentials-api-key" type="png" alt="API key" %}
 
     Save your API key in a convenient location, as you will need it when you configure Channel Creator.
 
 9.  In the left sidebar, click **Library**. A list of APIs you can enable for your project appears.
 10. In the **YouTube APIs** section, click **YouTube Data API**.
 
-    {% include image.html file="channel-creator-youtube-data-api" type="png" alt="YouTube Data API" %}
+    {% include image.html file="firetv/channelcreator/images/channel-creator-youtube-data-api" type="png" alt="YouTube Data API" %}
 
-11.  Click **Enable** {% include inline_image.html file="channel-creator-enable" type="png" alt="Enable the API" %}.
+11.  Click **Enable** {% include inline_image.html file="firetv/channelcreator/images/channel-creator-enable" type="png" alt="Enable the API" %}.
 
 {% include note.html content="You can use the same API key for each Fire TV app you create, assuming each channel belongs to the same YouTube account." %}
 
@@ -90,11 +90,14 @@ On the other hand, if you only want some videos in your channel included in your
 
 After you submit your app, you can edit your app and block videos from appearing in the app by specifying the video IDs you want to block.
 
-1.  [Create your app][channel-creator-create-your-app]. After you click Finish, you'll see this screen:
+1.  Get the IDs of the videos you want to block. To get the ID for a YouTube video, browse to the video. In the address bar, the ID appears after the `=` sign. For example, if the URL of your video was `https://www.youtube.com/watch?v=byW_xwZ9FM4`, the video ID would be `byW_xwZ9FM4`.
+2.  Go to the Advanced settings page for your app:
+    1. Click **Manage Channels** in the upper-right corner.
+    2. In your app details, next to "Source," click **Advanced**.
+3.  Enter the video ID in the **Video ID to block** field and click **Block Video**.
 
-2.  Enter the IDs of the videos you want to block.
+  {% include image.html  file="firetv/channelcreator/images/channel-creator-block-videos" type="png" alt="Blocking videos" %}
 
-  {% include image.html  file="channel-creator-block-videos" type="png" alt="Blocking videos" %}
 
 ### Create Multiple Channels in Your YouTube Account {#createmultiplechannels}
 
@@ -115,7 +118,7 @@ You can create another channel (within your same YouTube account) that includes 
 
 By default, Channel Creator organizes all your videos into a "Latest" category.
 
-{% include image.html  file="channel-creator-latest" type="png" alt="Latest grouping" %}
+{% include image.html  file="firetv/channelcreator/images/channel-creator-latest" type="png" alt="Latest grouping" %}
 
 Channel Creator also truncates the names to size with an ellipsis if they are too long to fit in the menu.
 
@@ -131,7 +134,7 @@ To group your videos into different playlists in your YouTube channel:
     c.  To create a new playlist, click **New playlist**. To manage videos in playlists, click **Edit** next to the playlist.
 2.  Follow the instructions to [Customize channel layout](https://support.google.com/youtube/answer/3219384). This will enable you to customize your YouTube channel with different sections. The sections can contain specific playlists. In short, do the following:
     a.  In the left sidebar, click **My channel**.
-    b.  In the main column below your channel title (not below your profile icon) click the large gear icon {% include inline_image.html file="channel-creator-settings-icon" type="png" %}.
+    b.  In the main column below your channel title (not below your profile icon) click the large gear icon {% include inline_image.html file="firetv/channelcreator/images/channel-creator-settings-icon" type="png" %}.
     c.  Move the **Customize the layout of your channel** slider to on and click **Save**.
 3.  Follow the instructions to [Organize content with channel sections](https://support.google.com/youtube/answer/3027787?hl=en). In short, after enabling channel layout customization (the previous step), do the following:
     a.  Click **My channel** in the left sidebar.
@@ -142,7 +145,7 @@ To group your videos into different playlists in your YouTube channel:
 
 Note that YouTube allows you to add a variety of section types to your channel, but not all section types will display in your app. The following are the section options available in YouTube:
 
-{% include image.html  file="channel-creator-section-options" type="png" alt="Section options" %}
+{% include image.html  file="firetv/channelcreator/images/channel-creator-section-options" type="png" alt="Section options" %}
 
 Only the following section types are relevant for Channel Creator apps:
 

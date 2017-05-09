@@ -9,6 +9,7 @@ folders:
     jurl: /channel-creator-overview.html
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-overview
     ref: channel-creator-overview
+    bookmarks: [youtube_vs_mrss]
 
   - title: Create an App
     jurl: /channel-creator-create-your-app.html
@@ -25,7 +26,7 @@ folders:
         ref: channel-creator-youtube
         bookmarks: [getchannelid, getdevkey]
 #
-      - title:  Use an MRSS Feed 
+      - title:  Use an MRSS Feed
         jurl: /channel-creator-mrss.html
         hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-mrss
         ref: channel-creator-mrss
@@ -35,6 +36,7 @@ folders:
     jurl: /channel-creator-submit-your-app.html
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-submit-your-app
     ref: channel-creator-submit-your-app
+    bookmarks: [imageassets, appdescriptions]
 
   - title:  Update Your Live App
     jurl: /channel-creator-update-your-live-app.html

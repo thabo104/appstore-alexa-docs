@@ -27,7 +27,7 @@ When you submit your app, Channel Creator attempts to auto-create some of these 
 
 5.  After completing the required image and description sections, click **Submit** to publish your app. You receive an email from the Appstore confirming that your app was submitted. When the app is live, you receive another email.
 
-## Image Assets Required for Submission
+## Image Assets Required for Submission {#imageassets}
 
 You need to prepare image assets of various sizes. These images are used to promote your app in the Fire TV Appstore and the Amazon Appstore website.
 
@@ -73,7 +73,7 @@ Details for each image asset are provided in the following tabs:
 </div>
 <hr style="width:1em,color:#000000;"/>
 
-## Descriptions
+## Descriptions {#appdescriptions}
 
 Various descriptions are required for your app in the Appstore. See the following details about each description requirement.
 
@@ -128,7 +128,7 @@ no graphics program?
 
 Mac
 
-Shift+Command+4 on a high retina display. Draw the area you want. Upon release, a screenshot gets saved to your desktop. Open it in the Preview (default) app. Then click the {% include inline_image.html file="channel-creator-tooltbox" type="png" %}. Tools > Adjust Size to specify the size. If you didn't capture it at the exact preview size, then you may need to use the selection tool to change the dimensions and then crop.
+Shift+Command+4 on a high retina display. Draw the area you want. Upon release, a screenshot gets saved to your desktop. Open it in the Preview (default) app. Then click the {% include inline_image.html file="firetv/channelcreator/images/channel-creator-tooltbox" type="png" %}. Tools > Adjust Size to specify the size. If you didn't capture it at the exact preview size, then you may need to use the selection tool to change the dimensions and then crop.
 
 Windows
 

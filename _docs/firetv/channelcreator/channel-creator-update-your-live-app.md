@@ -25,7 +25,7 @@ You can update the appearance of your app without resubmitting it. The theme fil
 3.  Make your changes, and then click **Save** if you're done but not entirely finished.
 4.  When you're finished with your changes, click **Finish**. You're returned to the Manage Channels view and see a message indicating that you've modified your project and can now make your changes live.
 
-    {% include image.html  file="channel-creator-make-changes-live" type="png" alt="Make your changes live" %}
+    {% include image.html  file="firetv/channelcreator/images/channel-creator-make-changes-live" type="png" alt="Make your changes live" %}
 
 5.  Click **Make Changes Live** button, and then click the same button on the confirmation dialog box.
 

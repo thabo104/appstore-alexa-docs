@@ -14,13 +14,11 @@ For more information about Channel Creator, see the [Overview][channel-creator-o
 
 ## Create Your App
 
-{% include note.html content="For the best experience, use [Chrome](https://www.google.com/chrome/) when interacting with Channel Creator." %}
+1.  (Optional) Create an Amazon developer account through the Developer Portal at [developer.amazon.com/](https://developer.amazon.com/). Click **Sign In**, and then select **I am a new customer.** Follow the on-screen instructions to create an account. (Channel Creator doesn't allow monetization of apps, so you can skip that section in the sign-up.)
 
-1.  (Optional) Create an Amazon developer account through the Developer Portal at [developer.amazon.com/](https://developer.amazon.com/). Click **Sign In**, and then select **I am a new customer.** Follow the on-screen instructions to create an app. Channel Creator doesn't allow monetization of apps, so you can skip that section in the sign-up.
+    Your Amazon developer account is different from your regular Amazon account, but you should use the same username for both accounts, since they are linked behind the scenes.
 
-    Your Amazon developer account is different from your retail Amazon account (though for simplicity, use the same username for both).
-
-    {% include note.html content="If you don't have an Amazon developer account, you can sign into Channel Creator with your retail Amazon account and start creating an app. When you submit your app, Channel Creator will prompt you to auto-create an Amazon developer account from within Channel Creator. "%}
+    {% include note.html content="If you don't have an Amazon developer account, you can sign into Channel Creator with your regular Amazon account and start creating an app. When you submit your app, Channel Creator will prompt you to auto-create an Amazon developer account from within Channel Creator. "%}
 
 2.  Go to Channel Creator at [channelcreator.amazon.com/](https://channelstudio.amazon.com/) and sign in with your Amazon developer account.
 3.  Click **Create New Channel**.
@@ -28,45 +26,72 @@ For more information about Channel Creator, see the [Overview][channel-creator-o
     * YouTube
     * Media RSS feed
 
-5.  If you selected **YouTube**, enter your YouTube Channel ID (or your YouTube username that has a channel associated with it) in the text box. For details on how to get your channel ID, see [Get Your YouTube Channel ID][channel-creator-youtube#getchannelid].
+    For more detail about the two options, see ["YouTube versus Media RSS Feeds"][channel-creator-overview#youtube_vs_mrss].
 
-    Channel Creator attempts to validate the channel ID or username. If successful, you see a green check mark. Skip to step 7.
+5.  If you selected **YouTube**, enter your YouTube Channel ID (or your YouTube username that has a channel associated with it) in the text box. For details on how to get your channel ID, see ["Get Your YouTube Channel ID"][channel-creator-youtube#getchannelid].
+
+    Channel Creator attempts to validate the channel ID or username. If successful, you'll see a green check mark. Skip ahead to step 7.
 
 6.  If you selected **Media RSS**, enter your MRSS feed URL in the text box. See [Sample Media RSS Feed][channel-creator-mrss#samplemrssfeed] for details.
 
-    Channel Creator attempts to validate the MRSS feed. Channel Creator auto-maps the Fire TV app's elements to the elements in your MRSS feed. If the mapping doesn't identify the right element, you can use select the right element from the element drop-down menus. You can choose how different elements in your RSS feed map to the elements in Channel Creator.
+    Channel Creator attempts to validate the MRSS feed. Channel Creator auto-maps the app elements to the correct elements in your feed. If the mapping doesn't identify the correct element, you can select the correct element from the element drop-down menus.
 
 6.  Click **Create**.
 
-    A preview of your web app appears in the browser. Use the virtual directional pad to play and navigate the videos. This virtual directional pad simulates the same directional pad on a Fire TV remote controller.
+    A preview of your web app appears in the browser. Use the virtual directional pad to play and navigate the videos. This virtual directional pad simulates the same directional pad on a Fire TV remote control.
 
-    {% include image.html  file="channel-creator-directional-pad" type="png" alt="Virtual directional pad" %}
+    {% include image.html  file="firetv/channelcreator/images/channel-creator-directional-pad" type="png" alt="Virtual directional pad" %}
 
-    {% include note.html content="You can't use your mouse to interact with the web app. You have to click on the virtual directional pad. For example, if you click your mouse on the Latest drop-down menu (the navigation bar), it won't respond. You select options in the navigation bar by clicking the up arrow on the directional pad followed by the center button. The center button expands or plays what you have selected with the arrow buttons." %}
+    {% include note.html content="You can't use your mouse to interact with the web app in the Internet browser preview. You have to click on the virtual directional pad. For example, if you use your mouse to click the Latest drop-down menu (the navigation bar), it won't respond. Instead, to select an option from the navigation bar, you must use the directional pad -- clicking the up arrow followed by the center button. The center button expands or plays what you have selected with the arrow buttons." %}
 
-    In the navigation bar, in addition to any categories, you will see an "About" page. This page is automatically included and required as part of the attribution for using YouTube API services in the app. You cannot remove or customize the About page, nor can you add your own pages here.
+    In the navigation bar, in addition to any categories from your feed items or sections on your YouTube Channel, you will see an "About" page. This About page is automatically included and required as part of the attribution for using YouTube API services in the app. You cannot remove or customize the About page, nor can you add your own custom pages here.
 
-7.  To modify the appearance of the app, click **Edit**.
+7.  Continue on to the next section, [Style Your App][#styleyourapp].
 
-8.  In the **Logo** section, click **Choose a file** and upload a 500px x 500px size image for your logo. The logo appears in the upper-right corner of your app. (Note that this image is used only within your app and is not the app logo image used to promote your app within the Appstore.)
-9.  Adjust the colors and background images for your app as desired using the on-screen controls.
-10. To get a dedicated link to your app prior to submission, click **Preview**. You can send the preview link to anyone for review. (The link expires after 90 days.)
-11. Click **Finish**.
-12. If you selected YouTube as the source, click **Edit** next to **API Key** and enter your YouTube API key.
+## Style Your App {#styleyourapp}
+
+1.  If you're continuing from the previous section, click **Edit**. Otherwise, click **Manage Channels** in the upper-right corner and then click **Edit** next to your app.
+2.  In the **Logo** section (in the upper-left corner), click **Choose a file** and upload a 500px x 500px size image for your logo.
+
+    The logo appears in the upper-right corner of your app. This image is used only within your app. (It is not the app logo tile that is used to promote your app within the Appstore.)
+
+3.  Adjust the colors and background images for your app as desired using the on-screen controls.
+
+## Share a Preview Link to Your App
+
+After you've finished adjusting your app's appearance, you can get a preview link to share with others (if you so desire).
+
+1.  If you're continuing from the previous section, click **Preview** (in the upper-right corner). Otherwise, click **Manage Channels** in the upper-right corner, and then click **Preview** next to your app.
+2.  Copy the URL that appears in your browser's address bar.
+
+You can send the preview link to anyone for review. No login is required to see the preview. The link expires after 90 days.
+
+## Preview Your App on a Fire TV Device
+
+You can also preview your app on a Fire TV device by using a companion app called Channel Viewer.
+
+1.  Click **Manage Channels** in the upper-right corner, and then copy the **Channel Viewer Code** that appears in your app's details.
+1.  On your Fire TV device, download and install the Channel Viewer app.
+2.  In Channel Viewer, click **Add Channel** and enter your Channel Viewer code to view your app.
+
+## Submit Your App to the Appstore
+
+When you're ready to submit your app to the Appstore, you need to add some image assets and app descriptions. This is necessary to promote your app in the Appstore.
+
+1.  Click **Manage Channels** in the upper-right corner.
+2.  If you selected YouTube as the source, next to **API Key**, click **Edit** and enter your YouTube API key.
 
     For details on how to get your YouTube API key, see [Get the YouTube Developer API Key][channel-creator-youtube#getdevkey]. You can use the same API key for all channels in your account and for all apps you create within the same account.
 
-13. To block certain videos in your channel from appearing in your app, next to "Source," click **Advanced**. Then enter the video ID in the **Video ID to block** field and click **Block Video**.
+4.  Click **Submit** next to your app.
 
-    To get the ID for a YouTube video, browse to the video. In the address bar, the ID appears after the `=` sign. For example, if the URL of your video was `https://www.youtube.com/watch?v=byW_xwZ9FM4`, the video ID would be `byW_xwZ9FM4`.
+    Channel Creator prepares for app submission by automatically creating some of the required image assets.
 
-14. To test your app on a Fire TV device, download the Channel Viewer app from the Amazon Appstore. After opening the app, click **Add Channel** and enter the Channel Viewer Code for your app to view your app on Fire TV.
+5.  As prompted, upload the required [image assets][channel-creator-submit-your-app#imageassets] and [descriptions][channel-creator-submit-your-app#appdescriptions] required by the Appstore. See [Submit Your App][channel-creator-submit-your-app] for details.
 
 ## Next Steps
 
 When you're ready to submit the app directly into the Amazon Appstore, see the instructions in [Submit Your App][channel-creator-submit-your-app]. As part of the submission process, you will include a variety of image assets and descriptions to promote your app within the Amazon Appstore.
-
-
 
 
 {% include links.html %}
