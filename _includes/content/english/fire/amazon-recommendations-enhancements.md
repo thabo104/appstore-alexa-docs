@@ -129,7 +129,7 @@
         <td><code>com.amazon.extra.LONG_DESCRIPTION</code></td>
         <td>String</td>
         <td>Long description of a recommendation. Length is limited to 512 characters.</td>
-        <td>Yes</td>
+        <td>No</td>
       </tr>
       <tr>
         <td><code>com.amazon.extra.LAST_WATCHED_DATETIME</code></td>

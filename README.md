@@ -1,3 +1,8 @@
+---
+title: read me
+sidebar: firetv
+---
+
 ## Documentation for Amazon Developer Portal
 
 This site contains documentation for some of the pages on the Amazon Developer Portal (https://developer.amazon.com/). Currently, only a small subset of the Developer Portal docs are in this repo (mainly Fire TV, Fire App Builder, and Fling), but the plan is to expand the amount of documentation on Github in the future. We want our documentation to be more community-oriented, interactive, accurate, and thorough.
@@ -16,4 +21,5 @@ If you want to build the project from your Github fork, you can do so. You can b
 
 You can also log documentation issues on the Issues tab. This is helpful if you know there's an issue or need an update about something, but you don't want to make the change directly yourself.
 
-
+## sidebar
+{% include sidebar.html %}

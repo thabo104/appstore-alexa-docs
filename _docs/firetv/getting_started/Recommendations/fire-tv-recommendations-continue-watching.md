@@ -181,9 +181,9 @@ Ensure that your app shows just one TV show episode per series. Do not send mult
 </style>
 <div class="imageContainer">
 
-{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-season-tile-green-check-pdf" type="png"  %}
+{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-season-tile-green-check-pdf" type="png" max-width="280px" %}
 
-{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-two-episodes-pdf" type="png" %}
+{% include inline_image.html file="firetv/getting_started/images/firetv-recommendations-continue-watching-two-episodes-pdf" type="png" max-width="280px" %}
 
 </div>
 

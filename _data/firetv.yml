@@ -39,14 +39,17 @@ folders:
 
   - title: Title page
     jurl: /pdf_title_page.html
+    type: frontmatter
     pdf: true
 
   - title: Copyright page
     jurl: /pdf_copyright_page.html
+    type: frontmatter
     #pdf: true
 
   - title: TOC page
     jurl: /pdf_toc_page.html
+    type: frontmatter
     #pdf: true
 
 - title: Overview
