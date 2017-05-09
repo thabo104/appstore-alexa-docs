@@ -22,13 +22,13 @@ LWA supports two types of authorization: Implicit Grant and Authorization Code G
 
 1. Go to the [Login with Amazon console](https://developer.amazon.com/lwa/sp/overview.html) and select one of the security profiles. If you do not have a security profile, follow the steps in the [Create an LWA Security Profile][dash-create-a-security-profile] guide to create one.
 
-2.  In **Management**, under your security profile, select **Web Settings**.
+2.  In the **Manage** section, under your security profile, select **Web Settings**.
 
-    {% include image.html  file="dash/images/drs-securityprofile" type="png" alt="LWA Security Profile" %}
+    {% include image.html url="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/dash/drs-securityprofile.png" file="dash/images/drs-securityprofile" type="png" alt="LWA Security Profile" %}
 
 3.  Click on the **Edit** button and fill in the *Allowed Origins* and the *Allowed Returns URLs* fields. These must match the domain hosting your website (for example, `http://www.example.com` and `http://www.example.com/login`).
 
-    {% include image.html  file="dash/images/drs-securityprofile2" type="png" alt="LWA Security Profile" %}
+    {% include image.html url="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/dash/drs-securityprofile2.png" file="dash/images/drs-securityprofile2" type="png" alt="LWA Security Profile" %}
 
 ## Integrate with the LWA SDK for JavaScript
 
@@ -73,7 +73,7 @@ The Login with Amazon SDK for JavaScript handles all aspects of integrating Logi
 5.  Replace `YOUR-CLIENT-ID` with your Client ID from the Security Profile created previously in the [Login With
 Amazon console](https://developer.amazon.com/lwa/sp/overview.html).
 
-    {% include image.html  file="dash/images/drs-securityprofile3" type="png" alt="LWA Security Profile" %}
+    {% include image.html url="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/dash/drs-securityprofile3.png" file="dash/images/drs-securityprofile3" type="png" alt="LWA Security Profile" %}
 
 6.  Add the following JavaScript after the Login with Amazon button on your site:
 
