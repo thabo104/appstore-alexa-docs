@@ -134,6 +134,20 @@ Windows
 
 Snippet tool.
 
+## Increasing Visibility for Your App
+
+Getting your app into the Appstore is just the first step. For your app to be successful, you'll need to promote your app as much as possible. The [Amazon Developer blog](https://developer.amazon.com/blogs) often publishes tips on marketing. See the following posts:
+
+* [8 Tips for Marketing Your App on the Amazon Appstore](http://dev.amazonappservices.com/rs/070-JMM-398/images/8%20Tips%20for%20Marketing%20your%20App.pdf)
+* [Make Money with Promotions That Work: Webinar March 30th](https://developer.amazon.com/blogs/appstore/post/0c0600a6-0bac-4b9c-89bc-69c8a973a748/make-money-with-promotions-that-work-webinar-march-30th) (Register to view it, and you will get a link to the recording in an email. Click the link and sign in to view the recording.)
+* [How to Get Featured on Amazon Appstore](https://developer.amazon.com/blogs/appstore/post/03bd237c-9daf-4c48-97ac-933a36b7e095/how-to-get-featured-on-amazon-appstore)
+* [App Store Optimization: From Keywords to Reviews](https://developer.amazon.com/blogs/appstore/post/a1110518-e330-4ed6-89f4-c829824097a0/app-store-optimization-from-keywords-to-reviews)
+* [Marketing Your App](https://developer.amazon.com/marketing-your-app)
+* [Advertise your App](https://developer.amazon.com/advertise-your-app)
+
+{% include tip.html content="If you haven't implemented [recommendations][fire-app-builder-recommendations-overview], be sure to do so. Sending recommendations to the \"Recommended By Your Apps Row\" can get your content on the user's home screen so they are more likely to engage with your app." %}
+
+
 ## Delete Your App from the Appstore
 
 Apps you submit to the Appstore can't be deleted -- they can only be suppressed. If you want to suppress your app from the Appstore:
