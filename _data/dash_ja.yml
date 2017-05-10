@@ -1,5 +1,4 @@
 sidebarTitle: Dash Replenishment Service
-sidebar- title: 一般的なドキュメント
 
 folders:
 - title: Getting Started
@@ -7,116 +6,122 @@ folders:
 
 folders:
 - title: Getting Started
+  titleja: Getting Started
   folderitems:
 
-  - title: 文書およびリソース
+  - title: Overview
     jurl: /dash-replenishment-service.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/
     ref: dash-replenishment-service
 
-  - title: お客様体験（CX）ガイドライン
+  - title: CX Guidelines
     jurl: /dash-customer-experience-guidelines.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-customer-experience-guidelines
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-customer-experience-guidelines
     ref: dash-customer-experience-guidelines
 
-  - title: LWA セキュリティプロフィールを作成
+  - title: Create an LWA Security Profile
     jurl: /dash-create-a-security-profile.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-create-a-security-profile
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-create-a-security-profile
     ref: dash-create-a-security-profile
 
-  - title: SNS トピックを作成
+  - title: Create an SNS Topic
     jurl: /dash-create-an-sns-topic.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-create-an-sns-topic
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-create-an-sns-topic
     ref: dash-create-an-sns-topic
 
-  - title: デバイス管理および設定
+  - title: Device Management and Settings
     jurl: /dash-device-management-and-settings.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-device-management-and-settings
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-device-management-and-settings
     ref: dash-device-management-and-settings
 
-  - title: ティザーページ
+  - title: DRS Teaser Page
     jurl: /dash-teaser-page.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-teaser-page
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-teaser-page
     ref: dash-teaser-page
 
 #  - title: Add a Device for EU Marketplaces
 #    jurl: /dash-overview.html#eu-marketplaces
-#    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-eu-marketplaces
+#    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-eu-marketplaces
 #    ref: dash-eu-marketplaces
 
-  - title: 用語集
+  - title: Glossary
     jurl: /dash-glossary.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-glossary
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-glossary
     ref: dash-glossary
 
 - title: LWA Integration
   folderitems:
 
-  - title: LWA ウェブ API の使用
+  - title: LWA Overview
+    jurl: /dash-lwa-overview.html
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-lwa-overview
+    ref: dash-lwa-overview
+
+  - title: Using the LWA Web API
     jurl: /dash-lwa-web-api.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-web-api
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-lwa-web-api
     ref: dash-lwa-web-api
 
-  - title: LWA モバイル SDK を使用
+  - title: LWA Mobile SDK Overview
     jurl: /dash-lwa-mobile-sdk.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-mobile-sdk
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-lwa-mobile-sdk
     ref: dash-lwa-mobile-sdk
 
-  - title: LWA モバイル SDK を使用
+  - title: Use LWA Mobile SDK with Android
     jurl: /dash-lwa-mobile-sdk-android.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-mobile-sdk-android
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-lwa-mobile-sdk-android
     ref: dash-lwa-mobile-sdk-android
 
-  - title: LWA モバイル SDK を使用
+  - title: Use LWA Mobile SDK with iOS
     jurl: /dash-lwa-mobile-sdk-ios.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-mobile-sdk-ios
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-lwa-mobile-sdk-ios
     ref: dash-lwa-mobile-sdk-ios
 
 - title: Notifications & Workflows
   folderitems:
 
-  - title: SNS 通知メッセージ
+  - title: SNS Notification Messages
     jurl: /dash-notification-messages.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-notification-messages
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-notification-messages
     ref: dash-notification-messages
     bookmarks: device-deregistered
 
-  - title: Amazon 発注解決手順
+  - title: Order Resolution Flow
     jurl: /dash-amazon-order-resolution-flow.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-amazon-order-resolution-flow
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-amazon-order-resolution-flow
     ref: dash-amazon-order-resolution-flow
 
-  - title: テストデバイス購入
+  - title: Test Device Purchases
     jurl: /dash-test-device-purchases.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-test-device-purchases
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-test-device-purchases
     ref: dash-test-device-purchases
 
 - title: API Endpoints
   folderitems:
 
-  - title: Replenishmentエンドポイント
+  - title: Replenish
     jurl: /dash-replenish-endpoint.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-replenish-endpoint
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-replenish-endpoint
     ref: dash-replenish-endpoint
 
-  - title: SlotStatus エンドポイント
+  - title: SlotStatus
     jurl: /dash-slotstatus-endpoint.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-slotstatus-endpoint
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-slotstatus-endpoint
     ref: dash-slotstatus-endpoint
 
-  - title: DeviceStatus エンドポイント
+  - title: DeviceStatus
     jurl: /dash-devicestatus-endpoint.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-devicestatus-endpoint
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-devicestatus-endpoint
     ref: dash-devicestatus-endpoint
 
-  - title: 解除登録エンドポイント
+  - title: Deregistration
     jurl: /dash-deregistration-endpoint.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-deregistration-endpoint
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-deregistration-endpoint
     ref: dash-deregistration-endpoint
 
-  - title: SubscriptionInfo エンドポイント
+  - title: SubscriptionInfo
     jurl: /dash-getsubscriptioninfo-endpoint.html
-    hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-getsubscriptioninfo-endpoint
+    hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-getsubscriptioninfo-endpoint
     ref: dash-getsubscriptioninfo-endpoint
 
 
@@ -124,9 +129,9 @@ related_resources_title: Related Resources
 
 related_resources_list:
 
-- title: よくある質問
+- title: FAQs
   jurl: /dash-faqs.html
-  hurl: https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-faqs
+  hurl: https://developer.amazon.com/public/ja/solutions/devices/dash-replenishment-service/docs/dash-faqs
   ref: dash-faqs
 
 - title: Forum
@@ -143,3 +148,7 @@ related_resources_list:
   jurl: https://developer.amazon.com/dash-replenishment/index.html
   hurl: https://developer.amazon.com/dash-replenishment/index.html
   ref: device-wizard
+
+forum:
+  forum_link: https://forums.developer.amazon.com/spaces/61/index.html
+  forum_name: Amazon Dash Replenishment Forum

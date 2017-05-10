@@ -20,6 +20,12 @@ products:
   shortname: catalog_ja
   owner: tomjoht
 
+- title: Dash Replenishment Service
+  link: dash-replenishment-service.html
+  group: Dash
+  shortname: dash_ja
+  owner: tomjoht
+
 ## Other
 - shortname: appstore
 - shortname: in_app_purchasing
