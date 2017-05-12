@@ -7,8 +7,6 @@ toc-style: kramdown
 github: true
 ---
 
-{% include warning.html content="This component is currently broken and unavailable. Developers are investigating the issue. When the Login with Amazon component is fixed, we will add a note in the release notes and remove this note here." %}
-
 The Login with Amazon Component allows you to prompt users to log in to your Amazon Fire TV app using their Amazon account credentials before they perform a specific action, such as watching media. To learn more, see [Login with Amazon](https://developer.amazon.com/public/apis/engage/login-with-amazon).
 
 Since Amazon Fire TV already requires users to log in with their Amazon accounts when they set up and register their Fire TV, the real benefit of the component isn't that it allows users to log in with their Amazon account. The component's benefit is that it prompts users to consent to share their Amazon name and email address with your app. This allows you to get a better sense of your audience.
@@ -81,6 +79,8 @@ You must create a security profile for your app on the Developer Console. This s
 Your security profile contains information about your app and is displayed to users on the privacy consent screen (Figure 2). On the privacy consent screen, users see the name of your application, your logo, and a link to your privacy policy.
 
 To set up your security profile, follow the instructions in the "Register Your Security Profile" section on the [Register your Android app with Login with Amazon](https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/register_android.html) page.
+
+{% include warning.html content="You must complete all required fields in your security profile. If you do not complete the required fields, the LWA component will return an authorization failure." %}
 
 ## Step 3. Get the Login with Amazon API Key {#apikey}
 
