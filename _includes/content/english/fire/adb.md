@@ -1,11 +1,11 @@
-You can use Android Debug Bridge (ADB) to connect your development computer to an Amazon Fire TV device or stick for installing, testing, and debugging your apps.
+You can use [Android Debug Bridge (ADB)](https://developer.android.com/studio/command-line/adb.html) to connect your development computer to an Amazon Fire TV device or stick for installing, testing, and debugging your apps. Note that ADB is used for testing Android apps, not web apps. To test a web app, see the [Web App Tester](https://developer.amazon.com/public/solutions/platforms/webapps/docs/tester.html).
 
-Before you use ADB to connect to Fire TV or Fire TV stick, complete the following sections:
-
-{% include note.html content="[Android Debug Bridge](https://developer.android.com/studio/command-line/adb.html) is provided by the Android Open Source Project, not by Amazon." %}
+Before you use ADB to [connect to Fire TV](#connectingadboptions), you must first enable debugging on your Fire TV and set up ADB on your computer. Follow the steps below.
 
 * TOC
 {:toc}
+
+{% include note.html content="[Android Debug Bridge](https://developer.android.com/studio/command-line/adb.html) is provided by the Android Open Source Project, not by Amazon." %}
 
 ## Step 1. Enable Debugging on Amazon Fire TV {#turnondebugging}
 
@@ -14,10 +14,10 @@ You must enable both ADB and debugging on your Fire TV device before you can con
 1.  From the main screen of your Fire TV, select **Settings**.
 2.  Select **Device** > **Developer Options**.
 3.  Turn on **ADB Debugging**.
-4.  (Optional) If you plan to connect your computer to your Fire TV device using a USB cable, turn on **USB Debugging**.
-    
+4.  (Optional) If you plan to connect your computer to your Fire TV device [using a USB cable](#usbconnect), turn on **USB Debugging**.
+
     {% include note.html content="When USB Debugging is enabled, the USB port is unavailable for other uses such as external storage or input devices. To re-enable the USB port, turn off USB debugging." %}
-    
+
 5.  Turn on **Apps from Unknown Sources**.
 
 ## Step 2. Set Up Android Debug Bridge {#setupadb}
@@ -49,23 +49,23 @@ To add ADB to your PATH on Mac:
 1.  Get the path to your Android SDK platform-tools directory:
 
     1.  Open Android Studio and click the **SDK Manager** button {% include inline_image.html file="firetv/fireappbuilder/images/fireappbuilder_androidsdkmanagericon" type="png" %}.
-    
-        The location to your Android SDK appears near the top next to **Android SDK Location**. For example: `/Users/<your username>/Library/Android/sdk` 
-    
+
+        The location to your Android SDK appears near the top next to **Android SDK Location**. For example: `/Users/<your username>/Library/Android/sdk`
+
         If this is your first time opening Android Studio, there isn't an SDK Manager button. Instead, at the Welcome to Android Studio prompt, click **Configure > SDK Manager** and provide the location to the Android SDK.
-    
+
     2.  Copy the path to the SDK and paste it somewhere convenient, such as a text editor.
     3.  Add **/platform-tools** to the end of the path you copied in the previous step. ("platform-tools" is the directory containing the `adb` executable.)
     4.  Copy the full path to your clipboard.
-    
+
 2.  Use the following command to add adb to your **.bash_profile**, replacing `/Users/<your username>/Library/Android/sdk/platform-tools/` with your path to your Android SDK.  
 
     ```bash
     echo 'export PATH=$PATH:/Users/<your username>/Library/Android/sdk/platform-tools/' >> ~/.bash_profile
     ```
-    
-    Your .bash_profile file is usually in your user directory, which you can find by typing `cd ~` (change to your user directory). Then type `ls -a` (list all) to show all files, including hidden ones. 
-       
+
+    Your .bash_profile file is usually in your user directory, which you can find by typing `cd ~` (change to your user directory). Then type `ls -a` (list all) to show all files, including hidden ones.
+
     If the file isn't there, simply create one. You can then type `open .bash_profile` to see the paths listed. One of the lines should be something like this: `export PATH=$PATH:/Users/<your username>/Library/Android/sdk/platform-tools/`.
 
 3.  Restart any terminal sessions, and then type **adb**. If you successfully added ADB to your path, you will see ADB help info rather than "command not found."
@@ -86,16 +86,16 @@ To add ADB to your PATH on Windows:
     2.  Copy the path to the SDK and paste it somewhere convenient, such as a text editor.
     3.  Add **/platform-tools** to the end of the path you copied in the previous step. ("platform-tools" is the directory containing the `adb` executable.)
     4.  Copy the full path to your clipboard.
-    
+
 2.  Click **Start** and type **view advanced system settings** in the search box.
 3.  Click **View advanced system settings**.
 4.  When the System Settings dialog opens, click the **Environment Variables** button.
 5.  Under *System Variables* (the lower pane), select **Path** and click **Edit**.
 6.  Do one of the following:
-    
+
     * On *Windows 7 or 8*, move your cursor to the farthest position on the right, type `;` and then press **Ctrl+V** to insert the path to your SDK that you copied earlier. It may look like this: `;C:\Users\<your user name>\AppData\Local\Android\Sdk\platform-tools`. Click **OK** on each of the three open dialog boxes to close them.
     * *On Windows 10*, click the **New** button and add this location.  
-    
+
 8.  Restart any terminal sessions, and then type **adb**. If you successfully added ADB to your path, you will see ADB help info rather than "command not found."
 
 ## Step 4: Options for Connecting ADB {#connectingadboptions}
@@ -105,8 +105,7 @@ You can use ADB to connect the Fire TV or Fire TV stick to your computer in two 
 *   [Connect ADB Through the Network](#networkconnect). With this option, you connect using either a wired Ethernet or WiFi network connection. Both your computer and the Fire TV device must be on the same network for a network ADB connection to work.
 *   [Connect ADB Through USB](#usbconnect). With this option, you use an A-to-A USB cable to establish a direct USB connection.
 
-{% include note.html content="The following instructions apply to Generation 2 devices that have a more updated user 
-interface. If you have a generation 1 device, the menu locations differ slightly." %} 
+{% include note.html content="To connect to the Fire TV Edition (Amazon's smart TV), you must connect ADB [through the network](#networkconnect) rather than connecting [with USB](#usbconnect)." %}
 
 ### Connect ADB Through the Network {#networkconnect}
 
@@ -115,17 +114,17 @@ You need the IP address of your Fire TV device on your network to connect ADB to
 1.  If you haven't already done so, connect your Fire TV device to a network (the same network that your computer is on). To do this, from the Fire TV home screen, go to **Settings > Network** and select a network.
 2.  From the Fire TV home screen, select **Settings**.
 3.  Go to **Device > About > Network**. Make a note of the IP address listed on this screen.
-    
+
     {% include tip.html content="Copy this IP address onto a convenient and visible place if you plan to connect regularly via the network." %}
-    
+
 4.  Open a terminal window.
-    
+
     On a Mac, you can open Terminal by pressing **Cmd + spacebar** and then typing **Terminal.** On Windows, you open the Command Prompt usually by typing **cmd** in your program search. (The exact steps vary based on your Windows version.)
-    
+
 5.  Make sure your Fire TV device and your computer are on the same network. You can use either a wifi network or a wired network.
 6.  Run the following commands, where `<ipaddress>` is the IP address of the Fire TV device noted in the previous section:
 
-    ```
+    ```bash
     adb kill-server
     adb start-server
     adb connect <ipaddress>
@@ -135,22 +134,22 @@ You need the IP address of your Fire TV device on your network to connect ADB to
 
     If the connection was successful, ADB responds with the message:
 
-    ```
+    ```bash
     connected to <ipaddress>:5555
     ```
 
 7.  Verify that the Fire TV device appears in the list of devices:
 
-    ```
+    ```bash
     adb devices
     ```
 
     ADB responds with the message:
 
-    ```
+    ```bash
     List of devices attached
     <ipaddress>:5555  device
-    ````
+    ```
 
 If the serial number does not appear after running `adb devices`, [update ADB](#updateadb) and then repeat the steps here.
 
@@ -158,11 +157,12 @@ If the serial number does not appear after running `adb devices`, [update ADB](#
 
 ### Connect ADB Through USB {#usbconnect}
 
-To connect your computer to Fire TV through USB, you need an A-to-A USB cable. Note that you must have a Fire TV, not a Fire TV Stick, because only Fire TV (the box) has the USB cable port.
+To connect your computer to Fire TV through USB, you need an A-to-A USB cable. Note that you must have a Fire TV, not a Fire TV Stick, because only Fire TV (the set-top box) has the USB cable port. Additionally, you cannot connect ADB to Fire TV Edition using USB (use the [Network Connect](#networkconnect) option instead).
 
 1.  If you're on Windows, install the USB driver as described in [Set Up Android Debug Bridge](#setupadb).
-2.  Connect your Fire TV to a USB port on your computer.
-2.  Run the following commands:
+2.  Turn on USB debugging. See the section on [Enable Debugging on Amazon Fire TV](#turnondebugging). (Go to **Settings**. Then select **Device** > **Developer Options**. Then turn on **USB Debugging**.
+3.  Connect your Fire TV to a USB port on your computer.
+4.  Run the following commands:
 
     ```
     adb kill-server
@@ -229,7 +229,7 @@ or
 error: device offline
 ```
 
-try any of the doing the following:
+Try doing the following to resolve the issue:
 
 * Make sure both Fire TV and your computer are using the same network and router.
 * When connecting wireless with `adb connect <ipaddress>`, make sure you're typing the IP address correctly, with all the required dots `.`

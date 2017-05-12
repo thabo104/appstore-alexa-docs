@@ -12,12 +12,12 @@ github: true
 {% if site.target == "hippo" %}
 <style>
 ul#profileTabs.nav.nav-tabs li {
-    margin: 5px;
+    margin: 2px;
 }
 
 ul#profileTabs.nav:after, ul#profileTabs.nav:before {
     display: inline-table !important;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 ul#profileTabs.nav-tabs>li.active>a, ul#profileTabs.nav-tabs>li.active>a:focus, ul#profileTabs.nav-tabs>li.active>a:hover {
@@ -60,10 +60,10 @@ This page lists the media, device, and platform specifications for all Amazon Fi
 
 <ul id="profileTabs" class="nav nav-tabs">
    <li class="active"><a class="noCrossRef" href="#firetvedition" data-toggle="tab">Fire TV Edition</a></li>
-   <li><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick <br/>(Gen. 2)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV <br/> (Gen. 2)</a></li>
-    <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick <br/>(Gen. 1)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV <br/>(Gen. 1)</a></li>
+   <li><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick (G2)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV (G2)</a></li>
+    <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick (G1)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV (G1)</a></li>
 </ul>
 
   <div class="tab-content">
@@ -116,7 +116,7 @@ Supported technologies are the same for all Amazon Fire TV devices.
   <tbody>
     <tr>
       <td>Miracast</td>
-      <td>Supported (sink)</td>
+      <td>Supported (sink) all all devices except Fire TV Edition.</td>
     </tr>
     <tr>
       <td>DIAL</td>
@@ -171,20 +171,24 @@ Supported technologies are the same for all Amazon Fire TV devices.
     </tr>
   </thead>
   <tbody>
+  <tr>
+    <td>Fire TV Edition </td>
+    <td>May 2017 </td>
+  </tr>
     <tr>
-      <td>Fire TV Stick (Generation 2) </td>
+      <td>Fire TV Stick (Gen 2) </td>
       <td>September 2016 </td>
     </tr>
     <tr>
-      <td>Fire TV (Generation 2) </td>
+      <td>Fire TV (Gen 2) </td>
       <td>December 2015</td>
     </tr>
     <tr>
-      <td>Fire TV Stick (Generation 1) </td>
+      <td>Fire TV Stick (Gen 1) </td>
       <td> November 2014 </td>
     </tr>
     <tr>
-      <td>Fire TV (Generation 1)</td>
+      <td>Fire TV (Gen 1)</td>
       <td>April 2014 </td>
     </tr>
   </tbody>

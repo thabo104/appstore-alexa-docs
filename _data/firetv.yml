@@ -63,6 +63,11 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-fire-os-overview
     ref: fire-tv-fire-os-overview
 
+  - title: Fire TV Edition (Smart TV) FAQs
+    jurl: /fire-tv-edition-faq.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-edition-faq
+    ref: fire-tv-edition-faq
+
   - title: What's New in Fire TV Development
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/whats-new-in-the-fire-tv-sdk
     jurl: /whats-new-in-the-fire-tv-sdk.html
@@ -90,7 +95,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/connecting-adb-to-fire-tv-device
     jurl: /connecting-adb-to-fire-tv-device.html
     ref: connecting-adb-to-fire-tv-device
-    bookmarks: [addadbpath]
+    bookmarks: [addadbpath, networkconnect]
 
   - title: Install and Run Your Fire TV App
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/installing-and-running-your-app

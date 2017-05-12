@@ -45,6 +45,8 @@ The Display section shows the following:
 
 Note that Amazon Fire TV allows users to change their resolution by going to Settings > Display & Sounds > Display > Video Resolution. However, regardless of the resolution users select, an app can change the user's selected resolution due to network or system resource reasons to give users a better experience. For example, when the YouTube app plays video, if your network connection is slow, the app might lower the resolution to ensure the playback is still smooth.
 
+{% include note.html content="The Display (DIS) module is not available on Fire TV Edition." %}
+
 ## CPU {#cpu}
 
 {% include image.html file="firetv/getting_started/images/firetv_xraycpu" type="png" %}

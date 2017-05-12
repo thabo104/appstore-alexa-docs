@@ -10,9 +10,13 @@ github: true
 * TOC
 {:toc}
 
+
+
 ### Fire App Builder 1.0.2 Released
 
 **April 6, 2017**. Fire App Builder version 1.0.2 was recently released. The main feature includes the ability to send recommendations to the "Recommended By Your Apps" row on the Fire TV home screen.  You can send a list of global recommendations when your app starts, or individual recommendations when a user plays a specific video. For details, see [Recommendations in Fire App Builder Overview][fire-app-builder-recommendations-overview]. Many other fixes and enhancements were made, such as adding events tracked in analytics, support for XML feeds, and a smarter Login/Logout button. New documentation includes a tutorial on [configuring MRSS feeds][fire-app-builder-configure-mrss-feed], several topics on how to send [recommendations][fire-app-builder-recommendations-overview], and a topic on [submitting your app to the Appstore][fire-app-builder-submit-your-app]. You can view the [1.0.2 release notes here][fire-app-builder-release-notes-version-1-0-2]. For more information, see [Fire App Builder][fire-app-builder-overview].
+
+Update: [Version 1.0.3][fire-app-builder-release-notes-1-0-3] and [Version 1.0.4][fire-app-builder-release-notes-1-0-4] were follow-up releases with minor fixes.
 
 ### Fire TV Stick Gen 2 Available in UK and Germany
 
@@ -35,6 +39,7 @@ github: true
 {: .grid}
 | Date | Page | Details |
 |-----|-----|------|
+| May 16, 2017 | - [Fire TV Device Specifications][device-and-platform-specifications] <br/> - [Fire TV Edition FAQ][fire-tv-edition-faq] <br/> - [Identifying Fire TV Devices][identifying-amazon-fire-tv-devices] <br/> - [Playing 4K Ultra HD Videos on Fire TV][fire-tv-4k-ultra-hd] |
 | April 6, 2017 | - [Version 1.0.2 Release Notes][fire-app-builder-release-notes-version-1-0-2] <br/> - [Recommendations in Fire App Builder][fire-app-builder-recommendations-overview] <br/> - [Send Global Recommendations][fire-app-builder-recommendations-global] <br/> - [Send Related Recommendations][fire-app-builder-related-recommendations] <br/> - [Customize the recommendations with Amazon Extras][fire-app-builder-amazon-extras] <br/> - [Configure a Media RSS (MRSS) Feed][fire-app-builder-configure-mrss-feed] <br/> - [Customize the Look and Feel][fire-app-builder-customize-look-and-feel] <br/> - [Google Analytics][fire-app-builder-google-analytics-component] <br/> - [Track Feed Attributes That Aren't Used in Fire App Builder][fire-app-builder-track-additional-attributes] <br/> - [Submit Your Fire App Builder App to the Appstore][fire-app-builder-submit-your-app] | Various documentation updates for the 1.0.2 release. These topics are either new or substantially updated.|
 | March 10, 2017 | - [Recommendations Overview][fire-tv-recommendations-overview] <br/> - [Send Recommendations that Include Amazon Enhancements][fire-tv-recommendations-send-recommendations] <br/> - [Test Your Recommendations][fire-tv-recommendations-send-recommendations] <br/> - [Best Practices with Recommendations][fire-tv-recommendations-best-practices] | New documentation on how to send recommendations to a row called "Recommended By Your Apps" on the Fire TV home screen.|
 | March 5, 2017 | [Documentation index page](https://developer.amazon.com/documentation). | The top navigation bar of the Developer Portal now includes a Docs link that provides an index to all documentation on the Developer Portal. |

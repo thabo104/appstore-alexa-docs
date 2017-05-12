@@ -136,7 +136,7 @@
   <tbody>
     <tr>
       <td>Screen resolution (px) and Refresh rate (Hz)</td>
-      <td>1920 x 1080 (1080p) - 60Hz <br/> 
+      <td>1920 x 1080 (1080p) - 60Hz <br/>
       1280 x 720 (720p) - 60Hz </td>
     </tr>
       <tr>
@@ -156,7 +156,7 @@
       <td>8GB</td>
     </tr>
     <tr>
-      <td>RAM</td>
+      <td>Memory</td>
       <td>1GB (512MB system, 512MB video)</td>
     </tr>
     <tr>
@@ -242,7 +242,6 @@
   </tbody>
 </table>
 
-
 <div class="subheading">OpenGL Properties and Limits (Fire TV Stick, Generation 1)</div>
 
 <table class="grid">
@@ -258,7 +257,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>OpenGL Version</td>
+      <td>Max OpenGL Version</td>
       <td>OpenGL ES 2.0</td>
     </tr>
     <tr>

@@ -11,7 +11,8 @@
   </thead>
   <tbody>
     <tr>
-      <td>Amazon Fire TV Remote <br /> Amazon Fire TV Voice Remote (all models)</td>
+      <td>Amazon Fire TV Remote <br />
+      Amazon Fire TV Voice Remote (all models)</td>
       <td><code>"Amazon Fire TV Remote"</code></td>
     </tr>
     <tr>
