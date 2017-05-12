@@ -116,7 +116,7 @@ Supported technologies are the same for all Amazon Fire TV devices.
   <tbody>
     <tr>
       <td>Miracast</td>
-      <td>Supported (sink) all all devices except Fire TV Edition.</td>
+      <td>Supported (sink) on all devices except Fire TV Edition.</td>
     </tr>
     <tr>
       <td>DIAL</td>

@@ -10,7 +10,18 @@ github: true
 * TOC
 {:toc}
 
+### Fire TV Edition Released
 
+**May 16, 2017**. Fire TV Edition was released. Fire TV Edition is a 4K Ultra HD television with Fire TV built-in. Fire TV Edition is similar to a TV with Fire TV or Fire TV Stick, with some additional features in the user interface. For example, with Fire TV Edition, you can:
+
+* Toggle between inputs (and see a preview of the input prior to switching).
+* See all live content on a row called "On Now".
+* Select over-the-air (antenna) content.
+* Use your voice to control volume, power, and other TV features.
+
+Fire TV Edition's remote controller includes 6 new buttons (power, volume up, volume down, Netflix, Amazon Video, and Amazon Music), and more. See the full description of Fire TV Edition on Amazon.com for more details.
+
+Your app works the same on Fire TV Edition as with other Fire TV devices, so there's no impact to third-party apps except for wider visibility of your content through this new device and market. See the [Fire TV Edition FAQ][fire-tv-edition-faq] for more details about apps and Fire TV Edition.
 
 ### Fire App Builder 1.0.2 Released
 
