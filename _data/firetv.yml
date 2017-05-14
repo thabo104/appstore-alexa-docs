@@ -37,6 +37,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv
     jurl: /getting-started-developing-apps-and-games-for-amazon-fire-tv.html
     ref: getting-started-developing-apps-and-games-for-amazon-fire-tv
+    bookmarks: [firetvnames]
 
   - title: Fire TV Device Specifications
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/device-and-platform-specifications

@@ -24,7 +24,7 @@
      <tr>
         <td class="white">H.264</td>
         <td class="white">video/avc</td>
-        <td class="white">Hardware accelerated up to 3840x2160p (4K) @ 60fps.Main/High Profiles with Level up to 5.1. DRC within 16 msec. Secure and unsecure playback</td>
+        <td class="white">Hardware accelerated up to 3840x2160p (4K) @ 60fps. Main/High Profiles with Level up to 5.1. DRC within 16 msec. Secure and unsecure playback</td>
      </tr>
      <tr>
         <td class="white">H.265 (HEVC)</td>

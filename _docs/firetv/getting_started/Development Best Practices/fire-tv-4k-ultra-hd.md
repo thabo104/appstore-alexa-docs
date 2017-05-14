@@ -7,18 +7,22 @@ toc-style: kramdown
 github: true
 ---
 
-You can play 4K Ultra HD (UHD) media on Amazon Fire TV (2nd Generation) devices – but not on Fire TV (1st Generation) or Fire TV Stick. To support 4K playback, you must adhere to the supported output resolutions, DRM systems, and codecs for 4K UHD content.
+Only Amazon Fire TV (Gen 2) and Amazon Fire TV Edition support playback of 4K UHD media. To support 4K playback, you must adhere to the supported output resolutions, DRM systems, and codecs for 4K UHD content.
+
+{% include note.html content="Neither Fire TV Stick devices (Gen 1 or Gen 2) nor Fire TV Gen 1 devices support 4K UHD playback." %}
+
+For details on Fire TV device naming conventions, see [Naming Conventions for Fire TV Devices][getting-started-developing-apps-and-games-for-amazon-fire-tv#firetvnames].
 
 * TOC
 {:toc}
 
-## HDMI Mode switch
+## HDMI Mode switch (Fire TV Gen 2 Only)
 
-By default, Fire TV (2nd Generation) operates at 1080p at 60 FPS mode even when connected to a 4K UHD TV. Hence, in order to play 4K UHD content, you must switch the TV to 4K UHD display mode. This switching between HDMI display modes is referred to as an *HDMI Mode switch*. The HDMI Mode switch is triggered by the application when it needs to play 4K UHD content.
+By default, Fire TV (Gen 2) operates at 1080p at 60 FPS mode even when connected to a 4K UHD TV. Hence, in order to play 4K UHD content, you must switch the TV to 4K UHD display mode. This switching between HDMI display modes is referred to as an *HDMI Mode switch*. The HDMI Mode switch is triggered by the application when it needs to play 4K UHD content.
 
 Amazon developed an [Amazon Extension Library for 4K](#amazonextension) that provides high level APIs to trigger this HDMI Mode switch and show a user-friendly overlay message before the TV starts switching the display mode. This overlay message improves the overall customer experience.
 
-{% include note.html content="Fire TV (2nd Generation) supports only up to 30 FPS for 4K UHD content." %}
+{% include note.html content="Fire TV (Gen 2) supports only up to 30 FPS for 4K UHD content. Fire TV Edition supports up to 60 FPS for 4K UHD content." %}
 
 ## Certification and Performance Testing
 
@@ -28,96 +32,262 @@ When you submit your app, add a note that it is 4K-enabled. Most likely in your 
 
 ## 4K Ultra HD Specifications
 
-### Resolution and Refresh Rate
+This section provides information on the following specifications:
 
-Amazon Fire TV (2nd Generation) supports the following output resolutions:
+* [Resolution and Refresh Rate](#resolutionandrefreshrate)
+* [DRM Systems](#drmsystems)
+* [Codecs](#codecs)
+* [Input/Output Color Formats](#inputoutputcolorformats)
+* [Power Consumption](#powerconsumption)
+* [Dolby Output Over Optical](#dolbyoutputoveroptical)
 
-*  4K UHD at 24 FPS
-*  4K UHD at 25 FPS
-*  4K UHD at 30 FPS
-*  Full HD (1080p) up to 60 FPS
+### Resolution and Refresh Rate {#resolutionandrefreshrate}
 
-Amazon Fire TV (2nd Generation) is expected to stay mostly in Full HD (1080p) mode at 60 FPS, even on TVs that support 4K UHD format. Fire TV (2nd Generation) switches to 4K UHD mode only for 4K UHD content playback.
+The following output resolutions are supported:
+
+<table class="grid">
+<colgroup>
+  <col width="40%" />
+  <col width="30%" />
+  <col width="30%" />
+</colgroup>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Fire TV Edition</th>
+  <th>Fire TV (Gen 2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Supported output resolutions</td>
+  <td><ul>
+    <li>4K UHD at 24 FPS</li>
+    <li>4K UHD at 25 FPS</li>
+    <li>4K UHD at 30 FPS</li>
+    <li>Full HD (1080p) up to 60 FPS</li>
+  </ul>
+  </td>
+  <td><ul>
+    <li>4K UHD at 24 FPS</li>
+    <li>4K UHD at 25 FPS</li>
+    <li>4K UHD at 30 FPS</li>
+    <li>Full HD (1080p) up to 60 FPS</li>
+  </ul>
+  </td>
+  </tr>
+</tbody>
+</table>
+
+#### Special Notes for Fire TV Gen 2
+
+Amazon Fire TV (Gen 2) is expected to stay mostly in Full HD (1080p) mode at 60 FPS, even on TVs that support 4K UHD format. Fire TV (Gen 2) switches to 4K UHD mode only for 4K UHD content playback.
 
 The following frame rates are recommended when playing content:
 
-*  For Full HD (1080p) and HD (720p) content, leave the device in **Full HD (1080p) 60 FPS mode** and use frame rate conversion from the content’s native frame rate (as in Fire TV - 1st Generation).
+*  For Full HD (1080p) and HD (720p) content, leave the device in **Full HD (1080p) 60 FPS mode** and use frame rate conversion from the content’s native frame rate (as in Fire TV - Gen 1).
 *  For 4K UHD content, switch to the nearest 4K UHD mode before starting playback. For example, switch to **4K UHD at 24 FPS** to play 4k UHD content of **24 FPS or 23.97 FPS**, switch to **4K UHD at 25 FPS** to play content of **25 FPS**, and switch to **4K UHD at 30 FPS** to play content of **30 FPS or 29.97 FPS**.
 *  Initiate a mode switch only if the user enters the playback window or if the next title in the queue requires a different playback resolution / frame rate.
 
-{% include note.html content="Fire TV (2nd Generation) switches the display back to Full HD at 60 FPS whenever the activity that switched the display to 4K mode is paused. An activity can be paused in several ways, such as pressing \"BACK\" button, the \"HOME\" button, or programmatically launching another activity on top of it." %}
+{% include note.html content="Fire TV (Gen 2) switches the display back to Full HD at 60 FPS whenever the activity that switched the display to 4K mode is paused. An activity can be paused in several ways, such as pressing \"BACK\" button, the \"HOME\" button, or programmatically launching another activity on top of it." %}
 
-### DRM Systems
+#### Special Notes for Fire TV Edition
 
-Amazon Fire TV (2nd Generation) supports the following DRM solutions:
+Fire TV Edition's hardware decoder supports playback of 4K @ 60 FPS. In order to playback 4K @ 60 FPS, the timing requirement of media pipeline is aggressive and the app may not be able to render 4K frames at 16 msec interval due to thread and process scheduling limitations of the kernel.
 
-*  Widevine L1/L3 DRM
-*  PlayReady DRM (2.5 max)
-*  HDCP 2.2 link to compatible panels
+This may result into frame drops and a sub-par movie experience. To get the best out of the hardware, use Tunnel Mode playback. The main changes required to support Tunnel Mode playback are as follows:
 
-### Codecs
+1.  Generate a AudioTrack session ID from AudioManager.
 
-Amazon Fire TV (2nd Generation) supports the following codecs:
+    ```java
+    audioSessionId = ((AudioManager)ctx.getSystemService(Context.AUDIO_SERVICE)).generateAudioSessionId();
+    ```
 
-*  MediaCodec that supports HEVC main L5 profile
-*  MediaCodec that supports HEVC main10 L5 profile (The output will be in 8-bit Rec 709 color space for both 8-bit and 10-bit color input.)
+2.  Configure Video Decoder for Tunnel mode:
 
-### Input/Output Color Formats
+    ```java
+    format.setFeatureEnabled(MediaCodecInfo.CodecCapabilities.FEATURE_TunneledPlayback, true);
+    ```
 
-Amazon Fire TV (2nd Generation) supports the following color specs:
+3.  Configure Video decoder with the AudioTrack session ID.
 
-{: .grid}
+    ```java
+    format.setInteger(android.media.MediaFormat.KEY_AUDIO_SESSION_ID, audioSessionId);
+    ```
+
+4.  Create AudioTrack with the session ID generated from AudioManager & set FLAG_HW_AV_SYNC flag.
+
+    ```java
+    AudioAttributes attr = new AudioAttributes.Builder()
+     .setLegacyStreamType(AudioManager.STREAM_MUSIC)
+     .setFlags(AudioAttributes.FLAG_HW_AV_SYNC)
+     .build();
+    AudioFormat fmt = new AudioFormat.Builder()
+     .setEncoding(targetEncoding)
+     .setSampleRate(sampleRate)
+     .setChannelMask(channelConfig)
+     .build();
+    AudioTrack audioTrack = new android.media.AudioTrack(attr, fmt, bufferSize, 575 android.media.AudioTrack.MODE_STREAM, audioSessionId);
+    ```
+
+5.  Do not call `dequeueOutputBuffer` and `releaseOutputBuffer` for video decoder.
+6.  Insert an 16 byte AV Sync header to the audio data being written to AudioTrack.
+
+    ```java
+    private ByteBuffer avSyncHeader = null;
+    avSyncHeader = ByteBuffer.allocate(16);
+    avSyncHeader.order(ByteOrder.BIG_ENDIAN);
+    avSyncHeader.position(0);
+    avSyncHeader.order(ByteOrder.BIG_ENDIAN);
+    avSyncHeader.putInt(AVSYNC_START_CODE);
+    avSyncHeader.putInt(bufferBytesRemaining);
+    avSyncHeader.putLong(presentationTimeUs * 1000 );
+    avSyncHeader.position(0);
+    ```
+
+This header contains a start code, presentation time (in nano secs), and size of data. Write this data before you write the audio data to audio track.
+
+For more details refer to the Tunnel Mode implementation in Exoplayer 2:
+*  [Enable tunneling end-to-end](https://github.com/google/ExoPlayer/commit/f1e3d3f244ff90db6ea53a168c99fb710860e722)
+*  [Support tunneling in video renderer](https://github.com/google/ExoPlayer/commit/60a3eda1e02e53b8ef8b977b70da4168695541fa)
+*  [Report tunneling support via RendererCapabilities API](https://github.com/google/ExoPlayer/commit/e125ed705e0f9e33f54a6e397a2a443abedff0f7)
+*  [Plumbing to enable tunneling on AudioTrack from renderers](https://github.com/google/ExoPlayer/commit/cd42434719bb79017be975d9048797267ee4ec4a)
+
+### DRM Systems {#drmsystems}
+
+The following DRM solutions are supported:
+
 <table class="grid">
-   <colgroup>
-      <col width="40%" />
-      <col width="60%" />
-   </colgroup>
-  <thead>
-    <tr>
-      <th>Supported Input Color Formats</th>
-      <th>Output Color Formats</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>8-bit Rec709 (HEVC Main profile L5)</td>
-      <td>8-bit Rec709</td>
-    </tr>
-    <tr>
-      <td>10-bit Rec709 (HEVC Main10 profile L5)</td>
-      <td>8-bit Rec709</td>
-    </tr>
-    <tr>
-      <td>10-bit Rec2020 (HEVC Main10 profile L5)</td>
-      <td>8-bit Rec709</td>
-    </tr>
-  </tbody>
+<colgroup>
+<col width="20%" />
+<col width="40%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Fire TV Edition</th>
+  <th>Fire TV (Gen 2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>DRM</td>
+  <td><ul>
+    <li>Widevine L1/L3 DRM</li>
+    <li>PlayReady DRM (2.5 max)</li>
+    <li>HDCP 2.2 link to compatible panels</li>
+  </ul>
+  </td>
+  <td><ul>
+  <li>Widevine L1/L3 DRM</li>
+  <li>PlayReady DRM (2.5 max)</li>
+  <li>HDCP 2.2 link to compatible panels</li>
+  </ul>
+  </td>
+  </tr>
+</tbody>
+</table>
+
+### Codecs {#codecs}
+
+The following codecs are supported:
+
+<table class="grid">
+<colgroup>
+<col width="20%" />
+<col width="40%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Fire TV Edition</th>
+  <th>Fire TV (Gen 2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Codecs</td>
+  <td><ul>
+   <li>MediaCodec that supports HEVC main L5 profile</li>
+   <li>MediaCodec that supports HEVC main10 L5 profile (The output will be in 8-bit Rec 709 color space for both 8-bit and 10-bit color input.)</li>
+  </ul>
+  </td>
+  <td><ul>
+  <li>MediaCodec that supports HEVC main L5 profile</li>
+  <li>MediaCodec that supports HEVC main10 L5 profile (The output will be in 8-bit Rec 709 color space for both 8-bit and 10-bit color input.)</li>
+  </ul>
+  </td>
+  </tr>
+</tbody>
+</table>
+
+### Input/Output Color Formats {#inputoutputcolorformats}
+
+The following color specs are supported:
+
+<table class="grid">
+<colgroup>
+  <col width="20%" />
+  <col width="40%" />
+  <col width="40%" />
+</colgroup>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Fire TV Edition</th>
+  <th>Fire TV (Gen 2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Input Color Formats / Output Color Formats</td>
+  <td>
+    <ul>
+      <li>8-bit Rec709 (HEVC Main profile L5) / 8-bit Rec709</li>
+      <li>10-bit Rec709 (HEVC Main10 profile L5) / 8-bit Rec709</li>
+      <li>10-bit Rec2020 (HEVC Main10 profile L5) / 8-bit Rec709</li>
+    </ul>
+  </td>
+  <td>
+    <ul>
+      <li>8-bit Rec709 (HEVC Main profile L5) / 8-bit Rec709</li>
+      <li>10-bit Rec709 (HEVC Main10 profile L5) / 8-bit Rec709</li>
+      <li>10-bit Rec2020 (HEVC Main10 profile L5) / 8-bit Rec709</li>
+    </ul>
+  </td>
+  </tr>
+</tbody>
 </table>
 
 10-bit color input is supported by the codec, but the output does not support 10-bit output.
 
-### Power Consumption
+### Power Consumption {#powerconsumption}
 
 The following table specifies the maximum allowed power consumption for Fire TV devices:
 
 {: .grid}
 <table class="grid">
    <colgroup>
-      <col width="25%" />
-      <col width="25%" />
-      <col width="25%" />
-      <col width="25%" />
+      <col width="20%" />
+      <col width="20%" />
+      <col width="20%" />
+      <col width="20%" />
+      <col width="20%" />
    </colgroup>
   <thead>
     <tr>
-      <th>Fire TV Stick (Gen. 2)</th>
-      <th>Fire TV (Gen. 2)</th>
-      <th>Fire TV Stick (Gen. 1)</th>
-      <th>Fire TV (Gen. 1)</th>
+      <th>Fire TV <br/>Edition</th>
+      <th>Fire TV Stick <br/>(Gen 2)</th>
+      <th>Fire TV <br/>(Gen 2)</th>
+      <th>Fire TV Stick <br/>(Gen 1)</th>
+      <th>Fire TV <br/>(Gen 1)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>3.8 Watts</td>
       <td>2.1 W</td>
       <td>3.8 Watts</td>
       <td>1.7 Watts</td>
@@ -132,11 +302,18 @@ If the power consumption from your app exceeds the limits in the previous table,
 
 In your code, you can check for the device (whether Fire TV Stick or Fire TV) by looking for the `amazon.hardware.low_power` feature. See [Identifying Amazon Fire TV Devices][identifying-amazon-fire-tv-devices] for more details.
 
-## APIs for HDMI Mode Switch
+### Dolby Output Over Optical (Fire TV Edition only) {#dolbyoutputoveroptical}
+
+By default, the speakers of Fire TV Edition support stereo output only, and hence apps can stream stereo content by default. But when the TV is connected to a sound bar or AVR via Optical audio output or HDMI (based on the Dolby system settings set by the user on Fire TV Edition), an app can choose to stream surround sound in Dolby audio format.
+
+To support this, the app is required to read a Global setting `external_surround_sound_enabled` to decide if surround sound (AC3 and EAC3) is supported or not. If the value is `1`, Dolby audio is supported. If the value is `0`, the app can further use other means (such as [ACTION_HDMI_AUDIO_PLUG](https://developer.android.com/reference/android/media/AudioManager.html#ACTION_HDMI_AUDIO_PLUG intent of AudioManager) to decide if surround sound is supported or not.
+Refer to this Exoplayer patch ([ Added support for Surround Sound detection for Optical out](https://github.com/amzn/exoplayer-amazon-port/commit/e000b356e7b5be2bd79dca9152c4556b798112bb) for reference.
+
+## APIs for HDMI Mode Switch (Fire TV Gen 2 only)
 
 Google introduced 4K [`Display.Mode`](https://developer.android.com/about/versions/marshmallow/android-6.0.html#4K-display) APIs in Android Marshmallow. `Display.Mode` allows applications to query physical display sizes and switch to a different HDMI display mode.
 
-Amazon implemented `Display.Mode` APIs in Fire TV (2nd Generation) running Fire OS 5 (based on Android L). Apps can use these APIs for the HDMI Mode switch.
+Amazon implemented `Display.Mode` APIs in Fire TV (Gen 2) running Fire OS 5 (based on Android L). Apps can use these APIs for the HDMI Mode switch.
 
 Since these APIs are not part of Android API Level 21 (Lollipop) in Android SDK, the apps can use “reflection” to access the APIs.  Alternatively, app developers can use the [4K Extension Library](#amazonextension) developed by Amazon, which wraps these Android APIs via reflection and provides a simple interface for them.
 
@@ -144,13 +321,13 @@ You can also display an optional interstitial developed by Amazon to prepare cus
 
 Fire OS will also provide a `sys.display-size` system property to report the maximum supported resolution of the connected display.
 
-## Steps for Using HDMI Mode Switch {#hdmimodeswitch}
+## Steps for Using HDMI Mode Switch (Fire TV Gen 2 only) {#hdmimodeswitch}
 
 Follow these general steps when using the Android API to initiate an HDMI Mode switch:
 
 1.  **Query supported display modes with `Display.getSupportedModes()`.**
 
-    `Display.getSupportedModes()` returns an array of `Display.Mode` objects. This synchronous API returns the modes (resolution and frame rate) supported by both Fire TV (2nd Generation) and the attached display. If the attached display supports 4K UHD, then 4K UHD modes will be included in the list.
+    `Display.getSupportedModes()` returns an array of `Display.Mode` objects. This synchronous API returns the modes (resolution and frame rate) supported by both Fire TV (Gen 2) and the attached display. If the attached display supports 4K UHD, then 4K UHD modes will be included in the list.
 
     Because frame rate conversion may not provide optimal results, Amazon recommends switching to the actual or closest frame rate of the content to be played (4K at 24fps, 4K at 25fps, or 4K at 30fps).
 
@@ -173,7 +350,7 @@ Follow these general steps when using the Android API to initiate an HDMI Mode s
 
     `DisplayManager.DisplayListener` sends a callback when properties of logical display have changed. This callback will be received once the mode change is complete. Note that the displayed content may not be visible for a few seconds after the callback is received.
 
-## Interface for developers
+## Interface for developers (Fire TV Gen 2 only)
 
 Applications can use these APIs directly via reflection, or they can use an Amazon provided wrapper (the 4K Extension Library) to access these APIs. The following code sample shows the mode change directly without the extension:
 
@@ -194,9 +371,9 @@ try {
 
 The approach using the 4K Extension Library is covered in the next section.
 
-## Amazon 4K Extension Library {#amazonextension}
+## Amazon 4K Extension Library (Fire TV Gen 2 only) {#amazonextension}
 
-HDMI Mode Switch APIs in Fire TV (2nd Generation) are not available in Android Lollipop SDK. To use them, you must use reflection. Amazon built the 4K Extension Library (provided in the form of source code) to demonstrate how to use the Android APIs and provide a helper class. 
+HDMI Mode Switch APIs in Fire TV (Gen 2) are not available in Android Lollipop SDK. To use them, you must use reflection. Amazon built the 4K Extension Library (provided in the form of source code) to demonstrate how to use the Android APIs and provide a helper class. 
 
 <a href="https://s3.amazonaws.com/fire-tv-code-samples/4K-SupportLibrary-FireTVGen2-V-1-1.zip"><button class="feedbackButton noCrossRef">Download Amazon 4K Extension</button></a>
 
@@ -253,7 +430,7 @@ This method lets you request a specific display mode (resolution and refresh rat
 </table>
 
 
-Note that mode switch requests might not be successful, and you must verify the mode from `UHDHelperListener#onModeChanged(Display.Mode mode)` or call `getMode()`. You must wait until the mode switch is complete before starting content playback. Also, the mode switch works only with Fire TV (2nd Generation)."
+Note that mode switch requests might not be successful, and you must verify the mode from `UHDHelperListener#onModeChanged(Display.Mode mode)` or call `getMode()`. You must wait until the mode switch is complete before starting content playback. Also, the mode switch works only with Fire TV (Gen 2)."
 
 {: .classy}
 getSupportedModes()
@@ -319,7 +496,7 @@ The `UhdHelperListener` class provides the `onModeChanged(Display.Mode mode)` me
 
 The `Display.Mode` class mirrors the [`Display.Mode`](https://developer.android.com/reference/android/view/Display.Mode.html) class in Android Marshmallow. This is used to describe a display mode’s resolution and refresh rate.
 
-## Interstitial during Mode Switch {#interstitial}
+## Interstitial During Mode Switch (Fire TV Gen 2 only){#interstitial}
 
 Because the customer experience is interrupted during an HDMI Mode switch, Amazon has built an interstitial that can be optionally
 displayed to prepare customers before the HDMI Mode switch. The code to trigger this interstitial is available with the Amazon Extension Library For 4K.

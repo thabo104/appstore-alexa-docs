@@ -56,7 +56,7 @@ margin-bottom: 30px;
 </style>
 {% endif %}
 
-This page lists the media, device, and platform specifications for all Amazon Fire TV devices as well as supported technologies.
+This page lists the media, device, and platform specifications for all Amazon Fire TV devices as well as supported technologies. For details on Fire TV device naming conventions, see [Naming Conventions for Fire TV Devices][getting-started-developing-apps-and-games-for-amazon-fire-tv#firetvnames].
 
 <ul id="profileTabs" class="nav nav-tabs">
    <li class="active"><a class="noCrossRef" href="#firetvedition" data-toggle="tab">Fire TV Edition</a></li>

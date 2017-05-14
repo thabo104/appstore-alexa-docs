@@ -59,6 +59,17 @@ The Fire TV documentation is organized into the following groups:
 *  [Catalog Integration][integrating-your-catalog-with-fire-tv]
 *  [Fling SDK][understanding-the-amazon-fling-service]
 
+## Naming Conventions for Fire TV Devices {#firetvnames}
+
+{% include image.html  file="firetv/getting_started/images/fire-tv-firetvdevice-names" max-width="500px" type="png" alt="Fire TV device names" %}
+
+In this documentation, the following naming conventions are used with Fire TV devices:
+
+* **"Fire TV Edition"**: Refers to the smart TV with Fire TV built into the TV hardware.
+* **"Fire TV Stick"**: Refers to the stick version of Fire TV. Gen 2 refers to the [2016 version](https://www.amazon.com/dp/B00ZV9RDKK/ref=fs_ods_fs_smp_tk) (the latest). Gen 1 refers to the 2014 version. On the Amazon.com retail site, the device's official name is "Fire TV Stick with Alexa Voice Remote."
+* **"Fire TV"**: Refers to the set-up box version of Fire TV devices. Gen 2 refers to the [2015 release](https://www.amazon.com/Amazon-Fire-TV-Streaming-Media-Player/dp/B00U3FPN4U) (the latest). Gen 1 refers to the 2014 release. On the Amazon.com retail site, the device's official name is "Amazon Fire TV."
+* **"Fire TV devices"**: Refers to all versions/models of Fire TV devices (box, stick, tv).
+
 ## Fire TV Forums
 
 If you need help, have a question, or want to share other feedback, use the [Fire TV and Fire TV Stick categories](https://forums.developer.amazon.com/spaces/43/Fire+TV+and+Fire+TV+Stick.html) on the Amazon Developer Forum.
