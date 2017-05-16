@@ -96,9 +96,7 @@ Amazon developed an [Amazon Extension Library for 4K][fire-tv-4k-apis-for-hdmi-
 
 #### Special Notes for Fire TV Edition
 
-Fire TV Edition's hardware decoder supports playback of 4K @ 60 FPS. To play back 4K @ 60 FPS, the timing requirement of media pipeline is aggressive and the app may not be able to render 4K frames at 16 msec interval due to thread and process scheduling limitations of the kernel. This may result into frame drops and a sub-par movie experience.
-
-To get the best out of the hardware, use Tunnel Mode playback. For details, see [Tunnel Mode Playback][fire-tv-4k-tunnel-mode-playback].
+Fire TV Edition's hardware decoder supports playback of 4K @ 60 FPS. To play 4K @ 60 FPS, the timing requirement of media pipeline is aggressive and the app may not be able to render 4K frames at 16 msec interval due to thread and process scheduling limitations of the kernel. This may result into frame drops and a sub-par movie experience. To get the best out of the hardware, use Tunnel Mode playback. For details, see [Tunnel Mode Playback][fire-tv-4k-tunnel-mode-playback].
 
 ### DRM Systems {#drmsystems}
 
@@ -210,9 +208,9 @@ The following color specs are supported:
 </tbody>
 </table>
 
-10-bit color input is supported by the codec, but the output does not support 10-bit output.
-
 \* Currently, 10-bit HEVC support on Fire TV Edition has known issue. The issue will be fixed in an upcoming release.
+
+10-bit color input is supported by the codec, but the output does not support 10-bit output.
 
 ### Power Consumption {#powerconsumption}
 

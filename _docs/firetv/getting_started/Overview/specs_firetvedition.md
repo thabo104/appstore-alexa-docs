@@ -152,7 +152,7 @@
     <tr>
       <td>Screen resolution (px) and Refresh rate (Hz)</td>
       <td>3840 x 2160 (2160p / 4K) - 60Hz<br/>
-          1920 x 1080 (1080p) - 60Hz</br>
+          1920 x 1080 (1080p) - 60Hz<br/>
           1280 x 720 (720p) - 60Hz</td>
     </tr>
     <tr>
@@ -332,4 +332,4 @@
 </table>
 
 
-For TV dimensions (e.g., 43", 50"), weights (e.g., 20lbs, 28lbs), stand details, and mounts, see the Comparison Chart and Tech Specs on the Amazon retail page for Fire TV Edition.
+<p>For TV dimensions (e.g., 43", 50"), weights (e.g., 20lbs, 28lbs), stand details, and mounts, see the Comparison Chart and Tech Specs on the <a href="https://www.amazon.com/dp/B06XDC9RBJ">Fire TV Edition page on Amazon.com</a>.</p>

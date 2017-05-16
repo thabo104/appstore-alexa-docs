@@ -746,7 +746,7 @@ Find the work with the given ID in your CDF file. Find its Synopsis element. Rep
 
 **Possible elements involved**
 
-_WorkType_.Synopsis </br>
+_WorkType_.Synopsis <br/>
 _WorkType_ can be Movie, TvShow, TvSeason, TvEpisode, TvSpecial, MiniSeries, MiniSeriesEpisode, or Extra <br/>
 
 * * *
