@@ -18,7 +18,7 @@
    <tr>
         <td class="white" rowspan="6"><b>Video</b></td>
         <td class="white">H.263</td>
-        <td class="white">video/3gp</td>
+        <td class="white">video/3gpp</td>
         <td class="white">Hardware accelerated up to WVGA (800x400) @ 30fps, 6 Mbps, Profile 0 Level 70</td>
      </tr>
      <tr>
@@ -254,7 +254,7 @@
     </tr>
     <tr>
       <td><code>android.os.Build.MANUFACTURER</code></td>
-      <td markdown="span"><code>Amazon</code>. See [Identifying Amazon Fire TV Devices][identifying-amazon-fire-tv-devices] for more details.</td>
+      <td markdown="span"><code>Amazon</code>.</td>
     </tr>
     <tr>
       <td><code>android.os.Build.MODEL</code></td>

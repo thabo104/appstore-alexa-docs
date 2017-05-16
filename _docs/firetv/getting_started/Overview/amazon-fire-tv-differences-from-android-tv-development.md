@@ -60,7 +60,7 @@ To receive the audio focus, your app must register a [`MediaButtonReceiver`][1] 
 
 Both Android TV and Fire TV have 4-way directional pad (dpad), dpad_center/select, back, and play/pause buttons. However, Fire TV also offers rewind, fast-forward, and menu buttons that you can optionally use.
 
-The Menu button on Fire TV invokes the Android context menu, which appears as a list of menu items centered on the screen. You can override the menu button to provide your own custom menu user interface, or for any other purpose. 
+The Menu button on Fire TV invokes the Android context menu, which appears as a list of menu items centered on the screen. You can override the menu button to provide your own custom menu user interface, or for any other purpose.
 
 If you only have one menu item, consider using the Menu button as a simple toggle &mdash; for example, to turn closed captions on or off. If you do this, consider providing an onscreen hint to expose this feature to your users.
 
@@ -78,7 +78,7 @@ While Android TV can use the latest SDK (Nougat), Fire TV uses only Lollipop (AP
 
 ## Recommendations
 
-Android TV lets apps [make recommendations](https://developer.android.com/training/tv/discovery/recommendations.html) on the home screen. This same recommendations functionality is coming to Fire TV and will be available soon (most likely Q2 2017 or sooner).
+Android TV lets apps make [recommendations](https://developer.android.com/training/tv/discovery/recommendations.html) on the home screen. This same recommendations functionality is coming to Fire TV and will be available soon (most likely Q2 2017 or sooner).
 
 ## Emulators
 
@@ -90,14 +90,14 @@ You use the standard [Android Notifications API](http://developer.android.com/re
 
 Additionally, instead of putting old notifications in a notification drawer, on Fire TV notifications are stored in a Notification Center. Learn more at [Notifications for Amazon Fire TV][notifications-for-amazon-fire-tv].
 
-## Accessibility 
+## Accessibility
 
-Fire TV provides [VoiceView](https://www.amazon.com/b?node=14100715011) to make your app accessible to the visually impaired. You can learn more about VoiceView and accessibility here: 
- 
-*  [Understanding Assistive Technologies for Fire OS](https://developer.amazon.com/appsandservices/solutions/platforms/fire-os/docs/implementing-accessibility-in-fireos) 
+Fire TV provides [VoiceView](https://www.amazon.com/b?node=14100715011) to make your app accessible to the visually impaired. You can learn more about VoiceView and accessibility here:
+
+*  [Understanding Assistive Technologies for Fire OS](https://developer.amazon.com/appsandservices/solutions/platforms/fire-os/docs/implementing-accessibility-in-fireos)
 *  [Implementing Accessibility in Fire OS](https://developer.amazon.com/appsandservices/solutions/platforms/fire-os/docs/implementing-accessibility-in-fireos)
 
-## Appstore 
+## Appstore
 
 Android TV devices use the Google Play Store. In contrast, Fire TV uses the Amazon Appstore. Any links you have pointing to the Google Play store will need links to the Amazon Appstore.
 

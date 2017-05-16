@@ -184,11 +184,6 @@ folders:
     jurl: /fire-tv-handling-hdmi-events.html
     ref: fire-tv-handling-hdmi-events
 
-  - title: 4K Ultra HD Videos
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-4k-ultra-hd
-    jurl: /fire-tv-4k-ultra-hd.html
-    ref: fire-tv-4k-ultra-hd
-
   - title: Android Menu and ActionBar widgets
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/user-interface
     jurl: /user-interface.html
@@ -224,6 +219,25 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-international-locales
     jurl: /fire-tv-international-locales.html
     ref: fire-tv-international-locales
+
+- title: Playing 4K UHD Videos
+  folderitems:
+
+  - title: Play 4K Ultra HD Videos
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-4k-ultra-hd
+    jurl: /fire-tv-4k-ultra-hd.html
+    ref: fire-tv-4k-ultra-hd
+
+  - title: APIs for HDMI Mode Switch (Fire TV Gen 2 only)
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-4k-apis-for-hdmi-mode-switch
+    jurl: /fire-tv-4k-apis-for-hdmi-mode-switch.html
+    ref: fire-tv-4k-apis-for-hdmi-mode-switch
+    bookmarks: [amazonextension]
+
+  - title: Tunnel Mode Playback (Fire TV Edition only)
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-4k-tunnel-mode-playback
+    jurl: /fire-tv-4k-tunnel-mode-playback.html
+    ref: fire-tv-4k-tunnel-mode-playback
 
 - title: Troubleshooting Fire TV Issues with Developer Tools
   folderitems:

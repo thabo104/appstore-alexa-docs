@@ -9,9 +9,9 @@ toc-style: kramdown
 github: true
 ---
 
-{% include image.html max-width="350px" file="firetv/getting_started/images/fire-tv-edition" type="png" alt="Amazon Fire TV Edition" %}
+[Amazon Fire TV Edition](https://www.amazon.com/dp/B06XDC1544), a smart TV with Fire TV built-in to the television hardware, is a new Fire TV device released by Amazon. As you develop apps for Fire TV, here are answers to a few questions you might have about support for Fire TV Edition.
 
-Amazon Fire TV Edition, a smart TV with Fire TV built-in to the television hardware, is a new Fire TV device released by Amazon. As you develop apps for Fire TV, here are answers to a few questions you might have about support for Fire TV Edition.
+{% include image.html max-width="350px" url="https://www.amazon.com/dp/B06XDC1544" file="firetv/getting_started/images/fire-tv-edition" type="png" alt="Amazon Fire TV Edition" %}
 
 Q: If my app works on other Fire TV devices, will it work on Fire TV Edition?
 :  Yes, if your app works on Fire TV or Fire TV Stick (especially Fire TV Stick - Gen 2), it will most likely work on Amazon Fire TV Edition. 99.9% of Fire TV apps are expected to work on Fire TV Edition. For existing apps, Fire TV Edition will automatically be added as a supported device &mdash; you don't need to do anything. If support for Fire TV Edition fails, you will be notified by the Appstore team.
@@ -29,7 +29,7 @@ Q: What features can I access/leverage on Fire TV Edition that I previously was 
 :  For apps, Fire TV Edition does not give you access to any special new features. The device itself has some new UI elements, such as the ability to toggle between inputs (and see a preview of the input prior to switching), aggregation of live content on a row called "On Now", the option to select over-the-air (antenna) content, the ability to control volume, power, and other TV features using your voice, and a remote with 6 new buttons (power, volume up, volume down, Netflix, Amazon Video, and Amazon Music). However, apps launch and function in the same way as with other Fire TV devices.
 
 Q: Does Fire TV Edition have more horsepower to run more CPU intensive games?
-:  In general, Fire TV is geared toward casual games, not graphic intensive/immersive games. Fire TV Edition has a 1.4GHz 64-bit quad-core CPU and with a Mali-T820 graphics processing unit (GPU), with support for OpenGL ES 3.2. It is most comparable to Fire TV (Gen 2).  See the [Fire TV Device Specifications][device-and-platform-specifications] for more detail.
+:  In general, Fire TV is geared toward casual games, not graphic intensive/immersive games. Fire TV Edition has a 1.1GHz 64-bit quad-core CPU and with a Mali-T820 graphics processing unit (GPU), with support for OpenGL ES 3.2. It is most comparable to Fire TV (Gen 2).  See the [Fire TV Device Specifications][device-and-platform-specifications] for more detail.
 
 Q: Can I map the new buttons on the Amazon Fire TV Edition remote controller to my game?
 :  No, the six new buttons (volume up, volume down, power, Netflix, Amazon Video, and Amazon Music) are owned by the system and not accessible to third-party apps.

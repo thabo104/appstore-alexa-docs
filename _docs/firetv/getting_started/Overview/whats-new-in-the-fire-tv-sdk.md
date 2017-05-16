@@ -12,7 +12,7 @@ github: true
 
 ### Fire TV Edition Released
 
-**May 16, 2017**. Fire TV Edition was released. Fire TV Edition is a 4K Ultra HD television with Fire TV built-in. Fire TV Edition is similar to a TV with Fire TV or Fire TV Stick, with some additional features in the user interface. For example, with Fire TV Edition, you can:
+**May 16, 2017**. [Fire TV Edition](https://www.amazon.com/dp/B06XDC1544) was released. Fire TV Edition is a 4K Ultra HD television with Fire TV built-in. Fire TV Edition is similar to a TV with Fire TV or Fire TV Stick, with some additional features in the user interface. For example, with Fire TV Edition, you can:
 
 * Toggle between inputs (and see a preview of the input prior to switching).
 * See all live content on a row called "On Now".
@@ -25,7 +25,9 @@ Your app works the same on Fire TV Edition as with other Fire TV devices, so the
 
 ### Fire App Builder 1.0.2 Released
 
-**April 6, 2017**. Fire App Builder version 1.0.2 was recently released. The main feature includes the ability to send recommendations to the "Recommended By Your Apps" row on the Fire TV home screen.  You can send a list of global recommendations when your app starts, or individual recommendations when a user plays a specific video. For details, see [Recommendations in Fire App Builder Overview][fire-app-builder-recommendations-overview]. Many other fixes and enhancements were made, such as adding events tracked in analytics, support for XML feeds, and a smarter Login/Logout button. New documentation includes a tutorial on [configuring MRSS feeds][fire-app-builder-configure-mrss-feed], several topics on how to send [recommendations][fire-app-builder-recommendations-overview], and a topic on [submitting your app to the Appstore][fire-app-builder-submit-your-app]. You can view the [1.0.2 release notes here][fire-app-builder-release-notes-version-1-0-2]. For more information, see [Fire App Builder][fire-app-builder-overview].
+**April 6, 2017**. Fire App Builder version 1.0.2 was recently released. The main feature includes the ability to send recommendations to the "Recommended By Your Apps" row on the Fire TV home screen.  You can send a list of global recommendations when your app starts, or individual recommendations when a user plays a specific video. For details, see [Recommendations in Fire App Builder Overview][fire-app-builder-recommendations-overview].
+
+Many other fixes and enhancements were made, such as adding events tracked in analytics, support for XML feeds, and a smarter Login/Logout button. New documentation includes a tutorial on [configuring MRSS feeds][fire-app-builder-configure-mrss-feed], several topics on how to send [recommendations][fire-app-builder-recommendations-overview], and a topic on [submitting your app to the Appstore][fire-app-builder-submit-your-app]. You can view the [1.0.2 release notes here][fire-app-builder-release-notes-version-1-0-2]. For more information, see [Fire App Builder][fire-app-builder-overview].
 
 Update: [Version 1.0.3][fire-app-builder-release-notes-1-0-3] and [Version 1.0.4][fire-app-builder-release-notes-1-0-4] were follow-up releases with minor fixes.
 

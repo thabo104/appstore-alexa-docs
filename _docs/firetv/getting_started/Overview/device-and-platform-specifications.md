@@ -12,12 +12,12 @@ github: true
 {% if site.target == "hippo" %}
 <style>
 ul#profileTabs.nav.nav-tabs li {
-    margin: 2px;
+    margin: 10px;
 }
 
 ul#profileTabs.nav:after, ul#profileTabs.nav:before {
     display: inline-table !important;
-    margin-bottom: 35px;
+    margin-bottom: 60px;
 }
 
 ul#profileTabs.nav-tabs>li.active>a, ul#profileTabs.nav-tabs>li.active>a:focus, ul#profileTabs.nav-tabs>li.active>a:hover {
@@ -28,7 +28,7 @@ font-weight: bold;
 { @media {
 ul#profileTabs.nav.nav:after, ul#profileTabs.nav.nav:before {
     display: inline-table !important;
-    margin-bottom: 48px;
+    margin-bottom: 73px;
 }
 }}
 
@@ -41,7 +41,7 @@ margin-bottom: 30px;
 <style>
     ul#profileTabs.nav:after, ul#profileTabs.nav:before {
         display: inline-table !important;
-        margin-bottom: 48px;
+        margin-bottom: 73px;
     }
 </style>
 <![endif]-->
@@ -50,7 +50,7 @@ margin-bottom: 30px;
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     ul#profileTabs.nav:after, ul#profileTabs.nav:before {
         display: inline-table !important;
-        margin-bottom: 48px;
+        margin-bottom: 73px;
     }
 }
 </style>
@@ -59,11 +59,11 @@ margin-bottom: 30px;
 This page lists the media, device, and platform specifications for all Amazon Fire TV devices as well as supported technologies. For details on Fire TV device naming conventions, see [Naming Conventions for Fire TV Devices][getting-started-developing-apps-and-games-for-amazon-fire-tv#firetvnames].
 
 <ul id="profileTabs" class="nav nav-tabs">
-   <li class="active"><a class="noCrossRef" href="#firetvedition" data-toggle="tab">Fire TV Edition</a></li>
-   <li><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick (G2)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV (G2)</a></li>
-    <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick (G1)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV (G1)</a></li>
+   <li class="active"><a class="noCrossRef" href="#firetvedition" data-toggle="tab">Fire TV <br/>Edition</a></li>
+   <li><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick<br/>(Gen 2)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV<br/>(Gen 2)</a></li>
+    <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick<br/>(Gen 1)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV<br/>(Gen 1)</a></li>
 </ul>
 
   <div class="tab-content">

@@ -11,12 +11,12 @@ github: true
 {% if site.target == "hippo" %}
 <style>
 ul#profileTabs.nav.nav-tabs li {
-    margin: 5px;
+    margin: 10px;
 }
 
 ul#profileTabs.nav:after, ul#profileTabs.nav:before {
     display: inline-table !important;
-    margin-bottom: 40px;
+    margin-bottom: 52px;
 }
 
 ul#profileTabs.nav-tabs>li.active>a, ul#profileTabs.nav-tabs>li.active>a:focus, ul#profileTabs.nav-tabs>li.active>a:hover {
@@ -27,7 +27,7 @@ font-weight: bold;
 { @media {
 ul#profileTabs.nav.nav:after, ul#profileTabs.nav.nav:before {
     display: inline-table !important;
-    margin-bottom: 48px;
+    margin-bottom: 65px;
 }
 }}
 
@@ -40,7 +40,7 @@ margin-bottom: 30px;
 <style>
     ul#profileTabs.nav:after, ul#profileTabs.nav:before {
         display: inline-table !important;
-        margin-bottom: 48px;
+        margin-bottom: 65px;
     }
 </style>
 <![endif]-->

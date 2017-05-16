@@ -18,7 +18,7 @@
    <tr>
         <td class="white" rowspan="6"><b>Video</b></td>
         <td class="white">H.263</td>
-        <td class="white">video/3gp</td>
+        <td class="white">video/3gpp</td>
         <td class="white">Hardware accelerated up to 1080p @ 60fps, 40 Mbps, non-secure</td>
      </tr>
      <tr>
@@ -185,7 +185,7 @@
     </tr>
     <tr>
       <td>CPU</td>
-      <td>Dual CA72 + Dual CA53 up to 1.4Ghz. 64-bit</td>
+      <td>Dual CA72 + Dual CA53 up to 1.1Ghz. 64-bit</td>
     </tr>
     <tr>
       <td>GPU</td>
@@ -213,7 +213,7 @@
     </tr>
     <tr>
       <td>Expandable Storage</td>
-      <td markdown="span">MicroSD up to 32GB <br/>(See [Specifying Your App's Installation Location][specifying-installation-location] for best practices on manifest settings related to storage.)</td>
+      <td markdown="span">SD available up to 128GB. microSD cards can be supported through an adapter.</td>
     </tr>
     <tr>
       <td>Device OS/Platform software</td>
