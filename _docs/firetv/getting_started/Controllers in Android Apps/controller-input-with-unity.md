@@ -24,6 +24,8 @@ Use these values in Unity to map the buttons on both the Amazon Fire TV Remote a
 
 {% include image.html title="Unite remote" file="firetv/getting_started/images/remote-unity" type="png" %}
 
+{% include content/{{site.language}}/fire/firetvedition_remote_note.md %}
+
 <table class="grid">
 <colgroup>
 <col width="33%" />

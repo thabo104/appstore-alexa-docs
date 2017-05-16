@@ -9,7 +9,7 @@ github: true
 
 Only Amazon Fire TV (Gen 2) and Amazon Fire TV Edition support playback of 4K UHD media. To support 4K playback, you must adhere to the supported output resolutions, DRM systems, and codecs for 4K UHD content.
 
-{% include note.html content="Neither Fire TV Stick devices (Gen 1 or Gen 2) nor Fire TV Gen 1 devices support 4K UHD playback." %}
+{% include note.html content="Neither Fire TV <i>Stick</i> devices (Gen 1 or Gen 2) nor Fire TV Gen 1 devices support 4K UHD playback." %}
 
 For details on Fire TV device naming conventions, see [Naming Conventions for Fire TV Devices][getting-started-developing-apps-and-games-for-amazon-fire-tv#firetvnames].
 
@@ -66,6 +66,7 @@ The following output resolutions are supported:
     <li>4K UHD at 25 FPS</li>
     <li>4K UHD at 30 FPS</li>
     <li>Full HD (1080p) up to 60 FPS</li>
+    <li>4K UHD at 60fps</li>
   </ul>
   </td>
   <td><ul>
@@ -210,7 +211,7 @@ The following codecs are supported:
 <tr>
   <td>Codecs</td>
   <td><ul>
-   <li>MediaCodec that supports HEVC main L5 profile</li>
+   <li>MediaCodec that supports HEVC main and high profiles up to L5.1</li>
    <li>MediaCodec that supports HEVC main10 L5 profile (The output will be in 8-bit Rec 709 color space for both 8-bit and 10-bit color input.)</li>
   </ul>
   </td>
@@ -496,10 +497,9 @@ The `UhdHelperListener` class provides the `onModeChanged(Display.Mode mode)` me
 
 The `Display.Mode` class mirrors the [`Display.Mode`](https://developer.android.com/reference/android/view/Display.Mode.html) class in Android Marshmallow. This is used to describe a display mode’s resolution and refresh rate.
 
-## Interstitial During Mode Switch (Fire TV Gen 2 only){#interstitial}
+## Interstitial During Mode Switch (Fire TV Gen 2 only) {#interstitial}
 
-Because the customer experience is interrupted during an HDMI Mode switch, Amazon has built an interstitial that can be optionally
-displayed to prepare customers before the HDMI Mode switch. The code to trigger this interstitial is available with the Amazon Extension Library For 4K.
+Because the customer experience is interrupted during an HDMI Mode switch, Amazon has built an interstitial that can be optionally displayed to prepare customers before the HDMI Mode switch. The code to trigger this interstitial is available with the Amazon Extension Library For 4K.
 
 To display the interstitial through the extension code, call `setPreferredDisplayModeId(Window_targetWindow, int_modeId boolean_allowOverlayDisplay)` with `allowOverlayDisplay` set to `true`. The overlay will be shown for two seconds prior to the start of the mode switch.
 

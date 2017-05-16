@@ -14,13 +14,15 @@ Amazon Fire TV supports user input from the Amazon Fire TV remote, the Amazon Fi
 
 ## Using Input from the Amazon Fire TV Remote {#usinginput}
 
-The bundled Amazon Fire TV Remote has the keys shown in the following image.
+Most Amazon Fire TV remote controls have these buttons. Some Fire TV remotes do not include the microphone or voice search buttons.
 
 {% include image.html file="firetv/getting_started/images/remote-callouts" type="png" alt="Remote control" caption="Remote control" %}
 
+{% include content/{{site.language}}/fire/firetvedition_remote_note.md %}
+
 To enable users to interact with your web app by using the remote, you need to capture the key events when users press one of the keys. Most key presses can be captured just as standard keyboard events in a browser.
 
-For keycode mappings, see the following table. The **Back**, **Home**, **Menu**, and **Voice Search** buttons cannot be captured. For a workaround that allows customizing **Back** button behavior, see the Fire TV Web Apps section of [Amazon Web Apps Frequently Asked Questions](https://developer.amazon.com/public/solutions/platforms/webapps/faq).
+For keycode mappings, see the following table. The **Back**, **Home**, **Menu**, and **Voice Search** buttons cannot be captured. For a workaround that allows customizing **Back** button behavior with HTML5 web apps, see the [Fire TV Web Apps FAQ][fire-tv-web-app-faq].
 
 <table class="grid">
    <colgroup>
@@ -98,7 +100,7 @@ For more information on developing for the Standard Gamepad APIs, see [Jumping t
 
 If you choose not to use the Gamepad APIs, the buttons on the Amazon Fire Game Controller generally map to the same functions as on the Amazon Fire TV Remote (other than the **B** button).
 
-The Amazon Fire TV (2nd Generation) Game Controller has these buttons:
+The Amazon Fire TV (Gen 2) Game Controller has these buttons:
 
 {% include image.html file="firetv/getting_started/images/gamecontroller2" type="png" title="New game controller" %}
 
