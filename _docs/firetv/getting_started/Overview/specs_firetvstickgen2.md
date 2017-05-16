@@ -18,7 +18,7 @@
     <tr>
         <td class="white" rowspan="4"><b>Video</b></td>
         <td class="white">H.263</td>
-        <td class="white">video/3gp</td>
+        <td class="white">video/3gpp</td>
         <td class="white">Hardware accelerated up to WVGA (800x400) @ 30fps, 6 Mbps, Profile 0 Level 70</td>
      </tr>
      <tr>
@@ -141,7 +141,7 @@
   <tbody>
     <tr>
       <td>Screen resolution (px) and Refresh rate (Hz)</td>
-      <td>1920 x 1080 (1080p) - 60Hz <br/> 
+      <td>1920 x 1080 (1080p) - 60Hz <br/>
       1280 x 720 (720p) - 60Hz</td>
     </tr>
     <tr>
@@ -161,7 +161,7 @@
       <td>8 GB internal</td>
     </tr>
     <tr>
-      <td>RAM</td>
+      <td>Memory</td>
       <td>1GB</td>
     </tr>
     <tr>
@@ -238,7 +238,7 @@
     </tr>
     <tr>
       <td><code>android.os.Build.MANUFACTURER</code></td>
-      <td markdown="span"><code>Amazon</code> <br/>See [Identifying Amazon Fire TV Devices][identifying-amazon-fire-tv-devices] for more details.</td>
+      <td markdown="span"><code>Amazon</code></td>
     </tr>
     <tr>
       <td><code>android.os.Build.MODEL</code></td>
@@ -246,7 +246,6 @@
     </tr>
   </tbody>
 </table>
-
 
 <div class="subheading">OpenGL Properties and Limits (Fire TV Stick, Generation 2)</div>
 
@@ -263,7 +262,7 @@
    </thead>
    <tbody>
       <tr>
-         <td>OpenGL Version</td>
+         <td>Max OpenGL Version</td>
          <td>OpenGL ES 2.0</td>
       </tr>
       <tr>

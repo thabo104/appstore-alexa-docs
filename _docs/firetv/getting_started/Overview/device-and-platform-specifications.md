@@ -10,25 +10,25 @@ github: true
 ---
 
 {% if site.target == "hippo" %}
-<style> 
-ul#profileTabs.nav.nav-tabs li { 
-    margin: 5px; 
-} 
+<style>
+ul#profileTabs.nav.nav-tabs li {
+    margin: 10px;
+}
 
 ul#profileTabs.nav:after, ul#profileTabs.nav:before {
     display: inline-table !important;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 ul#profileTabs.nav-tabs>li.active>a, ul#profileTabs.nav-tabs>li.active>a:focus, ul#profileTabs.nav-tabs>li.active>a:hover {
 font-weight: bold;
 }
-    
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) 
+
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
 { @media {
 ul#profileTabs.nav.nav:after, ul#profileTabs.nav.nav:before {
     display: inline-table !important;
-    margin-bottom: 48px;
+    margin-bottom: 73px;
 }
 }}
 
@@ -41,7 +41,7 @@ margin-bottom: 30px;
 <style>
     ul#profileTabs.nav:after, ul#profileTabs.nav:before {
         display: inline-table !important;
-        margin-bottom: 48px;
+        margin-bottom: 73px;
     }
 </style>
 <![endif]-->
@@ -50,28 +50,34 @@ margin-bottom: 30px;
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     ul#profileTabs.nav:after, ul#profileTabs.nav:before {
         display: inline-table !important;
-        margin-bottom: 48px;
+        margin-bottom: 73px;
     }
 }
 </style>
 {% endif %}
 
-This page lists the media, device, and platform specifications for all Amazon Fire TV devices as well as supported technologies.
+This page lists the media, device, and platform specifications for all Amazon Fire TV devices as well as supported technologies. For details on Fire TV device naming conventions, see [Naming Conventions for Fire TV Devices][getting-started-developing-apps-and-games-for-amazon-fire-tv#firetvnames].
 
 <ul id="profileTabs" class="nav nav-tabs">
-   <li class="active"><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick (Gen. 2)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV (Gen. 2)</a></li>
-    <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick (Gen. 1)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV (Gen. 1)</a></li>
+   <li class="active"><a class="noCrossRef" href="#firetvedition" data-toggle="tab">Fire TV <br/>Edition</a></li>
+   <li><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick<br/>(Gen 2)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV<br/>(Gen 2)</a></li>
+    <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick<br/>(Gen 1)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV<br/>(Gen 1)</a></li>
 </ul>
 
   <div class="tab-content">
 
-<div role="tabpanel" class="tab-pane active" id="firetvstickgen2">
+<div role="tabpanel" class="tab-pane active" id="firetvedition">
+
+{% include_relative specs_firetvedition.md %}
+</div>
+
+<div role="tabpanel" class="tab-pane" id="firetvstickgen2">
 
 {% include_relative specs_firetvstickgen2.md %}
 </div>
-  
+
 <div role="tabpanel" class="tab-pane" id="firetvgen2">
 {% include_relative specs_firetvgen2.md %}
 </div>
@@ -110,7 +116,7 @@ Supported technologies are the same for all Amazon Fire TV devices.
   <tbody>
     <tr>
       <td>Miracast</td>
-      <td>Supported (sink)</td>
+      <td>Supported (sink) on all devices except Fire TV Edition.</td>
     </tr>
     <tr>
       <td>DIAL</td>
@@ -165,20 +171,24 @@ Supported technologies are the same for all Amazon Fire TV devices.
     </tr>
   </thead>
   <tbody>
+  <tr>
+    <td>Fire TV Edition </td>
+    <td>May 2017 </td>
+  </tr>
     <tr>
-      <td>Fire TV Stick (Generation 2) </td>
+      <td>Fire TV Stick (Gen 2) </td>
       <td>September 2016 </td>
     </tr>
     <tr>
-      <td>Fire TV (Generation 2) </td>
+      <td>Fire TV (Gen 2) </td>
       <td>December 2015</td>
     </tr>
     <tr>
-      <td>Fire TV Stick (Generation 1) </td>
+      <td>Fire TV Stick (Gen 1) </td>
       <td> November 2014 </td>
     </tr>
     <tr>
-      <td>Fire TV (Generation 1)</td>
+      <td>Fire TV (Gen 1)</td>
       <td>April 2014 </td>
     </tr>
   </tbody>

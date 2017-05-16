@@ -1,0 +1,54 @@
+sidebarTitle: Channel Creator
+owner: tomjoht
+
+folders:
+- title: Getting Started
+  folderitems:
+
+  - title: Channel Creator Overview
+    jurl: /channel-creator-overview.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-overview
+    ref: channel-creator-overview
+    bookmarks: [youtube_vs_mrss]
+
+  - title: Create an App
+    jurl: /channel-creator-create-your-app.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-create-your-app
+    ref: channel-creator-create-your-app
+
+    subfolders:
+    - title: Video Source Options
+      subfolderitems:
+
+      - title: Use a YouTube Channel
+        jurl: /channel-creator-youtube.html
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-youtube
+        ref: channel-creator-youtube
+        bookmarks: [getchannelid, getdevkey]
+#
+      - title:  Use an MRSS Feed
+        jurl: /channel-creator-mrss.html
+        hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-mrss
+        ref: channel-creator-mrss
+        bookmarks: [samplemrssfeed]
+
+  - title:  Submit Your App
+    jurl: /channel-creator-submit-your-app.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-submit-your-app
+    ref: channel-creator-submit-your-app
+    bookmarks: [imageassets, appdescriptions]
+
+  - title:  Update Your Live App
+    jurl: /channel-creator-update-your-live-app.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-update-your-app
+    ref: channel-creator-update-your-app
+
+  - title:  Localize Your App
+    jurl: /channel-creator-localize-your-app.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-update-your-app
+    ref: channel-creator-update-your-app
+
+  - title:  Frequently Asked Questions (Channel Creator)
+    jurl: /channel-creator-faq.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/channel-creator-faq
+    ref: channel-creator-faq

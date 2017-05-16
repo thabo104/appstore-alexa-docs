@@ -20,6 +20,7 @@ Most Amazon Fire TV remote controls have these buttons. Some Fire TV remotes do 
 
 {% include image.html file="firetv/getting_started/images/remote-callouts" type="png" alt="Remote control" caption="Remote control" %}
 
+{% include content/{{site.language}}/fire/firetvedition_remote_note.md %}
 
 ## Capturing Input
 

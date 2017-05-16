@@ -18,7 +18,7 @@
    <tr>
         <td class="white" rowspan="6"><b>Video</b></td>
         <td class="white">H.263</td>
-        <td class="white">video/3gp</td>
+        <td class="white">video/3gpp</td>
         <td class="white">Hardware accelerated up to WVGA (800x400) @ 30fps, 6 Mbps, Profile 0 Level 70</td>
      </tr>
      <tr>
@@ -151,8 +151,8 @@
   <tbody>
     <tr>
       <td>Screen resolution (px) and Refresh rate (Hz)</td>
-      <td>3840 x 2160 (2160p / 4K) - 30Hz <br /> 
-      1920 x 1080 (1080p) - 60Hz <br/> 
+      <td>3840 x 2160 (2160p / 4K) - 30Hz<br />
+      1920 x 1080 (1080p) - 60Hz <br/>
       1280 x 720 (720p) - 60Hz</td>
     </tr>
     <tr>
@@ -161,18 +161,21 @@
    </tr>
     <tr>
       <td>Density (dp)</td>
-      <td>640 (2160p) <br /> 320 (1080p) <br /> 213 (720p)</td>
+      <td>640 (2160p) <br /> 320 (1080p) <br />
+      213 (720p)</td>
     </tr>
     <tr>
       <td>Density Identifier</td>
-      <td>xxxhdpi (2160p) <br /> xhdpi (1080p) <br /> tvdpi (720p)</td>
+      <td>xxxhdpi (2160p) <br />
+      xhdpi (1080p) <br />
+      tvdpi (720p)</td>
     </tr>
     <tr>
       <td>Storage</td>
       <td>8GB</td>
     </tr>
     <tr>
-      <td>RAM</td>
+      <td>Memory</td>
       <td>2GB</td>
     </tr>
     <tr>
@@ -189,7 +192,8 @@
     </tr>
     <tr>
       <td>Networking: WiFi</td>
-      <td>802.11 a/b/g/n/ac; 2x2 MIMO <br /> (2.4 GHz and 5.0 GHz dual band)</td>
+      <td>802.11 a/b/g/n/ac; 2x2 MIMO <br />
+      (2.4 GHz and 5.0 GHz dual band)</td>
     </tr>
     <tr>
       <td>Networking: Ethernet</td>
@@ -205,7 +209,8 @@
     </tr>
     <tr>
       <td>Expandable Storage</td>
-      <td markdown="span">MicroSD up to 128GB  <br/>(See [Specifying Your App's Installation Location][specifying-installation-location] for best practices on manifest settings related to storage.)</td>
+      <td markdown="span">MicroSD up to 128GB  
+      <br/>(See [Specifying Your App's Installation Location][specifying-installation-location] for best practices on manifest settings related to storage.)</td>
     </tr>
     <tr>
       <td>Device OS/Platform software</td>
@@ -249,11 +254,12 @@
     </tr>
     <tr>
       <td><code>android.os.Build.MANUFACTURER</code></td>
-      <td markdown="span"><code>Amazon</code>. See [Identifying Amazon Fire TV Devices][identifying-amazon-fire-tv-devices] for more details.</td>
+      <td markdown="span"><code>Amazon</code>.</td>
     </tr>
     <tr>
       <td><code>android.os.Build.MODEL</code></td>
-      <td><code>AFTS</code> (Fire TV Gen 2 only) <br/> <code>AFT*</code> (all Fire TV devices)</td>
+      <td><code>AFTS</code> (Fire TV Gen 2 only) <br/>
+      <code>AFT*</code> (all Fire TV devices)</td>
     </tr>
   </tbody>
 </table>
@@ -273,7 +279,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>OpenGL Version</td>
+      <td>Max OpenGL Version</td>
       <td>OpenGL ES 3.0</td>
     </tr>
     <tr>

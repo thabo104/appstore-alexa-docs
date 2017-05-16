@@ -10,9 +10,27 @@ github: true
 * TOC
 {:toc}
 
-### Fire App Builder 1.0.2, 1.0.3, and 1.0.4 Released
 
-**April 6, 2017**. Fire App Builder version 1.0.2 was recently released. The main feature includes the ability to send recommendations to the "Recommended By Your Apps" row on the Fire TV home screen.  You can send a list of global recommendations when your app starts, or individual recommendations when a user plays a specific video. For details, see [Recommendations in Fire App Builder Overview][fire-app-builder-recommendations-overview]. Many other fixes and enhancements were made, such as adding events tracked in analytics, support for XML feeds, and a smarter Login/Logout button. New documentation includes a tutorial on [configuring MRSS feeds][fire-app-builder-configure-mrss-feed], several topics on how to send [recommendations][fire-app-builder-recommendations-overview], and a topic on [submitting your app to the Appstore][fire-app-builder-submit-your-app]. You can view the [1.0.2 release notes here][fire-app-builder-release-notes-version-1-0-2]. For more information, see [Fire App Builder][fire-app-builder-overview].
+### Fire TV Edition Released
+
+**May 16, 2017**. [Fire TV Edition](https://www.amazon.com/dp/B06XDC1544) was released. Fire TV Edition is a 4K Ultra HD television with Fire TV built-in. Fire TV Edition is similar to a TV with Fire TV or Fire TV Stick, with some additional features in the user interface. For example, with Fire TV Edition, you can:
+
+* Toggle between inputs (and see a preview of the input prior to switching).
+* See all live content on a row called "On Now".
+* Select over-the-air (antenna) content.
+* Use your voice to control volume, power, and other TV features.
+
+Fire TV Edition's remote controller includes 6 new buttons (power, volume up, volume down, Netflix, Amazon Video, and Amazon Music), and more. See the full description of Fire TV Edition on Amazon.com for more details.
+
+Your app works the same on Fire TV Edition as with other Fire TV devices, so there's no impact to third-party apps except for wider visibility of your content through this new device and market. See the [Fire TV Edition FAQ][fire-tv-edition-faq] for more details about apps and Fire TV Edition.
+
+### Fire App Builder 1.0.2 Released (and 1.0.3, 1.0.4)
+
+**April 6, 2017**. Fire App Builder version 1.0.2 was recently released. The main feature includes the ability to send recommendations to the "Recommended By Your Apps" row on the Fire TV home screen.  You can send a list of global recommendations when your app starts, or individual recommendations when a user plays a specific video. For details, see [Recommendations in Fire App Builder Overview][fire-app-builder-recommendations-overview].
+
+Many other fixes and enhancements were made, such as adding events tracked in analytics, support for XML feeds, and a smarter Login/Logout button. New documentation includes a tutorial on [configuring MRSS feeds][fire-app-builder-configure-mrss-feed], several topics on how to send [recommendations][fire-app-builder-recommendations-overview], and a topic on [submitting your app to the Appstore][fire-app-builder-submit-your-app]. You can view the [1.0.2 release notes here][fire-app-builder-release-notes-version-1-0-2]. For more information, see [Fire App Builder][fire-app-builder-overview].
+
+Update: [Version 1.0.3][fire-app-builder-release-notes-1-0-3] and [Version 1.0.4][fire-app-builder-release-notes-1-0-4] were follow-up releases with minor fixes.
 
 ### Fire TV Stick Gen 2 Available in UK and Germany
 
@@ -35,6 +53,7 @@ github: true
 {: .grid}
 | Date | Page | Details |
 |-----|-----|------|
+| May 16, 2017 | - [Fire TV Device Specifications][device-and-platform-specifications] <br/> - [Fire TV Edition FAQ][fire-tv-edition-faq] <br/> - [Identifying Fire TV Devices][identifying-amazon-fire-tv-devices] <br/> - [Playing 4K Ultra HD Videos on Fire TV][fire-tv-4k-ultra-hd] |
 | May 8, 2017 | - ["Continue Watching Recommendations"][fire-tv-recommendations-continue-watching] <br/> - [Recommendations FAQ][fire-tv-recommendations-faq] | Recommendations to populate the Recent row on Fire TV's home screen, along with more detail about standard recommendations |
 | May 2, 2017 | [Version 1.0.4 Release Notes (Fire App Builder)][fire-app-builder-release-notes-version-1-0-4] | Release notes for version 1.0.4 release |
 | April 14, 2017 | [Version 1.0.3 Release Notes (Fire App Builder)][fire-app-builder-release-notes-version-1-0-3] | Release notes for version 1.0.3 release |
@@ -72,7 +91,7 @@ github: true
 
 You can follow the latest news about Fire TV by reading the Fire TV category on the blog.
 
-<a href="https://developer.amazon.com/blogs/tag/Fire+TV"><button class="feedbackButton">Read the Fire TV blog</button></a>
+<a href="https://developer.amazon.com/blogs/appstore/"><button class="feedbackButton">Read the Fire TV blog</button></a>
 
 [uk-germany]: https://developer.amazon.com/blogs/post/acc08b81-8f50-4bc8-998a-58530a39f5c8/the-all-new-fire-tv-stick-to-hit-shelves-in-the-uk-germany-and-japan
 

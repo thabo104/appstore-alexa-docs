@@ -16,18 +16,20 @@ td.center {
 text-align: center;
  }
 </style>
- 
+
 <table class="grid">
 <colgroup>
-  <col width="40%" />
-  <col width="15%" />
-  <col width="15%" />
-  <col width="15%" />
-  <col width="15%" />
+  <col width="35%" />
+  <col width="13%" />
+  <col width="13%" />
+  <col width="13%" />
+  <col width="13%" />
+  <col width="13%" />
 </colgroup>
 <thead>
 <tr>
   <th>Feature</th>
+  <th>Fire TV Edition</th>
   <th>Fire TV Stick <br/>(Gen 2)</th>
   <th>Fire TV <br/>(Gen 2)</th>
   <th>Fire TV Stick <br/>(Gen 1)</th>
@@ -41,9 +43,11 @@ text-align: center;
   <td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
+  <td class="center"> ✓ </td>
 </tr>
 <tr>
   <td><code>amazon.hardware.low_power</code></td>
+  <td class="center"> </td>
   <td class="center"> ✓ </td>
   <td class="center"> </td>
   <td class="center"> ✓ </td>
@@ -51,14 +55,16 @@ text-align: center;
 </tr>
 <tr>
   <td><code>amazon.hardware.uhd_capable</code></td>
+  <td class="center"> ✓ </td>
   <td class="center"></td>
   <td class="center"> ✓ </td>
   <td class="center"> </td>
   <td class="center"> </td>
-   
+
 </tr>
 <tr>
   <td><code>amazon.software.drm_teardown</code></td>
+  <td class="center"></td>
   <td class="center"></td>
   <td class="center"></td>
   <td class="center"></td>
@@ -66,6 +72,7 @@ text-align: center;
 </tr>
 <tr>
 <td><code>android.hardware.type.television</code></td>
+<td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
@@ -99,9 +106,9 @@ You might want to check for the Fire TV device in your code for a number of reas
 
 ## Checking for the Model
 
-Previously, you could identify Fire TV devices by combining the `android.os.Build.MODEL` with the `Build.MANUFACTURER`. As more Amazon-powered devices come to market, this approach will no longer work. 
+Previously, you could identify Fire TV devices by combining the `android.os.Build.MODEL` with the `Build.MANUFACTURER`. As more Amazon-powered devices come to market, this approach will no longer work.
 
-If you absolutely have to switch behavior based on a specific Amazon product model, you may use the `MODEL` name.  Be aware that such code will not likely work on future devices. As such, include a sensible fallback approach for future Fire TV devices based on the `com.hardware.amazon.fire_tv` feature.
+If you absolutely have to switch behavior based on a specific Amazon product model, you may use the `MODEL` name. Be aware that such code will not likely work on future devices. As such, include a sensible fallback approach for future Fire TV devices based on the `com.hardware.amazon.fire_tv` feature.
 
 The [`android.os.Build.MODEL`][4] value for Fire TV devices is as follows:
 
@@ -114,6 +121,7 @@ The [`android.os.Build.MODEL`][4] value for Fire TV devices is as follows:
 </colgroup>
 <thead>
 <tr>
+  <th>Fire TV Edition</th>
   <th>Fire TV Stick (Gen 2)</th>
   <th>Fire TV (Gen 2)</th>
   <th>Fire TV Stick (Gen 1)</th>
@@ -122,6 +130,7 @@ The [`android.os.Build.MODEL`][4] value for Fire TV devices is as follows:
 </thead>
 <tbody>
 <tr>
+  <td><code>AFTRS</code></td>
   <td><code>AFTT</code></td>
   <td><code>AFTS</code></td>
   <td><code>AFTM</code></td>

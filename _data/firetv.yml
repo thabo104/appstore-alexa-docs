@@ -59,6 +59,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/getting-started-developing-apps-and-games-for-amazon-fire-tv
     jurl: /getting-started-developing-apps-and-games-for-amazon-fire-tv.html
     ref: getting-started-developing-apps-and-games-for-amazon-fire-tv
+    bookmarks: [firetvnames]
 
   - title: Fire TV Device Specifications
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/device-and-platform-specifications
@@ -84,6 +85,11 @@ folders:
     jurl: /fire-tv-fire-os-overview.html
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-fire-os-overview
     ref: fire-tv-fire-os-overview
+
+  - title: Fire TV Edition (Smart TV) FAQs
+    jurl: /fire-tv-edition-faq.html
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-edition-faq
+    ref: fire-tv-edition-faq
 
   - title: What's New in Fire TV Development
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/whats-new-in-the-fire-tv-sdk
@@ -112,7 +118,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/connecting-adb-to-fire-tv-device
     jurl: /connecting-adb-to-fire-tv-device.html
     ref: connecting-adb-to-fire-tv-device
-    bookmarks: [addadbpath]
+    bookmarks: [addadbpath, networkconnect]
 
   - title: Install and Run Your Fire TV App
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/installing-and-running-your-app
@@ -200,11 +206,6 @@ folders:
     jurl: /fire-tv-handling-hdmi-events.html
     ref: fire-tv-handling-hdmi-events
 
-  - title: 4K Ultra HD Videos
-    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-4k-ultra-hd
-    jurl: /fire-tv-4k-ultra-hd.html
-    ref: fire-tv-4k-ultra-hd
-
   - title: Android Menu and ActionBar widgets
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/user-interface
     jurl: /user-interface.html
@@ -240,6 +241,25 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-international-locales
     jurl: /fire-tv-international-locales.html
     ref: fire-tv-international-locales
+
+- title: Playing 4K UHD Videos
+  folderitems:
+
+  - title: Play 4K Ultra HD Videos
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-4k-ultra-hd
+    jurl: /fire-tv-4k-ultra-hd.html
+    ref: fire-tv-4k-ultra-hd
+
+  - title: APIs for HDMI Mode Switch (Fire TV Gen 2 only)
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-4k-apis-for-hdmi-mode-switch
+    jurl: /fire-tv-4k-apis-for-hdmi-mode-switch.html
+    ref: fire-tv-4k-apis-for-hdmi-mode-switch
+    bookmarks: [amazonextension]
+
+  - title: Tunnel Mode Playback (Fire TV Edition only)
+    hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-4k-tunnel-mode-playback
+    jurl: /fire-tv-4k-tunnel-mode-playback.html
+    ref: fire-tv-4k-tunnel-mode-playback
 
 - title: Troubleshooting Fire TV Issues with Developer Tools
   folderitems:
