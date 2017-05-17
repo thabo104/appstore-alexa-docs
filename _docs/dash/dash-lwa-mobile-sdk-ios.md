@@ -45,65 +45,65 @@ The output should look similar to this:
 8. Add the following #import statement to your source file to import the Login with Amazon API:
 
     ```objective_c
-    #import <LoginWithAmazon/LoginWithAmazon.h>;
+    #import <LoginWithAmazon/LoginWithAmazon.h>
     ```
 
 9.  Add the function that will perform the login:
 
     ```objective_c
     - (void)login
-      {
-          AMZNAuthorizationManager* manager = [AMZNAuthorizationManager sharedManager];
-          AMZNAuthorizeRequest* request = [[AMZNAuthorizeRequest alloc] init];
-          request.interactiveStrategy = AMZNInteractiveStrategyAuto;
-          NSMutableArray* scopeObjectArray = [NSMutableArray array];
-          NSString* requestScopes = @"dash:replenish";
-          NSMutableDictionary* options = NSMutableDictionary.new;
-          //DEVICE_SERIAL_NUMBER – The serial number of the device you are trying to register
-          options[@"serial"] = @"DEVICE_SERIAL_NUMBER";
-          //Set device model name. This is a "Device Model ID" in the Self Service portal.
-          options[@"device_model"] = @"DEVICE_MODEL_NAME";
-          //Set whether this registration should allow marketplaces that have not yet been certified.  For use in pre-release testing only, this flag must not be passed in by your released app in production.
-    options[@"should_include_non_live"] = false;
+    {
+        AMZNAuthorizationManager* manager = [AMZNAuthorizationManager sharedManager];
+        AMZNAuthorizeRequest* request = [[AMZNAuthorizeRequest alloc] init];
+        request.interactiveStrategy = AMZNInteractiveStrategyAuto;
+        NSMutableArray* scopeObjectArray = [NSMutableArray array];
+        NSString* requestScopes = @"dash:replenish";
+        NSMutableDictionary* options = NSMutableDictionary.new;
+        // DEVICE_SERIAL_NUMBER – The serial number of the device you are trying to register
+        options[@"serial"] = @"DEVICE_SERIAL_NUMBER";
+        //Set device model name. This is a "Device Model ID" in the Self Service portal.
+        options[@"device_model"] = @"DEVICE_MODEL_NAME";
+        // Set whether this registration should allow marketplaces that have not yet been certified.
+        // For use in pre-release testing only, this flag must not be passed in by your released app in production.
+        // SHOULD_INCLUDE_NON_LIVE should be 'true' or 'false'
+        options[@"should_include_non_live"] = @"SHOULD_INCLUDE_NON_LIVE";
+        // IS_THIS_A_TEST_DEVICE - Flag that indicates if this a test device or not. Test devices will not place actual    orders.
+        // IS_THIS_A_TEST_DEVICE should be 'true' or 'false'
+        options[@"is_test_device"] = @"IS_THIS_A_TEST_DEVICE";
+    
+        id<AMZNScope> drsScope = [AMZNScopeFactory scopeWithName:requestScopes data:options];
+        [scopeObjectArray addObject:drsScope];
+        request.scopes = scopeObjectArray;
+        request.grantType = AMZNAuthorizationGrantTypeCode;
+        // Set your code challenge.
+        request.codeChallenge = @"YOUR_CODE_CHALLENGE";
+        // Set code challenge method - "plain" or "S256".
+        request.codeChallengeMethod = @"YOUR_CODE_CHALLENGE_METHOD";
+        [manager authorize:request withHandler:[self requestLoginHandler]];
+    }   
 
-          // IS_THIS_A_TEST_DEVICE - Flag that indicates if this a test device or not. Test devices will
-          not place actual orders.
-
-              option[@"is_test_device"]
-              = @”IS_THIS_A_TEST_DEVICE”
-
-              id<AMZNScope> drsScope = [AMZNScopeFactory scopeWithName:requestScopes data:options];
-          [scopeObjectArray addObject:drsScope];
-          request.scopes = scopeObjectArray;
-          request.grantType = AMZNAuthorizationGrantTypeCode;
-          // Set your code challenge.
-          request.codeChallenge = @"YOUR_CODE_CHALLENGE";
-          // Set code challenge method - "plain" or "S256".
-          request.codeChallengeMethod = @"YOUR_CODE_CHALLENGE_METHOD";
-          [manager authorize:request withHandler:[self requestLoginHandler]];
-      }
-      - (AMZNAuthorizationRequestHandler)requestLoginHandler
-      {
-          AMZNAuthorizationRequestHandler requestHandler = ^(AMZNAuthorizeResult* result, BOOL userDidCancel, NSError* error) {
-              if (error) {
-                  NSString* errorMessage = error.userInfo[@"AMZNLWAErrorNonLocalizedDescription"];
-                  NSLog(@"Error: %@", errorMessage);
-                  //handle login error
-              }
-              else if (userDidCancel) {
-                  //handle user cancellation
-              }
-              else {
-                  // Authentication was successful. Obtain the user profile data.
-                  NSString* authCode = result.authorizationCode;
-                  NSString* clientId = result.clientId;
-                  NSString* redirectUri = result.redirectUri;
-                  NSLog(@"\n code = %@ \n client ID = %@ \n redirect URI = %@", authCode, clientId, redirectUri);
-                  //request the access and the refresh token
-              }
-          };
-          return [requestHandler copy]
-      }
+    - (AMZNAuthorizationRequestHandler)requestLoginHandler
+    {
+        AMZNAuthorizationRequestHandler requestHandler = ^(AMZNAuthorizeResult* result, BOOL userDidCancel, NSError* error) {
+            if (error) {
+                NSString* errorMessage = error.userInfo[@"AMZNLWAErrorNonLocalizedDescription"];
+                NSLog(@"Error: %@", errorMessage);
+                // handle login error
+            }
+            else if (userDidCancel) {
+                // handle user cancellation
+            }
+            else {
+                // Authentication was successful. Obtain the user profile data.
+                NSString* authCode = result.authorizationCode;
+                NSString* clientId = result.clientId;
+                NSString* redirectUri = result.redirectUri;
+                NSLog(@"\n code = %@ \n client ID = %@ \n redirect URI = %@", authCode, clientId, redirectUri);
+                // request the access and the refresh token
+            }
+        };
+        return [requestHandler copy]
+    }
     ```
 
     You have completed the necessary preparation to make a POST request call to obtain the access and refresh tokens. The following steps will walk you through the process of making this call. This call can be made from your mobile application or DRS product. (In this documentation, we assume you will make that call on your DRS product.)
