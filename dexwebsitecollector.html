@@ -1,0 +1,21 @@
+---
+layout: null
+path: https://s3-us-west-2.amazonaws.com/cspreviewgen/DeXWebsiteAUIAssets
+---
+
+<html>
+<head>
+{% for script in site.data.assets.js %}
+  <script src="{{page.path}}/{{script}}"></script>
+{% endfor %}
+
+{% for style in site.data.assets.css %}
+  <link rel="stylesheet" type="text/css" href="{{page.path}}/{{style}}">
+{% endfor %}
+</head>
+
+<body>
+<h1>{% raw %}{{page.title}}{% endraw %}</h1>
+{% raw %}{{content}}{% endraw %}
+</body>
+</html>

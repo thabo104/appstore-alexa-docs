@@ -1,0 +1,58 @@
+sourceDirectories:
+  - src/
+  - images/
+
+js:
+  - src/scripts/jquery.js
+  - src/scripts/jquery-lazyload.js
+  - src/scripts/jquery-cookie.js
+  - src/scripts/owl-carousel.js
+  - src/scripts/hero-carousel.js
+  - src/scripts/hero-no-cta.js
+  - src/scripts/in-page-carousel.js
+  - src/scripts/images.js
+  - src/scripts/menu.js
+  - src/scripts/multi-column-with-image.js
+  - src/scripts/nav.js
+  - src/scripts/search.js
+  - src/scripts/single-field-form.js
+  - src/scripts/subscribe-form.js
+  - src/scripts/bootstrap-collapse.js
+  - src/scripts/product-nav.js
+
+css:
+  - src/styles/font-icons.css
+  - src/styles/utility.css
+  - src/styles/typography.css
+  - src/styles/grid.css
+  - src/styles/grid-responsive.css
+  - src/styles/navbar.css
+  - src/styles/menu.css
+  - src/styles/menu-button.css
+  - src/styles/multi-column-with-image.css
+  - src/styles/search.css
+  - src/styles/hero-carousel.css
+  - src/styles/hero-no-cta.css
+  - src/styles/owl-carousel.css
+  - src/styles/custom-controls.css
+  - src/styles/single-field-form.css
+  - src/styles/sidebar.css
+  - src/styles/subscribe-form.css
+  - src/styles/home.css
+  - src/styles/content-slot.css
+  - src/styles/value-props.css
+  - src/styles/footer.css
+  - src/styles/bootstrap-collapse.css
+  - src/styles/sdk-downloader.css
+  - src/styles/media.css
+  - src/styles/product-nav.css
+  - src/styles/multi-column-left-icon.css
+  - src/styles/header-banner-button-cta.css
+  - src/styles/message.css
+  - src/styles/oas.css
+
+png:
+  - images/list-icon.png
+
+woff:
+  - src/fonts/icomoon.woff
