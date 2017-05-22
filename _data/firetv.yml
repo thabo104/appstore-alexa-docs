@@ -363,6 +363,11 @@ folders:
     jurl: /migrating-your-web-app-to-fire-tv.html
     ref: migrating-your-web-app-to-fire-tv
 
+  - title: Cordova plugin for Fire TV Catalog Integration
+    hurl: https://developer.amazon.com/public/solutions/platforms/webapps/docs/fire-tv-cordova-plugin-catalog
+    jurl: /fire-tv-cordova-plugin-catalog.html
+    ref: fire-tv-cordova-plugin-catalog
+
   - title: Web App FAQ
     hurl: https://developer.amazon.com/public/solutions/platforms/webapps/docs/fire-tv-web-app-faq
     jurl: /fire-tv-web-app-faq.html
