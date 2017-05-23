@@ -3,12 +3,12 @@ title: Notifications for Amazon Fire TV
 permalink: notifications-for-amazon-fire-tv.html
 sidebar: firetv
 product: Fire TV
-SMEs: Mike Miller, David Goehring, Mustafa Hakim, Stephen Whitney. 
+SMEs: Mike Miller, David Goehring, Mustafa Hakim, Stephen Whitney.
 toc-style: kramdown
 github: true
 ---
 
-2nd generation Fire TV devices now support standard Android notifications through the [Android Notifications API](http://developer.android.com/reference/android/app/Notification.html). These notifications appear in a \"Notification Center,\" as described below. However, for 1st generation Fire TV devices, support for standard notifications and the Notifications Center will roll out at a later date.
+[Fire TV devices][device-and-platform-specifications] support standard Android notifications through the [Android Notifications API](http://developer.android.com/reference/android/app/Notification.html). These notifications appear in a \"Notification Center,\" as described below.
 
 * TOC
 {:toc}
@@ -30,21 +30,21 @@ Typically you use notifications to let users know that you have an update availa
 
 You're probably used to receiving messages from the various apps on your smartphone. Notifications for your Fire TV apps can provide the same kind of user engagement. The notifications are a way of reaching out to users to encourage them to re-engage with your app in some way.
 
-Note that notifications are not [Recommendations](https://developer.android.com/training/tv/discovery/recommendations.html). Recommendations use a different Android API (which is not currently supported on Fire TV) to recommend content to users, usually on specific rows on the home screen.
+{% include tip.html content="Note that notifications are not [Recommendations][fire-tv-recommendations-overview]. Recommendations use a different Android API to recommend content to users. Recommendations appear directly on the Fire TV home screen in a row called \"Recommended By Your Apps\". If you want to recommend content related to what the user has been watching, [send a recommendation][fire-tv-recommendations-send-recommendations]." %}
 
 ## Types of Notifications Supported on Fire TV
 
 There several types of notifications you can create on Fire TV:
 
-* [Heads-up notifications](../notifications-for-amazon-fire-tv.md#headsup)
-* [Toasts](../notifications-for-amazon-fire-tv.md#toasts)
-* [Standard Notifications](#standard notifications)
+* [Heads-up notifications](#headsup)
+* [Toasts](#toasts)
+* [Standard Notifications](#standardnotifications)
 
 ### Heads-up Notifications {#headsup}
 
-Fire TV supports Android's [heads-up notifications](https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Heads-up). Typically on Android devices, heads-up notifications are floating windows that appear at the top of the screen and allow users to interact with the window (such as receiving a call while you're in another app). 
+Fire TV supports Android's [heads-up notifications](https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Heads-up). Typically on Android devices, heads-up notifications are floating windows that appear at the top of the screen and allow users to interact with the window (such as receiving a call while you're in another app).
 
-On Fire TV, heads-up notifications appear at the bottom of the screen and fade away after a few seconds. Some interaction is allowed while the notification appears. For example, users can click a button or dismiss the notification with the Back button. 
+On Fire TV, heads-up notifications appear at the bottom of the screen and fade away after a few seconds. Some interaction is allowed while the notification appears. For example, users can click a button or dismiss the notification with the Back button.
 
 All undismissed heads-up notifications will be displayed in the Notification Center, where users can review the notifications at their leisure. This also ensures that users will actually see the notifications. (Previously, if users missed the heads-up notification, there wasn't any way to return to it.)
 
@@ -62,9 +62,9 @@ Though rarely used, Fire TV also supports [toasts](https://developer.android.com
 
 ### Standard Notifications {#standardnotifications}
 
-Standard notifications are informational in nature and do not interrupt the current foreground activity (unlike heads-up notifications, which pop-up in the bottom-right corner of the screen). Notifications from your app are added to the Notification Center as soon as they are raised. 
+Standard notifications are informational in nature and do not interrupt the current foreground activity (unlike heads-up notifications, which pop-up in the bottom-right corner of the screen). Notifications from your app are added to the Notification Center as soon as they are raised.
 
-The Notification Center appears under the Settings menu. When users have unseen notifications, a little bell appears next to Settings. 
+The Notification Center appears under the Settings menu. When users have unseen notifications, a little bell appears next to Settings.
 
 {% include image.html file="firetv/getting_started/images/notificationbell" type="png" %}
 
@@ -73,16 +73,16 @@ Within Settings, users select Notifications. This opens what is referred to in t
 {% include image.html file="firetv/getting_started/images/notificationcenter" type="png" %}
 
 The Notifications Center arranges the notifications in a single list ordered by most recent first. The Fire TV Appstore client itself will send notifications when your app has an update (hence you don't have to worry about pushing these kinds of notifications). In the following screenshot, there are two apps that have updates.
- 
+
 {% include image.html file="firetv/getting_started/images/notificationcards" type="png" %}
 
-When users click the icon, they see the updates available for the app. Users can choose to update the app or not. 
+When users click the icon, they see the updates available for the app. Users can choose to update the app or not.
 
 {% include image.html file="firetv/getting_started/images/notificationavailableupdates" type="png" %}
 
 Notifications should contain enough information to convey the reason for the notification. They can also include an optional intent to launch when the notification is selected. For example, your notification can allow the user to launch your app with a deep link to the specific activity related to the intent.
 
-When the update finishes, the user is prompted to launch the app. 
+When the update finishes, the user is prompted to launch the app.
 
 {% include image.html file="firetv/getting_started/images/notificationlaunch" type="png" %}
 
@@ -92,7 +92,7 @@ Users can also turn app notifications on or off on a device-by-device basis. (Mo
 
 Users can also select **Do Not Interrupt** to suppress heads-up notifications from appearing on the screen. (You will still see standard notifications in the Notification Center and see the bell icon on Settings on the main navigation.)
 
-All notifications appear in the Notification Center until the user engages with the notifications, dismisses them, disables notifications for the app, or until the app removes them. 
+All notifications appear in the Notification Center until the user engages with the notifications, dismisses them, disables notifications for the app, or until the app removes them.
 
 A notification that was not dismissed while displayed as a heads-up notification will appear in the Notification Center.
 
@@ -173,15 +173,15 @@ Fire TV also sends system notifications to users. Although third-party apps can'
 These notifications appear as small popups in a corner of the screen and can be raised over any content that is on the screen.
 System notifications will also be stored in the Notification Center (unless users dismiss them in the initial display).
 
-Fire TV also provides notifications when your app has an update. These notifications aren't something you create with your app but rather are triggered by the Fire TV appstore client. 
+Fire TV also provides notifications when your app has an update. These notifications aren't something you create with your app but rather are triggered by the Fire TV appstore client.
 
-Fire TV creates two types of app update messages. A "Required Update" message is a visual prompt on an app icon, indicating that there is a new update available. 
+Fire TV creates two types of app update messages. A "Required Update" message is a visual prompt on an app icon, indicating that there is a new update available.
 
 Another update message is presented to users though an on-device dialogue box. When users start a new session in your app or game, they are presented with the option to “Update Now” or “Launch without Updating” along with details describing what’s new in the update.
 
 {% include image.html file="firetv/getting_started/images/092816_badlands" type="png" caption="App Update Notification" %}
 
-After the app has been installed, users get a quick notification letting them know it’s ready to launch: 
+After the app has been installed, users get a quick notification letting them know it’s ready to launch:
 
 {% include image.html file="firetv/getting_started/images/092816_PostInstall2" type="png" caption="Post-Install Notification" %}
 
