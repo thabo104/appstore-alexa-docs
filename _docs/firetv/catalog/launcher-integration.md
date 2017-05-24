@@ -82,7 +82,7 @@ public void BroadcastCapabilities(Context context)
 }
 ```
 
-### Intent Extras
+### Intent Extras {#intent_extras}
 
 Specify the capabilities of your app in the keys and values of the extras field, using the [`Intent.putExtra()`][2] method. All of the Intent extras have a prefix package of `amazon.intent.extra`.
 

@@ -82,6 +82,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/catalog/launcher-integration
     jurl: /launcher-integration.html
     ref: launcher-integration
+    bookmarks: [intent_extras]
 
   - title: Verifying Fire TV Deep Links
     hurl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/catalog/test-cases-for-verifying-deep-links-from-your-fire-tv-catalog

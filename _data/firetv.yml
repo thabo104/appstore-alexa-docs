@@ -367,6 +367,7 @@ folders:
     hurl: https://developer.amazon.com/public/solutions/platforms/webapps/docs/fire-tv-cordova-plugin-catalog
     jurl: /fire-tv-cordova-plugin-catalog.html
     ref: fire-tv-cordova-plugin-catalog
+    bookmarks: [prereqs_cordova,installation_instructions]
 
   - title: Web App FAQ
     hurl: https://developer.amazon.com/public/solutions/platforms/webapps/docs/fire-tv-web-app-faq
