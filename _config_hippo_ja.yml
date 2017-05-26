@@ -20,6 +20,13 @@ exclude:
   - _output_de
   - sapp
   - Config
+  - _docs_ja/firetv/catalog/
+  - _docs_ja/firetv/fireappbuilder/
+  - _docs_ja/previous_translations/
+  - _docs_ja/dash/
+  - PDF_Frontmatter/
+  - dexwebsitecollector.html
+  - dexwebsiteinstructions.md
 
 collections:
   docs_ja:

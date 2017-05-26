@@ -1,38 +1,38 @@
-Fireデバイスでアプリがインストールされる場所は、Androidマニフェストファイルの設定で決まります。場所として設定できるストレージは、2 つあります。
+The settings in your Android Manifest file determine where your app is installed on Fire devices. Two storage locations are possible:
 
-* 外部ストレージ (SDカードなど)
-* 内部ストレージ (デバイスのメモリを使用)
+* External storage (such as an SD card)
+* Internal storage (using the device's memory)
 
 {% if include.device == "firetv" %}
-Fire TV Stickには外部ストレージがありませんが、Fire TV (セットトップボックス) には、メモリカードスロットを使用した外部ストレージオプションが用意されています。
+Fire TV Stick doesn't have external storage, but Fire TV (the set-top box) does provide external storage options through a memory card slot.
 {% endif %} 
 
 {% if include.device == "firetablets" %}
-古いFireタブレットには外部ストレージがありませんが、新しいFireタブレットには、メモリカードスロットを使用した外部ストレージオプションが用意されています。
+Although older Fire tablets don't have external storage, the newer Fire tablets provide external storage options through memory card slots.
 {% endif %} 
 
-一般的に、アプリでは、デフォルトのインストール場所として外部ストレージを指定する必要があります。
+Generally, your app should specify external storage as the default install location.
 
 * TOC
 {:toc}
 
-## ベストプラクティス
+## Best Practices 
 
-ほとんどのアプリでは、Androidマニフェストファイルの`installLocation`に`preferExternal`を指定することが推奨されます。指定しないと、アプリは内部ストレージにインストールされます。
+As a best practice, most apps should specify `preferExternal` for the `installLocation` in the Android Manifest file. If left unspecified, your app will be installed on internal storage.
 
-内部ストレージがいっぱいになると、最終的に次のようになる可能性があります。
+Filling up internal storage can lead to:
 
-* インストールできるアプリの数が減る
-* アプリの評価が下がる
-* ユーザーエクスペリエンスが低下する
+* Fewer app installs
+* Poor app ratings
+* Negative customer experiences
 
-ユーザーによっては、外部ストレージに使用可能な領域が十分ある場合でも、アプリのマニフェストで`preferExternal`を指定しないと、アプリが内部にインストールされることがあります。その結果、ユーザーにストレージが不足しているという警告が表示されたり、アプリをまったくインストールできなくなったりするため、ユーザーの不満を招くことになります。
+Some users may have abundant space available in external storage, but if an app's Manifest does not specify `preferExternal`, the app will be installed internally. As a result, users get prompted with low storage warnings or cannot install the app at all, which leads to user frustration.
 
-`preferExternal`を指定すれば、アプリのユーザー基盤を最大限に拡大し、Fireデバイスのユーザーエクスペリエンスを向上する効果を期待できます。
+Selecting `preferExternal` helps ensure the greatest user base for your app and a better user experience on Fire devices.
 
-## 外部ストレージを指定する方法
+## How to Specify External Storage
 
-アプリの`AndroidManifest.xml`の` <manifest>` タグ内に`installLocation`属性を追加し、値を`preferExternal`に設定します。次に、例を示します。
+In the `AndroidManifest.xml` of your app, inside the `<manifest>` tag, add the `installLocation` attribute and set its value to `preferExternal`. Here's an example:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -41,7 +41,7 @@ Fire TV Stickには外部ストレージがありませんが、Fire TV (セッ�
 </manifest>
 ```
 
-`installLocation`パラメータに指定できる値は複数あります。
+The `installLocation` parameter has several values available:
 
 <table class="grid">
     <colgroup>
@@ -50,8 +50,8 @@ Fire TV Stickには外部ストレージがありませんが、Fire TV (セッ�
     </colgroup>
     <thead>
         <tr>
-            <th>installLocationの値</th>
-            <th>説明</th>
+            <th>installLocation value </th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
@@ -60,14 +60,14 @@ Fire TV Stickには外部ストレージがありませんが、Fire TV (セッ�
                 `preferExternal`
             </td>
             <td markdown="span">
-                **ほとんどのアプリで推奨される値です**。利用できる場合は外部ストレージにアプリをインストールします。外部ストレージに空き容量がない場合は、内部ストレージにアプリがインストールされます (空き容量がある場合)。ユーザーは後からこのアプリを手動で移動できます。その際は、[設定] > [アプリケーション] > [インストール済アプリケーションを管理] でアプリを選択します。</td>
+                **Recommended for most apps**. Install your app on external storage when available. If external storage is full, install the app to internal storage (if available). The user can manually move the app later by selecting it from Settings > Apps & Games > Manage All Applications.</td>
         </tr>
         <tr>
             <td markdown="span">
                 `internalOnly`
             </td>
             <td align="left" markdown="span">
-                アプリを内部ストレージのみにインストールします。内部ストレージに十分な空き容量がない場合、インストールは失敗します。ユーザーがアプリを後から手動で移動することはできません。ほとんどのアプリでは推奨されません。このオプションは、[次のセクション](#internalStorage)で説明するアプリの種類に対してのみ選択してください。
+                Install the app only to internal storage. If there is not enough room in internal storage, the install will fail. The app cannot be manually moved later by the user. Not recommended for most apps. Choose this option only for the types of apps described in the [next section](#internalStorage).
             </td>
         </tr>
         <tr>
@@ -75,86 +75,87 @@ Fire TV Stickには外部ストレージがありませんが、Fire TV (セッ�
                 `auto`
             </td>
             <td align="left" markdown="span">
-                デフォルトでは、内部ストレージにアプリをインストールします。ただし、内部ストレージに空き容量がない場合は、アプリを外部ストレージにインストールします (外部ストレージが利用可能である場合)。ユーザーは後からこのアプリを手動で移動できます。その際は、[設定] > [アプリケーション] > [インストール済アプリケーションを管理] でアプリを選択します。</td>
+                Install to internal storage by default. However, if internal storage is full, install the app to external storage (assuming external storage is available). The user can manually move the app later by selecting it from Settings > Apps & Games > Manage All Applications.
+            </td>
         </tr>
     </tbody>
 </table>
 
-APKファイルが外部ストレージにインストールされていても、データベース、プライベートユーザーデータ、最適化された.dexファイル、抽出されたネイティブコードはすべて、内部ストレージに保存される点に注意してください。
+Note that even though the APK file is installed on external storage, all databases, private user data, optimized .dex files, and extracted native code are stored on internal storage.
 
-詳細については、Androidドキュメントの「[App Install Location](http://developer.android.com/guide/topics/data/install-location.html)」を参照してください。
+See [App Install Location](http://developer.android.com/guide/topics/data/install-location.html) in the Android documentation for more information.
 
-## 内部ストレージを選択するタイミング {#internalStorage}
+## When to Select Internal Storage {#internalStorage}
 
-ほとんどのアプリでは、`installLocation`に`preferExternal`を選択してください。ただし、DRM保護されたメディアアプリは例外です。                                                                  
+Most apps should select `preferExternal` for the `installLocation`. However, DRM-protected media apps are an exception:                                                                  
 
-* アプリがDRM保護されたメディアを再生する場合、USBストレージが使用できなくなるとDRMリソースが不安定になることがあります。
-* アプリがDRM保護されたメディアを再生する場合は、`installLocation`を含めないか、値を`internalOnly`に設定してください。
+* If your app plays DRM-protected media, DRM resources may become unstable if USB storage becomes unavailable.
+* If your app plays DRM-protected media, either do not include `installLocation` at all, or set its value to `internalOnly`.
 
-DRM保護されたメディアアプリ以外にも、次の種類のアプリケーションは外部ストレージにインストールしないでください。
+In addition to DRM-protected media apps, the following types of applications should never be installed on external storage:
 
-*  サービス
-*  アラームサービス
-*  入力メソッドエンジン
-*  アカウントマネージャー
-*  同期アダプター
-*  デバイスアドミニストレータ
-*  "ブート完了" のメッセージをリッスンするブロードキャストレシーバー
-*  ライブ壁紙 (Fire OSでは未サポート)
-*  アプリウィジェット (Fire OSでは未サポート)
+*  Services
+*  Alarm Services
+*  Input Method Engines
+*  Account Managers
+*  Sync Adapters
+*  Device Administrators
+*  Broadcast Receivers listening for “boot completed” message
+*  Live Wallpapers (not supported on Fire OS)
+*  App Widgets (not supported on Fire OS)
 
-詳細については、Androidドキュメントの「[App Install Location](http://developer.android.com/guide/topics/data/install-location.html)」を参照してください。
+See the [App Install Location](http://developer.android.com/guide/topics/data/install-location.html) documentation in Android for more details.
 
 {% if include.device == "firetv" %}
-## Fire TVの外部ストレージの設定
+## Fire TV External Storage Settings
 
-Fire TV (第 1 世代) ではUSB外部ストレージがサポートされており、Fire TV (第 2 世代) には外部ストレージ用のmicroSDスロットが搭載されています。これらの端末には、接続された外部ストレージをユーザーが管理するための設定が用意されています。
+Fire TV (Generation 1) supports USB external storage and Fire TV (Generation 2) includes a microSD slot for external storage. On these devices, settings are provided for users to manage connected external storage.
 
 {% include image.html file="firetv/getting_started/images/installlocation9" type="png" %}
 
-ユーザーは、内部に保存されているアプリをSDカードに移動することもできます。
+Users can also move internally stored apps to the SD card:
 
 {% include image.html file="firetv/getting_started/images/installlocation11" type="png" %}
 {% endif %}
 
 {% if include.device == "firetablets" %}
-## Fireタブレットの外部ストレージの設定
+## Fire Tablets External Storage Settings
 
-Fire OS 5 タブレットで外部ストレージカードが検出されると、[設定] の [ストレージ] ページに [サポートされているアプリをSDカードにインストール] オプションが表示されます。デフォルトでは "オン" になっています。
+When a Fire OS 5 tablet detects an external storage card, the Storage page in Settings shows the option “Install Supported Apps on your SD card." The default is “on.”
 
 {% include image.html file="firetv/getting_started/images/installlocation5" type="png" %}
 
-この設定をオンにすると、実質的にはAndroidの標準の動作`installLocation="auto"` が反転され、Amazon端末では`auto`が`preferExternal`として機能します。これは、Amazon端末のユーザーにとってはメリットですが、すべてのAndroid端末 (Amazonが提供する端末を含む) にとって最良の選択は、マニフェストで`preferExternal`を指定することです。
+When active, this setting effectively reverses the standard Android behavior of `installLocation="auto"` such that `auto` will act like `preferExternal` on Amazon devices. This is a step forward for customers using these devices, but the best choice for all Android devices, including those from Amazon, is to specify `preferExternal` in the manifest.
 
-他の最新のAndroid端末と同様、Fire OSタブレットでも、ユーザーは内部ストレージと外部ストレージの間でアプリを移動できます。次の例では、アプリを外部ストレージに移動した後も内部ストレージでアプリのフットプリントを確認できます。
+Fire OS tablets, like other current Android devices, also allow the user to move apps between internal and external storage. In this example, you can see the footprint of an app on internal storage even after moving it to external.
 
 {% include image.html file="firetv/getting_started/images/installlocation7" type="png" %}
 
 {% endif %}
 
-## アプリで 2 次ダウンロードを処理する
+## Handling secondary downloads in your app
 
-初めての実行時や別のタイミングで 2 次ダウンロードを自ら実行するアプリの場合、ダウンロードされたファイルは通常、端末のAPKファイルがインストールされている場所に保存されます。アプリが外部ストレージにインストールされた場合は、APKファイルが外部ストレージに存在することになります。
+For apps that perform their own secondary downloads as part of first run or at any other time, these downloaded files are usually stored where the APK file was installed on the device. If the app was installed on external storage, the APK file will be on external storage.
 
-アプリケーションによっては (特にゲーム)、追加のテクスチャやレベルなどのアセットファイルが含まれた 2 次ダウンロードが使用されることがあります。初回実行時の初期化中に行うなど、アプリのコード内でこのダウンロードを処理する場合は、Androidの[PackageManager getApplicationInfo](https://developer.android.com/reference/android/content/Context.html#getApplicationInfo())メソッドを使用して、`ApplicationInfo`クラスを取得します。
+Some applications, particularly games, use secondary downloads containing additional textures, levels, or other asset files. If you are handling this download in your app code, such as part of first run initialization, use the Android [PackageManager getApplicationInfo](https://developer.android.com/reference/android/content/Context.html#getApplicationInfo()) method to retrieve the `ApplicationInfo` class.
 
-`ApplicationInfo`クラスには、APKの場所 (`sourceDir`) と、リソースとマニフェストが格納されたソースディレクトリのパブリックな部分 (`publicSourceDir`) が含まれています。アプリが外部ストレージにインストールされている場合、これらのパスはその場所を指し、ユーザーが追加でダウンロードしたコンテンツをインストールする場所を示しています。
+The `ApplicationInfo` class contains the location of the APK (`sourceDir`) and the public parts of the source directory, including the resources and manifest (`publicSourceDir`). If the app has been installed on external storage, these paths will point to that location and indicate where users should install the additional downloaded content.
 
-アプリが`installLocation="preferExternal"` に従って 40 MBのAPKを外部ストレージにインストールしても、その後で、ダウンロードした 1 GBのデータファイルをアプリが`ApplicationInfo dataDir`のパスに基づいて内部ストレージに保存すると、外部ストレージを使用する意図に反し、端末の内部ストレージがすぐにいっぱいになるため、ユーザーの不満を招くことになります。そのため、2 次ダウンロードではダウンロードパスに`sourceDir`を使用するようにしてください。
+If your app uses `installLocation="preferExternal"` to install a 40MB APK onto external storage, but then stores a 1GB downloaded data file to internal storage because the app uses the `ApplicationInfo dataDir` path, this would defeat the purpose of using external storage and quickly fill up the device's internal storage, leading to customer frustration. Therefore make sure the secondary downloads use the `sourceDir` for the download path.
 
-## Unityを使用してインストール場所を指定する
+## Specifying Install Location with Unity
 
-Unityは、Amazonアプリストア用にゲームを作成するための人気のあるツールの 1 つです。Unityでは、Android用Player Settingsインスペクターを使用したインストール場所の設定がサポートされています。外部ストレージのアプリのインストール場所を構成するには:
+Unity is one of the most popular tools for creating games for the Amazon Appstore. Unity supports setting the install location through the Player Settings Inspector for Android. To configure your app install location on external storage:
 
-1.  Unityプロジェクトで、[**File-Build Settings…**] をクリックします。
-2.  [**Build Settings**] ダイアログで、[Platform] リストの [**Android**] を選択し、[**Player Settings…**] ボタンをクリックしてインスペクターを表示します。
+1.  From your Unity project, click **File-Build Settings…**.
+2.  From the **Build Settings** dialog, select **Android** in the Platform list and click the **Player Settings…** button to display the inspector.
 
     {% include image.html file="firetv/getting_started/images/installlocation1" type="png" %}
 
-3.  [**Other Settings**] セクションを開き、[**Install Location**] の設定を探します。通常は`preferExternal`がデフォルトです。これは、ほとんどの場合に最適な選択肢です。
+3.  Open the **Other Settings** section and look for the **Install Location** setting. `preferExternal` is usually the default -- this is almost always the best choice.
 
     {% include image.html file="firetv/getting_started/images/installlocation3" type="png" %}
 
-YoYo GamesのGamemaker:Studioでも、Androidプロジェクトにはデフォルトとして`preferExternal`が使用されています。このデフォルト値は手動で変更できますが、そのままにしておくことをお勧めします。
+YoYo Games’ Gamemaker:Studio also uses `preferExternal` as the default for Android projects. Although you can manually change this default, it's recommended that you leave it as is.
 
-他のエンジンや開発フレームワークでも、同様のオプションが用意されています。APKマニフェストで`installLocation`を`preferExternal`に設定するよう構成されていることを確認する方法については、使用しているツールのドキュメントを参照してください。
+Other engines and development frameworks provide similar options. Consult the documentation for the tool you are using to make sure you are using are configured to set the `installLocation` to `preferExternal` in the APK manifest.

@@ -1,5 +1,5 @@
 ---
-title: AndroidのMenuとActionBarウィジェット
+title: Android Menu and ActionBar widgets
 permalink: user-interface.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,21 +7,21 @@ toc-style: kramdown
 github: true
 ---
 
-このページでは、AndroidのMenuとActionBarウィジェットをFire TV対応アプリで動作するよう変更する方法について説明します。
+This page describes how to modify the Android Menu and ActionBar widgets to work for your Fire TV app.
 
-Amazon Fire TVプラットフォームでは、既存のAndroid UIフレームワーク (`android.widget.*`) の大部分を変更せずに使用できますが、 [Menu][1]と[ActionBar][2]は例外です。それ以外のAndroidウィジェットはすべてそのままで機能します。ただし、Fire TVユーザーインターフェースでは、外観が変わることがあります。
+The Amazon Fire TV platform supports the majority of the existing Android UI framework (`android.widget.*`) with no changes. The two exceptions are [Menu][1] and [ActionBar][2]. All other Android widgets work without modifications, although those widgets may have a different appearance in the Fire TV user interface.
 
-## メニューと操作バー
+## Menus and Action Bar
 
-アプリでAndroidの[ActionBar][3]を使用する場合は、操作バーのアイテムが画面に表示されない点に注意する必要があります。これは、ユーザーインターフェースが雑然とするのを避けるための仕様です。代わりに、ユーザーがFire TVリモコンまたはFireゲームコントローラーの [メニュー] ボタンを押すと、操作バーのアイテムがモーダルダイアログボックスに表示されます。ユーザーはダイアログから、操作アイテムまたはナビゲーションタブを選択できます。
+When your app uses Android's [ActionBar][3], it is important to note that, in order to avoid cluttering the user interface, the action bar items do not appear on the screen. Instead, items from the action bar are displayed in a modal dialog box when the user presses the Menu button on one of the Fire TV remotes or the Fire Game Controller. The user can then pick an Action Item or a Navigation Tab from the dialog.
 
-現時点では、操作バーの操作アイテム、タブ、オプションメニュー、およびサブメニューのみが処理されます。デフォルトでは、アプリケーションまたはアクティビティの起動時に操作バーは表示されません。[メニュー] ボタンを押すとダイアログウィンドウが開き、最大で 2 列に並んだリストビューが表示されます。左のリストビューにはすべてのタブが表示され、右のリストビューには操作アイテムが表示されます。
+Currently, only the action items, tabs, options menu and sub menus on the action bar are handled. On the launch of any application or activity, the action bar does not show up by default. Pressing the menu button brings up a dialog window containing two listviews arranged side by side, at a max. The left list view contains all the tabs and the one on the right shall contain the action items.
 
-リモコンのナビゲーションボタンやゲームコントローラーの方向ボタンで、リスト間やリスト内を移動できます。アイテムにサブメニューがある場合は、アイテムを選択すると、親リストに代わってサブメニューがリスト表示されます。この実装では、メニュー階層とナビゲーション状態の遷移は追跡されません。どの状態でも、[戻る] を押すとダイアログウィンドウが閉じます。
+Users can navigate between and within the lists with the directional navigation buttons on the remote or game controller. If for an item, a sub-menu exists, then clicking on the item causes its sub-menu appear as a list in the place of its parent. This implementation does not keep track of the menu hierarchy and the navigation state. Pressing Back at any point dismisses the dialog window.
 
-操作バーのハンドルを取得するには、アクティビティ用の[`onCreate(Bundle)`][5]メソッドで[`getActionBar()`][4] メソッドを使用します。アクティビティでは[API][6]のすべての機能を利用できます。
+You can get a handle to the action bar using the [`getActionBar()`][4] method in the [`onCreate(Bundle)`][5] method for your activity. Access to its complete [API][6] is possible in your activity.
 
-ドロップダウンリストと操作ビューは、Amazon Fire TVプラットフォームではサポートされていないため注意してください。
+Note that Drop-down lists and action Views are not supported by the Amazon Fire TV platform.
 
 [1]: http://developer.android.com/reference/android/view/Menu.html
 [2]: http://developer.android.com/reference/android/app/ActionBar.html

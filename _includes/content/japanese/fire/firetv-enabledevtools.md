@@ -1,5 +1,5 @@
-開発者ツールメニューを起動するには、下記のいくつかの方法があります。
+You can invoke the Developer Tools menu in several ways:
 
-*   [リモコンを用いる場合][amazon-fire-tv-remote-input]: D-pad（ナビゲーションボタン）上で、 **選択ボタン（中央）** と **下** を同時に５秒長押ししてください。その後、リモコンの **メニュー** ボタンを押してください。
-*   [Amazonのゲームコントローラーを用いる場合][amazon-fire-game-controller-input]:  **A ボタン** と **Y ボタン** を同時に５秒長押ししてください。その後、コントローラーの **メニュー** ボタンを押してください。
-*   [ADBを用いてAmazon Fire TVに接続している場合](connecting-adb-to-fire-tv-device):　接続中のコンピュータ上で、下記のコマンドを実行してください。ダイアログボックスが立ち上がります。 `adb shell am start com.amazon.ssm/com.amazon.ssm.ControlPanel`
+*   [Remote Control][amazon-fire-tv-remote-input]: On the directional pad, press and hold the **center** and **down** together for 5 seconds; then press the remote's **menu** button.
+*   [Amazon Game Controller][amazon-fire-game-controller-input]: Press and hold **A** and **Y** buttons together for 5 seconds; then press the controller's **menu** button.
+*   If [ADB is enabled on the Amazon Fire TV](connecting-adb-to-fire-tv-device) and a computer is connected, you can run the following command to invoke the dialog box: `adb shell am start com.amazon.ssm/com.amazon.ssm.ControlPanel`

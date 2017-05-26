@@ -1,5 +1,5 @@
 ---
-title: Fire TVのSystem X-Ray
+title: System X-Ray Overlay on Fire TV
 permalink: fire-tv-system-xray.html
 sidebar: firetv_ja
 product: Fire TV
@@ -8,97 +8,99 @@ toc-style: kramdown
 github: true
 ---
 
-System X-Rayは、Fire TV端末のアプリやシステムの問題を特定する際に役立つ、企業や個人の開発者向けツールです。System X-Rayは、システムメトリック情報を瞬時に収集し、画面の上部にオーバーレイとして表示します。オンにすると、ビデオの再生中やゲームのプレイ中など、ユーザーがアプリケーションを実行しているときにも、オーバーレイが画面に常に表示されるようになります。
+System X-Ray is a tool that helps internal and external developers identify app or system problems on Fire TV devices. System X-Ray gathers instantaneous system metrics and displays on top of the screen as an overlay. When toggled on, the overlay will always visible on the screen, even when users run applications, such as playing video or games.
 
-System X-Rayは、Fire OSバージョン 5.0.2 以降を搭載しているすべてのAmazon Fire TVおよびFire TV Stickデバイスで利用できます。
+System X-Ray is available on all Amazon Fire TV and Fire TV Stick devices with Fire OS version 5.0.2 and higher.
 
 * TOC
 {:toc}
 
-## System X-Rayを有効にする
+## Enable System X-Ray
 
 {% include content/{{site.language}}/fire/firetv-enabledevtools.md %}
 
-[開発者ツールメニュー] ダイアログボックスが表示されたら、System X-Rayを [**オン**] にします。
+After the Developer Tools Menu dialog box appears, toggle System X-Ray **On**.
 
 {% include image.html file="firetv/getting_started/images/xray-devtooloptions" type="png" max-width="500px" %}
 
-(ダイアログボックスを閉じるには、[戻る] ボタンを押します。)System X-Rayをオンにすると、横長の長方形のオーバーレイが画面に表示され、そこにさまざまな種類の情報が表示されます。
+(To close the dialog box, click your back button.) After you turn on System X-Ray, a long rectangular overlay appears on the screen showing different kinds of information:
 
 {% include image.html file="firetv/getting_started/images/firetv_xrayall" type="png" %}
 
-System X-Rayのオーバーレイは、アプリを変更したりFire TVで移動の操作をしたりしても、表示され続けます。System X-Rayのオーバーレイは、以下の 4 つのセクションに分かれています。
+The System X-Ray overlay remains in place as you change apps or navigate around on Fire TV. The System X-Ray overlay is divided into four sections:
 
-*  [ディスプレイ (DIS)](#dis)
+*  [Display (DIS)](#dis)
 *  [CPU (CPU)](#cpu)
-*  [メモリ (MEM)](#mem)
-*  [ネットワーク (NET)](#net)
+*  [Memory (MEM)](#mem)
+*  [Network (NET)](#net)
 
-## ディスプレイ (DIS) {#dis}
+## Display (DIS) {#dis}
 
 {% include image.html file="firetv/getting_started/images/firetv_xraydisplay" type="png" %}
 
-ディスプレイセクションには以下が表示されます。
+The Display section shows the following:
 
-* **HDMIモード**: ディスプレイの**物理的な高さ** (ピクセル単位) と**リフレッシュレート** (1 秒あたりのフレーム数) が表示されます。たとえば、"1080p 60" と表示される場合は、ディスプレイの物理的な高さが 1080 ピクセルであり、リフレッシュレート (1 秒あたりのフレーム数) が 60 であることを表しています。
-* **HDCP**: HDMIケーブルからテレビに送信されるコンテンツの暗号化のためにFire TVが使用しているHDCP (High-bandwidth Digital Content Protection) のバージョンを示しています。
+* **HDMI Mode**: Shows the **physical height** of display in pixels and the **refresh rate** in frames per second. For example, if the Display shows "1080p 60," it means 1080 pixels is the physical height of the display, and 60 is the refresh rate in frames per second.
+* **HDCP**: Shows the HDCP (High-bandwidth Digital Content Protection) version used by Fire TV to encrypt content that is sent through the HDMI cable to the television.
 
-Amazon Fire TVでは、[設定] > [ディスプレイとサウンド] > [Display] > [Video Resolution] の順に移動して解像度を変更できます。ただし、ネットワークやシステムリソースの状態を考慮し、ユーザーエクスペリエンスを向上させるために、ユーザーがどの解像度を選択した場合でもアプリでその解像度を変更することができます。たとえば、YouTubeアプリでビデオを再生する際にネットワーク接続が遅い場合は、再生がスムーズに継続するようアプリによって解像度を下げることができます。
+Note that Amazon Fire TV allows users to change their resolution by going to Settings > Display & Sounds > Display > Video Resolution. However, regardless of the resolution users select, an app can change the user's selected resolution due to network or system resource reasons to give users a better experience. For example, when the YouTube app plays video, if your network connection is slow, the app might lower the resolution to ensure the playback is still smooth.
+
+{% include note.html content="The Display (DIS) module is not available on [Fire TV Edition](https://www.amazon.com/dp/B06XDC9RBJ)." %}
 
 ## CPU {#cpu}
 
 {% include image.html file="firetv/getting_started/images/firetv_xraycpu" type="png" %}
 
-CPU (中央処理装置) セクションには、デバイスのコアごとにリアルタイムのCPU使用量 (%) が異なる色で表示されます。各列がそれぞれのコアを表しています。CPU使用率は以下のように表示されます。
+The CPU (Central Processing Unit) section shows the % CPU usage of each core of the device at real time with different colors. Each column represents a different core. The CPU usage is depicted as follows:
 
-*  0% ～ 33% (低い使用率) の場合は<span style="color: green">緑色</span>で表示
-*  34% ～ 66% (中程度の使用率) の場合は<span style="color: orange">オレンジ色</span>で表示
-*  67% ～ 100% (高い使用率) の場合は<span style="color: red">赤色</span>で表示
+*  0% to 33% (low utilization) shows in <span style="color: green">green</span>
+*  34% to 66% (moderate utilization) shows in <span style="color: orange">orange</span>
+*  67% to 100% (high utilization) shows in <span style="color: red">red</span>
 
-Amazon Fire TV端末にコアが 2 つしかない場合 (Fire TV Stickの場合)　は、2 列しか表示されません。
+If an Amazon Fire TV device only has two cores (as with the Fire TV Stick), only two columns will appear.
 
-CPU使用率は、CPUを大量に消費するアプリを特定する際に役立ちます。使用率が常に高いコアがある場合、処理をマルチスレッド化する必要がある可能性があります。
+CPU utilization can help identify CPU-intensive apps. A core that shows consistently heavy usage may indicate a need to make a process multi-threaded.
 
-## メモリ {#mem}
+## Memory {#mem}
 
 {% include image.html file="firetv/getting_started/images/firetv_xraymemory" type="png" %}
 
-メモリセクションには、**アプリ** (<span style="color: blue">青色</span>)、**その他** (<span style="color: gray">灰色</span>)、および**使用可能** (<span style="background-color: gray; color: white; padding: 1px;">白色</span>) というラベル付きのバーが表示されます。
+The Memory section has a bar with the labels **App** (<span style="color: blue">blue</span>), **Other** (<span style="color: gray">gray</span>), and **Available** (<span style="background-color: gray; color: white; padding: 1px;">white</span>):
 
-*  **<span style="color: blue">青色の部分</span>**: アプリ &ndash; メモリ (具体的には、GPUメモリではなく、フォアグラウンドアプリの[Proportional Set Size (PSS)](https://en.wikipedia.org/wiki/Proportional_set_size)) の使用量とフォアグラウンドアプリのパッケージ名が表示されます。フォアグラウンドアプリのパッケージ名はバーの下に表示されます。ホーム画面が表示されている場合は、`com.amazon.tv.launcher`がアプリ名として表示されます。
-*  **<span style="color: gray">灰色の部分</span>**: その他 &ndash; その他のアプリケーションによるメモリ使用量を示しています。
-*  **<span style="background-color: gray; color: white; padding: 1px;">白色の部分</span>**: 使用可能なメモリ &ndash; デバイスの使用可能なメモリ (空きメモリ) を示しています。
+*  **<span style="color: blue">Blue section</span>**: App &mdash; shows the memory usage (specifically, the [Proportional set size (PSS)](https://en.wikipedia.org/wiki/Proportional_set_size) of the foreground application, not the GPU memory) and the package name of the foreground app. The package name of the foreground app is displayed below the bar. If you're on the home screen, `com.amazon.tv.launcher` appears as the app name.
+*  **<span style="color: gray">Gray section</span>**: Other &mdash; shows the memory usage by other applications.
+*  **<span style="background-color: gray; color: white; padding: 1px;">White section</span>**: Available memory &mdash; shows the available (free) memory in the device.
 
-この例では、44.7 MBのメモリがFire TVランチャーに、744.8 MBがシステム全体によって使用されており、849.3 MBが使用可能です。
+In this example, 44.7 MB of memory is used by the Fire TV launcher, 744.8 MB is used by the whole system, and 849.3 MB is still available.
 
-メモリ情報は、以下のような問題を特定する際に使用できます。
+The Memory information can be used to identify issues such as:
 
-* アプリのメモリリーク
-* 過度のメモリ消費
-* デバイスのメモリ不足の状態
+* Memory leaks in an app
+* Excessive memory consumption
+* Low memory conditions on the device
 
-## ネットワーク {#net}
+## Network {#net}
 
 {% include image.html file="firetv/getting_started/images/firetv_xraynetwork" type="png" %}
 
-ネットワークセクションには、WiFi信号の強度と、デバイス全体および表示中のアプリのダウンロード速度が表示されます。各ラベルの説明は以下のとおりです。
+The Network section shows the strength of the WiFi signal along with the download rates across the entire device and for the visible app. The labels are as follows:
 
-* **RSSI (受信信号強度)**: WiFi信号の強度 (dBm単位) を示しています。バーは信号の強度を示しています。CPUセクションと同じ色分けで問題の重大さが表されます (<span style="color: green">緑色</span>は強い信号、<span style="color: orange">オレンジ色</span>は中程度の信号、<span style="color: red">赤色</span>は弱い信号を表します)。数値は常に負の数です。信号が強いと数値は 0 に近づきます。Amazon Fire TVがWiFiではなく有線で接続されている場合、RSSIは表示されません。
-* **システム**: デバイスに実際にダウンロードされているデータ量 (bps単位) が測定されます (表示中およびバックグラウンドのアプリの両方を含む)。これは、利用可能な帯域幅を示すものではありません。0 bpsと表示されている場合、その瞬間はデータがダウンロードされていません。
-* **表示**: 表示中のアプリ (フォアグラウンドのアプリ) によって実際にダウンロードされているデータ量 (bps単位) が測定されます。この数値は、システムのダウンロード速度よりも高くなることはありません。
+* **RSSI (Received Signal Strength Indication)**: Shows how strong the WiFi signal is, measured in dBm. The bar indicates the signal strength and is color-coded using the same color coding scheme as the CPU section to indicate the severity of a problem (<span style="color: green">green</span> is strong, <span style="color: orange">orange</span> is average, and <span style="color: red">red</span> is weak). The number is always negative -- with better signal strength, the number moves closer to 0. If the Amazon Fire TV has a wired connection and is not using WiFi, RSSI is not shown.
+* **System**: Measures how many bits per second are being actively downloaded to the device (including both visible and background apps). This is not the available bandwidth. If 0 bps is displayed, no data is being downloaded at the moment.
+* **Visible**: Measures how many bits per second are being actively downloaded by the visible (also called foreground) app. This number will never be higher than the system download speed.
 
-ネットワークセクションの情報を使用して、以下のような問題を診断できます。
+The Network section can be used to diagnose issues such as:
 
-* 接続の問題
-* 遅いダウンロード速度
-* 低品質のストリーム (メディアプレーヤーによって選択された品質)
+* Connectivity issues
+* Slow download speeds
+* Lower quality streams (selected by the media player)
 
 
-## 関連項目
+## See Also
 
-詳細については、以下を参照してください。
+For more details, see the following:
 
-* [開発者ツールのオプション][fire-tv-system-xray-developer-tools]
-* [System X-Rayメトリックをカスタマイズする][fire-tv-system-xray-customized-metrics]
+* [Developer Tool Options on System X-Ray][fire-tv-system-xray-developer-tools]
+* [Customize System X-Ray Metrics][fire-tv-system-xray-customized-metrics]
 
 {% include links.html %}

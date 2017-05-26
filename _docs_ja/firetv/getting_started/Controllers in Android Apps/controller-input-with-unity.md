@@ -1,29 +1,32 @@
 ---
-title: Unityによるコントローラー入力
+title: Controller Input with Unity
 permalink: controller-input-with-unity.html
 sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
+github: true
 ---
 
-[Unity開発ツール](http://unity3d.com/unity)を使用すれば、Android端末用のアプリやゲームを作成するのと同様に、Amazon Fire TV用のアプリやゲームを作成できます。
+You can use the [Unity development tools](http://unity3d.com/unity) to create apps and games for Amazon Fire TV devices as you would any Android device.
 
-Fire TV開発用のUnityプラグインは提供されていませんが、ゲームコントローラーをサポートするためのパッケージがUnity Asset Storeにあります。特に[Gallant GamesのInControl](http://www.gallantgames.com/incontrol)には、Amazonの開発者も大きな恩恵を受けています。InControlは、広く利用されている各種コントローラーの制御マッピングを標準化する、Unity3Dのクロスプラットフォームインプットマネージャーです。
+Although we do not provide a Unity plugin for Fire TV development, there are packages in the Unity Asset Store to enable game controller support. In particular, [InControl by Gallant Games](http://www.gallantgames.com/incontrol) is one with which our developers have had great success. InControl is a cross-platform input manager for Unity3D that standardizes control mappings for a variety of common controllers.
 
-Unityインプットマネージャーを使って、ゲームのコントローラー入力を設定することもできます。Amazon Fire TVリモコン/ゲームコントローラーのボタンとUnityインプットマネージャーのボタン/軸との対応関係については、以下の表を参照してください。
+You can also use the Unity input manager to configure controller input for your game. Use the tables below to map the buttons on the Amazon Fire TV remotes and game controllers with the Unity input manager buttons and axes.
 
-{% include note.html content="このドキュメントの入力リファレンスはUnity 4.3.x以降に適用されますが、今後のUnityのリリースで変更される可能性があります。" %}
+{% include note.html content="The input references in this document apply to Unity 4.3.x and higher, but are subject to change with future Unity releases." %}
 
 * TOC
 {:toc}
 
-## リモコン入力
+## Remote Input
 
-Unityの以下の値を使用して、Amazon Fire TVリモコンとAmazon Fire TV音声認識リモコンの両方でボタンをマップします。Unity KeyCodeの値の詳細については、「<a href="http://docs.unity3d.com/ScriptReference/KeyCode.html">KeyCode</a>」を参照してください。
+Use these values in Unity to map the buttons on both the Amazon Fire TV Remote and Voice Remote. See <a href="http://docs.unity3d.com/ScriptReference/KeyCode.html">KeyCode</a> for more details about Unity KeyCode values.
 
-{% include image.html title="Unityリモコン" file="firetv/getting_started/images/remote-unity" type="png" %}
+{% include image.html title="Unite remote" file="firetv/getting_started/images/remote-unity" type="png" %}
 
-<table>
+{% include content/{{site.language}}/fire/firetvedition_remote_note.md %}
+
+<table class="grid">
 <colgroup>
 <col width="33%" />
 <col width="33%" />
@@ -31,85 +34,85 @@ Unityの以下の値を使用して、Amazon Fire TVリモコンとAmazon Fire T
 </colgroup>
   <thead>
     <tr>
-      <th>ボタン</th>
-      <th>Unityインプットマネージャーの値</th>
-      <th>Unity KeyCodeの値</th>
+      <th>Button</th>
+      <th>Unity Input Manager Value</th>
+      <th>Unity KeyCode Value</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>ホーム</td>
-      <td>1 (システムイベント) </td>
-      <td>なし (システムイベント)</td>
+      <td>Home</td>
+      <td>one (system event)</td>
+      <td>none (system event)</td>
     </tr>
     <tr>
-      <td>バック</td>
-      <td>なし (非サポート)</td>
+      <td>Back</td>
+      <td>none (not supported)</td>
       <td><code>KeyCode.Escape</code></td>
     </tr>
     <tr>
-      <td>メニュー</td>
-      <td>なし (非サポート)</td>
+      <td>Menu</td>
+      <td>none (not supported)</td>
       <td><code>KeyCode.Menu</code></td>
     </tr>
     <tr>
-      <td>マイク (検索)</td>
-      <td>なし (システムイベント)</td>
-      <td>なし (システムイベント)</td>
+      <td>Microphone (Search)</td>
+      <td>none (system event)</td>
+      <td>none (system event)</td>
     </tr>
     <tr>
-      <td>選択 (D-pad (ナビゲーション) の [選択])</td>
-      <td>Joystick Button 0</td>
+      <td>Select (D-Pad Center)</td>
+      <td>joystick button 0</td>
       <td><code>KeyCode.JoystickButton0</code></td>
     </tr>
     <tr>
-      <td>左 (D-pad)</td>
+      <td>Left (D-Pad)</td>
       <td>5th Axis</td>
       <td><code>KeyCode.LeftArrow</code></td>
     </tr>
     <tr>
-      <td>右 (D-pad)</td>
+      <td>Right (D-Pad)</td>
       <td>5th Axis</td>
       <td><code>KeyCode.RightArrow</code></td>
     </tr>
     <tr>
-      <td>上 (D-pad)</td>
+      <td>Up (D-Pad)</td>
       <td>6th Axis</td>
       <td><code>KeyCode.UpArrow</code></td>
     </tr>
     <tr>
-      <td>下 (D-pad)</td>
+      <td>Down (D-Pad)</td>
       <td>6th Axis</td>
       <td><code>KeyCode.DownArrow</code></td>
     </tr>
     <tr>
-      <td>再生/一時停止</td>
-      <td>なし (非サポート)</td>
-      <td>なし (非サポート)</td>
+      <td>Play/Pause</td>
+      <td>none (not supported)</td>
+      <td>none (not supported)</td>
     </tr>
     <tr>
-      <td>早戻し</td>
-      <td>なし (非サポート)</td>
-      <td>なし (非サポート)</td>
+      <td>Rewind</td>
+      <td>none (not supported)</td>
+      <td>none (not supported)</td>
     </tr>
     <tr>
-      <td>早送り</td>
-      <td>なし (非サポート)</td>
-      <td>なし (非サポート)</td>
+      <td>Fast Forward</td>
+      <td>none (not supported)</td>
+      <td>none (not supported)</td>
     </tr>
   </tbody>
 </table>
 
 
-## ゲームコントローラー入力
+## Game Controller Input
 
-Unityの以下の値を使って、Amazon Fire Game Controllerでボタンをマップします。Unity KeyCodeの値の詳細については、「<a href="http://docs.unity3d.com/ScriptReference/KeyCode.html">KeyCode</a>」を参照してください。
+Use these values in Unity to map the buttons on the Amazon Fire Game Controller. See <a href="http://docs.unity3d.com/ScriptReference/KeyCode.html">KeyCode</a> for more details about Unity KeyCode values.
 
-{% include image.html title="ゲームコントローラーUnity" file="firetv/getting_started/images/gamecontrollr-unity" type="png" %}
+{% include image.html title="Game Controller Unity" file="firetv/getting_started/images/gamecontrollr-unity" type="png" %}
 
-{% include image.html title="ゲームコントローラーUnity" file="firetv/getting_started/images/gamecontrollr-unity-second-view" type="png" %}
+{% include image.html title="Game Controller Unity" file="firetv/getting_started/images/gamecontrollr-unity-second-view" type="png" %}
 
-<table>
+<table class="grid">
 <colgroup>
 <col width="33%" />
 <col width="33%" />
@@ -117,147 +120,147 @@ Unityの以下の値を使って、Amazon Fire Game Controllerでボタンをマ
 </colgroup>
   <thead>
     <tr>
-      <th>ゲームコントローラーボタン</th>
-      <th>Unityインプットマネージャーの値</th>
-      <th>Unity KeyCodeの値</th>
+      <th>Game Controller Button</th>
+      <th>Unity Input Manager Value</th>
+      <th>Unity KeyCode Value</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>ホーム</td>
-      <td>なし (システムイベント)</td>
-      <td>なし (システムイベント)</td>
+      <td>Home</td>
+      <td>none (system event)</td>
+      <td>none (system event)</td>
     </tr>
     <tr>
-      <td>バック</td>
-      <td>なし (システムイベント)</td>
+      <td>Back</td>
+      <td>none (system event)</td>
       <td><code>KeyCode.Escape</code></td>
     </tr>
     <tr>
-      <td>メニュー</td>
-      <td>なし (システムイベント)</td>
+      <td>Menu</td>
+      <td>none (system event)</td>
       <td><code>KeyCode.Menu</code></td>
     </tr>
     <tr>
       <td>GameCircle</td>
-      <td>なし (システムイベント)</td>
-      <td>なし (システムイベント)</td>
+      <td>none (system event)</td>
+      <td>none (system event)</td>
     </tr>
     <tr>
       <td>A</td>
-      <td>Joystick Button 0</td>
+      <td>joystick button 0</td>
       <td><code>KeyCode.JoystickButton0</code></td>
     </tr>
     <tr>
       <td>B</td>
-      <td>Joystick Button 1</td>
+      <td>joystick button 1</td>
       <td><code>KeyCode.JoystickButton1</code></td>
     </tr>
     <tr>
       <td>X</td>
-      <td>Joystick Button 2</td>
+      <td>joystick button 2</td>
       <td><code>KeyCode.JoystickButton2</code></td>
     </tr>
     <tr>
       <td>Y</td>
-      <td>Joystick Button 3</td>
+      <td>joystick button 3</td>
       <td><code>KeyCode.JoystickButton3</code></td>
     </tr>
     <tr>
-      <td>左 (D-pad (十字キー))</td>
+      <td>Left (D-Pad)</td>
       <td>5th Axis</td>
-      <td>なし</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>右 (D-pad)</td>
+      <td>Right (D-Pad)</td>
       <td>5th Axis</td>
-      <td>なし</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>上 (D-pad)</td>
+      <td>Up (D-Pad)</td>
       <td>6th Axis</td>
-      <td>なし</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>下 (D-pad)</td>
+      <td>Down (D-Pad)</td>
       <td>6th Axis</td>
-      <td>なし</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>左アナログスティック (左/右)</td>
-      <td>1st Axis / X Axis</td>
-      <td>なし</td>
+      <td>Left Stick (Left/Right)</td>
+      <td>X Axis 1st Axis</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>左アナログスティック (上/下)</td>
-      <td>2st Axis / Y Axis</td>
-      <td>なし</td>
+      <td>Left Stick (Up/Down)</td>
+      <td>Y Axis 2nd Axis</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>左アナログスティックの押し下げ</td>
-      <td>Joystick Button 8</td>
+      <td>Left Stick Press</td>
+      <td>joystick button 8</td>
       <td><code>KeyCode.JoystickButton8</code></td>
     </tr>
     <tr>
-      <td>右アナログスティック (左/右)</td>
+      <td>Right Stick (Left/Right)</td>
       <td>3rd Axis</td>
-      <td>なし</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>右アナログスティック (上/下)</td>
+      <td>Right Stick (Up/Down)</td>
       <td>4th Axis</td>
-      <td>なし</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>右アナログスティックの押し下げ</td>
-      <td>Joystick Button 9</td>
+      <td>Right Stick Press</td>
+      <td>joystick button 9</td>
       <td><code>KeyCode.JoystickButton9</code></td>
     </tr>
     <tr>
-      <td>再生/一時停止</td>
-      <td>なし (非サポート)</td>
-      <td>なし (非サポート)</td>
+      <td>Play/Pause</td>
+      <td>none (not supported)</td>
+      <td>none (not supported)</td>
     </tr>
     <tr>
-      <td>早戻し</td>
-      <td>なし (非サポート)</td>
-      <td>なし (非サポート)</td>
+      <td>Rewind</td>
+      <td>none (not supported)</td>
+      <td>none (not supported)</td>
     </tr>
     <tr>
-      <td>早送り</td>
-      <td>なし (非サポート)</td>
-      <td>なし (非サポート)</td>
+      <td>Fast Forward</td>
+      <td>none (not supported)</td>
+      <td>none (not supported)</td>
     </tr>
     <tr>
-      <td>L2トリガー </td>
+      <td>Left Trigger (L2)</td>
       <td>13th Axis</td>
-      <td>なし</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>L1ショルダーボタン</td>
-      <td>Joystick Button 4</td>
+      <td>Left Shoulder (L1)</td>
+      <td>joystick button 4</td>
       <td><code>KeyCode.LeftShift KeyCode.JoystickButton4</code></td>
     </tr>
     <tr>
-      <td>R2トリガー</td>
+      <td>Right Trigger (R2)</td>
       <td>12th Axis</td>
-      <td>なし</td>
+      <td>none</td>
     </tr>
     <tr>
-      <td>R1ショルダーボタン</td>
-      <td>Joystick Button 5</td>
+      <td>Right Shoulder (R1)</td>
+      <td>joystick button 5</td>
       <td><code>KeyCode.RightShift KeyCode.JoystickButton5</code></td>
     </tr>
   </tbody>
 </table>
 
 
-## コントローラーの名前
+## Controller Names
 
-Unityでは、[`Input.GetJoystickNames()`](http://docs.unity3d.com/ScriptReference/Input.GetJoystickNames.html) メソッドでコントローラーの名前を使用できます。各コントローラーに使用する値は次の通りです。
+Controller names are available in Unity with the [`Input.GetJoystickNames()`](http://docs.unity3d.com/ScriptReference/Input.GetJoystickNames.html) method. Use these values for each controller:
 
-*   リモコン: `"Amazon Fire TV Remote"`
-*   音声認識リモコン: `"Amazon Fire TV Remote"`
-*   ゲームコントローラー: `"Amazon Fire Game Controller"`
+*   Remote: `"Amazon Fire TV Remote"`
+*   Voice Remote: `"Amazon Fire TV Remote"`
+*   Game controller: `"Amazon Fire Game Controller"`
 
 {% include links.html %}

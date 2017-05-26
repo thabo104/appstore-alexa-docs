@@ -236,8 +236,8 @@ The following table specifies the maximum allowed power consumption for Fire TV 
   </thead>
   <tbody>
     <tr>
-      <td>Varies with the dimensions of the TV. See the following table for details.</td>
-      <td>2.1 W</td>
+      <td>N/A -- Varies with the dimensions of the TV.* </td>
+      <td>2.1 Watts</td>
       <td>3.8 Watts</td>
       <td>1.7 Watts</td>
       <td>3.6 Watts</td>
@@ -245,36 +245,7 @@ The following table specifies the maximum allowed power consumption for Fire TV 
   </tbody>
 </table>
 
-{% comment %}
-{: .grid}
-<table class="grid">
-   <colgroup>
-      <col width="20%" />
-      <col width="20%" />
-      <col width="20%" />
-      <col width="20%" />
-      <col width="20%" />
-   </colgroup>
-  <thead>
-    <tr>
-      <th>Effective Date</th>
-      <th>Screen Size (area A in square inches)</th>
-      <th>Maximum TV Standby passive Mode Power Usage (watts)</th>
-      <th>Maximum On Mode Power Usage (P in Watts)</th>
-      <th>Minimum Power Factor for (P ≥ 100W)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-      <td>2.1 W</td>
-      <td>3.8 Watts</td>
-      <td>1.7 Watts</td>
-      <td>3.6 Watts</td>
-    </tr>
-  </tbody>
-</table>
- {% endcomment %}
+<i><b>\*</b> Note: Power constraints should not be an issue for Fire TV Edition. The only limits are those set by the Consumer Electronics Commission (CEC). Fire TV Edition draws most of its power through the screen, and the max power consumption depends on the screen size and brightness (it's in the 100W range). You can calculate out the max power according to size using the formula "Power < 0.12 x Amps + 25Watts".</i>
 
 Run the app 10 minutes before measuring the power consumption on the Fire TV Stick. For Fire TV, run the app for at least 30 minutes before taking the power measurement. Your power measurement can continue for 5 minutes.
 

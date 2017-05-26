@@ -1,5 +1,5 @@
 ---
-title: ADBを使用してFire TVに接続する
+title: Connecting to Fire TV Through ADB
 permalink: connecting-adb-to-fire-tv-device.html
 sidebar: firetv_ja
 product: Fire TV
@@ -10,8 +10,8 @@ github: true
 {% include content/{{site.language}}/fire/adb.md %}
 
 
-## 次のステップ
+## Next Steps
 
-Amazon Fire TV端末にテスト目的でアプリをインストールして実行する方法については、「[アプリのインストールと実行][installing-and-running-your-app]」を参照してください。
+To install and run your app on a Amazon Fire TV device for testing, see [Installing and Running Your App][installing-and-running-your-app].
 
 {% include links.html %}

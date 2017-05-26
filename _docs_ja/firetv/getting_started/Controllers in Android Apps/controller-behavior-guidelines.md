@@ -1,26 +1,27 @@
 ---
-title: コントローラー動作のガイドライン
+title: Controller Behavior Guidelines
 permalink: controller-behavior-guidelines.html
 sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
+github: true
 ---
 
-Amazon Fire TVプラットフォーム向けのアプリを開発する際、各種コントローラーからの入力に対応させることができます。コントローラーには、Amazon Fire TVリモコンと音声認識リモコン、Amazon Fire TVゲームコントローラー、Bluetooth HIDゲームパッドプロファイルをサポートするその他のコントローラーが含まれます。
+When you develop your app for the Amazon Fire TV platform, you can support input from different kinds of controllers. These controllers include the Amazon Fire TV Remote and Voice Remote, the Amazon Fire TV Game Controller, or any other controllers that support the Bluetooth gamepad HID profile.
 
 
-アプリにコントローラー入力を実装するには、「[リモコン入力][amazon-fire-tv-remote-input]」と「[ゲームコントローラー入力][amazon-fire-game-controller-input]」に記載されているモーションイベントと入力イベントを使用します。
+Use the motion and input events from the [Remote Input][amazon-fire-tv-remote-input] and [Game Controller Input][amazon-fire-game-controller-input] to implement controller input for your app.
 
-このページでは、同じアプリの機能をさまざまな種類のコントローラーで設計する際の、推奨事項について説明します。以下のガイドラインは、Amazon Fire TV用アプリを公開するために必要な要件ではありません。開発者は、アプリに最も合う方法でコントローラー入力を設計することができます。ただし、他のコントローラー、アプリ、ゲームでも一貫したユーザーエクスペリエンスを提供するために、これらのガイドラインに従うことをおすすめします。
+This page provides recommendations for common app functionality across different controllers. None of these guidelines are requirements for publishing an app for Amazon Fire TV, and you may design controller input in the best way that works for your app. We suggest you follow these guidelines to enable a consistent user experience across different controllers, apps, and games.
 
-{% include note.html content="[マイク] ボタンを除けば、すべてのFire TVリモコンの動作は同じです。Fire TVリモコンに関するこのドキュメントのガイドラインは、Fire TV音声認識リモコンにも適用されます。" %}
+{% include note.html content="With the exception of the Microphone button, the behavior of all Fire TV remote controls are identical. All of the guidelines in this document that refer to the Fire TV Remote also apply to the Fire TV Voice Remote." %}
 
 * TOC
 {:toc}
 
-## コア動作
+## Core Behavior
 
-<table>
+<table class="grid">
 <colgroup>
 <col width="15%" />
 <col width="15%" />
@@ -30,107 +31,108 @@ Amazon Fire TVプラットフォーム向けのアプリを開発する際、各
 </colgroup>
   <thead>
     <tr>
-      <th>アクション</th>
-      <th>Amazon Fire TVリモコンのボタン</th>
-      <th>Amazon Fire TVゲームコントローラーのボタン</th>
-      <th>その他のゲームコントローラーのボタン</th>
-      <th>動作</th>
+      <th>Action</th>
+      <th>Amazon Fire TV Remote Button</th>
+      <th>Amazon Fire TV Game Controller Button</th>
+      <th>Other Game Controller Button</th>
+      <th>Behavior</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>ホーム</td>
-      <td>ホーム</td>
-      <td>ホーム</td>
-      <td>ホーム (存在する場合) </td>
-      <td>これはシステムイベントで、アプリではキャプチャできません。このボタンを押すと、ホームに戻ります。Amazonアプリストアでゲームに分類されるアプリの場合は、GameCircleオーバーレイまたは [Game Paused] 画面が表示されます。もう一度 [ホーム] ボタンを押すと、ホームに戻ります。<br /><br /> 予期せずホームに戻った場合にアプリまたはゲームの状態を保持するには、<a href="http://developer.android.com/reference/android/app/Activity.html#onPause()"><code>onPause()</code></a> を実装します。アプリを続きから再開できるようにするには、<a href="http://developer.android.com/reference/android/app/Activity.html#onResume()"><code>onResume()</code></a> を実装します。<br /><br />オーディオアプリの場合、<a href="http://developer.android.com/training/managing-audio/audio-focus.html">オーディオフォーカス</a>をリクエストして、バックグラウンドで再生を続けることができます。</td>
+      <td>Home</td>
+      <td>Home</td>
+      <td>Home</td>
+      <td>Home (if available)</td>
+      <td>This is a system event and cannot be captured in your app. When pressed, the system returns the user to Home. For apps categorized as games in the Amazon Appstore, the GameCircle overlay or “Game Paused” screens appear. A second Home press returns the user to Home.<br/><br/> Implement <a href="http://developer.android.com/reference/android/app/Activity.html#onPause()"><code>onPause()</code></a> to preserve state in your app or game in case of an unanticipated Home. Implement <a href="http://developer.android.com/reference/android/app/Activity.html#onResume()"><code>onResume()</code></a> to continue when the app resumes. <br/><br/>Audio apps may continue playing in the background by requesting the <a href="http://developer.android.com/training/managing-audio/audio-focus.html">audio focus</a>.</td>
     </tr>
     <tr>
-      <td>戻る</td>
-      <td>バック</td>
-      <td>バック</td>
+      <td>Back</td>
+      <td>Back</td>
+      <td>Back</td>
       <td>B</td>
-      <td>直前の操作または画面 (アクティビティ) に戻るか、現在の操作またはプロンプトを取り消します。<br /><br />確認ダイアログを表示するには、このイベントをキャプチャします。たとえば、アプリのメイン画面に [終了しますか?] ダイアログを表示するには、[バック] をキャプチャします。</td>
+      <td>Return to the previous operation or screen (Activity), or cancel the current operation or prompt. <br/><br/>Capture this event to provide confirmation dialogs. For example, on the main screen of your app, capture Back to provide a “Do you want to Quit” dialog.</td>
     </tr>
     <tr>
-      <td>メニュー</td>
-      <td>メニュー</td>
-      <td>メニュー</td>
+      <td>Menu</td>
+      <td>Menu</td>
+      <td>Menu</td>
       <td>Y</td>
-      <td>Androidの標準コンテキストメニュー (<a href="http://developer.android.com/guide/topics/ui/menus.html#options-menu">OptionsMenu</a>) が起動されます。<br /><br />独自のメニューを提供するか、他の目的に使う場合は、このイベントをキャプチャします。提供するメニューに 1 つしかオプションがない場合は、[メニュー] ボタンをそのオプションの切り替えボタンとして使用できます。<br /><br />メディアアプリでは、[メニュー] ボタンを使って再生パネルを表示または非表示にできます。</td>
+      <td>Invoke the standard Android context menu (<a href="http://developer.android.com/guide/topics/ui/menus.html#options-menu">OptionsMenu</a>). <br/><br/>Capture this event to provide your own menu, or for any other purpose. If your menu only has one option, you can use Menu as a toggle for that option. <br/><br/>In media apps, use Menu to show or hide the playback chrome.</td>
     </tr>
     <tr>
-      <td>検索</td>
-      <td>マイク (音声認識リモコンのみ)</td>
-      <td>該当なし</td>
-      <td>該当なし</td>
-      <td>これはシステムイベントで、アプリではキャプチャできません。このボタンを押すと、音声検索が起動されます。<br /><br />音声検索の起動時にアプリまたはゲームの状態を保持するには<a href="http://developer.android.com/reference/android/app/Activity.html#onPause()"><code>onPause()</code></a> を実装し、検索完了後にアプリやゲームを続行できるようにするには<a href="http://developer.android.com/reference/android/app/Activity.html#onResume()"><code>onResume()</code></a> を実装します。<br /><br />オーディオアプリでは、音声検索の起動中は、再生を一時停止するか、音量を小さくします。<br /><br />ビデオアプリでは、音声検索の起動中は、音声をミュートするか、再生を一時停止します。</td>
+      <td>Search</td>
+      <td>Microphone (Voice Remote only)</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>This is a system event and cannot be captured in your app. When pressed, voice search is invoked. <br/><br/>Implement <a href="http://developer.android.com/reference/android/app/Activity.html#onPause()"><code>onPause()</code></a> to preserve state in your app or game when voice search launches, and <a href="http://developer.android.com/reference/android/app/Activity.html#onResume()"><code>onResume()</code></a> to continue after it is complete. <br/><br/>In audio apps, pause playback or lower the volume when voice search is active. <br/><br/>In video apps, mute the audio or pause playback when voice search is active.</td>
     </tr>
     <tr>
       <td>GameCircle</td>
-      <td>該当なし</td>
+      <td>N/A</td>
       <td>GameCircle</td>
-      <td>該当なし</td>
-      <td>これはシステムイベントで、アプリではキャプチャできません。このボタンを押すと、GameCircleオーバーレイ (GameCircleをサポートしているゲームの場合)、または [Game Paused] ダイアログ (GameCircleをサポートしていないゲームの場合) が表示されるか、ランチャーの [Games] ページに戻ります (他のすべてのアプリの場合)。<br /><br /> <strong>注意:</strong> サイドロードされたアプリは、GameCircleを実装していても必ずランチャーの [Games] ページに戻ります。GameCircleの正しい動作を示すのは、Amazonアプリストアに申請されたアプリだけです。アプリを申請する前に、<a href="https://developer.amazon.com/public/resources/development-tools/live-app-testing">ライブアプリテスト</a>を使用してGameCircleの統合をテストできます。<br /><br /> [GameCircle] ボタンが押されたときにアプリまたはゲームの状態を保持するには、<a href="http://developer.android.com/reference/android/app/Activity.html#onPause()"> <code>onPause()</code></a> を実装します。ユーザーがゲームに戻ったときに続きから再開できるようにするには、<a href="http://developer.android.com/reference/android/app/Activity.html#onResume()">onResume()</a> を実装します。</td>
+      <td>N/A</td>
+      <td>This is a system event and cannot be captured in your app. When pressed, the system displays the GameCircle overlay (for games with GameCircle support), a “Game Paused” dialog (for games without GameCircle support), or returns to the Games page in the launcher (for all other apps). <br/><br/> <strong>Note:</strong> Sideloaded apps always return to the Games page of the Launcher even if they implement GameCircle. Only apps that have been submitted to the Amazon Appstore demonstrate correct GameCircle behavior. You can use <a href="https://developer.amazon.com/public/resources/development-tools/live-app-testing">Live App Testing</a> to test your GameCircle integration before you submit your app. <br/><br/> Implement <a href="http://developer.android.com/reference/android/app/Activity.html#onPause()"> <code>onPause()</code></a> to preserve state in your app or game when the GameCircle button is pressed. Implement <a href="http://developer.android.com/reference/android/app/Activity.html#onResume()">onResume()</a> to continue when the user returns to your game.</td>
     </tr>
   </tbody>
 </table>
 
-## ナビゲーションと選択
+## Navigation and Selection
 
-次の表では、ユーザーインターフェースのナビゲーションと選択で推奨される動作について説明します。複数のボタンを表示するアイテムでは、すべてのボタンを対象にしてください。
+The following table describes the recommended behavior for user interface navigation and selection. For items that show multiple buttons, provide support for both those buttons.
 
-<table>
+<table class="grid">
 <colgroup>
 <col width="15%" />
 <col width="15%" />
 <col width="15%" />
 <col width="15%" />
 <col width="40%" />
-<colgroup>
+</colgroup>
   <thead>
     <tr>
-      <th>アクション</th>
-      <th>Amazon Fire TVリモコンのボタン</th>
-      <th>Amazon Fire TVゲームコントローラーのボタン</th>
-      <th>その他のゲームコントローラーのボタン</th>
-      <th>動作</th>
+      <th>Action</th>
+      <th>Amazon Fire TV Remote Button</th>
+      <th>Amazon Fire TV Game Controller Button</th>
+      <th>Other Game Controller Button</th>
+      <th>Behavior</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>選択/メインアクション</td>
-      <td>D-pad (ナビゲーション) の [選択]</td>
+      <td>Select/Main Action</td>
+      <td>D-Pad Center</td>
       <td>A</td>
       <td>A</td>
-      <td>フォーカスされたアイテムを選択するか、メニューオプションまたはプロンプトを確定するか、メインゲームアクションを実行します。</td>
+      <td>Select the item in focus, confirm menu options or prompts, or perform the main game action.</td>
     </tr>
     <tr>
-      <td>キャンセル/戻る</td>
-      <td>バック</td>
-      <td>バック <br />B</td>
+      <td>Cancel/Back</td>
+      <td>Back</td>
+      <td>Back <br/>B</td>
       <td>B</td>
-      <td>現在の操作を取り消すか、直前の画面に戻ります。<br /><br />確認ダイアログ ("Are you sure you want to quit?") を表示するには、このアクションをインターセプトします。</td>
+      <td>Cancel the current operation, or return to the previous screen. <br/><br/>Intercept this action to provide confirmation dialogs (“Are you sure you want to quit?”)</td>
     </tr>
     <tr>
-      <td>上<br />下<br />左<br />右</td>
-      <td>D-pad</td>
-      <td>D-pad (十字キー)<br />左アナログスティック</td>
-      <td>D-pad (十字キー)<br />左アナログスティック</td>
-      <td>入力フォーカスを該当する方向に移動します。<br /> <br />Amazon Fireゲームコントローラーやその他のゲームコントローラーでは、左アナログスティックがD-padと同じ動作をします。</td>
+      <td>Up<br/>Down<br/>Left<br/>Right</td>
+      <td>D-Pad</td>
+      <td>D-Pad<br/>Left Stick</td>
+      <td>D-Pad<br/>Left Stick</td>
+      <td>Move the input focus in the appropriate direction. <br/> <br/>On the Amazon Fire Game Controller and other game controllers, the left stick should have the same behavior as the D-Pad.</td>
     </tr>
-  </tbody>
+</tbody>
 </table>
 
-## メディアの再生
 
-次の表では、メディアの再生に関する推奨動作を説明します。次の点に注意してください。
+## Media Playback
 
-* メディアを再生しないアプリや、アナログスティックまたはショルダーボタン (L1/R1) を使用するアプリの場合には、それらのボタンのイベントをキャプチャしないでください。他の機能にキャプチャすると、システムがバックグラウンドで再生しているメディアをコントロールできなくなる可能性があります。
-* Unityなどのフレームワークはシステム経由で主要なイベントを渡す機能がサポートされていないため、これらのフレームワークを使用しているアプリの場合、この推奨を無視できます。
-* アプリやゲームでこれらのボタンを他の目的のために使用する場合、GameCircleオーバーレイ (GameCircleボタン) から、またはFire TVランチャーで、システムメディアコントロールにアクセスできます。
+The following table describes the recommended behavior for media playback. Note the following:
 
-<table>
+* If your app does not play media or use the analog sticks or shoulder buttons (L1/R1), do not capture the events for those buttons. Doing so may interfere with the system's ability to control media playing in the background.
+* If your app uses a framework such as Unity, you can ignore this recommendation, since the ability to pass key events through to the system is not supported in those frameworks.
+* If your app or game does use any of these buttons for other purposes, the user may access system media control from the GameCircle overlay (GameCircle button) or in the Fire TV launcher.
+
+<table class="grid">
 <colgroup>
 <col width="15%" />
 <col width="15%" />
@@ -138,56 +140,56 @@ Amazon Fire TVプラットフォーム向けのアプリを開発する際、各
 <col width="15%" />
 <col width="15%" />
 <col width="25%" />
-<colgroup>
+</colgroup>
   <thead>
     <tr>
-      <th>アクション</th>
-      <th>Amazon Fire TVリモコンのボタン</th>
-      <th>Amazon Fire TVゲームコントローラーのボタン</th>
-      <th>Amazon Fireゲームコントローラー (第 1 世代) のボタン</th>
-      <th>その他のゲームコントローラーのボタン</th>
-      <th>動作</th>
+      <th>Action</th>
+      <th>Amazon Fire TV Remote Button</th>
+      <th>Amazon Fire TV Game Controller Button</th>
+      <th>Amazon Fire Game Controller (1st Generation) Button</th>
+      <th>Other Game Controller Button</th>
+      <th>Behavior</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>再生/一時停止</td>
-      <td>再生/一時停止</td>
-      <td>A<br />左側/右側のアナログスティックの押し下げ</td>
-      <td>再生/一時停止</td>
+      <td>Play/Pause</td>
+      <td>Play/Pause</td>
+      <td>A<br/>Left/Right Stick Press</td>
+      <td>Play/Pause</td>
       <td>A</td>
-      <td>メディアの再生と一時停止を切り替えます。</td>
+      <td>Toggle media play or pause.</td>
     </tr>
     <tr>
-      <td>早戻し</td>
-      <td>早戻し<br />左 (D-pad)<br />L1ショルダーボタン</td>
-      <td>L1ショルダーボタン</td>
-      <td>早戻し<br />左 (D-pad)<br />L1ショルダーボタン</td>
-      <td>左 (D-pad) <br />L1ショルダーボタン</td>
-      <td>再生中のメディアコンテキストが早戻しされます。実際の動作はそれぞれのメディアによって異なります。ビデオなら再生位置の調整に、音楽なら直前のトラックに戻るために、スライドショーなら直前の写真に移動するために、このボタンを使用できます。</td>
+      <td>Rewind</td>
+      <td>Rewind<br/>Left (D-Pad)<br/>Left Shoulder (L1)</td>
+      <td>Left Shoulder (L1)</td>
+      <td>Rewind<br/>Left (D-Pad)<br/>Left Shoulder (L1)</td>
+      <td>Left (D-Pad) <br/>Left Shoulder (L1)</td>
+      <td>Rewind or skip backwards in media playback contexts. The exact behavior is dependent on the specific media: you can use this button to scrub video, to skip to the previous music track, or move to the previous photo in a slide show.</td>
     </tr>
     <tr>
-      <td>早送り</td>
-      <td>FF<br />右 (D-pad)<br />R1ショルダーボタン</td>
-      <td>R1ショルダーボタン</td>
-      <td>FF<br />右 (D-pad)<br />R1ショルダーボタン</td>
-      <td>右 (D-pad)<br />R1ショルダーボタン</td>
-      <td>再生中のメディアコンテキストが早送りされます。正確な動作はそれぞれのメディアによって異なります。ビデオなら再生位置の調整に、音楽なら次のトラックに進むために、スライドショーなら次の写真に移動するために、このボタンを使用できます。</td>
+      <td>Fast Forward</td>
+      <td>FF<br/>Right (D-Pad)<br/>Right Shoulder (R1)</td>
+      <td>Right Shoulder (R1)</td>
+      <td>FF<br/>Right (D-Pad)<br/>Right Shoulder (R1)</td>
+      <td>Right (D-Pad)<br/>Right Shoulder (R1)</td>
+      <td>Fast-forward in media playback contexts. The exact behavior is dependent on the specific media: you can use this button to scrub video, to skip to the next music track, or move to the next photo in a sideshow.</td>
     </tr>
   </tbody>
 </table>
 
 
-## 音量制御
+## Volume Control
 
-Amazon Fire TVでは、オーディオをAmazon Fire TVゲームコントローラーのヘッドホンジャックにストリーミングできます。オーディオ再生の音量制御は、左側/右側のトリガーボタン (L2/R2) を使用して行うことができます。音量制御はシステム機能であり、アプリの他のボタンにマップできません。
+You can stream audio to the headphone jack on the Amazon Fire TV Game Controller. Volume control for audio playback is available with the left and right trigger buttons (L2/R2). Volume control is a system function and cannot be mapped to other buttons in your app.
 
-次の点に注意してください。
+Note the following:
 
-* これらのボタンを使用しないアプリまたはゲームの場合、それらの入力イベントをキャプチャしないでください。他の機能にキャプチャすると、ユーザーは音量をコントロールできなくなる可能性があります。
-* アプリやゲームでこれらのボタンを他の目的のために使用する場合、GameCircleオーバーレイから、またはFire TVランチャーで、システム音量制御にアクセスできます。
+* If your app or game does not use these buttons, do not capture those input events. Doing so may interfere with the user's ability to control the volume.
+* If your app or game does use those buttons for other purposes, the user may access system volume control from the GameCircle overlay or in the Fire TV launcher.
 
-<table>
+<table class="grid">
 <colgroup>
 <col width="30%" />
 <col width="70%" />
@@ -195,28 +197,28 @@ Amazon Fire TVでは、オーディオをAmazon Fire TVゲームコントロー�
 </colgroup>
   <thead>
     <tr>
-      <th>アクション</th>
-      <th>Amazon Fire TVゲームコントローラーのボタン</th>
+      <th>Action</th>
+      <th>Amazon Fire TV Game Controller Button</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>音量 +</td>
-      <td>L2トリガー </td>
+      <td>Volume Up</td>
+      <td>Left Trigger (L2)</td>
     </tr>
     <tr>
-      <td>音量 -</td>
-      <td>R2トリガー </td>
+      <td>Volume Down</td>
+      <td>Right Trigger (R2)</td>
     </tr>
   </tbody>
 </table>
 
-## ゲームプレイ
+## Gameplay
 
-ゲームプレイのユーザーインターフェースはゲームによって大きく違いますが、基本的な推奨事項は次の表の通りです。
+Although gameplay user interfaces are highly individual, the following table describes basic recommendations.
 
 
-<table>
+<table class="grid">
 <colgroup>
 <col width="20%" />
 <col width="20%" />
@@ -225,22 +227,22 @@ Amazon Fire TVでは、オーディオをAmazon Fire TVゲームコントロー�
 </colgroup>
   <thead>
     <tr>
-      <th>アクション</th>
-      <th>Amazon Fire TVリモコンのボタン</th>
-      <th>Amazon Fire TVゲームコントローラーのボタン</th>
-      <th>その他のゲームコントローラーのボタン</th>
+      <th>Action</th>
+      <th>Amazon Fire TV Remote Button</th>
+      <th>Amazon Fire TV Game Controller Button</th>
+      <th>Other Game Controller Button</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>プライマリゲームプレイアクション</td>
-      <td>D-padの [選択]</td>
+      <td>Primary Gameplay Action</td>
+      <td>D-Pad Center</td>
       <td>A</td>
       <td>A</td>
     </tr>
     <tr>
-      <td>セカンダリゲームプレイアクション</td>
-      <td>推奨なし</td>
+      <td>Secondary Gameplay Action</td>
+      <td>no recommendation</td>
       <td>B</td>
       <td>B</td>
     </tr>

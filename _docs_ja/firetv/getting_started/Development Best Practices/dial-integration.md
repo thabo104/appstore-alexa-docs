@@ -1,5 +1,5 @@
 ---
-title: DIALの統合
+title: DIAL Integration
 permalink: dial-integration.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,33 +7,35 @@ toc-style: kramdown
 github: true
 ---
 
-Amazon Fire TV端末は、Whisperplayサービスを介した[DIAL (Discovery-and-Launch) プロトコル][1]をサポートしています。DIALはオープンプロトコルの 1 つで、これを使用すると、別の端末からセカンドスクリーンアプリを使用してFire TV対応アプリを検出し、起動できるようになります。そのためには、Fire TVとセカンドスクリーン端末が同じネットワークに存在する必要があります。
+Amazon Fire TV devices support the [DIAL (Discovery-and-Launch) protocol][1] through the Whisperplay service. DIAL is an open protocol that enables your Fire TV app to be discoverable and launchable from another device via a second screen app. Both Fire TV and the second screen device must be on the same network.
 
-DIALは、キャスティングやミラーリングの機能を提供するAPIではありません。セカンドスクリーン端末のアプリがFire TVでアプリを見つけて起動できるようにするだけです。通常は、セカンドスクリーンアプリ (起動メッセージの送信側) と、対応するFire TV対応アプリ (メッセージの受信する側) の両方を実装します。
+Note that DIAL is not a casting or mirroring API. DIAL only enables apps on a second screen device to find and launch apps on a Fire TV. In most cases you implement both the second screen app (to send a launch message) and the corresponding Fire TV app (to receive that message).
 
-オープンDIALプロトコルの詳細と、アプリをDIALサービスに登録する方法については、[DIALのウェブサイト][2]を参照してください。
+For more information about the open DIAL protocol and to register your app with the DIAL service, see [the DIAL website][2].
 
 * TOC
 {:toc}
 
-## DIALを実装する
+## Implementing DIAL
 
-DIALを使用する場合、Fire TV対応アプリのコードを変更する必要はありませんが、アプリのマニフェストとリソースに変更を加えて、DIALをサポートしていることを示し、起動インテントを受信できるようにする必要があります。
+DIAL functionality does not require any changes to your Fire TV app's code, but you do need to modify your app's manifest and resources to indicate support for DIAL and to accept launch intents.
 
-Fire TVとセカンドスクリーンアプリにDIALのサポートを実装するには、次の 5 つの手順を実行します。
+There are five steps to implementing DIAL support for your Fire TV and second screen apps:
 
-1. Fire TVでアプリを検出して起動するためのDIALプロトコルを、セカンドスクリーンアプリに実装します。詳細については、[DIALのウェブサイト][2]、特に「[Details for Developers][3]」の内容を参照してください。
-2. Fire TV対応アプリをDIALレジストリに登録します。詳細については、[About the Registry][4]を参照してください。
-3. Fire TV対応アプリで、DIAL起動インテントペイロードを処理します。この手順は、セカンドスクリーンアプリがインテントペイロードを送信する場合にのみ必要です。このペイロードは、値`com.amazon.extra.DIAL_PARAM`を持つ[インテント][5]エクストラとして配信されます。4. Fire TV対応アプリで、DIALをサポートするようにAndroidマニフェストを変更します。詳細については、「[Androidマニフェストを変更する][6]」を参照してください。5. Fire TV対応アプリで、`Whisperplay.xml`ファイルをアプリのリソースに追加します。詳細については、「[Whisperplay.xmlファイルを追加する][7]」を参照してください。
+1. In your second screen app, implement the DIAL protocol to discover and launch apps on Fire TV. See [the DIAL website][2] for more information, and specifically the information in [Details for Developers][3].
+2. Register your Fire TV app with the DIAL registry. See [About the Registry][4] for details.
+3. In your Fire TV app, handle DIAL launch intent payloads. This step is only necessary if your second screen app sends an intent payload. That payload is delivered as an [Intent][5] extra with the value `com.amazon.extra.DIAL_PARAM`.
+4. In your Fire TV app, modify the Android manifest to support DIAL. See [Modify your Android Manifest][6].
+5. In your Fire TV app, add a `Whisperplay.xml` file to your app's resources. See [Add the Whisperplay.xml File][7].
 
-## Androidマニフェストを変更する
+## Modify your Android Manifest
 
-DIALをサポートするには、Androidマニフェスト (`AndroidManifest.xml`) に次の 2 つの変更を加えます。
+There are two changes you must make to your Android manifest (`AndroidManifest.xml`) to support DIAL:
 
-* WhisperplayとDIALをサポートしていることを示す `<meta-data>` 要素を `<application>` に追加します。
-* `DEFAULT`カテゴリを起動インテントに追加します。
+* Add a `<meta-data>` element to `<application>` that indicates support for Whisperplay and DIAL.
+* Add the `DEFAULT` category to your launch intent.
 
-マニフェストの `<application>` 部分に次の `<meta-data>` 要素を加えます。
+In the `<application>` portion of your manifest, add the following `<meta-data>` element:
 
 ```java
 <application ... >
@@ -42,7 +44,7 @@ DIALをサポートするには、Androidマニフェスト (`AndroidManifest.xm
 </application>
 ```
 
-次に、`DEFAULT`インテントカテゴリを、プライマリ (メイン) アクティビティの `<intent-filter>` 要素に追加します。
+Next, add the `DEFAULT` intent category to your primary (main) activity's `<intent-filter>` element:
 
 ```java
     <activity android:name=".MainActivity"
@@ -56,9 +58,9 @@ DIALをサポートするには、Androidマニフェスト (`AndroidManifest.xm
     </activity>
 ```
 
-## Whisperplay.xmlファイルを追加する
+## Add the Whisperplay.xml File
 
-Whisperplay.xmlというファイルを、res/xml/ディレクトリにあるアプリのリソースに追加します。このファイルの内容は次のようになります。DialAppNameには、DIALレジストリにあるアプリの名前が入ります。
+Add a file called `Whisperplay.xml` to your app's resources, in the `res/xml/` directory. The contents of the file should look like this, where `DialAppName` is the name of your app in the DIAL registry:
 
 ```java
 <whisperplay>
@@ -72,9 +74,9 @@ Whisperplay.xmlというファイルを、res/xml/ディレクトリにあるア
 ```
 
 
-## DIALペイロードインテント
+## DIAL Payload Intent
 
-DIALペイロード (DIAL起動リクエストを介してアプリに渡される情報) を受信するようにアプリが設定されていると、このペイロードは、値`com.amazon.extra.DIAL_PARAM`を持つ[インテント][5]エクストラとして配信されます。
+If your app accepts a DIAL payload (information that can be passed to your app via the DIAL launch request), that payload will be delivered as an [Intent][5] extra with the value `com.amazon.extra.DIAL_PARAM`.
 
 [1]: http://www.dial-multiscreen.org
 [2]: http://www.dial-multiscreen.org/

@@ -1,6 +1,7 @@
 ---
-title: Fire TV端末の仕様
+title: Fire TV Device Specifications
 permalink: device-and-platform-specifications.html
+toc-style: kramdown
 navtabs: true
 sidebar: firetv_ja
 product: Fire TV
@@ -16,7 +17,7 @@ ul#profileTabs.nav.nav-tabs li {
 
 ul#profileTabs.nav:after, ul#profileTabs.nav:before {
     display: inline-table !important;
-    margin-bottom: 52px;
+    margin-bottom: 60px;
 }
 
 ul#profileTabs.nav-tabs>li.active>a, ul#profileTabs.nav-tabs>li.active>a:focus, ul#profileTabs.nav-tabs>li.active>a:hover {
@@ -27,7 +28,7 @@ font-weight: bold;
 { @media {
 ul#profileTabs.nav.nav:after, ul#profileTabs.nav.nav:before {
     display: inline-table !important;
-    margin-bottom: 65px;
+    margin-bottom: 73px;
 }
 }}
 
@@ -40,7 +41,7 @@ margin-bottom: 30px;
 <style>
     ul#profileTabs.nav:after, ul#profileTabs.nav:before {
         display: inline-table !important;
-        margin-bottom: 65px;
+        margin-bottom: 73px;
     }
 </style>
 <![endif]-->
@@ -49,24 +50,30 @@ margin-bottom: 30px;
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     ul#profileTabs.nav:after, ul#profileTabs.nav:before {
         display: inline-table !important;
-        margin-bottom: 48px;
+        margin-bottom: 73px;
     }
 }
 </style>
 {% endif %}
 
-このページでは、すべてのAmazon Fire TV端末を対象に、メディアと端末、プラットフォームの仕様、サポートされるテクノロジーを紹介しています。
+This page lists the media, device, and platform specifications for all Amazon Fire TV devices as well as supported technologies. For details on Fire TV device naming conventions, see [Naming Conventions for Fire TV Devices][getting-started-developing-apps-and-games-for-amazon-fire-tv#firetvnames].
 
 <ul id="profileTabs" class="nav nav-tabs">
-   <li class="active"><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick (第 2 世代)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV (第 2 世代)</a></li>
-    <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick (第 1 世代)</a></li>
-    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV (第 1 世代)</a></li>
+   <li class="active"><a class="noCrossRef" href="#firetvedition" data-toggle="tab">Fire TV <br/>Edition</a></li>
+   <li><a class="noCrossRef" href="#firetvstickgen2" data-toggle="tab">Fire TV Stick<br/>(Gen 2)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen2" data-toggle="tab">Fire TV<br/>(Gen 2)</a></li>
+    <li><a class="noCrossRef" href="#firetvstickgen1" data-toggle="tab">Fire TV Stick<br/>(Gen 1)</a></li>
+    <li><a class="noCrossRef" href="#firetvgen1" data-toggle="tab">Fire TV<br/>(Gen 1)</a></li>
 </ul>
 
   <div class="tab-content">
 
-<div role="tabpanel" class="tab-pane active" id="firetvstickgen2">
+<div role="tabpanel" class="tab-pane active" id="firetvedition">
+
+{% include_relative specs_firetvedition.md %}
+</div>
+
+<div role="tabpanel" class="tab-pane" id="firetvstickgen2">
 
 {% include_relative specs_firetvstickgen2.md %}
 </div>
@@ -85,15 +92,15 @@ margin-bottom: 30px;
 </div>
 </div>
 
-## すべてのFire TV端末
+## All Fire TV Devices
 
-### リモコンとゲームコントローラー
+### Remotes and Game Controllers
 
 {% include_relative specs_remotes.md %}
 
-### Fire TVでサポートされるテクノロジー
+### Technology Support for Fire TV
 
-サポートされるテクノロジーは、すべてのAmazon Fire TV端末で同じです。
+Supported technologies are the same for all Amazon Fire TV devices.
 
 <table class="grid">
    <colgroup>
@@ -102,55 +109,55 @@ margin-bottom: 30px;
    </colgroup>
   <thead>
     <tr>
-      <th>テクノロジー</th>
-      <th>説明</th>
+      <th>Technology</th>
+      <th>Notes</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Miracast</td>
-      <td>サポートされます (Sink)。</td>
+      <td>Supported (sink) on all devices except Fire TV Edition.</td>
     </tr>
     <tr>
       <td>DIAL</td>
-      <td>サポートされます。Fire TVのアプリを検出できるようにするには、Androidマニフェストを変更する必要があります。詳細については、「<a href="dial-integration.html">DIALの統合</a>」を参照してください。</td>
+      <td>Supported. Apps for Fire TV require changes to your app’s Android manifest to be discoverable. See <a href="dial-integration.html">DIAL integration</a>.</td>
     </tr>
     <tr>
-      <td>ウェブサイトの閲覧/外部リンク</td>
-      <td>ウェブブラウザは使用できません。Android <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a>を使用します。</td>
+      <td>Web Browsing/external links</td>
+      <td>No web browser is available. Use Android <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a>.</td>
     </tr>
     <tr>
-      <td><a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing">Amazonアプリ内課金</a></td>
-      <td>サポートされます。最新バージョンの<a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/installing-and-configuring-app-tester">App Tester</a>を使用します。</td>
+      <td><a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing">Amazon In-App Purchasing</a></td>
+      <td>Supported. Use the latest version of the <a href="https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/installing-and-configuring-app-tester">App Tester</a>.</td>
     </tr>
     <tr>
-      <td><a href="https://developer.amazon.com/public/apis/earn/mobile-associates">Amazonモバイルアソシエイト</a></td>
-      <td>サポートされません。</td>
+      <td><a href="https://developer.amazon.com/public/apis/earn/mobile-associates">Amazon Mobile Associates</a></td>
+      <td>Not supported</td>
     </tr>
     <tr>
       <td><a href="https://developer.amazon.com/public/apis/engage/gamecircle">Amazon GameCircle</a></td>
-      <td>サポートされます。バージョン 2.1 以降を使用します。</td>
+      <td>Supported. Use version 2.1 or higher</td>
     </tr>
     <tr>
       <td><a href="http://login.amazon.com/">Login with Amazon</a></td>
-      <td>サポートされます。</td>
+      <td>Supported</td>
     </tr>
     <tr>
       <td><a href="https://developer.amazon.com/public/apis/experience/maps">Amazon Maps</a></td>
-      <td>サポートされません。</td>
+      <td>Not supported</td>
     </tr>
     <tr>
       <td><a href="https://developer.amazon.com/public/apis/engage/device-messaging">Amazon Device Messaging</a></td>
-      <td>プッシュメッセージをサポートします。</td>
+      <td>Supported for push messages</td>
     </tr>
     <tr>
-      <td><a href="https://developer.amazon.com/public/apis/earn/mobile-ads">Amazonモバイル広告</a></td>
-      <td>サポートされません。</td>
+      <td><a href="https://developer.amazon.com/public/apis/earn/mobile-ads">Amazon Mobile Ads</a></td>
+      <td>Not supported</td>
     </tr>
   </tbody>
 </table>
 
-### 端末のリリース日（米国）
+### Device Release Dates
 
 <table class="grid">
    <colgroup>
@@ -159,26 +166,30 @@ margin-bottom: 30px;
    </colgroup>
   <thead>
     <tr>
-      <th>端末</th>
-      <th>リリース日</th>
+      <th>Device</th>
+      <th>Release Date</th>
     </tr>
   </thead>
   <tbody>
+  <tr>
+    <td>Fire TV Edition </td>
+    <td>May 2017 </td>
+  </tr>
     <tr>
-      <td>Fire TV Stick (第 2 世代) </td>
-      <td>2016 年 9 月　※日本は2017 年4 月 </td>
+      <td>Fire TV Stick (Gen 2) </td>
+      <td>September 2016 </td>
     </tr>
     <tr>
-      <td>Fire TV (第 2 世代)  </td>
-      <td>2015 年 12 月</td>
+      <td>Fire TV (Gen 2) </td>
+      <td>December 2015</td>
     </tr>
     <tr>
-      <td>Fire TV Stick (第 1 世代) </td>
-      <td> 2014 年 11 月</td>
+      <td>Fire TV Stick (Gen 1) </td>
+      <td> November 2014 </td>
     </tr>
     <tr>
-      <td>Fire TV (第 1 世代)</td>
-      <td>2014 年 4 月</td>
+      <td>Fire TV (Gen 1)</td>
+      <td>April 2014 </td>
     </tr>
   </tbody>
 </table>

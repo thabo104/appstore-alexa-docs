@@ -1,5 +1,5 @@
 ---
-title: 表示とレイアウト
+title: Display and Layout
 permalink: display-and-layout.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,22 +7,22 @@ toc-style: kramdown
 github: true
 ---
 
-テレビに正しく表示される (またはタブレットとテレビの両方で正しく動作する) Androidアプリを実装するには、ユーザーインターフェースのレイアウトに注意が必要です。
+Implementing an Android app that renders well on a television (or that behaves properly on both a tablet and a television) requires some attention to user interface layout.
 
-このドキュメントでは、Amazon Fire TVプラットフォームでUIレイアウトを作成するための技術情報について説明します。テレビ向けのデザインに関する一般的なガイドラインについては、「[TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン][design-and-user-experience-guidelines]」を参照してください。
+This document provides technical information for building your UI layouts on the Amazon Fire TV platform. See [Design and User Experience Guidelines][design-and-user-experience-guidelines] for general guidelines on TV design.
 
 * TOC
 {:toc}
 
-## 画面のサイズと解像度
+## Screen Size and Resolution
 
-Fireタブレットをはじめとする多くのAndroid端末は、物理サイズが固定されており、解像度も 1 種類だけです。一方、Amazon Fire TV端末は、任意のサイズの画面に接続して、720pまたは 1080pの解像度を利用することができます。
+Many Android devices such as Fire tablets have a fixed physical size and a single resolution. This is not the case with Amazon Fire TV devices, to which you can connect a 720p or 1080p screen of any size.
 
-Androidのメカニズムでは、ビデオの出力解像度にかかわらず、絶対座標でアクティビティレイアウトを指定するために、密度非依存ピクセル単位 (dp) を使用します。画面の解像度がいくつであっても、Androidではグラフィックリソースを拡張してサイズが一定に保たれます。
+The mechanism in Android to specify an activity layout in absolute coordinates independently of the video output resolution is to use density independent units (dp). Android scales the graphic resources so that the size remains constant independently of the screen resolution.
 
-次の表に、Amazon Fire TV端末に接続される各種ビデオ出力のピクセルサイズ、密度、ディスプレイ解像度を示します。
+The following table shows the pixel size, density and display resolution for various video outputs connected to an Amazon Fire TV device.
 
-<table>
+<table class="grid">
    <colgroup>
       <col width="14%" />
       <col width="14%" />
@@ -34,13 +34,13 @@ Androidのメカニズムでは、ビデオの出力解像度にかかわらず�
    </colgroup>
   <thead>
     <tr>
-      <th>テレビの設定</th>
-      <th>出力解像度 (ピクセル)</th>
-      <th>レンダリングサーフェス (ピクセル)</th>
-      <th>密度識別子</th>
-      <th>画面密度 (dp)</th>
-      <th>ディスプレイ解像度 (dp)</th>
-      <th>画面サイズ識別子</th>
+      <th>TV setting</th>
+      <th>Output resolution (pixels)</th>
+      <th>Render surface (pixels)</th>
+      <th>Density identifier</th>
+      <th>screen density (dp)</th>
+      <th>Display resolution (dp)</th>
+      <th>Screen size identifier</th>
     </tr>
   </thead>
   <tbody>
@@ -75,19 +75,19 @@ Androidのメカニズムでは、ビデオの出力解像度にかかわらず�
 </table>
 
 
-## 画面表示の向き
+## Orientation
 
-Amazon Fire TV端末の画面表示の向きは、横向きに固定されています。回転または向きの変更を端末に求める要求に対しては、次の結果が返されます。
+The orientation of the Amazon Fire TV device never changes, and requests for the rotation or orientation on the device return these results:
 
-<table>
+<table class="grid">
    <colgroup>
       <col width="30%" />
       <col width="70%" />
    </colgroup>
   <thead>
     <tr>
-      <th>メソッド</th>
-      <th>結果</th>
+      <th>Method</th>
+      <th>Result</th>
     </tr>
   </thead>
   <tbody>
@@ -96,88 +96,88 @@ Amazon Fire TV端末の画面表示の向きは、横向きに固定されてい
       <td>0 (<code>ROTATION_0</code>)</td>
     </tr>
     <tr>
-      <td><a href="http://developer.android.com/reference/android/view/Display.html#getOrientation%28%29"><code>Display.getOrientation()</code></a> (廃止)</td>
+      <td><a href="http://developer.android.com/reference/android/view/Display.html#getOrientation%28%29"><code>Display.getOrientation()</code></a> (deprecated)</td>
       <td>0 (<code>ORIENTATION_UNDEFINED</code>)</td>
     </tr>
   </tbody>
 </table>
 
-## リソース設定
+## Resource Configurations
 
-タブレットなど、Amazon Fire TV以外のプラットフォームで実行するアプリを設計する場合は、プラットフォームごとに異なるレイアウトとドローアブルを作成し、各種プラットフォームや端末の設定用に名前を付けたres/のサブディレクトリに保存できます。これらリソース設定の使用方法の詳細については、Androidのベストプラクティスガイドの「[複数の画面のサポート](http://developer.android.com/guide/practices/screens_support.html)」を参照してください。
+If you design your app to run on platforms other than Amazon Fire TV, such as tablets, you can create different layouts and drawables for each platform, and store them in subdirectories of `res/` named for various platform and device configurations. For more information on using these resource configurations, see the Android best practices guide for [Supporting Multiple Screens](http://developer.android.com/guide/practices/screens_support.html).
 
-次の表に、Amazon Fire TVプラットフォームで使用可能なリソース設定を示します。
+The following table describes the resource configurations available for the Amazon Fire TV platform.
 
-<table>
+<table class="grid">
    <colgroup>
       <col width="30%" />
       <col width="70%" />
    </colgroup>
   <thead>
     <tr>
-      <th>設定</th>
-      <th>値</th>
+      <th>Configuration</th>
+      <th>Value</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>最小幅</td>
+      <td>Smallest width</td>
       <td><code>sw540dp</code></td>
     </tr>
     <tr>
-      <td>使用可能な幅</td>
+      <td>Available Width</td>
       <td><code>w960dp</code></td>
     </tr>
     <tr>
-      <td>使用可能な高さ</td>
+      <td>Available Height</td>
       <td><code>h540dp</code></td>
     </tr>
     <tr>
-      <td>画面サイズ</td>
+      <td>Screen Size</td>
       <td><code>large</code></td>
     </tr>
     <tr>
-      <td>画面アスペクト比</td>
+      <td>Screen aspect</td>
       <td><code>long</code></td>
     </tr>
     <tr>
-      <td>画面の向き</td>
-      <td><code>land</code> (TVアプリは常に横向きです)</td>
+      <td>Screen orientation</td>
+      <td><code>land</code> (TV apps are always landscape)</td>
     </tr>
     <tr>
-      <td>UIモード</td>
+      <td>UI mode</td>
       <td><code>television</code></td>
     </tr>
     <tr>
-      <td>ナイトモード</td>
+      <td>Night mode</td>
       <td><code>notnight</code></td>
     </tr>
     <tr>
-      <td>画面ピクセル密度</td>
+      <td>Screen pixel density</td>
       <td><code>xhdpi</code></td>
     </tr>
     <tr>
-      <td>タッチスクリーンタイプ</td>
+      <td>Touchscreen type</td>
       <td><code>notouch</code></td>
     </tr>
     <tr>
-      <td>キーボードの使用可能状況</td>
+      <td>Keyboard availability</td>
       <td><code>keyssoft</code></td>
     </tr>
     <tr>
-      <td>主なテキスト入力方法</td>
+      <td>Primary text input method</td>
       <td><code>nokeys</code></td>
     </tr>
     <tr>
-      <td>ナビゲーションキーの使用可否</td>
+      <td>Navigation key availability</td>
       <td><code>navexposed</code></td>
     </tr>
     <tr>
-      <td>タップ以外の主なナビゲーション方法</td>
+      <td>Primary non-touch navigation method</td>
       <td><code>dpad</code></td>
     </tr>
     <tr>
-      <td>プラットフォームバージョン</td>
+      <td>Platform version</td>
       <td><code>v17</code></td>
     </tr>
   </tbody>

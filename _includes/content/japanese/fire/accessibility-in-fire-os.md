@@ -1,121 +1,122 @@
-このページでは、Fire OSのユーザー補助機能の実装に関連する概念と用語について説明します。  
+This page discusses the concepts and terminology related to implementing accessibility features for Fire OS.  
 
-{% include note.html content="こちらの前に、ユーザー補助に関するAndroidのドキュメントを読み、用語と概念をよく理解しておくことをお勧めします。「[Making Applications More Accessible](https://developer.android.com/guide/topics/ui/accessibility/apps.html)」を参照してください。"%}
+{% include note.html content="Before you begin, Amazon recommends reading through the Android documentation for accessibility to familiarize yourself with these terms and concepts. See [Making Applications Accessible](https://developer.android.com/guide/topics/ui/accessibility/apps.html)." %}
 
 * TOC
 {:toc}
 
-## Fire OSのユーザー補助に関するオブジェクトとイベント
+## Overview of Fire OS Accessibility Objects and Events
 
-このセクションでは、アプリにユーザー補助機能を実装する際に使用するオブジェクトとイベントに関する用語とその定義を紹介します。
+This section contains an introduction to the terms and their definitions for the objects and events that you will use when implementing accessibility in your app.
 
 ### AccessibilityEvent
 
-`AccessibilityEvent`は、UIで何かが行われたことを表す、アプリケーションからユーザー補助機能へのメッセージです。ユーザー補助イベントをトリガーするUIの変化には、フォーカスの変化、ウィンドウの表示や非表示、画面上のオブジェクトの位置の変化などがあります。
+An `AccessibilityEvent` is a message from an application to an assistive technology indicating that something happened in the UI. Examples of UI changes that could trigger an accessibility event include focus changes, a window appearing or disappearing, or an on-screen object changing locations.
 
-[`AccessibilityEvents`](https://developer.android.com/reference/android/view/accessibility/AccessibilityEvent.html)に関するAndroidのドキュメントも参照してください。
+Also see the Android documentation for [`AccessibilityEvents`](https://developer.android.com/reference/android/view/accessibility/AccessibilityEvent.html).
 
 ### AccessibilityNodeInfo
 
-`AccessibilityNodeInfo`は、画面上のコンポーネントに関するユーザー補助情報のスナップショットです。ほとんどの場合、アプリケーションからユーザー補助機能への一方向の通信です。ごくまれですが、ユーザー補助アクションを介してユーザー補助機能からアプリケーションに情報が返されることもあります。
+An `AccessibilityNodeInfo` is a snapshot of the accessibility information related to an on-screen component and provides mostly one-way communication between your app and the assistive technology. The assistive technology also has very limited communication back to the app via accessibility actions.
 
-アプリケーションによって`AccessibilityNodeInfo`が作成されて返されると、それ以降はユーザー補助機能とアクセシビリティフレームワークで当該ノードに対する変更が確認されなくなるため、その時点でノードを破棄できます。ノードが表す基礎オブジェクトが変更された場合は、変更を示す適切なユーザー補助イベントを送信してください。その際、`createAccessibilityNodeInfo`または`onInitializeAccessibilityNodeInfo`への次の呼び出しで返されるノード内のオブジェクトを確認し、特性の更新内容をイベントに反映してください。
+After your application creates and returns an `AccessibilityNodeInfo`, the assistive technology and accessibility framework will not see any further changes to that node, so at that point you can discard the node. If the underlying object represented by the node changes, send an appropriate accessibility event indicating the change, reflecting the updated characteristics of the object in the node returned from the next call to either `createAccessibilityNodeInfo` or `onInitializeAccessibilityNodeInfo`.
 
-アプリケーションでは、サーバー側でのノードの参照に、Androidビューと仮想子孫番号を組み合わせて使用してください。ノードがビュー自体を表している場合、仮想子孫番号は`-1 (AccessibilityNodeProvider.HOST_VIEW_ID)` になります。
+In the app, on the server side, reference nodes using a combination of an Android view and a virtual descendant number. If the node represents the view itself, the virtual descendant number is `-1 (AccessibilityNodeProvider.HOST_VIEW_ID)`.
 
-アプリケーションでは、`AccessibilityNodeInfo`オブジェクトに関する説明情報をそのオブジェクトの`getExtras` Bundleに追加できます。VoiceViewは、[AccessibilityNodeInfo.getExtras()](https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html#getExtras%28%29)を呼び出して、この情報を読み取ることができます。
+An app can add descriptive information about an `AccessibilityNodeInfo` object in that object's `getExtras` Bundle, which VoiceView can read by calling [AccessibilityNodeInfo.getExtras()](https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html#getExtras%28%29).
 
-[`AccessibilityNodeInfo`](https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html)に関するAndroidのドキュメントも参照してください。
+Also see the Android documentation for [`AccessibilityNodeInfo`](https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html).
 
 ### AccessibilityNodeProvider
 
-`AccessibilityNodeProvider`は、あるビューの`AccessibilityNodeInfo`、またはあるビューの仮想的にアクセス可能な子孫の`AccessibilityNodeInfo`を作成するインターフェースです。
+An `AccessibilityNodeProvider` is an interface which creates an `AccessibilityNodeInfo` either for a view or for the virtually accessible descendant of a view.
 
-[`AccessibilityNodeProvider`](https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeProvider.html)に関するAndroidのドキュメントも参照してください。
+Also see the Android documentation for [`AccessibilityNodeProvider`](https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeProvider.html).
 
 ### AccessibilityDelegate
 
-`AccessibilityDelegate`は、イベント、ビューのノード、または仮想的にアクセス可能な子孫を初期化できるインターフェースです。`AccessibilityDelegates`を使用すると、あるビューのユーザー補助情報を別のビューで代替や補完として利用することができます。たとえば、親リストでリスト項目のユーザー補助情報を提供できます。
+An `AccessibilityDelegate`  is an interface that can initialize accessibility events, nodes for views, or virtual accessible descendants. Use `AccessibilityDelegates` to proxy or augment accessibility information in one view from information in another. For example, a parent list can provide accessibility information for a list item.
 
-[`AccessibilityDelegate`](https://developer.android.com/reference/android/view/View.AccessibilityDelegate.html)に関するAndroidのドキュメントも参照してください。
+Also see the Android documentation for [`AccessibilityDelegate`](https://developer.android.com/reference/android/view/View.AccessibilityDelegate.html).
 
-## ユーザー補助イベントのパス
+## Path of an Accessibility Event
 
-このセクションでは、標準ビューやカスタムビューのユーザー補助イベントのパスについて説明します。  
+ This section discusses the path of accessibility events for standard and custom views.  
 
-### 標準ビュー
+### Standard Views  
 
-Fire OSアプリのユーザーインターフェースを構成する視覚的要素をビューと呼びます。たとえば、1 つのテキスト要素を持つ (`TextView`で "hello world" というテキストを表示する) 簡単なアプリがあるとします。このとき、`TextView`は`RelativeLayout`の子であるとします。`RelativeLayout`は、常にアプリのビュー階層のルートとなるクラス`ViewRootImpl`の子です。`TextView`は標準のAndroidビューであるため、`TextView`は、デフォルトの動作として、実行時に適切なユーザー補助イベントを送信します。
+The visual elements that make up the user interface of a Fire OS app are called Views. For example consider a simple app that has a single text element, a `TextView` with the text "hello world". In this example, the `TextView` is a child of a `RelativeLayout`. `RelativeLayout` is a child of `ViewRootImpl`, the class that is always the root of an app's View hierarchy. Since a `TextView` is a standard Android view, the default behavior of the `TextView` is to send appropriate accessibility events when VoiceView is running.
 
-以下のプロセスは、このシンプルなアプリ内で作成されるユーザー補助イベントの流れを表しています。
+The following process describes the path of an accessibility event created within this simple app: 
 
-1.  アプリを開いてから数秒後に、アプリのコードが`textView.setText("new text")` を呼び出します。
-2.  `TextView`が`TYPE_WINDOW_CONTENT_CHANGED`という`AccessibilityEvent`を作成し、このイベントを送信するよう親の`RelativeLayout`にリクエストします。
-3.  `RelativeLayout`がイベントを親の`ViewRootImpl`に渡し、フレームワークに送信するようリクエストします。
-4.  `ViewRootImpl`が、`AccessibilityManager`の`sendAccessibilityEvent()` を呼び出して、イベントをアクセシビリティフレームワークに送信します。
-5.  `AccessibilityManager`がイベントを`AccessibilityManagerService`に渡します。`AccessibilityManagerService`はアクセシビリティフレームワークからVoiceViewにイベントを渡します。
-6.  VoiceViewは`TYPE_WINDOW_CONTENT_CHANGED AccessibilityEvent`を処理する際に、イベントオブジェクトの`getSource()` メソッドを呼び出します。
-7.  このメソッドがトリガーとなり、アクセシビリティフレームワークが`TextView`の`createAccessibilityNodeInfo()` メソッドを呼び出します。このメソッドは、"new text" が含まれた`AccessibilityNodeInfo`オブジェクトを返します。
-8.  アクセシビリティフレームワークが、`AccessibilityNodeInfo`オブジェクトをVoiceViewに返します。
-9.  最後に、`TextView`が "hello world" から "new text" に変更されたことを、VoiceViewが認識します。ユーザーがリニアナビゲーションを使用して`TextView`のテキストを読み上げさせると、VoiceViewは "new text" を正しく読み上げます。
+1.  The app's code calls `textView.setText("new text")` a few seconds after the app opens.  
+2.  The `TextView` creates a `TYPE_WINDOW_CONTENT_CHANGED` `AccessibilityEvent` and requests that its parent, the `RelativeLayout`, send the event.  
+3.  The `RelativeLayout` then passes the event up to its parent, the `ViewRootImpl`, and requests that it send the event to the framework.  
+4.  The `ViewRootImpl` sends the event to the Accessibility Framework by calling the `AccessibilityManager`'s `sendAccessibilityEvent()`.
+5.  The `AccessibilityManager` passes the event to the `AccessibilityManagerService`, which then passes the event out of the Accessibility Framework and into VoiceView.
+6.  When VoiceView processes the `TYPE_WINDOW_CONTENT_CHANGED AccessibilityEvent`, it calls the event object's `getSource()` method.
+7.  This will trigger the Accessibility Framework to call the `TextView's createAccessibilityNodeInfo()` method, which returns an `AccessibilityNodeInfo` object containing the text "new text".
+8.  The Accessibility Framework then passes the `AccessibilityNodeInfo` object to VoiceView.
+9.  Finally, VoiceView becomes aware of the `TextView`'s change from "hello world" to "new text", and if a customer uses linear navigation to hear the text of the `TextView`, VoiceView will correctly speak "new text".
 
-### カスタムビュー
+### Custom Views  
 
-アプリで標準ビューの代わりにカスタムビューを使用する場合、VoiceViewにウィジェットの状態を通知するためのパターンを守る必要があります。通知する際、`AccessibilityNodeInfo`オブジェクトをVoiceViewに送信したり、アプリ内の`AccessibilityNodeInfo`のローカルコピーを更新したりしないでください。これらの方法は機能しません。
+If your app uses a custom view instead of a standard view, you must uphold this pattern of informing VoiceView of the state of your widget. When doing so, do not try to send an `AccessibilityNodeInfo` object to VoiceView, or update a local copy of the `AccessibilityNodeInfo` in your app; these approaches will not work.
 
-カスタムウィジェットの状態を変更する際は、以下の点に注意してください。
+Remember, when you change the state of a custom widget:
 
-**必須事項**
+**DO**
 
-*   カスタムビューの親の`requestSendAccessibilityEvent()` を呼び出し、`AccessibilityEvent`を送信してください。
-*   カスタムビューの`createAccessibilityNodeInfo()` 関数内で参照されている変数に、更新された値が含まれていることを確認してください。VoiceViewは`AccessibilityEvent`を受け取ると、`createAccessibilityNodeInfo()` を呼び出します。
+*   Send an `AccessibilityEvent` by calling `requestSendAccessibilityEvent()` on your custom view's parent.
+*   Ensure the variables pointed to in your custom view's `createAccessibilityNodeInfo()` function contain updated values. VoiceView calls `createAccessibilityNodeInfo()` when VoiceView receives your `AccessibilityEvent`.
 
-**禁止事項**
+**DO NOT**
 
-*   VoiceViewに`AccessibilityNodeInfo`を送信しないでください。
-*   `AccessibilityNodeInfo`オブジェクトへの参照が`createAccessibilityNodeInfo()` 関数に含まれていない状態で、このオブジェクトを更新しないでください。VoiceViewにはこのオブジェクトを参照する手段がないため、このオブジェクトの更新を確認できません。
+*   Try to send an `AccessibilityNodeInfo` to VoiceView.
+*   Keep references to `AccessibilityNodeInfo` objects outside of your `createAccessibilityNodeInfo()` function and then update these objects. VoiceView does not have any way to reference to these objects and will never see your updates to them.
 
-Androidのドキュメントで、`AccessibilityDelegate`クラスと、`createAccessibilityNodeInfo()` 関数が実装されているAccessibilityNodeProviderクラスの正しい使い方を示したコード例を確認してください。
+In the Android documentation, be sure to review a code example demonstrating correct use of the `AccessibilityDelegate` and AccessibilityNodeProvider classes where the `createAccessibilityNodeInfo()` function is implemented.
 
-## ビューの重要度を設定する
+## Setting a view's importance
 
-ユーザー補助イベントが適切に処理されるように、Androidビューごとにユーザー補助の重要度を設定してください。 
+To ensure that accessibility events are handled properly, make sure to set the importance for accessibility for each Android view. 
 
-ユーザー補助におけるビューの重要度は、XMLレイアウトで`android:importantForAccessibility`属性を使用するか、プログラムで`View.setImportantForAccessibility`メソッドを使用して設定します。設定できる値は、`yes`、`no`、`no_hide_descendants`、`auto` (デフォルト) です。重要でない値が設定されたビューには、対応するユーザー補助ノードが作成されません。また、そのビューから送信されたユーザー補助イベントは、フレームワークによって破棄されます。
+Set the state of view's importance for accessibility either in an XML layout with the `android:importantForAccessibility` attribute or programmatically with the `View.setImportantForAccessibility` method. You can set importance to `yes, no, no_hide_descendants`, or `auto` (default). Views that are not tagged as important do not have corresponding accessibility nodes, and additionally, the framework drops any accessibility events sent by them.
 
-ビューが適切なユーザー補助イベントを送信していても、VoiceViewが正しく応答していないと思われる場合は、ビューがユーザー補助で重要であると設定されているかどうかを確認してください。
+If your view is sending appropriate accessibility events, but VoiceView doesn't seem to be responding correctly, verify that your view is tagged as important for accessibility.
 
-## AccessibilityNodeInfoオブジェクトを管理する
+## Managing an AccessibilityNodeInfo Object
 
-`AccessibilityNodeInfo`オブジェクトの管理は、Fire OSとAndroidのユーザー補助における重要な要素の 1 つです。アプリのプロセスで実行されるAndroidアクセシビリティフレームワークは、特定のノードに対するリクエストを受信すると、まずそのノードがキャッシュ内に存在するかを確認します。
+One important aspect of Fire OS and Android accessibility is the management of `AccessibilityNodeInfo` objects. When the Android accessibility framework, which runs in the app's process, receives a request for a particular node, the framework first checks to see if the node is in its cache:
 
-*   ノードがキャッシュに存在する場合は、ノードが返され、アプリに対するノード作成の呼び出しは行われません。そのため、コンポーネントに関するユーザー補助情報が変更されるたびに、アプリはフレームワークとユーザー補助機能に通知する必要があります。通知しない場合、フレームワークは古い情報をユーザー補助機能に返します。
-*   ノードが変更されて無効になったことを示すには、`AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED`タイプのユーザー補助イベントを送信します。
-*   ノードがまだキャッシュにない場合は、リクエストされた方法に応じてノードが作成されます。以下に示すように、`AccessibilityNodeInfo`オブジェクトの作成をトリガーする可能性のある、ユーザー補助機能によるアクションは複数あります。
-    *   ユーザー補助イベントを受信してそのソースをリクエストする
-    *   アクティブなウィンドウのルートノードをリクエストする
-    *   特定のノードの親ノードまたは子ノードをリクエストする
+*   If the node exists in the cache, it is returned, and no call to create the node is made to the app. Because of this, your app must diligently notify the framework and assistive technologies whenever the accessibility information about a component changes. Otherwise, the framework returns stale information to the assistive technologies.
+*   To indicate that a node has changed and is no longer valid, send an accessibility event of type `AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED`.
+*   If the node is not already in the cache depends, the node could be created, depending on how it was requested. Several possible actions by the assistive technology can trigger the creation of an `AccessibilityNodeInfo` object:
+    *   Receiving an accessibility event, and requesting its source.
+    *   Requesting the root node of the active window.
+    *   Requesting the parent or child node of a particular node.
 
-## 仮想的にアクセス可能な子孫ビューを実装する
+## Implementing Virtually Accessible Descendants
 
-このセクションでは、仮想的にアクセス可能な子孫ビューの実装方法について説明します。
+This section discusses how to implement virtually accessible descendant views.
 
-### 仮想的にアクセス可能な子孫ビューを作成する
+### Creating Virtually Accessible Descendant Views  
 
-`AccessibilityDelegate`と`AccessibilityNodeProvider`はどちらも、基盤のビューで表現されない画面コンポーネントにユーザー補助機能を提供できます。このようなコンポーネントの例には、キーがキャンバス上に描画されるAOSPのオンスクリーンキーボードがあります。仮想ノードツリーを実装すると、Androidが提供する`ExploreByTouchHelper`サポートライブラリが期待どおりに動作しないことがあります。
+Both `AccessibilityDelegate` and `AccessibilityNodeProvider` can provide accessibility for on-screen components that are not represented by backing views. An example of such a component is the AOSP on-screen keyboard whose keys are drawn on a canvas. Note that when implementing a virtual node tree, the `ExploreByTouchHelper` support library provided by Android might not work as expected.
 
-アプリは、ノードをホストしているビューと仮想ビューIDを使用して`AccessibilityNodeInfo`オブジェクトを参照します。仮想ビューIDが`-1 (AccessibilityNodeProvider.HOST_VIEW_ID)` の場合は、ホストビュー自体が参照されます。ノードを作成する際に仮想子ビューを追加するには、`AccessibilityNodeInfo.addChild()` メソッドを使用し、ホストビューと、仮想子ビューの仮想ビューIDを指定します。同様に、子ノードを作成する際に仮想親ビューを設定するには、`AccessibilityNodeInfo.setParent()` の呼び出しでホストビューと親仮想ビューIDを指定します。
+Apps reference `AccessibilityNodeInfo` objects in by the view hosting the node and a virtual view ID. A virtual view ID of `-1 (AccessibilityNodeProvider.HOST_VIEW_ID)` references the host view itself. When creating nodes, you can add virtual children using the `AccessibilityNodeInfo.addChild()` method and specifying both the host view and the virtual view ID of the virtual child. Similarly, when creating child nodes, you can set a virtual parent by specifying the host view and the parent virtual view ID in the call to `AccessibilityNodeInfo.setParent()`.
 
-### 仮想的にアクセス可能な子孫ビューを管理する
+### Management of a Virtually Accessible Descendant view
 
-仮想ビューは、最初の作成直後は、自身のIDでのみ参照され、関連するユーザー補助情報 (テキスト、コンテンツの説明など) を持っていません。アクセシビリティフレームワークがアプリに対して適切なノードを作成するようリクエストすると、対応するユーザー補助情報が`AccessibilityNodeInfo`に入力されます。そのため、どの仮想ビューIDがカスタムウィジェットのどの部分を表しているかをアプリが追跡するようにしてください。
+When you initially create virtual views, they are only referenced by their IDs and have no associated accessibility information (text, content description, etc.). When the accessibility framework requests that your app create the appropriate node, input the corresponding accessibility information into the `AccessibilityNodeInfo`. As a result, make sure that your app tracks which virtual view ID represents which portion of your custom widget.
 
-子ノードまたは親ノードのIDを追加すると、フレームワークがアプリケーションに対して実際にこれらのノードを作成するようリクエストします。コンテナノードに子ノードを追加しないでください。
+Add the IDs of the child or parent nodes, and the framework later requests that your application actually create those nodes. Do not simply add child nodes to a container node.
 
-## Fire OSのユーザー補助に関するベストプラクティス
+## Best Practices for Fire OS Accessibility
 
-アプリのユーザーエクスペリエンスを最大限に向上できるよう、以下のガイドラインに従ってください。
+To ensure the best user experience for apps with accessibility features, follow these guidelines:
 
-*   **AccessibilityNodeInfoのテキスト**: `AccessibilityNodeInfo`のテキストは、オブジェクトの画面上のテキストだけを返すようにします。
-*   **画面上のアイテムのラベル**: 画面上の重要なアイテムには、すべてラベルを付けてください。VoiceViewをテストするときは、すべての画面上のアイテムをタップして、適切な説明が読み上げられるかを確認してください。説明が欠けている場合は、適切なテキストやコンテンツの説明をアイテムの`AccessibilityNodeInfo`に追加する必要があります。
-*   **コンテンツの説明**: 画面上のテキストがないアイテムには、コンテンツの説明 (画像の代替テキストなど) を使用してください。または、画面上のテキストを補完するために、追加の文脈情報をユーザーに提供することもできます。ただし、ユーザーが困惑するほど多くの情報をコンテンツの説明に加えないようにしてください。*   **ユーザー補助イベントの使用**: 画面上のアクティビティを伝えために、`AccessibilityEvent.TYPE_ANNOUNCEMENT`イベントタイプを使用しないでください。画面上の変化に関する情報を伝える方法としては、相当する変更を`AccessibilityNodeInfo`に加えてユーザー補助イベントと組み合わせることが推奨されます。
+*   **AccessibilityNodeInfo text**: The text of an `AccessibilityNodeInfo` should only return the on-screen text of an object.
+*   **Labels for onscreen items**: All important onscreen items should have labels. Make sure that when testing with VoiceView, you touch all onscreen items and that you hear an appropriate description read. If a description is missing, add the appropriate text or content description to the item's `AccessibilityNodeInfo`.
+*   **Content descriptions**: Use the content description for items that do not have on-screen text (for example, alt text for an image), or to augment the on-screen text to provide additional context to the user. However, avoid putting too much content into the content description to avoid overwhelming the user.  
+*   **Accessibility event usage**: Avoid using the `AccessibilityEvent.TYPE_ANNOUNCEMENT` event type to convey on-screen activity. Preferably, use a combination of accessibility events and corresponding changes to the `AccessibilityNodeInfo` to communicate information about on-screen changes.

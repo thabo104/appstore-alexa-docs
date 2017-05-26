@@ -1,5 +1,5 @@
 ---
-title: Amazon Fire TV端末を識別する
+title: Identifying Amazon Fire TV Devices
 permalink: identifying-amazon-fire-tv-devices.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,31 +7,33 @@ toc-style: kramdown
 github: true
 ---
 
-Amazon Fire TV端末を識別するには、機能に`amazon.hardware.fire_tv`があるかどうかを確認します。
+You can identify Amazon Fire TV devices by looking for `amazon.hardware.fire_tv` as a feature.
 
-次の表は、各種Fire TV端末の機能の一覧を示しています。
+The following table provides a list of features for different Fire TV devices:
 
 <style>
 td.center {
 text-align: center;
  }
 </style>
- 
+
 <table class="grid">
 <colgroup>
-  <col width="40%" />
-  <col width="15%" />
-  <col width="15%" />
-  <col width="15%" />
-  <col width="15%" />
+  <col width="35%" />
+  <col width="13%" />
+  <col width="13%" />
+  <col width="13%" />
+  <col width="13%" />
+  <col width="13%" />
 </colgroup>
 <thead>
 <tr>
-  <th>機能</th>
-  <th>Fire TV Stick <br/>(第 2 世代)</th>
-  <th>Fire TV <br/>(第 2 世代)</th>
-  <th>Fire TV Stick <br/>(第 1 世代)</th>
-  <th>Fire TV <br/>(第 1 世代)</th>
+  <th>Feature</th>
+  <th>Fire TV Edition</th>
+  <th>Fire TV Stick <br/>(Gen 2)</th>
+  <th>Fire TV <br/>(Gen 2)</th>
+  <th>Fire TV Stick <br/>(Gen 1)</th>
+  <th>Fire TV <br/>(Gen 1)</th>
 </tr>
 </thead>
 <tbody>
@@ -41,9 +43,11 @@ text-align: center;
   <td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
+  <td class="center"> ✓ </td>
 </tr>
 <tr>
   <td><code>amazon.hardware.low_power</code></td>
+  <td class="center"> </td>
   <td class="center"> ✓ </td>
   <td class="center"> </td>
   <td class="center"> ✓ </td>
@@ -51,14 +55,16 @@ text-align: center;
 </tr>
 <tr>
   <td><code>amazon.hardware.uhd_capable</code></td>
+  <td class="center"> ✓ </td>
   <td class="center"></td>
   <td class="center"> ✓ </td>
   <td class="center"> </td>
   <td class="center"> </td>
-   
+
 </tr>
 <tr>
   <td><code>amazon.software.drm_teardown</code></td>
+  <td class="center"></td>
   <td class="center"></td>
   <td class="center"></td>
   <td class="center"></td>
@@ -66,6 +72,7 @@ text-align: center;
 </tr>
 <tr>
 <td><code>android.hardware.type.television</code></td>
+<td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
   <td class="center"> ✓ </td>
@@ -74,9 +81,9 @@ text-align: center;
 </tbody>
 </table>
 
-Fire TV端末は例外なく、機能`amazon.hardware.fire_tv`の有無で識別できます。
+In all cases, Fire TV devices can be identified through the feature `amazon.hardware.fire_tv`.
 
-この機能を取得するには、[`Context`][2]オブジェクトに対して[`getPackageManager()`][1] メソッドを呼び出し、[`hasSystemFeature()`][3] から`com.hardware.amazon.fire_tv`が返されるかどうかを確認します。コードサンプルを次に示します。
+You get the feature by calling the [`getPackageManager()`][1] method on the [`Context`][2] object and checking whether [`hasSystemFeature()`][3] returns `com.hardware.amazon.fire_tv`. The following code shows a sample:
 
 ```java
 final String AMAZON_FEATURE_FIRE_TV = "amazon.hardware.fire_tv";
@@ -88,22 +95,22 @@ if (getPackageManager().hasSystemFeature(AMAZON_FEATURE_FIRE_TV)) {
  }
 ```
 
-## Fire TV端末を確認する理由
+## Reasons for Checking the Fire TV Device
 
-コードでFire TV端末の確認が必要になる理由は、さまざまあります。
+You might want to check for the Fire TV device in your code for a number of reasons:
 
-*  文字列を選択したり特別なサービス (無料のPlexサービスなど) を提供したりするためにAmazon Fire TVを識別するため。
-*  アプリが`onPause()` メソッドでDRMとHWのデコードパイプラインを切断する必要があるかどうかを判断するため (これは、Fire TVの第 1 世代とFire TV Stickでは複数のDRMコンテキストを適切に処理できないために必要になります)。
-*  TVプラットフォームに、UIを操作するためのD-pad (ナビゲーション) コントローラーが必要かどうかを確認するため。
-*  アプリで 4K Ultra HDを再生する必要があるかどうかを判断するため。
+*  To identify Amazon Fire TV for choosing strings or making special offers (like free Plex service).
+*  To determine whether the app needs to tear down the DRM and HW decoding pipeline in their `onPause()` method (which is needed for Fire TV &ndash; 1st Generation and Fire TV Stick due to poor handling of multiple DRM contexts).
+*  To check whether the TV platform requires a D-pad controller to drive the UI.
+*  To determine whether the app should play 4k Ultra HD.
 
-## モデルを確認する
+## Checking for the Model
 
-以前は、`android.os.Build.MODEL`と`Build.MANUFACTURER`を組み合わせることで、Fire TV端末を識別できました。今後、発売されるAmazonの端末が増えると、この方法は正しく機能しなくなります。 
+Previously, you could identify Fire TV devices by combining the `android.os.Build.MODEL` with the `Build.MANUFACTURER`. As more Amazon-powered devices come to market, this approach will no longer work.
 
-個々のAmazon製品モデルに基づいて動作を完全に切り替える必要がある場合に、`MODEL`名が使用されることがあります。このようなコードは今後の端末では動作しなくなる可能性があるため、ご注意ください。`com.hardware.amazon.fire_tv`機能をベースにし、今後のFire TV端末でも認識できる代替の手法を含めるようにしてください。
+If you absolutely have to switch behavior based on a specific Amazon product model, you may use the `MODEL` name. Be aware that such code will not likely work on future devices. As such, include a sensible fallback approach for future Fire TV devices based on the `com.hardware.amazon.fire_tv` feature.
 
-Fire TV端末を表す[`android.os.Build.MODEL`][4]値は次のとおりです。
+The [`android.os.Build.MODEL`][4] value for Fire TV devices is as follows:
 
 <table class="grid">
 <colgroup>
@@ -114,14 +121,16 @@ Fire TV端末を表す[`android.os.Build.MODEL`][4]値は次のとおりです�
 </colgroup>
 <thead>
 <tr>
-  <th>Fire TV Stick (第 2 世代)</th>
-  <th>Fire TV (第 2 世代)</th>
-  <th>Fire TV Stick (第 1 世代)</th>
-  <th>Fire TV (第 1 世代)</th>
+  <th>Fire TV Edition</th>
+  <th>Fire TV Stick (Gen 2)</th>
+  <th>Fire TV (Gen 2)</th>
+  <th>Fire TV Stick (Gen 1)</th>
+  <th>Fire TV (Gen 1)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+  <td><code>AFTRS</code></td>
   <td><code>AFTT</code></td>
   <td><code>AFTS</code></td>
   <td><code>AFTM</code></td>
@@ -130,7 +139,7 @@ Fire TV端末を表す[`android.os.Build.MODEL`][4]値は次のとおりです�
 </tbody>
 </table>
 
-次に示す、モデルを調べるコードサンプルは、この機能を使用した代替手法です。
+Here's a code sample that looks for the model but falls back on the feature:
 
 ```java
 final String AMAZON_FEATURE_FIRE_TV = "amazon.hardware.fire_tv";

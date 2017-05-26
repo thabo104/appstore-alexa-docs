@@ -5,17 +5,18 @@
    </colgroup>
   <thead>
     <tr>
-      <th>コントローラー</th>
-      <th>入力端末名</th>
+      <th>Controller</th>
+      <th>Input Device Name</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Amazon Fire TVリモコン <br /> Amazon Fire TV音声認識リモコン (全モデル)</td>
+      <td>Amazon Fire TV Remote <br />
+      Amazon Fire TV Voice Remote (all models)</td>
       <td><code>"Amazon Fire TV Remote"</code></td>
     </tr>
     <tr>
-      <td>Amazon Fire TVゲームコントローラー <br /> Amazon Fireゲームコントローラー</td>
+      <td>Amazon Fire TV Game Controller <br /> Amazon Fire Game Controller</td>
       <td><code>"Amazon Fire Game Controller"</code></td>
     </tr>
   </tbody>

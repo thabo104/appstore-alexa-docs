@@ -1,5 +1,5 @@
 ---
-title: Fire TVに検索機能を実装する
+title: Implementing Search in Fire TV
 permalink: implementing-search-fire-tv.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,34 +7,34 @@ toc-style: kramdown
 github: true
 ---
 
-Fire TVに検索機能を実装するには、テキスト検索と音声検索の主な違いを理解する必要があります。
+Implementing search in Fire TV requires you to understand some key differences with text search and voice search.
 
 * TOC
 {:toc}
 
-## アプリ内のテキスト検索
+## Text Search in Apps
 
-アプリ内のテキスト検索とは、アプリ内に明示的にコーディングしたテキスト検索機能のことです。デフォルトでは、アプリのテキスト検索をFire TVで利用することはできません。
+Text search within an app refers to any specific text-search features you have specifically coded within your app. Text search for your app is not available by default on Fire TV.
 
-## グローバルテキスト検索
+## Global Text Search
 
-Fire TVには、Fire TVのホーム画面で利用できるグローバルテキスト検索が用意されています。グローバルテキスト検索では、Fire TVカタログから結果が返されます。グローバルテキスト検索の結果にメディアを表示するには、[アプリのメディアをFire TVカタログに組み込む][integrating-your-catalog-with-fire-tv]必要があります。
+Fire TV provides a global text search available from the Fire TV home screen. The global text search returns results from the Fire TV catalog. In order for your media to appear in global text search results, you must [integrate your app's media into the Fire TV Catalog][integrating-your-catalog-with-fire-tv].
 
-## 音声検索 {#voicesearch}
+## Voice Search {#voicesearch}
 
-Fire TVには、音声対応リモコンを使用した音声機能も用意されています。ユーザーは、[Fire TVのAlexa音声機能](https://www.amazon.com/gp/help/customer/display.html?nodeId=201859020)に加え、自然言語を使用して、テレビ番組、映画、その他のメディアを検索することができます。
+Fire TV also provides voice capabilities through the voice-enabled remote control. In addition to the [Alexa voice capabilities on Fire TV](https://www.amazon.com/gp/help/customer/display.html?nodeId=201859020), users can also use natural language to search for TV shows, movies, and other media.
 
-Fire TVのどの画面を表示しているときでも、音声対応リモコンのマイクを押し、目的のテレビ番組やAlexaアクションを声に出して言うと、このアクションにより、*LeanbackライブラリではなくAlexaクラウドサービスを使用して*グローバル検索が開始されます。
+Regardless of where users are in Fire TV, when they press the microphone button on a voice-enabled remote and say the TV show or Alexa actions they want, this action initiates a global search *using the Alexa cloud service instead of the Leanback library*.
 
-音声によるメディアリクエストでは、常にFire TVカタログからコンテンツが返されます。これらの結果にアプリのメディアを表示するには、[アプリのメディアをFire TVカタログに組み込む][integrating-your-catalog-with-fire-tv]必要があります。
+Media requests through voice always return content from the Fire TV catalog. If you want your app's media to appear in these results, you must [integrate your app's media into the Fire TV Catalog][integrating-your-catalog-with-fire-tv].
 
-ユーザーがアプリをすでにインストールしている場合、アプリのコンテンツはカタログの結果に直接表示されます。ユーザーがアプリをインストールしていない場合は、ユーザーがアプリを取得してコンテンツを表示できるように [その他の視聴方法] オプションが表示されます (カタログ統合は、どのお客様にも同じコンテンツが提供されるアプリでのみ推奨されるオプションです)。
+If the user already has your app installed, your app's content can appear directly in the catalog results. If a user doesn't have your app, a "More Ways to Watch" option appears for users to get your app and view the content. (Note that catalog integration is only recommended as an option for apps whose content is the same for all customers.)
 
-## Leanbackによる音声認識エラーを防ぐ
+## Avoiding Speech Recognition Errors from Leanback
 
-Fire TVの音声操作には、LeanbackライブラリではなくAlexaが使用されるため、Fire TV対応アプリでは、Leanbackライブラリの[`SearchFragment`]((http://developer.android.com/reference/android/support/v17/leanback/app/SearchFragment.html))クラスによる音声認識を無効にする必要があります。音声認識を無効にしないと、ユーザーが検索を実行したときにアプリがエラーを返す可能性があります。
+Because Alexa is used for voice interactivity on Fire TV instead of the Leanback library, you must disable any speech recognition with the Leanback library’s [`SearchFragment`]((http://developer.android.com/reference/android/support/v17/leanback/app/SearchFragment.html)) class for your Fire TV app. If you don't disable speech recognition, your app will potentially return errors when users perform searches.
 
-Leanbackの`SearchFragment`クラスでは、`startActivityForResult`メソッドが音声認識機能を探しますが、FireTVではこの音声認識機能がサポートされていないため、エラーが生成されます。このエラーを回避するには、`onCreate()` メソッドをオーバーライドし、このメソッドが実行されないように音声認識のコールバックをコメントアウトします。次に、例を示します。
+In Leanback's `SearchFragment` class, the `startActivityForResult` method looks for the speech recognizer. Since FireTV does not support this speech recognizer, this action produces an error. To avoid the error, override the `onCreate()` method and comment out the speech recognition callback so that the method does not execute. Here's an example:
 
 ```java
 setSpeechRecognitionCallback(() -> {
@@ -47,10 +47,10 @@ setSpeechRecognitionCallback(() -> {
     }
 ```
 
-ここでは、`startActivityForResult`メソッドがコメントアウトされるだけなので、音声認識機能は実行されず、エラーは発生しません。
+Here the `startActivityForResult` method is simply commented out, so the speech recognition feature will not execute and no error will result.
 
-## Alexaのスキルとアプリ
+## Alexa Skills and Apps
 
-アプリ独自のAlexa対応音声検索機能を作成することはできません。アプリからはメディアの結果のみが返されます。Fire TVではAlexaのどのスキルにもアクセスできますが、このスキルは音声専用の機能です。音声スキルでは、Fire TVのネイティブアプリとやり取りしません。そのため、自分で作成したAlexaのスキルでアプリを制御する方法はありません。
+You cannot create an Alexa-powered voice search specific to your app, returning media results from your app only. You can access any Alexa skill on Fire TV, but the skills are voice-only experiences. The voice skills do not interact with native apps on Fire TV. As such, there are no ways for an Alexa skill you create to control your app.
 
 {% include links.html %}

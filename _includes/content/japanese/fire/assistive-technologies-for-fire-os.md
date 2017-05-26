@@ -1,87 +1,87 @@
-アクセシビリティとは、特定の障害を持つお客様が製品やサービスを利用できる度合いを指します。製品やサービスのアクセシビリティが高ければ、障害を持つお客様はその製品やサービスを簡単かつ効率的に利用できます。
+Accessibility is the degree to which a product or service can be used by a customer with a particular disability. Accessible products and services enable users with disabilities to easily and efficiently use those products and services.
 
 * TOC
 {:toc}
 
-## アクセシビリティの概要
+## Accessibility Overview
 
-アクセシビリティの高いシステムは、主に次の 3 つの要素を備えています。
+Accessible systems have three major components:
 
-*   アクセシビリティが考慮されたアプリケーション
-*   アクセシビリティフレームワーク
-*   ユーザー補助機能
+*   Application being made accessible
+*   Accessibility framework
+*   Assistive technology
 
-ユーザー補助機能は、障害を持つ人の作業や製品利用を支援する技術です。ユーザー補助機能の例には、目の見えないユーザー向けの画面読み上げソフトウェアや、視力が低いユーザー向けの画面拡大ソフトウェア、歩行が困難なユーザー向けの車椅子などがあります。
+Assistive technologies help a person with a disability accomplish a task or use a product. Examples of assistive technologies include screen reading software for blind users, screen magnification software for users with low vision, or wheel chairs for users who are unable to walk.
 
-このページでは、Fire OSアプリのためにAmazonが提供するユーザー補助機能について概説します。
+This page provides a conceptual over view of the assistive technologies that are available from Amazon for your Fire OS apps.
 
-## Fire OSで利用可能なユーザー補助機能
+## Available Fire OS Assistive Technologies
 
-Fire OSでは現在、複数のユーザー補助機能がサポートされています。
+Fire OS currently supports several assistive technologies:
 
-*   **VoiceView**: 目の見えないユーザーが、音声による出力と、タッチ入力またはキーボード入力を使用して、画面のオブジェクトを操作できます。
-*   **拡大鏡**: 目の不自由な人が画面を拡大して表示できます。
-*   **大きいフォント**: ほとんどのUIのフォントサイズを大きくできます。
-*   **色の反転**: テキストと背景に高コントラストの色を組み合わせて、Fireタブレットでコンテンツを読みやすくします。
-*   **色の補正**: 色覚異常のある人が色を識別しやすいよう、画面の色の出力を調整できます。
-*   **ステレオからモノラルに変換**: Fireタブレットのオーディオ設定をステレオからモノラルに切り替え、片方のイヤホンから出力します。
-*   **システムの字幕**: SilkブラウザのAmazonインスタントビデオとWebビデオの字幕の見た目をカスタマイズできます。
+*   **VoiceView**: Enable a blind user to interact with objects on the screen via speech output and either touch or keyboard input.
+*   **Screen Magnifier**: Enable a vision-impaired person to view an enlarged version of the screen.
+*   **Large Font**: Increase the font size throughout most of the UI.
+*   **Color Inversion**: Easily view and read content on your Fire tablet with the provided high-contrast color combinations for text and background colors.  
+*   **Color Correction**: Adjust the screen's color output to help people with colorblindness distinguish more colors.
+*   **Stereo to Mono Audio**: Switch the stereo audio setting to mono on your Fire tablet to direct the audio into a specific ear bud.  
+*   **System Closed Captioning**: Customize the appearance of closed captions for Amazon Instant Videos and web videos in the Silk Browser.
 
-現在、Fireタブレットではすべてのテクノロジーを使用できます。Fire TVはVoiceViewのみをサポートしています。  
+Currently all technologies are available on Fire Tablets. Fire TV only supports VoiceView.  
 
-## Fire OSのユーザー補助機能をアクティブ化して使用する
+## Activating and Using Assistive Technologies for Fire OS
 
-このセクションでは、各対応デバイスで利用可能なユーザー補助機能をユーザーが有効にする方法を説明します。
+This section describes how users can enable the available assistive technologies on each supported device.
 
-### FireタブレットでVoiceViewをアクティブ化して使用する
+### Activating and Using VoiceView on Fire Tablets
 
-FireタブレットでVoiceViewをアクティブ化するには、[**設定**] > [**ユーザー補助**] > [**VoiceView**] の順に移動して、VoiceViewを有効にします。または、電源ダイアログが表示されるまで電源ボタンを長押ししてから、画面を 2 本指で押し続けます。  
+To activate VoiceView on a Fire Tablet, navigate to **Settings > Accessibility > VoiceView**, and enable VoiceView. Alternatively, you can hold down the power button until the power dialog appears, then press and hold two fingers to the screen.  
 
-FireタブレットでVoiceViewを使用するには:  
+To use VoiceView on a Fire Tablet:  
 
-1.  画面のアイテムをタップしてVoiceViewカーソルをそのアイテムに移動します。
-    *   VoiceViewでアイテムがフォーカスされると、アイテムの周囲に緑色の枠が表示されます。
-    *   VoiceViewのカーソルをアイテムに移動すると、VoiceViewによってアイテムの説明が読み上げられます。
-2.  画面の任意の場所をダブルタップすると、VoiceViewカーソルがフォーカスしているアイテムがアクティブ化されます。 
+1.  Touch an item on the screen to move the VoiceView cursor to that item.  
+    *   When an item has VoiceView's focus, a green rectangle will appear, surrounding the item.
+    *   When a user moves the VoiceView cursor to an item, VoiceView speaks the item's description.
+2.  Double-tap anywhere on the screen to activate the item in the focus of the VoiceView cursor. 
 
-または
+OR
 
-アイテムをタップしてVoiceViewのカーソルを移動する代わりに、右にスワイプして次のアイテムに移動したり、左にスワイプして前のアイテムに移動したりすることで、画面のアイテムすべてを連続して移動することもできます。
+Instead of touching items to move the VoiceView cursor, you can move sequentially through all items on the screen by swiping right to move to the next item, and swiping left to move to the previous item.
 
-### Fire TVでVoiceViewをアクティブ化する
+### Activating VoiceView on Fire TV  
 
-Fire TVでVoiceViewをアクティブ化するには:
+To activate VoiceView on Fire TV:
 
-1.  Fire TVリモコンの [**戻る**] と [**メニュー**] ボタンを 2 秒間長押しして、VoiceViewを有効にします。  
+1.  Enable VoiceView by holding down the **Back** and **Menu** keys on the Fire TV remote for 2 seconds.  
 
-    VoiceViewでは、Standard Navigation ModeとEnhanced Navigation Modeの 2 つのナビゲーションモードを利用できます。[**メニュー**] ボタンを長押しすると、Standard Navigation Modeに切り替えることができます。Standard Navigation Modeでは、VoiceViewのカーソルは、ボタンなどの操作可能なアイテムの間だけを移動します。   
+    VoiceView has two navigation modes available: Standard Navigation Mode or Enhanced Navigation Mode. You can switch to Standard Navigation Mode by holding down the **Menu** key. Note that in Standard Navigation Mode, VoiceView's cursor will only move among actionable items, such as buttons.   
 
-2.  Enhanced Navigation Modeでは、リモコンのナビゲーションボタンの [**左**] や [**右**] を押して、VoiceViewのカーソル (フォーカスを表す緑色の枠) をアイテムに移動させます。   
+2.  In Enhanced Navigation Mode, press the **Right** and **Left** directional keys on the remote  to move VoiceView's cursor, shown as the green focus rectangle, to an item.   
 
-3.  [**選択**] ボタンを押すと、アイテムがアクティブ化されます。  
+3.  Press the **Select** key to activate an item.  
 
-    {% include note.html content="[**左**] や [**右**] を押すと、カーソルは視覚的な順序ではなく、論理的に決定されている順序で移動します。  つまり、リストが縦方向と横方向のどちらで表示されているかに関係なく、カーソルはリストにおける次のアイテムや前のアイテムに移動します。また、Enhanced Navigation Modeでは、説明文など、Standard Navigation Modeでは操作不可能なアイテムにも移動できます。" %}  
+    {% include note.html content="**Left** and **Right** move the cursor in an order that is logically, not visually, determined.  For example, they will move the cursor to the next and previous items in a list, regardless of whether that list is displayed horizontally or vertically. Enhanced Mode also allows access to reach items you cannot reach otherwise such as descriptive text that is not actionable." %}  
 
-### Fireタブレットで拡大鏡をアクティブ化する
+### Activating the Screen Magnifier on Fire Tablets
 
-現在、拡大鏡はFire TVでは利用できません。Fireタブレットで拡大鏡をアクティブ化するには:
+Note that the Screen Magnifier is not currently available on Fire TV. To activate the Screen Magnifier on Fire Tablets:
 
-1.  拡大鏡の設定をオンにして 1 本の指で 3 度タップすると、画面が拡大表示されます。
-2.  2 本の指でドラッグすると、画面が移動します。
-3.  1 本の指で 3 度タップすると、画面の拡大表示が終了します。
+1.  With the screen magnifier enabled, triple-tap with one finger to show an enlarged view of the screen.
+2.  Pan around the screen by dragging two fingers.
+3.  Triple-tap with one finger to exit the enlarged view of the screen.
 
-## Fire OSのVoiceViewとAndroidのTalkBackとの違い
+## Differences between VoiceView on Fire OS and TalkBack on Android
 
-Fire OSのVoiceViewとAndroidのTalkBackは、どちらもAndroidアクセシビリティフレームワークと連携するアクセシビリティサービスですが、VoiceViewはTalkBackを改変したものではなく、まったく別の画面読み上げ機能です。  このセクションでは、2 つのアクセシビリティサービスの違いを説明します。
+While Fire OS's VoiceView and Android's TalkBack are both accessibility services that interact with the Android accessibility framework, VoiceView is a completely distinct screen reader from TalkBack, as opposed to a modification of TalkBack.  This section discusses the differences between these two accessibility services:
 
-*   **新しいウィンドウでのフォーカス動作**: 新しいウィンドウが開いたとき、VoiceViewは常に画面のどこかにアクセシビリティフォーカスを当てます。  TalkBackでは新しいウィンドウにフォーカスが配置されません。ユーザーが画面をタップするまで待機し、タップされた場所にフォーカスを当てます。
-*   **複数のウィンドウにわたるリニアナビゲーション**: VoiceViewではウィンドウ境界を越えたリニアナビゲーションが可能ですが、TalkBackではできません。  タブレットの下部のナビゲーションバーは、実際は 3 つのボタンが搭載されたウィンドウです。
-    *   VoiceViewでは、左にスワイプすると、カーソルがメインコンテンツウィンドウ内の最後のアイテムに移動します。
-    *   TalkBackでは、下部のナビゲーションバーの [**戻る**] ボタンから左にスワイプしても、ナビゲーションバーから直線的に移動することはできず、「終端」を表すイヤコンが再生されます。
-*   **オブジェクト間の細かな移動**: VoiceViewではオブジェクト間を細かく移動できますが、TalkBackではできません。  「Cat」、「Dog」、「Monkey」というタイトルの 3 つのオブジェクトが含まれた画面があるとします。
-    *   単語ごとに移動する場合、VoiceViewでは「Cat」から「Dog」、「Monkey」へとシームレスに移動します。
-    *   それに対して、TalkBackでは「Dog」で停止し、次の単語には移動しません。
-    *   同様に、文字単位で移動する場合、下にスワイプして次の文字に移動すると、VoiceViewでは「Dog」の「g」に移動してから「Cat」の「C」に移動します。TalkBackでは、テキストの終端を表す音声が再生されます。
-*   **テキストの移動**: テキストを移動する際、VoiceViewはカーソルの後にある文字や単語を読み上げますが、TalkBackはカーソルが通過した文字や単語を読み上げます。  VoiceViewの動作は、目が見えないユーザーの多くが使い慣れているWindowsプラットフォームのスクリーンリーダーの動作と同じです。  
+*   **Focus behavior in new windows**: When a new window opens, VoiceView always places accessibility focus somewhere onscreen.  TalkBack does not place focus anywhere on a new window, and instead waits for the user to touch the screen and places focus at that location.
+*   **Linear navigation across windows**: VoiceView allows linear navigation across window boundaries, while TalkBack does not.  Consider the bottom navigation bar on a tablet, which is actually a window that contains three buttons.
+    *   In VoiceView, swiping left will move the cursor to the last item in the main content window.
+    *   In TalkBack, swiping left from the **Back** button in the bottom navigation bar on TalkBack will not allow you to linearly navigate out of the bottom navigation bar and will produce an "end" earcon.
+*   **Granular navigation across objects**: VoiceView allows granular navigation across objects, while TalkBack does not.  Consider a screen containing three objects with titles "Cat, "Dog", and "Monkey".
+    *   When navigating by word, VoiceView moves seamlessly from "Cat" to "Dog" to "Monkey".
+    *   Conversely, TalkBack will stop on "Dog" and not navigate to the next word.  
+    *   Similarly, when navigating by character, if you swipe down to move to the next character after landing on the "g" of "Dog", VoiceView will move to the "C" of "Cat". TalkBack plays a sound indicating the end of text in this case.
+*   **Text navigation**: When navigating through text, VoiceView announces the character or word after the caret, TalkBack announces the character or word that the caret has passed over.  Note that VoiceView's behavior is consistent with the behavior of screen readers on the Windows platform, which is the platform with which most blind users are familiar.  
 
-*   **画面のオブジェクトの並べ替え**: TalkBackでは通常、画面のオブジェクトを、オブジェクトの左上隅の座標に基づいて、左から右に、上から下に並べ変えます。VoiceViewでは通常、画面のオブジェクトを、オブジェクトの中心の座標に基づいて、左から右に、上から下に並べ変えます。
+*   **Sorting on-screen objects**: TalkBack typically sorts on-screen objects in a left to right, top to bottom order, based on the coordinates of the objects' top-left corners. VoiceView typically sorts on-screen objects in a left to right, top to bottom order, based on the coordinates of the objects' centers.

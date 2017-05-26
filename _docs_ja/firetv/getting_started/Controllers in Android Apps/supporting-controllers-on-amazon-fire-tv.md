@@ -1,16 +1,17 @@
 ---
-title: Amazon Fire TVコントローラーの概要
+title: Controllers Overview
 permalink: supporting-controllers-on-amazon-fire-tv.html
 sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
+github: true
 ---
 
-Amazon Fire TVプラットフォームは、Amazon Fire TVリモコン、Fire TV音声認識リモコン、Fireゲームコントローラーなど、Bluetooth HIDゲームパッドプロファイルに対応した各種のゲームコントローラーからのユーザー入力をサポートします。コントローラーはすべて、端末に接続して使用する必要があります。
+The Amazon Fire TV platform supports user input from the Amazon Fire TV Remote, the Fire TV Voice Remote, the Fire game controller, and other game controllers that support the Bluetooth HID gamepad profile. All controllers must be paired with the device to be used.
 
-Amazon Fire TVコントローラーは、すべてAndroid入力機器となっています。これらの端末から送られた入力の処理には、他のAndroid入力機器の場合と同じ技術とAPIを使用します。
+All the Amazon Fire TV controllers are Android input devices. You use the same techniques and APIs to manage input from those devices as you would any other Android input device.
 
-特にナビゲーションや選択など、コントローラーからの単純な入力は、キーボードやボタンパッドからの入力を処理する場合と同じようにキーイベントを使用して処理することができます。
+In particular, simple input from any controller such as navigation or selection can be managed through key events in the same way you would handle input from a keyboard or a button pad.
 
 
 {% include links.html %}

@@ -1,22 +1,22 @@
-Fire OSは、AmazonのFire TVやFireタブレットなどのデバイスで動作するオペレーティングシステムです。Fire OSはAndroid 5.1 (Lollipop、APIレベル 22) のフォークです。そのため、ほとんどのAndroidアプリはAmazonのFireデバイスでそのまま動作します。
+Fire OS is the operating system that runs Amazon's Fire TV, tablets, and other devices. Fire OS is a fork of Android 5.1 (Lollipop, API level 22), so if you have an Android app, it will most likely run on Amazon's Fire devices.
 
-Androidコードを一切調整しなくても、アプリをAmazonのプラットフォームで公開できる場合があります。[こちら][app-testing-service-understanding]のページを参考にテストすることで、問題なくアプリが動くかどうかを確認できます。
+As a developer, you might not have to adjust your Android code at all to publish your app on Amazon's platform. You can [test your app here][app-testing-service-understanding] and see if it everything simply works.
 
 * TOC
 {:toc}
 
-## サービスの違い
+## Differences in Services
 
-Fire OSとAndroidの違いは、サービスにあります。Fire OSでは、ブラウズ、位置情報、メッセージング、支払いなどのアクティビティにGoogleのサービスではなくAmazonのサービスが使用されます。最も大きな違いは、アプリを掲載するために、GoogleではGoogle Playを利用するのに対し、AmazonではAmazonアプリストアを利用することです。
+The way Fire OS differs from Android is in the services. Instead of using Google's services (for activities such as browsing, location, messaging, payments, and so on), Fire OS uses Amazon's services. Most notably, Amazon uses the Amazon Appstore to list your app while Google uses Google Play.
 
-AndroidアプリでGoogleのサービスのエコシステムに接続している場合は、AndroidアプリをFire OSプラットフォームに移植する際、Amazonのサービスのエコシステムを利用する必要があります。また、Fire OSではAndroid Lollipop (APIレベル 22) のみをサポートしています。
+If your Android app connects into Google's ecosystem of services, porting your Android app to the Fire OS platform will require you to tap into Amazon's ecosystem of services instead. Additionally, Fire OS supports only Android Lollipop (API Level 22).
 
-アプリを開発する際は、標準の[Androidのドキュメント](https://developer.android.com/)に記載された内容に従ってください。注意が必要なAmazonのFire OSプラットフォームとの違いが、こちらのサイトのドキュメントで説明されています。
+When you're building your app, follow the standard [Android documentation](https://developer.android.com/). Where there are differences to account for with Amazon's Fire OS platform, they're noted in the documentation on this site.
 
-Fire OSでは、開発者の方が開発プラットフォームについて新たに学習したり、既存のAndroidアプリを変更したりする必要がないように、可能な限りAndroidと同等のサービス (Googleのサービスを除く) を提供することを目標としています。
+The goal is to provide as much parity as possible with Android (minus Google's services) so that you don't have to learn another development platform or make changes to your existing Android app.
 
-## 端末とFire OSのバージョン
+## Devices and Fire OS Versions
 
-ほとんどのFireデバイスは、無線でアップデートを受信し、Fire OSの最新バージョンを自動で取得します。すべてのFireデバイスが、同じFire OSのバージョンのプッシュを同時に受信するわけではありません。デバイスごとに異なるタイミングでアップデートがロールアウトされることもあります。ただし、基本的には、ほとんどのFireデバイスで同じバージョンが実行されます。
+Most Fire devices receive over-the-air updates to get the latest version of Fire OS automatically. Not every Fire device receives a push of the same Fire OS version at the same time. Sometimes the updates roll out to different devices at different times. But for the most part, Fire devices largely run the same version.
 
-{% include tip.html content="Android TVの開発とFire TVの開発の違いの詳細については、「[Fire TV開発とAndroid TV開発の違い][amazon-fire-tv-differences-from-android-tv-development]」を参照してください。" %}
+{% include tip.html content="For details on the differences between Android TV development and Fire TV development, see [Fire TV Development versus Android TV Development][amazon-fire-tv-differences-from-android-tv-development]." %}

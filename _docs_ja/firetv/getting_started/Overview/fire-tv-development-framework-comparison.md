@@ -1,75 +1,81 @@
 ---
-title: Amazon Fire TV開発フレームワークの比較
+title: Amazon Fire TV Development Framework Comparison
 sidebar: firetv_ja
 product: Fire TV
 permalink: fire-tv-development-framework-comparison.html
 hippourl: https://developer.amazon.com/public/solutions/devices/fire-tv/docs/fire-tv-development-framework-comparison
+reviewers: Russell Beattie, Mihir Choudhary, Jonathan Richardson, Pete Schwab, Mary Galvin, Chris DeNamur, Mario Mancia, Luca Sale, Stephen Whitney, Alexander Budyszewick
+last_updated: 12-13-2016
 toc-style: kramdown
 github: true
 ---
 
-Amazon Fire TVを対象としたメディアベースのアプリ開発を検討している方のために、Amazonでは、アプリ開発を強力に支援する 2 つのフレームワークを用意しています。それぞれのフレームワークは、特定のスキルを持った開発者が対象となっています。
+If you’re planning to build a media-based app for Amazon Fire TV, Amazon provides two frameworks that can help accelerate the development of your app. Each framework is oriented toward developers with particular skill sets:
 
-* [Fire TV用ウェブアプリスターターキット](#wask): HTML5、CSS3、JavaScriptを使ってウェブアプリを構築するウェブ開発者向けのフレームワークです。
-* [Fire App Builder](#fab): Javaを使ってネイティブアプリを構築するAndroid開発者向けのフレームワークです。
+* [Web App Starter Kit for Fire TV](../fire-tv-development-framework-comparison.md#wask): Intended for web developers building web apps using HTML5, CSS3, and JavaScript.
+* [Fire App Builder](../fire-tv-development-framework-comparison.md#fab): Intended for Android developers building native apps using Java.
 
-この 2 つのフレームワークは、使用するコードの種類に違いがあるほか、備わっている機能も若干異なります。詳細については、「[機能の比較](#feature_comparison)」を参照してください。
+In addition to using different types of code, the two frameworks have somewhat different features. See the [Feature Comparison](../fire-tv-development-framework-comparison.md#feature_comparison) for more details.
 
 * TOC
 {:toc}
 
-## Fire TV用ウェブアプリスターターキット {#wask}
+## Web App Starter Kit for Fire TV {#wask}
 
-Fire TV用ウェブアプリスターターキット ([Github](https://github.com/amzn/web-app-starter-kit-for-fire-tv)からダウンロード可能) は、Fire TVを対象とするメディア向けアプリを、HTML5やCSS3、JavaScriptで開発する際に基礎となるキットです。このキットで開発したウェブアプリをAmazon開発者ポータルでパッケージ化することで、Fire TV対応アプリを作成することができます。ネイティブアプリとまったく同様に、Amazonアプリストアで公開可能です。
+The Web App Starter Kit for Fire TV (available on [Github here](https://github.com/amzn/web-app-starter-kit-for-fire-tv)) is a starting point for creating media-oriented apps for Fire TV using HTML5, CSS3, and JavaScript. The web apps can then be packaged using the Amazon Developer Portal to create Fire TV apps that are available in the Amazon Appstore, indistinguishable from native apps.
 
-Fire TV用ウェブアプリスターターキット (WASK) を使用した開発は、アプリテンプレートを基にして行います。Media RSSフィードやJSONフィードのサポート、オンラインビデオプロバイダー (YouTube、Brightcoveなど) のサポートなど、各種メディア機能がテンプレートに含まれています。標準的なウェブテクノロジー (JavaScript、HTML5、CSS3) でテンプレートをカスタマイズできるので、拡張機能の追加、設定ファイルの変更などを適宜行ってください。
+With WASK, you start with a base app template that contains specific media functionality (for example, support for Media RSS or JSON feeds, or support for online video providers such as YouTube or Brightcove). You then customize this template by changing settings files or adding extended functionality using standard web technologies &mdash; JavaScript, HTML5, and CSS3.
 
-WASKテンプレートには、アプリ申請プロセスでAmazonアプリストアのテストに通過するために必要な要素に加え、ユーザーが大画面に期待する利便性を実現するうえで必要なコードがあらかじめ記述されています。 他の機能やカスタマイズを一切必要としなければ、メディアファイルのフィードを指定するだけでもアプリが出来上がります。メディアファイルは、アプリ上でカテゴリの選択リストを表示したり、回転式のスライドショーでメディアコンテンツを表示したりするために用いられます。
+Baked into the WASK template is the code needed to provide the large-screen experience consumers expect, as well everything needed to pass Amazon Appstore testing during the app submission process. At the bare minimum, you only need to provide a feed of media files, which the app will use to display a selectable list of categories and a rotating carousel of media content.
 
-下記は、シンプルなレイアウト例のスクリーンショットです。
+Here’s a screenshot of a simple layout:
 
 {% include image.html file="firetv/getting_started/images/wask_simple_layout" type="png" %}
 
-基本的なWASKテンプレートをカスタマイズまたは拡張する際は、[Amazon Web App Tester](https://developer.amazon.com/public/solutions/platforms/webapps/docs/tester.html)を使ってアプリをテストできます。Amazon Web App Testerは、ウェブアプリを実際の端末でテストするためのFire TV対応アプリです。Web App Testerには、アプリが公開されたときに使用されるネイティブアプリラッパーとウェブエンジンがそのまま使用されていて、開発段階で正確にアプリの動作を確認することができます。
+While customizing or extending the basic WASK template, you can test your app using the [Amazon Web App Tester](https://developer.amazon.com/public/solutions/platforms/webapps/docs/tester.html). This is a Fire TV app used to test web apps on an actual device. The Web App Tester uses the same native app wrapper and web engine that will be used when the app is published, giving you an accurate preview of your app during development.
 
-完成したアプリは、Amazon開発者ポータルからAmazonアプリストアに申請すれば、数分後には公開されます。この点に関して直接コードを記述する必要はありません。
+When your app is ready, you can use the Amazon Developer Portal to submit your app to the Amazon Appstore and have it published within minutes, with no native coding needed.
 
-オンラインでサインアップを行い、アプリに関する基本的な情報を入力してサムネイルやプレビュー画像をアップロードしたら、アプリのホスト先を選ぶことができます。ホストの選定に関しては、アプリのアセットファイルを自社のウェブサーバーでホストし、そのURLだけを申請する方法と、Amazonのサーバーにアセットをアップロードし、そこでスタンドアロンのパッケージアプリとしてバンドルする方法があります。
+After signing up online, filling in the basic app details, and uploading thumbnail and preview images, you have a choice about where to host your app. You can either host the app's asset files on your own web server and submit just the URL, or you can upload the assets to Amazon's servers, where it will be bundled into a standalone packaged app.
 
-申請したアプリはその後、Amazonのインジェストサービスを経ることになります。アプリが公開されると申請者に通知が送られます。
+After you have submitted your app, it will go through an Amazon ingestion service, and you will be notified when your app is published.
 
-詳細については、「[Fire TV用ウェブアプリスターターキット](https://developer.amazon.com/public/ja/solutions/platforms/webapps/docs/the-web-app-starter-kit-for-fire-tv)」を参照してください。WASKを使って作成されたFire TV対応アプリの例としては、[Acorn TV][acorn-tv]、[Urban Movie Channel][urban-movie-channel]、[Euronews][euronews]があります。
+For a video tutorial on creating a WASK app from a YouTube feed, see the following video:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/LJw0B_l_rso" frameborder="0" allowfullscreen></iframe>
+
+To learn more, see [The Web App Starter Kit for Fire TV][the-web-app-starter-kit-for-fire-tv]. Some examples of Fire TV apps built using WASK include [Acorn TV][acorn-tv], [Urban Movie Channel][urban-movie-channel], and [Euronews][euronews].
 
 ## Fire App Builder {#fab}
 
-Fire App Builder ([Github](https://github.com/amzn/fire-app-builder)からダウンロード可能) には、Amazon Fire TVを対象としたストリーミングメディアのAndroidアプリを、短時間で簡単に開発できるJavaベースのフレームワークが備わっています。WASKではHTML5/CSS3/JSが使用されるのに対し、Fire App Builderで使用されるのはJava Androidコードです。
+Fire App Builder (available on [Github here](https://github.com/amzn/fire-app-builder)) provides a Java-based framework that you can use to easily and quickly build streaming media Android apps for Amazon Fire TV. In contrast to the HTML5/CSS3/JS used with WASK, Fire App Builder uses Java Android code.
 
-Fire App BuilderはAndroid Studioで使用します。Android Debug Bridge (ADB) を介してFire TV端末に接続し、APK (Android Package Kit) ファイルを生成してAmazonアプリストアにアップロードします。
+With Fire App Builder, you work in Android Studio, connect to your Fire TV device through Android Debug Bridge (ADB), and generate an APK (Android Package Kit) file to upload to the Amazon Appstore.
 
-Fire App BuilderではAndroidのAPI (特にLeanback Library) が使用されていますが、大半の設定とカスタマイズはJSONファイルとXMLファイルで行うことができます。たとえば、JSONファイルとXMLファイルで 10 種類以上のコンポーネントを設定し、アプリに追加することができます。各種コンポーネントには、分析、広告、承認、購入、メディアプレーヤーの機能があらかじめ搭載されています。
+Although Fire App Builder uses Android APIs (particularly the Leanback Library), you do much of the configuration and customization through JSON and XML files. For example, through JSON and XML files, you can configure more than a dozen components to add to your app. Components provide out-of-the-box functionality for analytics, ads, authorization, purchasing, and media players.
 
-Fire App Builderは、Javaに関する専門的な知識に極力依存しないように設計されていますが、深いレベルで統合したい場合には、Fire App Builderを基盤として開発を進めることもできます。共通のインターフェースや他のコードから、カスタムのJavaクラスを追加して独自に機能を拡張することが可能です(Javaのカスタムプログラミングを望まない場合は、しなくても問題ありません)。
+Fire App Builder minimizes a dependence on Java expertise as much as possible, but for more deep-level integration, you can build on top of Fire App Builder. You can add your own custom Java classes to extend functionality through common interfaces and other code. (If you don’t care to do any custom Java programming, though, you don’t have to.)
 
-Fire App Builderでは、メディアフィードとして、JSONまたはXMLを使用できます。使用するデータの構造やタグ名に決まりはありません。Fire App Builderの設定作業では、対象となるフィードの各種要素をクエリ構文 (JSON Jayway構文またはXPath式) で記述します。
+With Fire App Builder, your media feed can be JSON or XML, in any structure using any tag names. When you configure Fire App Builder, you’ll write query syntax (using JSON Jayway syntax or XPath expressions) to target the various elements of your feed.
 
-フィードには、DRMで保護されているメディアのトークンが必要になることもあります。YouTubeベースのフィードなど、各種ビデオホスティングサービスへの対応が予定されていますが、現時点ではまだ実装されていません。
+Your feed can also require tokens for media protected by DRM. Support for YouTube-based feeds and other video hosting services is on the roadmap but not currently included.
 
-色、レイアウト、タイポグラフィなどは自由に調整できます。いずれも、対応する設定が抽出されたXMLファイルまたはJSONファイルを編集することによって行います。
+You have a lot of control to adjust the colors, layout, typography, and more &mdash; all by editing XML or JSON files where these settings have been extracted.
 
-下記は、Fire App Builderを使って開発されたサンプルアプリのスクリーンショットです。
+Here’s a screenshot of a sample app built using Fire App Builder:
 
 {% include image.html file="firetv/fireappbuilder/images/fireappbuilder_home" type="png" %}
 
-さらに簡潔なホームページレイアウトも用意されています。
+A more compressed homepage layout is also available.
 
-詳細については、[Fire App Builderのドキュメント][fire-app-builder-overview]を参照してください。Fire App Builderで作成されたサンプルアプリについては、[Hallmarkアプリ][hallmark]を参照してください。
+To learn more, see the [Fire App Builder documentation][fire-app-builder-overview]. For a sample app built with Fire App Builder, see the [Hallmark app][hallmark].
 
 
-## 機能の比較 {#feature_comparison}
+## Feature Comparison {#feature_comparison}
 
-以下の表は、Fire App Builderの機能とWASKの機能を比較したものです。
+The following table compares Fire App Builder and WASK features.
 
-{% include note.html content="お探しの機能がフレームワークにない場合、その機能はフレームワークではサポートされていません。言い換えれば、その機能はまだコードに組み込まれていない状態です。ご希望のサービスをサポートするサードパーティーのコードがあれば、それらのコードを挿入するのは簡単にできます。" %}
+{% include note.html content="If a framework doesn’t have a feature, it doesn’t mean the framework won’t support it. It just means the feature isn’t already integrated in the code. Usually you can easily insert the third-party code needed to support these services." %}
 
 <table class="grid">
 <colgroup>
@@ -80,15 +86,15 @@ Fire App Builderでは、メディアフィードとして、JSONまたはXMLを
 </colgroup>
 <thead>
 <tr>
-<th style="text-align:center">カテゴリ</th>
-<th style="text-align:center">機能</th>
+<th style="text-align:center">Category</th>
+<th style="text-align:center">Feature</th>
 <th style="text-align:center">Fire App Builder</th>
 <th style="text-align:center">WASK</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td class="white" rowspan="2"><b>コードベース</b></td>
+  <td class="white" rowspan="2"><b>Code Base</b></td>
   <td class="white">Java/Android</td>
   <td class="white">{{site.data.code.check}}</td>
   <td class="white"></td>
@@ -99,50 +105,50 @@ Fire App Builderでは、メディアフィードとして、JSONまたはXMLを
   <td class="white">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td rowspan="3" class="gray"><b>フィードの形式</b></td>
-  <td class="gray">JSONフィード</td>
+  <td rowspan="3" class="gray"><b>Feed Formats</b></td>
+  <td class="gray">JSON feeds</td>
   <td class="gray">{{site.data.code.check}}</td>
   <td class="gray">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td class="gray">Media RSS XMLフィード</td>
+  <td class="gray">Media RSS XML Feeds</td>
   <td class="gray">{{site.data.code.check}}</td>
   <td class="gray">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td class="gray">カスタムXMLフィード</td>
+  <td class="gray">Custom XML Feeds</td>
   <td class="gray">{{site.data.code.check}}</td>
   <td class="gray"></td>
 </tr>
 <tr>
-  <td rowspan="2"><b>アプリ配信オプション</b></td>
-  <td class="white">端末にAPKとしてインストール</td>
+  <td rowspan="2"><b>App Delivery Options</b></td>
+  <td class="white">Installed as APK on device</td>
   <td class="white">{{site.data.code.check}}</td>
   <td class="white">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td class="white">URLから直接アプリをホスト</td>
+  <td class="white">Hosted app directly from URL</td>
   <td class="white"></td>
   <td class="white">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td class="gray" rowspan="3"><b>メディアの種類</b></td>
+  <td class="gray" rowspan="3"><b>Media Types</b></td>
   <td class="gray">HLS, DASH, Smooth Streaming, MP4</td>
   <td class="gray">{{site.data.code.check}}</td>
   <td class="gray">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td class="gray">DRMで保護されたメディア</td>
+  <td class="gray">DRM-protected media</td>
   <td class="gray">{{site.data.code.check}}</td>
   <td class="gray"></td>
 </tr>
 <tr>
-  <td class="gray">ライブストリーム</td>
+  <td class="gray">Live streams</td>
   <td class="gray">{{site.data.code.check}}</td>
   <td class="gray">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td class="white" rowspan="4"><b>メディアプロバイダー</b></td>
+  <td class="white" rowspan="4"><b>Media Providers</b></td>
   <td class="white">YouTube</td>
   <td class="white"><div style="text-align: center"></div></td>
   <td class="white">{{site.data.code.check}}</td>
@@ -163,7 +169,7 @@ Fire App Builderでは、メディアフィードとして、JSONまたはXMLを
   <td class="white">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td class="gray" rowspan="2"><b>メディアプレーヤー</b></td>
+  <td class="gray" rowspan="2"><b>Media Players</b></td>
   <td class="gray">Amazon Media Player</td>
   <td class="gray">{{site.data.code.check}}</td>
   <td class="gray"></td>
@@ -174,13 +180,13 @@ Fire App Builderでは、メディアフィードとして、JSONまたはXMLを
   <td class="gray">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td class="white"><b>課金</b></td>
-  <td class="white">アプリ内課金</td>
+  <td class="white"><b>Purchasing</b></td>
+  <td class="white">In-App Purchasing</td>
   <td class="white">{{site.data.code.check}}</td>
   <td class="white">{{site.data.code.check}}</td>
 </tr>
 <tr>
-  <td class="gray" rowspan="3"><b>認証</b></td>
+  <td class="gray" rowspan="3"><b>Authentication</b></td>
   <td class="gray">Login with Amazon</td>
   <td class="gray">{{site.data.code.check}}</td>
   <td class="gray"></td>
@@ -197,18 +203,18 @@ Fire App Builderでは、メディアフィードとして、JSONまたはXMLを
 </tr>
 
 <tr>
-  <td class="white" rowspan="2"><b>広告サービス</b></td>
-  <td class="white">Freewheel広告</td>
+  <td class="white" rowspan="2"><b>Ad Services</b></td>
+  <td class="white">Freewheel Ads</td>
   <td class="white">{{site.data.code.check}}</td>
   <td class="white"></td>
 </tr>
 <tr>
-  <td class="white">VAST広告</td>
+  <td class="white">VAST Ads</td>
   <td class="white">{{site.data.code.check}}</td>
   <td class="white"></td>
 </tr>
 <tr>
-  <td class="gray" rowspan="4"><b>分析</b></td>
+  <td class="gray" rowspan="4"><b>Analytics</b></td>
   <td class="gray">Omniture Analytics</td>
   <td class="gray">{{site.data.code.check}}</td>
   <td class="gray"></td>
@@ -229,23 +235,23 @@ Fire App Builderでは、メディアフィードとして、JSONまたはXMLを
   <td class="gray"></td>
 </tr>
 <tr>
-  <td class="white"><b>グローバルカタログ検索</b></td>
-  <td class="white" markdown="span">[Fire TVカタログ][integrating-your-catalog-with-fire-tv] 統合によるグローバル音声検索</td>
+  <td class="white"><b>Global Catalog Search</b></td>
+  <td class="white" markdown="span">Integration into the [Fire TV catalog][integrating-your-catalog-with-fire-tv] for global voice search.</td>
   <td class="white">{{site.data.code.check}}</td>
   <td class="white"></td>
 </tr>
 </tbody>
 </table>
 
-上述のとおり、どちらのフレームワークにも必要なサービスや機能を追加することができます。コードは公開されており (オープンソース)、フレームワークのコードをベースに機能強化や拡張など、各種開発を自由に行うことができます。
+Again, you can add the services and features you want into either framework. The code is open (and open source), and you're free to enhance, extend, or otherwise build on top of the framework's code.
 
-## ウェブアプリからAndroidアプリへの移行
+## Transitioning from Web Apps to Android Apps
 
-企業によっては、まず (WASKで) ウェブアプリを作成し、後で (Fire App Builderを使用するなどして) Java Androidアプリに移行するよう計画する場合もあります。アプリの種類 (ウェブアプリかAndroidアプリか) は、アプリストアへの申請時に選択します。
+Some companies prefer to start out with a web app (with WASK) and later transition to a Java Android app (such as with Fire App Builder). Note that when you submit an app to the Appstore, you select the app type (whether web app or Android app).
 
-アプリの申請後は、別の種類に移行することができません。最初にウェブアプリとして申請したら、新しいバージョンをAndroidアプリとしてアップロードすることはできません。まったく別のアプリをアップロードする必要があり、結果として既存のユーザーを失うことにつながります。
+Once you submit an app, you can't transition from one app type to another. If you started out with a web app and wanted to upload a new version that was an Android app, you couldn't do this. You would need to upload a separate app entirely, which would mean losing any existing users.
 
-そこで、Androidアプリへの移行が予定されているウェブアプリには、[Cordova](https://cordova.apache.org/)の使用を検討してください。Cordovaを使用すると、ウェブアプリをAPKとしてラップし、Androidアプリとして申請することができます。後で完全にネイティブなAndroidアプリに移行することになった場合でも、新しいバージョンとしてアプリストアで公開することができます。
+If you're planning to make this transition from web app to Android app, consider using [Cordova](https://cordova.apache.org/) with your web app. Cordova allows you to wrap your web app as an APK and submit the web app as an Android app. If you later decide to go entirely native with an Android app, you can publish a new version of your Android app in the Appstore.
 
 [acorn-tv]: https://www.amazon.com/RLJ-Entertainment-Acorn-TV/dp/B01EAY1XPW/ref=sr_1_1
 [urban-movie-channel]: https://www.amazon.com/RLJ-Entertainment-Urban-Movie-Channel/dp/B016APTPSQ/ref=sr_1_1

@@ -1,5 +1,5 @@
 ---
-title: 開発環境のセットアップ
+title: Setting Up Your Development Environment
 permalink: setting-up-your-development-environment.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,16 +7,16 @@ toc-style: kramdown
 github: true
 ---
 
-Amazon Fire TVプラットフォームを対象にしてAndroidベースのアプリ開発を行うには、あらかじめ開発環境をセットアップしておく必要があります。
+To start developing Android-based Fire TV apps for the Amazon Fire TV platform, you need to first set up your development environment.
 
 * TOC
 {:toc}
 
-## JDKのセットアップ
+## Set Up the JDK
 
-ご使用のコンピューターでJavaアプリをコンパイルするには、Oracleから提供されているJava Development Kit (JDK) が必要です。
+You need the Java Development Kit (JDK) from Oracle to compile Java apps on your machine. 
 
-まず、JDKがすでにインストールされているかどうかを確認します。ターミナルまたはコマンドプロンプトを開いて「`java -version`」と入力します。JDKがインストールされている場合、次のようなメッセージが返されます。
+First check to see if you already have the JDK. Open Terminal or Command Prompt and type `java -version`. If you have the JDK, the response should be something like this:
 
 ```
 java version "1.8.0_101"
@@ -24,23 +24,23 @@ Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
 ```
 
-JDKがインストールされていない場合は、ご使用のコンピューターに合ったバージョンのJDKインストーラを[Java SE Development Kit Downloads](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からダウンロードして実行してください。
+If you don't have the JDK, download the version of the JDK Installer for your machine from [Java SE Development Kit Downloads](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and run it. 
 
-詳細については、以下のページを参照してください。
+For more details, see the following: 
 
 * [10 JDK 8 Installation for OS X](https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html)
-* [JDK Installation for Microsoft Windows](https://docs.oracle.com/javase/8/docs/technotes/guides/install/windows_jdk_install.html)。このページの「Running the JDK Installer」と「Updating the PATH Environment Variable」のセクションをご覧ください。
+* [JDK Installation for Microsoft Windows](https://docs.oracle.com/javase/8/docs/technotes/guides/install/windows_jdk_install.html). Specifically, see "Running the JDK Installer" and "Updating the PATH Environment Variable."
 
-その他のオペレーティングシステムと情報については、「[JDK 8 and JRE 8 Installation Start Here](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)」を参照してください。
+For other operating systems and information, see [JDK 8 and JRE 8 Installation Start Here](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html).
 
-## Android Studioのセットアップ {#setupandroidstudio}
+## Set Up Android Studio {#setupandroidstudio}
 
-Androidプロジェクトの公式IDEである[Android Studio](https://developer.android.com/studio/index.html)をインストールします。ご使用のコンピューターへのAndroid Studio開発環境のセットアップについては、[Android Studioの概要に関するページ](https://developer.android.com/sdk/installing/studio.html)と「[Android Studioのインストール](https://developer.android.com/sdk/installing/index.html)」を参照してください。
+Install [Android Studio](https://developer.android.com/studio/index.html), the official IDE for Android projects. See [Getting Started with Android Studio](https://developer.android.com/sdk/installing/studio.html) and [Install Android Studio](https://developer.android.com/sdk/installing/index.html) for information about setting up the Android Studio development environment on your machine.
 
-## 次のステップ
+## Next Steps
 
-ADBを使用してFire TV端末を開発コンピューターに接続する方法については、「[ADBを使用してFire TVに接続する][connecting-adb-to-fire-tv-device]」を参照してください。
+To connect your development computer to your Fire TV device with ADB, see [Connecting to Fire TV Through ADB][connecting-adb-to-fire-tv-device].
 
-開発したアプリをFire TV端末にインストールして実行する方法については、「[アプリのインストールと実行][installing-and-running-your-app]」を参照してください。
+To install and run apps you develop on your Fire TV device, see [Installing and Running Your App][installing-and-running-your-app].
 
 {% include links.html %}

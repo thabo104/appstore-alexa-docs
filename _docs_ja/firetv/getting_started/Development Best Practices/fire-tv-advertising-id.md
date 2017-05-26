@@ -1,11 +1,10 @@
 ---
-title: Fire TVの広告ID
+title: Advertising ID on Fire TV
 permalink: fire-tv-advertising-id.html
 sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
 github: true
-reviewer: Anuj Chadha
 ---
 
 {% include content/{{site.language}}/fire/advertising-id.md device="firetv" %}

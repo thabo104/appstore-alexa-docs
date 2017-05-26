@@ -1,5 +1,5 @@
 ---
-title: 開発者ツールのオプション
+title: Developer Tool Options
 permalink: fire-tv-system-xray-developer-tools.html
 sidebar: firetv_ja
 product: Fire TV
@@ -9,55 +9,55 @@ toc-style: kramdown
 github: true
 ---
 
-開発者ツールメニューには、リアルタイムのメトリックなど、アプリに関する各種情報が得られるオプションが豊富に用意されています。これらの情報は、トラブルシューティング、開発、テストで活用することができます。
+The Developer Tools Menu provides a number of options that provide real-time metrics and other information about your app. This information can assist you in troubleshooting, development, and testing.
 
 * TOC
 {:toc}
 
-## 開発者ツールメニューを起動する
+## Invoke the Developer Tools Menu
 
 {% include content/{{site.language}}/fire/firetv-enabledevtools.md %}
 
-以下のスクリーンショットは開発者ツールメニューのオプションを示しています。
+The following screenshot shows the options on the Developer Tools menu:
 
 {% include image.html file="firetv/getting_started/images/xray-devtooloptions" type="png" max-width="500px" %}
 
-これらのツールの中には、第 1 世代のFire TV端末では利用できないものがあります。ただし、今後のリリースで第 1 世代の端末にも同じ開発者ツールメニューのオプションが実装される予定です。例外として、Fire TV Stick第 1 世代では、詳細オプション (マルチメディアオーバーレイ) は今後も利用できるようになる予定はありません。
+Not all the tools shown above are available in Generation 1 Fire TV devices. However, an upcoming release will bring the Development Tools Menu options into parity with Gen 1 devices. The only exception is with Advanced Options (the multimedia overlay), which won't be available on Fire TV Stick Gen 1.
 
 
 ## System X-Ray
 
-System X-Rayは、リアルタイムのシステムメトリック情報を収集し、画面の上部にオーバーレイとして表示します。オンにすると、オーバーレイが常に画面に表示されるようになります。 
+System X-Ray gathers instantaneous system metrics and displays on top of the screen as an overlay. When toggled on, the overlay will always visible on the screen.
 
 {% include image.html file="firetv/getting_started/images/firetv_xrayall" type="png" %}
 
-System X-Rayのオーバーレイには、以下に関する詳細情報が表示されます。
+The System X-Ray overlay contains details about the following:
 
-*  ディスプレイ
+*  Display
 *  CPU
-*  メモリ
-*  ネットワーク
+*  Memory
+*  Network
 
-System X-Rayの詳細については、「[Fire TVのSystem X-Rayオーバーレイ][fire-tv-system-xray]」を参照してください。
+For deep-dive into System X-Ray, see [System X-Ray on Fire TV][fire-tv-system-xray].
 
-## 詳細オプション
+## Advanced Options
 
-Android MediaCodec APIが使用されている場合、詳細オプションをオンにするとマルチメディア情報を表示できます。このオプションをオンにしてメディアを再生すると、追加のパネルが右側に表示されます (パネル名の [MUL] はマルチメディアを表しています)。
+Advanced Options enables multimedia information to appear when Android MediaCodec APIs are in use. When you switch this option on and then play media, an additional display (titled "MUL" for Multimedia) appears on the right.
 
 {% include image.html file="firetv/getting_started/images/systemxray-multimedia" type="png" %}
 
-{% include note.html content="詳細オプションは、Fire TV Stick第 1 世代では使用できません (システムリソースの制限のため)。今後のアップデートを適用しても、Fire TV Stick第 1 世代のデバイスでマルチメディアオーバーレイを表示できるようにはなりません。" %}
+{% include note.html content="Advanced Options is not available on Fire TV Stick Generation 1 (due to limited system resources). Even with future updates, Fire TV Stick Gen 1 devices won't display the multimedia overlay." %}
 
-マルチメディアのパネルに表示される情報は、[AUDIO] と [VIDEO] の 2 つのセクションに分かれています。
+Information displayed in the Multimedia panel is divided into two sections: AUDIO and VIDEO.
 
-**AUDIO**:
+**AUDIO:**
 
 * Codec
 * Hardware Accelerated
 * Input Bitrate
 * Secure
 
-**VIDEO**: 
+**VIDEO**:
 
 * Codec
 * Hardware Accelerated
@@ -67,17 +67,17 @@ Android MediaCodec APIが使用されている場合、詳細オプションを�
 * Resolution
 * Frame Rate
 
-## スナップショット
+## Snapshot
 
-スナップショットは、`adb`コマンドでリアルタイムのメトリック情報をすべて収集できる機能です。次のコマンドを入力すると、メトリック情報がコマンドラインに表示されます。 
+Snapshot provides a way for users to gather instantaneous all metrics information through `adb` command. Whenever you input the following command, metric information will display in the command line.
 
 ```
 adb shell dumpsys activity service com.amazon.ssm/.OverlayService
 ```
 
-このコマンドが正しく機能するには、System X-Rayが実行中である必要があります。
+System X-Ray must be running for this command to function.
 
-以下に出力例を示します。
+Here's a sample output:
 
 ```
 SERVICE com.amazon.ssm/.OverlayService 3dde6680 pid=10820
@@ -99,30 +99,30 @@ SERVICE com.amazon.ssm/.OverlayService 3dde6680 pid=10820
     [com.amazon.ssm.network.appdownloadspeed]: [2.1 Mbps]
 ```
 
-## 記録＆共有
+## Record & Share
 
-{% include note.html content="記録＆共有は試験段階の機能であるため、問題が発生する可能性があることに注意してください。たとえば、メモリが大きすぎる場合、出力がタイムアウトになることがあります。" %}
+{% include note.html content="The Record & Share feature is in experimental beta, so be aware that this feature may have some issues. For example, if the memory is too large, the output may time out." %}
 
-記録＆共有を使用すると、CPU、メモリ、ネットワーク、マルチメディアに関するリアルタイムのメトリック情報を履歴データとしてデータベースに保存できます。同じ情報をSystem X-Rayオーバーレイではリアルタイムでグラフィカルに表示できますが、記録＆共有では取得した情報を履歴に保存できます。履歴はコマンドラインにダンプできます。
+Record & Share stores instantaneous metrics about CPU, memory, network, and multimedia into a database as historical data. Although the same information is displayed graphically in real-time through the System X-Ray overlay, Record & Share takes this information and stores it into a history that you can dump to the command line.
 
-記録＆共有機能を使用するには、まず [開発者ツールメニュー] の [記録＆共有] の設定を [**オン**] にします。オンにすると [記録の設定] を選択するよう求められます。
+To use Record & Share, first toggle the Record & Share setting in the Developer Tools Menu to **On**. You're then prompted to select the Record Settings:
 
 {% include image.html file="firetv/getting_started/images/recordsettings" type="png" max-width= "400px" %}
 
-これらのプロパティでは以下の要素を制御します。
+These properties control the following:
 
-* **間隔**: 記録を取る間隔です。2 秒、4 秒、8 秒、16 秒、32 秒の中から指定します。
-* **持続時間**: データをデータベースに保存する期間です。1 時間、2 時間、4 時間、8 時間、16 時間の中から指定します。
+* **Interval**: The time between two recordings: 2 seconds, 4 seconds, 8 seconds, 16 seconds, or 32 seconds.
+* **Duration**: How long the data gets stored in the database: 1 hour, 2 hours, 4 hours, 8 hours, or 16 hours.
 
-デフォルト値 (間隔 2 秒、持続時間 1 時間) では、2 秒ごとに統計値が記録されてデータベースに保存されます。記録はデータベースに合計 1 時間保存されます。
+The default (2s interval, 1 hr duration) means that every 2 seconds, statistics will be recorded and stored in the database. The recording will be stored in the database for a total of 1 hour.
 
-メディアを再生し、ある程度情報が記録されたら、以下のコマンドを使用して、すべてのメトリック履歴をコマンドラインにダンプできます。
+After playing media to gather some recorded information, you can dump all historical metrics to the command line using the following::
 
 ```
 adb shell dumpsys activity service com.amazon.ssm/.OverlayService -all
 ```
 
-以下の情報が返されます。
+The response includes the following information:
 
 CPU:
 
@@ -132,7 +132,7 @@ CPU:
 * cpu2
 * cpu3
 
-メモリ:
+Memory:
 
 * Timestamp
 * Total_Memory
@@ -141,7 +141,7 @@ CPU:
 * Foreground_App_Memory
 * Foreground_App_PackageName
 
-ネットワーク:
+Network:
 
 * Timestamp
 * RSSI
@@ -149,7 +149,7 @@ CPU:
 * Foreground_App_Download_Speed
 * Foreground_App_PackageName
 
-マルチメディア:
+Multimedia:
 
 * Timestamp
 * AudioCodec
@@ -164,7 +164,7 @@ CPU:
 * VideoFramerate
 * VideoFramedropped
 
-コマンドラインに表示される情報の例を以下に示します。
+Here's an example of the display on the command line:
 
 ```
  CPU
@@ -181,65 +181,65 @@ CPU:
  2016-10-31 11:40:23 -41  14.0 kbps      0 bps                         com.amazon.ssm
 ```
 
-一部のメトリックだけが必要な場合は、コマンドに各種オプションを追加できます。たとえば、メモリとネットワークに関するメトリックの履歴をコマンドラインにダンプする場合は、以下のコマンドを使用します。
+If you're interested in only part of the metrics, you can add different options in the command. For example, to dump memory and network historical metrics to command line:
 
 <pre>
 adb shell dumpsys activity service com.amazon.ssm/.OverlayService <span class="red">-memory -network</span>
 </pre>
 
-利用可能なすべてのオプションを以下の表に示します。
+The following table shows all available options:
 
-| オプション | 説明 |
+| Option | Description |
 |-------|--------|
-| 空白 <br/>(オプションの指定なし) | スナップショットの情報がダンプされます |
-| `-snapshot` | スナップショットの情報がダンプされます |
-| `-all` | データベースからすべての情報がダンプされます |
-| `-memory`| データベースからメモリ情報がダンプされます |
-| `-cpu` |  データベースからCPU情報がダンプされます |
-| `-network` | データベースからネットワーク情報がダンプされます |
-| `-multimedia` | データベースからマルチメディア情報がダンプされます |
+| blank <br/>(no option passed) | dump snapshot information |
+| `-snapshot` | dump snapshot information |
+| `-all` | dump all information from database |
+| `-memory`| dump memory information from database |
+| `-cpu` |  dump CPU information from database |
+| `-network` | dump network information from database |
+| `-multimedia` | dump multimedia information from database |
 
 
-利用可能なオプションを確認するには、`-help`パラメータを指定します。
+To check available options, pass the `-help` parameter:
 
 ```
 adb shell dumpsys activity service com.amazon.ssm/.OverlayService -help
 ```
 
-データベースに保存されているメトリックの記録は (持続時間が経過して自動的にデータが消去される前に) 消去することができます。消去するには、[**開発者ツールメニュー**] で [**記録＆共有**] を選択してから、リモコンの [**メニュー**] ボタンを押します。
+You can clear the recorded metrics stored in the database (before the duration time automatically clears the data). From the **Developer Options Tools** menu, select **Record & Share**, and then click the **menu** button on your remote.
 
 {% include image.html file="firetv/getting_started/images/xraycleardb" type="png" max-width="500px" %}
 
-## セーフゾーン
+## Safezone
 
-テレビによっては、画面のオーバースキャンが使用されています。オーバースキャンとは、表示画面の外側の情報を一部切り捨てて表示することです (モニターの差異に対応するため)。オーバースキャン領域には重要な情報を表示しないでください。
+Some TVs use overscan with their display. Overscan means the TV displays some information off the edges of the visible screen (to accommodate discrepancies in monitors). You should not display important information in the overscan areas.
 
-オーバースキャン領域を表示するには、[**セーフゾーン**] を [**オン**] にします。これにより、オーバースキャン領域を確認して、この領域に情報が表示されないようにすることができます。
+To make the overscan areas visible, you can turn the **SafeZone** switch to **On**. This will make the overscan areas apparent so you can avoid displaying any information in these areas.
 
 {% include image.html file="firetv/getting_started/images/xraysafezone" type="png" %}
 
-Fire TV Stick (第 2 世代) には画面サイズ調整機能がありません。画面表示がテレビ画面に正しく収まらない場合、オーバースキャン領域が正確に表示されないことがあります。
+Note that Fire TV Stick (Generation 2) does not include screen size calibration. If the screen display doesn't fit correctly on the TV screen, the overscan area may not show accurately.
 
-## 開発者オプション
+## Developer Options
 
-{% include note.html content="この機能は現在開発中です。この機能に関する詳細は間もなく公開されます。" %}
+{% include note.html content="This feature is still in development. More information will be released shortly about this feature." %}
 
-現在、NetflixやHBO Goなどの一部のサードパーティアプリでは、Fire TVのホーム画面にある専用の行におすすめコンテンツが表示されます。
+Currently some select third-party apps, such as Netflix and HBO Go, display recommendations on the Fire TV home screen in specific rows.
 
-開発者オプションにある [Recommended By Your Apps] をオンにすると、この名前の行が NetlixやHBO Goの列に表示されます。この [Recommended By Your Apps] には、サードパーティアプリから送信されたおすすめコンテンツが表示されます。 
+Developer Options allows you to turn on a row called "Recommended By Your Apps" (displayed below the Netlix and HBO Go rows). This "Recommended By Your Apps" row will show recommendations sent from third-party apps.
 
-現時点では、この行をオンにすると、開発者のアプリが送信するおすすめコンテンツだけが表示されます。この機能の完全版がリリースされたら、ユーザーがインストールしたすべてのサードパーティアプリのおすすめコンテンツが表示されるようになります (独自の行におすすめコンテンツを表示するNetflixやHBO Goなどの一部のアプリを除く)。
+Currently, turning this row on shows only recommendations that your own app sends. When the feature is fully released, it will show recommendations from all third-party apps the user has installed (excluding some apps such as Netflix and HBO Go, which display recommendations on their own rows).
 
-## ネットワークアドバイザーを起動する
+## Launch Network Advisor
 
-ネットワーク接続の強度やチャネルなどの詳細情報を確認できるネットワーク分析ウィンドウを起動します。問題がある場合は、ネットワークアドバイザーによって問題を修正するための推奨事項が提供されます。
+Launches a network analysis window that checks your network connection strength, channel, and other details. If there are problems, the Network Advisor provides recommendations to fix the issues.
 
 
-## 関連項目
+## See Also
 
-詳細については、以下を参照してください。
+For more details, see the following:
 
-* [Fire TVのSystem X-Rayオーバーレイ][fire-tv-system-xray]
-* [System X-Rayメトリックをカスタマイズする][fire-tv-system-xray-customized-metrics]
+* [System X-Ray on Fire TV][fire-tv-system-xray]
+* [Customize System X-Ray Metrics][fire-tv-system-xray-customized-metrics]
 
 {% include links.html %}

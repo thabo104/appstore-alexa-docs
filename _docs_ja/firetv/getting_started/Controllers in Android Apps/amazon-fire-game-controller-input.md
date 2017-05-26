@@ -1,39 +1,41 @@
 ---
-title: ゲームコントローラー入力
+title: Game Controller Input
 permalink: amazon-fire-game-controller-input.html
 sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
+github: true
 ---
 
-Amazon Fire TVゲームコントローラー (Bluetooth HIDゲームパッドプロファイルに準拠したコントローラー全般) には、各種ボタン、Androidモーション、キーイベント定数があります。アプリ内で発生した入力イベントは、これらの情報を使用してキャプチャします。
+Amazon Fire TV game controllers (as well as other controllers that conform to the Bluetooth HID gamepad profile) have specific buttons, Android motion, and key event constants. Use this information to
+capture input events in your app.
 
-サポート対象となるコントローラーのボタン動作については、「[コントローラー動作のガイドライン][controller-behavior-guidelines]」を参照してください。Amazon Fire TVリモコンの入力を処理する方法の詳細については、「[Amazon Fire TVリモコン入力][amazon-fire-tv-remote-input]」を参照してください。
+For guidelines on button behavior for all supported controllers, see [Controller Behavior Guidelines][controller-behavior-guidelines]. For information on handling input for Amazon Fire TV remote controls, see [Amazon Fire TV Remote Input][amazon-fire-tv-remote-input].
 
 * TOC
 {:toc}
 
-## ボタン
+## Buttons
 
-Amazon Fire TV (第 2 世代) ゲームコントローラーには次のボタンがあります。
+The Amazon Fire TV (2nd Generation) Game Controller has these buttons:
 
 {% include image.html file="firetv/getting_started/images/gamecontroller2" type="png" title="New game controller" %}
 
-Amazon Fire TV (第 1 世代) ゲームコントローラーには次のボタンがあります。
+The Amazon Fire TV (1st Generation) Game Controller has these buttons:
 
 {% include image.html file="firetv/getting_started/images/gamepad-callouts" type="png" title="Game controller" %}
 
 {% include image.html file="firetv/getting_started/images/gamepad-callouts-second-view" type="png" title="Game controller, other buttons" %}
 
-## 入力情報を取得する
+## Capturing Input
 
-Amazon Fire TVで使用されるゲームコントローラーでは、デジタルボタン ([A] ボタンなど) を押すとAndroid [`KeyEvent`](http://developer.android.com/reference/android/view/KeyEvent.html)イベントが生成され、アナログコントロール (ジョイスティックなど) を動かすと[`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html)イベントが生成されます。
+Game controllers used with Amazon Fire TV generate Android [`KeyEvent`](http://developer.android.com/reference/android/view/KeyEvent.html) events for digital button presses (such as the A button), and [`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html) events for analog control movement (such as a joystick action).
 
-単純なボタン入力は、標準のAndroidイベントリスナーインターフェースとコールバック ([`onClick()`](http://developer.android.com/reference/android/view/View.OnClickListener.html#onClick%28android.view.View%29)、[`onFocusChange()`](http://developer.android.com/reference/android/view/View.OnFocusChangeListener.html#onFocusChange%28android.view.View,%20boolean%29) など) を使用して処理できます。
+You can handle simple button input with standard Android event listener interfaces and callbacks ([`onClick()`](http://developer.android.com/reference/android/view/View.OnClickListener.html#onClick%28android.view.View%29), [`onFocusChange()`](http://developer.android.com/reference/android/view/View.OnFocusChangeListener.html#onFocusChange%28android.view.View,%20boolean%29), and so on).
 
-[`View`](http://developer.android.com/reference/android/view/View.html)で特定のボタンが押されたことを示すイベントをキャプチャするには、[`onKeyDown()`](http://developer.android.com/reference/android/view/View.html#onKeyDown%28int,%20android.view.KeyEvent%29) などの入力イベントハンドラをオーバーライドします。
+To capture specific button press events in your [`View`](http://developer.android.com/reference/android/view/View.html), override input event handlers such as [`onKeyDown()`](http://developer.android.com/reference/android/view/View.html#onKeyDown%28int,%20android.view.KeyEvent%29).
 
-特定のキーをキャプチャするには、[`KeyEvent`](http://developer.android.com/reference/android/view/KeyEvent.html)クラスの入力定数に該当するかどうかをテストします。たとえば、[A] ボタンが押されたことをキャプチャするには、次のコードを使用します。
+Test for the input constants from the [`KeyEvent`](http://developer.android.com/reference/android/view/KeyEvent.html) class to capture specific keys. For example, to capture a press from the A button, use this code:
 
 ```java
 @Override
@@ -50,7 +52,7 @@ public boolean onKeyDown(int keyCode, KeyEvent event){
 }
 ```
 
-モーションイベントをキャプチャするには、[`View`](http://developer.android.com/reference/android/view/View.html)の[`onGenericMotionEvent()`](http://developer.android.com/reference/android/view/View.html#onGenericMotionEvent(android.view.MotionEvent)) イベントをオーバーライドします。モーションイベントを生成したコントロールを特定するには[`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html)クラスの入力定数を使用し、モーションイベントの値を特定するには[`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html)クラスの[`getAxisValue()`](http://developer.android.com/reference/android/view/MotionEvent.html#getAxisValue(int)) などのイベントを使用します。
+To capture motion events, override the [`onGenericMotionEvent()`](http://developer.android.com/reference/android/view/View.html#onGenericMotionEvent(android.view.MotionEvent)) event in your [`View`](http://developer.android.com/reference/android/view/View.html). Use the input constants from the [`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html) class to determine which control generated the movement, and the events in the [`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html) class such as [`getAxisValue()`](http://developer.android.com/reference/android/view/MotionEvent.html#getAxisValue(int)) to determine the values for the motion:
 
 ```java
 @Override
@@ -68,31 +70,31 @@ public boolean onGenericMotionEvent(MotionEvent event){
 }
 ```
 
-## プライマリとセカンダリの入力イベント {#primary_and_secondary}
+## Primary and Secondary Input Events {#primary_and_secondary}
 
-Fire TV端末の一部のゲームコントローラー操作では、1 つの操作に対して複数の入力イベントが生成されることがあります。たとえば、Amazon Fire TVゲームコントローラーのD-pad (十字キー) は、モーションイベントを生成する*アナログ方向のコントロール*ですが、Fire TVリモコンのD-pad (ナビゲーション) は、キーイベントを生成する*デジタルコントロール*です。
+Some game controller actions on Fire TV devices may raise more than one input event for a single action. For example, the D-Pad on the Amazon Fire TV game controller is an *analog directional control* (producing motion events), but a *digital control* on the Fire TV remote controls (producing key events).
 
-同様に、選択操作は、ゲームコントローラーでは *[A] ボタン*ですが、Fire TVリモコンでは*D-padの [選択] ボタン*です。Amazon Fire TVの一部のゲームコントローラー操作では、最初にプライマリ入力イベント (通常はモーションイベント) が生成されます。これらのイベントがアプリによって処理されなければ、次に、セカンダリ入力イベント (通常はキーイベント) が生成されます。プライマリとセカンダリの両方の入力イベントを、次の「[入力イベントリファレンス](#inputreference)」の表に示します。
+Similarly, the selection action is the *A button* on a game controller, but it is the *D-Pad center button* on Fire TV remotes. Some game controller actions on Amazon Fire TV first raise a primary input event (usually a motion event). Then, if those events are not handled by your app, they raise a second input event (usually a key event). Both of the primary and secondary input events are listed in the [Input Event Reference](../amazon-fire-game-controller-input.md#inputreference) table below.
 
-セカンダリ入力イベントを利用すると、ゲームコントローラー入力を処理するプロセスを単純化することができます。ゲームコントローラーからのボタンイベントおよびD-padイベントだけをアプリで処理する場合、セカンダリイベントを使用することで、モーションイベントをすべて無視し、キーイベントだけを対象にすることができます。
+Secondary input events can help you simplify the process of handling game controller input. If your app is interested only in button and D-Pad events from a game controller, the secondary events enable you to ignore motion events altogether and only deal with key events.
 
-同様に、[A] ボタンは`KEYCODE_BUTTON_A`と`KEYCODE_DPAD_CENTER`の両方を生成するので、アプリがFire TVリモコンのD-padの [選択] ボタンをサポートする場合、[A] ボタンもテストする必要はありません。
+Similarly, because the A button generates both `KEYCODE_BUTTON_A` and `KEYCODE_DPAD_CENTER`, if your app supports the center D-Pad button on the Fire TV remotes, you do not have to also test for the A button.
 
-プライマリ入力イベントを適切に処理しないと、アプリが入力を二重に受信しているように動作する可能性があることに注意してください。イベントがキャプチャされて処理されたとき、入力イベントハンドラは`true`を返す必要があります。プライマリ入力イベントがキャプチャされた場合、セカンダリ入力イベントは生成されません。
+Note that your app may behave as if it is receiving double input if you do not properly handle the primary input events. Make sure your input event handlers return `true` if you have captured and handled an event. The secondary input event is not generated if the first has been captured.
 
-## 入力イベントリファレンス {#inputreference}
+## Input Event Reference {#inputreference}
 
-次の表は、各ゲームコントローラーボタンのモーションイベント定数およびキーイベント定数、それらのボタンでの推奨されるユーザーエクスペリエンス動作、およびAmazon Fire TVユーザーインターフェースでのそれらのボタンのデフォルトの動作を示します。
+The following table describes the motion and key event constants for each game controller button, the suggested user experience behavior for those buttons, and the default behavior of those buttons in Amazon Fire TV user interface.
 
-デジタルボタンはキーイベント ([`KeyEvent`](http://developer.android.com/reference/android/view/KeyEvent.html)) を、アナログコントロールはモーションイベント ([`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html)) を報告します。コントローラー入力に対するアプリの推奨される動作については、「[コントローラー動作のガイドライン][controller-behavior-guidelines]」を参照してください。
+Digital buttons report key events ([`KeyEvent`](http://developer.android.com/reference/android/view/KeyEvent.html)), and analog controls report motion events ([`MotionEvent`](http://developer.android.com/reference/android/view/MotionEvent.html)). See [controller-behavior-guidelines] for information on suggested behavior for controller input in your app.
 
-{% include note.html content="アプリで使用されないボタンの入力イベントを、アプリでキャプチャや破棄などの処理の対象にしないでください。システムでの未使用イベントの処理を可能にすると、メディアの再生や音量制御などのバックグラウンドの動作が可能になります。" %}
+{% include note.html content="Do not capture or throw away input events for any buttons you do not use in your app. Allowing the system to handle unused events enables background behavior such as media playback and volume control." %}
 
-「`MotionEvent`」列または「`KeyEvent`」列に示されているプライマリイベントをアプリが処理しない場合、これらのイベントに**加えて**「セカンダリイベント」列のイベントも生成されます。これらのセカンダリイベントについては、前の「[プライマリとセカンダリの入力イベント](#primary_and_secondary)」を参照してください。
+The events listed in the Secondary Event column are raised **in addition to** the events in the `MotionEvent` or `KeyEvent` columns, if your app does not handle that primary event. See [Primary and Secondary Input Events](../amazon-fire-game-controller-input.md#primary_and_secondary) (above) for information on these secondary events.
 
-この表における*ゲーム*とは、ゲームカテゴリでAmazonアプリストアに申請され、Amazonアプリストアから端末にインストールされたアプリのことです。
+In this table, a *game* is an app that was submitted to the Amazon Appstore in the games category and installed onto the device from the Amazon Appstore.
 
-<table>
+<table class="grid">
 <colgroup>
 <col width="20%" />
 <col width="20%" />
@@ -102,174 +104,174 @@ Fire TV端末の一部のゲームコントローラー操作では、1 つの�
 </colgroup>
   <thead>
     <tr>
-      <th>ゲームコントローラーボタン</th>
+      <th>Game Controller Button</th>
       <th>MotionEvent</th>
       <th>KeyEvent</th>
-      <th>セカンダリイベント</th>
-      <th>デフォルトの動作</th>
+      <th>Secondary Event</th>
+      <th>Default Behavior</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>ホーム</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>GameCircleをサポートしているゲームの場合、GameCircleオーバーレイを起動します。GameCircleをサポートしていないゲームの場合、[Game Paused] ダイアログが表示されます。それ以外のアプリの場合、ホーム画面に戻ります。      </td>
+      <td>Home</td>
+      <td>none</td>
+      <td>none</td>
+      <td>none</td>
+      <td>For games with GameCircle support, launch the GameCircle overlay. For games without GameCircle support, display a “Game Paused” dialog. For all other apps, return the user to Home.      </td>
     </tr>
     <tr>
-      <td>バック</td>
-      <td>なし</td>
+      <td>Back</td>
+      <td>none</td>
       <td><code>KEYCODE_BACK</code></td>
-      <td>なし</td>
-      <td>前の操作または画面 (アクティビティ) に戻ります。</td>
+      <td>none</td>
+      <td>Return the user to the previous operation or screen (Activity).</td>
     </tr>
     <tr>
-      <td>メニュー</td>
-      <td>なし</td>
+      <td>Menu</td>
+      <td>none</td>
       <td><code>KEYCODE_MENU</code></td>
-      <td>なし</td>
-      <td>Androidコンテキストメニュー (<a href="http://developer.android.com/guide/topics/ui/menus.html#options-menu">OptionsMenu</a>) が起動されます。</td>
+      <td>none</td>
+      <td>Invoke the Android context menu (<a href="http://developer.android.com/guide/topics/ui/menus.html#options-menu">OptionsMenu</a>).</td>
     </tr>
     <tr>
-      <td>GameCircle (第 1 世代のFireゲームコントローラーのみ)</td>
-      <td>なし</td>
-      <td><code>なし</code></td>
-      <td>なし</td>
-      <td>GameCircleをサポートしているゲームの場合、GameCircleオーバーレイを起動します。GameCircleをサポートしていないゲームの場合、[Game Paused] ダイアログが表示されます。それ以外のアプリの場合、ランチャーの [Games] 画面に戻ります。</td>
+      <td>GameCircle (Fire Game Controller 1st Generation Only)</td>
+      <td>none</td>
+      <td><code>none</code></td>
+      <td>none</td>
+      <td>For games with GameCircle support, launch the GameCircle overlay. For games without GameCircle support, display a “Game Paused” dialog. For all other apps, return the user to the Games screen of the launcher.</td>
     </tr>
     <tr>
       <td>A</td>
-      <td>なし</td>
+      <td>none</td>
       <td><code>KEYCODE_BUTTON_A</code></td>
       <td><code>KEYCODE_DPAD_CENTER</code></td>
-      <td>フォーカスが現在置かれているアイテムが選択されます。</td>
+      <td>Select the item with the current focus.</td>
     </tr>
     <tr>
       <td>B</td>
-      <td>なし</td>
+      <td>none</td>
       <td><code>KEYCODE_BUTTON_B</code></td>
       <td><code>KEYCODE_BACK</code></td>
-      <td>前の画面 (アクティビティ) に戻ります ([戻る] と同じ)。</td>
+      <td>Go back to the previous screen (Activity) (Same as Back).</td>
     </tr>
     <tr>
       <td>X</td>
-      <td>なし</td>
+      <td>none</td>
       <td><code>KEYCODE_BUTTON_X</code></td>
-      <td>なし</td>
-      <td>何も起こりません。</td>
+      <td>none</td>
+      <td>Do nothing.</td>
     </tr>
     <tr>
       <td>Y</td>
-      <td>なし</td>
+      <td>none</td>
       <td><code>KEYCODE_BUTTON_Y</code></td>
-      <td>なし</td>
-      <td>何も起こりません。</td>
+      <td>none</td>
+      <td>Do nothing.</td>
     </tr>
     <tr>
-      <td>左 (D-PAD) 右 (D-PAD)</td>
+      <td>Left (D-Pad) Right (D-Pad)</td>
       <td><code>AXIS_HAT_X</code> (&gt;0 is right)</td>
-      <td>なし</td>
+      <td>none</td>
       <td><code>KEYCODE_DPAD_LEFT</code> <code>KEYCODE_DPAD_RIGHT</code></td>
-      <td>ユーザーインターフェースのフォーカスが左方向または右方向に移動します。</td>
+      <td>Move the focus left or right in the user interface.</td>
     </tr>
     <tr>
-      <td>上 (D-PAD) 下 (D-PAD)</td>
+      <td>Up (D-Pad) Down (D-Pad)</td>
       <td><code>AXIS_HAT_Y</code> (&gt;0 is down)</td>
-      <td>なし</td>
+      <td>none</td>
       <td><code>KEYCODE_DPAD_UP</code> <code>KEYCODE_DPAD_DOWN</code></td>
-      <td>ユーザーインターフェースのフォーカスが上方向または下方向に移動します。</td>
+      <td>Move the focus upward or downward in the user interface.</td>
     </tr>
     <tr>
-      <td>左アナログスティック (左/右)</td>
-      <td><code>AXIS_X</code> (正の値は右方向を表します)</td>
-      <td>なし</td>
-      <td><code>KEYCODE_DPAD_LEFT</code> <code>KEYCODE_DPAD_RIGHT</code>(移動が 0.5 を超える場合)</td>
-      <td>ユーザーインターフェースのフォーカスが入力された方向に移動します。</td>
+      <td>Left Stick (Left/Right)</td>
+      <td><code>AXIS_X</code> (&gt;0 is right)</td>
+      <td>none</td>
+      <td><code>KEYCODE_DPAD_LEFT</code> <code>KEYCODE_DPAD_RIGHT</code> (if movement is &gt;.5)</td>
+      <td>Move the focus in the user interface in the given direction.</td>
     </tr>
     <tr>
-      <td>左アナログスティック (上/下)</td>
-      <td><code>AXIS_Y</code> (正の値は下方向を表します)</td>
-      <td>なし</td>
-      <td><code>KEYCODE_DPAD_UP</code> <code>KEYCODE_DPAD_DOWN</code> (移動が 0.5 を超える場合)</td>
-      <td>ユーザーインターフェースのフォーカスが入力された方向に移動します。</td>
+      <td>Left Stick (Up/Down)</td>
+      <td><code>AXIS_Y</code> (&gt;0 is down)</td>
+      <td>none</td>
+      <td><code>KEYCODE_DPAD_UP</code> <code>KEYCODE_DPAD_DOWN</code> (if movement is &gt;.5)</td>
+      <td>Move the focus in the user interface in the given direction.</td>
     </tr>
     <tr>
-      <td>左アナログスティックの押し下げ</td>
-      <td>なし</td>
+      <td>Left Stick Press</td>
+      <td>none</td>
       <td><code>KEYCODE_BUTTON_THUMBL</code></td>
-      <td>なし</td>
-      <td>再生/一時停止</td>
+      <td>none</td>
+      <td>Play/Pause.</td>
     </tr>
     <tr>
-      <td>右アナログスティック (左/右)</td>
-      <td><code>AXIS_Z</code> (正の値は右方向を表します)</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>何も起こりません。</td>
+      <td>Right Stick (Left/Right)</td>
+      <td><code>AXIS_Z</code> (&gt;0 is right)</td>
+      <td>none</td>
+      <td>none</td>
+      <td>Do nothing.</td>
     </tr>
     <tr>
-      <td>右アナログスティック (上/下)</td>
-      <td><code>AXIS_RZ</code> (正の値は下方向を表します)</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>何も起こりません。</td>
+      <td>Right Stick (Up/Down)</td>
+      <td><code>AXIS_RZ</code> (&gt;0 is down)</td>
+      <td>none</td>
+      <td>none</td>
+      <td>Do nothing.</td>
     </tr>
     <tr>
-      <td>右アナログスティックの押し下げ</td>
-      <td>なし</td>
+      <td>Right Stick Press</td>
+      <td>none</td>
       <td><code>KEYCODE_BUTTON_THUMBR</code></td>
-      <td>なし</td>
-      <td>再生/一時停止</td>
+      <td>none</td>
+      <td>Play/Pause.</td>
     </tr>
     <tr>
-      <td>再生/一時停止 (第 1 世代のFireゲームコントローラーのみ)</td>
-      <td>なし</td>
+      <td>Play/Pause (Fire Game Controller 1st Generation Only)</td>
+      <td>none</td>
       <td><code>KEYCODE_MEDIA_PLAY_PAUSE</code></td>
-      <td>なし</td>
-      <td>再生/一時停止</td>
+      <td>none</td>
+      <td>Play/Pause.</td>
     </tr>
     <tr>
-      <td>早戻し (第 1 世代のFireゲームコントローラーのみ)</td>
-      <td>なし</td>
+      <td>Rewind (Fire Game Controller 1st Generation Only)</td>
+      <td>none</td>
       <td><code>KEYCODE_MEDIA_REWIND</code></td>
-      <td>なし</td>
-      <td>早戻し</td>
+      <td>none</td>
+      <td>Rewind.</td>
     </tr>
     <tr>
-      <td>早送り (第 1 世代のFireゲームコントローラーのみ)</td>
-      <td>なし</td>
+      <td>Fast Forward (Fire Game Controller 1st Generation Only)</td>
+      <td>none</td>
       <td><code>KEYCODE_MEDIA_FAST_FORWARD</code></td>
-      <td>なし</td>
-      <td>早送り</td>
+      <td>none</td>
+      <td>Fast forward.</td>
     </tr>
     <tr>
-      <td>L2トリガー</td>
+      <td>Left Trigger (L2)</td>
       <td><code>AXIS_BRAKE</code></td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>音量 +</td>
+      <td>none</td>
+      <td>none</td>
+      <td>Volume Up.</td>
     </tr>
     <tr>
-      <td>L1ショルダーボタン</td>
-      <td>なし</td>
+      <td>Left Shoulder (L1)</td>
+      <td>none</td>
       <td><code>KEYCODE_BUTTON_L1</code></td>
-      <td>なし</td>
-      <td>早戻し</td>
+      <td>none</td>
+      <td>Rewind.</td>
     </tr>
     <tr>
-      <td>R2トリガー</td>
+      <td>Right Trigger (R2)</td>
       <td><code>AXIS_GAS</code></td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>音量 -</td>
+      <td>none</td>
+      <td>none</td>
+      <td>Volume Down.</td>
     </tr>
     <tr>
-      <td>R1ショルダーボタン</td>
-      <td>なし</td>
+      <td>Right Shoulder (R1)</td>
+      <td>none</td>
       <td><code>KEYCODE_BUTTON_R1</code></td>
-      <td>なし</td>
-      <td>早送り</td>
+      <td>none</td>
+      <td>Fast Forward.</td>
     </tr>
   </tbody>
 </table>
