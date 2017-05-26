@@ -9,7 +9,9 @@ last_updated: May 25, 2017
 reviewers: Robert Krossa, Mary Galvin, Luca Sale, Juston Western, Travis Ah King
 ---
 
-The Cordova plugin for Fire TV Catalog Integration makes it possible to integrate your webapp with the Fire TV catalog. You still have to submit your app content to the Fire TV catalog using the [standard submission process for content][integrating-your-catalog-with-fire-tv]. This plugin just adds intents with the Fire TV launcher to indicate that your app has the capability to play video.
+The Cordova plugin for Fire TV Catalog Integration makes it possible to integrate your webapp with the Fire TV catalog. By integrating with Fire TV Catalog, users can perform voice searches for media in your app, and the Fire TV search results will show your app's content.
+
+You still have to submit your app content to the Fire TV catalog using the [standard submission process for content][integrating-your-catalog-with-fire-tv]. This plugin just adds intents with the Fire TV launcher to indicate that your app has the capability to play video.
 
 {% include note.html content="The Cordova plugin for Fire TV Catalog Integration is currently in beta testing. Details may change before its official release. You can submit feedback about the plugin or this documentation by sending an email to your solutions architect." %}
 
@@ -20,7 +22,7 @@ The Cordova plugin for Fire TV Catalog Integration makes it possible to integrat
 
 This Fire TV Catalog plugin is based on Apache Cordova. [Apache Cordova](https://cordova.apache.org/) provides a wrapper that allows you to include native Android functionality in webapps. Using Cordova, you can create an APK file for your web app.
 
-Without this Cordova wrapper and plugin, webapps (such as those developed with [WASK][the-web-app-starter-kit-for-fire-tv]), cannot be integrated with Fire TV Catalog. Catalog integration is required to surface media results from your app when users perform [voice searches or global text searches][implementing-search-fire-tv] on Fire TV.
+This plugin was developed to allow webapps (such as those developed with [WASK][the-web-app-starter-kit-for-fire-tv]), to be integrated with Fire TV Catalog. (Catalog integration is required to surface media results from your app when users perform [voice searches or global text searches][implementing-search-fire-tv] on Fire TV.) Without this plugin, you can't integrate your webapp with Fire TV Catalog.
 
 ## Prerequisites &mdash; Add a Cordova project {#prereqs_cordova}
 
@@ -44,22 +46,29 @@ cordova platform add android
 
 Make sure you run the `cordova platform add android` command from your Cordova project directory. (If you get an error that says, \"Error: Current working directory is not a Cordova-based project.\" you're trying to install it in the wrong directory.)
 
+The config.xml file of your Cordova project should list the source of your content in the `<content>` tag. For example:
+
+```xml
+<content src="https://firetv.acme.com/" />
+```
+
 After you've complete these prerequisites, see the following section for details on how to install and configure the plugin.
 
 ## Install the Cordova Plugin for Fire TV Catalog Integration {#installation_instructions}
 
 {% include note.html content="If you haven't already added a Cordova project to your webapp, see the previous section, [\"Prerequisites: Add a Cordova project.\"](#prereqs_cordova) The steps that follow assume you have a Cordova project created for your webapp. Creating the Cordova app requires you to have  [npm](https://docs.npmjs.com/getting-started/what-is-npm) and [Cordova command-line tool](https://cordova.apache.org/docs/en/latest/guide/cli/) installed." %}
 
-1.  Install [plugman](https://www.npmjs.com/package/plugman), a package manager for Node, so that it's available globally on your computer:
+1.  (Optional) Install [plugman](https://www.npmjs.com/package/plugman), a package manager for Node, so that it's available globally on your computer:
 
     ```
     npm install -g plugman
     ```
 
-    {% include tip.html content="Although other plugin managers are available for Apache Cordova projects, plugman is recommended." %}
+    {% include tip.html content="Although other plugin managers are available for Apache Cordova projects, plugman is recommended because it allows you to install the plugin for a specific platform only (in this case, Android). By contrast, if you use the Cordova command-line tool's default plugin manager, the plugin will be added to *both* Android and iOS. If you're not pushing your app out to iOS, you can just use the Cordova command-line tool's default plugin manager. But if you are pushing out to iOS, use plugman instead of the Cordova command-line tool because this Fire TV Catalog Integration plugin is not compatible with iOS." %}
 
+2.  Download the Cordova plugin for Fire TV Catalog. Unzip the files and place them in a convenient location (such as inside the Cordova project of your web app).
 
-6.  Install the Cordova plugin for Fire TV Catalog using the following command. Customize the plugin's parameter values:
+3.  Install the Cordova plugin for Fire TV Catalog using the following command. Customize the plugin's parameter values based on the parameter table below:
 
     ```sh
     plugman install --platform android --project YOUR_CORDOVA_PROJECT/platforms/android --plugin LOCATION_OF_PLUGIN --variable DISPLAY_NAME="Your App's Display Name" --variable PARTNER_ID="Your App's Partner Id" --variable DEFAULT_SIGNEDIN_STATUS="TRUE or FALSE" ;
@@ -68,10 +77,18 @@ After you've complete these prerequisites, see the following section for details
     Here's an example with actual parameter values configured:
 
     ```sh
-    plugman install --platform android --project ./platforms/android --plugin ../../CI-Plugin-For-Release --variable DISPLAY_NAME="ACME" --variable PARTNER_ID="acme" --variable DEFAULT_SIGNEDIN_STATUS="TRUE" ;
+    plugman install --platform android --project ./platforms/android --plugin ../../CI-Plugin-For-Release --variable DISPLAY_NAME="ACME" --variable PARTNER_ID="ACME" --variable DEFAULT_SIGNEDIN_STATUS="TRUE" ;
     ```
 
-    Here's more detail about each parameter:
+    If you're not using plugman, you can install the plugin using the default Cordova command-line tool:
+
+    ```sh
+    cordova plugin add LOCATION_OF_PLUGIN --variable PARTNER_ID="Your App's Partner Id" --variable DISPLAY_NAME="Your App's Display Name"
+    ```
+
+    **Plugin Parameters**
+
+    The following table provides more detail about each parameter:
 
     <table>
        <colgroup>
@@ -91,7 +108,7 @@ After you've complete these prerequisites, see the following section for details
           </tr>
           <tr>
              <td markdown="span"><code>--plugin LOCATION_OF_PLUGIN</code></td>
-             <td markdown="span">The location of the Cordova Fire TV Catalog plugin directory. This is either the clone URL of a GitHub repo or a local directory. (Note: In the beta, the plugin is available as a zip file that you download locally rather than access from a repo.)</td>
+             <td markdown="span">The location of the Cordova Fire TV Catalog plugin directory. (Note: In the beta, the plugin is available as a zip file that you download locally.)</td>
           </tr>
           <tr>
              <td markdown="span"><code>--variable DISPLAY_NAME="Your App's Display Name"</code></td>
@@ -108,16 +125,25 @@ After you've complete these prerequisites, see the following section for details
        </tbody>
     </table>
 
-7.  Edit your main activity to accept deep linking.
+    When you add the plugin successfully, you receive the following response:
 
-    If you have not customized your Cordova project, your main activity is most likely named `MainActivity.java` and is under `CORDOVA_PROJECT/platforms/android/PKG/`, where `PKG` refers to the package name (such as `src/com/example/hello`).
+    ```
+    Installing "com.amazon.cordova.plugins.launcher" for android
+    Adding intent-filter to Android Manifest
+    ```
+
+    The plugin files are added to your Cordova project (look in `<CORDOVA_PROJECT>/platforms/android/src/com/amazon`).
+
+4.  Edit your main activity to accept deep linking.
+
+    If you have not customized your Cordova project, your main activity is most likely named `MainActivity.java` and is under `<CORDOVA_PROJECT>/platforms/android/<PKG>/`, where `<CORDOVA_PROJECT>` refers to the directory where you installed Cordova and `PKG` refers to the package name (such as `src/com/example/hello`).
 
     If you have customized your Cordova project, but you do not know the main launch activity, you can find it by identifying the activity in the Android manifest (`platforms/android/AndroidManifest.xml`) that has the intent-filter:
 
     ```java
     <intent-filter android:label="@string/launcher_name">
-       	<action android:name="android.intent.action.MAIN" />
-       	<category android:name="android.intent.category.LAUNCHER" />
+      <action android:name="android.intent.action.MAIN" />
+      <category android:name="android.intent.category.LAUNCHER" />
     </intent-filter>
     ```
 
@@ -141,12 +167,20 @@ After you've complete these prerequisites, see the following section for details
     }
     ```
 
-8.  Write the function for `createDeepLinkUrl(String launchData)`.
+5.  The previous code includes a new function (`createDeepLinkUrl(launchIntentData)`) to deep-link the URLs. You must write the the code for this function.
 
-    Your `createDeepLinkUrl` function will be unique to your webapp structure and catalog data, but here is an example `createDeepLinkUrl` function for you to use as a basis for your own:
+    The function's code will be unique to your webapp structure and catalog data, but the following is an example `createDeepLinkUrl(launchIntentData)` function for you to use as a basis for your own. The goal is to target the video ID, parse it out, and build a URI from it.
+
+    You can place this function after the `loadUrl(launchUrl); }` line in the same main activity file (the following code shows some context):
 
     ```java
-    private String createDeepLinkURLFromVevoLaunchData(Uri launchData) {
+    ...
+    loadUrl(launchUrl);
+    }
+
+    //start createDeepLinkUrl() function
+
+    private String createDeepLinkUrl(Uri launchData) {
          // get the last segment (formatted in this case: Video('SOMEID')), and pull out the ID
          String[] videoIDSegments = launchData.getLastPathSegment().split("'");
 
@@ -164,21 +198,54 @@ After you've complete these prerequisites, see the following section for details
          // if we didn't get a valid video ID or don't understand the format, return original URL
          return this.launchUrl;
      }
+     //end createDeepLinkUrl() function
     ```
 
-8.  After you have made the proper modifications to the `MainActivity.java` file, your app should be ready to build. Build it using this command:
+
+
+6.  Import the following packages (in the same main activity file):
+
+    ```java
+    // package com.example.<your package name>;
+
+    import android.os.Bundle;
+    import org.apache.cordova.*;
+    import android.content.Intent;
+    import android.net.Uri;
+    import android.os.Bundle;
+    import android.text.TextUtils;
+    import android.util.Log;
+    import org.apache.cordova.*;  
+    ```
+    
+7.  After you have made the proper modifications to the main activity file, your app should be ready to build. Build it using the following command:
 
     ```
     cordova build android
     ```
 
-9.  To change your signedIn/signedOut status, in the `onDeviceReady` handler of your app, save the result of `cordova.require('com.amazon.cordova.plugins.launcher')`. (For example: `this.launcherPlugin = cordova.require('com.amazon.cordova.plugins.launcher');`.)
+    If the build is successful, Cordova generates an APK file. You can sideload this onto a Fire TV device to test it. To sideload your APK, use ADB. For example, `adb install /<path-to-apk>/android-debug.apk`. See [Installing and Running Your Fire TV App][installing-and-running-your-app] for details.
+
+    After you sideload your app, you can test the functionality by pressing the microphone button on your remote and searching for media content from your app. The search results will show the matched media from your app, and clicking the image tiles will launch your app and play the content.
+
+8.  To change your signedIn/signedOut status, in the `onDeviceReady` handler of your app, save the result of `cordova.require('com.amazon.cordova.plugins.launcher')`. (For example: `this.launcherPlugin = cordova.require('com.amazon.cordova.plugins.launcher');`.)
 
     The `launcherPlugin` object has two functions:
 
     * `isSignedIn(successCallback(status), errorCallback)`
     * `setSignedInStatus(status, successCallback, errorCallback)`
 
-    [WASK][the-web-app-starter-kit-for-fire-tv] is intended to work with Amazon’s customized version of Cordova (and not vanilla Cordova), so the listener is `onAmazonPlatformReady`. The [onDeviceReady](https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready) event tells the webapp that Cordova is finished executing and that it is okay to start executing Cordova-related code, such as setting the `signedIn` status.
+    Here's an example:
+
+    ```js
+    var launcherPlugin;
+
+    function myHandlerFunction(){
+          launcherPlugin = cordova.require('com.amazon.cordova.plugins.launcher');
+    }
+    document.addEventListener(“deviceready”,myHandlerFunction, false)
+    ```
+
+    If you are using [WASK][the-web-app-starter-kit-for-fire-tv] to build your application, note that WASK is intended to work with Amazon’s customized version of Cordova (and not vanilla Cordova). As a result, the listener is `onAmazonPlatformReady`. The [onDeviceReady](https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready) event tells the webapp that Cordova is finished executing and that it is okay to start executing Cordova-related code, such as setting the `signedIn` status.
 
 {% include links.html %}
