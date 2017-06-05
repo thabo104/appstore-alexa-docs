@@ -217,7 +217,7 @@ After you've complete these prerequisites, see the following section for details
     import android.util.Log;
     import org.apache.cordova.*;  
     ```
-    
+
 7.  After you have made the proper modifications to the main activity file, your app should be ready to build. Build it using the following command:
 
     ```
@@ -247,5 +247,7 @@ After you've complete these prerequisites, see the following section for details
     ```
 
     If you are using [WASK][the-web-app-starter-kit-for-fire-tv] to build your application, note that WASK is intended to work with Amazon’s customized version of Cordova (and not vanilla Cordova). As a result, the listener is `onAmazonPlatformReady`. The [onDeviceReady](https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready) event tells the webapp that Cordova is finished executing and that it is okay to start executing Cordova-related code, such as setting the `signedIn` status.
+
+{% include tip.html content="To test the deep linking when your catalog has not been ingested yet, see [Test Cases for Verifying Fire TV Deep Links](https://developer.amazon.com/public/solutions/devices/fire-tv/docs/catalog/test-cases-for-verifying-deep-links-from-your-fire-tv-catalog)." %}
 
 {% include links.html %}
