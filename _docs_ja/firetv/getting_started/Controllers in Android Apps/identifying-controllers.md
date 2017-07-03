@@ -1,30 +1,29 @@
 ---
-title: Identifying Controllers
+title: コントローラーの識別
 permalink: identifying-controllers.html
 sidebar: firetv_ja
 product: Fire TV
 toc-style: kramdown
-github: true
 ---
 
-The Amazon Fire TV platform enables users to connect up to seven Bluetooth controllers at the same time. If your app or game supports input from multiple users or players, you need to be able to determine the connected controllers, identify the features of those controllers, and differentiate user input coming from different controllers.
+Amazon Fire TVプラットフォームでは、ユーザーは最大で 7 つのBluetoothコントローラーに同時に接続できます。アプリまたはゲームが複数のユーザーやプレーヤーからの入力をサポートしている場合、接続されたコントローラーを識別し、それらのコントローラーの機能を特定し、それぞれのコントローラーからのユーザー入力を区別できる必要があります。
 
-The Fire TV platform uses standard Android features of the [`InputDevice`][1] class. The `InputDevice` class enables you to get a list of all the connected input devices (including controllers) and query the features of an input device.
+Fire TVプラットフォームでは、Androidの標準機能である[`InputDevice`][1]クラスが使用されます。`InputDevice`クラスを使用することで、接続されたすべての入力端末 (コントローラーを含む) のリストを入手し、入力端末の機能を問い合わせることができます。
 
-You can also get an input device object from any key or motion event, which enables you to handle input from different controllers or different users as it occurs.
+また、任意のキーイベントやモーションイベントから入力端末オブジェクトを入手できることから、異なるコントローラーやユーザーからの入力が発生した場合に、それらを処理することができます。
 
 * TOC
 {:toc}
 
-## Getting Input Devices and Device IDs
+## 入力端末と端末IDの取得
 
-Input devices connected to Amazon Fire TV are represented by the Android [`InputDevice`][1] class. Connected input devices are given a device ID at system boot and when a new device is added.  Input devices in the list of IDs can be actual controllers such as game controllers, or they can represent other forms of input such as the onscreen keyboard. The device IDs themselves are arbitrary and do not uniquely identify a specific controller or controller type.
+Amazon Fire TVに接続された入力端末は、Android [`InputDevice`][1]クラスによって表されます。接続された入力端末は、システムのブート時、および新たに端末が追加された場合に、端末IDを割り当てられます。IDのリストにある入力端末は、ゲームコントローラーなどの実際のコントローラーである場合と、オンスクリーンキーボードなど、他の入力形式を表している場合があります。端末IDは無作為に割り当てられるもので、これによって特定のコントローラーやコントローラー種類を一意に識別することはできません。
 
-You can get the list of all the available device IDs to determine the number and type of controllers available to your app or game. You can also get device IDs or input device objects from a specific key or motion event, to determine which controller was being used for that event. 
+利用可能なすべての端末IDのリストを取得することで、アプリやゲームが使用できるコントローラーの番号と種類を確認できます。また、特定のキーイベントまたはモーションイベントから端末IDまたは入力端末オブジェクトを取得して、どのコントローラーがそのイベントで使用されていたかを確認することもできます。 
 
-### Get All Input Device IDs
+### すべての入力端末IDの取得
 
-You can get an array of all the available input devices IDs with the static [`InputDevice.getDeviceIds()`][3] method, and then associate those IDs with actual input device objects with [`InputDevice.getDevice()`][4]:
+以下のように、静的な[`InputDevice.getDeviceIds()`][3] メソッドを使って、利用可能なすべての入力端末IDの配列を取得し、[`InputDevice.getDevice()`][4] を使って、それらのIDを実際の入力端末オブジェクトと関連付けることができます。
 
 ```java
 int[] ids = InputDevice.getDeviceIds();
@@ -37,13 +36,13 @@ InputDevice device = InputDevice.getDevice(ids[i]);
 }
 ```
 
-Note that the list of device IDs you get from the `getDeviceIds()` method contains only those input devices that are actually _connected_ to the system.  Some Bluetooth controllers may disconnect (sleep) to save power if they have not been used in some time, or a controller may disconnect if it is out of range.
+`getDeviceIds()` メソッドで取得した端末IDのリストには、システムに実際に接続された入力端末のみが含まれることに留意してください。Bluetoothコントローラーによっては、しばらくの間使用されていないと、電気を節約するために切断される (スリープ状態になる) 場合があります。また接続範囲外になると、切断される場合もあります。
 
-Sleeping or otherwise unavailable controllers are not considered connected and are not enumerated in the list of device IDs.  You can listen for controller connect and disconnect events by implementing the [`InputDeviceListener`][5] interface.
+スリープ状態のコントローラー、または他の状態で使用不可能なコントローラーは、接続されているとみなされないため、端末IDのリストには列挙されません。[`InputDeviceListener`][5]インターフェースを実装することで、コントローラーの接続イベントや切断イベントをリッスンできます。
 
-### Get the Input Device ID from a Key or Motion Event
+### キーイベントまたはモーションイベントからの入力端末IDの取得
 
-You can get the ID of the device that triggered a key or motion event inside an event handler with the [`InputEvent.getDeviceId()`][6] method:
+以下のように、[`InputEvent.getDeviceId()`][6] メソッドを使って、イベントハンドラ内でキーイベントまたはモーションイベントを起動した端末のIDを取得できます。
 
 ```java
 public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -52,7 +51,7 @@ InputDevice device = InputDevice.getDevice(id);
 }
 ```
 
-Or, just get the input device object itself:
+または、以下のように入力端末オブジェクトそのものを取得します。
 
 ```java
 public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -60,11 +59,11 @@ InputDevice device = event.getDevice();
 }
 ```
 
-## Identifying Controller Features
+## コントローラー機能の特定
 
-Android input device IDs are arbitrary and do not uniquely identify any controller or controller type.  To determine the type of input device, query the features of that device to determine whether input came from a controller (a remote, game controller, or second screen app), or from some other device.
+Androidの入力端末IDは無作為に割り当てられるもので、これによってコントローラーやコントローラーの種類を一意に識別することはできません。入力端末の種類を特定するには、その端末の機能を問い合わせ、コントローラー (リモコン、ゲームコントローラー、またはセカンドスクリーンアプリ) からの入力であるか、または他の端末からの入力であるかを判断します。
 
-Use the [`InputDevice.getSources()`][7] method to get the features of an input device.  This method returns an integer bitmap that indicates device capabilities and features.  Use the constants defined the [`InputDevice`][1] class to compare that bitmap with the specific features your app is interested in.
+[`InputDevice.getSources()`][7] メソッドを使用して、入力端末の機能を取得します。このメソッドは、端末の機能を表す整数ビットマップを返します。[`InputDevice`][1]クラスで定義された定数を使用して、そのビットマップと、アプリに実装したい具体的な機能を比較します。
 
 ```java
 // get an InputDevice object based on the device ID
@@ -77,7 +76,7 @@ if ((device.getSources() & InputDevice.SOURCE_CLASS_JOYSTICK != 0 {
 }
 ```
 
-You can also get input device feature bitmaps directly from key and motion events with the [`InputEvent.getSource()`][8] method:
+以下のように、[`InputEvent.getSource()`][8] メソッドを使って、キーイベントやモーションイベントから入力端末機能のビットマップを直接取得することもできます。
 
 ```java
 public boolean onGenericMotionEvent(MotionEvent event) {
@@ -88,18 +87,18 @@ if ((event.getSource() & InputDevice.SOURCE_CLASS_JOYSTICK) != 0) {
 }
 ```
 
-### Is this Device a Game Controller?
+### 端末がゲームコントローラーかどうかの判断
 
-You can identify game controllers (both the Amazon game controller and other game controllers) by testing for both the [`InputDevice.SOURCE_GAMEPAD`][9] and [`InputDevice.SOURCE_JOYSTICK`][10] constants.  Note that this code does not differentiate between an Amazon game controller and a Bluetooth controller from another manufacturer.
+[`InputDevice.SOURCE_GAMEPAD`][9]と[`InputDevice.SOURCE_JOYSTICK`][10]の両方の定数をテストして、ゲームコントローラー (Amazonゲームコントローラーと他のゲームコントローラーの両方) を特定することができます。このコードでは、Amazonゲームコントローラーと他社製のBluetoothコントローラーが区別されないことに留意してください。
 
 ```java
 int hasFlags = InputDevice.SOURCE_GAMEPAD | InputDevice.SOURCE_JOYSTICK;
 boolean isGamepad = inputDevice.getSources() & hasFlags == hasFlags;
 ```
 
-### Is this Device a Remote?
+### 端末がリモコンかどうかの判断
 
-You can identify the Amazon Fire TV Remote or Voice Remote by the [`InputDevice.SOURCE_DPAD`][11] constant.  However, as some keyboards may also identify themselves as having a D-Pad, you should also test for the keyboard type ([`InputDevice.KEYBOARD_TYPE_NON_ALPHABETIC`][12]):
+[`InputDevice.SOURCE_DPAD`][11]定数を使用して、Amazon Fire TVリモコンまたはAmazon Fire TV音声認識リモコンを特定できます。ただし、一部のキーボードはD-padを搭載していると認識される場合もあるため、キーボードの種類もテストする必要があります (以下のように、[`InputDevice.KEYBOARD_TYPE_NON_ALPHABETIC`][12]を使用)。
 
 ```java
 int hasFlags =  InputDevice.SOURCE_DPAD;
@@ -107,9 +106,9 @@ bool isRemote = (inputDevice.getSources() & hasFlags == hasFlags)
 && inputDevice.getKeyboardType() == InputDevice.KEYBOARD_TYPE_NON_ALPHABETIC;
 ```
 
-### Is this Device a Second Screen App?
+### 端末がセカンドスクリーンアプリかどうかの判断
 
-You can identify the Amazon Second Screen app with both the [`InputDevice.SOURCE_MOUSE`][13] and [`InputDevice.SOURCE_TOUCHPAD`][14] constants.
+[`InputDevice.SOURCE_MOUSE`][13]と[`InputDevice.SOURCE_TOUCHPAD`][14]の両方の定数を使用して、Amazonセカンドスクリーンアプリを特定できます。
 
 ```java
 int hasFlags =  InputDevice.SOURCE_MOUSE | InputDevice.SOURCE_TOUCHPAD;

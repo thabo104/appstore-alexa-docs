@@ -1,4 +1,4 @@
-<div class="subheading">Media Specifications (Fire TV Stick, Generation 1)</div>
+<div class="subheading">メディアの仕様 (Fire TV Stick、第 1 世代)</div>
 
 <table class="grid">
    <colgroup>
@@ -9,73 +9,74 @@
    </colgroup>
    <thead>
       <tr class="header">
-         <th>Type</th>
-         <th>Codec</th>
-         <th>MIME type</th>
-         <th>Details</th>
+         <th>タイプ</th>
+         <th>コーデック</th>
+         <th>MIMEタイプ</th>
+         <th>詳細</th>
       </tr>
    </thead>
     <tr>
          <td class="white" rowspan="3"><b>Video</b></td>
          <td class="white">H.263</td>
-         <td class="white">video/3gpp</td>
-         <td class="white">Hardware accelerated up to WVGA (800x400) @ 30fps, 6 Mbps, Profile 0 Level 70</td>
+         <td class="white">video/3gp</td>
+         <td class="white">ハードウェアによる高速化: 最大WVGA (800 x 400)、30fps、6 Mbps、プロファイル 0 レベル 70</td>
       </tr>
       <tr>
          <td class="white">H.264</td>
          <td class="white">video/avc</td>
-         <td class="white">Hardware accelerated up to 1080p @ 30fps or 720p @ 60fps, 20 Mbps, High Profile up to Level 4</td>
+         <td class="white">ハードウェアによる高速化: 最大 1080p、30fps、20 Mbps、ハイプロファイル (最大レベル 4)</td>
       </tr>
        <tr>
           <td class="white">MPEG-4</td>
           <td class="white">video/mp4v-es</td>
-          <td class="white">Up to 1080p @ 30fps, 20 Mbps, Advanced Simple Profile Level 5</td>
+          <td class="white">最大 1080p、30fps、20 Mbps、アドバンスドシンプルプロファイル (レベル 5)</td>
+
        </tr>
  <tr>
-      <td class="gray" rowspan="12"><b>Audio</b></td>
+      <td class="gray" rowspan="12"><b>オーディオ</b></td>
       <td class="gray">AAC-LC</td>
       <td class="gray">audio/mp4a-latm</td>
-      <td class="gray">Up to 96kHz, 6 channels, 16-bit and 24-bit</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
    </tr>
    <tr>
       <td class="gray">HE-AACv1 (AAC+)</td>
       <td class="gray">audio/mp4a-latm</td>
-      <td class="gray">Up to 96kHz, 6 channels, 16-bit and 24-bit</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
    </tr>
    <tr>
-      <td class="gray">HE-AACv2 (enhanced AAC+)</td>
+      <td class="gray">HE-AACv2 (拡張AAC+)</td>
       <td class="gray">audio/mp4a-latm</td>
-      <td class="gray">Up to 96kHz, 6 channels, 16-bit and 24-bit</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
    </tr>
    <tr>
-      <td class="gray">AC3 (Dolby Digital)</td>
+      <td class="gray">AC3 (ドルビーデジタル)</td>
       <td class="gray">audio/ac3</td>
-      <td class="gray">Up to 48kHz, 6 channels, 16-bit and 24-bit</td>
+      <td class="gray">最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
    </tr>
    <tr>
-      <td class="gray">eAC3 (Dolby Digital Plus)</td>
-      <td class="gray">audio/eac3, audio/ec3</td>
-      <td class="gray">Up to 48kHz, 6 channels, 16-bit and 24-bit</td>
+      <td class="gray">eAC3 (ドルビーデジタルプラス)</td>
+      <td class="gray">audio/eac3、audio/ec3</td>
+      <td class="gray">最大 48 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
    </tr>
    <tr>
       <td class="gray">FLAC</td>
       <td class="gray">audio/flac</td>
-      <td class="gray">Up to 48kHz, 2 channels, 16-bit and 24-bit (no dither for 24 bit)</td>
+      <td class="gray">最大 48 kHz、2 チャネル、16 ビットと 24 ビット (24 ビットはディザなし)</td>
    </tr>
    <tr>
       <td class="gray">MIDI</td>
-      <td class="gray">N/A</td>
-      <td class="gray">MIDI (Type 0 and 1), DLS (Version 1 and 2), XMF, and Mobile XMF. Ringtone formats RTTTL/RTX, OTA, and iMelody</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">MIDI (タイプ 0 および 1)、DLS (バージョン 1 および 2)、XMF、およびモバイルXMF。着信音の形式: RTTTL/RTX、OTA、およびiMelody</td>
    </tr>
    <tr>
       <td class="gray">MP3</td>
       <td class="gray">audio/mp3</td>
-      <td class="gray">Up to 48kHz, 2 channels in DSP (16-bit and 24-bit) and software (16-bit)</td>
+      <td class="gray">最大 48 kHz、DSPに 2 チャネル (16 ビットおよび 24 ビット) およびソフトウェア (16 ビット)</td>
    </tr>
    <tr>
       <td class="gray">PCM/Wave</td>
-      <td class="gray">N/A</td>
-      <td class="gray">Up to 96kHz, 6 channels, 16-bit and 24-bit</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">最大 96 kHz、6 チャネル、16 ビットおよび 24 ビット</td>
    </tr>
    <tr>
       <td class="gray">Vorbis</td>
@@ -94,33 +95,33 @@
      </tr>
     <tr>
        <td class="white"><b>DRM</b></td>
-       <td class="white" colspan="2">Widevine Level 3 <br/> PlayReady version 2.5 only</td>
-       <td class="white" markdown="span">PlayReady supports only encrypted video, not audio. If you need to play content with both encrypted audio and video, [contact us](https://developer.amazon.com/appsandservices/support/contact/contact-us) for specific customization details and steps. Other DRM details depend on the [media player][fire-tv-media-players] you choose to implement.</td>
+       <td class="white" colspan="2">Widevine Level 3 <br/> PlayReady Version 2.5 のみ</td>
+       <td class="white" markdown="span">PlayReadyでサポートされるのは暗号化されたビデオだけです。オーディオはサポートされません。暗号化されたオーディオとビデオの両方を含むコンテンツを再生する必要がある場合は、[こちら](https://developer.amazon.com/appsandservices/support/contact/contact-us)から具体的なカスタマイズの詳細と手順をお問い合わせください。その他のDRMに関する情報は、実装する[メディアプレーヤー][fire-tv-media-players]によって異なります。</td>
  </tr>
    <tr>
-      <td class="gray" rowspan="4"><b>Image</b></td>
+      <td class="gray" rowspan="4"><b>画像</b></td>
       <td class="gray">JPEG</td>
-      <td class="gray">N/A</td>
-      <td class="gray">Base and progressive</td>
+      <td class="gray">該当なし</td>
+      <td class="gray">ベースおよびプログレッシブ</td>
    </tr>
    <tr>
       <td class="gray">GIF</td>
-      <td class="gray">N/A</td>
+      <td class="gray">該当なし</td>
       <td class="gray"></td>
    </tr>
    <tr>
       <td class="gray">PNG</td>
-      <td class="gray">N/A</td>
+      <td class="gray">該当なし</td>
       <td class="gray"></td>
    </tr>
    <tr>
       <td class="gray">BMP</td>
-      <td class="gray">N/A</td>
+      <td class="gray">該当なし</td>
       <td class="gray"></td>
    </tr>     
 </table>
 
-<div class="subheading">Device and Platform Specifications (Fire TV Stick, Generation 1)</div>
+<div class="subheading">端末およびプラットフォームの仕様 (Fire TV Stick、第 1 世代)</div>
 
 <table class="grid">
    <colgroup>
@@ -129,14 +130,14 @@
    </colgroup>
   <thead>
     <tr>
-      <th>Device Elements</th>
-      <th>Details</th>
+      <th>端末の要素</th>
+      <th>詳細</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Screen resolution (px) and Refresh rate (Hz)</td>
-      <td>1920 x 1080 (1080p) - 60Hz <br/>
+      <td>画面解像度 (px) とリフレッシュレート (Hz)</td>
+      <td>1920 x 1080 (1080p) - 60Hz <br/> 
       1280 x 720 (720p) - 60Hz </td>
     </tr>
       <tr>
@@ -144,105 +145,106 @@
        <td>1.4</td>
      </tr>
     <tr>
-      <td>Density (dp)</td>
+      <td>密度 (dp)</td>
       <td>320 (1080p) <br /> 213 (720p)</td>
     </tr>
     <tr>
-      <td>Density Identifier</td>
+      <td>密度識別子</td>
       <td>xhdpi (1080p) <br /> tvdpi (720p)</td>
     </tr>
     <tr>
-      <td>Storage</td>
-      <td>8GB</td>
+      <td>ストレージ</td>
+      <td>8 GB</td>
     </tr>
     <tr>
-      <td>Memory</td>
-      <td>1GB (512MB system, 512MB video)</td>
+      <td>RAM</td>
+      <td>1 GB (システム用に 512 MB、ビデオ用に 512 MB)</td>
     </tr>
     <tr>
-      <td>System on Chip (SoC) Platform</td>
+      <td>システムオンチップ (SoC) プラットフォーム</td>
       <td>Broadcom Capri 28155</td>
     </tr>
     <tr>
       <td>CPU</td>
-      <td>Dual Core ARM Cortex A9 up to 1 GHz. 32-bit.</td>
+      <td>最大 1 GHzのDual Core ARM Cortex A9</td>
     </tr>
     <tr>
       <td>GPU</td>
       <td>Broadcom VideoCore IV GPU/VPU (Capri VC4)</td>
     </tr>
     <tr>
-      <td>Networking: WiFi</td>
-      <td>802.11 b/g/n; 2x2 MIMO <br /> (2.4 GHz and 5.0 GHz dual band)</td>
+      <td>ネットワーキング: WiFi</td>
+      <td>802.11 b/g/n; 2x2 MIMO <br /> (2.4 GHzおよび 5.0 GHzデュアルバンド)</td>
     </tr>
     <tr>
-      <td>Networking: Ethernet</td>
-      <td>No</td>
+      <td>ネットワーキング: イーサネット</td>
+      <td>なし</td>
     </tr>
     <tr>
       <td>Bluetooth</td>
-      <td>Bluetooth 3.0 <br /> HID, SPP Profiles</td>
+      <td>Bluetooth 3.0 <br /> HID、SPPプロファイル</td>
     </tr>
     <tr>
       <td>USB</td>
-      <td>Micro USB 2.0 (Power only)</td>
+      <td>Micro USB 2.0 (電源のみ)</td>
     </tr>
     <tr>
-      <td>Expandable Storage</td>
-      <td markdown="span">No  <br/>(See [Specifying Your App's Installation Location][specifying-installation-location] for best practices on manifest settings related to storage.)</td>
+      <td>拡張可能ストレージ</td>
+      <td markdown="span">なし <br/>(ストレージに関連したマニフェスト設定のベストプラクティスについては「[アプリのインストール場所の指定][specifying-installation-location]」を参照)</td>
     </tr>
     <tr>
-      <td>Device OS/Platform software</td>
-      <td>Based on Android 5.0 - API 22</td>
+      <td>端末のOS/プラットフォームソフトウェア</td>
+      <td>Android 5.0 に基づく (API 22)</td>
     </tr>
     <tr>
-      <td>Location services</td>
-      <td>No</td>
+      <td>位置情報サービス</td>
+      <td>なし</td>
     </tr>
     <tr>
-      <td>Front-facing camera</td>
-      <td>No</td>
+      <td>前面カメラ</td>
+      <td>なし</td>
     </tr>
     <tr>
-      <td>Microphone</td>
-      <td>No</td>
+      <td>マイク</td>
+      <td>なし</td>
     </tr>
     <tr>
-      <td>Multi-touch</td>
-      <td>No</td>
+      <td>マルチタッチ</td>
+      <td>なし</td>
     </tr>
     <tr>
-      <td>Accelerometer</td>
-      <td>No</td>
+      <td>加速度計</td>
+      <td>なし</td>
     </tr>
     <tr>
-      <td>Compass</td>
-      <td>No</td>
+      <td>コンパス</td>
+      <td>なし</td>
     </tr>
     <tr>
-      <td>Gyroscope</td>
-      <td>No</td>
+      <td>ジャイロスコープ</td>
+      <td>なし</td>
     </tr>
     <tr>
-      <td>Light sensor</td>
-      <td>No</td>
+      <td>光センサー</td>
+      <td>なし</td>
     </tr>
     <tr>
-      <td>Proximity sensor</td>
-      <td>No</td>
+      <td>近接センサー</td>
+      <td>なし</td>
     </tr>
     <tr>
       <td><code>android.os.Build.MANUFACTURER</code></td>
-      <td markdown="span"><code>Amazon</code></td>
+      <td markdown="span"><code>Amazon</code> <br/>詳細については、「[Identifying Amazon Fire TV Devices][identifying-amazon-fire-tv-devices]」を参照してください。</td>
     </tr>
     <tr>
       <td><code>android.os.Build.MODEL</code></td>
-      <td><code>AFTM</code> (Fire TV Stick Gen 1 only) <br/> <code>AFT*</code> (all Fire TV devices)</td>
+      <td><code>AFTM</code> (Fire TV Stick第 1 世代のみ) <br/> <code>AFT*</code> (すべてのFire TV端末)</td>
     </tr>
   </tbody>
 </table>
 
-<div class="subheading">OpenGL Properties and Limits (Fire TV Stick, Generation 1)</div>
+
+<div class="subheading">OpenGLのプロパティと制限 (Fire TV Stick、第 1 世代)</div>
 
 <table class="grid">
    <colgroup>
@@ -251,13 +253,13 @@
    </colgroup>
   <thead>
     <tr>
-      <th>Property</th>
-      <th>Details</th>
+      <th>プロパティ</th>
+      <th>詳細</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Max OpenGL Version</td>
+      <td>OpenGLのバージョン</td>
       <td>OpenGL ES 2.0</td>
     </tr>
     <tr>

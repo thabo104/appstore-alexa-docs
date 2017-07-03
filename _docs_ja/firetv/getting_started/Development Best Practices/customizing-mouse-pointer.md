@@ -1,5 +1,5 @@
 ---
-title: Customizing the Mouse Pointer
+title: マウスポインタのカスタマイズ
 permalink: customizing-mouse-pointer.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,19 +7,19 @@ toc-style: kramdown
 github: true
 ---
 
-If your app supports pointer-based input, Fire TV supports the use of a USB or Bluetooth-connected mouse that enables users to interact with your app. By default the mouse pointer appears as a large circle on the TV.
+アプリがポインタベースの入力をサポートしている場合、Fire TVでは、ユーザーはUSBまたはBluetoothで接続されたマウスを使ってアプリを操作できます。デフォルトでは、マウスポインタは画面上に大きな円で表示されます。
 
-{% include image.html alt="Pointer circle" file="firetv/getting_started/images/pointer-circle-bg" type="png" %}
+{% include image.html alt="円形のポインタ" file="firetv/getting_started/images/pointer-circle-bg" type="png" %}
 
-You can change the appearance of this mouse pointer into an arrow with an addition to the Android manifest (`AndroidManifest.xml`).
+Androidマニフェスト (`AndroidManifest.xml`) に要素を追加することで、このマウスポインタの外見を矢印に変えることができます。
 
-{% include image.html alt="Pointer arrow" file="firetv/getting_started/images/pointer-arrow-bg" type="png" %}
+{% include image.html alt="矢印のポインタ" file="firetv/getting_started/images/pointer-arrow-bg" type="png" %}
 
-{% include note.html content="Although the Fire TV platform supports the use of a mouse, your Fire TV app must use a controller as the primary mode of navigation and user input to be accepted by the Amazon Appstore. See [Supporting Controllers on Fire TV][supporting-controllers-on-amazon-fire-tv] for more information." %}
+{% include note.html content="Fire TVプラットフォームはマウスの使用をサポートしていますが、Fire TV対応アプリがAmazonアプリストアで承認されるためには、ナビゲーションとユーザー入力のプライマリモードとしてコントローラーを使用する必要があります。詳しくは、「[Amazon Fire TVでのコントローラーのサポート][supporting-controllers-on-amazon-fire-tv]」を参照してください。" %}
 
-## Modify the Android Manifest
+## Androidマニフェストに変更を加える
 
-To change the default mouse pointer to an arrow for a given activity, add a `<meta-data>` element to your manifest inside `<activity>`:
+任意のアクティビティでデフォルトのマウスポインタを矢印に変更するには、マニフェストの`<activity>`内に`<meta-data>`要素を追加します。
 
 ```java
 <activity

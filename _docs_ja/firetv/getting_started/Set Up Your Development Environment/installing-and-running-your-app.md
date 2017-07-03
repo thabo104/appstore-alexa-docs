@@ -1,5 +1,5 @@
 ---
-title: Installing and Running Your App
+title: アプリのインストールと実行
 permalink: installing-and-running-your-app.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,25 +7,25 @@ toc-style: kramdown
 github: true
 ---
 
-To test and debug your Fire TV app before submitting it to the Amazon Appstore, use Android Debug Bridge (ADB) to install and run your app on your Fire TV device. Installing your own app (outside of the Appstore) is sometimes referred to as "sideloading"
- an app. 
+Amazonアプリストアに申請するFire TV対応アプリは、事前にテストとデバッグを済ませる必要があります。この作業にはAndroid Debug Bridge (ADB) を使用し、Fire TV端末にアプリをインストールして実行します。開発したアプリを (アプリストアを介さずに) インストールすることを、アプリを "サイドロードする" とも
+言います。
 
-You must have already used ADB to connect your development computer to your Fire TV device. See [Connecting to Fire TV Through ADB][connecting-adb-to-fire-tv-device] for more information.
+作業を行う前に、Fire TV端末がADB経由で開発コンピューターにあらかじめ接続されている必要があります。詳細については、「[ADBを使用してFire TVに接続する][connecting-adb-to-fire-tv-device]」を参照してください。
 
-{% include note.html content="Certain development tools and resources referenced on this page are provided by third parties, not by Amazon. Any links to these tools and resources will take you to third-party sites." %}
+{% include note.html content="このページで参照されている一部の開発ツールやリソースは、Amazonではなく、サードパーティによって提供されています。これらのツールやリソースへのリンクは、サードパーティのサイトを指しています。" %}
 
 * TOC
 {:toc}
 
-## Installing Your App (Command Line)
+## アプリをインストールする (コマンドライン)
 
-To install your app onto your Fire TV device from the command line, use the following command, where `<path-to-apk-file>` is the file system path to your app's APK:
+コマンドラインからアプリをFire TV端末にインストールするには、次のコマンドを使用します。ここで、`<path-to-apk-file>` には、アプリのAPKへのファイルシステムパスが入ります。
 
 ```
 adb install <path-to-apk-file>
 ```
 
-If the installation was sucessful, ADB responds with the message similar to this one:
+インストールが正常に終了すると、ADBによって次のようなメッセージが表示されます。
 
 ```
 764 KB/s (217246 bytes in 0.277s)
@@ -33,57 +33,57 @@ pkg: /data/local/tmp/HelloWorld.apk
 Success
 ```
 
-To re-install an app that already exists on the device, you can use the `-r` option to reinstall the app:
+デバイスにすでに存在するアプリを再インストールするには、次のコマンドのように、`-r`オプションを指定してアプリを再インストールします。
 
 ```
 adb install -r <path-to-apk-file>
 ```
 
-Note that reinstalling an app does not replace any existing additional user data or cache. To clear this data, uninstall the old app before installing a new version, or clear the data by hand in **System > Applications**.
+アプリを再インストールしても、既存のユーザーデータやキャッシュは上書きされません。このデータをクリアするには、古いアプリをアンインストールしてから新しいバージョンをインストールするか、[**端末 (古いバージョンではシステム)**] > [**アプリケーション**] で手動でデータをクリアします。
 
-## Running Your App (Device)
+## アプリを実行する (端末)
 
-Sideloaded apps appear in both the Recent row and in the My Library row in the Apps section. You can also find your app in the Settings menu:
+サイドロードされたアプリは、[Apps] セクションの [Recent] 行と [My Library] 行に表示されます。また、[設定] メニューにもアプリが表示されます。
 
-1.  From Fire TV's main screen, select **Settings > Applications > Manage Installed Applications.**.
-2.  Select your app.
-3.  Select **Launch application**.
+1.  Fire TVのメイン画面から、[**設定**] > [**アプリケーション**] > [**インストール済みアプリケーションを管理**] の順に選択します。
+2. アプリを選択します。
+3.  [**アプリを起動**] を選択します。
 
-{% include note.html content="If you have a generation 1 device, some of the menus may be slightly different." %}
+{% include note.html content="第 1 世代の端末をご使用の場合、一部のメニューが若干異なる場合があります。" %}
 
-## Running Your App (Command Line)
+## アプリを実行する (コマンドライン)
 
-To send a launch intent to your app on the Amazon Fire TV device, use the following command, where `com.amazon.sample.helloworld` is the package name of your app, and `MainActivity` is the name of your app's primary activity.
+Amazon Fire TV端末のアプリに起動インテントを送信するには、次のコマンドを使用します。ここで、`com.amazon.sample.helloworld`はアプリのパッケージ名で、`MainActivity`はアプリのプライマリアクティビティの名前です。
 
 ```
 adb shell am start -n com.amazon.sample.helloworld/.MainActivity
 ```
 
-ADB responds with a message similar to the following, and your app begins running:
+ADBから次のようなメッセージが返され、アプリが実行を開始します。
 
 ```
 Starting: Intent { cmp=com.amazon.sample.helloworld/.MainActivity }
 ```
 
-## Uninstalling Your App (Device)
+## アプリをアンインストールする (端末)
 
-To uninstall your app from Amazon Fire TV on the device itself:
+Amazon Fire TV端末自体を使用してアプリを端末からアンインストールするには、次の手順で行ってください。
 
-1.  From Fire TV's main screen, select **Settings > Applications > Manage Installed Applications**.
-2.  Select your app.
-3.  Select **Uninstall** > **Uninstall**.
+1.  Fire TVのメイン画面から、[**設定**] > [**アプリケーション**] > [**インストール済みアプリケーションを管理**] の順に選択します。
+2. アプリを選択します。
+3.  [**アンインストール**] > [**アンインストール**] を選択します。
 
 
-## Uninstalling Your App (Command Line)
+## アプリをアンインストールする (コマンドライン)
 
-To uninstall your app from the command line, you need the package name for your APK. Use the following command to uninstall your app, where `com.amazon.sample.helloworld` is the package for your app:
+コマンドラインからアプリをアンインストールするには、APKのパッケージ名が必要です。次のコマンドを使用してアプリをアンインストールします。ここで、`com.amazon.sample.helloworld`はアプリのパッケージです。
 
 ```
 adb uninstall com.amazon.sample.helloworld
 ```
 
-If you are unsure of your app's package name, use the following command to see a list of all the installed APKs and 
-their package names:
+アプリのパッケージ名が不明な場合は、次のコマンドを使用すると、インストール済みのすべてのAPKとその
+パッケージ名が一覧表示されます。
 
 ```
 adb shell pm list packages -f

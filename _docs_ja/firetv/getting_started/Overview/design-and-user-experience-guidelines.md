@@ -1,5 +1,5 @@
 ---
-title: Design and User Experience Guidelines for TV Platforms
+title: TVプラットフォーム向けのデザインとユーザーエクスペリエンスのガイドライン
 permalink: design-and-user-experience-guidelines.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,152 +7,147 @@ toc-style: kramdown
 github: true
 ---
 
-Television user interface design differs significantly from the design for desktop computers, tablets, or phones. These guidelines will help you become familiar with the design principles for a 10-foot UI and help you integrate your application and its design into the Amazon Fire TV user interface.
+テレビのユーザーインターフェースのデザインは、デスクトップコンピューターやタブレット、スマートフォンのデザインとは大きく異なります。ここでは、開発者の皆さんが 10 フィートUIのデザイン原則を理解し、アプリケーションとデザインをAmazon Fire TVユーザーインターフェースに対応させる際の助けとなるガイドラインを紹介しています。
 
 * TOC
 {:toc}
 
-## General Principles
+## デザイン原則
 
-Use these principles to guide the design of your app as a whole.
+TV向けアプリをデザインする際は、下記の原則に従ってください。
 
-### 10-Foot UI
+### 10 フィートUI
 
-TV interfaces are often referred to as 10-Foot User Interfaces (10-ft UI), because the user is viewing the screen from 10 or more feet away. Although the screen itself can be large, the screen resolution is lower, and distance from the screen means a smaller angle of view.
+テレビを見るとき、ユーザーは画面から 10 フィート (約 3 メートル) 以上離れているため、テレビのインターフェースは、10 フィートユーザーインターフェース (10 フィートUI) と呼ばれることがあります。画面自体を大きくすることはできますが、画面が大きいほど解像度は低くなり、画面から離れるほど視野角は小さくなります。
 
-The design choices you would make for an application or web page running on a desktop computer, tablet, or phone are fundamentally different, as users typically view those screens from much closer distances.
+デスクトップコンピューターやタブレット、スマートフォンでは、より近い距離から画面を見るため、これらで実行するアプリケーションまたはウェブページ向けのデザインは、テレビを対象にする場合と根本的に異なります。
 
-In addition, as the television is used in a more relaxed fashion than a computer, a tablet or a phone, the UI on the TV should not require as much attention and precision. 10-ft UI may require you to wholly rethink the design, layout, and navigation of an existing app.
+また、テレビはデスクトップコンピューター、タブレット、またはスマートフォンに比べて、よりくつろいだ雰囲気で視聴されるため、テレビのUIでは、高いレベルの注意力および正確性を求めないようにする必要があります。10 フィートUIでは、既存のアプリのデザインやレイアウト、ナビゲーションを完全に見直す必要があります。
 
-### Clear, Simple, and Visual
+### クリア、シンプル、ビジュアル
 
-The design of a screen in a 10-ft UI requires simplicity and clarity, with low information density. Limit the number of design elements or UI components (menus, buttons, images) on the screen, and ensure that those elements are large enough and spaced far enough apart to be read from a distance. Present a clear set of actions or options for each screen.
+10 フィートUIでは、画面をシンプルかつクリアにし、情報密度を低くする必要があります。画面に表示されるデザイン要素またはUIコンポーネント (メニュー、ボタン、イメージ) の数を制限し、これらの要素は、遠くからでも認識および区別できるように十分に大きくし、間を空けるようにします。各画面では、一連の操作とオプションを明確に提示します。
 
-Minimize the amount of text, as users do not read a lot of text on a television screen. Avoid requiring the user to input a lot of information and provide reasonable defaults where possible.
+ユーザーはテレビの画面で大量のテキストを読むことに慣れていないので、テキストの量は最小限にします。情報を大量に入力しなくても済むようにし、可能な限り合理的なデフォルト値を提供します。
 
-### Place Important Content First
+### 重要なコンテンツを最初に配置する
 
-Place the most important content or options first on the screen so they are easily viewable and navigable by the user.
+最も重要なコンテンツまたはオプションを画面の目立つところに配置し、ユーザーが容易に認識およびナビゲーションできるようにします。
 
-### Focus on Consumption
+### コンテンツ再生に重点を置く
 
-Applications should have a clear focus on getting users to content quickly. Television interfaces are primarily about providing entertainment. When users sit down in front of their television, they don't want to do extra work. They need simple user interfaces that match their primary goal: "Give me something to watch or listen to or play with right now."
+アプリケーションでは、ユーザーがすばやくコンテンツにアクセスできるようにすることに重点を置く必要があります。テレビのインターフェースは、娯楽を提供することが主な目的です。テレビの前に座っているユーザーは、余分な操作をしたくありません。ユーザーは、"見聞きしたいものをすぐに再生する" という本来の目的を実現する、シンプルなユーザーインターフェースを求めています。
 
-## Design Guidelines
+## デザインガイドライン
 
-Use these guidelines when designing individual screens and views in your app.
+アプリで個々の画面やビューをデザインする際には、次のガイドラインを使用します。
 
-### Screen Size and Resolution
+### 画面サイズと解像度
 
-When you design an app for a tablet or phone screen, you're working with screens that have a fixed size and resolution. TV design differs in that the same app can appear in either 720p or 1080p resolutions, on a screen of any size.
+タブレットやスマートフォン向けのアプリをデザインする際、対象となる画面のサイズと解像度は固定されています。これと異なり、テレビのデザインでは、同じアプリが 720pまたは 1080pのいずれかの解像度で、しかもさまざまなサイズの画面に表示されることを考慮する必要があります。
 
-We recommend for the best possible experience that you design your app and its resources for a full 1080p television screen. The Amazon Fire TV platform scales your resources to the appropriate TV output. For 1080p the screen size is 1920x1080px, the density is 320dpi ("xhdpi") and the output resolution is 960x540dp ("large").
+最高のユーザーエクスペリエンスを提供するために、フル 1080pのテレビ画面を対象にして、アプリとそのリソースをデザインすることをお勧めします。Amazon Fire TVプラットフォームは、テレビの画面サイズと解像度に応じて、リソースを拡大/縮小します。1080pの場合、画面サイズは 1920 x 1080 px、密度は 320 dpi ("xhdpi")、出力解像度は 960 x 540 dp ("large") です。
 
-The Amazon Fire TV platform also supports the standard Android configurations for enabling multiple resource directories for different output parameters, as described in the Android developer guide for [Supporting Multiple Screens][1].
+また、Amazon Fire TVプラットフォームでは、標準のAndroid設定がサポートされており、Android開発者ガイドの「[複数画面をサポートする][1]」で説明されているように、出力パラメータの違いに応じて複数のリソースディレクトリを使用できます。
 
-When your app runs,  Fire TV loads your resources from the appropriate folder. See [Display and Layout][display-and-layout] for more information on the resource configurations available for Amazon Fire TV.
+アプリを実行すると、Fire TVはリソースを適切なフォルダーから読み込みます。Amazon Fire TVで利用できるリソース設定の詳細については、「[表示とレイアウト][display-and-layout]」を参照してください。
 
-### Overscan and the Safe Zone
+### オーバースキャンとセーフゾーン
 
-Regardless of its physical size, TV hardware manufacturers reserve space around the displayable area of the screen. This reserved space is known as _overscan_. The amount of space a TV uses as overscan varies across manufacturers. That real estate is not available to your app.
+画面サイズに関係なく、すべてのテレビには、画面の表示可能な領域の周囲に余白が確保されています。このスペースは、_オーバースキャン_と呼ばれます。テレビがオーバースキャンとして使用する領域の大きさは、メーカーによって異なります。オーバースキャンの領域は、アプリで使用できません。
 
-Although the Amazon Fire TV platform provides a way for the user to adjust for television overscan in the settings, for the safest possible behavior we recommend that you avoid placing any of your app's UI elements within the outer 5% of any edge on the screen. The focused item and on-screen text, especially, should be fully within the inner 90% (the safe zone) of your user interface.
+Amazon Fire TVプラットフォームでは、テレビのオーバースキャンの大きさを設定で調整できますが、念のために画面の縁から 5% 以内にはアプリのUI要素を配置しないようにすることをお勧めします。特に、フォーカスが置かれるアイテムや画面上のテキストは、その全体が画面の内側 90% (セーフゾーン) 内に配置されるようにする必要があります。
 
-{% include image.html alt="Overscan" file="firetv/getting_started/images/overscan" type="png" %}
+{% include image.html alt="オーバースキャン" file="firetv/getting_started/images/overscan" type="png" %}
 
-You can display an overscan on your Fire TV through the Developer Options. See [System X-Ray][fire-tv-system-xray].
+オーバースキャンをFire TVに表示するには、[開発者オプション] を使用します。詳細については、「[System X-Ray][amazon-fire-tv-system-xray]」を参照してください。
 
-### Color
+### カラー
 
-Television screens have a higher contrast than computer screens, which can make colors seem more saturated, brighter, and vibrant. The color gamut (the range of colors that can be displayed) is also less than that of a PC screen. In your app, use less saturated colors. Cool colors (blue, purple, gray) work better than warmer colors (red, orange).
+テレビの画面はコンピューターの画面よりもコントラストが高く設定されており、カラーがより明るく、鮮やかで、飽和しているように見えます。表示可能な色の範囲を示す色域も、PC画面よりも狭い範囲となります。アプリでは、飽和度の低いカラーを使用してください。寒色 (青、紫、灰) が暖色 (赤、橙) よりも見やすくなります。
 
-{% include image.html alt="Color" file="firetv/getting_started/images/color" type="png" %}
+{% include image.html alt="カラー" file="firetv/getting_started/images/color" type="png" %}
 
-### Typography
+### タイポグラフィ
 
-Because television screens must be read from across the room, use larger type sizes for body text (at least 14sp, which is approximately 19px on 720p, 28px on 1080p). Amazon uses Helvetica Neue Regular as the system font.
+テレビ画面は部屋のどこからでも読み取れる必要があるため、本文のテキストには大きなフォントサイズ (14 sp以上、つまり 720pでは約 19 px、1080pでは約 28 px) を使用します。Amazonでは、システムフォントとしてHelvetica Neue Regularが使用されます。
 
-Keep item descriptions or other blocks of text as short as possible, both in content and in line width. Use greater line spacing than you would use on a desktop or tablet screen. Separate text into paragraphs or chunks and write in short, declarative sentences.
+アイテムの説明やその他のテキストブロックは、その内容も行幅もできる限り短くします。行間は、デスクトップやタブレットの画面の場合よりも広くします。テキストは段落または小さなかたまりに分割し、短い平叙文で記述します。
 
-## Navigation and Input
+## ナビゲーションと入力
 
-Navigation and user input on the Fire TV user interface are both accomplished with one of the Fire TV remotes (Amazon Fire TV Remote or Voice Remote), or with a game controller (either the Amazon Fire Game Controller, or other Bluetooth game controllers) The use of a physical controller instead of mouse, keyboard or touch input makes input and control methods for Fire TV apps less flexible than on other devices.
+Fire TVユーザーインターフェースでのナビゲーションとユーザー入力はどちらも、Fire TVリモコン (Amazon Fire TVリモコンまたは音声認識リモコン)、またはゲームコントローラー (Amazon Fireゲームコントローラー、またはBluetoothゲームコントローラー) から行います。マウスやキーボード、タッチ入力の代わりに物理コントローラーを使用するため、Fire TV対応アプリの入力や制御の方法は、柔軟性の点で他の端末に比べてやや劣ります。
 
-### D-Pad Directional Navigation
+### D-padを使用した方向ナビゲーション
 
-The Left, Right, Up, and Down D-Pad buttons on one of the Fire TV remotes or on a game controller are used to navigate the user interface of your app. Clearly indicate how users should move through your app's user interface. A clear up-down and left-right orientation should be immediately apparent to the user and every actionable on-screen element should be reachable with the D-Pad.
+Fire TVリモコンやゲームコントローラーの上下左右のD-padボタンを使用して、アプリのユーザーインターフェースをナビゲーションできます。ユーザーに対しては、アプリのユーザーインターフェースを使用したナビゲーションの方法を明確に示してください。上下左右の方向を明確に示し、画面上の操作可能なすべての要素がD-padを通してアクセスできるようにします。
 
-### Focus and Selection
+### フォーカスと選択
 
-As the user navigates the user interface with the directional buttons on a remote or game controller, different UI elements highlight to indicate that an element has the focus. Your app should clearly indicate which on-screen element currently has the focus. When users glance away from the TV, upon return their gaze it should remain clear what options they have for navigation.
+ユーザーはリモコンまたはゲームコントローラーの方向ボタンを使用してユーザーインターフェースをナビゲーションするので、フォーカスのある要素を示すために各種のUI要素を強調表示します。アプリ内では、現在フォーカスのある画面上の要素を明確に示す必要があります。ユーザーがテレビから目を離し、再び画面を見たときに、ナビゲーションで利用できるオプションが明確に維持されている必要があります。
 
-When the user presses Select (or the A button on a game controller) while a UI element has the focus, that element should momentarily change to the selected state.
+UI要素にフォーカスがあるときに [選択] (またはゲームコントローラーの [A] ボタン) が押された場合、その要素はすぐに選択された状態に変化する必要があります。
 
-### Text Entry
+### テキスト入力
 
-When the user navigates the focus to a text field, a system keyboard automatically appears. Users can then enter information by selecting letters and numbers with the directional buttons on the remote or game controller. Suggested completions appear and can be selected at any time.
+テキストフィールドにフォーカスがナビゲートされると、システムキーボードが自動的に表示されます。情報の入力は、リモコンまたはゲームコントローラーの方向ボタンを使用して文字や数字を選択することによって行うことができます。オートコンプリート機能が用意されており、予測された入力候補をいつでも選択できます。
 
-## Screens, Views, and Flows
+## 画面、ビュー、フロー
 
-This section describes the patterns for the major screens and views in the Amazon Fire TV user interface, as well as descriptions of the controls used to build them. Use these patterns as a reference if you choose to optimize and integrate the design of your own apps with the system UI.
+このセクションでは、Amazon Fire TVユーザーインターフェースの主な画面とビュー、およびそれらを構築するために使用されているコントロールについて説明します。独自のアプリのデザインを最適化し、アプリをシステムUIと統合する際には、ここに記載されているパターンを参照してください。
 
-{% include image.html alt="Screens" file="firetv/getting_started/images/3_screens" type="png" %}
+{% include image.html alt="画面" file="firetv/getting_started/images/3_screens" type="png" %}
 
-### Home Screen (Launcher)
+### ホーム画面 (ランチャー)
 
-{% include image.html alt="Screen" file="firetv/getting_started/images/home-1" type="png" %}
+{% include image.html alt="画面" file="firetv/getting_started/images/home-1" type="png" %}
 
-The home screen consists of a global navigation menu on the left and a set of content tiles on the right.
+ホーム画面は、グローバルナビゲーションメニュー (左側) と一連のコンテンツタイル (右側) で構成されます。
 
-The global navigation menu is the primary system menu. It appears in a row on the left side of the screen. The global navigation menu allows the user to choose major content categories or other options including Search, Home, Movies, TV, Music, Games, Apps, and so on. Each item in the global navigation menu can be selected with the Up and Down directional buttons.
+グローバルナビゲーションメニューは、中心となるシステムメニューです。画面の左側に、縦に 1 列に並んで表示されます。グローバルナビゲーションメニューでは、主なコンテンツカテゴリのほか、[検索]、[ホーム]、[映画]、[TV番組]、[ミュージック]、[ゲーム]、[アプリ] などのオプションを選択できます。グローバルナビゲーションメニューの各アイテムは、[上] と [下] の方向ボタンを使用して選択できます。
 
-When the user focuses on any item in the global navigation menu, the home view for that node appears on the right side of the screen. Each node has its own home view with its own content. The overall system home view, sometimes called the launcher, is accessible with the Home key on the Fire TV remote or game controller, or by selecting Home from the global navigation menu.
+グローバルナビゲーションメニューのいずれかのアイテムにフォーカスを置くと、そのノードのホームビューが画面の右側に表示されます。各ノードには、独自のホームビューと独自のコンテンツがあります。ランチャーと呼ばれる、システム全体のホームビューにアクセスするには、Fire TVリモコンまたはゲームコントローラーの [ホーム] キーを使用するか、グローバルナビゲーションメニューから [ホーム] を選択します。
 
-{% include image.html alt="Content row" file="firetv/getting_started/images/home-1-3rd-row-focus" type="png" %}
+{% include image.html alt="コンテンツ行" file="firetv/getting_started/images/home-1-3rd-row-focus" type="png" %}
 
-Each home view contains multiple horizontal content rows. The title tile for the row indicates the type of content (for example, Most Popular, My Movies, Recommended for You). The remaining tiles show examples of that content. From these content rows, the user can:
+各ホームビューは、複数のコンテンツ行で構成されます。行のタイトルタイルはコンテンツの種類 (たとえば、「注目タイトル」、「マイビデオ」、「おすすめ」など) を示します。残りのタイルは、そのコンテンツのサンプルを示します。これらのコンテンツ行では、次のことを行うことができます。
 
-* Navigate between rows with the Up and Down directional buttons.
-* Move back to the navigation menu with the Left button.
-* Choose Select or Right to select a row and view a 1D list for that row.
+* [上] と [下] の方向ボタンを使用して行間をナビゲーションする。
+* [左] ボタンを使用してナビゲーションメニューに戻る。
+* [選択] または [右] を使用して行を選択し、その行の 1Dリストを表示する。
 
-### 1D List Views
+### 1Dリストビュー
 
-{% include image.html alt="1D list" file="firetv/getting_started/images/1d_outerspace-first-tile-focus" type="png" %}
+{% include image.html alt="1Dリスト" file="firetv/getting_started/images/1d_outerspace-first-tile-focus" type="png" %}
 
-1D list views appear when the user selects a content row from a home view. 1D lists contain a single row of items. The title bar indicates the title of the list (for example, Most Popular, My Movies, Recommended for You), and two numbers indicating the number of items in the list and the position of the item that has the focus.
+1Dリストビューは、ホームビューからコンテンツ行が選択されると表示されます。1Dリストは、1 行のアイテムで構成されます。タイトルバーには、リストのタイトル (たとえば、「注目タイトル」、「マイビデオ」、「おすすめ」など) に加えて、リストにあるアイテムの数とフォーカスされているアイテムの位置を示す数の 2 つの数が表示されます。
 
-The item with the focus in a browse list displays the mini details for that item below the list. Mini details can include basic item information (title, date, rating) as well as options such as Add to Watchlist.
+参照リストでフォーカスされているアイテムについては、そのアイテムの簡単な説明がリストの下に表示されます。簡単な説明には、アイテムの基本情報 (タイトル、日付、評価) と [ウォッチリストに追加] などのオプションが含まれます。
 
-From the 1D list, the user can:
+1Dリストでは、次のことを行うことができます。
 
-* Navigate between items with the Left and Right directional buttons. Navigating past the end of the list wraps the focus around to the first item.
-* Choose an item with the Select button, which shows the detail view for that item.
+* [左] と [右] の方向ボタンを使用してアイテム間をナビゲーションする。リストの最後を越えてナビゲーションすると、フォーカスは最初のアイテムに戻ります。
+* [選択] ボタンを使用してアイテムを選択する。これにより、そのアイテムの詳細ビューが表示されます。
 
-### Detail View
+### 詳細ビュー
 
-{% include image.html alt="Detail view" file="firetv/getting_started/images/detail-watch-now-focus" type="png" %}
+{% include image.html alt="詳細ビュー" file="firetv/getting_started/images/detail-watch-now-focus" type="png" %}
 
-The Detail view appears when the user selects an item from a browse list. This image shows the Detail view for a movie. The Detail may be different for TV, music, or other content. The Detail view displays information and actions related to a piece of content or other item.
+詳細ビューは、参照リストからアイテムが選択されると表示されます。このイメージは、ある映画の詳細ビューを示しています。表示される詳細情報は、テレビ番組、音楽、または他のコンテンツにより異なる可能性があります。詳細ビューには、コンテンツまたは他のアイテムに関連する情報と操作が表示されます。
 
-The actions under the description provide possible actions for this item. The actions available vary depending on the user's subscription status (for example, whether they are an Amazon Prime member) as well as content availability.
+説明の下には、このアイテムで実行可能な操作が表示されます。実行可能な操作は、ユーザーの登録ステータス (たとえば、Amazonプライムメンバーであるなど) とコンテンツの利用状況によって異なります。
 
-The discovery menu on the left side of the screen provides additional related information about the item (for example, Cast, Trivia, or Reviews).
+画面の左側のディスカバリーメニューには、アイテムに関連するその他の情報 (たとえば、[Cast]、[Trivia]、または [Reviews] など) が表示されます。
 
-### Search
+### 検索
 
-The Search menu item on the home screen opens the search screen, from which users can access voice search or text search. Search is also accessible with the Microphone button on the Amazon Fire TV Voice Remote, and appears in an overlay on the current app or content.
+ホーム画面の [Search] メニューアイテムを選択すると、音声検索またはテキスト検索を利用できる検索画面が表示されます。検索画面は、Amazon Fire TV音声認識リモコンの [マイク] ボタンからも利用でき、現在のアプリまたはコンテンツ上にオーバーレイとして表示されます。
 
-For text search, the user moves LEFT and RIGHT through the alphabet, pressing SELECT on each letter to type a search query. Possible results appear in a list below the query.
+テキスト検索の場合は、[左] と [右] の方向キーを使用してアルファベット間を移動し、文字ごとに [選択] を押して検索クエリを入力します。入力候補がクエリの下にリストとして表示されます。
 
-{% include image.html alt="Search" file="firetv/getting_started/images/search" type="png" %}
+{% include image.html alt="検索" file="firetv/getting_started/images/search" type="png" %}
 
-Global search is provided system-wide and is not customizable for individual apps. Developers may implement their own in-app search, but it is not included in the global search function.
-
-### Additional Resources
-
-For more information on UX best practices when designing for the ten-foot experience, see [Android TV](https://www.google.com/design/spec-tv/android-tv/introduction.html).
-
+グローバル検索がシステム全体で利用できますが、個々のアプリ向けにカスタマイズすることはできません。開発者は独自のアプリ内検索を実装できますが、この検索は、グローバル検索機能には含まれません。
 
 [1]: https://developer.android.com/guide/practices/screens_support.html
 

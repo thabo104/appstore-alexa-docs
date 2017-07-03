@@ -1,5 +1,5 @@
 ---
-title: Accessibility - Fire TV
+title: アクセシビリティ - Fire TV
 sidebar: firetv_ja
 product: Fire TV
 permalink: fire-tv-accessibility.html
@@ -10,9 +10,9 @@ github: true
 
 {% include content/{{site.language}}/fire/accessibility-in-fire-os.md device="firetv" %}
 
-## Related Resources
+## 関連リソース
 
-*   [Understanding assistive Technologies for Fire OS][fire-tv-assistive-technologies]
-*   [Implementing Future VoiceView Accessibility Features][fire-tv-preview-future-voiceview-accessibility-features]
+*   [Fire OSのユーザー補助機能について][fire-tv-assistive-technologies]
+*   [今後リリースされるVoiceViewユーザー補助機能の実装][fire-tv-preview-future-voiceview-accessibility-features]
 
 {% include links.html %}

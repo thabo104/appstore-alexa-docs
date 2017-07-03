@@ -1,5 +1,5 @@
 ---
-title: Media Players for Fire TV
+title: Fire TV対応のメディアプレーヤー
 permalink: fire-tv-media-players.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,53 +7,53 @@ toc-style: kramdown
 github: true
 ---
 
-Any media player that uses the Android's media playback and encryption APIs (such as the `MediaCodec`, `MediaCrypto`, and `AudioTrack` classes) will work on the Amazon Fire TV platform. The following are several recommended players, divided into free versus paid options:
+Androidのメディア再生APIおよびメディア暗号化API (`MediaCodec`、`MediaCrypto`、`AudioTrack`クラスなど) を使用しているメディアプレーヤーは、いずれもAmazon Fire TVプラットフォームで動作します。無料と有料の推奨プレーヤーの一部を以下に示します。
 
-**Free Options**:
+**無料**:
 
-*  [Amazon port of ExoPlayer](#exoplayer)
-*  [Android MediaPlayer](#androidmediaplayer)
+*  [ExoPlayerのAmazon版](../fire-tv-media-players.md#exoplayer)
+*  [Android MediaPlayer](../fire-tv-media-players.md#androidmediaplayer)
 
-**Paid Options**:
+**有料**:
 
-*  [VisualOn OnStream MediaPlayer](#visualon)
-*  [NexStreaming NexPlayer SDK](#nexplayer)
+*  [VisualOn OnStream MediaPlayer](../fire-tv-media-players.md#visualon)
+*  [NexStreaming NexPlayer SDK](../fire-tv-media-players.md#nexplayer)
 
-For information about the audio and video formats supported by Amazon Fire TV, see [Fire TV Device Specifications][device-and-platform-specifications].
+Amazon Fire TVでサポートされているオーディオ形式とビデオ形式の詳細については、「[Fire TV端末の仕様][device-and-platform-specifications]」を参照してください。
 
-Also, note that you can always build your own custom media players using standard Android APIs available in Android L (which is supported by the current Fire TV).
+Android L (最新のFire TVでサポート) で利用できる標準のAndroid APIを使用して独自のカスタムメディアプレーヤーを開発することもできます。
 
 * TOC
 {:toc}
 
-## Amazon Port of ExoPlayer {#exoplayer}
+## ExoPlayerのAmazon版 {#exoplayer}
 
-ExoPlayer is an open-source media player developed by Google and intended for Android media apps. To learn more about ExoPlayer, see the following resources:
+ExoPlayerは、Androidのメディアアプリ向けにGoogleが開発したオープンソースのメディアプレーヤーです。ExoPlayerの詳細については、以下のリソースを参照してください。
 
-*  [ExoPlayer homepage](https://developer.android.com/guide/topics/media/exoplayer.html)
-*  [ExoPlayer Video from Google](https://www.youtube.com/watch?v=6VjF638VObA)
-*  [ExoPlayer Developer Guide](http://google.github.io/ExoPlayer/guide.html)
+*  [ExoPlayerホームページ](https://developer.android.com/guide/topics/media/exoplayer.html)
+*  [GoogleによるExoPlayerのビデオ](https://www.youtube.com/watch?v=6VjF638VObA)
+*  [ExoPlayerの開発者ガイド](http://google.github.io/ExoPlayer/guide.html)
 
-Amazon has a port of ExoPlayer that is compatible with Fire TV. Instead of integrating the default ExoPlayer into your Fire TV app, use the Amazon port of ExoPlayer. The Amazon port of ExoPlayer provides many fixes, workarounds, and other patches to make ExoPlayer work on Amazon devices.
+Amazonでは、Fire TVに対応したExoPlayerの移植版を用意しています。Fire TV対応アプリにデフォルトのExoPlayerを組み込む代わりに、ExoPlayerのAmazon版を使用してください。ExoPlayerのAmazon版では、ExoPlayerをAmazonデバイスで動作させるための修正、回避策、およびその他のパッチが数多く提供されています。
 
-To understand how to use ExoPlayer, consult the standard ExoPlayer resources as listed previously.
+ExoPlayerの使用方法の詳細については、前述のExoPlayerの標準のリソースを参照してください。
 
-<a href="https://github.com/amzn/exoplayer-amazon-port"><button class="feedbackButton">Download the Amazon Port of Exoplayer</button></a>
+<a href="https://github.com/amzn/exoplayer-amazon-port"><button class="feedbackButton">ExoPlayerのAmazon版のダウンロード</button></a>
 
 ## Android MediaPlayer {#androidmediaplayer}
 
-The standard [Android MediaPlayer](https://developer.android.com/reference/android/media/MediaPlayer.html) classes that handle audio and video playback are supported on Fire TV. These media classes can handle basic media playback in your app; however, for more robust media needs, the Amazon port of ExoPlayer (or one of the paid media player options) is recommended.
+Fire TVでは、オーディオとビデオの再生を処理する[Android MediaPlayer](https://developer.android.com/reference/android/media/MediaPlayer.html)の標準のクラスがサポートされています。このメディアクラスを使用すれば、アプリで基本的なメディア再生を処理できます。ただし、もっと高度なメディアが必要な場合は、ExoPlayerのAmazon版 (または有料メディアプレーヤー) をお勧めします。
 
 ## VisualOn OnStream MediaPlayer {#visualon}
 
-You can use the [VisualOn OnStream MediaPlayer](http://visualon.com/onstream-mediaplayer) to integrate encrypted media playback in your Fire TV app. VisualOn supports AES 128-bit encryption with HLS, PlayReady DRM with the DASH and SmoothStreaming protocol, and AES 608 and 708 closed captions.
+[VisualOn OnStream MediaPlayer](http://visualon.com/onstream-mediaplayer)を使用すると、Fire TV対応アプリに暗号化されたメディアの再生機能を組み込むことができます。VisualOn は、HLSを使用するAES 128 ビット暗号化、DASHプロトコルとスムーズストリーミングプロトコルを使用するPlayReady DRM、およびAES 608 と 708 のクローズドキャプションをサポートします。
 
-Unlike with ExoPlayer, you will need to buy a license from VisualOn to use the VisualOn OnStream MediaPlayer in your Fire TV app.
+ExoPlayerとは異なり、Fire TV対応アプリでVisualOn OnStream MediaPlayerを使用するには、VisualOnからライセンスを購入する必要があります。
 
 ## NexStreaming NexPlayer SDK {#nexplayer}
 
-The [NexStreaming NexPlayer SDK](http://www.nexstreaming.com/index.php) is supported on Amazon Fire TV. Like VisualOn, this media player provides a robust set of media playback features, including DASH, DRM content, Smooth Streaming, HTTP Live Streaming (HLS), and more.
+[NexStreaming NexPlayer SDK](http://www.nexstreaming.com/index.php)はAmazon Fire TVでサポートされています。VisualOnと同様に、このメディアプレーヤーは、DASH、DRMコンテンツ、Smooth Streaming、HTTPライブストリーミング (HLS) など、一連の強力なメディア再生機能を備えています。
 
-Similar with VisualOn, NexPlayer requires you to purchase a license to use their player in your Fire TV app.
+VisualOnと同じく、Fire TV対応アプリでこのプレーヤーを使用するには、ライセンスを購入する必要があります。
 
 {% include links.html %}

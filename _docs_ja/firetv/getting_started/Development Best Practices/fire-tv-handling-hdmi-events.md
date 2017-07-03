@@ -1,5 +1,5 @@
 ---
-title: Handling HDMI Events
+title: HDMIイベントの処理
 permalink: fire-tv-handling-hdmi-events.html
 sidebar: firetv_ja
 product: Fire TV
@@ -7,27 +7,26 @@ toc-style: kramdown
 github: true
 ---
 
-When users connect or disconnect an HDMI cable, your app must handle these HDMI events following the guidelines here.
+ユーザーがHDMIケーブルを接続または切断したとき、アプリによってHDMIイベントが以下のガイドラインに沿って処理される必要があります。
 
 * TOC
 {:toc}
 
-## HDMI Disconnection
+## HDMIの切断
 
-The recommended behavior of an HDMI disconnection &mdash; because the TV is powered OFF, input to the TV switched to another HDMI port, or the HDMI cable disconnected physically &mdash; is as follows:
+テレビの電源がオフにされた場合、テレビへの入力が別のHDMIポートに切り替えられた場合、またはHDMIケーブルの接続が物理的に解除された場合のHDMIの切断について推奨される動作は次のとおりです。
 
-*  Apps that play video *must* pause playback when the TV is turned off or HDMI cable is disconnected. When the TV is powered ON or HDMI cable connected, playback should remain paused until the user explicitly presses PLAY button on the remote.
-*  Apps that play only audio *may* continue to play even if the HDMI is disconnected, provided the Fire TV is connected to another audio device via digital optical cable (Fire TV &ndash; 1st Generation only), Bluetooth A2DP headset, or audio headset via the Game controller.
+*  ビデオを再生するアプリは、テレビの電源がオフになるかHDMIケーブルが切断された場合、再生を一時停止する*必要があります*。テレビの電源がオンになるかHDMIケーブルが接続された後も、ユーザーがリモコンの再生ボタンを明示的に押すまで、再生は一時停止状態のままにする必要があります。*  オーディオだけを再生するアプリは、HDMIが切断された場合でも、Fire TVが光デジタルケーブルに繋がった別のオーディオデバイス (Fire TV第 1 世代のみ)、Bluetooth A2DPヘッドセット、またはゲームコントローラーに繋がったオーディオヘッドセットに接続されていれば、再生を続けることが*可能です*。
  
-## Letting the App Know about HDMI Events
+## アプリにHDMIイベントを認識させる
 
-To let your app know about connection or disconnection, listen for [`ACTION_HDMI_AUDIO_PLUG`][1] intent broadcast that has an extra ([`EXTRA_AUDIO_PLUG_STATE`][2]) indicating if the HDMI is in connected state or not.
+アプリに接続または切断を認識させるには、HDMIが接続されているかどうかを示すエクストラ ([`EXTRA_AUDIO_PLUG_STATE`][2]) が含まれたインテントのブロードキャストアクション[`ACTION_HDMI_AUDIO_PLUG`][1]をリッスンします。
 
-## Other Connection Events
+## その他の接続イベント
 
-If a digital optical cable (Fire TV - 1st Generation only), audio headset, or BT A2DP headset is connected to Fire TV, unfortunately there is no reliable way of knowing this in Android Lollipop based Fire OS 5 or later. 
+光デジタルケーブル (Fire TV第 1 世代のみ)、オーディオヘッドセット、またはBluetooth A2DPヘッドセットがFire TVに接続されている場合は、Android LollipopベースのFire OS 5 以降で接続イベントを認識する確実な方法がありません。 
 
-As such, it is recommended that you provide a User Preference setting in the app that controls this behavior.
+そのため、この動作を制御するユーザー設定をアプリに用意することをお勧めします。
  
  
 [1]: https://developer.android.com/intl/reference/android/media/AudioManager.html#ACTION_HDMI_AUDIO_PLUG

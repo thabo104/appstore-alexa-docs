@@ -1,5 +1,5 @@
 ---
-title: User Agent Strings for Fire TV
+title: Fire TVのユーザーエージェント文字列
 permalink: user-agent-strings.html
 sidebar: firetv_ja
 product: Fire TV
@@ -8,59 +8,38 @@ github: true
 ---
 
 
-The Fire TV platform includes the Android WebView ([`android.webkit.WebView`][1]), the Amazon WebView ([`com.amazon.android.webkit.AmazonWebView`][2]), and the Amazon web app platform. Each has an associated user agent string.
+Fire TVプラットフォームには、Android WebView ([`android.webkit.WebView`][1])、Amazon WebView ([`com.amazon.android.webkit.AmazonWebView`][2])、Amazonウェブアプリプラットフォームが含まれており、それぞれに関連付けられたユーザーエージェント文字列があります。
 
-An app or web page can read the user agent string to detect Fire TV and then provide a specific user experience. User agent strings can include the version of the host operating system, the version of the browser, and other information.
+アプリやウェブページは、ユーザーエージェント文字列を読み取ることでFire TVを検出し、それぞれに応じたユーザーエクスペリエンスを提供できます。ユーザーエージェント文字列には、ホストオペレーティングシステムのバージョン、ブラウザのバージョンなどの情報を含めることができます。
 
-{% include note.html content="The Fire TV platform does not include a browser." %}
+{% include note.html content="Fire TVプラットフォームには、ブラウザは含まれていません。" %}
 
-{% include tip.html content="If you're trying to identify different Fire TV devices, see [Identifying Amazon Fire TV Devices][identifying-amazon-fire-tv-devices]." %}
+{% include tip.html content="Fire TV端末の種類を識別する方法については、「[Amazon Fire TV端末を識別する][identifying-amazon-fire-tv-devices]」を参照してください。" %}
 
 * TOC
 {:toc}
 
-## User Agent Strings
+## ユーザーエージェント文字列
 
-When reading the user agent string, do not rely on specific version numbers within the string that are subject to change when the software is updated. To provide a Fire TV-platform specific experience, test for the string "AmazonWebAppPlatform" in combination with a device model that starts with "AFT".
+ユーザーエージェント文字列を読み取る際には、ソフトウェアのアップデート時に変更される可能性のある、文字列内のバージョン番号を利用しないでください。Fire TVプラットフォームに応じてユーザーエクスペリエンスを提供できるように、検出には文字列 "AmazonWebAppPlatform" と "AFT" で始まる端末モデルを組み合わせて使用してください。
 
-The following table shows the user agent strings for Fire TV:
+次の表に、Fire TVのユーザーエージェント文字列を示します。
 
-<table class="grid">
-  <thead>
-    <tr>
-      <th>User Agent</th>
-      <th>String</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Android WebView<br />(<code>android.webkit.WebView</code>)</td>
-      <td><code>Mozilla/5.0 (Linux; U; Android &lt;android&gt;; &lt;locale&gt;; &lt;device&gt; Build/&lt;build&gt;) AppleWebKit/&lt;webkit&gt; (KHTML, like Gecko) Version/4.0 Mobile Safari/&lt;safari&gt;</code></td>
-      <td><code>Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; AFTB Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30</code></td>
-    </tr>
-    <tr>
-      <td>Amazon WebView<br />(<code>com.amazon.android.webkit.AmazonWebView</code>)</td>
-      <td><code>Mozilla/5.0 (Linux; Android &lt;android&gt;; &lt;device&gt; Build/&lt;build&gt;) AppleWebKit/&lt;webkit&gt; (KHTML, like Gecko) Chrome/&lt;chrome&gt; Mobile Safari/&lt;safari&gt;</code></td>
-      <td><code>Mozilla/5.0 (Linux; Android 4.2.2; AFTB Build/JDQ39) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.173 Mobile Safari/537.22</code></td>
-    </tr>
-    <tr>
-      <td>Amazon Web App Platform</td>
-      <td><code>Mozilla/5.0 (Linux; Android &lt;android&gt;; &lt;device&gt; Build/&lt;build&gt;) AppleWebKit/&lt;webkit&gt; (KHTML, like Gecko) Chrome/&lt;chrome&gt; Mobile Safari/&lt;safari&gt; cordova-amazon-fireos/&lt;amazon&gt; AmazonWebAppPlatform/&lt;amazon&gt;</code></td>
-      <td><code>Mozilla/5.0 (Linux; Android 4.2.2; AFTB Build/JDQ39) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.173 Mobile Safari/537.22 cordova-amazon-fireos/3.4.0 AmazonWebAppPlatform/3.4.0;2.0</code></td>
-    </tr>
-  </tbody>
-</table>
-## Placeholders in User Agent Strings
+| ユーザーエージェント | 文字列 | 例 |
+| --- | --- | --- |
+| Android WebView<br/>(`android.webkit.WebView`) | `Mozilla/5.0 (Linux; U; Android <android>; <locale>; <device> Build/<build>) AppleWebKit/<webkit> (KHTML, like Gecko) Version/4.0 Mobile Safari/<safari>` | `Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; AFTB Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30` |
+| Amazon WebView<br/>(`com.amazon.android.webkit.AmazonWebView`) | `Mozilla/5.0 (Linux; Android <android>; <device> Build/<build>) AppleWebKit/<webkit> (KHTML, like Gecko) Chrome/<chrome> Mobile Safari/<safari>` | `Mozilla/5.0 (Linux; Android 4.2.2; AFTB Build/JDQ39) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.173 Mobile Safari/537.22` |
+| Amazon Web App Platform | `Mozilla/5.0 (Linux; Android <android>; <device> Build/<build>) AppleWebKit/<webkit> (KHTML, like Gecko) Chrome/<chrome> Mobile Safari/<safari> cordova-amazon-fireos/<amazon> AmazonWebAppPlatform/<amazon>` | `Mozilla/5.0 (Linux; Android 4.2.2; AFTB Build/JDQ39) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.173 Mobile Safari/537.22 cordova-amazon-fireos/3.4.0 AmazonWebAppPlatform/3.4.0;2.0` |
 
-The following placeholders in the user agent string are for version numbers that vary by device, for values that can be altered by the user, or for values that can change when Amazon updates the software on the device:
+## ユーザーエージェント文字列内のプレースホルダー
 
-*   `<android>` indicates the Android version number, for example, 4.2.2.
-*   `<locale>` indicates the chosen language and country or region for the phone. The value consists of the lowercase hyphenated concatenation of the two-letter ISO 639-1 language code and the two-letter ISO 3166-1 alpha-2 country code, for example, en-us.
-*   `<device>` is the value of `android.os.Build.MODEL`, for example, ATFB. Test for a device that starts with "AFT" to cover all devices on the Fire TV platform.
-*   `<build>` is the value of `android.os.Build.ID`, for example, JDQ39.
-*   `<webkit>`, `<chrome>`, and `<safari>` indicate the version numbers for WebKit, Chrome, and Safari, for example, 534.30.
-*   `<amazon>` indicates the version number of the Amazon web app platform, for example, 3.4.0.
+以下に挙げるユーザーエージェント文字列内のプレースホルダーは、端末によって異なるバージョン番号、ユーザーによって変更される可能性のある値、またはAmazonが端末のソフトウェアを更新するときに変更される可能性のある値を示しています。
+
+*   `<android>` には、Androidバージョン番号が入ります (例: 4.2.2)。
+*   `<locale>` には、スマートフォンで選択された言語と国や地域が入ります。値は小文字で、2 文字のISO 639-1 言語コードと 2 文字のISO 3166-1 alpha-2 国名コードをハイフンでつないだ文字列で構成されます (例: en-us)。*   `<device>` には、`android.os.Build.MODEL`の値が入ります (例: ATFB)。Fire TVプラットフォームのすべての端末を対象にするには、"AFT" で始まる端末の検出を行います。
+*   `<build>` には、`android.os.Build.ID`の値が入ります (例: JDQ39)。
+*   `<webkit>`、`<chrome>`、`<safari>` には、WebKit、Chrome、Safariのバージョン番号が入ります (例: 534.30)。
+*   `<amazon>` には、Amazonウェブアプリプラットフォームのバージョン番号が入ります (例: 3.4.0)。
 
 
 [1]: http://developer.android.com/reference/android/webkit/WebView.html

@@ -1,5 +1,5 @@
 ---
-title: Customize System X-Ray Metrics
+title: System X-Rayメトリックをカスタマイズする
 permalink: fire-tv-system-xray-customized-metrics.html
 sidebar: firetv_ja
 product: Fire TV
@@ -8,25 +8,25 @@ toc-style: kramdown
 github: true
 ---
 
-You can customize the display of metrics on System X-Ray by sending the information you want to be displayed. You can use this feature to display anything you find useful, such as static information, when a metric crosses different threshold boundaries, or when an event occurs.
+System X-Rayのメトリックの表示は、表示したい情報を送信することでカスタマイズできます。この機能を使用すると、静的な情報のほか、メトリックが各種しきい値を超えたとき、イベントが発生したときに、有益な情報を表示できます。
 
-{% include note.html content="See [System X-Ray][fire-tv-system-xray] for an overview of System X-Ray, including how to show the Developer Tool Options menu and read the metrics displayed on the overlay." %}
+{% include note.html content="開発者ツールオプションメニューの表示方法や、オーバーレイに表示されるメトリックの読み方など、System X-Rayの概要については、「[Fire TVのSystem X-Rayオーバーレイ][fire-tv-system-xray]」を参照してください。" %}
 
 * TOC
 {:toc}
 
-## Create Custom Metrics
+## カスタムメトリックを作成する
 
-System X-Ray displays the App section when it receives an [Intent](https://developer.android.com/reference/android/content/Intent.html), broadcast by your app, with metrics that you define. The following code shows how to create an intent for System X-Ray:
+定義したメトリックが含まれた[インテント](https://developer.android.com/reference/android/content/Intent.html)がアプリによってブロードキャストされ、System X-Rayで受信されると、アプリセクションが表示されます。以下のコードは、System X-Ray用のインテントの作成方法を示しています。
 
 ```java
 private void updateMetrics(Context context) {
 
-// Initialize Intent
+// インテントを初期化
 Intent intent = new Intent("com.amazon.ssm.METRICS_UPDATE");
 intent.putExtra("com.amazon.ssm.PACKAGENAME", context.getPackageName());
 
-// Add Metrics
+// メトリックを追加
 intent.putExtra("Metrics1", "First metric");
 intent.putExtra("Color1", "green");
 
@@ -36,106 +36,106 @@ intent.putExtra("Color2", "yellow");
 intent.putExtra("Metrics3", "Third metric");
 intent.putExtra("Color3", "red");
 
-// Send
+// 送信
 context.sendBroadcast(intent);
 }
 ```
 
-This sample uses the [`Context`](https://developer.android.com/reference/android/content/Context.html) class to get the necessary resources and classes for the environment.
+このサンプルでは、[`Context`](https://developer.android.com/reference/android/content/Context.html)クラスを使用して、環境に必要なリソースとクラスを取得しています。
 
-Initialize the Intent with the action `com.amazon.ssm.METRICS_UPDATE` and add the package name of your app as an extra. The package name is required because System X-Ray will only display the App section when your app is in the foreground. If you put this code in an Activity, you can call the [`getPackageName()`](https://developer.android.com/reference/android/content/Context.html#getPackageName()) helper method.
+アクション`com.amazon.ssm.METRICS_UPDATE`でインテントを初期化して、エクストラとしてアプリのパッケージ名を追加します。アプリがフォアグラウンドにある場合、System X-Rayはアプリセクションのみを表示するため、パッケージ名は必須です。このコードをアクティビティに配置すると、[`getPackageName()`](https://developer.android.com/reference/android/content/Context.html#getPackageName()) ヘルパーメソッドを呼び出すことができます。
 
-The metric name must be `Metrics1`, `Metrics2`, or `Metrics3`. Any other name will be ignored. You can set a metric’s value to any String you want, but keep in mind that it may be truncated. System X-Ray displays each metric in the following format: `[name]:[value]`.
+メトリックの名前は`Metrics1`、`Metrics2`、`Metrics3` のいずれかにする必要があります。これ以外の名前は無視されます。メトリックの値には任意の文字列を設定できますが、切り捨てられる場合があることに注意してください。System X-Rayは、各メトリックを`[name]:[value]`という形式で表示します。
 
-A metric’s default color is gray. If you choose to change the color, you will need to add an extra to the Intent. The name of the extra must be `Color1`, `Color2`, or `Color3`. The value can be `red`, `yellow`, `green`, or `blue`. The metric name and color name must have the same number in order for the color to apply. For example, `Metrics1` will get `Color1`. The color values are independent of each other &mdash; you can have more than one metric with the same color.
+メトリックのデフォルトの色は灰色です。色を変更するには、インテントにエクストラを追加する必要があります。エクストラの名前は`Color1`、`Color2`、`Color3` のいずれかにする必要があります。値は`red`、`yellow`、`green`、`blue`を指定できます。色を適用するためにメトリック名と色名に同じ数字を入れる必要があります。たとえば、`Metrics1`には`Color1`が適用されます。色の値は互いに独立しているため、色が同じメトリックを複数使用できます。
 
-Now that the Intent is set up, you can call the `sendBroadcast(Intent)` method. If System X-Ray is enabled, it will add a section called `App` and display the metrics defined in the Intent. If you want to change the value or color of a metric, you must recreate the Intent with the new value or color and send it again.
+インテントを設定できたら、`sendBroadcast(Intent)` メソッドを呼び出すことができます。System X-Rayが有効になっていれば、`App`というセクションが追加され、インテントで定義したメトリックが表示されます。メトリックの値や色を変更する場合は、値または色を変更したインテントを再度作成して送信する必要があります。
 
-If you are tracking multiple metrics in System X-Ray, you must resend the status of all of them, even if they don’t all change, as System X-Ray does not cache a metric’s state. Otherwise, the metrics you don’t send will be removed from System X-Ray.
+System X-Rayで複数のメトリックを追跡している場合は、一部のメトリックしか変更しなかった場合でも、System X-Rayではメトリックの状態がキャッシュされないため、すべてのメトリックの状態を再度送信する必要があります。一部しか送信しない場合、送信しなかったメトリックはSystem X-Rayから削除されます。
 
-## Examples of Custom Metrics
+## カスタムメトリックの例
 
-Let’s walk through a few examples of ways you can use this feature.
+この機能の使用例をいくつか説明します。
 
-### Static Information
+### 静的な情報
 
-If you test your app on multiple Fire TV devices or use different WiFi networks, you might want to see which Fire TV model you are testing, or the SSID of the WiFi network the Fire TV is using. As your app starts up, you could get this information and send it to System X-Ray. The following code shows a sample of how to show static information:
+アプリを複数のFire TV端末でテストする場合や複数のWiFiネットワークを使用する場合は、テストしているFire TVモデルや、Fire TVが使用しているWiFiネットワークのSSIDを確認できると便利です。アプリの起動時にこの情報を取得して、System X-Rayに送信できます。以下のコードで、静的な情報を表示する方法の例を示します。
 
 ```java
 private void updateMetrics(Context context, String buildModel, String ssid) {
-    // Initialize Intent
+    // インテントを初期化
     Intent intent = new Intent("com.amazon.ssm.METRICS_UPDATE");
     intent.putExtra("com.amazon.ssm.PACKAGENAME", context.getPackageName());
 
-    // Add metrics
+    // メトリックを追加
     intent.putExtra("Metrics1", buildModel);
     intent.putExtra("Metrics2", ssid);
 
-    // Send
+    // 送信
     context.sendBroadcast(intent);
 }
 ```
 
-The following image is an example display from the above input. In this image, System X-Ray shows that the Fire TV device model is AFTS, which is the 2nd generation Fire TV box. It also shows that Fire TV is connected to the Guest network.
+上のコードを入力すると、下の画像のように表示されます。この画像では、Fire TV端末のモデルがAFTS (ボックスタイプのFire TVの第 2 世代) であることが示されています。また、Fire TVがGuestというネットワークに接続されていることも示されています。
 
 {% include image.html file="firetv/getting_started/images/systemxray_custom1" type="png" max-width="150px" %}
 
-### Thresholds
+### しきい値
 
-You might want to track a metric that can cross different thresholds. For example, let’s say your app has video content and you want to track dropped frames during video playback. You might consider less than 5 drops to be green, 5-9 to be yellow, and 10 and higher to be red.
+メトリックが各種しきい値を超えているかどうかを追跡する必要がある場合もあります。たとえば、アプリにビデオコンテンツがあり、ビデオ再生中のドロップフレーム数を追跡したいとします。その場合、たとえば 5 フレーム未満の場合は緑色、5 ～ 9 フレームの場合は黄色、10 フレーム以上の場合は赤色で表示するよう設定できます。
 
-As you update the number of dropped frames, you change the color to match the threshold. The following code sample shows how show a threshold:
+ドロップフレーム数が更新されると、それに応じて色がしきい値に対応する色に変わります。以下のコードサンプルは、しきい値の設定方法を示しています。
 
 ```java
 private void updateMetrics(Context context, int numFrameDrops, String frameDropStatus) {
-    // Initialize Intent
+    // インテントを初期化
     Intent intent = new Intent("com.amazon.ssm.METRICS_UPDATE");
     intent.putExtra("com.amazon.ssm.PACKAGENAME", context.getPackageName());
 
-    // Add metrics
+    // メトリックを追加
     intent.putExtra("Metrics1", "FrameDrops:"+numFrameDrops);
     intent.putExtra("Color1", frameDropStatus);
 
-    // Send
+    // 送信
     context.sendBroadcast(intent);
 }
 ```
 
-Here are screenshots of what the different thresholds look like:
+以下のスクリーンショットは、各しきい値範囲に該当する場合にどのように表示されるかを示しています。
 
 {% include image.html file="firetv/getting_started/images/systemxray_custom2" type="png" max-width="500px" %}
 
-### Events
+### イベント
 
-Event logging is useful, but you might want a visual way to track when an event last occurred. For example, perhaps testing reveals that an intermittent Exception is thrown after 3 hours of video playback. Here's a sample of how to configure an event:
+イベントログは便利ですが、イベントが発生した時刻を見やすい方法で追跡したい場合もあります。たとえば、テストで 3 時間ビデオを再生した結果、例外が断続的にスローされることが判明する場合があります。イベントの設定方法の例を以下に示します。
 
 ```java
 private void updateMetrics(Context context, String message, String time) {
-    // Initialize Intent
+    // インテントを初期化
     Intent intent = new Intent("com.amazon.ssm.METRICS_UPDATE");
     intent.putExtra("com.amazon.ssm.PACKAGENAME", context.getPackageName());
 
-    // Add metrics
+    // メトリックを追加
     intent.putExtra("Metrics1", message);
     intent.putExtra("Color1", "Red");
 
     intent.putExtra("Metrics2", "Time:"+time);
     intent.putExtra("Color2", "Red");
 
-    // Send
+    // 送信
     context.sendBroadcast(intent);
 }
 ```
 
-In the following screenshot, System X-Ray displays the Exception, along with the time it occurred.
+以下のスクリーンショットは、例外とその発生時刻が表示されています。
 
 {% include image.html file="firetv/getting_started/images/systemxray_custom3" type="png"  max-width="150px" %}
 
-## See Also
+## 関連項目
 
-For more details, see the following:
+詳細については、以下を参照してください。
 
-* [System X-Ray on Fire TV][fire-tv-system-xray]
-* [Developer Tool Options on System X-Ray][fire-tv-system-xray-developer-tools]
+* [Fire TVのSystem X-Rayオーバーレイ][fire-tv-system-xray]
+* [開発者ツールのオプション][fire-tv-system-xray-developer-tools]
 
 {% include links.html %}
